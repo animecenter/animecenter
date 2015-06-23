@@ -1,0 +1,60 @@
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteBase /sites/default/files/advagg_js
+
+  # Send 404's back to index.php
+  RewriteCond %{REQUEST_FILENAME} !-s
+  RewriteRule ^(.*)$ /index.php?q=sites/default/files/advagg_js/$1 [L]
+
+  # Rules to correctly serve gzip compressed js files.
+  # Requires both mod_rewrite and mod_headers to be enabled.
+  <IfModule mod_headers.c>
+    # Serve gzip compressed js files if they exist and client accepts gzip.
+    RewriteCond %{HTTP:Accept-encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -s
+    RewriteRule ^(.*)\.js$ $1\.js\.gz [QSA]
+
+    # Serve correct content types, and prevent mod_deflate double gzip.
+    RewriteRule \.js\.gz$ - [T=text/javascript,E=no-gzip:1]
+
+    <FilesMatch "\.js\.gz$">
+      # Serve correct encoding type.
+      Header set Content-Encoding gzip
+      # Force proxies to cache gzipped & non-gzipped js files separately.
+      Header append Vary Accept-Encoding
+    </FilesMatch>
+  </IfModule>
+</IfModule>
+
+<FilesMatch "^js_[0-9a-f]{32}_.+\.js(\.gz)?">
+  # No mod_headers
+  <IfModule !mod_headers.c>
+    # No mod_expires
+    <IfModule !mod_expires.c>
+      # Use ETags.
+      FileETag MTime Size
+    </IfModule>
+
+    # Use Expires Directive.
+    <IfModule mod_expires.c>
+      # Do not use ETags.
+      FileETag None
+      # Enable expirations.
+      ExpiresActive On
+      # Cache all aggregated js files for 480 weeks after access (A).
+      ExpiresDefault A290304000
+    </IfModule>
+  </IfModule>
+
+  <IfModule mod_headers.c>
+    # Set a far future Cache-Control header to 480 weeks.
+    Header set Cache-Control "max-age=290304000, no-transform, public"
+    # Set a far future Expires header.
+    Header set Expires "Tue, 20 Jan 2037 04:20:42 GMT"
+    # Pretend the file was last modified a long time ago in the past.
+    Header set Last-Modified "Wed, 20 Jan 1988 04:20:42 GMT"
+    # Do not use etags for cache validation.
+    Header unset ETag
+  </IfModule>
+</FilesMatch>

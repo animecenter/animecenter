@@ -1,0 +1,73 @@
+server {
+        listen 80;
+        server_name .animecenter.tv;
+        root   /home/subbedanime/htdocs;
+		
+		add_header X-Cache $upstream_cache_status;
+		
+        index index.html index.php index.htm;
+		
+		error_page 404 /404.php; 
+		
+		location / {
+			rewrite "%{REQUEST_FILENAME}" /!-d;
+			rewrite "%{REQUEST_FILENAME}" /!-f;
+			rewrite "%{REQUEST_FILENAME}" /!-l;
+			#rewrite ^/(anime-list)$ /s_anime.php redirect; 
+			rewrite "^/(watch[\/].([a-z0-9\?\.\-:,\';!]*))$" /episode.php?id=$1 last; 
+			rewrite "^/((dubbed-anime|subbed-anime)[\/].[a-z//]*([a-z0-9\?\.\-:,\';!]*))$" /series.php?id=$1 last; 
+		}
+
+		location /anime-list {
+			rewrite ^(.*)$ /s_anime.php last;
+		}
+		
+		location /anime-list-dubbed { 
+			rewrite ^(.*)$ /d_anime.php last; 
+		} 
+		location /browse_a-z-subbed {
+			rewrite ^(.*)$ /s_b_anime.php last; 
+		}
+		
+		location /browse_a-z-dubbed { 
+			rewrite ^(.*)$ /d_b_anime.php last; 
+		}
+		
+		location /taxonomy_browse { 
+			rewrite ^/taxonomy_browser /genres.php last; 
+		}
+		
+		location /latest-episodes { 
+			rewrite ^(.*)$ /latest_episodes.php last; 
+		}
+		
+		location /latest-anime {
+			rewrite ^(.*)$ /latest_anime.php last; 
+		}
+		
+		location /search {
+			rewrite ^(.*)$ /search.php last; 
+		}
+		
+		location ~ \.php$ {
+			try_files $uri =404;
+			fastcgi_split_path_info ^(.+\.php)(/.+)$;
+			#NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+			include fastcgi_params;
+			#fastcgi_read_timeout 60;
+			fastcgi_buffers 8 16k;
+			fastcgi_buffer_size 32k;
+			fastcgi_param SCRIPT_FILENAME $request_filename;
+			#fastcgi_intercept_errors on;
+			fastcgi_pass unix:/var/run/php5-fpm/animecenter.tv.socket;		
+		}
+		 
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+            expires max;
+            log_not_found off;
+        }
+		
+		access_log  /home/subbedanime/logs/subbedanime.tv.access.log;
+		error_log  /home/subbedanime/logs/subbedanime.tv.error.log warn;
+
+}
