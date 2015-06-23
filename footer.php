@@ -2,8 +2,11 @@
 $country = $_SERVER["HTTP_CF_IPCOUNTRY"];
 echo '<meta description="'.$country.'"/>';
 $t1 = array('us','ca','au','gb');
-if (in_array(strtolower($country), $t1)) { $c = 'T1'; }
-if($c == 'T1'){
+$c = '';
+if (in_array(strtolower($country), $t1)) { 
+    $c = 'T1'; 
+}
+if($c === 'T1') { ?>
 	<!-- BEGIN S0008278 POP -->
 
 	<script>
@@ -13,8 +16,7 @@ if($c == 'T1'){
 	<script src="//cdn.directrev.com/js/gp.min.js?s=S0008278"></script>
 
 	<!-- END S0008278 POP -->
-}
-?>
+<?php } ?>
 
 <div id="footer">
 
