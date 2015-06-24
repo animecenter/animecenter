@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://www.animecenter.tv/sitemap.xml.gz
-Sitemap: http://www.animecenter.tv/sitemap.xml.gz.gz
+Sitemap: http://beta.animecenter.tv/sitemap.xml.gz
+Sitemap: http://beta.animecenter.tv/sitemap.xml.gz.gz

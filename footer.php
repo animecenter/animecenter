@@ -72,7 +72,7 @@ if ($c === 'T1') { ?>
 
 <?
 $page = $actual_link = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-if ($page != "http://www.animecenter.tv/index.php") { ?>
+if ($page != "http://beta.animecenter.tv/index.php") { ?>
 <? } ?>
 <script type="text/javascript">
     $(document).ready(function (e) {
