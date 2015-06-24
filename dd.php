@@ -1,1 +1,3 @@
-<?php chmod("top-cache.php" , 0777); ?>
+<?php
+
+chmod("top-cache.php", 0777);
