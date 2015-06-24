@@ -3,7 +3,7 @@ require_once("admin/conf/config.php");
 require_once("admin/includes/functions.php");
 mysql_select_db($database_config, $config);
 $ob = new data();
-session_save_path('/var/www/animecenter/sessions/');
+session_save_path('/var/www/animecenter/sessions');
 ini_set('session.gc_maxlifetime', 10 * 24 * 60 * 60); // 10 hours
 ini_set('session.gc_probability', 1);
 ini_set('session.gc_divisor', 100);
