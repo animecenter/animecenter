@@ -106,7 +106,7 @@ if (isset($_POST['up_episode'])) {
         $cache_path . substr($hash, -1) . '/' . substr($hash, -3, 2) . '/' . $hash;
         #$cache_file = exec("grep -lr '$requesturi' $cache_path | xargs rm");
         unlink($cache_path . substr($hash, -1) . '/' . substr($hash, -3, 2) . '/' . $hash);
-        $ur = parse_url("http://beta.animecenter.tv/");
+        $ur = parse_url("http://www.animecenter.tv/");
         $scheme = $ur['scheme'];
         $host = $ur['host'];
         $requesturi = $ur['path'];

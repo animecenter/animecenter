@@ -50,7 +50,7 @@ while ($row = mysql_fetch_array($result)) {
         $time = $created;
     }
 
-    $url = "http://beta.animecenter.tv/";
+    $url = "http://www.animecenter.tv/";
     $title = $row['a_title'];
     $title = str_replace(" ", "-", strtolower($title));
     $sub = $row['a_type2'] . "-anime/";
@@ -135,7 +135,7 @@ while ($row = mysql_fetch_array($result)) {
         $time = $created;
     }
 
-    $url = "http://beta.animecenter.tv/";
+    $url = "http://www.animecenter.tv/";
     $title = $row['e_title'];
     $show = $row['e_show'];
     $title = str_replace(" ", "-", strtolower($title));

@@ -12,7 +12,7 @@ mysql_select_db("subbedanime") or die(mysql_error());
 $query = "SELECT * FROM an_series WHERE 1";
 $result = mysql_query($query);
 while ($row = mysql_fetch_array($result)) {
-	$url = "http://beta.animecenter.tv/";
+	$url = "http://www.animecenter.tv/";
 	$title = $row['a_title'];
 	$type = $row['a_type2']."-anime/";
 	$title = str_replace(" ","-",strtolower($title));
