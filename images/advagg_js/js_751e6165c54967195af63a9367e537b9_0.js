@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/views/js/dependent.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/views/js/dependent.js. */
 Drupal.Views = Drupal.Views || {};
 Drupal.Views.dependent = {bindings: {}, activeBindings: {}, activeTriggers: []};
 Drupal.Views.dependent.inArray = function (array, search_term) {
@@ -82,4 +82,4 @@ Drupal.behaviors.viewsDependent = function (context) {
         }
     }).trigger('change')
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/views/js/dependent.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/views/js/dependent.js. */

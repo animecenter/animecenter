@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/quicktabs/js/quicktabs.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/quicktabs/js/quicktabs.js. */
 Drupal.settings.views = Drupal.settings.views || {ajax_path: 'views/ajax'};
 Drupal.behaviors.quicktabs = function (context) {
     $('.quicktabs_wrapper:not(.quicktabs-processed)', context).addClass('quicktabs-processed').each(function () {
@@ -164,4 +164,4 @@ Drupal.quicktabs.ajax.css_files = function (files) {
         $('body').append($(html))
     }
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/quicktabs/js/quicktabs.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/quicktabs/js/quicktabs.js. */

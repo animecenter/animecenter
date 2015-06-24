@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/misc/tableheader.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/misc/tableheader.js. */
 Drupal.tableHeaderDoScroll = function () {
     if (typeof(Drupal.tableHeaderOnScroll) == 'function')Drupal.tableHeaderOnScroll()
 };
@@ -73,8 +73,8 @@ Drupal.behaviors.tableHeader = function (context) {
     };
     $(window).resize(resize)
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/misc/tableheader.js. */
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/pathauto/pathauto.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/misc/tableheader.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/pathauto/pathauto.js. */
 if (Drupal.jsEnabled) {
     $(document).ready(function () {
         if ($("#edit-pathauto-perform-alias").size() && $("#edit-pathauto-perform-alias").attr("checked")) {
@@ -103,8 +103,8 @@ if (Drupal.jsEnabled) {
     }
 }
 ;
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/pathauto/pathauto.js. */
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/filefield/filefield.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/pathauto/pathauto.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/filefield/filefield.js. */
 Drupal.behaviors.filefieldValidateAutoAttach = function (context) {
     $("input[type=file]", context).bind('change', Drupal.filefield.validateExtensions)
 };
@@ -170,4 +170,4 @@ Drupal.filefield = {
         return false
     }
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/filefield/filefield.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/filefield/filefield.js. */

@@ -58,7 +58,7 @@ require_once("image.thumb.php");
             <div id="sec2" class="sections">
                 <div class="title">
                     New Episodes
-                    <a style="float:right; color:#fff;background:#23B95D;padding:2px 5px;border-radius:3px;font-size:14px; font-weight:bold;" href="http://www.animecenter.tv/latest-episodes">More</a>
+                    <a style="float:right; color:#fff;background:#23B95D;padding:2px 5px;border-radius:3px;font-size:14px; font-weight:bold;" href="http://beta.animecenter.tv/latest-episodes">More</a>
                 </div>
                 <?php
                 $day1 = date("Y-m-d");
@@ -149,7 +149,7 @@ require_once("image.thumb.php");
 
             <div id="sec3" class="sections">
                 <div class="title">Recently Added Series
-                    <a href="http://www.animecenter.tv/latest-anime"
+                    <a href="http://beta.animecenter.tv/latest-anime"
                        style="float:right; color:#fff;background:#23B95D;padding:2px 5px;border-radius:3px;font-size:14px; font-weight:bold;">More</a>
                 </div>
                 <?php foreach ($series_re_list as $series) {

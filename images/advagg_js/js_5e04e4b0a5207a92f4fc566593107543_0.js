@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/vertical_tabs/core/node.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/vertical_tabs/core/node.js. */
 Drupal.verticalTabs = Drupal.verticalTabs || {};
 Drupal.verticalTabs.revision_information = function () {
     if ($('#edit-revision').length) {
@@ -21,7 +21,7 @@ Drupal.verticalTabs.options = function () {
     if (!$('#edit-status').is(':checked'))vals.unshift(Drupal.t('Not published'));
     return vals.join(', ')
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/vertical_tabs/core/node.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/vertical_tabs/core/node.js. */
 
 Drupal.verticalTabs = Drupal.verticalTabs || {};
 
@@ -37,7 +37,7 @@ Drupal.verticalTabs.comment = function () {
     return vals.join(', ');
 }
 ;
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/vertical_tabs/core/taxonomy.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/vertical_tabs/core/taxonomy.js. */
 Drupal.verticalTabs = Drupal.verticalTabs || {};
 Drupal.verticalTabs.taxonomy = function () {
     var terms = {}, termCount = 0;
@@ -65,8 +65,8 @@ Drupal.verticalTabs.taxonomy = function () {
         return output
     } else return Drupal.t('No terms')
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/vertical_tabs/core/taxonomy.js. */
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/vertical_tabs/core/upload.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/vertical_tabs/core/taxonomy.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/vertical_tabs/core/upload.js. */
 Drupal.verticalTabs = Drupal.verticalTabs || {};
 Drupal.verticalTabs.attachments = function () {
     var size = $('#upload-attachments tbody tr').size();
@@ -74,8 +74,8 @@ Drupal.verticalTabs.attachments = function () {
         return Drupal.formatPlural(size, '1 attachment', '@count attachments')
     } else return Drupal.t('No attachments')
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/vertical_tabs/core/upload.js. */
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/vertical_tabs/core/book.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/vertical_tabs/core/upload.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/vertical_tabs/core/book.js. */
 Drupal.verticalTabs = Drupal.verticalTabs || {};
 Drupal.verticalTabs.book = function () {
     var text = $('#edit-book-bid option[selected]').text();
@@ -84,4 +84,4 @@ Drupal.verticalTabs.book = function () {
     } else if (text == Drupal.t('<create a new book>'))return Drupal.t('New book');
     return text
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/vertical_tabs/core/book.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/vertical_tabs/core/book.js. */

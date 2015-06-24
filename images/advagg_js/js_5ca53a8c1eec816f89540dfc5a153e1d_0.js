@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/admin_menu/admin_menu.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/admin_menu/admin_menu.js. */
 $(document).ready(function () {
     if (!$('#admin-menu').length)return;
     if (Drupal && Drupal.settings && Drupal.settings.admin_menu) {
@@ -32,4 +32,4 @@ $(document).ready(function () {
         }, 400)
     })
 });
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/admin_menu/admin_menu.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/admin_menu/admin_menu.js. */

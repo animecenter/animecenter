@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/misc/tableheader.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/misc/tableheader.js. */
 Drupal.tableHeaderDoScroll = function () {
     if (typeof(Drupal.tableHeaderOnScroll) == 'function')Drupal.tableHeaderOnScroll()
 };
@@ -73,8 +73,8 @@ Drupal.behaviors.tableHeader = function (context) {
     };
     $(window).resize(resize)
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/misc/tableheader.js. */
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/misc/textarea.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/misc/tableheader.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/misc/textarea.js. */
 Drupal.behaviors.textarea = function (context) {
     $('textarea.resizable:not(.textarea-processed)', context).each(function () {
         if ($(this).is('textarea.teaser:not(.teaser-processed)'))return false;
@@ -100,4 +100,4 @@ Drupal.behaviors.textarea = function (context) {
         }
     })
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/misc/textarea.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/misc/textarea.js. */

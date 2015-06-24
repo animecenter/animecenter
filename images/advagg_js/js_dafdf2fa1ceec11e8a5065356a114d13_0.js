@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/misc/autocomplete.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/misc/autocomplete.js. */
 Drupal.behaviors.autocomplete = function (context) {
     var acdb = [];
     $('input.autocomplete:not(.autocomplete-processed)', context).each(function () {
@@ -188,8 +188,8 @@ Drupal.ACDB.prototype.cancel = function () {
     if (this.timer)clearTimeout(this.timer);
     this.searchString = ''
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/misc/autocomplete.js. */
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/misc/collapse.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/misc/autocomplete.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/misc/collapse.js. */
 Drupal.toggleFieldset = function (fieldset) {
     if ($(fieldset).is('.collapsed')) {
         var content = $('> div:not(.action)', fieldset);
@@ -234,8 +234,8 @@ Drupal.behaviors.collapse = function (context) {
         })).after($('<div class="fieldset-wrapper"></div>').append(fieldset.children(':not(legend):not(.action)'))).addClass('collapse-processed')
     })
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/misc/collapse.js. */
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/misc/textarea.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/misc/collapse.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/misc/textarea.js. */
 Drupal.behaviors.textarea = function (context) {
     $('textarea.resizable:not(.textarea-processed)', context).each(function () {
         if ($(this).is('textarea.teaser:not(.teaser-processed)'))return false;
@@ -261,4 +261,4 @@ Drupal.behaviors.textarea = function (context) {
         }
     })
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/misc/textarea.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/misc/textarea.js. */

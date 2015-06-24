@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/jquery_update/replace/tabledrag.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/jquery_update/replace/tabledrag.js. */
 Drupal.behaviors.tableDrag = function (context) {
     for (var base in Drupal.settings.tableDrag)if (!$('#' + base + '.tabledrag-processed', context).size()) {
         var tableSettings = Drupal.settings.tableDrag[base];
@@ -557,4 +557,4 @@ Drupal.theme.prototype.tableDragIndentation = function () {
 Drupal.theme.prototype.tableDragChangedWarning = function () {
     return '<div class="warning">' + Drupal.theme('tableDragChangedMarker') + ' ' + Drupal.t("Changes made in this table will not be saved until the form is submitted.") + '</div>'
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/jquery_update/replace/tabledrag.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/jquery_update/replace/tabledrag.js. */

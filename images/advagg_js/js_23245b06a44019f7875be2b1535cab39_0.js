@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/token/jquery.treeTable.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/token/jquery.treeTable.js. */
 (function ($) {
     var options, defaultPaddingLeft;
     $.fn.treeTable = function (opts) {
@@ -131,8 +131,8 @@
         for (key in classNames)if (classNames[key].match(options.childPrefix))return $(node).siblings("#" + classNames[key].substring(options.childPrefix.length))
     }
 })(jQuery);
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/token/jquery.treeTable.js. */
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/token/token.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/token/jquery.treeTable.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/token/token.js. */
 (function ($) {
     Drupal.behaviors.tokenTree = function () {
         $('table.token-tree').each(function () {
@@ -166,4 +166,4 @@
         })
     }
 })(jQuery);
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/token/token.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/token/token.js. */

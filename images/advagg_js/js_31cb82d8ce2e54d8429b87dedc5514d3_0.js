@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/misc/progress.js. */
+/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/misc/progress.js. */
 Drupal.progressBar = function (id, updateCallback, method, errorCallback) {
     var pb = this;
     this.id = id;
@@ -56,4 +56,4 @@ Drupal.progressBar.prototype.displayError = function (string) {
     $(this.element).before(error).hide();
     if (this.errorCallback)this.errorCallback(this)
 };
-/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/misc/progress.js. */
+/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/misc/progress.js. */
