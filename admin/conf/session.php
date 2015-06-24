@@ -1,5 +1,5 @@
 <?php
-session_save_path('/var/www/animecenter/sessions/');
+session_save_path('/var/www/animecenter/sessions');
 ini_set('session.gc_maxlifetime', 10 * 24 * 60 * 60); // 3 hours
 ini_set('session.gc_probability', 1);
 ini_set('session.gc_divisor', 100);
