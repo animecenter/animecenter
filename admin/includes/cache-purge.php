@@ -25,7 +25,7 @@ if (isset($_POST['url'])) {
 <form enctype="multipart/form-data" method="post" action="">
     <div style="width:100%;" class="inputNOption">
         <input type="text" style="width:80%;" class="textInput" value="" name="url"
-               placeholder="http://www.animecenter.tv/watch/fairy-tail-2014-episode-8 or all">
+               placeholder="http://beta.animecenter.tv/watch/fairy-tail-2014-episode-8 or all">
         <input id="submit" type="submit" value="Purge Cache" name="Purge" style="margin-top: -5px">
     </div>
 </form>

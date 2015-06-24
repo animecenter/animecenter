@@ -1,12 +1,12 @@
 <?php
 if (isset($_GET['url'])) {
-    $cache_path = '/home/nginx-cache/animecenter/';
+    $cache_path = '/var/www/animecenter/nginx-cache/';
     if ($_GET['url'] == 'all') {
         exec("find $cache_path -type f -delete");
         echo "All Cache => Purge initiated";
     } else {
         $url = parse_url($_GET['url']);
-        if ( ! $url) {
+        if (!$url) {
             echo 'Invalid URL entered';
             die();
         }
@@ -21,4 +21,3 @@ if (isset($_GET['url'])) {
         }
     }
 }
-?>
