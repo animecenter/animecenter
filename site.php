@@ -1,9 +1,9 @@
 <?
 $con = mysql_connect("localhost", "subbedanime", "6vvczWBchcXaxVyn");
-if (!$con) {
-	die('Could not connect: ' . mysql_error());
+if ( ! $con) {
+    die('Could not connect: ' . mysql_error());
 }
-$mytime ="2012-03-21 06:22:02";
+$mytime = "2012-03-21 06:22:02";
 $time = strtotime($mytime);
 echo $time;
 /*

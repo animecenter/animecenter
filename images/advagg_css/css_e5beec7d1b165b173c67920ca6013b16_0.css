@@ -1,1 +1,185 @@
-.nivoSlider{position:relative}.nivoSlider img{position:absolute;top:0;left:0}.nivoSlider a.nivo-imageLink{position:absolute;top:0;left:0;width:100%;height:100%;border:0;padding:0;margin:0;z-index:60;display:none}.nivo-slice{display:block;position:absolute;z-index:50;height:100%}.nivo-caption{position:absolute;left:0;bottom:0;background:#000;color:#fff;opacity:.8;width:100%;z-index:89}.nivo-caption p{padding:5px;margin:0}.nivo-directionNav a{position:absolute;top:45%;z-index:99;cursor:pointer}.nivo-prevNav{left:0}.nivo-nextNav{right:0}.nivo-controlNav a{position:relative;z-index:99;cursor:pointer}.nivo-controlNav a.active{font-weight:bold}#slider{margin-top:6px;position:absolute;margin:30px 30px 60px 30px;-moz-box-shadow:0 0 10px #333;-webkit-box-shadow:0 0 10px #333;box-shadow:0 0 10px #333}.nivo-caption{background:0;background-color:rgba(0,0,0,0.50);opacity:.5;filter:alpha(opacity=50)}#slider img{overflow:hidden;position:absolute;top:0;left:0}#slider a{border:0}.nivo-controlNav{position:absolute;left:39%;top:75%;bottom:-30px}.nivo-controlNav a{display:block;width:13px;height:15px;background:url(/modules/views_nivo_slider/styles/default/featured_slideshow1.png) no-repeat -138px -120px;text-indent:-9999px;border:0;margin-right:7px;float:left;left:20px;top:72px}.nivo-controlNav a:hover{background-position:-151px -120px}.nivo-controlNav a.active{background-position:-151px -120px}.nivo-directionNav a{text-indent:-9999px}a.nivo-nextNav{background-position:-32px 0;width:15px;height:30px;background:transparent url(/modules/views_nivo_slider/styles/default/featured_slideshow.png) no-repeat 0 -120px;right:10px;color:transparent}a.nivo-nextNav:hover{top:156px;right:5px;width:27px;height:40px;background:transparent url(/modules/views_nivo_slider/styles/default/featured_slideshow.png) no-repeat -30px -120px;color:transparent}a.nivo-prevNav{position:absolute;display:block;width:15px;height:30px;background:transparent url(/modules/views_nivo_slider/styles/default/featured_slideshow.png) no-repeat -15px -120px;text-indent:-9999px;border:0;left:5px}a.nivo-prevNav:hover{top:156px;left:2px;width:27px;height:40px;background:transparent url(/modules/views_nivo_slider/styles/default/featured_slideshow.png) no-repeat -55px -120px}#watchnow{text-decoration:none;display:block;right:-25px;bottom:15px;position:absolute;margin-right:30px;float:right;padding:11px 5px 0;width:100px;height:29px;color:white;font-weight:600;background:url(/modules/views_nivo_slider/styles/default/featured_slideshow.png) no-repeat 0 -80px}#watchnow:hover{background:url(/modules/views_nivo_slider/styles/default/featured_slideshow.png) no-repeat 0 0;
+.nivoSlider {
+    position: relative
+}
+
+.nivoSlider img {
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.nivoSlider a.nivo-imageLink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 60;
+    display: none
+}
+
+.nivo-slice {
+    display: block;
+    position: absolute;
+    z-index: 50;
+    height: 100%
+}
+
+.nivo-caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #000;
+    color: #fff;
+    opacity: .8;
+    width: 100%;
+    z-index: 89
+}
+
+.nivo-caption p {
+    padding: 5px;
+    margin: 0
+}
+
+.nivo-directionNav a {
+    position: absolute;
+    top: 45%;
+    z-index: 99;
+    cursor: pointer
+}
+
+.nivo-prevNav {
+    left: 0
+}
+
+.nivo-nextNav {
+    right: 0
+}
+
+.nivo-controlNav a {
+    position: relative;
+    z-index: 99;
+    cursor: pointer
+}
+
+.nivo-controlNav a.active {
+    font-weight: bold
+}
+
+#slider {
+    margin-top: 6px;
+    position: absolute;
+    margin: 30px 30px 60px 30px;
+    -moz-box-shadow: 0 0 10px #333;
+    -webkit-box-shadow: 0 0 10px #333;
+    box-shadow: 0 0 10px #333
+}
+
+.nivo-caption {
+    background: 0;
+    background-color: rgba(0, 0, 0, 0.50);
+    opacity: .5;
+    filter: alpha(opacity=50)
+}
+
+#slider img {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+#slider a {
+    border: 0
+}
+
+.nivo-controlNav {
+    position: absolute;
+    left: 39%;
+    top: 75%;
+    bottom: -30px
+}
+
+.nivo-controlNav a {
+    display: block;
+    width: 13px;
+    height: 15px;
+    background: url(/modules/views_nivo_slider/styles/default/featured_slideshow1.png) no-repeat -138px -120px;
+    text-indent: -9999px;
+    border: 0;
+    margin-right: 7px;
+    float: left;
+    left: 20px;
+    top: 72px
+}
+
+.nivo-controlNav a:hover {
+    background-position: -151px -120px
+}
+
+.nivo-controlNav a.active {
+    background-position: -151px -120px
+}
+
+.nivo-directionNav a {
+    text-indent: -9999px
+}
+
+a.nivo-nextNav {
+    background-position: -32px 0;
+    width: 15px;
+    height: 30px;
+    background: transparent url(/modules/views_nivo_slider/styles/default/featured_slideshow.png) no-repeat 0 -120px;
+    right: 10px;
+    color: transparent
+}
+
+a.nivo-nextNav:hover {
+    top: 156px;
+    right: 5px;
+    width: 27px;
+    height: 40px;
+    background: transparent url(/modules/views_nivo_slider/styles/default/featured_slideshow.png) no-repeat -30px -120px;
+    color: transparent
+}
+
+a.nivo-prevNav {
+    position: absolute;
+    display: block;
+    width: 15px;
+    height: 30px;
+    background: transparent url(/modules/views_nivo_slider/styles/default/featured_slideshow.png) no-repeat -15px -120px;
+    text-indent: -9999px;
+    border: 0;
+    left: 5px
+}
+
+a.nivo-prevNav:hover {
+    top: 156px;
+    left: 2px;
+    width: 27px;
+    height: 40px;
+    background: transparent url(/modules/views_nivo_slider/styles/default/featured_slideshow.png) no-repeat -55px -120px
+}
+
+#watchnow {
+    text-decoration: none;
+    display: block;
+    right: -25px;
+    bottom: 15px;
+    position: absolute;
+    margin-right: 30px;
+    float: right;
+    padding: 11px 5px 0;
+    width: 100px;
+    height: 29px;
+    color: white;
+    font-weight: 600;
+    background: url(/modules/views_nivo_slider/styles/default/featured_slideshow.png) no-repeat 0 -80px
+}
+
+#watchnow:hover {
+    background: url(/modules/views_nivo_slider/styles/default/featured_slideshow.png) no-repeat 0 0;

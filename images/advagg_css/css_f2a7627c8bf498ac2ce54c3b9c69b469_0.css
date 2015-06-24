@@ -1,1 +1,62 @@
-.taxonomy-super-select-checkboxes{clear:both;padding-top:1em}.taxonomy-super-select-checkboxes .form-item label.option{float:left;margin-right:1.5em}.taxonomy-super-select-radios{clear:both;padding-top:1em}.taxonomy-super-select-radios .form-item label.option{float:left;margin-right:1.5em}.taxonomy-super-select-radios .description{clear:both}.taxonomy-super-select-help{display:block;font-style:italic;margin-left:1em}#taxonomy-form-vocabulary .taxonomy-super-select-radios{padding-top:0}#taxonomy-form-vocabulary .form-radios{margin-top:0}#taxonomy-form-vocabulary .form-item{margin-top:0}.taxonomy-super-select-image .form-item{display:inline}.taxonomy-super-select-compact{padding-top:0!important}.taxonomy-super-select-compact fieldset{margin:0;padding:0}.taxonomy-super-select-compact .form-item{margin:0!important}.taxonomy-super-select-term-parent label.option{font-weight:bold}
+.taxonomy-super-select-checkboxes {
+    clear: both;
+    padding-top: 1em
+}
+
+.taxonomy-super-select-checkboxes .form-item label.option {
+    float: left;
+    margin-right: 1.5em
+}
+
+.taxonomy-super-select-radios {
+    clear: both;
+    padding-top: 1em
+}
+
+.taxonomy-super-select-radios .form-item label.option {
+    float: left;
+    margin-right: 1.5em
+}
+
+.taxonomy-super-select-radios .description {
+    clear: both
+}
+
+.taxonomy-super-select-help {
+    display: block;
+    font-style: italic;
+    margin-left: 1em
+}
+
+#taxonomy-form-vocabulary .taxonomy-super-select-radios {
+    padding-top: 0
+}
+
+#taxonomy-form-vocabulary .form-radios {
+    margin-top: 0
+}
+
+#taxonomy-form-vocabulary .form-item {
+    margin-top: 0
+}
+
+.taxonomy-super-select-image .form-item {
+    display: inline
+}
+
+.taxonomy-super-select-compact {
+    padding-top: 0 !important
+}
+
+.taxonomy-super-select-compact fieldset {
+    margin: 0;
+    padding: 0
+}
+
+.taxonomy-super-select-compact .form-item {
+    margin: 0 !important
+}
+
+.taxonomy-super-select-term-parent label.option {
+    font-weight: bold
+}

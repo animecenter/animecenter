@@ -1,1 +1,55 @@
-.treeTable tr td .expander{background-position:left center;background-repeat:no-repeat;cursor:pointer;padding:0;zoom:1}.treeTable tr.collapsed td .expander{background-image:url(/modules/token/arrow-right.png)}.treeTable tr.expanded td .expander{background-image:url(/modules/token/arrow-down.png)}.treeTable tr.selected,.treeTable tr.accept{background-color:#3875d7;color:#fff}.treeTable tr.collapsed.selected td .expander,.treeTable tr.collapsed.accept td .expander{background-image:url(/modules/images/toggle-expand-light.png)}.treeTable tr.expanded.selected td .expander,.treeTable tr.expanded.accept td .expander{background-image:url(/modules/images/toggle-collapse-light.png)}.treeTable .ui-draggable-dragging{color:#000;z-index:1}.token-tree{font-size:.85em;margin-left:19px}.token-tree td,.token-tree th{padding-top:0;padding-bottom:0}.token-group{font-weight:bold}.js .token-group{font-weight:normal}.token-tree td.token-key{white-space:nowrap}
+.treeTable tr td .expander {
+    background-position: left center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    padding: 0;
+    zoom: 1
+}
+
+.treeTable tr.collapsed td .expander {
+    background-image: url(/modules/token/arrow-right.png)
+}
+
+.treeTable tr.expanded td .expander {
+    background-image: url(/modules/token/arrow-down.png)
+}
+
+.treeTable tr.selected, .treeTable tr.accept {
+    background-color: #3875d7;
+    color: #fff
+}
+
+.treeTable tr.collapsed.selected td .expander, .treeTable tr.collapsed.accept td .expander {
+    background-image: url(/modules/images/toggle-expand-light.png)
+}
+
+.treeTable tr.expanded.selected td .expander, .treeTable tr.expanded.accept td .expander {
+    background-image: url(/modules/images/toggle-collapse-light.png)
+}
+
+.treeTable .ui-draggable-dragging {
+    color: #000;
+    z-index: 1
+}
+
+.token-tree {
+    font-size: .85em;
+    margin-left: 19px
+}
+
+.token-tree td, .token-tree th {
+    padding-top: 0;
+    padding-bottom: 0
+}
+
+.token-group {
+    font-weight: bold
+}
+
+.js .token-group {
+    font-weight: normal
+}
+
+.token-tree td.token-key {
+    white-space: nowrap
+}

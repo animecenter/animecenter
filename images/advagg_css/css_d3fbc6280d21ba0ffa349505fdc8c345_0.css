@@ -1,1 +1,11 @@
-.views_slideshow_thumbnailhover_no_display,.views_slideshow_thumbnailhover_hidden,.views_slideshow_thumbnailhover_controls,.views_slideshow_thumbnailhover_image_count{display:none}div.fieldgroup{margin:.5em 0 1em 0}div.fieldgroup .content{padding-left:1em}
+.views_slideshow_thumbnailhover_no_display, .views_slideshow_thumbnailhover_hidden, .views_slideshow_thumbnailhover_controls, .views_slideshow_thumbnailhover_image_count {
+    display: none
+}
+
+div.fieldgroup {
+    margin: .5em 0 1em 0
+}
+
+div.fieldgroup .content {
+    padding-left: 1em
+}
