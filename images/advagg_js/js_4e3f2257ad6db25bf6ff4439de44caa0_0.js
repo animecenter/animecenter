@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/block/block.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/block/block.js. */
 Drupal.behaviors.blockDrag = function (context) {
     var table = $('table#blocks'), tableDrag = Drupal.tableDrag.blocks;
     tableDrag.row.prototype.onSwap = function (swappedRow) {
@@ -49,4 +49,4 @@ Drupal.behaviors.blockDrag = function (context) {
         })
     }
 };
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/block/block.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/block/block.js. */

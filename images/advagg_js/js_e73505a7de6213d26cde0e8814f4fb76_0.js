@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/views/js/base.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/views/js/base.js. */
 Drupal.Views = {};
 Drupal.behaviors.viewsTabs = function (context) {
     $('#views-tabset:not(.views-processed)').addClass('views-processed').each(function () {
@@ -63,4 +63,4 @@ Drupal.Views.getPath = function (href) {
     for (i in chars)if (href.indexOf(chars[i]) > -1)href = href.substr(0, href.indexOf(chars[i]));
     return href
 };
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/views/js/base.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/views/js/base.js. */

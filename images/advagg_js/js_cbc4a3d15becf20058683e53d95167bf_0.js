@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/misc/tableselect.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/misc/tableselect.js. */
 Drupal.behaviors.tableSelect = function (context) {
     $('form table:has(th.select-all):not(.tableSelect-processed)', context).each(Drupal.tableSelect)
 };
@@ -43,4 +43,4 @@ Drupal.tableSelectRange = function (from, to, state) {
         } else if (jQuery.filter(to, [i]).r.length)break
     }
 };
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/misc/tableselect.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/misc/tableselect.js. */

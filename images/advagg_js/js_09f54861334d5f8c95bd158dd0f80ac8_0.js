@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/misc/drupal.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/misc/drupal.js. */
 (function () {
     var jquery_init = jQuery.fn.init;
     jQuery.fn.init = function (selector, context, rootjQuery) {
@@ -132,8 +132,8 @@ Drupal.theme.prototype = {
         return '<em>' + Drupal.checkPlain(str) + '</em>'
     }
 };
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/misc/drupal.js. */
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/fivestar/js/fivestar.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/misc/drupal.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/fivestar/js/fivestar.js. */
 (function ($) {
     var buildRating = function ($obj) {
         var $widget = buildInterface($obj), $stars = $('.star', $widget), $cancel = $('.cancel', $widget), $summary = $('.fivestar-summary', $obj), feedbackTimerId = 0, summaryText = $summary.html(), summaryHover = $obj.is('.fivestar-labels-hover'), currentValue = $("select", $obj).val(), cancelTitle = $('label', $obj).html(), voteTitle = cancelTitle != Drupal.settings.fivestar.titleAverage ? cancelTitle : Drupal.settings.fivestar.titleUser, voteChanged = false;
@@ -352,8 +352,8 @@ Drupal.theme.prototype = {
         $('input.fivestar-submit', context).css('display', 'none')
     }
 })(jQuery);
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/fivestar/js/fivestar.js. */
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/lightbox2/js/lightbox.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/fivestar/js/fivestar.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/lightbox2/js/lightbox.js. */
 var Lightbox = {
     auto_modal: false,
     overlayOpacity: 0.8,
@@ -1143,8 +1143,8 @@ Drupal.behaviors.initLightbox = function (context) {
     Lightbox.initList(context);
     $('#lightboxAutoModal', context).triggerHandler('click')
 };
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/lightbox2/js/lightbox.js. */
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/sites/all/modules/nice_menus/superfish/js/superfish.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/lightbox2/js/lightbox.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/sites/all/modules/nice_menus/superfish/js/superfish.js. */
 (function ($) {
     $.fn.superfish = function (op) {
         var sf = $.fn.superfish, c = sf.c, $arrow = $(['<span class="', c.arrowClass, '"> &#187;</span>'].join('')), over = function () {
@@ -1243,8 +1243,8 @@ Drupal.behaviors.initLightbox = function (context) {
         }
     })
 })(jQuery);
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/sites/all/modules/nice_menus/superfish/js/superfish.js. */
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/sites/all/modules/nice_menus/superfish/js/jquery.bgiframe.min.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/sites/all/modules/nice_menus/superfish/js/superfish.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/sites/all/modules/nice_menus/superfish/js/jquery.bgiframe.min.js. */
 (function ($) {
     $.fn.bgIframe = $.fn.bgiframe = function (s) {
         if ($.browser.msie && parseInt($.browser.version) <= 6) {
@@ -1268,8 +1268,8 @@ Drupal.behaviors.initLightbox = function (context) {
     };
     if (!$.browser.version)$.browser.version = navigator.userAgent.toLowerCase().match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/)[1]
 })(jQuery);
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/sites/all/modules/nice_menus/superfish/js/jquery.bgiframe.min.js. */
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/sites/all/modules/nice_menus/superfish/js/jquery.hoverIntent.minified.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/sites/all/modules/nice_menus/superfish/js/jquery.bgiframe.min.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/sites/all/modules/nice_menus/superfish/js/jquery.hoverIntent.minified.js. */
 (function ($) {
     $.fn.hoverIntent = function (f, g) {
         var cfg = {sensitivity: 7, interval: 100, timeout: 0};
@@ -1322,8 +1322,8 @@ Drupal.behaviors.initLightbox = function (context) {
         return this.mouseover(handleHover).mouseout(handleHover)
     }
 })(jQuery);
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/sites/all/modules/nice_menus/superfish/js/jquery.hoverIntent.minified.js. */
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/sites/all/modules/nice_menus/nice_menus.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/sites/all/modules/nice_menus/superfish/js/jquery.hoverIntent.minified.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/sites/all/modules/nice_menus/nice_menus.js. */
 (function ($) {
     $(document).ready(function () {
         $('ul.nice-menu').superfish({
@@ -1336,7 +1336,7 @@ Drupal.behaviors.initLightbox = function (context) {
         $('ul.nice-menu ul').css('display', 'none')
     })
 })(jQuery);
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/sites/all/modules/nice_menus/nice_menus.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/sites/all/modules/nice_menus/nice_menus.js. */
 /*
  * jQuery Cycle Plugin (with Transition Definitions)
  * Examples and documentation at: http://jquery.malsup.com/cycle/
@@ -2648,7 +2648,7 @@ Drupal.behaviors.initLightbox = function (context) {
     };
 })(jQuery);
 ;
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/sites/all/modules/views_slideshow/contrib/views_slideshow_singleframe/views_slideshow.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/sites/all/modules/views_slideshow/contrib/views_slideshow_singleframe/views_slideshow.js. */
 (function ($) {
     Drupal.behaviors.viewsSlideshowSingleFrame = function (context) {
         $('.views_slideshow_singleframe_main:not(.viewsSlideshowSingleFrame-processed)', context).addClass('viewsSlideshowSingleFrame-processed').each(function () {
@@ -2858,8 +2858,8 @@ Drupal.behaviors.initLightbox = function (context) {
         }
     }
 })(jQuery);
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/sites/all/modules/views_slideshow/contrib/views_slideshow_singleframe/views_slideshow.js. */
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/sites/all/modules/views_slideshow/contrib/views_slideshow_thumbnailhover/views_slideshow.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/sites/all/modules/views_slideshow/contrib/views_slideshow_singleframe/views_slideshow.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/sites/all/modules/views_slideshow/contrib/views_slideshow_thumbnailhover/views_slideshow.js. */
 (function ($) {
     Drupal.behaviors.viewsSlideshowThumbnailHover = function (context) {
         $('.views_slideshow_thumbnailhover_main:not(.viewsSlideshowThumbnailHover-processed)', context).addClass('viewsSlideshowThumbnailHover-processed').each(function () {
@@ -3065,4 +3065,4 @@ Drupal.behaviors.initLightbox = function (context) {
         }
     }
 })(jQuery);
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/sites/all/modules/views_slideshow/contrib/views_slideshow_thumbnailhover/views_slideshow.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/sites/all/modules/views_slideshow/contrib/views_slideshow_thumbnailhover/views_slideshow.js. */

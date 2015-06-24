@@ -1,6 +1,6 @@
 <?php
 ob_start();
-$url = "http://beta.animecenter.tv/";
+$url = "http://www.animecenter.tv/";
 $hostname_config = "localhost";
 $database_config = "animecenter";
 $username_config = "animecenter";

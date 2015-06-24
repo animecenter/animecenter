@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/pathauto/pathauto.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/pathauto/pathauto.js. */
 if (Drupal.jsEnabled) {
     $(document).ready(function () {
         if ($("#edit-pathauto-perform-alias").size() && $("#edit-pathauto-perform-alias").attr("checked")) {
@@ -27,8 +27,8 @@ if (Drupal.jsEnabled) {
     }
 }
 ;
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/pathauto/pathauto.js. */
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/book_manager/book_manager.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/pathauto/pathauto.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/book_manager/book_manager.js. */
 Drupal.behaviors.bookManagerPersonalToggle = function () {
     if ($('#edit-book-bid').val() == 'new' || $('#edit-book-bid').val() == Drupal.settings.book_manager.nid) {
         $('#edit-book-ispersonal-wrapper').css('display', 'inline')
@@ -38,8 +38,8 @@ Drupal.behaviors.bookManagerBookChange = function () {
     Drupal.behaviors.bookManagerPersonalToggle();
     $('#edit-book-bid').change(Drupal.behaviors.bookManagerPersonalToggle)
 };
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/book_manager/book_manager.js. */
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/filefield/filefield.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/book_manager/book_manager.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/filefield/filefield.js. */
 Drupal.behaviors.filefieldValidateAutoAttach = function (context) {
     $("input[type=file]", context).bind('change', Drupal.filefield.validateExtensions)
 };
@@ -105,4 +105,4 @@ Drupal.filefield = {
         return false
     }
 };
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/filefield/filefield.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/filefield/filefield.js. */

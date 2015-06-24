@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/disqus/disqus.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/disqus/disqus.js. */
 var disqus_shortname = '', disqus_developer = 0, disqus_url = '', disqus_title = '', disqus_identifier = '', disqus_config = null, disqus_def_name = null, disqus_def_email = null;
 Drupal.behaviors.disqus = function (context) {
     if (Drupal.settings.disqusCommentDomain || false) {
@@ -34,4 +34,4 @@ Drupal.behaviors.disqus = function (context) {
         })
     }
 };
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/disqus/disqus.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/disqus/disqus.js. */

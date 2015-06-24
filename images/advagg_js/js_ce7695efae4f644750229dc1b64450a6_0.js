@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/modules/views/js/ajax_view.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/modules/views/js/ajax_view.js. */
 Drupal.Views.Ajax = Drupal.Views.Ajax || {};
 Drupal.Views.Ajax.ajaxViewResponse = function (target, response) {
     if (response.debug)alert(response.debug);
@@ -77,4 +77,4 @@ Drupal.behaviors.ViewsAjaxView = function () {
         })
     }
 };
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/modules/views/js/ajax_view.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/modules/views/js/ajax_view.js. */

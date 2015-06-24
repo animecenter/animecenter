@@ -1,4 +1,4 @@
-/* Source and licensing information for the line(s) below can be found at http://beta.animecenter.tv/misc/drupal.js. */
+/* Source and licensing information for the line(s) below can be found at http://www.animecenter.tv/misc/drupal.js. */
 (function () {
     var jquery_init = jQuery.fn.init;
     jQuery.fn.init = function (selector, context, rootjQuery) {
@@ -132,4 +132,4 @@ Drupal.theme.prototype = {
         return '<em>' + Drupal.checkPlain(str) + '</em>'
     }
 };
-/* Source and licensing information for the above line(s) can be found at http://beta.animecenter.tv/misc/drupal.js. */
+/* Source and licensing information for the above line(s) can be found at http://www.animecenter.tv/misc/drupal.js. */

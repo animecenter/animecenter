@@ -1,5 +1,5 @@
 $(document).ready(function (e) {
-    var url = "http://beta.animecenter.tv/";
+    var url = "http://www.animecenter.tv/";
     $(".date").datepicker({
         changeMonth: true,
         changeYear: true

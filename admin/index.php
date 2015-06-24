@@ -8,15 +8,6 @@
     <link href='http://fonts.googleapis.com/css?family=Condiment' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Port+Lligat+Sans' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="css/js/jquery-1.9.1.js"></script>
-    <script src="css/js/ckeditor/ckeditor.js"></script>
-    <script>
-        window.onload = function () {
-            CKEDITOR.replace('textarea',
-                {
-                    filebrowserUploadUrl: 'includes/ckupload.php'
-                });
-        };
-    </script>
     <script type="text/javascript" src="css/js/core.js"></script>
     <!--This Include all Javascript Core Functions-->
     <title>Watch Anime Online Free | Anime Shows, Movies and OVAs in English Subbed & Dubbed</title>
