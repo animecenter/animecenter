@@ -51,7 +51,7 @@
                             font: "Arial",
                             color: "#ffffff",
                             bkgd: "#00ae45",
-                            rounded: 0.0001,				// percentage of size
+                            rounded: 0.0001				// percentage of size
                         } // <- no comma on last item!
                     });
                 </script>

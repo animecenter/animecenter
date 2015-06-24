@@ -129,70 +129,8 @@ else {
                             } ?>
                         </div><!--/tabs-->
                         <div class="embbed_content">
-                            <?php echo $cont; ?></div>
-                        <script type="text/javascript">
-                            $(document).ready(function (e) {
-                                $("#vid-close").click(function (e) {
-                                    $("#popup-vid").remove();
-                                });
-                            });
-                        </script>
-                        <style>
-                            #popup-vid {
-                                background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
-                                height: 250px;
-                                left: 175px;
-                                position: absolute;
-                                top: 100px;
-                                width: 300px;
-                                z-index: 9999;
-                            }
-
-                            #vid-close {
-                                background: none repeat scroll 0 0 #23b95d;
-                                border-radius: 5px;
-                                clear: both;
-                                color: #fff;
-                                cursor: pointer;
-                                float: left;
-                                font-size: 15px;
-                                font-weight: bold;
-                                height: 30px;
-                                line-height: 25px;
-                                margin-left: 85px;
-                                margin-top: -5px;
-                                position: relative;
-                                text-align: center;
-                                width: 130px;
-                            }
-                        </style>
-                        <div id="popup-vid">
-                            <!--/* Ad4Game Javascript Tag */-->
-
-                            <script type='text/javascript'><!--//<![CDATA[
-                                var m3_u = (location.protocol == 'https:' ? 'https://ads.ad4game.com/www/delivery/ajs.php' : 'http://ads.ad4game.com/www/delivery/ajs.php');
-                                var m3_r = Math.floor(Math.random() * 99999999999);
-                                if (!document.MAX_used) document.MAX_used = ',';
-                                document.write("<scr" + "ipt type='text/javascript' src='" + m3_u);
-                                document.write("?zoneid=34472&amp;block=1&amp;blockcampaign=1");
-                                document.write('&amp;cb=' + m3_r);
-                                if (document.MAX_used != ',') document.write("&amp;exclude=" + document.MAX_used);
-                                document.write(document.charset ? '&amp;charset=' + document.charset : (document.characterSet ? '&amp;charset=' + document.characterSet : ''));
-                                document.write("&amp;loc=" + escape(window.location));
-                                if (document.referrer) document.write("&amp;referer=" + escape(document.referrer));
-                                if (document.context) document.write("&context=" + escape(document.context));
-                                if (document.mmm_fo) document.write("&amp;mmm_fo=1");
-                                document.write("'><\/scr" + "ipt>");
-                                //]]>--></script>
-                            <noscript><a
-                                    href='http://ads.ad4game.com/www/delivery/dck.php?n=a9f13eb4&amp;cb=INSERT_RANDOM_NUMBER_HERE'
-                                    target='_blank'><img
-                                        src='http://ads.ad4game.com/www/delivery/avw.php?zoneid=34472&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a9f13eb4'
-                                        border='0' alt=''/></a></noscript>
-
-                            <div id="vid-close">Start Video</div>
+                            <?php echo $cont; ?>
                         </div>
-
                     <?php }//end if yeird
                     ?>
                     <?php if ($episode_content['e_not_yeird'] != null and $episode_content['e_coming_date'] != null) {
