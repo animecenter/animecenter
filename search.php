@@ -3,14 +3,10 @@
 $page_title = 'Animecenter.tv';
 
 if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
-
     $page_title = htmlspecialchars((string) $_GET["sword"], ENT_COMPAT, 'UTF-8', true);
-
 } elseif (isset($_GET['genres'])) {
-
     $genres_arr = $_GET['genres'];
     $page_title = htmlspecialchars(implode(",", $genres_arr));
-
 }
 
 $meta_title = $page_title . " | Watch Anime Online Free";
@@ -56,7 +52,7 @@ if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
         $search_series = $ob->get_table("an_series", $title2);
         $count = mysql_num_rows($search_series);
 
-    } elseif ($scope == "any") {
+    } else if ($scope == "any") {
 
         $search_series = $ob->get_table("an_series", "a_genres REGEXP '" . $genres_str . "'");
         $count = mysql_num_rows($search_series);
@@ -124,15 +120,18 @@ if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
                                     echo $series_content['a_content'];
                                 } else { ?>
 
-                                    <div class="text"><span>Genres:</span>
+                                    <div class="text">
+                                        <span>Genres:</span>
                                         <?php echo $series_content['a_genres']; ?>
                                     </div>
 
-                                    <div class="text"><span>Episodes:</span>
+                                    <div class="text">
+                                        <span>Episodes:</span>
                                         <?php echo $series_content['a_episodes']; ?>
                                     </div>
 
-                                    <div class="text"><span>Type:</span>
+                                    <div class="text">
+                                        <span>Type:</span>
                                         <?php echo $series_content['a_type']; ?>
                                     </div>
 
@@ -146,7 +145,8 @@ if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
                                                 strtolower($ser_row['a_title']));
                                         ?>
 
-                                        <div class="text"><span>Prequel: </span>
+                                        <div class="text">
+                                            <span>Prequel: </span>
                                             <a href="<?php echo $link; ?>">
                                                 <?php echo $ser_ser[1]; ?></a>
                                         </div>
@@ -161,7 +161,8 @@ if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
                                                 strtolower($ser_row['a_title']));
                                         ?>
 
-                                        <div class="text"><span>Sequel: </span>
+                                        <div class="text">
+                                            <span>Sequel: </span>
                                             <a href="<?php echo $link; ?>">
                                                 <?php echo $ser_ser[1]; ?>
                                             </a>
@@ -177,7 +178,8 @@ if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
                                                 strtolower($ser_row['a_title']));
                                         ?>
 
-                                        <div class="text"><span>Parent Story: </span>
+                                        <div class="text">
+                                            <span>Parent Story: </span>
                                             <a href="<?php echo $link; ?>">
                                                 <?php echo $ser_ser[1]; ?>
                                             </a>
@@ -193,7 +195,8 @@ if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
                                                 strtolower($ser_row['a_title']));
                                         ?>
 
-                                        <div class="text"><span>Side Story: </span>
+                                        <div class="text">
+                                            <span>Side Story: </span>
                                             <a href="<?php echo $link; ?>">
                                                 <?php echo $ser_ser[1]; ?>
                                             </a>
@@ -209,7 +212,8 @@ if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
                                                 strtolower($ser_row['a_title']));
                                         ?>
 
-                                        <div class="text"><span>Spin Off: </span>
+                                        <div class="text">
+                                            <span>Spin Off: </span>
                                             <a href="<?php echo $link; ?>">
                                                 <?php echo $ser_ser[1]; ?>
                                             </a>
@@ -225,8 +229,11 @@ if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
                                                 strtolower($ser_row['a_title']));
                                         ?>
 
-                                        <div class="text"><span>Alternative: </span>
-                                            <a href="<?php echo $link; ?>"><?php echo $ser_ser[1]; ?></a>
+                                        <div class="text">
+                                            <span>Alternative: </span>
+                                            <a href="<?php echo $link; ?>">
+                                                <?php echo $ser_ser[1]; ?>
+                                            </a>
                                         </div>
                                     <?php }
 
@@ -239,22 +246,27 @@ if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
                                                 strtolower($ser_row['a_title']));
                                         ?>
 
-                                        <div class="text"><span>Other: </span>
-                                            <a href="<?php echo $link; ?>"><?php echo $ser_ser[1]; ?></a>
+                                        <div class="text">
+                                            <span>Other: </span>
+                                            <a href="<?php echo $link; ?>">
+                                                <?php echo $ser_ser[1]; ?>
+                                            </a>
                                         </div>
                                     <?php } ?>
 
-                                    <div class="text age"><span>Age Permission: </span>
+                                    <div class="text age">
+                                        <span>Age Permission: </span>
                                         <span class="age" style="background:<?php echo $color; ?>">
                                             <?php echo $series_content['a_age']; ?>
                                         </span>
                                     </div>
-
-                                    <div class="text"><span>Plot Summary:</span>
+                                    <div class="text">
+                                        <span>Plot Summary:</span>
                                         <?php echo $series_content['a_description']; ?>
                                     </div>
 
-                                    <div class="text alternative"><span>Alternative Titles:</span>
+                                    <div class="text alternative">
+                                        <span>Alternative Titles:</span>
                                         <?php echo $series_content['a_alternative_title']; ?>
                                     </div>
                                 <?php } ?>
@@ -269,8 +281,10 @@ if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
         </div>
         <!--/left_content-->
         <div id="right_content">
-            <?php include_once("sidebar.php"); ?>
-            <?php require_once("footer.php"); ?>
+            <?php
+            include_once("sidebar.php");
+            require_once("footer.php");
+            ?>
         </div>
     </div>
     <!--/content-->
