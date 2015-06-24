@@ -1,5 +1,5 @@
 $(document).ready(function (e) {
-    var URL = window.location.href;
+    var URL = "http://beta.animecenter.tv/";
     $("#vid-close").click(function (e) {
         $("#popup-vid").remove();
     });
