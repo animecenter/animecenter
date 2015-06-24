@@ -6,13 +6,13 @@ $name = $pass = md5('letmeintoactv');
 /******************************************************************************************************/
 
 if (1) {
-    if ( ! isset($_SERVER['PHP_AUTH_USER']) /*|| md5($_SERVER['PHP_AUTH_USER'])!==$name || md5($_SERVER['PHP_AUTH_PW'])!==$pass */) {
+    if (!isset($_SERVER['PHP_AUTH_USER']) /*|| md5($_SERVER['PHP_AUTH_USER'])!==$name || md5($_SERVER['PHP_AUTH_PW'])!==$pass */) {
         header('WWW-Authenticate: Basic realm="Secure Area"');
         header('HTTP/1.0 401 Unauthorized');
         exit("<b><a href='http://beta.animecenter.tv'>AnimeCenter TV Team</a></b>");
     }
 }
-session_save_path('/var/www/animecenter/sessions/');
+session_save_path('/var/www/animecenter/sessions');
 ini_set('session.gc_maxlifetime', 10 * 24 * 60 * 60); // 10 hours
 ini_set('session.gc_probability', 1);
 ini_set('session.gc_divisor', 100);
@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
         //declare two session variables and assign them
         $_SESSION['u_id'] = $row_res['u_id'];
         $_SESSION['u_username'] = $loginUsername;
-#setcookie("u_username", $loginUsername, time()+3600);
+        #setcookie("u_username", $loginUsername, time()+3600);
         @header("Location:index.php");
     } else {
         @header("Location:login.php?msg=f");
