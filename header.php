@@ -67,8 +67,8 @@ if (strpos($_SERVER['REQUEST_URI'], $options[2]['o_value']) or strpos($_SERVER['
         <meta name="video_width" content="650"/>
         <meta name="language" content="en-us"/>
     <?php } ?>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="<?php echo $url; ?>favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="<?php echo $url; ?>favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>css/style.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $url; ?>css/jquery.bxslider.css"/>
     <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" /> -->
