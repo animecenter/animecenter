@@ -7,7 +7,6 @@
     "require": {
         "php": ">=5.6",
         "laravel/framework": "5.1.*",
-        "heybigname/backup-manager": "~0.3",
         "roumen/sitemap": "2.5.*",
         "laravel/socialite": "^3.0@dev",
         "graham-campbell/htmlmin": "~3.1"
