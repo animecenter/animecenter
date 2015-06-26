@@ -14,8 +14,8 @@ if (isset($_POST['type']) and $_POST['type'] != null) {
     } else {
         $ob->up_data("an_episodes", "e_visits=e_visits+1", "e_id=$tid");
         $episode = $ob->get_table("an_episodes", "e_id=$tid");
-        $episode_content = mysql_fetch_assoc($episode);
-        $new_views = $episode_content['e_visits'];
+        $episode = mysql_fetch_assoc($episode);
+        $new_views = $episode['e_visits'];
     }
     echo $new_views;
 }//end check if

@@ -56,4 +56,13 @@ class Episode extends Model
 //    use SoftDeletes;
 
     protected $dates = ['deleted_at'];
+
+    /**
+     * Get the anime that owns the episode.
+     */
+    public function anime()
+    {
+        return $this->belongsTo('App\Anime\Anime');
+    }
+
 }
