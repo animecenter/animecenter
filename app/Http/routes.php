@@ -31,6 +31,16 @@ function thumbcreate($video_field) {
     return $path;
 }
 
+/*$router->get('/', function() {
+    $episodes = DB::table('episodes')->get(['id', 'title']);
+    foreach($episodes as $key => $episode) {
+        DB::table('episodes')->where('id', $episode->id)->update([
+            'slug' => str_slug($episode->title)
+        ]);
+    }
+    echo 'Ya todos los episodios tienen slug';
+});*/
+
 // Home routes...
 $router->get('/', 'HomeController@index');
 
