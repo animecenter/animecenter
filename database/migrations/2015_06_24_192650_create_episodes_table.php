@@ -9,7 +9,9 @@ class CreateEpisodesTable extends Migration
     {
         Schema::create('episodes', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('anime_id')->unsigned();
             $table->string('title', 255)->nullable();
+            $table->string('slug', 255)->unique();
             $table->text('subdub')->nullable();
             $table->boolean('show')->default(0);
             $table->text('not_yeird')->nullable();
@@ -19,7 +21,6 @@ class CreateEpisodesTable extends Migration
             $table->text('mirror2')->nullable();
             $table->text('mirror3')->nullable();
             $table->text('mirror4')->nullable();
-            $table->integer('anime_id')->unsigned();
             $table->integer('date')->nullable();
             $table->integer('date2')->nullable();
             $table->float('rating');

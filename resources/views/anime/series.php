@@ -11,10 +11,10 @@ if ((isset($_GET['id']) and $_GET['id'] != null)) {
     $count_sim = mysql_num_rows($ob->get_table("an_series",
     "a_id <> " . $id . " and a_genres REGEXP '" . $gen_str . "' limit 0,12"));
     $li = rand(0, $count_sim);
-    $similar_series = $ob->get_table("an_series",
-    "a_id <> " . $id . " and a_genres REGEXP '" . $gen_str . "' limit " . $li . ",4");
-//Get Age Color
-switch ($series_content['a_age']) {
+    $similar_series = $ob->get_table("animes",
+    "id <> " . $id . " and genres REGEXP '" . $gen_str . "' limit " . $li . ",4");
+// Get Age Color
+switch ($series_content['age']) {
     case "Anyone":
         $color = "#EE82EE";
         break;

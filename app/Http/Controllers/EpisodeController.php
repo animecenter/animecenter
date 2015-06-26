@@ -1,71 +1,54 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Episodes\Episode;
+use App\Options\Option;
+use App\Pages\Page;
 
 class EpisodeController extends Controller
 {
+
+
     /**
-   * Display a listing of the resource.
-   *
-   * @return Response
-   */
-  public function index()
-  {
-  }
+     * @var Episode
+     */
+    private $episode;
+    /**
+     * @var Page
+     */
+    private $page;
+    /**
+     * @var Option
+     */
+    private $option;
 
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return Response
-   */
-  public function create()
-  {
-  }
+    /**
+     * @param Episode $episode
+     * @param Page $page
+     * @param Option $option
+     */
+    public function __construct(Episode $episode, Page $page, Option $option)
+    {
+        $this->episode = $episode;
+        $this->page = $page;
+        $this->option = $option;
+    }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @return Response
-   */
-  public function store()
-  {
-  }
+    public function getEpisode($slug)
+    {
+        $this->data['episode'] = $episode = $this->episode->with('anime')->where('slug', '=', $slug)->firstOrFail();
+        $this->data['nextEpisode'] = $this->episode
+            ->where('order', '=', $episode->order + 1)
+            ->where('anime_id', '=', $episode->anime->id)
+            ->first();
+        $this->data['prevEpisode'] = $this->episode
+            ->where('order', '=', $episode->order - 1)
+            ->where('anime_id', '=', $episode->anime->id)
+            ->first();
+        $this->data['topPagesList'] = $this->page->where('position', '=', 'top')->orderBy('order')->get();
+        $this->data['options'] = $this->option->all();
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function show($id)
-  {
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function edit($id)
-  {
-  }
-
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function update($id)
-  {
-  }
-
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function destroy($id)
-  {
-  }
+        return view('episodes.index', $this->data);
+    }
 }
