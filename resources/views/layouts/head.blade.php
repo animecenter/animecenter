@@ -56,7 +56,7 @@
         <div id="header">
             <div id="header_cont">
                 <div id="logo">
-                    <a href="{{ url('/') }}>">
+                    <a href="{{ url('/') }}">
                         <img alt='logo' src="{{ asset('css/imgs/animecenter_logo.png') }}">
                     </a>
                     <div class="text">Watch Anime in <span> English Subbed-Dubbed </span> Online for Free</div>
@@ -79,7 +79,7 @@
                             }
                             ?>
                             <li <?php if ($yes == 1) { echo 'class="has_list"'; } ?>>
-                                <a href="<?php echo $link; ?>">
+                                <a href="{{ url($link) }}">
                                     <?php echo $topPage['title']; ?>
                                 </a>
                                 <?php if ($yes == 1) { ?>
