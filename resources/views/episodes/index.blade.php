@@ -1,130 +1,110 @@
-{{{ die(var_dump('link')) }}}
 @include('layouts.head')
-<?php
-    $mainLink = $options[4]['value'] . $episode['slug'];
-    dd($mainLink);
-    {{--if (isset($type[2])) {
-        switch ($type[2]) {
-        case 'mirror1':
-            $cont = $episode['mirror1'];
-            break;
-        case 'mirror2':
-            $cont = $episode['mirror2'];
-            break;
-        case 'mirror3':
-            $cont = $episode['mirror3'];
-            break;
-        case 'mirror4':
-            $cont = $episode['mirror4'];
-            break;
-        case 'raw':
-            $cont = $episode['raw'];
-            break;
-        case 'hd':
-            $cont = $episode['hd'];
-            break;
-        default:
-            $cont = ($episode['mirror1'] == null) ? $episode['raw'] : $episode['mirror1'];
-    }--}}
-    $cont = ($episode['mirror1'] == null) ? $episode['raw'] : $episode['mirror1'];
-    ?>
 <div id="wrap">
     <div id="content">
-        <?php include_once("banner.php"); ?>
+        @include('layouts.banner')
         <div id="left_content">
             <div class="sec_top_one">
-                <?php if (isset($_SESSION['u_username'])) { ?>
-                    <a href="<?php echo $url; ?>admin/index.php?page=episode_up&id=<?php echo $episode['id']; ?>"
-                       class="edit_top">Edit</a>
-                <?php } ?>
+                @if(Auth::user())
+                    <a href="{{ url('admin/index.php?page=episode_up&id=' . $episode['id']) }}" class="edit_top">
+                        Edit
+                    </a>
+                @endif
             </div>
             <div class="sections" id="video">
                 <div class="video">
                     <div class="title">
-                        <?php echo $episode['title']; ?>
+                        {{ $episode['title'] }}
                     </div>
-                    <?php if ($episode['not_yet_aired'] == null or $episode['not_yet_aired'] == '') { ?>
+                    @if ($episode['not_yet_aired'] == null or $episode['not_yet_aired'] == '')
                         <div class="tabs">
-                            <?php
-                            if ($episode['mirror1'] == '' and $episode['mirror2'] == '' and $episode['mirror3'] == '' and $episode['mirror4'] == '' and $episode['hd'] == '') {
-                                if ($episode['subdub'] != null or $episode['subdub'] != '') {
-                                    $cont = ($episode['subdub'] == null) ? $episode['raw'] : $episode['subdub']; ?>
+                            @if ($episode['mirror1'] == '' and $episode['mirror2'] == '' and $episode['mirror3'] == ''
+                                and $episode['mirror4'] == '' and $episode['hd'] == '')
+                                @if ($episode['subdub'] != null or $episode['subdub'] != '')
+                                    <?php $cont = ($episode['subdub'] == null) ? $episode['raw'] : $episode['subdub']; ?>
                                     <div class="block">
-                                        <a href="<?php echo $mainLink; ?>">
-                                            <div class="tab <?php echo $ser['a_type2']; echo(! (isset($type[2])) or
+                                        <a href="{{ $mainLink }}">
+                                            <div class="tab <?php echo $episode['anime']['type2']; echo(! (isset($type[2])) or
                                                     $type[2] == '') ? ' active' : '';?>">
                                                 Mirror 1
                                             </div>
                                         </a>
-                                    </div><!--/block-->
-                                <?php
-                                }
-                                } else {
-                                ?>
-                                <?php if ($episode['mirror1'] != null or $episode['mirror1'] != '') { ?>
+                                    </div>
+                                    <!--/block-->
+                                @endif
+                            @else
+                                @if ($episode['mirror1'] != null or $episode['mirror1'] != '')
                                     <div class="block">
-                                        <a href="<?php echo $mainLink; ?>">
-                                            <div class="tab <?php echo $ser['type2']; echo(! (isset($type[2])) or
+                                        <a href="{{ $mainLink }}">
+                                            <div class="tab <?php echo $episode['anime']['type2']; echo(!(isset($type[2])) or
                                                     $type[2] == '') ? ' active' : ''; ?>">
                                                 Mirror 1
                                             </div>
                                         </a>
-                                    </div><!--/block-->
-                                <?php } ?>
-                                <?php if ($episode['mirror2'] != null or $episode['mirror2'] != '') { ?>
+                                    </div>
+                                    <!--/block-->
+                                @endif
+                                @if ($episode['mirror2'] != null or $episode['mirror2'] != '')
                                     <div class="block">
-                                        <a href="<?php echo $mainLink; ?>/mirror2">
-                                            <div class="tab <?php echo $ser['type2']; echo(isset($type[2]) and $type[2] == 'mirror2') ? ' active' : ''; ?>">
+                                        <a href="{{ $mainLink }}/mirror2">
+                                            <div class="tab <?php echo $episode['anime']['type2']; echo(isset($type[2]) and $type[2] == 'mirror2') ? ' active' : ''; ?>">
                                                 Mirror 2
                                             </div>
                                         </a>
-                                    </div><!--/block-->
-                                <?php } ?>
-                                <?php if ($episode['mirror3'] != null or $episode['mirror3'] != '') { ?>
+                                    </div>
+                                    <!--/block-->
+                                @endif
+                                @if ($episode['mirror3'] != null or $episode['mirror3'] != '')
                                     <div class="block">
-                                        <a href="<?php echo $mainLink; ?>/mirror3">
-                                            <div class="tab <?php echo $ser['type2']; echo(isset($type[2]) and $type[2] == 'mirror3') ? ' active' : ''; ?>">
+                                        <a href="{{ $mainLink }}/mirror3">
+                                            <div class="tab <?php echo $episode['anime']['type2']; echo(isset($type[2]) and $type[2] == 'mirror3') ? ' active' : ''; ?>">
                                                 Mirror 3
                                             </div>
                                         </a>
-                                    </div><!--/block-->
-                                <?php } ?>
-                                <?php if ($episode['mirror4'] != null or $episode['mirror4'] != '') { ?>
+                                    </div>
+                                    <!--/block-->
+                                @endif
+                                @if ($episode['mirror4'] != null or $episode['mirror4'] != '')
                                     <div class="block">
-                                        <a href="<?php echo $mainLink; ?>/mirror4">
-                                            <div class="tab <?php echo $ser['type2']; echo(isset($type[2]) and
+                                        <a href="{{ $mainLink }}/mirror4">
+                                            <div class="tab <?php echo $episode['anime']['type2']; echo(isset($type[2]) and
                                                     $type[2] == 'mirror4') ? ' active' : ''; ?>">
                                                 Mirror 4
                                             </div>
                                         </a>
-                                    </div><!--/block-->
-                                <?php } ?>
-                                <?php if ($episode['raw'] != null or $episode['raw'] != '') { ?>
+                                    </div>
+                                    <!--/block-->
+                                @endif
+                                @if ($episode['raw'] != null or $episode['raw'] != '')
                                     <div class="block">
-                                        <a href="<?php echo $mainLink; ?>/raw">
-                                            <div class="tab <?php echo $ser['type2']; echo((isset($type[2]) and
+                                        {{ dd($episode->anime) }}
+                                        <a href="{{ $mainLink }}/raw">
+                                            <div class="tab <?php echo $episode['anime']['type2']; echo((isset($type[2]) and
                                                             $type[2] == 'raw') or
                                                     $episode['e_subdub'] == null) ? ' active' : '';?> raw">
                                                 RAW
                                             </div>
                                         </a>
-                                    </div><!--/block-->
-                                <?php } ?>
-                                <?php if ($episode['e_hd'] != null or $episode['e_hd'] != '') { ?>
+                                    </div>
+                                    <!--/block-->
+                                @endif
+                                @if ($episode['e_hd'] != null or $episode['e_hd'] != '')
                                     <div class="block">
-                                        <a href="<?php echo $mainLink; ?>/hd">
-                                            <div class="tab <?php echo $ser['a_type2']; echo(isset($type[2]) and
+                                        <a href="{{ $mainLink }}/hd">
+                                            <div class="tab <?php echo $episode['anime']['type2']; echo(isset($type[2]) and
                                                     $type[2] == 'hd') ? ' active' : ''; ?> mirror">
                                                 Mirror HD
                                             </div>
                                         </a>
-                                    </div><!--/block-->
-                                <?php } } ?>
-                        </div><!--/tabs-->
-                        <div class="embbed_content">
-                            <?php echo $cont; ?>
+                                    </div>
+                                    <!--/block-->
+                                @endif
+                            @endif
                         </div>
-                    <?php } ?>
+                        <!--/tabs-->
+                        <div class="embbed_content">
+                            {{ $cont }}
+                        </div>
+                    @endif
                     <?php
                     if ($episode['not_yet_aired'] != null and $episode['coming_date'] != null) {
                         $comming = $episode['coming_date'];
@@ -149,7 +129,7 @@
                             </script>
                         </div>
                         <div class="date_img">
-                            <img src="<?php echo $url . "/images/" . $ser['a_image']; ?>">
+                            <img src="<?php echo $url . "/images/" . $episode['anime']['a_image']; ?>">
                         </div>
                         <h2 style="width: 300px; float: left; text-align: center; color: rgb(255, 255, 255); font-size: 16px; margin-left: 26%; margin-bottom: 5px;">ETA</h2>
                     <?php }
@@ -169,43 +149,36 @@
                     </div>
                 </div>
                 <div class="links_btns">
-                    <div class="fb-like" style="margin-top:3px;"
-                         data-href="<?php echo $url . "watch/" . str_replace(" ", "-", strtolower($episode['title'])); ?>"
-                         data-width="450" data-show-faces="false"
-                         data-send="true"></div>
-                    <div class="report_vid" val="<?php echo $url . 'episode.php?id=' . $episode['id']; ?>">
+                    <div class="fb-like" style="margin-top: 3px;" data-href="{{ url("watch/" . $episode['slug']) }}"
+                         data-width="450" data-show-faces="false" data-send="true"></div>
+                    <div class="report_vid" val="{{ url('episode.php?id=' . $episode['id']) }}">
                         Report Broken Video
                     </div>
                 </div>
                 <div class="navigation">
-                    <?php
-                    if (isset($prevEpisode) and $prevEpisode['id'] != null) {
-                        $link = $url . $options[4]['value'] . str_replace(" ", "-",
-                                strtolower($prevEpisode['title'])); ?>
-                        <a href="<?php echo $link; ?>" class="prev">Previous Episode</a>
-                        <?php }
-                        $ser_row = mysql_fetch_assoc($ob->get_table("animes", "id=" . $episode['anime_id']));
-                        $sublink = ($ser_row['type2'] == "dubbed") ? $options[3]['value'] : $options[2]['value'];
-                        $link = $url . $sublink . str_replace(" ", "-", strtolower($ser_row['title'])); ?>
-                        <a href="<?php echo $link; ?>" class="all">All Episodes</a>
-                        <?php
-                        if (isset($nextEpisode) and $nextEpisode['id'] != null) {
-                        $link = $url . $options[4]['value'] . str_replace(" ", "-", strtolower($nextEpisode['title'])); ?>
-                        <a href="<?php echo $link; ?>" class="next">Next Episode</a>
-                    <?php } ?>
+                    @if (isset($prevEpisode) and $prevEpisode['id'] != null)
+                        <a href="{{ url($options[4]['value'] . $prevEpisode['slug']) }}" class="prev">Previous Episode</a>
+                    @endif
+                        <a href="{{ url(($episode['anime']['type2'] == "dubbed") ? $options[3]['value'] :
+                        $options[2]['value'] . $episode['anime']['slug']) }}" class="all">All Episodes</a>
+                    @if (isset($nextEpisode) and $nextEpisode['id'] != null)
+                        <a href="{{ url($options[4]['value'] . $nextEpisode['slug']) }}" class="next">Next Episode</a>
+                    @endif
                 </div>
                 <!--/navigation-->
             </div>
             <!--/sections-->
 
-            <div style="width:100%;float:left;margin-bottom:20px" class="">
+            <div style="width: 100%; float: left; margin-bottom: 20px" class="">
                 <div style="float: left;">
                     <!-- MarketGidComposite Start -->
                     <div id="MarketGidScriptRootC16203">
                         <div id="MarketGidPreloadC16203">
                             <a id="mg_add16203"
                                href="http://mgid.com/advertisers/?utm_source=widget&utm_medium=text&utm_campaign=add"
-                               target="_blank">Place your ad here</a><br> <a href="http://mgid.com/" target="_blank">Loading...</a>
+                               target="_blank">Place your ad here</a><br> <a href="http://mgid.com/" target="_blank">
+                                Loading...
+                            </a>
                         </div>
                         <script>
                             (function () {
@@ -267,18 +240,18 @@
                 </a>
             </div>
             <div class="bottom_text">
-                You are going to <b>Watch <?php echo $episode['title']; ?> </b> in <b> English
-                    Subbed/Dubbed </b>from <b><?php echo $ser['title']; ?> </b> Anime. Watch <b>
-                    <?php echo $episode['title']; ?> </b>online and the other episodes of <b>
-                    <?php echo $ser['title']; ?> </b>with High Quality Streaming for <b>FREE</b>
+                You are going to <b>Watch {{ $episode['title'] }} </b> in <b> English Subbed/Dubbed </b>from <b>
+                    {{ $episode['anime']['title'] }} </b> Anime. Watch <b> {{ $episode['title'] }} </b> online and the other
+                episodes of <b> {{ $episode['anime']['title'] }} </b>with High Quality Streaming for <b>FREE</b>
             </div>
 
         </div>
         <!--/left_content-->
         <div id="right_content">
-            <?php include_once("sidebar.php");?>
+            @include('layouts.sidebar')
         </div>
-        <!--   </div><!--/content-->
+        <!--</div>
+        <!--/content-->
 
         <script>
             $(document).ready(function (e) {
@@ -291,16 +264,16 @@
                     $("#hint2").show();
                 });
                 $("#rateDiv").raty({
-                        score: <?php echo $episode['rating']; ?>,
-                        starHalf: '<?php echo $url; ?>/images/star-half.png',
-                        starOff: '<?php echo $url; ?>/images/star-off.png',
-                        starOn: '<?php echo $url; ?>/images/star-on.png',
-                        starHover: '<?php echo $url; ?>/images/star-hover.png',
+                        score: {{ $episode['rating'] }},
+                        starHalf: "{{ asset('images/star-half.png') }}",
+                        starOff: "{{ asset('images/star-off.png') }}",
+                        starOn: "{{ asset('images/star-on.png') }}",
+                        starHover: "{{ asset('images/star-hover.png') }}",
                         target: ("#hint"),
                         click: function (score, evt) {
                             $("#hint").show().text("Saving your vote...");
                             $("#hint2").hide();
-                            $.post("<?php echo $url; ?>rate-up.php", {
+                            $.post("{{ url('rate-up') }}", {
                                 eid: <?php echo $episode['id']; ?>,
                                 rate: score
                             }, function (data) {
@@ -318,6 +291,4 @@
                 );
             });
         </script>
-<?php
-require_once("footer.php");
-}
+        @include('layouts.footer')
