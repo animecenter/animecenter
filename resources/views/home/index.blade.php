@@ -142,9 +142,9 @@
                     </a>
                 </div>
                 <?php
-                foreach ($animeReList as $anime) {
+                foreach ($animeList as $anime) {
                     $sublink = ($anime['type2'] == "dubbed") ? $options[3]['value'] : $options[2]['value'];
-                    $link = url($sublink . str_replace(" ", "-", strtolower($anime['title']))); ?>
+                    $link = url($sublink . $anime['slug']); ?>
                     <a href="<?php echo $link; ?>">
                         <div class="block">
                             <div class="img">
@@ -160,7 +160,7 @@
                     </a>
                 <?php } ?>
                 <div class="pagination">
-                    {!! $animeReList->render() !!}
+                    {!! $animeList->render() !!}
                 </div>
                 <!-- End .pagination -->
             </div>
