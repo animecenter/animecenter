@@ -1,48 +1,33 @@
-<?php
-include_once("add-core.php");
-$res = $ob->get_table("an_series");
-while ($series[] = mysql_fetch_assoc($res)) {
-    ;
-}
-array_pop($series);
-if (isset($_GET['id']) and $_GET['id'] != null) {
-    $id = GetSQLValueString($_GET['id'], "int");
-}
-?>
 <div class="bigTitle">Add New</div>
 <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+
     <div class="inputNOption" style="width: 100%;">
         <div class="smallTitle">Title:</div>
         <input name="title" value="" type="text" class="textInput" style="width: 80%;"/>
     </div>
-    <!--/inputNoption-->
+    <!--/inputNOption-->
+
     <div class="inputSelectarea">
         <div class="smallTitle">Series:</div>
         <select class="select" name="series">
-            <?php foreach ($series as $ser) {
-    ?>
-                <option value="<?php echo $ser['a_id'];
-    ?>"
-                    <?php if (isset($id) and $id == $ser['a_id']) {
-    echo " selected='selected'";
-}
-    ?>>
-                    <?php echo $ser['a_title'];
-    ?>
+            <?php foreach ($series as $ser) { ?>
+                <option value="<?php echo $ser['id']; ?>"
+                    <?php if (isset($id) and $id == $ser['id']) {
+                        echo " selected='selected'";
+                    } ?>>
+                    <?php echo $ser['title']; ?>
                 </option>
-            <?php
-
-} ?>
+            <?php } ?>
         </select>
         <input name="" value="" type="text" class="textInput2"/>
     </div>
     <!--/inputSelectarea-->
 
-    <div class="inputNOption" style="">
+    <div class="inputNOption">
         <div class="smallTitle">Coming Date (Y-m-d H:i:s):</div>
         <input name="coming_date" value="" type="text" class="textInput" style=""/>
     </div>
-    <!--/inputNoption-->
+    <!--/inputNOption-->
 
     <div class="clear"></div>
     <div class="inputCheck">
@@ -53,8 +38,8 @@ if (isset($_GET['id']) and $_GET['id'] != null) {
     <!--/inputCheck-->
 
     <div class="inputTextarea">
-        <div class="smallTitle">Not Yet Aried Episode Info:</div>
-        <textarea class="textarea" name="not_yeird"></textarea>
+        <div class="smallTitle">Not Yet Aired Episode Info:</div>
+        <textarea class="textarea" name="not_yet_aired"></textarea>
     </div>
     <!--/inputTextarea-->
 
@@ -101,11 +86,12 @@ if (isset($_GET['id']) and $_GET['id'] != null) {
     <!--/inputTextarea-->
 
     <input type="submit" name="add_episode" id="submit" value="Add"/>
+
 </form>
 <div class="res">
     <?php if (isset($_GET['msg']) and $_GET['msg'] == 'ok') {
-    echo "Added Successfully";
-} elseif (isset($_GET['msg']) and $_GET['msg'] == 'f') {
-    echo 'Try Again ... error';
-} ?>
+        echo "Added Successfully";
+    } elseif (isset($_GET['msg']) and $_GET['msg'] == 'f') {
+        echo 'Try Again ... error';
+    } ?>
 </div>

@@ -14,7 +14,7 @@
             <meta property="og:url" content="<?php echo $meta_og_url; ?>"/>
             <meta property="og:site_name" content="Watch Anime Online AnimeCenter.TV"/>
         <?php } ?>
-        <?php if (isset($episode['title']) and $episode['not_yeird'] == null) { ?>
+        <?php if (isset($episode['title']) and $episode['not_yet_aired'] == null) { ?>
             <meta name="medium" content="video"/>
             <meta name="video_type" content="application/x-shockwave-flash"/>
             <meta name="video_height" content="370"/>
