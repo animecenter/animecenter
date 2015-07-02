@@ -42,6 +42,7 @@ class EpisodeController extends Controller
         $this->anime = $anime;
         $this->page = $page;
         $this->option = $option;
+        $this->data['animeBanner'] = $this->anime->orderByRaw("RAND()")->take(1)->first();
         $this->data['topPagesList'] = $this->page->where('position', '=', 'top')->orderBy('order')->get();
         $this->data['bottomPagesList'] = $this->page->where('position', '=', 'bottom1')->orderBy('order')->get();
         $this->data['bottomPagesList2'] = $this->page->where('position', '=', 'bottom2')->orderBy('order')->get();
@@ -61,8 +62,6 @@ class EpisodeController extends Controller
             ->where('order', '=', $episode->order - 1)
             ->where('anime_id', '=', $episode->anime->id)
             ->first();
-        $this->data['animeBanner'] = $this->anime->orderByRaw("RAND()")->take(1)->first();
-
         $this->data['mainLink'] = $this->data['options'][4]['value'] . $episode['slug'];
         if (isset($type[2])) {
             switch ($type[2]) {
@@ -93,5 +92,17 @@ class EpisodeController extends Controller
         $this->data['cont'] = $cont;
 
         return view('episodes.index', $this->data);
+    }
+
+    public function getLatest()
+    {
+        $this->data['episodes'] = $episode = $this->episode->with('anime')
+            ->orderBy('id', 'DESC')
+            ->paginate(24);
+        $meta_title = "Latest Episodes | Watch Anime Online Free";
+        $meta_desc = "Watch Latest Episodes!,Watch Latest Episodes! English Subbed/Dubbed,Watch Latest Episodes English Sub/Dub, Download Latest Episodes for free,Watch Latest Episodes! Online English Subbed and Dubbed  for Free Online only at Anime Center";
+        $meta_key = "Download Latest Episodes,Watch Latest Episodes on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime  ";
+
+        return view('episodes.latest', $this->data);
     }
 }
