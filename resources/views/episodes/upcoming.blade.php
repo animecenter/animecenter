@@ -32,7 +32,7 @@ require_once("header.php");
                                       $min=$diff->format( '%i');
                                       $second=$diff->format( '%s')
                                       $total_s=($day*86400)+($hr*3600)+($min*60)+$second;
-                            $link=$url.$options[4]['o_value'].str_replace(" ","-",strtolower($episode['e_title']));
+                            $link=$url.$options[4]['value'].str_replace(" ","-",strtolower($episode['e_title']));
                  echo $episode;
                 }
                 /*?>

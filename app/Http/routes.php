@@ -38,28 +38,34 @@ $router->get('actualizar-episodios', function() {
             'slug' => str_slug($episode->title)
         ]);
     }
-    echo 'Ya todos los episodios tienen slug';
+    echo 'All episodes have a slug now';
 });
 
-$router->get('actualizar-anime', function() {
+$router->get('update-anime', function() {
     $animes = DB::table('animes')->get(['id', 'title']);
     foreach($animes as $anime) {
         DB::table('animes')->where('id', $anime->id)->update([
             'slug' => str_slug($anime->title)
         ]);
     }
-    echo 'Ya todos los animes tienen slug';
+    echo 'All anime have a slug now';
 });
 
-$router->get('actualizar-paginas', function() {
+$router->get('update-pages', function() {
     $pages = DB::table('pages')->get(['id', 'link']);
     foreach($pages as $page) {
-        DB::table('pages')->where('id', $page->id)->update([
-            'link' => str_replace('http://www.animecenter.tv', '',
-                str_replace('http://animecenter.tv', '', $page->link))
-        ]);
+        if (strpos($page->link, 'hunter-x-hunter-2011-') !== false) {
+            DB::table('pages')->where('id', $page->id)->update([
+                'link' => '/subbed-anime/hunter-x-hunter-2011'
+            ]);
+        } else {
+            DB::table('pages')->where('id', $page->id)->update([
+                'link' => str_replace('http://www.animecenter.tv', '',
+                    str_replace('http://animecenter.tv', '', strtolower($page->link)))
+            ]);
+        }
     }
-    echo 'Ya todos las paginas tienen link actualizado';
+    echo 'All link from pages were updated';
 });
 
 // Home routes...
@@ -87,3 +93,50 @@ $router->get('taxonomy_browser', 'GenreController@index');
 
 // Search routes...
 $router->get('search', 'SearchController@index');
+
+// Admin routes...
+$router->group([
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+    'middleware' => 'auth'
+], function($router) {
+    $router->get('/', 'AdminController@index');
+
+    // Admin anime routes...
+    $router->get('anime', 'AnimeController@index');
+    $router->get('anime/create', 'AnimeController@getCreate');
+    $router->post('anime/create/{id}', 'AnimeController@postCreate');
+    $router->get('anime/edit', 'AnimeController@getEdit');
+    $router->post('anime/edit/{id}', 'AnimeController@postEdit');
+    $router->post('anime/delete/{id}', 'AnimeController@postDelete');
+
+    // Admin episodes routes...
+    $router->get('episodes', 'EpisodeController@index');
+    $router->get('episodes/create', 'EpisodeController@getCreate');
+    $router->post('episodes/create/{id}', 'EpisodeController@postCreate');
+    $router->get('episodes/edit', 'EpisodeController@getEdit');
+    $router->post('episodes/edit/{id}', 'EpisodeController@postEdit');
+    $router->post('episodes/delete/{id}', 'EpisodeController@postDelete');
+
+    // Admin pages routes...
+    $router->get('pages', 'PageController@index');
+    $router->get('pages/create', 'PageController@getCreate');
+    $router->post('pages/create/{id}', 'PageController@postCreate');
+    $router->get('pages/edit', 'PageController@getEdit');
+    $router->post('pages/edit/{id}', 'PageController@postEdit');
+    $router->post('pages/delete/{id}', 'PageController@postDelete');
+
+    // Admin images routes...
+    $router->get('images', 'ImageController@index');
+    $router->get('images/create', 'ImageController@getCreate');
+    $router->post('images/create/{id}', 'ImageController@postCreate');
+    $router->get('images/edit', 'ImageController@getEdit');
+    $router->post('images/edit/{id}', 'ImageController@postEdit');
+    $router->post('images/delete/{id}', 'ImageController@postDelete');
+
+    // Admin options routes...
+    $router->get('options/edit', 'OptionController@getEdit');
+
+    // Admin cache routes...
+    $router->post('purge-cache', 'CacheController@postPurge');
+});

@@ -10,8 +10,8 @@
                                 $link = $url . "page.php?page_id=" . $bottomPage['id'];
                             } ?>
                             <li>
-                                <a href="<?php echo $link; ?>">
-                                    <?php echo $bottomPage['title']; ?>
+                                <a href="{{ url($link) }}">
+                                    {{ $bottomPage['title'] }}
                                 </a>
                             </li>
                         <?php } ?>
@@ -31,8 +31,8 @@
                             }
                         ?>
                             <li>
-                                <a href="<?php echo $link; ?>">
-                                    <?php echo $bottomPage['title']; ?>
+                                <a href="{{ url($link) }}">
+                                    {{ $bottomPage['title'] }}
                                 </a>
                             </li>
                         <?php } ?>
@@ -51,8 +51,8 @@
                                 $link = $url . "page.php?page_id=" . $bottomPage['id'];
                             } ?>
                             <li>
-                                <a href="<?php echo $link; ?>">
-                                    <?php echo $bottomPage['title']; ?>
+                                <a href="{{ url($link) }}">
+                                    {{ $bottomPage['title'] }}
                                 </a>
                             </li>
                         <?php } ?>

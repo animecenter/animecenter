@@ -56,7 +56,7 @@ if (isset($_POST['add_series'])) {
 if (isset($_POST['add_episode'])) {
     $title = GetSQLValueString($_POST['title'], "text");
     $subdub = GetSQLValueString($_POST['subdub'], "text");
-    $yeird = GetSQLValueString($_POST['not_yeird'], "text");
+    $yeird = GetSQLValueString($_POST['not_yet_aired'], "text");
     $raw = GetSQLValueString($_POST['raw'], "text");
     $hd = GetSQLValueString($_POST['hd'], "text");
     $mirror1 = GetSQLValueString($_POST['mirror1'], "text");

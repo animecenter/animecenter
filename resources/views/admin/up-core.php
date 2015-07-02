@@ -50,11 +50,11 @@ if (isset($_POST['up_series'])) {
 
     $in = $ob->up_data("an_series",
         "a_title=$title,a_content=$content,a_genres=$genres,a_episodes=$episodes,a_type=$type,a_age=$age,a_type2=$type2,a_status=$status,a_prequel=$prequel,a_sequel=$sequel,a_story=$story,a_position='$position',a_description=$description,a_alternative_title=$alternative,a_image=$filename,a_side_story=$s_story,a_spin_off=$spin_off,a_alternative=$alternative_2,a_other=$other,a_date2=$date2",
-        "a_id=" . $resss_row['a_id']);
-    $ob->up_data("an_f_data", "d_s_edit=concat(d_s_edit,'" . $resss_row['a_id'] . ",')", "d_id=1");
-    $ob->up_data("an_r_data", "d_s_edit=concat(d_s_edit,'" . $resss_row['a_id'] . ",')", "d_id=1");
+        "a_id=" . $resss_row['id']);
+    $ob->up_data("an_f_data", "d_s_edit=concat(d_s_edit,'" . $resss_row['id'] . ",')", "d_id=1");
+    $ob->up_data("an_r_data", "d_s_edit=concat(d_s_edit,'" . $resss_row['id'] . ",')", "d_id=1");
     if ($in) {
-        header('location:' . $url . $resss_row['a_type2'] . "-anime/" . str_replace(" ", "-",
+        header('location:' . $url . $resss_row['type2'] . "-anime/" . str_replace(" ", "-",
                 strtolower($_POST['title'])));
     }
 }
@@ -64,7 +64,7 @@ if (isset($_POST['up_series'])) {
 if (isset($_POST['up_episode'])) {
     $title = GetSQLValueString($_POST['title'], "text");
     $subdub = GetSQLValueString($_POST['subdub'], "text");
-    $yeird = GetSQLValueString($_POST['not_yeird'], "text");
+    $yeird = GetSQLValueString($_POST['not_yet_aired'], "text");
     $raw = GetSQLValueString($_POST['raw'], "text");
     $hd = GetSQLValueString($_POST['hd'], "text");
     $mirror1 = GetSQLValueString($_POST['mirror1'], "text");
@@ -91,10 +91,10 @@ if (isset($_POST['up_episode'])) {
 
     $in = $ob->up_data("an_episodes",
         "e_title=$title,e_subdub=$subdub,e_show=$show,e_not_yeird=$yeird,e_raw=$raw,e_hd=$hd,e_mirror1=$mirror1,e_mirror2=$mirror2,e_mirror3=$mirror3,e_mirror4=$mirror4,e_series=$series,e_date=$date,e_date2=$date2,e_coming_date=$coming_date",
-        "e_id=" . $resss_row['e_id']);
+        "e_id=" . $resss_row['id']);
 
-    $ob->up_data("an_f_data", "d_e_edit=concat(d_e_edit,'" . $resss_row['e_id'] . ",')", "d_id=1");
-    $ob->up_data("an_r_data", "d_e_edit=concat(d_e_edit,'" . $resss_row['e_id'] . ",')", "d_id=1");
+    $ob->up_data("an_f_data", "d_e_edit=concat(d_e_edit,'" . $resss_row['id'] . ",')", "d_id=1");
+    $ob->up_data("an_r_data", "d_e_edit=concat(d_e_edit,'" . $resss_row['id'] . ",')", "d_id=1");
     if ($in) {
         $cache_path = '/home/nginx-cache/animecenter/';
         $link = $url . "watch/" . str_replace(" ", "-", strtolower($_POST['title']));
@@ -130,7 +130,7 @@ if (isset($_POST['up_page'])) {
     $link = GetSQLValueString($_POST['link'], "text");
 
     $in = $ob->up_data("an_pages", "p_title=$title,p_content=$content,p_link=$link,p_order=$order,p_position=$position",
-        "p_id=" . $resss_row['p_id']);
+        "p_id=" . $resss_row['id']);
     if ($in) {
         header('location:index.php?page=pages&msg=ok');
     } else {
