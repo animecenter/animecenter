@@ -1,70 +1,15 @@
-<?php
-
-$page_title = 'Animecenter.tv';
-
-if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
-    $page_title = htmlspecialchars((string) $_GET["sword"], ENT_COMPAT, 'UTF-8', true);
-} elseif (isset($_GET['genres'])) {
-    $genres_arr = $_GET['genres'];
-    $page_title = htmlspecialchars(implode(",", $genres_arr));
-}
-
-$meta_title = $page_title . " | Watch Anime Online Free";
-$meta_desc = "Watch " . $page_title . "!,Watch " . $page_title . "! English Subbed/Dubbed,Watch " . $page_title . " English Sub/Dub, Download " . $page_title . " for free,Watch " . $page_title . "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
-$meta_key = "Download " . $page_title . ",Watch " . $page_title . " on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
-
-require_once("header.php");
-
-if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
-    $title = mysql_real_escape_string(htmlspecialchars((string) $_GET["sword"], ENT_COMPAT, 'UTF-8', true));
-    $search_series = $ob->get_table("an_series", "a_title like '%" . $title . "%'");
-    $count = mysql_num_rows($search_series);
-} elseif (isset($_GET['genres'])) {
-    $scope = $_GET['scope'];
-    $genres_arr = $_GET['genres'];
-    $title2 = '';
-
-    foreach ($genres_arr as $gen) {
-        if ($gen == end($genres_arr)) {
-            $gen = mysql_real_escape_string(htmlspecialchars((string) $gen, ENT_COMPAT, 'UTF-8', true));
-            $title2 .= "a_genres LIKE '%" . $gen . "%'";
-        } else {
-            $gen = mysql_real_escape_string(htmlspecialchars((string) $gen, ENT_COMPAT, 'UTF-8', true));
-            $title2 .= "a_genres LIKE '%" . $gen . "%' AND ";
-        }
-    }
-
-    //$title.=']';*/
-    $title = htmlspecialchars(implode(",", $genres_arr));
-    $genres_str = implode("|", $genres_arr);
-    $genres_str = mysql_real_escape_string(htmlspecialchars((string) $genres_str, ENT_COMPAT, 'UTF-8', true));
-
-    if ($scope == "all") {
-        $search_series = $ob->get_table("an_series", $title2);
-        $count = mysql_num_rows($search_series);
-    } elseif ($scope == "any") {
-        $search_series = $ob->get_table("an_series", "a_genres REGEXP '" . $genres_str . "'");
-        $count = mysql_num_rows($search_series);
-    }
-} else {
-    header("location:" . $url . "taxonomy_browser/?msg=f");
-}
-?>
+@include("layouts.head")
 <div id="wrap">
     <div id="content">
-        <?php include_once("banner.php"); ?>
+        @include("layouts.banner")
         <div id="left_content">
             <div class="green_info">
-                <?php echo $count . " series found for " . $title; ?>
+                {{ $animes->count() . " series found for " . $query }}
             </div>
-
-            <?php while ($series_content = mysql_fetch_assoc($search_series)) {
-    $genres = explode(",", $series_content['a_genres']);
-    $type = explode(",", $series_content['a_type']);
-    $sublink = ($series_content['a_type2'] == "dubbed") ? $options[3]['o_value'] : $options[2]['o_value'];
-    $link = $url . $sublink . str_replace(" ", "-", strtolower($series_content['a_title']));
+            <?php 
+            foreach ($animes as $anime) {
                 //Get Age Color
-                switch ($series_content['a_age']) {
+                switch ($anime['age']) {
                     case "Anyone":
                         $color = "#EE82EE";
                         break;
@@ -77,249 +22,137 @@ if ((isset($_GET["sword"]) and $_GET["sword"] != null)) {
                     default:
                         $color = "#C86464";
                 }
-    ?>
-
-                <div class="sections" id="series">
-
-                    <div class="series">
-                        <a href="<?php echo $link;
-    ?>">
-                            <div class="main_title">
-                                <?php echo $series_content['a_title'];
-    ?>
+            ?>
+            <div class="sections" id="series">
+                <div class="series">
+                    <a href="{{ url(($anime['type2'] == "dubbed") ?
+                    $options[3]['value'] . $anime['slug'] :
+                    $options[2]['value'] . $anime['slug']) }}">
+                        <div class="main_title">
+                            {{ $anime['title'] }}
+                        </div>
+                    </a>
+                    <div class="content">
+                        <div class="categories">
+                            <a href="#" class="{{ $anime['type2'] }}">
+                                English {{ $anime['type2'] }}
+                            </a>
+                        </div>
+                        <a href="{{ url(($anime['type2'] == "dubbed") ?
+                        $options[3]['value'] . $anime['slug'] :
+                        $options[2]['value'] . $anime['slug']) }}">
+                            <div class="img">
+                                <img src="{{ asset('images/' . $anime['image']) }}">
                             </div>
                         </a>
-
-                        <div class="content">
-                            <div class="categories">
-                                <a href="#" class="<?php echo $series_content['a_type2'];
-    ?>">
-                                    English <?php echo $series_content['a_type2'];
-    ?>
-                                </a>
-                            </div>
-
-                            <a href="<?php echo $link;
-    ?>">
-                                <div class="img">
-                                    <img src="images/<?php echo $series_content['a_image'];
-    ?>"/>
+                        <div class="texts">
+                            @if (isset($anime['content']) and $anime['content'] != null)
+                                {!! $anime['content'] !!}
+                            @else
+                                <div class="text">
+                                    <span>Genres:</span>
+                                    {{ $anime['genres'] }}
                                 </div>
-                            </a>
-
-                            <div class="texts">
-
-                                <?php if (isset($series_content['a_content']) and $series_content['a_content'] != null) {
-    echo $series_content['a_content'];
-} else {
-    ?>
-
+                                <div class="text">
+                                    <span>Episodes:</span>
+                                    {{ $anime['episodes'] }}
+                                </div>
+                                <div class="text">
+                                    <span>Type:</span>
+                                    {{ $anime['type'] }}
+                                </div>
+                                @if($anime['prequel'])
                                     <div class="text">
-                                        <span>Genres:</span>
-                                        <?php echo $series_content['a_genres'];
-    ?>
+                                        <span>Prequel: </span>
+                                        <a href="{{ url($anime['prequel']['type2'] . "-anime/" .
+                                        $anime['prequel']['slug']) }}">
+                                            {{ $anime['prequel']['title'] }}
+                                        </a>
                                     </div>
-
+                                @endif
+                                @if($anime['sequel'])
                                     <div class="text">
-                                        <span>Episodes:</span>
-                                        <?php echo $series_content['a_episodes'];
-    ?>
+                                        <span>Sequel: </span>
+                                        <a href="{{ url(($anime['sequel']['type2'] == "dubbed") ?
+                                        $options[3]['value'] : $options[2]['value'] . $anime['sequel']['slug']) }}">
+                                            {{ $anime['sequel']['title'] }}
+                                        </a>
                                     </div>
-
+                                @endif
+                                @if($anime['story'])
                                     <div class="text">
-                                        <span>Type:</span>
-                                        <?php echo $series_content['a_type'];
-    ?>
+                                        <span>Parent Story: </span>
+                                        <a href="{{ url(($anime['story']['type2'] == "dubbed") ?
+                                        $options[3]['value'] : $options[2]['value'] . $anime['story']['slug']) }}">
+                                            {{ $anime['story']['title'] }}
+                                        </a>
                                     </div>
-
-                                    <?php
-                                    if ($series_content['a_prequel'] != null) {
-                                        $ser_ser = explode(",", $series_content['a_prequel']);
-                                        $ser_row = mysql_fetch_assoc($ob->get_table("an_series",
-                                            "a_id=" . $ser_ser[0]));
-                                        $sublink = ($ser_row['a_type2'] == "dubbed") ? $options[3]['o_value'] : $options[2]['o_value'];
-                                        $link = $url . $sublink . str_replace(" ", "-",
-                                                strtolower($ser_row['a_title']));
-                                        ?>
-
-                                        <div class="text">
-                                            <span>Prequel: </span>
-                                            <a href="<?php echo $link;
-                                        ?>">
-                                                <?php echo $ser_ser[1];
-                                        ?></a>
-                                        </div>
-                                    <?php
-
-                                    }
-
-    if ($series_content['a_sequel'] != null) {
-        $ser_ser = explode(",", $series_content['a_sequel']);
-        $ser_row = mysql_fetch_assoc($ob->get_table("an_series",
-                                            "a_id=" . $ser_ser[0]));
-        $sublink = ($ser_row['a_type2'] == "dubbed") ? $options[3]['o_value'] : $options[2]['o_value'];
-        $link = $url . $sublink . str_replace(" ", "-",
-                                                strtolower($ser_row['a_title']));
-        ?>
-
-                                        <div class="text">
-                                            <span>Sequel: </span>
-                                            <a href="<?php echo $link;
-        ?>">
-                                                <?php echo $ser_ser[1];
-        ?>
-                                            </a>
-                                        </div>
-                                    <?php
-
-    }
-
-    if ($series_content['a_story'] != null) {
-        $ser_ser = explode(",", $series_content['a_story']);
-        $ser_row = mysql_fetch_assoc($ob->get_table("an_series",
-                                            "a_id=" . $ser_ser[0]));
-        $sublink = ($ser_row['a_type2'] == "dubbed") ? $options[3]['o_value'] : $options[2]['o_value'];
-        $link = $url . $sublink . str_replace(" ", "-",
-                                                strtolower($ser_row['a_title']));
-        ?>
-
-                                        <div class="text">
-                                            <span>Parent Story: </span>
-                                            <a href="<?php echo $link;
-        ?>">
-                                                <?php echo $ser_ser[1];
-        ?>
-                                            </a>
-                                        </div>
-                                    <?php
-
-    }
-
-    if ($series_content['a_side_story'] != null) {
-        $ser_ser = explode(",", $series_content['a_side_story']);
-        $ser_row = mysql_fetch_assoc($ob->get_table("an_series",
-                                            "a_id=" . $ser_ser[0]));
-        $sublink = ($ser_row['a_type2'] == "dubbed") ? $options[3]['o_value'] : $options[2]['o_value'];
-        $link = $url . $sublink . str_replace(" ", "-",
-                                                strtolower($ser_row['a_title']));
-        ?>
-
-                                        <div class="text">
-                                            <span>Side Story: </span>
-                                            <a href="<?php echo $link;
-        ?>">
-                                                <?php echo $ser_ser[1];
-        ?>
-                                            </a>
-                                        </div>
-                                    <?php
-
-    }
-
-    if ($series_content['a_spin_off'] != null) {
-        $ser_ser = explode(",", $series_content['a_spin_off']);
-        $ser_row = mysql_fetch_assoc($ob->get_table("an_series",
-                                            "a_id=" . $ser_ser[0]));
-        $sublink = ($ser_row['a_type2'] == "dubbed") ? $options[3]['o_value'] : $options[2]['o_value'];
-        $link = $url . $sublink . str_replace(" ", "-",
-                                                strtolower($ser_row['a_title']));
-        ?>
-
-                                        <div class="text">
-                                            <span>Spin Off: </span>
-                                            <a href="<?php echo $link;
-        ?>">
-                                                <?php echo $ser_ser[1];
-        ?>
-                                            </a>
-                                        </div>
-                                    <?php
-
-    }
-
-    if ($series_content['a_alternative'] != null) {
-        $ser_ser = explode(",", $series_content['a_alternative']);
-        $ser_row = mysql_fetch_assoc($ob->get_table("an_series",
-                                            "a_id=" . $ser_ser[0]));
-        $sublink = ($ser_row['a_type2'] == "dubbed") ? $options[3]['o_value'] : $options[2]['o_value'];
-        $link = $url . $sublink . str_replace(" ", "-",
-                                                strtolower($ser_row['a_title']));
-        ?>
-
-                                        <div class="text">
-                                            <span>Alternative: </span>
-                                            <a href="<?php echo $link;
-        ?>">
-                                                <?php echo $ser_ser[1];
-        ?>
-                                            </a>
-                                        </div>
-                                    <?php
-
-    }
-
-    if ($series_content['a_other'] != null) {
-        $ser_ser = explode(",", $series_content['a_other']);
-        $ser_row = mysql_fetch_assoc($ob->get_table("an_series",
-                                            "a_id=" . $ser_ser[0]));
-        $sublink = ($ser_row['a_type2'] == "dubbed") ? $options[3]['o_value'] : $options[2]['o_value'];
-        $link = $url . $sublink . str_replace(" ", "-",
-                                                strtolower($ser_row['a_title']));
-        ?>
-
-                                        <div class="text">
-                                            <span>Other: </span>
-                                            <a href="<?php echo $link;
-        ?>">
-                                                <?php echo $ser_ser[1];
-        ?>
-                                            </a>
-                                        </div>
-                                    <?php
-
-    }
-    ?>
-
-                                    <div class="text age">
-                                        <span>Age Permission: </span>
-                                        <span class="age" style="background:<?php echo $color;
-    ?>">
-                                            <?php echo $series_content['a_age'];
-    ?>
-                                        </span>
-                                    </div>
+                                @endif
+                                @if ($anime['side_story'])
                                     <div class="text">
-                                        <span>Plot Summary:</span>
-                                        <?php echo $series_content['a_description'];
-    ?>
+                                        <span>Side Story: </span>
+                                        <a href="{{ url(($anime['side_story']['type2'] == "dubbed") ?
+                                        $options[3]['value'] : $options[2]['value'] . $anime['side_story']['slug']) }}">
+                                            {{ $anime['side_story']['title'] }}
+                                        </a>
                                     </div>
-
-                                    <div class="text alternative">
-                                        <span>Alternative Titles:</span>
-                                        <?php echo $series_content['a_alternative_title'];
-    ?>
+                                @endif
+                                @if ($anime['spin_off'])
+                                    <div class="text">
+                                        <span>Spin Off: </span>
+                                        <a href="{{ url(($anime['spin_off']['type2'] == "dubbed") ?
+                                        $options[3]['value'] : $options[2]['value'] . $anime['spin_off']['slug']) }}">
+                                            {{ $anime['spin_off']['title'] }}
+                                        </a>
                                     </div>
-                                <?php
-
-}
-    ?>
+                                @endif
+                                @if ($anime['alternative'])
+                                    <div class="text">
+                                        <span>Alternative: </span>
+                                        <a href="{{ url(($anime['alternative']['type2'] == "dubbed") ?
+                                        $options[3]['value'] : $options[2]['value'] . $anime['alternative']['slug']) }}">
+                                            {{ $anime['alternative']['title'] }}
+                                        </a>
+                                    </div>
+                                @endif
+                                @if($anime['other'])
+                                    <div class="text">
+                                        <span>Other: </span>
+                                        <a href="{{ url(($anime['other']['type2'] == "dubbed") ?
+                                        $options[3]['value'] : $options[2]['value'] . $anime['other']['slug']) }}">
+                                            {{ $anime['other']['title'] }}
+                                        </a>
+                                    </div>
+                                @endif
+                                <div class="text age">
+                                    <span>Age Permission: </span>
+                                    <span class="age" style="background: {{ $color }}">
+                                        {{ $anime['age'] }}
+                                    </span>
+                                </div>
+                                <div class="text">
+                                    <span>Plot Summary:</span>
+                                    {!! $anime['description'] !!}
+                                </div>
+                                <div class="text alternative">
+                                    <span>Alternative Titles:</span>
+                                    {!! $anime['alternative_title'] !!}
+                                </div>
+                            @endif
                             </div>
                             <!--/texts-->
                         </div>
                         <!--/content-->
                     </div>
                     <!--/series-->
-                </div><!--/sections-->
-            <?php
-
-} ?>
+                </div>
+            <!--/sections-->
+            <?php } ?>
         </div>
         <!--/left_content-->
         <div id="right_content">
-            <?php
-            include_once("sidebar.php");
-            require_once("footer.php");
-            ?>
+            @include("layouts.sidebar")
+            @include("layouts.footer")
         </div>
     </div>
     <!--/content-->

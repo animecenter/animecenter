@@ -84,3 +84,6 @@ $router->get('watch/{slug}', 'EpisodeController@getEpisode');
 
 // Genres routes...
 $router->get('taxonomy_browser', 'GenreController@index');
+
+// Search routes...
+$router->get('search', 'SearchController@index');

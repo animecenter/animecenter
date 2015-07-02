@@ -98,7 +98,7 @@
                 <div id="search">
                     <form method="get" action="{{ url('search') }}">
                         <input type="submit" class="submit" value="s"/>
-                        <input type="text" class="s" name="sword"/>
+                        <input type="text" class="s" name="title"/>
                     </form>
                 </div>
                 <!--search-->
