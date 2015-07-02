@@ -12,21 +12,21 @@
                         <div class="pagination">
                             <div class="content">
                                 <div class="bigtitle">
-                                    <?php echo $imagesList[0]['bigtitle']; ?>
+                                    {{ $imagesList[0]['bigtitle'] }}
                                 </div>
                                 <div class="smalltitle">
-                                    <?php echo $imagesList[0]['smalltitle']; ?>
+                                    {{ $imagesList[0]['smalltitle'] }}
                                 </div>
                                 <div class="desc">
-                                    <?php echo $imagesList[0]['desc']; ?>
+                                    {{ $imagesList[0]['desc'] }}
                                 </div>
-                                <a href="<?php echo $imagesList[0]['link']; ?>" class="watch">Watch Now</a>
+                                <a href="{{ url($imagesList[0]['link']) }}" class="watch">Watch Now</a>
                             </div>
                             <!--/content-->
                             <div class="circle">
-                                <?php for ($i = 0; $i < count($imagesList); $i++) { ?>
+                                @for ($i = 0; $i < count($imagesList); $i++)
                                     <div class="cir <?php if ($i == 0) { echo 'active'; } ?>"></div>
-                                <?php } ?>
+                                @endfor
                             </div>
                         </div>
                         <!--/pagination-->
@@ -37,10 +37,10 @@
                         foreach ($imagesList as $image) { ?>
                             <img alt='image' class="<?php if ($i == 0) { echo 'active'; $i++; } ?>"
                                  src="{{ asset("images/" . $image['file']) }}"
-                                 big-title="<?php echo $image['bigtitle']; ?>"
-                                 small-title="<?php echo $image['smalltitle']; ?>"
-                                 desc="<?php echo $image['desc']; ?>"
-                                 link="<?php echo $image['link']; ?>">
+                                 big-title="{{ $image['bigtitle'] }}"
+                                 small-title="{{ $image['smalltitle'] }}"
+                                 desc="{{ $image['desc'] }}"
+                                 link="{{ $image['link'] }}">
                         <?php } ?>
                     </div>
                     <!--images-->
@@ -50,8 +50,7 @@
             <div id="sec2" class="sections">
                 <div class="title">
                     New Episodes
-                    <a style="float: right; color: #fff; background: #23B95D; padding: 2px 5px; border-radius: 3px; font-size: 14px; font-weight: bold;"
-                       href="{{ url('latest-episodes') }}">
+                    <a style="float: right; color: #fff; background: #23B95D; padding: 2px 5px; border-radius: 3px; font-size: 14px; font-weight: bold;" href="{{ url('latest-episodes') }}">
                         More
                     </a>
                 </div>
@@ -141,11 +140,10 @@
                         More
                     </a>
                 </div>
-                <?php
-                foreach ($animeList as $anime) {
-                    $sublink = ($anime['type2'] == "dubbed") ? $options[3]['value'] : $options[2]['value'];
-                    $link = url($sublink . $anime['slug']); ?>
-                    <a href="<?php echo $link; ?>">
+                @foreach ($animeList as $anime)
+                    <a href="{{ url(($anime['type2'] == "dubbed") ?
+                    $options[3]['value'] . $anime['slug'] :
+                    $options[2]['value'] . $anime['slug']) }}">
                         <div class="block">
                             <div class="img">
                                 <img alt="image" src="<?php echo asset(get_thumbnail('images/'.$anime['image'], 127, 189)); ?>"
@@ -158,7 +156,7 @@
                         </div>
                         <!--/block-->
                     </a>
-                <?php } ?>
+                @endforeach
                 <div class="pagination">
                     {!! $animeList->render() !!}
                 </div>

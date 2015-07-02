@@ -39,11 +39,15 @@
                         <a href="{{ url($options[3]['value'] . $anime['slug']) }}">
                             <img class="eimg" src="{{ asset('images/' . $anime['image']) }}">
                             <div class="sub_title">
-                                <?php echo(strlen($anime['title']) < 20) ? $anime['title'] :
-                                        substr($anime['title'], 0, 20) . "..."; ?>
+                                {{
+                                    (strlen($anime['title']) < 20) ?
+                                    $anime['title'] :
+                                    substr($anime['title'], 0, 20) . "..."
+                                }}
                             </div>
                         </a>
-                        <div class="rateContainor" style="width: 220px; margin-top: 5px; float: left">
+                        <div class="rateContainor"
+                             style="width: 220px; margin-top: 5px; float: left">
                             <div style="float: left;" value="{{ $anime['rating'] }}"
                                  id="{{ $anime['id'] }}" class="rateDiv"></div>
                             <div style="float: left; font-size: 8pt; width: 100%; display: none" id="hint{{ $anime['id'] }}"></div>
