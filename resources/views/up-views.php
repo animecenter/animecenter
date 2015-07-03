@@ -8,8 +8,8 @@ if (isset($_POST['type']) and $_POST['type'] != null) {
     $tid = (int) $_POST['tid'];
     if (($_POST['type'] == 's')) {
         $ob->up_data("an_series", "a_visits=a_visits+1", "a_id=$tid");
-        $series = $ob->get_table("an_series", "a_id=$tid");
-        $anime = mysql_fetch_assoc($series);
+        $animes = $ob->get_table("an_series", "a_id=$tid");
+        $anime = mysql_fetch_assoc($animes);
         $new_views = $anime['a_visits'];
     } else {
         $ob->up_data("an_episodes", "e_visits=e_visits+1", "e_id=$tid");

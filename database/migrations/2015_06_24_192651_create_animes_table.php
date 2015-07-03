@@ -9,8 +9,6 @@ class CreateAnimesTable extends Migration
     {
         Schema::create('animes', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-            $table->softDeletes();
             $table->string('title', 255)->nullable();
             $table->text('content')->nullable();
             $table->string('genres', 255)->nullable();
@@ -35,6 +33,8 @@ class CreateAnimesTable extends Migration
             $table->integer('visits')->unsigned()->default('0');
             $table->integer('date')->unsigned()->default('1389787200');
             $table->integer('date2')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
