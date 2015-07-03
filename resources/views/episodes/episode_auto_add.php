@@ -41,7 +41,7 @@ if (isset($_POST['id']) and $_POST['id'] != null and $_POST['num'] > 0 and isset
 	';
         $con = GetSQLValueString($con, "text");
         $order = $next_id;
-        $in = $ob->insert_data("an_episodes(e_title,e_not_yeird,e_series,e_date,e_date2,e_order)",
+        $in = $ob->insert_data("an_episodes(e_title,e_not_yet_aired,e_series,e_date,e_date2,e_order)",
             "$title,$con,$id,$date,$date,$order");
         $insert_id = mysql_insert_id();
         $ob->up_data("an_f_data", "d_e_add=concat(d_e_add,'" . $insert_id . ",')", "d_id=1");

@@ -2,30 +2,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link href="css/style-login.css" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('css/login.css') }}" rel="stylesheet" type="text/css"/>
         <title>Admin Login</title>
     </head>
     <body>
         <div class="wrap">
-            <h1>eAnime 1.0 Beta</h1>
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <h1>ACTV - V2</h1>
+            <form action="{{ url('login') }}" method="post">
+                {!! csrf_field() !!}
                 <label>Username</label>
-                <br/>
-                <input type="text" value="" class="login_field" name="user_name"/>
-                <br/>
+                <input type="text" name="username" value="" class="login_field"/>
                 <label>Password</label>
-                <br/>
-                <input type="password" value="" name="user_pass" class="login_field"/>
-                <br/>
-                <input type="submit" value="Login" name="submit" class="login_btn"/>
+                <input type="password" name="password" value="" class="login_field"/>
+                <input type="submit" value="Login" class="login_btn"/>
             </form>
-            <?php if (isset($_GET['msg']) and $_GET['msg'] == 'ok') { ?>
-                <div class="res">Success</div>
-            <?php } elseif (isset($_GET['msg']) and $_GET['msg'] == 'f') { ?>
-                <div class="res">Error, check username or password</div>
-            <?php } ?>
+            @if($errors->has())
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {!! $errors->first() !!}
+                </div>
+            @endif
         </div>
         <!--End Wrap-->
-        <h3>Powered by eAnime 1.0 Beta</h3>
     </body>
 </html>

@@ -68,8 +68,50 @@ $router->get('update-pages', function() {
     echo 'All link from pages were updated';
 });
 
+use App\Users\User;
+use Illuminate\Database\Schema\Blueprint;
+$router->get('create-users', function() {
+    Schema::drop('an_users');
+    Schema::create('users', function (Blueprint $table) {
+        $table->increments('id');
+        $table->string('username', 191)->unique();
+        $table->string('email', 191)->unique();
+        $table->string('password', 60);
+        $table->rememberToken();
+        $table->timestamps();
+        $table->softDeletes();
+    });
+    User::create([
+        'username' => 'daiky',
+        'email' => 'project.01@hotmail.com',
+        'password' => Hash::make('esinseguro')
+    ]);
+    Schema::create('password_resets', function (Blueprint $table) {
+        $table->string('email')->index();
+        $table->string('token')->index();
+        $table->timestamp('created_at');
+    });
+});
+
 // Home routes...
 $router->get('/', 'HomeController@index');
+
+// Authentication routes...
+$router->get('login', 'Auth\AuthController@getLogin');
+$router->post('login', 'Auth\AuthController@postLogin');
+$router->get('logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+$router->get('register', 'Auth\AuthController@getRegister');
+$router->post('register', 'Auth\AuthController@postRegister');
+
+// Password reset link request routes...
+$router->get('password/email', 'Auth\PasswordController@getEmail');
+$router->post('password/email', 'Auth\PasswordController@postEmail');
+
+// Password reset routes...
+$router->get('password/reset/{token}', 'Auth\PasswordController@getReset');
+$router->post('password/reset', 'Auth\PasswordController@postReset');
 
 // Anime routes...
 $router->get('latest-anime', 'AnimeController@getLatest');
@@ -106,37 +148,37 @@ $router->group([
     $router->get('anime', 'AnimeController@index');
     $router->get('anime/create', 'AnimeController@getCreate');
     $router->post('anime/create/{id}', 'AnimeController@postCreate');
-    $router->get('anime/edit', 'AnimeController@getEdit');
+    $router->get('anime/edit/{id}', 'AnimeController@getEdit');
     $router->post('anime/edit/{id}', 'AnimeController@postEdit');
-    $router->post('anime/delete/{id}', 'AnimeController@postDelete');
+    $router->get('anime/delete/{id}', 'AnimeController@getDelete');
 
     // Admin episodes routes...
     $router->get('episodes', 'EpisodeController@index');
     $router->get('episodes/create', 'EpisodeController@getCreate');
     $router->post('episodes/create/{id}', 'EpisodeController@postCreate');
-    $router->get('episodes/edit', 'EpisodeController@getEdit');
+    $router->get('episodes/edit/{id}', 'EpisodeController@getEdit');
     $router->post('episodes/edit/{id}', 'EpisodeController@postEdit');
-    $router->post('episodes/delete/{id}', 'EpisodeController@postDelete');
+    $router->get('episodes/delete/{id}', 'EpisodeController@getDelete');
 
     // Admin pages routes...
     $router->get('pages', 'PageController@index');
     $router->get('pages/create', 'PageController@getCreate');
     $router->post('pages/create/{id}', 'PageController@postCreate');
-    $router->get('pages/edit', 'PageController@getEdit');
+    $router->get('pages/edit/{id}', 'PageController@getEdit');
     $router->post('pages/edit/{id}', 'PageController@postEdit');
-    $router->post('pages/delete/{id}', 'PageController@postDelete');
+    $router->get('pages/delete/{id}', 'PageController@getDelete');
 
     // Admin images routes...
     $router->get('images', 'ImageController@index');
     $router->get('images/create', 'ImageController@getCreate');
     $router->post('images/create/{id}', 'ImageController@postCreate');
-    $router->get('images/edit', 'ImageController@getEdit');
+    $router->get('images/edit/{id}', 'ImageController@getEdit');
     $router->post('images/edit/{id}', 'ImageController@postEdit');
-    $router->post('images/delete/{id}', 'ImageController@postDelete');
+    $router->get('images/delete/{id}', 'ImageController@getDelete');
 
     // Admin options routes...
     $router->get('options/edit', 'OptionController@getEdit');
 
     // Admin cache routes...
-    $router->post('purge-cache', 'CacheController@postPurge');
+    $router->get('purge-cache', 'CacheController@getPurge');
 });
