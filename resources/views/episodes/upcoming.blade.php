@@ -18,7 +18,7 @@ require_once("header.php");
                 <script src="<?php echo $url; ?>css/js/countdown.js"></script>
                 <?php
                 $episodess = $ob->get_table("an_episodes",
-                    "e_coming_date!='' and e_not_yeird!='' order by e_coming_date ASC");
+                    "e_coming_date!='' and e_not_yet_aired!='' order by e_coming_date ASC");
                 /*
                 print_r($episodes);
                 while($episode=mysql_fetch_assoc($episodes)){

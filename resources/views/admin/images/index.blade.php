@@ -1,20 +1,14 @@
-<div class="bigTitle">Images List</div>
-<ul class="list_ob">
-    <?php while ($res_row = mysql_fetch_assoc($res)) { ?>
-        <li>
-            <?php echo $res_row['bigtitle']; ?>
-            <a href="index.php?page=image_up&id=<?php echo $res_row['id']; ?>"
-               class="prevBT update">update</a>
-            <a href="includes/del-core.php?name=image&id=<?php echo $res_row['id']; ?>"
-               class="prevBT del">delete</a>
-        </li>
-    <?php } ?>
-</ul>
-<a href="index.php?page=image_add" class="prevBT add">Add</a>
-<div class="res">
-    <?php if (isset($_GET['msg']) and $_GET['msg'] == 'ok') {
-        echo "Successfully";
-    } elseif (isset($_GET['msg']) and $_GET['msg'] == 'f') {
-        echo 'Try Again ... error';
-    } ?>
-</div>
+@extends('admin.index')
+@section('content')
+    <div class="bigTitle">Images List</div>
+    <a href="{{ url('admin/images/create') }}" class="prevBT add">Add</a>
+    <ul class="list_ob">
+        @foreach ($images as $image)
+            <li>
+                <?php echo $image['bigtitle']; ?>
+                <a href="{{ url('admin/images/edit/' . $image['id']) }}" class="prevBT update">Edit</a>
+                <a href="{{ url('admin/images/delete/' . $image['id']) }}" class="prevBT del">Delete</a>
+            </li>
+        @endforeach
+    </ul>
+@endsection
