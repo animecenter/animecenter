@@ -2,84 +2,83 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Options\Option;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class OptionController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * @var Option
      */
-    public function index()
-    {
-        //
-    }
+    private $option;
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
+     * @var Guard
      */
-    public function create()
-    {
-        //
-    }
+    private $auth;
+
+    private $data;
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
+     * @param Option $option
+     * @param Guard $auth
      */
-    public function store()
+    public function __construct(Option $option, Guard $auth)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
+        $this->option = $option;
+        $this->auth = $auth;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
      */
-    public function edit($id)
+    public function getEdit()
     {
-        //
+        $this->data['options'] = $this->option->all();
+        $this->data['user'] = $this->auth->user();
+
+        return view('admin.options.edit', $this->data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id)
+    public function postEdit(Request $request)
     {
-        //
-    }
+        $options = $this->option->all();
+        if ($request['title'] !== $options[0]['value']) {
+            $option = $this->option->findOrFail(1);
+            $option->value = $request['title'];
+            $option->save();
+        }
+        if ($request['text'] !== $options[1]['value']) {
+            $option = $this->option->findOrFail(2);
+            $option->value = $request['text'];
+            $option->save();
+        }
+        if ($request['subbed'] !== $options[2]['value']) {
+            $option = $this->option->findOrFail(3);
+            $option->value = $request['subbed'];
+            $option->save();
+        }
+        if ($request['dubbed'] !== $options[3]['value']) {
+            $option = $this->option->findOrFail(4);
+            $option->value = $request['dubbed'];
+            $option->save();
+        }
+        if ($request['episode'] !== $options[4]['value']) {
+            $option = $this->option->findOrFail(5);
+            $option->value = $request['episode'];
+            $option->save();
+        }
+        $msg = "Options were updated successfully";
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->back()->with('success', $msg);
     }
 }

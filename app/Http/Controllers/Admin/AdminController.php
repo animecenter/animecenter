@@ -2,21 +2,34 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
 
 class AdminController extends Controller
 {
     private $data;
 
     /**
+     * @var
+     */
+    private $auth;
+
+    /**
+     * @param Guard $auth
+     */
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
+
+    /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
-        $this->data['user'] = Auth::user();
+        $this->data['user'] = $this->auth->user();
 
         return view('admin.index', $this->data);
     }

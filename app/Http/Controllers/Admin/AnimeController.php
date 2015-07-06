@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Anime\Anime;
 use App\Genres\Genre;
-use Illuminate\Auth\Guard;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\Request;
 
 class AnimeController extends Controller
 {
@@ -26,6 +26,8 @@ class AnimeController extends Controller
      */
     private $auth;
 
+    private $data;
+
     /**
      * @param Anime $anime
      * @param Genre $genre
@@ -41,7 +43,7 @@ class AnimeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -54,7 +56,7 @@ class AnimeController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function getCreate()
     {
@@ -73,7 +75,6 @@ class AnimeController extends Controller
      */
     public function postCreate(Request $request)
     {
-        // $this->validate($request, $this->rules);
         $this->anime->create([
             'name' => $request['title'],
             'slug' => str_slug($request['title']),
@@ -94,8 +95,6 @@ class AnimeController extends Controller
             'description' => $request['description'],
             'alternative_title' => $request['alternative_title'],
             'image' => $request['image'],
-            'rating' => $request['rating'],
-            'votes' => $request['votes'],
             'visits' => $request['visits'],
             'date' => $request['date'],
             'date2' => $request['date2'],
@@ -110,12 +109,12 @@ class AnimeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return \Illuminate\View\View
      */
     public function getEdit($id = 0)
     {
-        $this->data['currentAnime'] = $this->anime->findorFail($id);
+        $this->data['currentAnime'] = $this->anime->findOrFail($id);
         $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
         $this->data['genres'] = $this->genre->orderBy('value', 'ASC')->get();
         $this->data['user'] = $this->auth->user();
@@ -126,9 +125,9 @@ class AnimeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param int $id
      * @param Request $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function postEdit($id = 0, Request $request)
     {
@@ -181,8 +180,8 @@ class AnimeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function getDelete($id = 0)
     {
