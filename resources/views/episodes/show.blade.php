@@ -5,7 +5,7 @@
         <div id="left_content">
             <div class="sec_top_one">
                 @if(Auth::user())
-                    <a href="{{ url('admin/index.php?page=episode_up&id=' . $episode['id']) }}" class="edit_top">
+                    <a href="{{ url('admin/episodes/edit/' . $episode['id']) }}" class="edit_top">
                         Edit
                     </a>
                 @endif
@@ -17,14 +17,15 @@
                     </div>
                     @if ($episode['not_yet_aired'] == null or $episode['not_yet_aired'] == '')
                         <div class="tabs">
-                            @if ($episode['mirror1'] == '' and $episode['mirror2'] == '' and $episode['mirror3'] == ''
-                                and $episode['mirror4'] == '' and $episode['hd'] == '')
+                            @if ($episode['mirror1'] == '' && $episode['mirror2'] == '' && $episode['mirror3'] == ''
+                                && $episode['mirror4'] == '' && $episode['hd'] == '')
                                 @if ($episode['subdub'] != null or $episode['subdub'] != '')
                                     <?php $cont = ($episode['subdub'] == null) ? $episode['raw'] : $episode['subdub']; ?>
                                     <div class="block">
-                                        <a href="{{ $mainLink }}">
-                                            <div class="tab <?php echo $episode['anime']['type2']; echo(! (isset($type[2])) or
-                                                    $type[2] == '') ? ' active' : '';?>">
+                                        <a href="{{ url($mainLink) }}">
+                                            <div class="tab <?php echo $episode['anime']['type2'];
+                                                echo(!($episode['anime']['type2']) or $episode['anime']['type2'] == '') ?
+                                                    ' active' : '';?>">
                                                 Mirror 1
                                             </div>
                                         </a>
@@ -34,9 +35,10 @@
                             @else
                                 @if ($episode['mirror1'] != null or $episode['mirror1'] != '')
                                     <div class="block">
-                                        <a href="{{ $mainLink }}">
-                                            <div class="tab <?php echo $episode['anime']['type2']; echo(!(isset($type[2])) or
-                                                    $type[2] == '') ? ' active' : ''; ?>">
+                                        <a href="{{ url($mainLink) }}">
+                                            <div class="tab <?php echo $episode['anime']['type2'];
+                                                echo(!($episode['anime']['type2']) or $episode['anime']['type2'] == '') ?
+                                                    ' active' : ''; ?>">
                                                 Mirror 1
                                             </div>
                                         </a>
@@ -45,8 +47,10 @@
                                 @endif
                                 @if ($episode['mirror2'] != null or $episode['mirror2'] != '')
                                     <div class="block">
-                                        <a href="{{ $mainLink }}/mirror2">
-                                            <div class="tab <?php echo $episode['anime']['type2']; echo(isset($type[2]) and $type[2] == 'mirror2') ? ' active' : ''; ?>">
+                                        <a href="{{ url($mainLink) }}/mirror2">
+                                            <div class="tab <?php echo $episode['anime']['type2'];
+                                                echo($episode['anime']['type2'] &&
+                                                    $episode['anime']['type2'] == 'mirror2') ? ' active' : ''; ?>">
                                                 Mirror 2
                                             </div>
                                         </a>
@@ -55,8 +59,10 @@
                                 @endif
                                 @if ($episode['mirror3'] != null or $episode['mirror3'] != '')
                                     <div class="block">
-                                        <a href="{{ $mainLink }}/mirror3">
-                                            <div class="tab <?php echo $episode['anime']['type2']; echo(isset($type[2]) and $type[2] == 'mirror3') ? ' active' : ''; ?>">
+                                        <a href="{{ url($mainLink) }}/mirror3">
+                                            <div class="tab <?php echo $episode['anime']['type2'];
+                                                echo($episode['anime']['type2'] &&
+                                                    $episode['anime']['type2'] == 'mirror3') ? ' active' : ''; ?>">
                                                 Mirror 3
                                             </div>
                                         </a>
@@ -65,9 +71,10 @@
                                 @endif
                                 @if ($episode['mirror4'] != null or $episode['mirror4'] != '')
                                     <div class="block">
-                                        <a href="{{ $mainLink }}/mirror4">
-                                            <div class="tab <?php echo $episode['anime']['type2']; echo(isset($type[2]) and
-                                                    $type[2] == 'mirror4') ? ' active' : ''; ?>">
+                                        <a href="{{ url($mainLink) }}/mirror4">
+                                            <div class="tab <?php echo $episode['anime']['type2'];
+                                                echo($episode['anime']['type2'] &&
+                                                    $episode['anime']['type2'] == 'mirror4') ? ' active' : ''; ?>">
                                                 Mirror 4
                                             </div>
                                         </a>
@@ -77,21 +84,22 @@
                                 @if ($episode['raw'] != null or $episode['raw'] != '')
                                     <div class="block">
                                         {{ dd($episode->anime) }}
-                                        <a href="{{ $mainLink }}/raw">
-                                            <div class="tab <?php echo $episode['anime']['type2']; echo((isset($type[2]) and
-                                                            $type[2] == 'raw') or
-                                                    $episode['e_subdub'] == null) ? ' active' : '';?> raw">
+                                        <a href="{{ url($mainLink) }}/raw">
+                                            <div class="tab <?php echo $episode['anime']['type2'];
+                                                echo($episode['anime']['type2'] && $episode['anime']['type2'] == 'raw' 
+                                                    or $episode['subdub'] == null) ? ' active' : '';?> raw">
                                                 RAW
                                             </div>
                                         </a>
                                     </div>
                                     <!--/block-->
                                 @endif
-                                @if ($episode['e_hd'] != null or $episode['e_hd'] != '')
+                                @if ($episode['hd'] != null or $episode['hd'] != '')
                                     <div class="block">
-                                        <a href="{{ $mainLink }}/hd">
-                                            <div class="tab <?php echo $episode['anime']['type2']; echo(isset($type[2]) and
-                                                    $type[2] == 'hd') ? ' active' : ''; ?> mirror">
+                                        <a href="{{ url($mainLink) }}/hd">
+                                            <div class="tab <?php echo $episode['anime']['type2'];
+                                                echo($episode['anime']['type2'] && $episode['anime']['type2'] == 'hd') ?
+                                                ' active' : ''; ?> mirror">
                                                 Mirror HD
                                             </div>
                                         </a>
@@ -102,7 +110,7 @@
                         </div>
                         <!--/tabs-->
                         <div class="embbed_content">
-                            {{ $cont }}
+                            {!! $cont !!}
                         </div>
                     @endif
                     <?php
@@ -116,7 +124,7 @@
                         $min = $diff->format('%i');
                         $second = $diff->format('%s');
                         $total_s = ($day * 86400) + ($hr * 3600) + ($min * 60) + $second; ?>
-                        <script src="<?php echo $url; ?>css/js/countdown.js"></script>
+                        <script src="{{ asset('css/js/countdown.js') }}"></script>
                         <div class="date_con">
                             <script>
                                 var myCountdown1 = new Countdown({
@@ -129,7 +137,7 @@
                             </script>
                         </div>
                         <div class="date_img">
-                            <img src="<?php echo $url . "/images/" . $episode['anime']['a_image']; ?>">
+                            <img src="<?php echo $url . "/images/" . $episode['anime']['image']; ?>">
                         </div>
                         <h2 style="width: 300px; float: left; text-align: center; color: rgb(255, 255, 255); font-size: 16px; margin-left: 26%; margin-bottom: 5px;">ETA</h2>
                     <?php }
@@ -143,8 +151,8 @@
                         <div style='float:left;' class='rating' id='rateDiv'></div>
                         <div style='float: left; font-size: 8pt; clear: both; width: 100%; display:none' id='hint'></div>
                         <div id="hint2" style='float:left;font-size:8pt'>
-                            <?php echo "Average: " . sprintf("%.2f", $episode['e_rating']) .
-                                    " ( " . $episode['e_votes'] . " votes)" ?>
+                            <?php echo "Average: " . sprintf("%.2f", $episode['rating']) .
+                                    " ( " . $episode['votes'] . " votes)" ?>
                         </div>
                     </div>
                 </div>
@@ -169,7 +177,7 @@
             </div>
             <!--/sections-->
 
-            <div style="width: 100%; float: left; margin-bottom: 20px" class="">
+            <div style="width: 100%; float: left; margin-bottom: 20px;" class="">
                 <div style="float: left;">
                     <!-- MarketGidComposite Start -->
                     <div id="MarketGidScriptRootC16203">
@@ -215,10 +223,7 @@
                 </div>
             </div>
 
-            <?php
-            // SETUP BY ULTRA AS PART OF ADCON REV OPTIMIZATION
-            ?>
-            <div style="width:100%;float:left;margin-bottom:10px" class="">
+            <div style="width: 100%; float: left; margin-bottom: 10px;" class="">
                 <div id="disqus_thread"></div>
                 <script type="text/javascript" data-cfasync='true'>
                     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -233,25 +238,28 @@
                         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
                     })();
                 </script>
-                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments
-                        powered by Disqus.</a></noscript>
+                <noscript>
+                    Please enable JavaScript to view the
+                    <a href="http://disqus.com/?ref_noscript">
+                        comments powered by Disqus.
+                    </a>
+                </noscript>
                 <a href="http://disqus.com" class="dsq-brlink">
                     comments powered by <span class="logo-disqus">Disqus</span>
                 </a>
             </div>
+
             <div class="bottom_text">
                 You are going to <b>Watch {{ $episode['title'] }} </b> in <b> English Subbed/Dubbed </b>from <b>
-                    {{ $episode['anime']['title'] }} </b> Anime. Watch <b> {{ $episode['title'] }} </b> online and the other
+                {{ $episode['anime']['title'] }} </b> Anime. Watch <b> {{ $episode['title'] }} </b> online and the other
                 episodes of <b> {{ $episode['anime']['title'] }} </b>with High Quality Streaming for <b>FREE</b>
             </div>
-
         </div>
         <!--/left_content-->
+
         <div id="right_content">
             @include('layouts.sidebar')
         </div>
-        <!--</div>
-        <!--/content-->
 
         <script>
             $(document).ready(function (e) {
@@ -264,29 +272,29 @@
                     $("#hint2").show();
                 });
                 $("#rateDiv").raty({
-                        score: {{ $episode['rating'] }},
-                        starHalf: "{{ asset('images/star-half.png') }}",
-                        starOff: "{{ asset('images/star-off.png') }}",
-                        starOn: "{{ asset('images/star-on.png') }}",
-                        starHover: "{{ asset('images/star-hover.png') }}",
-                        target: ("#hint"),
-                        click: function (score, evt) {
-                            $("#hint").show().text("Saving your vote...");
+                    score: {{ $episode['rating'] }},
+                    starHalf: "{{ asset('images/star-half.png') }}",
+                    starOff: "{{ asset('images/star-off.png') }}",
+                    starOn: "{{ asset('images/star-on.png') }}",
+                    starHover: "{{ asset('images/star-hover.png') }}",
+                    target: ("#hint"),
+                    click: function (score, evt) {
+                        $("#hint").show().text("Saving your vote...");
+                        $("#hint2").hide();
+                        $.post("{{ url('rate-up') }}", {
+                            eid: <?php echo $episode['id']; ?>,
+                            rate: score
+                        }, function (data) {
+                            $("#hint").show().text("your vote has been saved");
                             $("#hint2").hide();
-                            $.post("{{ url('rate-up') }}", {
-                                eid: <?php echo $episode['id']; ?>,
-                                rate: score
-                            }, function (data) {
-                                $("#hint").show().text("your vote has been saved");
-                                $("#hint2").hide();
-                                setTimeout(function () {
-                                    $("#hint").hide();
-                                    $("#hint2").show().text(data);
-                                }, 1000);
-                            });
-                        },
-                        width: 120,
-                        targetKeep: true
+                            setTimeout(function () {
+                                $("#hint").hide();
+                                $("#hint2").show().text(data);
+                            }, 1000);
+                        });
+                    },
+                    width: 120,
+                    targetKeep: true
                     }
                 );
             });

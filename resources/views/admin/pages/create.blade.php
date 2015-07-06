@@ -7,13 +7,13 @@
 
         <div class="inputNOption">
             <div class="smallTitle">Title:</div>
-            <input name="title" value="" type="text" class="textInput"/>
+            <input name="title" value="{{ old('title') }}" type="text" class="textInput"/>
         </div>
         <!--/inputNOption-->
 
         <div class="inputNOption">
             <div class="smallTitle">Order:</div>
-            <input name="order" value="" type="text" class="textInput"/>
+            <input name="order" value="{{ old('order') }}" type="text" class="textInput"/>
         </div>
         <!--/inputNOption-->
 
@@ -31,13 +31,13 @@
 
         <div class="inputTextarea">
             <div class="smallTitle">Content:</div>
-            <textarea class="textarea" name="content" rows="30"></textarea>
+            <textarea class="textarea" name="content" rows="30">{{ old('content') }}</textarea>
         </div>
         <!--/inputTextarea-->
 
         <div class="inputNOption">
             <div class="smallTitle">Link:</div>
-            <input name="link" value="" type="text" class="textInput"/>
+            <input name="link" value="{{ old('link') }}" type="text" class="textInput"/>
         </div>
         <!--/inputNOption-->
 

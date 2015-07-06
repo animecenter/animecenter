@@ -7,19 +7,19 @@
 
         <div class="inputNOption" style="width: 100%;">
             <div class="smallTitle">Title:</div>
-            <input name="title" value="" type="text" class="textInput" style="width: 80%;"/>
+            <input name="title" value="{{ old('title') }}" type="text" class="textInput" style="width: 80%;"/>
         </div>
         <!--/inputNOption-->
 
         <div class="inputNOption">
             <div class="smallTitle">Episodes:</div>
-            <input name="episodes" value="" type="text" class="textInput"/>
+            <input name="episodes" value="{{ old('episodes') }}" type="text" class="textInput"/>
         </div>
         <!--/inputNOption-->
 
         <div class="inputNOption">
             <div class="smallTitle">Type:</div>
-            <input name="type" value="" type="text" class="textInput"/>
+            <input name="type" value="{{ old('type') }}" type="text" class="textInput"/>
         </div>
         <!--/inputNOption-->
 
@@ -35,7 +35,7 @@
 
         <div class="inputNOption">
             <div class="smallTitle">Age:</div>
-            <input name="age" value="" type="text" class="textInput"/>
+            <input name="age" value="{{ old('age') }}" type="text" class="textInput"/>
         </div>
         <!--/inputNOption-->
 
@@ -53,12 +53,9 @@
             <div class="smallTitle">Prequel:</div>
             <select class="select" name="prequel">
                 <option value="">Not Selected</option>
-                <?php foreach ($animes as $anime) { ?>
-                    <option value="<?php echo $anime['id']; ?>,
-                        <?php echo $anime['title']; ?>">
-                        <?php echo $anime['title']; ?>
-                    </option>
-                <?php } ?>
+                @foreach ($animes as $anime)
+                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}">{{ $anime['title'] }}</option>
+                @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
         </div>
@@ -68,12 +65,9 @@
             <div class="smallTitle">Sequel:</div>
             <select class="select" name="sequel">
                 <option value="">Not Selected</option>
-                <?php foreach ($animes as $anime) { ?>
-                    <option value="<?php echo $anime['id']; ?>,
-                        <?php echo $anime['title']; ?>">
-                        <?php echo $anime['title']; ?>
-                    </option>
-                <?php } ?>
+                @foreach ($animes as $anime)
+                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}">{{ $anime['title'] }}</option>
+                @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
         </div>
@@ -83,12 +77,9 @@
             <div class="smallTitle">Parent Story:</div>
             <select class="select" name="story">
                 <option value="">Not Selected</option>
-                <?php foreach ($animes as $anime) { ?>
-                    <option value="<?php echo $anime['id']; ?>,
-                        <?php echo $anime['title']; ?>">
-                        <?php echo $anime['title']; ?>
-                    </option>
-                <?php } ?>
+                @foreach ($animes as $anime)
+                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}">{{ $anime['title'] }}</option>
+                @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
         </div>
@@ -98,12 +89,9 @@
             <div class="smallTitle">Side Story:</div>
             <select class="select" name="s_story">
                 <option value="">Not Selected</option>
-                <?php foreach ($animes as $anime) { ?>
-                    <option value="<?php echo $anime['id']; ?>,
-                        <?php echo $anime['title']; ?>">
-                        <?php echo $anime['title']; ?>
-                    </option>
-                <?php } ?>
+                @foreach ($animes as $anime)
+                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}">{{ $anime['title'] }}</option>
+                @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
         </div>
@@ -113,12 +101,9 @@
             <div class="smallTitle">Spin - Off:</div>
             <select class="select" name="spin_off">
                 <option value="">Not Selected</option>
-                <?php foreach ($animes as $anime) { ?>
-                    <option value="<?php echo $anime['id']; ?>,
-                        <?php echo $anime['title']; ?>">
-                        <?php echo $anime['title']; ?>
-                    </option>
-                <?php } ?>
+                @foreach ($animes as $anime)
+                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}">{{ $anime['title'] }}</option>
+                @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
         </div>
@@ -128,12 +113,9 @@
             <div class="smallTitle">Alternative:</div>
             <select class="select" name="alternative_2">
                 <option value="">Not Selected</option>
-                <?php foreach ($animes as $anime) { ?>
-                    <option value="<?php echo $anime['id']; ?>,
-                        <?php echo $anime['title']; ?>">
-                        <?php echo $anime['title']; ?>
-                    </option>
-                <?php } ?>
+                @foreach ($animes as $anime)
+                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}">{{ $anime['title'] }}</option>
+                @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
         </div>
@@ -143,12 +125,9 @@
             <div class="smallTitle">Other:</div>
             <select class="select" name="other">
                 <option value="">Not Selected</option>
-                <?php foreach ($animes as $anime) { ?>
-                    <option value="<?php echo $anime['id']; ?>,
-                        <?php echo $anime['title']; ?>">
-                        <?php echo $anime['title']; ?>
-                    </option>
-                <?php } ?>
+                @foreach ($animes as $anime)
+                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}">{{ $anime['title'] }}</option>
+                @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
         </div>
@@ -159,12 +138,9 @@
             <div class="clear"></div>
             @foreach ($genres as $genre)
                 <div class="inputCheck">
-                    <input type="checkbox" class="checkbox" name="genres[]"
-                           value="<?php echo $genre['value']; ?>"/>
+                    <input type="checkbox" class="checkbox" name="genres[]" value="{{ $genre['value'] }}"/>
                     <span></span>
-                    <div class="smallTitle">
-                        <?php echo $genre['value']; ?>
-                    </div>
+                    <div class="smallTitle">{{ $genre['value'] }}</div>
                 </div><!--/inputCheck-->
             @endforeach
         </div>
@@ -176,44 +152,37 @@
             <div class="inputCheck">
                 <input type="checkbox" class="checkbox" name="position1" value="recently"/>
                 <span></span>
-                <div class="smallTitle">Recently Added Series</div>
+                <div class="smallTitle">Recently Added Anime</div>
             </div>
             <!--/inputCheck-->
             <div class="inputCheck">
                 <input type="checkbox" class="checkbox" name="position2" value="featured"/>
                 <span></span>
-                <div class="smallTitle">Fetured Series</div>
+                <div class="smallTitle">Featured Anime</div>
             </div>
             <!--/inputCheck-->
         </div>
         <!--/inputTextarea-->
 
         <div class="inputUpload">
-            <div class="smallTitle">Series Image:</div>
-            <input name="img_file" value="" type="file" class="file"/>
+            <div class="smallTitle">Anime Image:</div>
+            <input name="image" value="{{ old('image') }}" type="file" class="file"/>
         </div>
         <!--/inputUpload-->
 
         <div class="inputTextarea">
             <div class="smallTitle">Plot Summary:</div>
-            <textarea class="textarea" name="description"></textarea>
+            <textarea class="textarea" name="description">{{ old('description') }}</textarea>
         </div>
         <!--/inputTextarea-->
 
         <div class="inputTextarea">
             <div class="smallTitle">Alternative Titles:</div>
-            <textarea class="textarea" name="alternative"></textarea>
+            <textarea class="textarea" name="alternative">{{ old('alternative') }}</textarea>
         </div>
         <!--/inputTextarea-->
 
-        <input type="submit" name="add_series" id="submit" value="Add"/>
+        <input type="submit" id="submit" value="Add"/>
 
     </form>
-    <div class="res">
-        <?php if (isset($_GET['msg']) and $_GET['msg'] == 'ok') {
-            echo "Added Successfully";
-        } elseif (isset($_GET['msg']) and $_GET['msg'] == 'f') {
-            echo 'Try Again ... error';
-        } ?>
-    </div>
 @endsection

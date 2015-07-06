@@ -4,7 +4,7 @@
         @include("layouts.banner")
         <div id="left_content">
             <div id="sec3" class="sections">
-                <div class="title">Latest Anime Series added to site</div>
+                <div class="title">Latest Anime Added to the Site</div>
                 @foreach ($animes as $anime)
                     <a href="{{ url(($anime['type2'] == "dubbed") ?
                     $options[3]['value'] . $anime['slug'] :

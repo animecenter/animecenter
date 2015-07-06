@@ -1,5 +1,9 @@
 $(document).ready(function (e) {
-    var URL = "http://www.animecenter.tv/";
+    if (location.hostname === 'localhost') {
+        var URL = 'http://localhost/animecenter/';
+    } else {
+        var URL = 'http://' + location.hostname + '/';
+    }
     $("#vid-close").click(function (e) {
         $("#popup-vid").remove();
     });
@@ -9,8 +13,8 @@ $(document).ready(function (e) {
             type = 's';
         }
         var tid = $(".views_value").attr('id');
-        $.get(URL + "sec/cache.php", {url: URL + "up-views.php"}, function (data) {
-            $.post(URL + "up-views.php", {type: type, tid: tid}, function (data2) {
+        $.get(URL + "up-views", function (data) {
+            $.post(URL + "up-views", {type: type, tid: tid}, function (data2) {
                 $(".views_value").html(data2 + "<span> Views</span>");
             });
         });

@@ -40,7 +40,7 @@
                                  big-title="{{ $image['bigtitle'] }}"
                                  small-title="{{ $image['smalltitle'] }}"
                                  desc="{{ $image['desc'] }}"
-                                 link="{{ $image['link'] }}">
+                                 link="{{ url('watch/' . str_slug(str_replace('watch/', '', $image['link']))) }}">
                         <?php } ?>
                     </div>
                     <!--images-->
