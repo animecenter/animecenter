@@ -37,6 +37,7 @@ class AnimeController extends Controller
         $this->genre = $genre;
         $this->auth = $auth;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,7 +45,7 @@ class AnimeController extends Controller
      */
     public function index()
     {
-        $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
+        $this->data['animes'] = $this->anime->orderBy('id', 'DESC')->get();
         $this->data['user'] = $this->auth->user();
 
         return view('admin.anime.index', $this->data);
@@ -77,7 +78,7 @@ class AnimeController extends Controller
             'name' => $request['title'],
             'slug' => str_slug($request['title']),
             'content' => $request['content'],
-            'genres' => implode(',', $request['photo']),
+            'genres' => $request['genres'] ? implode(',', $request['genres']) : '',
             'episodes' => $request['episodes'],
             'type' => $request['type'],
             'age' => $request['age'],
@@ -97,7 +98,9 @@ class AnimeController extends Controller
             'votes' => $request['votes'],
             'visits' => $request['visits'],
             'date' => $request['date'],
-            'date2' => $request['date2']
+            'date2' => $request['date2'],
+            'rating' => 0,
+            'votes' => 0
         ]);
         $msg = 'Anime was created successfully!';
 
@@ -131,6 +134,7 @@ class AnimeController extends Controller
     {
         $anime = $this->anime->findOrFail($id);
         $anime->title = $request['title'];
+        $anime->slug = str_slug($request['title']);
         $anime->episodes = $request['episodes'];
         $anime->type = $request['type'];
         $anime->type2 = $request['type2'];

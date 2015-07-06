@@ -7,31 +7,31 @@
 
         <div class="inputNOption">
             <div class="smallTitle">Big Title:</div>
-            <input name="bigtitle" value="" type="text" class="textInput"/>
+            <input name="bigtitle" value="{{ old('bigtitle') }}" type="text" class="textInput"/>
         </div>
         <!--/inputNOption-->
 
         <div class="inputNOption">
             <div class="smallTitle">Small Title:</div>
-            <input name="smalltitle" value="" type="text" class="textInput"/>
+            <input name="smalltitle" value="{{ old('smalltitle') }}" type="text" class="textInput"/>
         </div>
         <!--/inputNOption-->
 
         <div class="inputNOption">
             <div class="smallTitle">Link:</div>
-            <input name="link" value="" type="text" class="textInput"/>
+            <input name="link" value="{{ old('link') }}" type="text" class="textInput"/>
         </div>
         <!--/inputNOption-->
 
         <div class="inputUpload">
             <div class="smallTitle">Image File (640 * 360):</div>
-            <input name="img_file" value="" type="file" class="file"/>
+            <input name="file" value="{{ old('file') }}" type="file" class="file"/>
         </div>
         <!--/inputUpload-->
 
         <div class="inputTextarea">
             <div class="smallTitle">Description:</div>
-            <textarea class="textarea" name="desc" rows="30"></textarea>
+            <textarea class="textarea" name="desc" rows="30">{{ old('desc') }}</textarea>
         </div>
         <!--/inputTextarea-->
 

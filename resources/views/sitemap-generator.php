@@ -40,8 +40,8 @@ $result = mysql_query("SELECT a_title, a_type2, a_date, a_date2 FROM an_series W
 or die(mysql_error());
 $now = time();
 while ($row = mysql_fetch_array($result)) {
-    $created = $row['a_date'];
-    $lastmod = $row['a_date2'];
+    $created = $row['date'];
+    $lastmod = $row['date2'];
     if (isset($lastmod)) {
         $timediff = $now - $lastmod;
         $time = $lastmod;
@@ -51,9 +51,9 @@ while ($row = mysql_fetch_array($result)) {
     }
 
     $url = "http://www.animecenter.tv/";
-    $title = $row['a_title'];
+    $title = $row['title'];
     $title = str_replace(" ", "-", strtolower($title));
-    $sub = $row['a_type2'] . "-anime/";
+    $sub = $row['type2'] . "-anime/";
     $url = $url . $sub . $title;
     $type = 1;
     if ($type == 1) {

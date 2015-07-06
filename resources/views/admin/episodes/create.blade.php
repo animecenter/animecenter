@@ -7,20 +7,16 @@
 
         <div class="inputNOption" style="width: 100%;">
             <div class="smallTitle">Title:</div>
-            <input name="title" value="" type="text" class="textInput" style="width: 80%;"/>
+            <input name="title" value="{{ old('title') }}" type="text" class="textInput" style="width: 80%;"/>
         </div>
         <!--/inputNOption-->
 
         <div class="inputSelectarea">
-            <div class="smallTitle">Series:</div>
-            <select class="select" name="anime">
+            <div class="smallTitle">Anime:</div>
+            <select class="select" name="anime_id">
                 @foreach ($animes as $anime)
-                    <option value="<?php echo $anime['id']; ?>" <?php
-                            if (isset($id) and $id == $anime['id']) {
-                                echo " selected='selected'";
-                            } ?>>
-                        <?php echo $anime['title']; ?>
-                    </option>
+                    <option value="{{ $anime['id'] }}" {{
+                        old('anime_id') ? "selected='selected'" : '' }}>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
@@ -29,13 +25,13 @@
 
         <div class="inputNOption">
             <div class="smallTitle">Coming Date (Y-m-d H:i:s):</div>
-            <input name="coming_date" value="" type="text" class="textInput" style=""/>
+            <input name="coming_date" value="{{ old('coming_date') }}" type="text" class="textInput" style=""/>
         </div>
         <!--/inputNOption-->
 
         <div class="clear"></div>
         <div class="inputCheck">
-            <input type="checkbox" class="checkbox" name="show" value="1"/>
+            <input type="checkbox" class="checkbox" name="show" value="1" {{ old('checkbox') ? old('checkbox') : '' }}/>
             <span></span>
             <div class="smallTitle">Show in home page</div>
         </div>
@@ -43,49 +39,49 @@
 
         <div class="inputTextarea">
             <div class="smallTitle">Not Yet Aired:</div>
-            <textarea class="textarea" name="not_yet_aired"></textarea>
+            <textarea class="textarea" name="not_yet_aired">{{ old('not_yet_aired') }}</textarea>
         </div>
         <!--/inputTextarea-->
 
         <div class="inputTextarea">
             <div class="smallTitle">Mirror 1:</div>
-            <textarea class="textarea" name="mirror1"></textarea>
+            <textarea class="textarea" name="mirror1">{{ old('mirror1') }}</textarea>
         </div>
         <!--/inputTextarea-->
 
         <div class="inputTextarea">
             <div class="smallTitle">HD:</div>
-            <textarea class="textarea" name="hd"></textarea>
+            <textarea class="textarea" name="hd">{{ old('hd') }}</textarea>
         </div>
         <!--/inputTextarea-->
 
         <div class="inputTextarea">
             <div class="smallTitle">Mirror 2:</div>
-            <textarea class="textarea" name="mirror2"></textarea>
+            <textarea class="textarea" name="mirror2">{{ old('mirror2') }}</textarea>
         </div>
         <!--/inputTextarea-->
 
         <div class="inputTextarea">
             <div class="smallTitle">Mirror 3:</div>
-            <textarea class="textarea" name="mirror3"></textarea>
+            <textarea class="textarea" name="mirror3">{{ old('mirror3') }}</textarea>
         </div>
         <!--/inputTextarea-->
 
         <div class="inputTextarea">
             <div class="smallTitle">Mirror 4:</div>
-            <textarea class="textarea" name="mirror4"></textarea>
+            <textarea class="textarea" name="mirror4">{{ old('mirror4') }}</textarea>
         </div>
         <!--/inputTextarea-->
 
         <div class="inputTextarea">
             <div class="smallTitle">RAW:</div>
-            <textarea class="textarea" name="raw"></textarea>
+            <textarea class="textarea" name="raw">{{ old('raw') }}</textarea>
         </div>
         <!--/inputTextarea-->
 
         <div class="inputTextarea">
             <div>Backup: Use Mirror: 1 as primary.</div>
-            <textarea class="textarea" name="subdub"></textarea>
+            <textarea class="textarea" name="subdub">{{ old('subdub') }}</textarea>
         </div>
         <!--/inputTextarea-->
 

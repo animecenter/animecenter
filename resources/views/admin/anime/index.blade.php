@@ -1,6 +1,6 @@
 @extends('admin.index')
 @section('content')
-    <div class="bigTitle">Series List</div>
+    <div class="bigTitle">Anime List</div>
     <a href="{{ url('admin/anime/create') }}" class="prevBT add">Add</a>
     <ul class="list_ob">
         @foreach($animes as $anime)

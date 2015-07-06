@@ -147,7 +147,7 @@ $router->group([
     // Admin anime routes...
     $router->get('anime', 'AnimeController@index');
     $router->get('anime/create', 'AnimeController@getCreate');
-    $router->post('anime/create/{id}', 'AnimeController@postCreate');
+    $router->post('anime/create', 'AnimeController@postCreate');
     $router->get('anime/edit/{id}', 'AnimeController@getEdit');
     $router->post('anime/edit/{id}', 'AnimeController@postEdit');
     $router->get('anime/delete/{id}', 'AnimeController@getDelete');
@@ -155,7 +155,7 @@ $router->group([
     // Admin episodes routes...
     $router->get('episodes', 'EpisodeController@index');
     $router->get('episodes/create', 'EpisodeController@getCreate');
-    $router->post('episodes/create/{id}', 'EpisodeController@postCreate');
+    $router->post('episodes/create', 'EpisodeController@postCreate');
     $router->get('episodes/edit/{id}', 'EpisodeController@getEdit');
     $router->post('episodes/edit/{id}', 'EpisodeController@postEdit');
     $router->get('episodes/delete/{id}', 'EpisodeController@getDelete');
@@ -163,7 +163,7 @@ $router->group([
     // Admin pages routes...
     $router->get('pages', 'PageController@index');
     $router->get('pages/create', 'PageController@getCreate');
-    $router->post('pages/create/{id}', 'PageController@postCreate');
+    $router->post('pages/create', 'PageController@postCreate');
     $router->get('pages/edit/{id}', 'PageController@getEdit');
     $router->post('pages/edit/{id}', 'PageController@postEdit');
     $router->get('pages/delete/{id}', 'PageController@getDelete');
@@ -171,7 +171,7 @@ $router->group([
     // Admin images routes...
     $router->get('images', 'ImageController@index');
     $router->get('images/create', 'ImageController@getCreate');
-    $router->post('images/create/{id}', 'ImageController@postCreate');
+    $router->post('images/create', 'ImageController@postCreate');
     $router->get('images/edit/{id}', 'ImageController@getEdit');
     $router->post('images/edit/{id}', 'ImageController@postEdit');
     $router->get('images/delete/{id}', 'ImageController@getDelete');
