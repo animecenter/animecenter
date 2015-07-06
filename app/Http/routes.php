@@ -178,6 +178,7 @@ $router->group([
 
     // Admin options routes...
     $router->get('options/edit', 'OptionController@getEdit');
+    $router->post('options/edit', 'OptionController@postEdit');
 
     // Admin cache routes...
     $router->get('purge-cache', 'CacheController@getPurge');
