@@ -39,8 +39,8 @@ if (isset($_POST['sid'])) {
     $votes = 0;
     $rate = 0;
     while ($row = mysql_fetch_array($res)) {
-        $votes = $row['a_votes'];
-        $rate = $row['a_rating'];
+        $votes = $row['votes'];
+        $rate = $row['rating'];
     }
     $new_votes = $votes + 1;
     $new_rate = sprintf("%.2f", ($rate * $votes + $_POST['rate']) / $new_votes);

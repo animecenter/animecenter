@@ -1,6 +1,6 @@
 @extends('admin.index')
 @section('content')
-    <div class="bigTitle">Edit Series</div>
+    <div class="bigTitle">Edit Anime</div>
     <form action="{{ url('admin/anime/edit/' . $currentAnime['id']) }}" method="post" enctype="multipart/form-data">
 
         {!! csrf_field() !!}
@@ -26,12 +26,10 @@
         <div class="inputSelectarea">
             <div class="smallTitle">Type2:</div>
             <select class="select" name="type2">
-                <option value="subbed" {{ ($currentAnime['type2'] == "subbed") ? 'selected="selected"' : '' }}>
-                    subbed
-                </option>
-                <option value="dubbed" {{ ($currentAnime['type2'] == "dubbed") ? 'selected="selected"' : '' }}>
-                    dubbed
-                </option>
+                <option value="subbed" {{ ($currentAnime['type2'] == "subbed") ?
+                'selected="selected"' : '' }}>subbed</option>
+                <option value="dubbed" {{ ($currentAnime['type2'] == "dubbed") ?
+                'selected="selected"' : '' }}>dubbed</option>
             </select>
             <input value="" type="text" class="textInput2"/>
         </div>
@@ -46,12 +44,10 @@
         <div class="inputSelectarea">
             <div class="smallTitle">Status:</div>
             <select class="select" name="status">
-                <option value="ongoing" {{ ($currentAnime['status'] == "ongoing") ? 'selected="selected"' : '' }}>
-                    Ongoing
-                </option>
-                <option value="finished" {{ ($currentAnime['status'] == "finished") ? 'selected="selected"' : '' }}>
-                    Finished
-                </option>
+                <option value="ongoing" {{ ($currentAnime['status'] == "ongoing") ?
+                'selected="selected"' : '' }}>Ongoing</option>
+                <option value="finished" {{ ($currentAnime['status'] == "finished") ?
+                'selected="selected"' : '' }}>Finished</option>
             </select>
             <input value="" type="text" class="textInput2"/>
         </div>
@@ -63,11 +59,9 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                            if ($anime['prequel'] == $anime['id'] . "," . $anime['title']) {
-                                echo "selected='selected'";
-                            } ?>>
-                        {{ $anime['title'] }}
-                    </option>
+                        if ($anime['prequel'] == $anime['id'] . "," . $anime['title']) {
+                            echo "selected='selected'";
+                        } ?>>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
@@ -80,11 +74,9 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                            if ($anime['sequel'] == $anime['id'] . "," . $anime['title']) {
-                                echo "selected='selected'";
-                            } ?>>
-                        {{ $anime['title'] }}
-                    </option>
+                        if ($anime['sequel'] == $anime['id'] . "," . $anime['title']) {
+                            echo "selected='selected'";
+                        } ?>>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
@@ -97,11 +89,9 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                            if ($anime['story'] == $anime['id'] . "," . $anime['title']) {
-                                echo "selected='selected'";
-                            } ?>>
-                        {{ $anime['title'] }}
-                    </option>
+                        if ($anime['story'] == $anime['id'] . "," . $anime['title']) {
+                            echo "selected='selected'";
+                        } ?>>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
@@ -114,11 +104,9 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                            if ($anime['side_story'] == $anime['id'] . "," . $anime['title']) {
-                                echo "selected='selected'";
-                            } ?>>
-                        {{ $anime['title'] }}
-                    </option>
+                        if ($anime['side_story'] == $anime['id'] . "," . $anime['title']) {
+                            echo "selected='selected'";
+                        } ?>>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
@@ -131,11 +119,9 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                            if ($anime['spin_off'] == $anime['id'] . "," . $anime['title']) {
-                                echo "selected='selected'";
-                            } ?>>
-                        {{ $anime['title'] }}
-                    </option>
+                        if ($anime['spin_off'] == $anime['id'] . "," . $anime['title']) {
+                            echo "selected='selected'";
+                        } ?>>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
@@ -148,11 +134,9 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                            if ($anime['alternative'] == $anime['id'] . "," . $anime['title']) {
-                                echo "selected='selected'";
-                            } ?>>
-                        {{ $anime['title'] }}
-                    </option>
+                        if ($anime['alternative'] == $anime['id'] . "," . $anime['title']) {
+                            echo "selected='selected'";
+                        } ?>>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
@@ -165,10 +149,9 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                            if ($anime['other'] == $anime['id'] . "," . $anime['title']) {
-                                echo "selected='selected'";
-                            } ?>>
-                        {{ $anime['title'] }}
+                        if ($anime['other'] == $anime['id'] . "," . $anime['title']) {
+                            echo "selected='selected'";
+                        } ?>>{{ $anime['title'] }}
                     </option>
                 @endforeach
             </select>
@@ -182,9 +165,9 @@
             @foreach ($genres as $genre)
                 <div class="inputCheck">
                     <input type="checkbox" class="checkbox" name="genres[]" value="{{ $genre['value'] }}" <?php
-                            if (strpos($currentAnime['genres'], $genre['value']) !== false) {
-                                echo "checked='checked'";
-                            }?>/>
+                        if (strpos($currentAnime['genres'], $genre['value']) !== false) {
+                            echo "checked='checked'";
+                        }?>/>
                     <span></span>
                     <div class="smallTitle">
                         {{ $genre['value'] }}
@@ -200,9 +183,9 @@
             <div class="clear"></div>
             <div class="inputCheck">
                 <input type="checkbox" class="checkbox" name="position1" value="recently" <?php
-                        if ($currentAnime['position'] == "recently" or $currentAnime['position'] == "all") {
-                            echo "checked='checked'";
-                        } ?>/>
+                    if ($currentAnime['position'] == "recently" or $currentAnime['position'] == "all") {
+                        echo "checked='checked'";
+                    } ?>/>
                 <span></span>
                 <div class="smallTitle">
                     Recently Added Anime
@@ -212,9 +195,9 @@
 
             <div class="inputCheck">
                 <input type="checkbox" class="checkbox" name="position2" value="featured" <?php
-                        if ($currentAnime['position'] == "featured" or $currentAnime['position'] == "all") {
-                            echo "checked='checked'";
-                        } ?>/>
+                    if ($currentAnime['position'] == "featured" or $currentAnime['position'] == "all") {
+                        echo "checked='checked'";
+                    } ?>/>
                 <span></span>
                 <div class="smallTitle">
                     Featured Anime
@@ -234,25 +217,19 @@
 
         <div class="inputTextarea">
             <div class="smallTitle">Plot Summary:</div>
-            <textarea class="textarea" name="description">
-                {{ $currentAnime['description'] }}
-            </textarea>
+            <textarea class="textarea" name="description">{{ $currentAnime['description'] }}</textarea>
         </div>
         <!--/inputTextarea-->
 
         <div class="inputTextarea">
             <div class="smallTitle">Alternative Titles:</div>
-            <textarea class="textarea" name="alternative_title">
-                {{ $currentAnime['alternative_title'] }}
-            </textarea>
+            <textarea class="textarea" name="alternative_title">{{ $currentAnime['alternative_title'] }}</textarea>
         </div>
         <!--/inputTextarea-->
 
         <div class="inputTextarea">
             <div class="smallTitle">Content:</div>
-            <textarea class="textarea" name="content">
-                {{ $currentAnime['content'] }}
-            </textarea>
+            <textarea class="textarea" name="content">{{ $currentAnime['content'] }}</textarea>
         </div>
         <!--/inputTextarea-->
 

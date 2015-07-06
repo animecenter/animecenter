@@ -91,7 +91,7 @@ class EpisodeController extends Controller
         }
         $this->data['cont'] = $cont;
 
-        return view('episodes.index', $this->data);
+        return view('episodes.show', $this->data);
     }
 
     public function getLatest()

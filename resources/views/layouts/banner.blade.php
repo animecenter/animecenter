@@ -38,29 +38,29 @@
         $(".rateDiv").each(function (index, element) {
             var thiss = $(element);
             $(element).raty({
-                    score: $(this).attr("value"),
-                    starHalf: {{ asset('images/star-half.png') }},
-                    starOff: {{ asset('images/star-off.png') }},
-                    starOn: {{ asset('images/star-on.png') }},
-                    starHover: {{ asset('images/star-hover.png') }},
-                    width: 120,
-                    target: $("#hint" + $(this).attr("id")),
-                    click: function (score, evt) {
-                        $("#hint" + $(this).attr("id")).show().text("Saving your vote...");
-                        $("#hint2" + $(this).attr("id")).hide();
-                        $.post("{{ url('rate-up') }}", {
-                            sid: $(this).attr("id"),
-                            rate: score
-                        }, function (data) {
-                            $("#hint" + thiss.attr("id")).show().text("your vote has been saved");
-                            $("#hint2" + thiss.attr("id")).hide();
-                            setTimeout(function () {
-                                $("#hint" + thiss.attr("id")).hide();
-                                $("#hint2" + thiss.attr("id")).show().text(data);
-                            }, 1000);
-                        });
-                    },
-                    targetKeep: true
+                score: $(this).attr("value"),
+                starHalf: "{{ asset('images/star-half.png') }}",
+                starOff: "{{ asset('images/star-off.png') }}",
+                starOn: "{{ asset('images/star-on.png') }}",
+                starHover: "{{ asset('images/star-hover.png') }}",
+                width: 120,
+                target: $("#hint" + $(this).attr("id")),
+                click: function (score, evt) {
+                    $("#hint" + $(this).attr("id")).show().text("Saving your vote...");
+                    $("#hint2" + $(this).attr("id")).hide();
+                    $.post("{{ url('rate-up') }}", {
+                        sid: $(this).attr("id"),
+                        rate: score
+                    }, function (data) {
+                        $("#hint" + thiss.attr("id")).show().text("your vote has been saved");
+                        $("#hint2" + thiss.attr("id")).hide();
+                        setTimeout(function () {
+                            $("#hint" + thiss.attr("id")).hide();
+                            $("#hint2" + thiss.attr("id")).show().text(data);
+                        }, 1000);
+                    });
+                },
+                targetKeep: true
                 }
             );
         });

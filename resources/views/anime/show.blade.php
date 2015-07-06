@@ -7,7 +7,7 @@
                 <div class="fb-like" style="height:30px;" data-href="{{ url($anime['type2'] . "-anime/" . $anime['slug']) }}"
                      data-width="450" data-show-faces="false" data-send="true"></div>
                 @if(Auth::user())
-                    <a href="<?php echo $url; ?>admin/index.php?page=series_up&id=<?php echo $anime['id']; ?>" class="edit_top">
+                    <a href="{{ url('admin/anime/edit/' . $anime['id']) }}" class="edit_top">
                         Edit
                     </a>
                 @endif
@@ -20,11 +20,10 @@
                             @if(Auth::user()))
                                 <select class="member-select episodess">
                                     <option selected="selected" value="0">Add Episode</option>
-                                    <option value="<?php echo $url; ?>admin/index.php?page=episode_add&id=<?php echo $anime['id']; ?>">
+                                    <option value="{{ url('admin/episodes/create') }}">
                                         Add Episode Manually
                                     </option>
-                                    <option value="<?php echo $url; ?>episode_auto_add.php"
-                                            val="<?php echo $anime['id']; ?>">
+                                    <option value="{{ url('admin/episodes/create') }}" val="{{ $anime['id'] }}">
                                         Add Episode Automatically
                                     </option>
                                 </select>
@@ -186,16 +185,6 @@
                 <!--/episodes-->
             </div>
             <!--/sections-->
-            <div style="width:100%;float:left;margin-bottom:20px" class="">
-                <!-- AnimeCenter - 120x100 - Game Advertising Online -->
-                <iframe marginheight="0" marginwidth="0" scrolling="no" frameborder="0" width="640" height="165"
-                        src="http://www3.game-advertising-online.com/process/serve-f.php?section=serve&id=6120&subid=&v=2hgao&output=gabo"
-                        target="_blank"></iframe>
-                <noframes>Game advertisements by <a href="http://www.game-advertising-online.com" target="_blank">Game
-                        Advertising Online</a> require iframes.
-                </noframes>
-                <!-- END GAO 120x100 -->
-            </div>
             <div style="width:100%;float:left;margin-bottom:10px" class="">
                 <div id="disqus_thread"></div>
                 <script type="text/javascript" data-cfasync='true'>
@@ -219,7 +208,7 @@
                     comments powered by <span class="logo-disqus">Disqus</span>
                 </a>
             </div>
-            <div style="width:100%;float:left;margin-bottom:10px" class=""></div>
+            <div style="width: 100%; float: left; margin-bottom: 10px;" class=""></div>
         </div>
         <!--/left_content-->
         <div id="right_content">
@@ -237,11 +226,11 @@
                     $("#hint2").show();
                 });
                 $("#rateDiv").raty({
-                    score: '{{ $anime['rating'] }}',
-                    starHalf: '{{ asset('images/star-half.png') }}',
-                    starOff: '{{ asset('images/star-off.png') }}',
-                    starOn: '{{ asset('images/star-on.png') }}',
-                    starHover: '{{ asset('images/star-hover.png') }}',
+                    score: "{{ $anime['rating'] }}",
+                    starHalf: "{{ asset('images/star-half.png') }}",
+                    starOff: "{{ asset('images/star-off.png') }}",
+                    starOn: "{{ asset('images/star-on.png') }}",
+                    starHover: "{{ asset('images/star-hover.png') }}",
                     target: ("#hint"),
                     click: function (score, evt) {
                         $("#hint").show().text("Saving your vote...");

@@ -2,13 +2,32 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Images\Image;
+use Illuminate\Auth\Guard;
 
 class ImageController extends Controller
 {
+    /**
+     * @var Image
+     */
+    private $image;
+
+    /**
+     * @var Guard
+     */
+    private $auth;
+
+    /**
+     * @param Image $image
+     * @param Guard $auth
+     */
+    public function __construct(Image $image, Guard $auth)
+    {
+        $this->image = $image;
+        $this->auth = $auth;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +35,10 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $this->data['images'] = $this->image->all();
+        $this->data['user'] = $this->auth->user();
+
+        return view('admin.images.index', $this->data);
     }
 
     /**
@@ -78,8 +100,13 @@ class ImageController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function getDelete($id = 0)
     {
-        //
+        $image = $this->image->findOrFail($id);
+        unlink(public_path("images/" . $image['image']));
+        $image->delete();
+        $msg = 'Anime was deleted successfully!';
+
+        return redirect()->action('Admin\ImageController@index')->with('success', $msg);
     }
 }

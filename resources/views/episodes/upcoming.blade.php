@@ -22,8 +22,8 @@ require_once("header.php");
                 /*
                 print_r($episodes);
                 while($episode=mysql_fetch_assoc($episodes)){
-                           $ser=mysql_fetch_assoc($ob->get_table("an_series","a_id=".$episode['e_series']));
-                           $coming=$episode['e_coming_date'];
+                           $ser=mysql_fetch_assoc($ob->get_table("an_series","a_id=".$episode['series']));
+                           $coming=$episode['coming_date'];
                                       $first  = new DateTime("now");
                                       $second = new DateTime($coming);
                                       $diff = $first->diff( $second );
@@ -32,13 +32,13 @@ require_once("header.php");
                                       $min=$diff->format( '%i');
                                       $second=$diff->format( '%s')
                                       $total_s=($day*86400)+($hr*3600)+($min*60)+$second;
-                            $link=$url.$options[4]['value'].str_replace(" ","-",strtolower($episode['e_title']));
+                            $link=$url.$options[4]['value'].str_replace(" ","-",strtolower($episode['title']));
                  echo $episode;
                 }
                 /*?>
                     <div class="block">
                     <a href="<?= $link;?>">
-                    <img alt='image' class='eimg' src="<?php get_thumbnail('images/'.$ser['a_image'], 50, 75);?>" width="50" height="75" />
+                    <img alt='image' class='eimg' src="<?php get_thumbnail('images/'.$ser['image'], 50, 75);?>" width="50" height="75" />
                     </a>
                      <style>
                      div[id^="Box_jbeeb_"]{
