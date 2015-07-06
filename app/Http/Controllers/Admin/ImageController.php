@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Images\Image;
 use Illuminate\Auth\Guard;
+use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
@@ -35,7 +36,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $this->data['images'] = $this->image->all();
+        $this->data['images'] = $this->image->orderBy('date', 'desc')->get();
         $this->data['user'] = $this->auth->user();
 
         return view('admin.images.index', $this->data);
@@ -46,30 +47,39 @@ class ImageController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function getCreate()
     {
-        //
+        $this->data['user'] = $this->auth->user();
+
+        return view('admin.images.create', $this->data);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @return Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store()
+    public function postCreate(Request $request)
     {
-        //
-    }
+        try {
+            $filename = rand(00000000, 99999999) . '_' . $request['file']->getClientOriginalName();
+            $request['file']->move("images/", $filename);
+            chmod(public_path("images/" . $filename), 0644);
+        } catch (Exception $e) {
+            dd($e);
+        }
+        $this->image->create([
+            'bigtitle' => $request['bigtitle'],
+            'smalltitle' => $request['smalltitle'],
+            'desc' => $request['desc'],
+            'file' => $filename,
+            'link' => $request['link'],
+            'date' => date("Y-m-d H:i:s")
+        ]);
+        $msg = 'Image was created successfully!';
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect()->action('Admin\ImageController@index')->with('success', $msg);
     }
 
     /**
@@ -78,34 +88,60 @@ class ImageController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function getEdit($id = 0)
     {
-        //
+        $this->data['image'] = $this->image->findorFail($id);
+        $this->data['user'] = $this->auth->user();
+
+        return view('admin.images.edit', $this->data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id)
+    public function postEdit($id = 0, Request $request)
     {
-        //
+        $image = $this->image->findOrFail($id);
+        if ($request['new_file']) {
+            try {
+                $filename = rand(00000000, 99999999) . '_' . $request['new_file']->getClientOriginalName();
+                $request['new_file']->move("images/", $filename);
+                chmod(public_path("images/" . $filename), 0644);
+                if ($image['file']) {
+                    unlink(public_path("images/" . $image['file']));
+                }
+                $image->file = $filename;
+            } catch (Exception $e) {
+                dd($e);
+            }
+        }
+        $image->bigtitle = $request['bigtitle'];
+        $image->smalltitle = $request['smalltitle'];
+        $image->desc = $request['desc'];
+        $image->link = $request['link'];
+        $image->date = date("Y-m-d H:i:s");
+        $image->save();
+        $msg = 'Image was updated successfully!';
+
+        return redirect()->action('Admin\ImageController@index')->with('success', $msg);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function getDelete($id = 0)
     {
         $image = $this->image->findOrFail($id);
-        unlink(public_path("images/" . $image['image']));
+        unlink(public_path("images/" . $image['file']));
         $image->delete();
-        $msg = 'Anime was deleted successfully!';
+        $msg = 'Image was deleted successfully!';
 
         return redirect()->action('Admin\ImageController@index')->with('success', $msg);
     }

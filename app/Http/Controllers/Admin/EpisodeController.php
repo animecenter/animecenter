@@ -25,6 +25,8 @@ class EpisodeController extends Controller
      */
     private $auth;
 
+    private $data;
+
     /**
      * @param Anime $anime
      * @param Episode $episode
@@ -40,7 +42,7 @@ class EpisodeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -53,7 +55,7 @@ class EpisodeController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function getCreate()
     {
@@ -66,13 +68,13 @@ class EpisodeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return \Illuminate\View\View
      */
     public function getEdit($id = 0)
     {
         $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
-        $this->data['episode'] = $this->episode->findorFail($id);
+        $this->data['episode'] = $this->episode->findOrFail($id);
         $this->data['user'] = $this->auth->user();
 
         return view('admin.episodes.edit', $this->data);
@@ -81,16 +83,16 @@ class EpisodeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param int $id
      * @param Request $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function postEdit($id = 0, Request $request)
     {
         $episode = $this->episode->findOrFail($id);
         $episode->anime_id = $request['anime_id'];
         $episode->title = $request['title'];
-        $episode->slug = $request['slug'];
+        $episode->slug = str_slug($request['title']);
         $episode->subdub = $request['subdub'];
         $episode->show = $request['show'];
         $episode->not_yet_aired = $request['not_yet_aired'];
@@ -108,7 +110,7 @@ class EpisodeController extends Controller
         $episode->order = $request['order'];
         $episode->coming_date = $request['coming_date'];
 
-        $msg = 'Anime was updated successfully!';
+        $msg = 'Episode was updated successfully!';
         $episode->save();
 
         return redirect()->back()->with('success', $msg);
@@ -117,8 +119,8 @@ class EpisodeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function getDelete($id = 0)
     {
