@@ -87,7 +87,7 @@
 
         <div class="inputSelectarea">
             <div class="smallTitle">Side Story:</div>
-            <select class="select" name="s_story">
+            <select class="select" name="side_story">
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}">{{ $anime['title'] }}</option>
@@ -111,7 +111,7 @@
 
         <div class="inputSelectarea">
             <div class="smallTitle">Alternative:</div>
-            <select class="select" name="alternative_2">
+            <select class="select" name="alternative">
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}">{{ $anime['title'] }}</option>
@@ -178,7 +178,13 @@
 
         <div class="inputTextarea">
             <div class="smallTitle">Alternative Titles:</div>
-            <textarea class="textarea" name="alternative">{{ old('alternative') }}</textarea>
+            <textarea class="textarea" name="alternative_title">{{ old('alternative') }}</textarea>
+        </div>
+        <!--/inputTextarea-->
+
+        <div class="inputTextarea">
+            <div class="smallTitle">Content:</div>
+            <textarea class="textarea" name="content">{{ old('content') }}</textarea>
         </div>
         <!--/inputTextarea-->
 

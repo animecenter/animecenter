@@ -4,8 +4,7 @@
     <form action="{{ url('admin/episodes/edit/' . $episode['id']) }}" method="post" enctype="multipart/form-data">
 
         {!! csrf_field() !!}
-
-        <input name="date" value="{{ old('date') ? old('date') : $episode['date'] }}" type="hidden"/>
+        <input type="hidden" name="previous_url" value="{{ redirect()->back()->getTargetUrl() }}"/>
 
         <div class="inputNOption" style="width: 100%;">
             <div class="smallTitle">Title:</div>
@@ -33,8 +32,8 @@
                     Set Date
                 </a>
             </div>
-            <input name="coming_date" value="{{ old('coming_date') ?
-                old('coming_date') : $episode['coming_date'] }}" type="text" class="textInput"/>
+            <input name="coming_date" value="{{ old('coming_date') ? old('coming_date') : $episode['coming_date'] }}"
+                   type="text" class="textInput"/>
         </div>
         <!--/inputNoption-->
 
@@ -58,8 +57,8 @@
 
         <div class="inputTextarea">
             <div class="smallTitle">Not Yet Aired Episode Info:</div>
-            <textarea class="textarea" name="not_yet_aired">{{ old('not_yet_aired') ?
-                old('not_yet_aired') : $episode['not_yet_aired'] }}</textarea>
+            <textarea class="textarea" name="not_yet_aired">{{ old('not_yet_aired') ? old('not_yet_aired') :
+                $episode['not_yet_aired'] }}</textarea>
         </div>
         <!--/inputTextarea-->
 
@@ -100,15 +99,13 @@
 
         <div class="inputTextarea">
             <div class="smallTitle">RAW:</div>
-            <textarea class="textarea" name="raw">{{ old('raw') ?
-            old('raw') : $episode['raw'] }}</textarea>
+            <textarea class="textarea" name="raw">{{ old('raw') ? old('raw') : $episode['raw'] }}</textarea>
         </div>
         <!--/inputTextarea-->
 
         <div class="inputTextarea">
             <div>Backup - Use Mirror: 1 as primary.</div>
-            <textarea class="textarea" name="subdub">{{ old('subdub') ?
-            old('subdub') : $episode['subdub'] }}</textarea>
+            <textarea class="textarea" name="subdub">{{ old('subdub') ? old('subdub') : $episode['subdub'] }}</textarea>
         </div>
         <!--/inputTextarea-->
 

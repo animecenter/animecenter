@@ -66,6 +66,41 @@ class EpisodeController extends Controller
     }
 
     /**
+     * Create the specified resource in storage.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postCreate(Request $request)
+    {
+        $this->episode->create([
+            'anime_id' => $request['anime_id'],
+            'title' => $request['title'],
+            'slug' => str_slug($request['title']),
+            'subdub' => $request['subdub'],
+            'not_yet_aired' => $request['not_yet_aired'],
+            'raw' => $request['raw'],
+            'hd' => $request['hd'],
+            'mirror1' => $request['mirror1'],
+            'mirror2' => $request['mirror2'],
+            'mirror3' => $request['mirror3'],
+            'mirror4' => $request['mirror4'],
+            'date' => time(),
+            'date2' => time(),
+            'rating' => 0,
+            'votes' => 0,
+            'visits' => 0,
+            'order' => (int) end(explode(' ', $request['title'])),
+            'coming_date' => $request['coming_date'],
+            'show' => $request['show'] ? 1 : 0,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+        $msg = 'Episode was created successfully!';
+
+        return redirect()->action('Admin\EpisodeController@index')->with('success', $msg);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
@@ -94,7 +129,7 @@ class EpisodeController extends Controller
         $episode->title = $request['title'];
         $episode->slug = str_slug($request['title']);
         $episode->subdub = $request['subdub'];
-        $episode->show = $request['show'];
+        $episode->show = $request['show'] ? 1 : 0;
         $episode->not_yet_aired = $request['not_yet_aired'];
         $episode->raw = $request['raw'];
         $episode->hd = $request['hd'];
@@ -103,17 +138,12 @@ class EpisodeController extends Controller
         $episode->mirror3 = $request['mirror3'];
         $episode->mirror4 = $request['mirror4'];
         $episode->date = $request['reset'] ? time() : $request['date'];
-        $episode->date2 = $request['date2'];
-        $episode->rating = $request['rating'];
-        $episode->votes = $request['votes'];
-        $episode->visits = $request['visits'];
-        $episode->order = $request['order'];
+        $episode->date2 = time();
         $episode->coming_date = $request['coming_date'];
-
-        $msg = 'Episode was updated successfully!';
         $episode->save();
+        $msg = 'Episode was updated successfully!';
 
-        return redirect()->back()->with('success', $msg);
+        return redirect()->to($request['previous_url'])->with('success', $msg);
     }
 
     /**
