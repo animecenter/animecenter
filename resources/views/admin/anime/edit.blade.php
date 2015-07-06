@@ -4,6 +4,7 @@
     <form action="{{ url('admin/anime/edit/' . $currentAnime['id']) }}" method="post" enctype="multipart/form-data">
 
         {!! csrf_field() !!}
+        <input type="hidden" name="previous_url" value="{{ redirect()->back()->getTargetUrl() }}"/>
 
         <div class="inputNOption" style="width: 100%;">
             <div class="smallTitle">Title:</div>
@@ -58,10 +59,9 @@
             <select class="select" name="prequel">
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
-                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($anime['prequel'] == $anime['id'] . "," . $anime['title']) {
-                            echo "selected='selected'";
-                        } ?>>{{ $anime['title'] }}</option>
+                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}" {{
+                        $currentAnime['prequel'] === $anime['id'] . "," . $anime['title'] ? 'selected="selected"' : ''
+                        }}>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
@@ -74,7 +74,7 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($anime['sequel'] == $anime['id'] . "," . $anime['title']) {
+                        if ($currentAnime['sequel'] == $anime['id'] . "," . $anime['title']) {
                             echo "selected='selected'";
                         } ?>>{{ $anime['title'] }}</option>
                 @endforeach
@@ -89,7 +89,7 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($anime['story'] == $anime['id'] . "," . $anime['title']) {
+                        if ($currentAnime['story'] == $anime['id'] . "," . $anime['title']) {
                             echo "selected='selected'";
                         } ?>>{{ $anime['title'] }}</option>
                 @endforeach
@@ -104,7 +104,7 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($anime['side_story'] == $anime['id'] . "," . $anime['title']) {
+                        if ($currentAnime['side_story'] == $anime['id'] . "," . $anime['title']) {
                             echo "selected='selected'";
                         } ?>>{{ $anime['title'] }}</option>
                 @endforeach
@@ -119,7 +119,7 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($anime['spin_off'] == $anime['id'] . "," . $anime['title']) {
+                        if ($currentAnime['spin_off'] == $anime['id'] . "," . $anime['title']) {
                             echo "selected='selected'";
                         } ?>>{{ $anime['title'] }}</option>
                 @endforeach
@@ -134,7 +134,7 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($anime['alternative'] == $anime['id'] . "," . $anime['title']) {
+                        if ($currentAnime['alternative'] == $anime['id'] . "," . $anime['title']) {
                             echo "selected='selected'";
                         } ?>>{{ $anime['title'] }}</option>
                 @endforeach
@@ -149,7 +149,7 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($anime['other'] == $anime['id'] . "," . $anime['title']) {
+                        if ($currentAnime['other'] == $anime['id'] . "," . $anime['title']) {
                             echo "selected='selected'";
                         } ?>>{{ $anime['title'] }}
                     </option>

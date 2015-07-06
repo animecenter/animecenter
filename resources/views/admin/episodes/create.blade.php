@@ -31,7 +31,7 @@
 
         <div class="clear"></div>
         <div class="inputCheck">
-            <input type="checkbox" class="checkbox" name="show" value="1" {{ old('checkbox') ? old('checkbox') : '' }}/>
+            <input type="checkbox" class="checkbox" name="show" value="1" {{ old('show') ? old('show') : '' }}/>
             <span></span>
             <div class="smallTitle">Show in home page</div>
         </div>

@@ -47,7 +47,7 @@ class AnimeController extends Controller
      */
     public function index()
     {
-        $this->data['animes'] = $this->anime->orderBy('id', 'DESC')->get();
+        $this->data['animes'] = $this->anime->orderBy('date', 'DESC')->get();
         $this->data['user'] = $this->auth->user();
 
         return view('admin.anime.index', $this->data);
@@ -75,31 +75,50 @@ class AnimeController extends Controller
      */
     public function postCreate(Request $request)
     {
+        if ($request['position1'] && $request['position2']) {
+            $position = "all";
+        } elseif ($request['position1'] && !$request['position2']) {
+            $position = "recently";
+        } elseif (!$request['position1'] && $request['position2']) {
+            $position = "featured";
+        } else {
+            $position = "none";
+        }
+        if ($request['image']) {
+            try {
+                $filename = rand(00000000, 99999999) . '_' . $request['image']->getClientOriginalName();
+                $request['image']->move("images/", $filename);
+                chmod(public_path("images/" . $filename), 0644);
+            } catch (Exception $e) {
+                dd($e);
+            }
+        }
         $this->anime->create([
-            'name' => $request['title'],
+            'title' => $request['title'],
             'slug' => str_slug($request['title']),
             'content' => $request['content'],
             'genres' => $request['genres'] ? implode(',', $request['genres']) : '',
             'episodes' => $request['episodes'],
             'type' => $request['type'],
-            'age' => $request['age'],
             'type2' => $request['type2'],
+            'age' => $request['age'],
             'status' => $request['status'],
             'prequel' => $request['prequel'],
             'sequel' => $request['sequel'],
             'story' => $request['story'],
             'side_story' => $request['side_story'],
             'spin_off' => $request['spin_off'],
+            'other' => $request['other'],
             'alternative' => $request['alternative'],
-            'position' => $request['position'],
+            'position' => $position,
             'description' => $request['description'],
             'alternative_title' => $request['alternative_title'],
-            'image' => $request['image'],
-            'visits' => $request['visits'],
-            'date' => $request['date'],
-            'date2' => $request['date2'],
+            'image' => $filename,
+            'date' => time(),
+            'date2' => time(),
             'rating' => 0,
-            'votes' => 0
+            'visits' => 0,
+            'votes' => 0,
         ]);
         $msg = 'Anime was created successfully!';
 
@@ -146,7 +165,7 @@ class AnimeController extends Controller
         $anime->spin_off = $request['spin_off'];
         $anime->alternative = $request['alternative'];
         $anime->other = $request['other'];
-        $anime->genres = implode(',', $request['genres']);
+        $anime->genres = $request['genres'] ? implode(',', $request['genres']) : '';
         $anime->description = $request['description'];
         $anime->alternative_title = $request['alternative_title'];
         $anime->content = $request['content'];
@@ -171,10 +190,10 @@ class AnimeController extends Controller
                 dd($e);
             }
         }
-        $msg = 'Anime was updated successfully!';
         $anime->save();
+        $msg = 'Anime was updated successfully!';
 
-        return redirect()->action('Admin\AnimeController@index')->with('success', $msg);
+        return redirect()->to($request['previous_url'])->with('success', $msg);
     }
 
     /**
