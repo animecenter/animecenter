@@ -23,7 +23,7 @@
                             }
                             ?>
                             <div class="img">
-                                <img src="{{ asset($image) }}">
+                                <img src="{{ $image ? asset($image) : asset('images/default-thumbnail.JPG') }}">
                                 <div class="type <?php echo $episode['anime']['type2'];
                                 if ($episode['raw'] != null and $episode['subdub'] == null) {
                                     echo " raw";
@@ -53,14 +53,19 @@
                                 $diff = $first->diff($second);
                                 $day = $diff->format('%d') + ($diff->format('%y') * 365);
                                 $hr = $diff->format('%H');
-                                if ($day <= 0) {
-                                    if ($hr <= 0) {
-                                        echo $diff->format('%i min') . " ago";
+                                $months = $diff->format('%m');
+                                if ($months <= 0) {
+                                    if ($day <= 0) {
+                                        if ($hr <= 0) {
+                                            echo $diff->format('%i min') . " ago";
+                                        } else {
+                                            echo $diff->format('%H hours %i min') . " ago";
+                                        }
                                     } else {
-                                        echo $diff->format('%H hours %i min') . " ago";
+                                        echo $diff->format('%d day %H hours') . " ago";
                                     }
                                 } else {
-                                    echo $diff->format('%d day %H hours') . " ago";
+                                    echo $diff->format('%m month %d day %H hours') . " ago";
                                 }
                                 ?>
                             </div>
