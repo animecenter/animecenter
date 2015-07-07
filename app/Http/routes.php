@@ -67,7 +67,7 @@ $router->get('update-db', function() {
     Schema::table('animes', function ($table) {
         $table->renameColumn('a_id', 'id');
         $table->renameColumn('a_title', 'title');
-        $table->string('slug', 255)->unique();
+        $table->string('slug', 255);
         $table->renameColumn('a_content', 'content');
         $table->renameColumn('a_genres', 'genres');
         $table->renameColumn('a_episodes', 'episodes');
