@@ -97,11 +97,12 @@ class EpisodeController extends Controller
     public function getLatest()
     {
         $this->data['episodes'] = $episode = $this->episode->with('anime')
-            ->orderBy('id', 'DESC')
+            ->where('show', '=', '1')
+            ->orderBy('date', 'DESC')
             ->paginate(24);
-        $meta_title = "Latest Episodes | Watch Anime Online Free";
-        $meta_desc = "Watch Latest Episodes!,Watch Latest Episodes! English Subbed/Dubbed,Watch Latest Episodes English Sub/Dub, Download Latest Episodes for free,Watch Latest Episodes! Online English Subbed and Dubbed  for Free Online only at Anime Center";
-        $meta_key = "Download Latest Episodes,Watch Latest Episodes on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime  ";
+        $this->data['meta_title'] = $meta_title = "Latest Episodes | Watch Anime Online Free";
+        $this->data['meta_desc'] = "Watch Latest Episodes!,Watch Latest Episodes! English Subbed/Dubbed,Watch Latest Episodes English Sub/Dub, Download Latest Episodes for free,Watch Latest Episodes! Online English Subbed and Dubbed  for Free Online only at Anime Center";
+        $this->data['meta_key'] = "Download Latest Episodes,Watch Latest Episodes on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime  ";
 
         return view('episodes.latest', $this->data);
     }

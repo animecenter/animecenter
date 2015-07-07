@@ -2,7 +2,8 @@
 
 function get_thumbnail($src_image, $thumbnail_width, $thumbnail_height)
 {
-    $image_name = explode('.', end(explode('/', $src_image)));
+    $image_name = explode('/', $src_image);
+    $image_name = explode('.', end($image_name));
     $folderName = public_path("animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/");
     if (!file_exists($folderName)) {
         mkdir($folderName);
