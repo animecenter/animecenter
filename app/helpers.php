@@ -3,11 +3,11 @@
 function get_thumbnail($src_image, $thumbnail_width, $thumbnail_height)
 {
     $image_name = explode('.', end(explode('/', $src_image)));
-    $folderName = "animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/";
+    $folderName = public_path("animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/");
     if (!file_exists($folderName)) {
         mkdir($folderName);
     }
-    $dest_image = "animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/" . $image_name[0] . ".jpg";
+    $dest_image = public_path("animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/" . $image_name[0] . ".jpg");
     if (!file_exists($dest_image)) {
         resize_crop($src_image, $dest_image, $thumbnail_width, $thumbnail_height);
     }
