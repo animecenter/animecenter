@@ -122,6 +122,9 @@ $router->get('update-db', function() {
         $table->renameColumn('e_visits', 'visits');
         $table->renameColumn('e_order', 'order');
         $table->renameColumn('e_coming_date', 'coming_date');
+        $table->foreign('anime_id')->references('id')->on('animes')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
     });
     $episodes = DB::table('episodes')->get(['id', 'title']);
     foreach($episodes as $episode) {
