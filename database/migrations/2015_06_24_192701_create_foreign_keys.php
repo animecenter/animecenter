@@ -10,18 +10,18 @@ class CreateForeignKeys extends Migration
     {
         Schema::table('episodes', function (Blueprint $table) {
             $table->foreign('anime_id')->references('id')->on('animes')
-                        ->onDelete('cascade')
-                        ->onUpdate('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
         Schema::table('anime_genre', function (Blueprint $table) {
             $table->foreign('anime_id')->references('id')->on('animes')
-                        ->onDelete('cascade')
-                        ->onUpdate('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
         Schema::table('anime_genre', function (Blueprint $table) {
             $table->foreign('genre_id')->references('id')->on('genres')
-                        ->onDelete('cascade')
-                        ->onUpdate('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
