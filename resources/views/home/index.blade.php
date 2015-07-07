@@ -145,7 +145,7 @@
                     $options[2]['value'] . $anime['slug']) }}">
                         <div class="block">
                             <div class="img">
-                                <img alt="image" src="{{ asset(get_thumbnail('images/'.$anime['image'], 127, 189)) }}"
+                                <img alt="image" src="{{ asset(get_thumbnail('images/' . $anime['image'], 127, 189)) }}"
                                      width="127" height="189">
                             </div>
                             <div class="main_title">
