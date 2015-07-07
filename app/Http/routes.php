@@ -162,16 +162,16 @@ $router->get('update-db', function() {
     // Update Genres
     Schema::rename("an_genres", "genres");
     Schema::table('genres', function ($table) {
-        $table->renameColumn('o_id', 'id');
-        $table->renameColumn('o_value', 'value');
+        $table->renameColumn('g_id', 'id');
+        $table->renameColumn('g_value', 'value');
     });
     echo 'All genres were updated';
 
     // Update Options
     Schema::rename("an_options", "options");
     Schema::table('options', function ($table) {
-        $table->renameColumn('g_id', 'id');
-        $table->renameColumn('g_value', 'value');
+        $table->renameColumn('o_id', 'id');
+        $table->renameColumn('o_value', 'value');
     });
     echo 'All options were updated';
 
