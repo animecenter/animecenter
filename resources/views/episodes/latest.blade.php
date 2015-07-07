@@ -51,21 +51,33 @@
                                 $first = new DateTime(date("Y-m-d H:i:s"));
                                 $second = new DateTime(date("Y-m-d H:i:s", $episode['date']));
                                 $diff = $first->diff($second);
-                                $day = $diff->format('%d') + ($diff->format('%y') * 365);
-                                $hr = $diff->format('%H');
+                                $day = $diff->format('%d');
+                                $hr = $diff->format('%h');
                                 $months = $diff->format('%m');
                                 if ($months <= 0) {
                                     if ($day <= 0) {
                                         if ($hr <= 0) {
                                             echo $diff->format('%i min') . " ago";
                                         } else {
-                                            echo $diff->format('%H hours %i min') . " ago";
+                                            echo $diff->format('%h hours %i min') . " ago";
                                         }
                                     } else {
-                                        echo $diff->format('%d day %H hours') . " ago";
+                                        echo $diff->format('%d day %h hours') . " ago";
                                     }
                                 } else {
-                                    echo $diff->format('%m month %d day %H hours') . " ago";
+                                    if ($day <= 0) {
+                                        if ($hr <= 0) {
+                                            echo $diff->format('%m month %i min') . " ago";
+                                        } else {
+                                            echo $diff->format('%m month %h hours %i min') . " ago";
+                                        }
+                                    } else {
+                                        if ($hr <= 0) {
+                                            echo $diff->format('%m month %d day %i min') . " ago";
+                                        } else {
+                                            echo $diff->format('%m month %d day %h hours') . " ago";
+                                        }
+                                    }
                                 }
                                 ?>
                             </div>
