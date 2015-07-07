@@ -146,7 +146,7 @@
                     } ?>
                 </div>
                 <div class="rating_div">
-                    <div class="views_value view_episode" id="<?php echo $episode['id']; ?>"></div>
+                    <div class="views_value view_episode" id="<?php echo $episode['id']; ?>">{{ $episode['visits'] }}<span> Views</span></div>
                     <div id='rateContainor' style='float: left; width: 200px; margin-left: 20px;'>
                         <div style='float:left;' class='rating' id='rateDiv'></div>
                         <div style='float: left; font-size: 8pt; clear: both; width: 100%; display:none' id='hint'></div>

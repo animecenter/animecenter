@@ -153,11 +153,11 @@
                 </div>
                 <!--/series-->
                 <div class="rating_div">
-                    <div class="views_value view_series" id="{{ $anime['id'] }}"></div>
+                    <div class="views_value view_series" id="{{ $anime['id'] }}">{{ $anime['visits'] }}<span> Views</span></div>
                     <div id='rateContainor' style='float: left; width: 200px; margin-left: 20px;'>
                         <div style='float:left;' value="{{ $anime['rating'] }}" id="rateDiv" class='rating'></div>
                         <div style='float: left; font-size: 8pt; clear: both; width: 100%; display:none' id='hint'></div>
-                        <div id='hint2' style='float:left;font-size:8pt'>
+                        <div id='hint2' style="float: left; font-size: 8pt">
                             <?php
                             echo "Average: " . (($anime['rating']) ?
                                 sprintf("%.2f", $anime['rating']) : 0) . " ( " .
