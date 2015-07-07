@@ -31,48 +31,17 @@ function thumbcreate($video_field) {
     return $path;
 }
 
-$router->get('actualizar-episodios', function() {
-    $episodes = DB::table('episodes')->get(['id', 'title']);
-    foreach($episodes as $episode) {
-        DB::table('episodes')->where('id', $episode->id)->update([
-            'slug' => str_slug($episode->title)
-        ]);
-    }
-    echo 'All episodes have a slug now';
-});
-
-$router->get('update-anime', function() {
-    $animes = DB::table('animes')->get(['id', 'title']);
-    foreach($animes as $anime) {
-        DB::table('animes')->where('id', $anime->id)->update([
-            'slug' => str_slug($anime->title)
-        ]);
-    }
-    echo 'All anime have a slug now';
-});
-
-$router->get('update-pages', function() {
-    $pages = DB::table('pages')->get(['id', 'link']);
-    foreach($pages as $page) {
-        if (strpos($page->link, 'hunter-x-hunter-2011-') !== false) {
-            DB::table('pages')->where('id', $page->id)->update([
-                'link' => '/subbed-anime/hunter-x-hunter-2011'
-            ]);
-        } else {
-            DB::table('pages')->where('id', $page->id)->update([
-                'link' => str_replace('http://www.animecenter.tv', '',
-                    str_replace('http://animecenter.tv', '', strtolower($page->link)))
-            ]);
-        }
-    }
-    echo 'All link from pages were updated';
-});
 
 use App\Users\User;
 use Illuminate\Database\Schema\Blueprint;
-$router->get('create-users', function() {
-    Schema::drop('an_users');
+$router->get('update-db', function() {
+    ini_set('max_execution_time', 0);
+    ini_set('memory_limit', '2048M');
+
+    // Update Users
+    Schema::dropIfExists('an_users');
     Schema::create('users', function (Blueprint $table) {
+        $table->engine = 'InnoDB';
         $table->increments('id');
         $table->string('username', 191)->unique();
         $table->string('email', 191)->unique();
@@ -87,10 +56,132 @@ $router->get('create-users', function() {
         'password' => Hash::make('esinseguro')
     ]);
     Schema::create('password_resets', function (Blueprint $table) {
+        $table->engine = 'InnoDB';
         $table->string('email')->index();
         $table->string('token')->index();
         $table->timestamp('created_at');
     });
+
+    // Update Anime
+    Schema::rename("an_series", "animes");
+    Schema::table('animes', function ($table) {
+        $table->renameColumn('a_id', 'id');
+        $table->renameColumn('a_title', 'title');
+        $table->renameColumn('a_content', 'content');
+        $table->renameColumn('a_genres', 'genres');
+        $table->renameColumn('a_episodes', 'episodes');
+        $table->renameColumn('a_type', 'type');
+        $table->renameColumn('a_age', 'age');
+        $table->renameColumn('a_type2', 'type2');
+        $table->renameColumn('a_status', 'status');
+        $table->renameColumn('a_prequel', 'prequel');
+        $table->renameColumn('a_sequel', 'sequel');
+        $table->renameColumn('a_story', 'story');
+        $table->renameColumn('a_side_story', 'side_story');
+        $table->renameColumn('a_spin_off', 'spin_off');
+        $table->renameColumn('a_alternative', 'alternative');
+        $table->renameColumn('a_other', 'other');
+        $table->renameColumn('a_position', 'position');
+        $table->renameColumn('a_description', 'description');
+        $table->renameColumn('a_alternative_title', 'alternative_title');
+        $table->renameColumn('a_image', 'image');
+        $table->renameColumn('a_rating', 'rating');
+        $table->renameColumn('a_votes', 'votes');
+        $table->renameColumn('a_visits', 'visits');
+        $table->renameColumn('a_date', 'date');
+        $table->renameColumn('a_date2', 'date2');
+    });
+    $animes = DB::table('animes')->get(['id', 'title']);
+    foreach($animes as $anime) {
+        DB::table('animes')->where('id', $anime->id)->update([
+            'slug' => str_slug($anime->title)
+        ]);
+    }
+    echo 'All anime have a slug now';
+
+    // Update Episodes
+    Schema::rename("an_episodes", "episodes");
+    Schema::table('episodes', function ($table) {
+        $table->renameColumn('e_id', 'id');
+        $table->renameColumn('e_title', 'title');
+        $table->renameColumn('e_subdub', 'subdub');
+        $table->renameColumn('e_not_yeird', 'not_yet_aired');
+        $table->renameColumn('e_raw', 'raw');
+        $table->renameColumn('e_hd', 'hd');
+        $table->renameColumn('e_mirror1', 'mirror1');
+        $table->renameColumn('e_mirror2', 'mirror2');
+        $table->renameColumn('e_mirror3', 'mirror3');
+        $table->renameColumn('e_mirror4', 'mirror4');
+        $table->renameColumn('e_series', 'anime_id');
+        $table->renameColumn('e_date', 'date');
+        $table->renameColumn('e_date2', 'date2');
+        $table->renameColumn('e_rating', 'rating');
+        $table->renameColumn('e_votes', 'votes');
+        $table->renameColumn('e_visits', 'visits');
+        $table->renameColumn('e_order', 'order');
+        $table->renameColumn('e_coming_date', 'coming_date');
+    });
+    $episodes = DB::table('episodes')->get(['id', 'title']);
+    foreach($episodes as $episode) {
+        DB::table('episodes')->where('id', $episode->id)->update([
+            'slug' => str_slug($episode->title)
+        ]);
+    }
+    echo 'All episodes have a slug now';
+
+    // Update Pages
+    Schema::rename("an_pages", "pages");
+    Schema::table('pages', function ($table) {
+        $table->renameColumn('p_id', 'id');
+        $table->renameColumn('p_title', 'title');
+        $table->renameColumn('p_content', 'content');
+        $table->renameColumn('p_link', 'link');
+        $table->renameColumn('p_order', 'order');
+        $table->renameColumn('p_position', 'position');
+    });
+    $pages = DB::table('pages')->get(['id', 'link']);
+    foreach($pages as $page) {
+        if (strpos($page->link, 'hunter-x-hunter-2011-') !== false) {
+            DB::table('pages')->where('id', $page->id)->update([
+                'link' => '/subbed-anime/hunter-x-hunter-2011'
+            ]);
+        } else {
+            DB::table('pages')->where('id', $page->id)->update([
+                'link' => str_replace('http://www.animecenter.tv', '',
+                    str_replace('http://animecenter.tv', '', strtolower($page->link)))
+            ]);
+        }
+    }
+    echo 'All pages were updated';
+
+    // Update Genres
+    Schema::rename("an_genres", "genres");
+    Schema::table('genres', function ($table) {
+        $table->renameColumn('o_id', 'id');
+        $table->renameColumn('o_value', 'value');
+    });
+    echo 'All genres were updated';
+
+    // Update Options
+    Schema::rename("an_options", "options");
+    Schema::table('options', function ($table) {
+        $table->renameColumn('g_id', 'id');
+        $table->renameColumn('g_value', 'value');
+    });
+    echo 'All options were updated';
+
+    // Update Images
+    Schema::rename("an_images", "images");
+    Schema::table('images', function ($table) {
+        $table->renameColumn('i_id', 'id');
+        $table->renameColumn('i_bigtitle', 'bigtitle');
+        $table->renameColumn('i_smalltitle', 'smalltitle');
+        $table->renameColumn('i_desc', 'desc');
+        $table->renameColumn('i_file', 'file');
+        $table->renameColumn('i_link', 'link');
+        $table->renameColumn('i_date', 'date');
+    });
+    echo 'All images were updated';
 });
 
 // Home routes...
