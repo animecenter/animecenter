@@ -172,8 +172,9 @@ class AnimeController extends Controller
 
     public function getSubbedAnime($slug)
     {
-        $this->data['anime'] = $anime = $this->anime->with('episodes')
-            ->where('slug', '=', $slug)->firstOrFail();
+        $this->data['anime'] = $anime = $this->anime->with(['episodes' => function ($query) {
+            $query->orderBy('order');
+        }])->where('slug', '=', $slug)->firstOrFail();
         $this->data['lastEpisode'] = $this->episode->where('anime_id', '=', $anime['id'])
             ->where('not_yet_aired', '=', null)
             ->orderBy('id', 'DESC')
@@ -208,8 +209,9 @@ class AnimeController extends Controller
 
     public function getDubbedAnime($slug)
     {
-        $this->data['anime'] = $anime = $this->anime->with('episodes')
-            ->where('slug', '=', $slug)->firstOrFail();
+        $this->data['anime'] = $anime = $this->anime->with(['episodes' => function ($query) {
+            $query->orderBy('order');
+        }])->where('slug', '=', $slug)->firstOrFail();
         $this->data['lastEpisode'] = $this->episode->where('anime_id', '=', $anime['id'])
             ->where('not_yet_aired', '=', null)
             ->orderBy('id', 'DESC')
@@ -261,7 +263,6 @@ class AnimeController extends Controller
     public function getLatest()
     {
         $this->data['animes'] = $this->anime->orderBy('id', 'DESC')->paginate(20);
-        $this->data['animeBanner'] = $this->anime->orderByRaw("RAND()")->take(1)->first();
         $this->data['metaTitle'] = "Latest Anime Series added to site | Watch Anime Online Free";
         $this->data['metaDesc'] = "Watch Latest Anime Series added to site!,Watch Latest Anime Series added to site! English Subbed/Dubbed,Watch Latest Anime Series added to site English Sub/Dub, Download Latest Anime Series added to site for free,Watch Latest Anime Series added to site! Online English Subbed and Dubbed  for Free Online only at Anime Center";
         $this->data['metaKey'] = "Download Latest Anime Series added to site,Watch Latest Anime Series added to site on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
