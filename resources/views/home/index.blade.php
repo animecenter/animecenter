@@ -144,7 +144,6 @@
                     $options[3]['value'] . $anime['slug'] :
                     $options[2]['value'] . $anime['slug']) }}">
                         <div class="block">
-                            {{ dd($anime) }}
                             <div class="img">
                                 <img alt="image" src="{{ asset(get_thumbnail('images/'.$anime['image'], 127, 189)) }}"
                                      width="127" height="189">
