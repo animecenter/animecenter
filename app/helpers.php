@@ -2,14 +2,13 @@
 
 function get_thumbnail($src_image, $thumbnail_width, $thumbnail_height)
 {
-    $image_name = explode('/', $src_image);
-    $image_name = explode('.', end($image_name));
-    @mkdir("animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/");
+    $image_name = explode('.', end(explode('/', $src_image)));
+    mkdir(public_path("animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/"));
     $dest_image = "animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/" . $image_name[0] . ".jpg";
-    if ( ! file_exists($dest_image)) {
+    if (!file_exists($dest_image)) {
         resize_crop($src_image, $dest_image, $thumbnail_width, $thumbnail_height);
     }
-    if ( ! file_exists($dest_image)) {
+    if (!file_exists($dest_image)) {
         return $src_image;
     }
 
