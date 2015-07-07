@@ -67,6 +67,7 @@ $router->get('update-db', function() {
     Schema::table('animes', function ($table) {
         $table->renameColumn('a_id', 'id');
         $table->renameColumn('a_title', 'title');
+        $table->string('slug', 255)->unique();
         $table->renameColumn('a_content', 'content');
         $table->renameColumn('a_genres', 'genres');
         $table->renameColumn('a_episodes', 'episodes');
@@ -104,6 +105,7 @@ $router->get('update-db', function() {
     Schema::table('episodes', function ($table) {
         $table->renameColumn('e_id', 'id');
         $table->renameColumn('e_title', 'title');
+        $table->string('slug', 255)->unique();
         $table->renameColumn('e_subdub', 'subdub');
         $table->renameColumn('e_not_yeird', 'not_yet_aired');
         $table->renameColumn('e_raw', 'raw');
