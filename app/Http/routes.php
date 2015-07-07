@@ -107,6 +107,7 @@ $router->get('update-db', function() {
         $table->renameColumn('e_title', 'title');
         $table->string('slug', 255)->index();
         $table->renameColumn('e_subdub', 'subdub');
+        $table->renameColumn('e_show', 'show');
         $table->renameColumn('e_not_yeird', 'not_yet_aired');
         $table->renameColumn('e_raw', 'raw');
         $table->renameColumn('e_hd', 'hd');

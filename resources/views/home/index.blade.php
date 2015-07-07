@@ -1,5 +1,4 @@
 @include('layouts.head')
-@include('layouts.image-thumb')
 <div id="wrap">
     <div id="content">
         <div id="left_content">
