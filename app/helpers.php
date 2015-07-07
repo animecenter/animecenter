@@ -1,17 +1,15 @@
 <?php
+
 function get_thumbnail($src_image, $thumbnail_width, $thumbnail_height)
 {
-    //$src_image  = $_GET['src'];
     $image_name = explode('/', $src_image);
     $image_name = explode('.', end($image_name));
-    //$thumbnail_width = $_GET['w'];
-    //$thumbnail_height = $_GET['h'];
     @mkdir("animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/");
     $dest_image = "animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/" . $image_name[0] . ".jpg";
-    if (! file_exists($dest_image)) {
+    if ( ! file_exists($dest_image)) {
         resize_crop($src_image, $dest_image, $thumbnail_width, $thumbnail_height);
     }
-    if (! file_exists($dest_image)) {
+    if ( ! file_exists($dest_image)) {
         return $src_image;
     }
 
@@ -69,15 +67,11 @@ function resize_crop($src_image, $dest_image, $thumbnail_width, $thumbnail_heigh
 
     //resize
     $resize = imagecreatetruecolor(round($resize_width), round($resize_height));
-
     if (imagecopyresampled($resize, $image_data, 0, 0, 0, 0, $resize_width, $resize_height, $image[0], $image[1])) {
-
         //crop
         $crop = imagecreatetruecolor($thumbnail_width, $thumbnail_height);
-
         if (imagecopyresampled($crop, $resize, 0, 0, $x_offset, $y_offset, $thumbnail_width, $thumbnail_height,
             $thumbnail_width, $thumbnail_height)) {
-
             // Create thumbnail
             switch (strtolower(preg_replace('/^.*\./', '', $dest_image))) {
                 case 'jpg':
@@ -95,8 +89,7 @@ function resize_crop($src_image, $dest_image, $thumbnail_width, $thumbnail_heigh
                     return false;
                     break;
             }
-
-            //purge tmp
+            // purge tmp
             imagedestroy($crop);
             imagedestroy($resize);
             imagedestroy($image_data);
