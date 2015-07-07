@@ -92,7 +92,9 @@
                         }
                         ?>
                         <div class="img">
-                            <img alt="image" src="{{ asset('thumb/' . $sn . '-thumb.jpg') }}" width="150" height="75">
+                            <img alt="image" src="{{ file_exists('thumb/' . $sn . '-thumb.jpg') ?
+                                asset('thumb/' . $sn . '-thumb.jpg') :
+                                asset('images/default-thumbnail.jpg') }}" width="150" height="75">
                             <div class="type <?php echo $episode->anime['type2'];
                             if ($episode['raw'] != null and $episode['subdub'] == null) { echo " raw"; } ?>">
                                 <?php if ($episode['raw'] != null and $episode['subdub'] == null) {
