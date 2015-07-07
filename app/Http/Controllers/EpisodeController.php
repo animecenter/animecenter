@@ -54,6 +54,7 @@ class EpisodeController extends Controller
     {
         $this->data['episode'] = $episode = $this->episode->with('anime')
             ->where('slug', '=', $slug)->firstOrFail();
+        $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
         $this->data['nextEpisode'] = $this->episode
             ->where('order', '=', $episode->order + 1)
             ->where('anime_id', '=', $episode->anime->id)

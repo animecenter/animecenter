@@ -7,18 +7,6 @@ $(document).ready(function (e) {
     $("#vid-close").click(function (e) {
         $("#popup-vid").remove();
     });
-    if ($(".views_value").length > 0) {
-        var type = 'e';
-        if ($(".views_value").hasClass("view_series")) {
-            type = 's';
-        }
-        var tid = $(".views_value").attr('id');
-        $.get(URL + "up-views", function (data) {
-            $.post(URL + "up-views", {type: type, tid: tid}, function (data2) {
-                $(".views_value").html(data2 + "<span> Views</span>");
-            });
-        });
-    }
     $("#nav li").hover(function (e) {
         $(this).find("ul").show();
     });
