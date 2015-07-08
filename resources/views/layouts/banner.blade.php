@@ -27,6 +27,11 @@
 {!! csrf_field() !!}
 <script>
     $(document).ready(function (e) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $(".rateDiv").hover(function () {
             $("#hint" + $(this).attr("id")).show();
             $("#hint2" + $(this).attr("id")).hide();
