@@ -35,7 +35,7 @@ class GenreController extends Controller
         $this->anime = $anime;
         $this->option = $option;
         $this->page = $page;
-        $this->data['animeBanner'] = $this->anime->orderByRaw("RAND()")->take(1)->first();
+        $this->data['animeBanner'] = $this->anime->orderByRaw("RAND()")->where('type2', '=', 'subbed')->take(1)->first();
         $this->data['topPagesList'] = $this->page->where('position', '=', 'top')
             ->orderBy('order')->get();
         $this->data['bottomPagesList'] = $this->page->where('position', '=', 'bottom1')

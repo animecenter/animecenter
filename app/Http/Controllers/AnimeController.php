@@ -46,7 +46,8 @@ class AnimeController extends Controller
         $this->episode = $episode;
         $this->option = $option;
         $this->page = $page;
-        $this->data['animeBanner'] = $this->anime->orderByRaw("RAND()")->take(1)->first();
+        $this->data['animeBanner'] = $this->anime->orderByRaw("RAND()")
+            ->where('type2', '=', 'subbed')->take(1)->first();
         $this->data['topPagesList'] = $this->page->where('position', '=', 'top')
             ->orderBy('order')->get();
         $this->data['bottomPagesList'] = $this->page->where('position', '=', 'bottom1')
@@ -241,7 +242,7 @@ class AnimeController extends Controller
                 $color = "#C86464";
         }
         $this->data['color'] = $color;
-        $this->data['animeBanner'] = $this->anime->orderByRaw("RAND()")->take(1)->first();
+        $this->data['animeBanner'] = $this->anime->orderByRaw("RAND()")->where('type2', '=', 'subbed')->take(1)->first();
         $this->data['relations'] = $this->getRelated($anime);
 
         return view('anime.show', $this->data);
