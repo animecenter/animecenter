@@ -24,7 +24,7 @@
     <!--/block-->
 </div>
 <!--/featured-->
-{!! csrf_token() !!}
+{!! csrf_field() !!}
 <script>
     $(document).ready(function (e) {
         $(".rateDiv").hover(function () {
