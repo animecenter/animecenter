@@ -46,15 +46,11 @@ class RateController extends Controller
             $newVotes = $currentVotes + 1;
             $newRating = sprintf("%.2f", ($currentRating * $currentVotes + $newRating) / $newVotes);
             if (isset($check)) {
-                return Response::json([
-                    'html' => "Average: " . $currentRating . " ( " . $currentVotes . " votes)"
-                ]);
+                return "Average: " . $currentRating . " ( " . $currentVotes . " votes)";
             } else {
                 DB::table('animes')->where('id', '=', $animeID)->update(['rating' => $newRating, 'votes' => $newVotes]);
                 DB::table('ratings')->insert(['target' => $animeID, 'ip' => $ip, 'type' => 'Anime']);
-                return Response::json([
-                    'html' => "Average: " . $newRating . " ( " . $newVotes . " votes)"
-                ]);
+                return "Average: " . $newRating . " ( " . $newVotes . " votes)";
             }
         } else {
             return null;
