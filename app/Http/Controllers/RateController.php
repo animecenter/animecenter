@@ -6,7 +6,6 @@ use App\Anime\Anime;
 use App\Episodes\Episode;
 use DB;
 use Illuminate\Http\Request;
-use Response;
 
 class RateController extends Controller
 {
@@ -63,7 +62,7 @@ class RateController extends Controller
             $episodeID = (int) $request['id'];
             $newRating = (int) $request['rate'];
             $episode = DB::table('episodes')->where('id', '=', $episodeID)->first();
-            $ip = (int) $_SERVER['REMOTE_ADDR'];
+            $ip = $_SERVER['REMOTE_ADDR'];
             $check = DB::table('ratings')->where('target', '=', $episodeID)
                 ->where('ip', '=', $ip)
                 ->where('type', '=', 'Episode')
@@ -72,7 +71,7 @@ class RateController extends Controller
             $currentRating = $episode->rating ? $episode->rating : 0;
             $newVotes = $currentVotes + 1;
             $newRating = sprintf("%.2f", ($currentRating * $currentVotes + $newRating) / $newVotes);
-            if (isset($check)) {
+            if ($check) {
                 return "Average: " . $currentRating . " ( " . $currentVotes . " votes)";
             } else {
                 DB::table('episodes')->where('id', '=', $episodeID)->update(['rating' => $newRating, 'votes' => $newVotes]);
