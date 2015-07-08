@@ -7,7 +7,7 @@
                     <div class="next"></div>
                     <div class="prev"></div>
                     <div class="slide">
-                        <img alt='image' src="{{ asset("images/" . $imagesList[0]['file']) }}" width="650" height="360">
+                        <img alt='image' src="{{ asset("images/" . $imagesList[0]['file']) }}" width="640" height="360">
                         <div class="pagination">
                             <div class="content">
                                 <div class="bigtitle">
@@ -39,7 +39,8 @@
                                  big-title="{{ $image['bigtitle'] }}"
                                  small-title="{{ $image['smalltitle'] }}"
                                  desc="{{ $image['desc'] }}"
-                                 link="{{ url('watch/' . str_slug(str_replace('watch/', '', $image['link']))) }}">
+                                 link="{{ url('watch/' . str_slug(str_replace('watch/', '', $image['link']))) }}"
+                                 width="640" height="360">
                         <?php } ?>
                     </div>
                     <!--images-->
