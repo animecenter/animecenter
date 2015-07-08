@@ -16,7 +16,7 @@
         $min = $diff->format('%i');
         $second = $diff->format('%s');
         $total_s = ($day * 86400) + ($hr * 3600) + ($min * 60) + $second;
-        $link = $url . $options[4]['value'] . str_replace(" ", "-", strtolower($episode['title']));
+        $link = url($options[4]['value'] . $episode['slug']);
         ?>
 
         <div class="block">
@@ -24,7 +24,7 @@
                 <img alt='image' class='eimg' src="<?php echo get_thumbnail('images/' . $ser['image'], 50, 75); ?>"
                      width="50"
                      height="75">
-                <div class="sub_title" style="width:225px;font-family:helvetica;">
+                <div class="sub_title" style="width: 225px; font-family: helvetica;">
                     <?php echo(strlen($ser['title']) < 30) ? $ser['title'] : substr($ser['title'], 0, 30) . "..."; ?>
                     <br>
                     <span style="font-weight:normal;margin-top:5px;float:left">
