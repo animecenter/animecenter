@@ -14,7 +14,7 @@ include 'SitemapGenerator.php';
 include 'database.php';
 
 // create object
-$sitemap = new SitemapGenerator("http://beta.animecenter.tv");
+$sitemap = new SitemapGenerator("http://www.animecenter.tv");
 
 // will create also compressed (gzipped) sitemap
 $sitemap->createGZipFile = true;
@@ -33,11 +33,11 @@ $sitemap->robotsFileName = "robots.txt";
 
 // Add Static URLS
 $time = '1370052000';
-// $sitemap->addUrl("http://beta.animecenter.tv",               				date('c', $time),  'always',    '1');
+
+// $sitemap->addUrl("http://beta.animecenter.tv", date('c', $time), 'always', '1');
 
 // Add series dynamic URLS
-$result = mysql_query("SELECT a_title, a_type2, a_date, a_date2 FROM an_series WHERE 1")
-or die(mysql_error());
+$result = mysql_query("SELECT 'title', 'type2', 'date', 'date2' FROM 'animes' WHERE 1") or die(mysql_error());
 $now = time();
 while ($row = mysql_fetch_array($result)) {
     $created = $row['date'];

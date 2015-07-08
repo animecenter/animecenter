@@ -7,11 +7,11 @@ $meta_title = $page_title . " | Watch Anime Online Free";
 $meta_desc = "Watch " . $page_title . "!,Watch " . $page_title . "! English Subbed/Dubbed,Watch " . $page_title . " English Sub/Dub, Download " . $page_title . " for free,Watch " . $page_title . "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
 $meta_key = "Download " . $page_title . ",Watch " . $page_title . " on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
 
-require_once("header.php");
 ?>
+@include("layouts.head")
 <div id="wrap">
     <div id="content">
-        <?php include_once("banner.php"); ?>
+        @include("layouts.banner")
         <div id="left_content">
             <div id="sec4" class="sections">
                 <div class="title">Watch Upcoming Subbed Episodes</div>
@@ -67,7 +67,9 @@ require_once("header.php");
             <!--/sections-->
         </div>
         <!--/left_content-->
-        <div id="right_content"><?php include_once("sidebar.php"); ?></div>
+        <div id="right_content">
+            @include("layouts.sidebar")
+        </div>
     </div>
     <!--/content-->
-    <?php require_once("footer.php"); ?>
+    @include("layouts.footer")

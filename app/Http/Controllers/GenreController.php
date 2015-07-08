@@ -58,7 +58,7 @@ class GenreController extends Controller
         $this->data['metaTitle'] = $pageTitle . " | Watch Anime Online Free";
         $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " . $pageTitle . " English Sub/Dub, Download " . $pageTitle . " for free,Watch " . $pageTitle . "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
         $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
-        $this->data['genres'] = $this->genre->all();
+        $this->data['genres'] = $this->genre->orderBy('value')->get();
 
         return view('genres.index', $this->data);
     }

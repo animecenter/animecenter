@@ -4,7 +4,8 @@
         @include('layouts.banner')
         <div id="left_content">
             <div class="sec_top_one">
-                <div class="fb-like" style="height:30px;" data-href="{{ url($anime['type2'] . "-anime/" . $anime['slug']) }}"
+                <div class="fb-like" style="height: 30px;" data-href="{{
+                    url($anime['type2'] . "-anime/" . $anime['slug']) }}"
                      data-width="450" data-show-faces="false" data-send="true"></div>
                 @if(Auth::user())
                     <a href="{{ url('admin/anime/edit/' . $anime['id']) }}" class="edit_top">
@@ -154,10 +155,10 @@
                 <!--/series-->
                 <div class="rating_div">
                     <div class="views_value view_series" id="{{ $anime['id'] }}">{{ $anime['visits'] }}<span> Views</span></div>
-                    <div id='rateContainor' style='float: left; width: 200px; margin-left: 20px;'>
-                        <div style='float:left;' value="{{ $anime['rating'] }}" id="rateDiv" class='rating'></div>
-                        <div style='float: left; font-size: 8pt; clear: both; width: 100%; display:none' id='hint'></div>
-                        <div id='hint2' style="float: left; font-size: 8pt">
+                    <div id="rateContainor" style="float: left; width: 200px; margin-left: 20px;">
+                        <div style="float:left;" value="{{ $anime['rating'] }}" id="rateDiv" class="rating"></div>
+                        <div style="float: left; font-size: 8pt; clear: both; width: 100%; display:none" id="hint"></div>
+                        <div id="hint2" style="float: left; font-size: 8pt">
                             <?php
                             echo "Average: " . (($anime['rating']) ?
                                 sprintf("%.2f", $anime['rating']) : 0) . " ( " .
@@ -235,8 +236,8 @@
                     click: function (score, evt) {
                         $("#hint").show().text("Saving your vote...");
                         $("#hint2").hide();
-                        $.post("{{ url('rate-up') }}", {
-                            sid: {{ $anime['id'] }},
+                        $.post("{{ url('rate/anime') }}", {
+                            id: {{ $anime['id'] }},
                             rate: score
                         }, function (data) {
                             $("#hint").show().text("your vote has been saved");
