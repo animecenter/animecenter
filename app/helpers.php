@@ -1,5 +1,25 @@
 <?php
 
+function thumbcreate($video_field) {
+    global $url;
+    $video = str_replace("<iframe", "", $video_field);
+    $start = '"http:';
+    $end = '"';
+    $path = '';
+    if (preg_match_all('/' . preg_quote($start) . '(.*?)' . preg_quote($end) . '/', $video, $matches)) {
+        $match_val = str_replace('"', '', $matches['0']['0']);
+        $match_val_new = parse_url($match_val);
+        isset($match_val_new['query']) ? parse_str($match_val_new['query'], $match) : '';
+        $file = isset($match['file']) ? $match['file'] : '';
+        if (file_exists('animethumb/' . $file . '.jpg')) {
+            $path = $url . 'animethumb/' . $file . '.jpg';
+        } else {
+            $path = $url . 'css/imgs/no-image.jpg';
+        }
+    }
+    return $path;
+}
+
 function get_thumbnail($src_image, $thumbnail_width, $thumbnail_height)
 {
     if (file_exists($src_image)) {
