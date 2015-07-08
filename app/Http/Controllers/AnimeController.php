@@ -265,7 +265,7 @@ class AnimeController extends Controller
 
     public function getLatest()
     {
-        $this->data['animes'] = $this->anime->orderBy('id', 'DESC')->paginate(20);
+        $this->data['animes'] = $this->anime->where('position', '=', 'recently')->orWhere('position', '=', 'all')->orderBy('id', 'DESC')->paginate(20);
         $this->data['metaTitle'] = "Latest Anime Series added to site | Watch Anime Online Free";
         $this->data['metaDesc'] = "Watch Latest Anime Series added to site!,Watch Latest Anime Series added to site! English Subbed/Dubbed,Watch Latest Anime Series added to site English Sub/Dub, Download Latest Anime Series added to site for free,Watch Latest Anime Series added to site! Online English Subbed and Dubbed  for Free Online only at Anime Center";
         $this->data['metaKey'] = "Download Latest Anime Series added to site,Watch Latest Anime Series added to site on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";

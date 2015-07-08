@@ -22,7 +22,7 @@ function thumbcreate($video_field) {
 
 function get_thumbnail($src_image, $thumbnail_width, $thumbnail_height)
 {
-    if (file_exists($src_image)) {
+    if (file_exists($src_image != 'images/' ? $src_image : '')) {
         $image_name = explode('/', $src_image);
         $image_name = explode('.', end($image_name));
         $folderName = public_path("animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/");
