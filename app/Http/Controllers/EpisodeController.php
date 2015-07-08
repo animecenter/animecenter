@@ -6,6 +6,7 @@ use App\Anime\Anime;
 use App\Episodes\Episode;
 use App\Options\Option;
 use App\Pages\Page;
+use DateTime;
 
 class EpisodeController extends Controller
 {
@@ -146,6 +147,7 @@ class EpisodeController extends Controller
     {
         $this->data['episodes'] = $episode = $this->episode->with('anime')
             ->where('show', '=', '1')
+            ->where('date', '>', strtotime('-4 week'))
             ->orderBy('date', 'DESC')
             ->paginate(24);
         $this->data['meta_title'] = $meta_title = "Latest Episodes | Watch Anime Online Free";
