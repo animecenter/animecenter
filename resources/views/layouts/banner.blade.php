@@ -48,8 +48,8 @@
                 click: function (score, evt) {
                     $("#hint" + $(this).attr("id")).show().text("Saving your vote...");
                     $("#hint2" + $(this).attr("id")).hide();
-                    $.post("{{ url('rate-up') }}", {
-                        sid: $(this).attr("id"),
+                    $.post("{{ url('rate/anime') }}", {
+                        id: $(this).attr("id"),
                         rate: score
                     }, function (data) {
                         $("#hint" + thiss.attr("id")).show().text("your vote has been saved");
