@@ -22,13 +22,13 @@ class Anime extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'title', 'content', 'genres', 'episodes', 'type', 'age', 'type2', 'status', 'prequel', 'sequel', 'story',
+        'title', 'slug', 'content', 'genres', 'episodes', 'type', 'age', 'type2', 'status', 'prequel', 'sequel', 'story',
         'side_story', 'spin_off', 'alternative', 'other', 'position', 'description', 'alternative_title', 'image',
         'rating', 'votes', 'visits', 'date', 'date2'
     ];
 
     protected $visible = [
-        'title', 'content', 'genres', 'episodes', 'type', 'age', 'type2', 'status', 'prequel', 'sequel', 'story',
+        'title', 'slug', 'content', 'genres', 'episodes', 'type', 'age', 'type2', 'status', 'prequel', 'sequel', 'story',
         'side_story', 'spin_off', 'alternative', 'other', 'position', 'description', 'alternative_title', 'image',
         'rating', 'votes', 'visits', 'date', 'date2'
     ];
