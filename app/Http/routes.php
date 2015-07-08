@@ -248,7 +248,7 @@ $router->get('search', 'SearchController@index');
 
 // Rating routes...
 $router->post('rate/anime', 'RateController@postAnime');
-$router->post('rate/episodes', 'RateController@postEpisode');
+$router->post('rate/episode', 'RateController@postEpisode');
 
 // Admin routes...
 $router->group([
