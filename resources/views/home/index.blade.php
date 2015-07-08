@@ -158,10 +158,6 @@
                         <!--/block-->
                     </a>
                 @endforeach
-                <div class="pagination">
-                    {!! $animeList->render() !!}
-                </div>
-                <!-- End .pagination -->
             </div>
             <!--sections-->
         </div>
