@@ -36,7 +36,7 @@ class RateController extends Controller
             $animeID = (int) $request['id'];
             $newRating = (int) $request['rate'];
             $anime = DB::table('animes')->where('id', '=', $animeID)->first();
-            $ip = (int) $_SERVER['REMOTE_ADDR'];
+            $ip = $_SERVER['REMOTE_ADDR'];
             $check = DB::table('ratings')->where('target', '=', $animeID)
                 ->where('ip', '=', $ip)
                 ->where('type', '=', 'Anime')
