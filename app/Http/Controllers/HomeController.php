@@ -79,7 +79,7 @@ class HomeController extends Controller
         $this->data['bottomPagesList3'] = $this->page->where('position', '=', 'bottom3')->orderBy('order')->get();
         $this->data['options'] = $this->option->all();
         $this->data['animeList'] = $this->anime->where('position', '=', 'recently')->orWhere('position', '=', 'all')->orderBy('id', 'DESC')->take(8)->get();
-        $this->data['upcomingEpisodes'] = $this->episode->with('anime')->where('coming_date', '!=', '')->where('not_yet_aired', '!=', '')->orderBy('coming_date', 'DESC')->take(7)->get();
+        $this->data['upcomingEpisodes'] = $this->episode->with('anime')->where('coming_date', '!=', '')->where('not_yet_aired', '!=', '')->orderBy('coming_date', 'DESC')->take(5)->get();
 
         return view('home.index', $this->data);
     }

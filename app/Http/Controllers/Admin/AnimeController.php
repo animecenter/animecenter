@@ -92,6 +92,8 @@ class AnimeController extends Controller
             } catch (Exception $e) {
                 dd($e);
             }
+        } else {
+            $filename = '';
         }
         $this->anime->create([
             'title' => $request['title'],
