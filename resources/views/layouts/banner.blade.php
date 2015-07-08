@@ -3,8 +3,8 @@
 </div>
 <div id="featured" class="widget" style="width:245px; margin-left:3px;">
     <div class="block">
-        <a href="<?php echo url(($animeBanner['type2'] == "dubbed") ? $options[3]['value'] :
-                $options[2]['value'] . $animeBanner['slug']); ?>">
+        <a href="{{ url($animeBanner['type2'] == "dubbed" ? $options[3]['value'] : $options[2]['value'] .
+            $animeBanner['slug']) }}">
             <img class='eimg' src="<?php echo asset("images/" . $animeBanner['image']); ?>">
             <div class="sub_title" style="width:170px;">
                 <?php
