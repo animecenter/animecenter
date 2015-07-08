@@ -31,7 +31,6 @@ function thumbcreate($video_field) {
     return $path;
 }
 
-
 use App\Users\User;
 use Illuminate\Database\Schema\Blueprint;
 $router->get('update-db', function() {
@@ -238,6 +237,7 @@ $router->get('dubbed-anime/{slug}', 'AnimeController@getDubbedAnime');
 
 // Episodes routes...
 $router->get('latest-episodes', 'EpisodeController@getLatest');
+$router->get('watch/{slug}/{mirror}', 'EpisodeController@getEpisodeMirror');
 $router->get('watch/{slug}', 'EpisodeController@getEpisode');
 
 // Genres routes...
