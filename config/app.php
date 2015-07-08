@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/New_York',
 
     /*
     |--------------------------------------------------------------------------
@@ -144,8 +144,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Packages Service Providers...
         Roumen\Sitemap\SitemapServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class
 
     ],
@@ -194,8 +194,7 @@ return [
         'Storage'   => Illuminate\Support\Facades\Storage::class,
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
-        'View'      => Illuminate\Support\Facades\View::class,
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'View'      => Illuminate\Support\Facades\View::class
 
     ],
 
