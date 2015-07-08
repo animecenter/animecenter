@@ -207,7 +207,7 @@ class AnimeController extends Controller
     public function getDelete($id = 0)
     {
         $anime = $this->anime->findOrFail($id);
-        unlink(public_path("images/" . $anime['image']));
+        $anime['image'] ? unlink(public_path("images/" . $anime['image'])) : '';
         $anime->delete();
         $msg = 'Anime was deleted successfully!';
 
