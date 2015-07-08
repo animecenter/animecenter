@@ -15,7 +15,7 @@
                     <div class="title">
                         {{ $episode['title'] }}
                     </div>
-                    @if ($episode['not_yet_aired'] == null or $episode['not_yet_aired'] == '')
+                    @if (!$episode['not_yet_aired'])
                         <div class="tabs">
                             @if ($episode['mirror1'] == '' && $episode['mirror2'] == '' && $episode['mirror3'] == ''
                                 && $episode['mirror4'] == '' && $episode['hd'] == '')
@@ -24,81 +24,76 @@
                                     <div class="block">
                                         <a href="{{ url($mainLink) }}">
                                             <div class="tab <?php echo $episode['anime']['type2'];
-                                                echo(!($episode['anime']['type2']) or $episode['anime']['type2'] == '') ?
-                                                    ' active' : '';?>">
-                                                Mirror 1
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!--/block-->
-                                @endif
-                            @else
-                                @if ($episode['mirror1'] != null or $episode['mirror1'] != '')
-                                    <div class="block">
-                                        <a href="{{ url($mainLink) }}">
-                                            <div class="tab <?php echo $episode['anime']['type2'];
-                                                echo(!($episode['anime']['type2']) or $episode['anime']['type2'] == '') ?
+                                                echo($episode['anime']['type2']) ?
                                                     ' active' : ''; ?>">
                                                 Mirror 1
                                             </div>
                                         </a>
                                     </div>
                                     <!--/block-->
+                                @else
+                                    @if ($episode['raw'])
+                                        <div class="block">
+                                            <a href="{{ url($mainLink) }}/raw">
+                                                <div class="tab <?php echo $episode['anime']['type2'];
+                                                echo($currentMirror === 'raw') ? ' active' : ''; ?> raw">
+                                                    RAW
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <!--/block-->
+                                    @endif
                                 @endif
-                                @if ($episode['mirror2'] != null or $episode['mirror2'] != '')
+                            @else
+                                @if ($episode['mirror1'])
+                                    <div class="block">
+                                        <a href="{{ url($mainLink) }}">
+                                            <div class="tab <?php echo $episode['anime']['type2'];
+                                                echo(!$currentMirror) ? ' active' : ''; ?>">
+                                                Mirror 1
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!--/block-->
+                                @endif
+                                @if ($episode['mirror2'])
                                     <div class="block">
                                         <a href="{{ url($mainLink) }}/mirror2">
                                             <div class="tab <?php echo $episode['anime']['type2'];
-                                                echo($episode['anime']['type2'] &&
-                                                    $episode['anime']['type2'] == 'mirror2') ? ' active' : ''; ?>">
+                                                echo($currentMirror === 'mirror2') ? ' active' : ''; ?>">
                                                 Mirror 2
                                             </div>
                                         </a>
                                     </div>
                                     <!--/block-->
                                 @endif
-                                @if ($episode['mirror3'] != null or $episode['mirror3'] != '')
+                                @if ($episode['mirror3'])
                                     <div class="block">
                                         <a href="{{ url($mainLink) }}/mirror3">
                                             <div class="tab <?php echo $episode['anime']['type2'];
-                                                echo($episode['anime']['type2'] &&
-                                                    $episode['anime']['type2'] == 'mirror3') ? ' active' : ''; ?>">
+                                                echo($currentMirror === 'mirror3') ? ' active' : ''; ?>">
                                                 Mirror 3
                                             </div>
                                         </a>
                                     </div>
                                     <!--/block-->
                                 @endif
-                                @if ($episode['mirror4'] != null or $episode['mirror4'] != '')
+                                @if ($episode['mirror4'])
                                     <div class="block">
                                         <a href="{{ url($mainLink) }}/mirror4">
                                             <div class="tab <?php echo $episode['anime']['type2'];
-                                                echo($episode['anime']['type2'] &&
-                                                    $episode['anime']['type2'] == 'mirror4') ? ' active' : ''; ?>">
+                                                echo($currentMirror === 'mirror4') ? ' active' : ''; ?>">
                                                 Mirror 4
                                             </div>
                                         </a>
                                     </div>
                                     <!--/block-->
                                 @endif
-                                @if ($episode['raw'] != null or $episode['raw'] != '')
-                                    <div class="block">
-                                        {{ dd($episode->anime) }}
-                                        <a href="{{ url($mainLink) }}/raw">
-                                            <div class="tab <?php echo $episode['anime']['type2'];
-                                                echo($episode['anime']['type2'] && $episode['anime']['type2'] == 'raw' 
-                                                    or $episode['subdub'] == null) ? ' active' : '';?> raw">
-                                                RAW
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!--/block-->
-                                @endif
-                                @if ($episode['hd'] != null or $episode['hd'] != '')
+                                @if ($episode['hd'])
                                     <div class="block">
                                         <a href="{{ url($mainLink) }}/hd">
                                             <div class="tab <?php echo $episode['anime']['type2'];
-                                                echo($episode['anime']['type2'] && $episode['anime']['type2'] == 'hd') ?
+                                                echo($currentMirror === 'hd') ?
                                                 ' active' : ''; ?> mirror">
                                                 Mirror HD
                                             </div>

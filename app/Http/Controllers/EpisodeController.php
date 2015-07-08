@@ -52,7 +52,7 @@ class EpisodeController extends Controller
 
     public function getEpisode($slug)
     {
-        $this->data['episode'] = $episode = $this->episode->with('anime')
+        $this->data['episode'] = $episode = $episode = $this->episode->with('anime')
             ->where('slug', '=', $slug)->firstOrFail();
         $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
         $this->data['nextEpisode'] = $this->episode
@@ -64,8 +64,54 @@ class EpisodeController extends Controller
             ->where('anime_id', '=', $episode->anime->id)
             ->first();
         $this->data['mainLink'] = $this->data['options'][4]['value'] . $episode['slug'];
-        if (isset($type[2])) {
-            switch ($type[2]) {
+        if ($episode['type2']) {
+            switch ($episode['type2']) {
+                case 'mirror1':
+                    $cont = $episode['mirror1'];
+                    break;
+                case 'mirror2':
+                    $cont = $episode['mirror2'];
+                    break;
+                case 'mirror3':
+                    $cont = $episode['mirror3'];
+                    break;
+                case 'mirror4':
+                    $cont = $episode['mirror4'];
+                    break;
+                case 'raw':
+                    $cont = $episode['raw'];
+                    break;
+                case 'hd':
+                    $cont = $episode['hd'];
+                    break;
+                default:
+                    $cont = ($episode['mirror1'] == null) ? $episode['raw'] : $episode['mirror1'];
+            }
+        } else {
+            $cont = ($episode['mirror1'] == null) ? $episode['raw'] : $episode['mirror1'];
+        }
+        $this->data['currentMirror'] = '';
+        $this->data['cont'] = $cont;
+
+        return view('episodes.show', $this->data);
+    }
+
+    public function getEpisodeMirror($slug, $mirror)
+    {
+        $this->data['episode'] = $episode = $episode = $this->episode->with('anime')
+            ->where('slug', '=', $slug)->where($mirror, '!=', '')->firstOrFail();
+        $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
+        $this->data['nextEpisode'] = $this->episode
+            ->where('order', '=', $episode->order + 1)
+            ->where('anime_id', '=', $episode->anime->id)
+            ->first();
+        $this->data['prevEpisode'] = $this->episode
+            ->where('order', '=', $episode->order - 1)
+            ->where('anime_id', '=', $episode->anime->id)
+            ->first();
+        $this->data['mainLink'] = $this->data['options'][4]['value'] . $episode['slug'];
+        if ($mirror) {
+            switch ($mirror) {
                 case 'mirror1':
                     $cont = $episode['mirror1'];
                     break;
@@ -91,6 +137,7 @@ class EpisodeController extends Controller
             $cont = ($episode['mirror1'] == null) ? $episode['raw'] : $episode['mirror1'];
         }
         $this->data['cont'] = $cont;
+        $this->data['currentMirror'] = $mirror;
 
         return view('episodes.show', $this->data);
     }
