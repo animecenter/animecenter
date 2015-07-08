@@ -2,19 +2,23 @@
 
 function get_thumbnail($src_image, $thumbnail_width, $thumbnail_height)
 {
-    $image_name = explode('/', $src_image);
-    $image_name = explode('.', end($image_name));
-    $folderName = public_path("animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/");
-    if (!file_exists($folderName)) {
-        mkdir($folderName);
-    }
-    $dest_image = "animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/" . $image_name[0] . ".jpg";
-    if (!file_exists(public_path($dest_image))) {
-        resize_crop($src_image, public_path($dest_image), $thumbnail_width, $thumbnail_height);
-        return $src_image;
-    }
+    if (file_exists($src_image)) {
+        $image_name = explode('/', $src_image);
+        $image_name = explode('.', end($image_name));
+        $folderName = public_path("animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/");
+        if (!file_exists($folderName)) {
+            mkdir($folderName);
+        }
+        $dest_image = "animethumb/" . $thumbnail_width . "x" . $thumbnail_height . "/" . $image_name[0] . ".jpg";
+        if (!file_exists(public_path($dest_image))) {
+            resize_crop($src_image, public_path($dest_image), $thumbnail_width, $thumbnail_height);
+            return $src_image;
+        }
 
-    return $dest_image;
+        return $dest_image;
+    } else {
+        return '';
+    }
 }
 
 function resize_crop($src_image, $dest_image, $thumbnail_width, $thumbnail_height, $jpg_quality = 100)
