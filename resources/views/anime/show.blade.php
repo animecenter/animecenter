@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="text">
                                     <span>Plot Summary:</span>
-                                    {{ $anime['description'] }}
+                                    {!! $anime['description'] !!}
                                 </div>
                                 <div class="text alternative">
                                     <span>Alternative Titles:</span>

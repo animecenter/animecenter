@@ -143,7 +143,7 @@
                     </a>
                 </div>
                 @foreach ($animeList as $anime)
-                    <a href="{{ url(($anime['type2'] == "dubbed") ?
+                    <a href="{{ url($anime['type2'] === "dubbed" ?
                     $options[3]['value'] . $anime['slug'] :
                     $options[2]['value'] . $anime['slug']) }}">
                         <div class="block">
