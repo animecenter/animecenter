@@ -89,7 +89,7 @@ class SearchController extends Controller
                 ->orderBy('title', 'ASC')
                 ->get();
         }
-        $this->data['query'] = $genres ? $genres : $request['title'];
+        $this->data['query'] = $request['genres'] ? $genres : $request['title'];
         $this->data['animes'] = $this->getRelatedForEachAnime($animes);
 
         return view('search.index', $this->data);
