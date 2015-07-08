@@ -32,7 +32,7 @@ class RateController extends Controller
 
     public function postAnime(Request $request)
     {
-        if ($request->ajax()) {
+        if (!$request->ajax()) {
             $animeID = (int) $request['id'];
             $newRating = (int) $request['rate'];
             $anime = DB::table('animes')->where('id', '=', $animeID)->first();
@@ -41,8 +41,8 @@ class RateController extends Controller
                 ->where('ip', '=', $ip)
                 ->where('type', '=', 'Anime')
                 ->get();
-            $currentVotes = $anime['votes'] ? $anime['votes'] : 0;
-            $currentRating = $anime['rating'] ? $anime['rating'] : 0;
+            $currentVotes = $anime->votes ? $anime->votes : 0;
+            $currentRating = $anime->rating ? $anime->rating : 0;
             $newVotes = $currentVotes + 1;
             $newRating = sprintf("%.2f", ($currentRating * $currentVotes + $newRating) / $newVotes);
             if (isset($check)) {
@@ -72,8 +72,8 @@ class RateController extends Controller
                 ->where('ip', '=', $ip)
                 ->where('type', '=', 'Episode')
                 ->get();
-            $currentVotes = $episode['votes'] ? $episode['votes'] : 0;
-            $currentRating = $episode['rating'] ? $episode['rating'] : 0;
+            $currentVotes = $episode->votes ? $episode->votes : 0;
+            $currentRating = $episode->rating ? $episode->rating : 0;
             $newVotes = $currentVotes + 1;
             $newRating = sprintf("%.2f", ($currentRating * $currentVotes + $newRating) / $newVotes);
             if (isset($check)) {
