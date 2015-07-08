@@ -281,8 +281,8 @@
                     click: function (score, evt) {
                         $("#hint").show().text("Saving your vote...");
                         $("#hint2").hide();
-                        $.post("{{ url('rate-up') }}", {
-                            eid: <?php echo $episode['id']; ?>,
+                        $.post("{{ url('rate/episode') }}", {
+                            id: {{ $episode['id'] }},
                             rate: score
                         }, function (data) {
                             $("#hint").show().text("your vote has been saved");

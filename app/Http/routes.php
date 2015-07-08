@@ -188,6 +188,19 @@ $router->get('update-db', function() {
         $table->renameColumn('i_date', 'date');
     });
     echo 'All images were updated';
+
+    // Update Ratings
+    Schema::rename("an_rate_ip", "ratings");
+    Schema::table('ratings', function ($table) {
+        $table->renameColumn('r_id', 'id');
+        $table->renameColumn('r_ip', 'ip');
+        $table->renameColumn('r_target', 'target');
+        $table->renameColumn('r_type', 'type');
+    });
+    DB::table('ratings')->where('type', '=', 'e')->update(['type' => 'Episode']);
+    DB::table('ratings')->where('type', '=', 's')->update(['type' => 'Anime']);
+    echo 'All ratings were updated';
+
 });
 
 // Home routes...
@@ -232,6 +245,10 @@ $router->get('taxonomy_browser', 'GenreController@index');
 
 // Search routes...
 $router->get('search', 'SearchController@index');
+
+// Rating routes...
+$router->post('rate/anime', 'RateController@postAnime');
+$router->post('rate/episodes', 'RateController@postEpisode');
 
 // Admin routes...
 $router->group([
