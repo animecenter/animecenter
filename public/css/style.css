@@ -493,15 +493,17 @@ div.login select.member-select {
     font-weight: 600;
     height: 29px;
     margin-right: 30px;
-    padding: 11px 5px 0;
+    padding: 11px 0px 0;
+    padding-right: 10px;
     position: absolute;
     right: -25px;
     text-decoration: none;
     width: 100px;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 16px;
+    font-size: 15px;
+    line-height: 18px;
     border: 0;
+    text-align: center;
+    text-shadow: none;
 }
 
 #slider a.watch:hover {
