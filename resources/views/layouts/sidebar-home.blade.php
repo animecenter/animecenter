@@ -21,11 +21,12 @@
 
         <div class="block">
             <a href="<?php echo $link; ?>">
-                <img alt='image' class='eimg' src="<?php echo get_thumbnail('images/' . $ser['image'], 50, 75); ?>"
+                <img alt='image' class='eimg' src="<?php echo get_thumbnail('images/' . $episode['anime']['image'], 50, 75); ?>"
                      width="50"
                      height="75">
                 <div class="sub_title" style="width: 225px; font-family: helvetica;">
-                    <?php echo(strlen($ser['title']) < 30) ? $ser['title'] : substr($ser['title'], 0, 30) . "..."; ?>
+                    <?php echo(strlen($episode['anime']['title']) < 30) ? $episode['anime']['title'] :
+                            substr($episode['anime']['title'], 0, 30) . "..."; ?>
                     <br>
                     <span style="font-weight:normal;margin-top:5px;float:left">
                         <?php $tit = explode(" ", $episode['title']); echo "Episode " . end($tit); ?>

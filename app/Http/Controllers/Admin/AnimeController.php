@@ -95,7 +95,7 @@ class AnimeController extends Controller
         } else {
             $filename = '';
         }
-        $this->anime->create([
+        $anime = $this->anime->create([
             'title' => $request['title'],
             'slug' => str_slug($request['title']),
             'content' => $request['content'],
@@ -124,7 +124,9 @@ class AnimeController extends Controller
         ]);
         $msg = 'Anime was created successfully!';
 
-        return redirect()->action('Admin\AnimeController@index')->with('success', $msg);
+        return redirect()
+            ->to($anime['type2'] === "dubbed" ? 'dubbed-anime/' . $anime->slug : 'subbed-anime/' . $anime->slug)
+            ->with('success', $msg);
     }
 
     /**
@@ -195,7 +197,9 @@ class AnimeController extends Controller
         $anime->save();
         $msg = 'Anime was updated successfully!';
 
-        return redirect()->to($request['previous_url'])->with('success', $msg);
+        return redirect()
+            ->to($anime['type2'] === "dubbed" ? 'dubbed-anime/' . $anime->slug : 'subbed-anime/' . $anime->slug)
+            ->with('success', $msg);
     }
 
     /**

@@ -122,7 +122,8 @@ class EpisodeController extends Controller
      */
     public function postCreate(Request $request)
     {
-        $this->episode->create([
+        $order = explode(' ', $request['title']);
+        $episode = $this->episode->create([
             'anime_id' => $request['anime_id'],
             'title' => $request['title'],
             'slug' => str_slug($request['title']),
@@ -139,14 +140,16 @@ class EpisodeController extends Controller
             'rating' => 0,
             'votes' => 0,
             'visits' => 0,
-            'order' => (int) end(explode(' ', $request['title'])),
+            'order' => (int) end($order),
             'coming_date' => $request['coming_date'],
             'show' => $request['show'] ? 1 : 0,
             'created_at' => date('Y-m-d H:i:s')
         ]);
         $msg = 'Episode was created successfully!';
 
-        return redirect()->action('Admin\EpisodeController@index')->with('success', $msg);
+        return redirect()
+            ->to('watch/' . $episode->slug)
+            ->with('success', $msg);
     }
 
     /**
@@ -192,7 +195,7 @@ class EpisodeController extends Controller
         $episode->save();
         $msg = 'Episode was updated successfully!';
 
-        return redirect()->to($request['previous_url'])->with('success', $msg);
+        return redirect()->action('EpisodeController@getEpisode', [$episode->slug])->with('success', $msg);
     }
 
     /**
