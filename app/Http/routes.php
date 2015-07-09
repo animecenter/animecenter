@@ -158,6 +158,7 @@ $router->get('update-db', function() {
     // Update Images
     Schema::rename("an_images", "images");
     Schema::table('images', function ($table) {
+        $table->engine = 'InnoDB';
         $table->renameColumn('i_id', 'id');
         $table->renameColumn('i_bigtitle', 'bigtitle');
         $table->renameColumn('i_smalltitle', 'smalltitle');
@@ -166,11 +167,18 @@ $router->get('update-db', function() {
         $table->renameColumn('i_link', 'link');
         $table->renameColumn('i_date', 'date');
     });
+    $images = DB::table('images')->get(['id', 'smalltitle']);
+    foreach($images as $image) {
+        DB::table('images')->where('id', $image->id)->update([
+            'smalltitle' => str_replace('â€“', '-', $image->smalltitle)
+        ]);
+    }
     echo 'All images were updated';
 
     // Update Ratings
     Schema::rename("an_rate_ip", "ratings");
     Schema::table('ratings', function ($table) {
+        $table->engine = 'InnoDB';
         $table->renameColumn('r_id', 'id');
         $table->renameColumn('r_ip', 'ip');
         $table->renameColumn('r_target', 'target');
