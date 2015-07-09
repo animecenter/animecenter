@@ -96,7 +96,6 @@ body {
     float: left;
     width: 100%;
     color: #3F3F3F;
-
 }
 
 #nav li a:hover {
@@ -112,9 +111,14 @@ body {
     position: absolute;
     left: 0;
     top: 25px;
-    background: #ccc;
+    background: #000;
     display: none;
     width: 150px;
+}
+
+
+#nav ul li ul li a {
+    color: #ffffff;
 }
 
 #nav li li {
@@ -123,7 +127,6 @@ body {
     padding: 5px 10px;
     margin-bottom: 5px;
     width: 100%;
-
 }
 
 #search {
@@ -498,6 +501,7 @@ div.login select.member-select {
     font-size: 14px;
     font-weight: bold;
     line-height: 16px;
+    border: 0;
 }
 
 #slider a.watch:hover {
