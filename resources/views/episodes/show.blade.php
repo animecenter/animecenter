@@ -159,12 +159,13 @@
                     </div>
                 </div>
                 <div class="navigation">
-                    @if (isset($prevEpisode) and $prevEpisode['id'] != null)
+                    @if ($prevEpisode)
                         <a href="{{ url($options[4]['value'] . $prevEpisode['slug']) }}" class="prev">Previous Episode</a>
                     @endif
-                        <a href="{{ url(($episode['anime']['type2'] == "dubbed") ? $options[3]['value'] :
-                        $options[2]['value'] . $episode['anime']['slug']) }}" class="all">All Episodes</a>
-                    @if (isset($nextEpisode) and $nextEpisode['id'] != null)
+                        <a href="{{ url($episode['anime']['type2'] === "dubbed" ?
+                            $options[3]['value'] . $episode['anime']['slug'] :
+                            $options[2]['value'] . $episode['anime']['slug']) }}" class="all">All Episodes</a>
+                    @if ($nextEpisode)
                         <a href="{{ url($options[4]['value'] . $nextEpisode['slug']) }}" class="next">Next Episode</a>
                     @endif
                 </div>
