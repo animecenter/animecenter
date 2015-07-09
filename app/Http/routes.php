@@ -249,7 +249,9 @@ $router->group([
     // Admin episodes routes...
     $router->get('episodes', 'EpisodeController@index');
     $router->get('episodes/create', 'EpisodeController@getCreate');
+    $router->get('episodes/create/{id}', 'EpisodeController@getCreateByAnimeID');
     $router->post('episodes/create', 'EpisodeController@postCreate');
+    $router->post('episodes/create/automatically', 'EpisodeController@postCreateAutomatically');
     $router->get('episodes/edit/{id}', 'EpisodeController@getEdit');
     $router->post('episodes/edit/{id}', 'EpisodeController@postEdit');
     $router->get('episodes/delete/{id}', 'EpisodeController@getDelete');
