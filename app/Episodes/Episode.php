@@ -9,17 +9,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * App\Episodes\Episode
  *
  * @property integer $id 
- * @property string $title 
+ * @property string $title
+ * @property string $slug
  * @property string $subdub 
  * @property integer $show 
- * @property string $not_yeird 
+ * @property string $not_yet_aired
  * @property string $raw 
  * @property string $hd 
  * @property string $mirror1 
  * @property string $mirror2 
  * @property string $mirror3 
  * @property string $mirror4 
- * @property integer $series 
+ * @property integer $anime_id
  * @property integer $date 
  * @property integer $date2 
  * @property float $rating 
@@ -52,6 +53,16 @@ class Episode extends Model
     protected $table = 'episodes';
 
     public $timestamps = false;
+
+    protected $fillable = [
+        'title', 'slug', 'subdub', 'show', 'not_yet_aired', 'raw', 'hd', 'mirror1', 'mirror2', 'mirror3', 'mirror4',
+        'anime_id', 'date', 'date2', 'rating', 'votes', 'visits', 'order', 'coming_date'
+    ];
+
+    protected $visible = [
+        'title', 'slug', 'subdub', 'show', 'not_yet_aired', 'raw', 'hd', 'mirror1', 'mirror2', 'mirror3', 'mirror4',
+        'anime_id', 'date', 'date2', 'rating', 'votes', 'visits', 'order', 'coming_date'
+    ];
 
 //    use SoftDeletes;
 

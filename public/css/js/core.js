@@ -154,35 +154,29 @@ $(document).ready(function (e) {
     });
 
     $("select.member-select").click(function (e) {
-        if ($(this).hasClass("episodess")) {
-            var val = $(this).val();
-            if (val == "0") {
-            }
-            else {
-                if (val.indexOf("episode_auto_add.php") >= 0) {
-                    var num = prompt("Type numbers of Episodes to be add");
+        event.preventDefault();
+        if ($(this).hasClass("episodes")) {
+            var value = $(this).val();
+            if (value !== 0) {
+                if (value.indexOf("automatically") >= 0) {
+                    var num = prompt("Type numbers of Episodes to be added");
                     var id = $(this).find("option:selected").attr("val");
-                    $.post(val, {id: id, num: num}, function (data) {
+                    $.post(value, { id: id, num: num }, function (data) {
                         location.reload();
                     });
-                }
-                else {
-                    window.location.href = val;
+                } else if (value.indexOf("create") >= 0) {
+                    window.location.href = value;
                 }
             }
-        }
-        else {
-            var val = $(this).val();
-            if (val == "0") {
-            }
-            else {
-                window.location.href = val;
+        } else {
+            var value = $(this).val();
+            if (value !== 0) {
+                window.location.href = value;
             }
         }
     });
 
     /*-------------------------------------------------------------*/
-
     /*  Fav and watchlist */
 
     $("div.delete_fav").click(function (e) {
