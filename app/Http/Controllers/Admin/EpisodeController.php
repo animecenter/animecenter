@@ -59,10 +59,59 @@ class EpisodeController extends Controller
      */
     public function getCreate()
     {
+        $this->data['currentAnime'] = '';
         $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
         $this->data['user'] = $this->auth->user();
 
         return view('admin.episodes.create', $this->data);
+    }
+
+    public function getCreateByAnimeID($id = 0)
+    {
+        $this->data['currentAnime'] = $this->anime->where('id', '=', $id)->first();
+        $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
+        $this->data['user'] = $this->auth->user();
+
+        return view('admin.episodes.create', $this->data);
+    }
+
+    public function postCreateAutomatically(Request $request)
+    {
+        if ($request['id'] && $request['num'] && $request['num'] > 0) {
+            $date = time();
+            $anime = $this->anime->where('id', '=', $request['id'])->firstOrFail();
+            // $lastEpisode = $this->episode->where('anime_id', '=', $request['id'])->get()->max('order');
+            $lastEpisode = $this->episode->where('anime_id', '=', $request['id'])->orderBy('order', 'desc')
+                ->firstOrFail();
+            if ($lastEpisode) {
+                $currentEpisode = $lastEpisode['order'];
+                $nextEpisode = (int) $currentEpisode + 1;
+            } else {
+                $nextEpisode = 1;
+            }
+            for ($i = 0; $i < $request['num']; $i++) {
+                $title = $anime["title"] . ' Episode ' . $nextEpisode;
+                $con = '<div id="yeird"><div class="text"><span>Anime Title:</span>' . $anime["title"] . '</div>
+                    <div class="text"><span>Episode Number:</span>' . $anime["title"] . ' Episode ' . $nextEpisode . '</div>
+                    <div class="text"><span>Status:</span>Upcoming</div>
+                    <div class="text"><span>About ' . $anime["title"] . ':</span>' . $anime["description"] . '</div>
+                    <div class="text"><span class="big">We don\'t have a video available for <strong>' .
+                    $anime["title"] . ' Episode ' . $nextEpisode . ' </strong>yet. Please check back later or visit our
+                    <strong><a href="' . url('/') . '">HOMEPAGE</a></strong> for the Latest Anime Episodes.</span></div>
+                </div>';
+                $order = $nextEpisode;
+                $this->episode->create([
+                    'title' => $title,
+                    'slug' => str_slug($title),
+                    'not_yet_aired' => $con,
+                    'anime_id' => $request['id'],
+                    'date' => $date,
+                    'date2' => $date,
+                    'order' => $order
+                ]);
+                $nextEpisode++;
+            }
+        }
     }
 
     /**

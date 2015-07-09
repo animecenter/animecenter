@@ -17,20 +17,20 @@
                 <div class="series">
                     <div class="main_title">
                         {{ $anime['title'] }}
-                        <div class="login">
-                            @if(Auth::user()))
-                                <select class="member-select episodess">
+                        @if(Auth::user())
+                            <div class="login">
+                                <select class="member-select episodes">
                                     <option selected="selected" value="0">Add Episode</option>
-                                    <option value="{{ url('admin/episodes/create') }}">
+                                    <option value="{{ url('admin/episodes/create/' . $anime['id']) }}">
                                         Add Episode Manually
                                     </option>
-                                    <option value="{{ url('admin/episodes/create') }}" val="{{ $anime['id'] }}">
+                                    <option value="{{ url('admin/episodes/create/automatically') }}" val="{{ $anime['id'] }}">
                                         Add Episode Automatically
                                     </option>
                                 </select>
-                            @endif
-                        </div>
-                        <!--/login-->
+                            </div>
+                            <!--/login-->
+                        @endif
                     </div>
 
                     <div class="content">
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="texts">
-                            @if(isset($anime['content']) and $anime['content'] != null)
+                            @if($anime['content'])
                                 {!! $anime['content'] !!}
                             @else
                                 <div class="text">
