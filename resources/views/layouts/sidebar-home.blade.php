@@ -22,8 +22,7 @@
         <div class="block">
             <a href="<?php echo $link; ?>">
                 <img alt='image' class='eimg' src="<?php echo get_thumbnail('images/' . $episode['anime']['image'], 50, 75); ?>"
-                     width="50"
-                     height="75">
+                     width="50" height="75">
                 <div class="sub_title" style="width: 225px; font-family: helvetica;">
                     <?php echo(strlen($episode['anime']['title']) < 30) ? $episode['anime']['title'] :
                             substr($episode['anime']['title'], 0, 30) . "..."; ?>
@@ -41,7 +40,7 @@
             <div class="date_con2" style="float: left;width: 180px; position: absolute;right: 10px;bottom: 10px;">
                 <script>
                     var myCountdown1 = new Countdown({
-                        time: <?php echo $total_s; ?>, // 86400 seconds = 1 day
+                        time: {{ $total_s }}, // 86400 seconds = 1 day
                         width: 180,
                         height: 30,
                         rangeHi: "day",
