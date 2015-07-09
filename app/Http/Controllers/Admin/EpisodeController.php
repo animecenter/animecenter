@@ -79,10 +79,10 @@ class EpisodeController extends Controller
     {
         if ($request['id'] && $request['num'] && $request['num'] > 0) {
             $date = time();
-            $anime = $this->anime->where('id', '=', $request['id'])->firstOrFail();
+            $anime = $this->anime->where('id', '=', $request['id'])->first();
             // $lastEpisode = $this->episode->where('anime_id', '=', $request['id'])->get()->max('order');
             $lastEpisode = $this->episode->where('anime_id', '=', $request['id'])->orderBy('order', 'desc')
-                ->firstOrFail();
+                ->first();
             if ($lastEpisode) {
                 $currentEpisode = $lastEpisode['order'];
                 $nextEpisode = (int) $currentEpisode + 1;
