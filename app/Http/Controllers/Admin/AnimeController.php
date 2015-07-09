@@ -95,9 +95,10 @@ class AnimeController extends Controller
         } else {
             $filename = '';
         }
+        $title = $request['type2'] === 'dubbed' ? $request['title'] . ' Dubbed' : $request['title'];
         $anime = $this->anime->create([
-            'title' => $request['title'],
-            'slug' => str_slug($request['title']),
+            'title' => $title,
+            'slug' => str_slug($title),
             'content' => $request['content'],
             'genres' => $request['genres'] ? implode(',', $request['genres']) : '',
             'episodes' => $request['episodes'],
