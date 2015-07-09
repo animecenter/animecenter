@@ -72,10 +72,11 @@ $router->get('update-db', function() {
         $table->renameColumn('a_date', 'date');
         $table->renameColumn('a_date2', 'date2');
     });
-    $animes = DB::table('animes')->get(['id', 'title']);
+    $animes = DB::table('animes')->get(['id', 'title', 'description']);
     foreach($animes as $anime) {
         DB::table('animes')->where('id', $anime->id)->update([
-            'slug' => str_slug($anime->title)
+            'slug' => str_slug($anime->title),
+            'description' => str_replace('â€“', '-', $anime->description)
         ]);
     }
     echo 'All anime have a slug now';

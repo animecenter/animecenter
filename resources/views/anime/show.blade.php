@@ -137,7 +137,7 @@
                             @endif
                         </div>
                         <!--/texts-->
-                        @if (isset($lastEpisode) and $lastEpisode['id'] != null)
+                        @if ($lastEpisode)
                             <div class="latest-episode">
                                 <a href="{{ url($options[4]['value'] . $lastEpisode['slug']) }}">
                                     <div class="row main">Latest Episode</div>
