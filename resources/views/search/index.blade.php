@@ -152,8 +152,8 @@
         <!--/left_content-->
         <div id="right_content">
             @include("layouts.sidebar")
-            @include("layouts.footer")
         </div>
+        @include("layouts.footer")
     </div>
     <!--/content-->
 </div>
