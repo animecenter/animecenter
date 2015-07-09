@@ -44,6 +44,7 @@ $router->get('update-db', function() {
     // Update Anime
     Schema::rename("an_series", "animes");
     Schema::table('animes', function ($table) {
+        $table->collation = 'utf8mb4_unicode_ci';
         $table->renameColumn('a_id', 'id');
         $table->renameColumn('a_title', 'title');
         $table->string('slug', 255)->index();
@@ -82,6 +83,7 @@ $router->get('update-db', function() {
     // Update Episodes
     Schema::rename("an_episodes", "episodes");
     Schema::table('episodes', function ($table) {
+        $table->collation = 'utf8mb4_unicode_ci';
         $table->renameColumn('e_id', 'id');
         $table->renameColumn('e_title', 'title');
         $table->string('slug', 255)->index();
@@ -117,6 +119,7 @@ $router->get('update-db', function() {
     // Update Pages
     Schema::rename("an_pages", "pages");
     Schema::table('pages', function ($table) {
+        $table->collation = 'utf8mb4_unicode_ci';
         $table->renameColumn('p_id', 'id');
         $table->renameColumn('p_title', 'title');
         $table->renameColumn('p_content', 'content');
@@ -142,6 +145,7 @@ $router->get('update-db', function() {
     // Update Genres
     Schema::rename("an_genres", "genres");
     Schema::table('genres', function ($table) {
+        $table->collation = 'utf8mb4_unicode_ci';
         $table->renameColumn('g_id', 'id');
         $table->renameColumn('g_value', 'value');
     });
@@ -150,6 +154,7 @@ $router->get('update-db', function() {
     // Update Options
     Schema::rename("an_options", "options");
     Schema::table('options', function ($table) {
+        $table->collation = 'utf8mb4_unicode_ci';
         $table->renameColumn('o_id', 'id');
         $table->renameColumn('o_value', 'value');
     });
@@ -159,6 +164,7 @@ $router->get('update-db', function() {
     Schema::rename("an_images", "images");
     Schema::table('images', function ($table) {
         $table->engine = 'InnoDB';
+        $table->collation = 'utf8mb4_unicode_ci';
         $table->renameColumn('i_id', 'id');
         $table->renameColumn('i_bigtitle', 'bigtitle');
         $table->renameColumn('i_smalltitle', 'smalltitle');
@@ -179,6 +185,7 @@ $router->get('update-db', function() {
     Schema::rename("an_rate_ip", "ratings");
     Schema::table('ratings', function ($table) {
         $table->engine = 'InnoDB';
+        $table->collation = 'utf8mb4_unicode_ci';
         $table->renameColumn('r_id', 'id');
         $table->renameColumn('r_ip', 'ip');
         $table->renameColumn('r_target', 'target');

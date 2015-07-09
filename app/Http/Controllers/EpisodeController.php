@@ -147,7 +147,7 @@ class EpisodeController extends Controller
     {
         $this->data['episodes'] = $episode = $this->episode->with('anime')
             ->where('show', '=', '1')
-            ->where('date', '>', strtotime('-4 week'))
+            ->where('date', '>', strtotime('-1 month'))
             ->orderBy('date', 'DESC')
             ->paginate(24);
         $this->data['meta_title'] = $meta_title = "Latest Episodes | Watch Anime Online Free";
