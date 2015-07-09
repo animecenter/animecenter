@@ -57,12 +57,14 @@ class EpisodeController extends Controller
             ->where('slug', '=', $slug)->firstOrFail();
         $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
         $this->data['nextEpisode'] = $this->episode
-            ->where('order', '=', $episode->order + 1)
             ->where('anime_id', '=', $episode->anime->id)
+            ->where('order', '>', $episode->order)
+            ->orderBy('order')
             ->first();
         $this->data['prevEpisode'] = $this->episode
-            ->where('order', '=', $episode->order - 1)
             ->where('anime_id', '=', $episode->anime->id)
+            ->where('order', '<', $episode->order)
+            ->orderBy('order', 'desc')
             ->first();
         $this->data['mainLink'] = $this->data['options'][4]['value'] . $episode['slug'];
         if ($episode['type2']) {
@@ -103,12 +105,14 @@ class EpisodeController extends Controller
             ->where('slug', '=', $slug)->where($mirror, '!=', '')->firstOrFail();
         $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
         $this->data['nextEpisode'] = $this->episode
-            ->where('order', '=', $episode->order + 1)
             ->where('anime_id', '=', $episode->anime->id)
+            ->where('order', '>', $episode->order)
+            ->orderBy('order')
             ->first();
         $this->data['prevEpisode'] = $this->episode
-            ->where('order', '=', $episode->order - 1)
             ->where('anime_id', '=', $episode->anime->id)
+            ->where('order', '<', $episode->order)
+            ->orderBy('order', 'desc')
             ->first();
         $this->data['mainLink'] = $this->data['options'][4]['value'] . $episode['slug'];
         if ($mirror) {
