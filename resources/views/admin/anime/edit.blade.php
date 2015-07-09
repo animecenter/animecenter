@@ -4,7 +4,6 @@
     <form action="{{ url('admin/anime/edit/' . $currentAnime['id']) }}" method="post" enctype="multipart/form-data">
 
         {!! csrf_field() !!}
-        <input type="hidden" name="previous_url" value="{{ redirect()->back()->getTargetUrl() }}"/>
 
         <div class="inputNOption" style="width: 100%;">
             <div class="smallTitle">Title:</div>
