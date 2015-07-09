@@ -12,7 +12,7 @@
 // Usage:
 // var test = new Countdown({time:15});
 
-var CountdownImageFolder = "css/js/images/";
+var CountdownImageFolder = "http://" + window.location.host + "/css/js/images/";
 var CountdownImageBasename = "flipper";
 var CountdownImageExt = "png";
 var CountdownImagePhysicalWidth = 41;
