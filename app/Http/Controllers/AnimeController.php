@@ -174,11 +174,11 @@ class AnimeController extends Controller
     public function getSubbedAnime($slug)
     {
         $this->data['anime'] = $anime = $this->anime->with(['episodes' => function ($query) {
-            $query->orderBy('order');
-        }])->where('slug', '=', $slug)->where('type2', '!=', 'dubbed')->firstOrFail();
+            $query->orderBy('order', 'asc');
+        }])->where('slug', '=', $slug)->where('type2', '<>', 'dubbed')->firstOrFail();
         $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
         $this->data['lastEpisode'] = $this->episode->where('anime_id', '=', $anime['id'])
-            ->where('not_yet_aired', '=', null)
+            ->where('not_yet_aired', '=', '')
             ->orderBy('id', 'DESC')
             ->first();
         $this->data['genres'] = explode(",", $anime['genres']);
@@ -212,11 +212,11 @@ class AnimeController extends Controller
     public function getDubbedAnime($slug)
     {
         $this->data['anime'] = $anime = $this->anime->with(['episodes' => function ($query) {
-            $query->orderBy('order');
+            $query->orderBy('order', 'asc');
         }])->where('slug', '=', $slug)->where('type2', '=', 'dubbed')->firstOrFail();
         $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
         $this->data['lastEpisode'] = $this->episode->where('anime_id', '=', $anime['id'])
-            ->where('not_yet_aired', '=', null)
+            ->where('not_yet_aired', '=', '')
             ->orderBy('id', 'DESC')
             ->first();
         $this->data['genres'] = explode(",", $anime['genres']);
@@ -265,7 +265,7 @@ class AnimeController extends Controller
 
     public function getLatest()
     {
-        $this->data['animes'] = $this->anime->where('position', '=', 'recently')->orWhere('position', '=', 'all')->orderBy('id', 'DESC')->paginate(20);
+        $this->data['animes'] = $this->anime->orderBy('id', 'DESC')->paginate(20);
         $this->data['metaTitle'] = "Latest Anime Series added to site | Watch Anime Online Free";
         $this->data['metaDesc'] = "Watch Latest Anime Series added to site!,Watch Latest Anime Series added to site! English Subbed/Dubbed,Watch Latest Anime Series added to site English Sub/Dub, Download Latest Anime Series added to site for free,Watch Latest Anime Series added to site! Online English Subbed and Dubbed  for Free Online only at Anime Center";
         $this->data['metaKey'] = "Download Latest Anime Series added to site,Watch Latest Anime Series added to site on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
