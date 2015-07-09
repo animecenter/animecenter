@@ -132,7 +132,7 @@
                             </script>
                         </div>
                         <div class="date_img">
-                            <img src="<?php echo $url . "/images/" . $episode['anime']['image']; ?>">
+                            <img src="{{ asset("images/" . $episode['anime']['image']) }}">
                         </div>
                         <h2 style="width: 300px; float: left; text-align: center; color: rgb(255, 255, 255); font-size: 16px; margin-left: 26%; margin-bottom: 5px;">ETA</h2>
                     <?php }
