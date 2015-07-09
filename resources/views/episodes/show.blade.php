@@ -109,10 +109,10 @@
                         </div>
                     @endif
                     <?php
-                    if ($episode['not_yet_aired'] != null and $episode['coming_date'] != null) {
-                        $comming = $episode['coming_date'];
+                    if ($episode['not_yet_aired'] && $episode['coming_date']) {
+                        $coming = $episode['coming_date'];
                         $first = new DateTime("now");
-                        $second = new DateTime($comming);
+                        $second = new DateTime($coming);
                         $diff = $first->diff($second);
                         $day = $diff->format('%d') + ($diff->format('%y') * 365);
                         $hr = $diff->format('%H');
@@ -123,7 +123,7 @@
                         <div class="date_con">
                             <script>
                                 var myCountdown1 = new Countdown({
-                                    time: <?php echo $total_s; ?>, // 86400 seconds = 1 day
+                                    time: {{ $total_s }}, // 86400 seconds = 1 day
                                     width: 250,
                                     height: 60,
                                     rangeHi: "day",
@@ -136,7 +136,7 @@
                         </div>
                         <h2 style="width: 300px; float: left; text-align: center; color: rgb(255, 255, 255); font-size: 16px; margin-left: 26%; margin-bottom: 5px;">ETA</h2>
                     <?php }
-                    if ($episode['not_yet_aired'] != null) {
+                    if ($episode['not_yet_aired']) {
                         echo $episode['not_yet_aired'];
                     } ?>
                 </div>
