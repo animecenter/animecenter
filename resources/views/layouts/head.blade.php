@@ -88,7 +88,7 @@
                                 $yes = 0;
                             }
                             ?>
-                            <li {{ $yes == 1 ? 'class="has_list"' : '' }}>
+                            <li {{ $yes === 1 ? "class=has_list" : '' }}>
                                 <a href="{{ url($link) }}">{{ $topPage['title'] }}</a>
                                 @if ($yes == 1)
                                     <ul>
