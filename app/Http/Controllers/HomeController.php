@@ -8,7 +8,6 @@ use App\Genres\Genre;
 use App\Images\Image;
 use App\Options\Option;
 use App\Pages\Page;
-use ForceUTF8\Encoding;
 
 class HomeController extends Controller
 {
@@ -64,7 +63,7 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
