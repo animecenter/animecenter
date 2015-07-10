@@ -189,7 +189,7 @@ class EpisodeController extends Controller
         $episode->mirror2 = $request['mirror2'];
         $episode->mirror3 = $request['mirror3'];
         $episode->mirror4 = $request['mirror4'];
-        $episode->date = $request['reset'] ? time() : $request['show'] ? time() : $episode->date;
+        $episode->date = $request['reset'] ? time() : $episode->date ? time() : $episode->date;
         $episode->date2 = time();
         $episode->coming_date = $request['coming_date'];
         $episode->save();
