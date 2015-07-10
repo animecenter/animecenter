@@ -71,7 +71,7 @@ class HomeController extends Controller
         $this->data['desc'] = "Home Page";
         $this->data['animesCount'] = $this->anime->where('position', '=', 'recently')->orWhere('position', '=', 'all')
             ->get()->count();
-        $this->data['episodesList'] = $this->episode->with('anime')->where('show', '=', '1')->orderBy('date', 'DESC')
+        $this->data['episodesList'] = $this->episode->with('anime')->where('show', '=', 1)->orderBy('date', 'DESC')
             ->take('12')->get();
         $this->data['imagesList'] = $this->image->orderBy('date', 'DESC')->take(10)->get();
         $this->data['topPagesList'] = $this->page->where('position', '=', 'top')->orderBy('order')->get();
