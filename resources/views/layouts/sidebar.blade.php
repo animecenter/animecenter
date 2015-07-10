@@ -13,34 +13,10 @@
     <iframe src="http://adconscious.com/site/100056" width="300" height="250" frameborder="0" scrolling="no"></iframe>
 </div>
 <div style="width: 100%; height: auto; float: left; margin-bottom: 5px;">
-    <script id="sid0020000072032835441">(function () {
-            function async_load() {
-                s.id = "cid0020000072032835441";
-                s.src = 'http://st.chatango.com/js/gz/emb.js';
-                s.style.cssText = "width:300px;height:433px;";
-                s.async = true;
-                s.text = '{"handle":"animebyte","styles":{"a":"01AF45","b":100,"c":"FFFFFF","d":"FFFFFF","k":"01AF45","l":"01AF45","m":"01AF45","n":"FFFFFF","q":"01AF45","r":100,"t":0}}';
-                var ss = document.getElementsByTagName('script');
-                for (var i = 0, l = ss.length; i < l; i++) {
-                    if (ss[i].id == 'sid0020000072032835441') {
-                        ss[i].id += '_';
-                        ss[i].parentNode.insertBefore(s, ss[i]);
-                        break;
-                    }
-                }
-            }
-
-            var s = document.createElement('script');
-            if (s.async == undefined) {
-                if (window.addEventListener) {
-                    addEventListener('load', async_load, false);
-                } else if (window.attachEvent) {
-                    attachEvent('onload', async_load);
-                }
-            } else {
-                async_load();
-            }
-        })();</script>
+    <script id="cid0020000097531107619" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js"
+            style="width: 300px;height: 450px;">
+        {"handle":"animecenterco","arch":"js","styles":{"a":"00AE45","b":100,"c":"FFFFFF","d":"FFFFFF","k":"00AE45","l":"00AE45","m":"00AE45","n":"FFFFFF","p":"10.35","q":"00AE45","r":100,"t":0,"surl":0,"allowpm":0,"fwtickm":1}}
+    </script>
 </div>
 <div style="width: 100%; height: auto; float: left; margin-bottom: 10px;">
     <iframe src="http://adconscious.com/site/100056" width="300" height="250" frameborder="0" scrolling="no"></iframe>
