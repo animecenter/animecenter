@@ -39,16 +39,16 @@
         <div class="clear"></div>
 
         <div class="inputCheck">
-            <input type="checkbox" class="checkbox" name="show" value="1" {{ ($episode['show'] == 1) or old('show') ?
-                'checked="checked"' : '' }}/>
+            <input type="checkbox" class="checkbox" name="show" value="1" {{ $episode['show'] == 1 ?
+            'checked="checked"' : old('show') ? 'checked="checked"' : '' }}/>
             <span></span>
             <div class="smallTitle">Show in home page</div>
         </div>
         <!--/inputCheck-->
 
         <div class="inputCheck">
-            <input type="checkbox" class="checkbox" name="reset" value="1" {{ ($episode['reset'] == 1) or old('reset') ?
-                'checked="checked"' : '' }}/>
+            <input type="checkbox" class="checkbox" name="reset" value="1" {{ $episode['reset'] == 1 ?
+            'checked="checked"' : old('reset') ? 'checked="checked"' : '' }}/>
             <span></span>
             <div class="smallTitle">Reset time</div>
         </div>
