@@ -2,25 +2,26 @@
 <html>
     <head>
         <title>
-            <?php echo(isset($meta_title)) ? $meta_title : "Watch Anime Online Free | Anime Shows, Movies and OVAs in English Subbed and Dubbed"; ?>
+            {{ isset($metaTitle) ? $metaTitle :
+            "Watch Anime Online Free | Anime Shows, Movies and OVAs in English Subbed and Dubbed" }}
         </title>
         <meta name="sth-site-verification" content="bf6527dae5e1867e7d5b65f8c47eb99c"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="google-site-verification" content="5cikZ3O5_LPFgVIEN_S0EHXxFbnjG62VdpcYQZ1c3hk"/>
-        <?php if (isset($meta_og_title) and $meta_og_title != null) { ?>
-            <meta property="og:title" content="<?php echo $meta_og_title; ?>"/>
-            <meta property="og:description" content="<?php echo $meta_og_desc; ?>"/>
-            <meta property="og:image" content="<?php echo $meta_og_image; ?>"/>
-            <meta property="og:url" content="<?php echo $meta_og_url; ?>"/>
+        @if (isset($meta_og_title) && $meta_og_title != '')
+            <meta property="og:title" content="{{ $meta_og_title }}"/>
+            <meta property="og:description" content="{{ $meta_og_desc }}"/>
+            <meta property="og:image" content="{{ $meta_og_image }}"/>
+            <meta property="og:url" content="{{ $meta_og_url }}"/>
             <meta property="og:site_name" content="Watch Anime Online AnimeCenter.TV"/>
-        <?php } ?>
-        <?php if (isset($episode['title']) and $episode['not_yet_aired'] == null) { ?>
+        @endif
+        @if (isset($episode['title']) && $episode['not_yet_aired'] == '')
             <meta name="medium" content="video"/>
             <meta name="video_type" content="application/x-shockwave-flash"/>
             <meta name="video_height" content="370"/>
             <meta name="video_width" content="650"/>
             <meta name="language" content="en-us"/>
-        <?php } ?>
+        @endif
         <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"/>
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
@@ -59,7 +60,16 @@
                     <a href="{{ url('/') }}">
                         <img alt='logo' src="{{ asset('css/imgs/animecenter_logo.png') }}">
                     </a>
-                    <div class="text">Watch Anime in <span> English Subbed-Dubbed </span> Online for Free</div>
+                    @if ((strpos($_SERVER['REQUEST_URI'], $options[2]['value']) or
+                            strpos($_SERVER['REQUEST_URI'], $options[3]['value'])) && $anime)
+                        <div class="text">Watch <span>{{ $anime['title'] }}</span> in
+                            English Subbed-Dubbed Online for Free</div>
+                    @elseif (strpos($_SERVER['REQUEST_URI'], $options[4]['value']) && $episode)
+                        <div class="text">Watch <span>{{ $episode['title'] }}</span>
+                            in English Subbed-Dubbed Online for Free</div>
+                    @else
+                        <div class="text">Watch Anime in <span> English Subbed-Dubbed </span> Online for Free</div>
+                    @endif
                 </div>
                 <div id="nav">
                     <ul>
@@ -78,18 +88,16 @@
                                 $yes = 0;
                             }
                             ?>
-                            <li <?php if ($yes == 1) { echo 'class="has_list"'; } ?>>
-                                <a href="{{ url($link) }}">
-                                    <?php echo $topPage['title']; ?>
-                                </a>
-                                <?php if ($yes == 1) { ?>
+                            <li {{ $yes == 1 ? 'class="has_list"' : '' }}>
+                                <a href="{{ url($link) }}">{{ $topPage['title'] }}</a>
+                                @if ($yes == 1)
                                     <ul>
                                         <li><a href="{{ url("anime-list") }}">Subbed Anime List</a></li>
                                         <li><a href="{{ url("anime-list-dubbed") }}">Dubbed Anime List</a></li>
                                         <li><a href="{{ url("browse_a-z-subbed") }}">Subbed Browse A-Z</a></li>
                                         <li><a href="{{ url("browse_a-z-dubbed") }}">Dubbed Browse A-Z</a></li>
                                     </ul>
-                                <?php } ?>
+                                @endif
                             </li>
                         <?php } ?>
                     </ul>
