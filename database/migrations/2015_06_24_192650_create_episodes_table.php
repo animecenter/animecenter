@@ -26,7 +26,7 @@ class CreateEpisodesTable extends Migration
             $table->float('rating');
             $table->integer('votes')->unsigned();
             $table->integer('visits')->unsigned()->default('0');
-            $table->integer('order')->unsigned()->nullable();
+            $table->float('order')->unsigned()->nullable();
             $table->datetime('coming_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
