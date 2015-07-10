@@ -59,17 +59,17 @@ class AnimeController extends Controller
         if (!$letter) {
             $this->data['animes'] = $anime = $this->anime
                 ->where('title', 'like', 'a%')
-                ->where('type2', '!=', 'dubbed')
+                ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
         } else if ($letter === '0-9') {
             $this->data['animes'] = $anime = $this->anime
                 ->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
-                ->where('type2', '!=', 'dubbed')
+                ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
         } else if (preg_match('/^([a-z])$/', $letter) === 1) {
             $this->data['animes'] = $anime = $this->anime
                 ->where('title', 'like', $letter.'%')
-                ->where('type2', '!=', 'dubbed')
+                ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
         } else {
             return redirect()->back();
@@ -115,17 +115,17 @@ class AnimeController extends Controller
         if (!$letter) {
             $this->data['animes'] = $anime = $this->anime
                 ->where('title', 'like', 'a%')
-                ->where('type2', '!=', 'dubbed')
+                ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->paginate(20);
         } else if ($letter === '0-9') {
             $this->data['animes'] = $anime = $this->anime
                 ->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
-                ->where('type2', '!=', 'dubbed')
+                ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->paginate(20);
         } else if (preg_match('/^([a-z])$/', $letter) === 1) {
             $this->data['animes'] = $anime = $this->anime
                 ->where('title', 'like', $letter.'%')
-                ->where('type2', '!=', 'dubbed')
+                ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->paginate(20);
         } else {
             return redirect()->back();
