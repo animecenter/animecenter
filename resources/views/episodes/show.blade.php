@@ -244,12 +244,6 @@
                     comments powered by <span class="logo-disqus">Disqus</span>
                 </a>
             </div>
-
-            <div class="bottom_text">
-                You are going to <b>Watch {{ $episode['title'] }} </b> in <b> English Subbed/Dubbed </b>from <b>
-                {{ $episode['anime']['title'] }} </b> Anime. Watch <b> {{ $episode['title'] }} </b> online and the other
-                episodes of <b> {{ $episode['anime']['title'] }} </b>with High Quality Streaming for <b>FREE</b>
-            </div>
         </div>
         <!--/left_content-->
 
