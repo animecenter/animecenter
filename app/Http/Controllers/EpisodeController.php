@@ -102,7 +102,7 @@ class EpisodeController extends Controller
     public function getEpisodeMirror($slug, $mirror)
     {
         $this->data['episode'] = $episode = $episode = $this->episode->with('anime')
-            ->where('slug', '=', $slug)->where($mirror, '!=', '')->firstOrFail();
+            ->where('slug', '=', $slug)->where($mirror, '<>', '')->firstOrFail();
         $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
         $this->data['nextEpisode'] = $this->episode
             ->where('anime_id', '=', $episode->anime->id)

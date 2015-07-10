@@ -70,16 +70,20 @@ class HomeController extends Controller
     {
         $this->data['pageTitle'] = "Home";
         $this->data['desc'] = "Home Page";
-        $this->data['animesCount'] = $this->anime->where('position', '=', 'recently')->orWhere('position', '=', 'all')->get()->count();
-        $this->data['episodesList'] = $this->episode->with('anime')->where('show', '=', '1')->orderBy('date', 'DESC')->take('12')->get();
+        $this->data['animesCount'] = $this->anime->where('position', '=', 'recently')->orWhere('position', '=', 'all')
+            ->get()->count();
+        $this->data['episodesList'] = $this->episode->with('anime')->where('show', '=', '1')->orderBy('date', 'DESC')
+            ->take('12')->get();
         $this->data['imagesList'] = $this->image->orderBy('date', 'DESC')->take(10)->get();
         $this->data['topPagesList'] = $this->page->where('position', '=', 'top')->orderBy('order')->get();
         $this->data['bottomPagesList'] = $this->page->where('position', '=', 'bottom1')->orderBy('order')->get();
         $this->data['bottomPagesList2'] = $this->page->where('position', '=', 'bottom2')->orderBy('order')->get();
         $this->data['bottomPagesList3'] = $this->page->where('position', '=', 'bottom3')->orderBy('order')->get();
         $this->data['options'] = $this->option->all();
-        $this->data['animeList'] = $this->anime->where('position', '=', 'recently')->orWhere('position', '=', 'all')->orderBy('id', 'DESC')->take(8)->get();
-        $this->data['upcomingEpisodes'] = $this->episode->with('anime')->where('coming_date', '!=', '')->where('not_yet_aired', '!=', '')->orderBy('coming_date', 'DESC')->take(5)->get();
+        $this->data['animeList'] = $this->anime->where('position', '=', 'recently')->orWhere('position', '=', 'all')
+            ->orderBy('id', 'DESC')->take(8)->get();
+        $this->data['upcomingEpisodes'] = $this->episode->with('anime')->where('coming_date', '<>', '')
+            ->where('not_yet_aired', '<>', '')->orderBy('coming_date', 'DESC')->take(5)->get();
 
         return view('home.index', $this->data);
     }
