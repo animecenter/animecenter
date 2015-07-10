@@ -57,6 +57,37 @@
         <!--/block-->
     <?php } ?>
 </div><!--/featured-->
+
+<div style="width: 100%; height: auto; float: left; margin-bottom: 5px;">
+    <script id="sid0020000072032835441">(function () {
+            function async_load() {
+                s.id = "cid0020000072032835441";
+                s.src = 'http://st.chatango.com/js/gz/emb.js';
+                s.style.cssText = "width:300px;height:433px;";
+                s.async = true;
+                s.text = '{"handle":"animebyte","styles":{"a":"01AF45","b":100,"c":"FFFFFF","d":"FFFFFF","k":"01AF45","l":"01AF45","m":"01AF45","n":"FFFFFF","q":"01AF45","r":100,"t":0}}';
+                var ss = document.getElementsByTagName('script');
+                for (var i = 0, l = ss.length; i < l; i++) {
+                    if (ss[i].id == 'sid0020000072032835441') {
+                        ss[i].id += '_';
+                        ss[i].parentNode.insertBefore(s, ss[i]);
+                        break;
+                    }
+                }
+            }
+
+            var s = document.createElement('script');
+            if (s.async == undefined) {
+                if (window.addEventListener) {
+                    addEventListener('load', async_load, false);
+                } else if (window.attachEvent) {
+                    attachEvent('onload', async_load);
+                }
+            } else {
+                async_load();
+            }
+        })();</script>
+</div>
 <div style="width: 100%; height: auto; float: left; margin-top: 10px; margin-bottom:10px">
     <iframe src="http://adconscious.com/site/100055" width="300" height="250" frameborder="0" scrolling="no"></iframe>
 </div>
