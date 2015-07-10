@@ -32,7 +32,6 @@
                             <!--/login-->
                         @endif
                     </div>
-
                     <div class="content">
                         <div class="categories">
                             <a href="#" class="{{ $anime['type2'] }}">

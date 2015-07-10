@@ -173,6 +173,8 @@ class AnimeController extends Controller
         }])->where('slug', '=', $slug)->where('type2', '<>', 'dubbed')->firstOrFail();
         $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
         $this->data['lastEpisode'] = $this->episode->where('anime_id', '=', $anime['id'])
+            ->where('not_yet_aired', '=', NULL)
+            ->orWhere('anime_id', '=', $anime['id'])
             ->where('not_yet_aired', '=', '')
             ->orderBy('id', 'DESC')
             ->first();
@@ -211,6 +213,8 @@ class AnimeController extends Controller
         }])->where('slug', '=', $slug)->where('type2', '=', 'dubbed')->firstOrFail();
         $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
         $this->data['lastEpisode'] = $this->episode->where('anime_id', '=', $anime['id'])
+            ->where('not_yet_aired', '=', NULL)
+            ->orWhere('anime_id', '=', $anime['id'])
             ->where('not_yet_aired', '=', '')
             ->orderBy('id', 'DESC')
             ->first();

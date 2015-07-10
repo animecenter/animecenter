@@ -82,7 +82,7 @@ class HomeController extends Controller
         $this->data['animeList'] = $this->anime->where('position', '=', 'recently')->orWhere('position', '=', 'all')
             ->orderBy('id', 'DESC')->take(8)->get();
         $this->data['upcomingEpisodes'] = $this->episode->with('anime')->where('coming_date', '<>', '')
-            ->where('not_yet_aired', '<>', '')->orderBy('coming_date', 'ASC')->take(5)->get();
+            ->where('not_yet_aired', '<>', '')->orderBy('coming_date', 'ASC')->take(6)->get();
 
         return view('home.index', $this->data);
     }
