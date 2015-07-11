@@ -74,10 +74,11 @@ class AnimeController extends Controller
         } else {
             return redirect()->back();
         }
-        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List";
-        $this->data['metaTitle'] = $pageTitle . " | Watch Anime Online Free";
-        $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " . $pageTitle . " English Sub/Dub, Download " . $pageTitle . " for free,Watch " . $pageTitle . "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
-        $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
+        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List | Watch Anime Online Free";
+        $this->data['metaTitle'] = "Subbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
+        $this->data['metaDesc'] = $pageTitle . "!. Watch English Subbed. Watch English Sub, Download " .
+            "Anime for free. Watch Online English Subbed Online for Free only at Anime Center";
+        $this->data['metaKey'] = "Anime Subbed, Watch Anime, Download Anime, Watch Anime on iphone, Anime for Free";
 
         return view('anime.list-subbed', $this->data);
     }
@@ -102,10 +103,11 @@ class AnimeController extends Controller
         } else {
             return redirect()->back();
         }
-        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List";
-        $this->data['metaTitle'] = $pageTitle . " | Watch Anime Online Free";
-        $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " . $pageTitle . " English Sub/Dub, Download " . $pageTitle . " for free,Watch " . $pageTitle . "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
-        $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
+        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Dubbed Anime List | Watch Anime Online Free";
+        $this->data['metaTitle'] = "Dubbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
+        $this->data['metaDesc'] = $pageTitle . "!. Watch English Dubbed. Watch English Dub, Download " .
+            "Anime for free. Watch Online English Dubbed Online for Free only at Anime Center";
+        $this->data['metaKey'] = "Anime Dubbed, Watch Anime, Download Anime, Watch Anime on iphone, Anime for Free";
 
         return view('anime.list-dubbed', $this->data);
     }
@@ -130,10 +132,11 @@ class AnimeController extends Controller
         } else {
             return redirect()->back();
         }
-        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List";
-        $this->data['metaTitle'] = $pageTitle . " | Watch Anime Online Free";
-        $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " . $pageTitle . " English Sub/Dub, Download " . $pageTitle . " for free,Watch " . $pageTitle . "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
-        $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
+        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List | Watch Anime Online Free";
+        $this->data['metaTitle'] = "Subbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
+        $this->data['metaDesc'] = $pageTitle . "!. Watch English Subbed. Watch English Sub, Download " .
+            "Anime for free. Watch Online English Subbed Online for Free only at Anime Center";
+        $this->data['metaKey'] = "Anime Subbed, Watch Anime, Download Anime, Watch Anime on iphone, Anime for Free";
 
         return view('anime.browse-subbed', $this->data);
     }
@@ -158,10 +161,11 @@ class AnimeController extends Controller
         } else {
             return redirect()->back();
         }
-        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Dubbed Browse A-Z";
-        $this->data['metaTitle'] = $pageTitle . " | Watch Anime Online Free";
-        $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " . $pageTitle . " English Sub/Dub, Download " . $pageTitle . " for free,Watch " . $pageTitle . "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
-        $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
+        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Dubbed Anime List | Watch Anime Online Free";
+        $this->data['metaTitle'] = "Dubbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
+        $this->data['metaDesc'] = $pageTitle . "!. Watch English Dubbed. Watch English Dub, Download " .
+            "Anime for free. Watch Online English Dubbed Online for Free only at Anime Center";
+        $this->data['metaKey'] = "Anime Dubbed, Watch Anime, Download Anime, Watch Anime on iphone, Anime for Free";
 
         return view('anime.browse-dubbed', $this->data);
     }
@@ -202,6 +206,12 @@ class AnimeController extends Controller
         }
         $this->data['color'] = $color;
         $this->data['relations'] = $this->getRelated($anime);
+        $this->data['pageTitle'] = $title = $anime['title'] . " English Subbed/Dubbed in HD";
+        $this->data['metaTitle'] = "Watch {$anime['title']} Online for Free | Watch Anime Online Free";
+        $this->data['metaDesc'] = "Watch " . $title . " Online. Download " . $title . " Online. Watch " .
+            $anime['title'] . " English Sub/Dub HD";
+        $this->data['metaKey'] = "Watch {$anime['title']}, {$anime['title']} English Subbed/Dubbed, Download " .
+            "{$anime['title']} English Subbed/Dubbed, Watch {$anime['title']} Online";
 
         return view('anime.show', $this->data);
     }
@@ -243,6 +253,12 @@ class AnimeController extends Controller
         $this->data['color'] = $color;
         $this->data['animeBanner'] = $this->anime->orderByRaw("RAND()")->where('type2', '=', 'subbed')->take(1)->first();
         $this->data['relations'] = $this->getRelated($anime);
+        $this->data['pageTitle'] = $title = $anime['title'] . " English Subbed/Dubbed in HD";
+        $this->data['metaTitle'] = "Watch {$anime['title']} Online for Free | Watch Anime Online Free";
+        $this->data['metaDesc'] = "Watch " . $title . " Online. Download " . $title . " Online. Watch " .
+            $anime['title'] . " English Sub/Dub HD";
+        $this->data['metaKey'] = "Watch {$anime['title']}, {$anime['title']} English Subbed/Dubbed, Download " .
+            "{$anime['title']} English Subbed/Dubbed, Watch {$anime['title']} Online";
 
         return view('anime.show', $this->data);
     }
@@ -265,9 +281,11 @@ class AnimeController extends Controller
     public function getLatest()
     {
         $this->data['animes'] = $this->anime->orderBy('id', 'DESC')->paginate(20);
-        $this->data['metaTitle'] = "Latest Anime Series added to site | Watch Anime Online Free";
-        $this->data['metaDesc'] = "Watch Latest Anime Series added to site!,Watch Latest Anime Series added to site! English Subbed/Dubbed,Watch Latest Anime Series added to site English Sub/Dub, Download Latest Anime Series added to site for free,Watch Latest Anime Series added to site! Online English Subbed and Dubbed  for Free Online only at Anime Center";
-        $this->data['metaKey'] = "Download Latest Anime Series added to site,Watch Latest Anime Series added to site on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
+        $this->data['pageTitle'] = "Latest Anime | Watch Anime Online Free";
+        $this->data['metaTitle'] = "Watch the Latest Anime for Free Online | Watch Anime Online Free just in Animecenter.tv";
+        $this->data['metaDesc'] = "Watch Latest Anime added to the site! Latest English Subbed/Dubbed Anime";
+        $this->data['metaKey'] = "Latest Anime, Watch Latest Anime, Watch on Iphone, Watch Anime" .
+            " Online, English Subbed/Dubbed";
 
         return view('anime.latest', $this->data);
     }
