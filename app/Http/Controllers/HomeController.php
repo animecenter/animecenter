@@ -83,6 +83,12 @@ class HomeController extends Controller
             ->orderBy('id', 'DESC')->take(8)->get();
         $this->data['upcomingEpisodes'] = $this->episode->with('anime')->where('coming_date', '<>', '')
             ->where('not_yet_aired', '<>', '')->orderBy('coming_date', 'ASC')->take(6)->get();
+        $this->data['pageTitle'] = $title = "AnimeCenter: Watch Anime English Subbed/Dubbed Online in HD";
+        $this->data['metaTitle'] = "Watch Anime Online English Subbed/Dubbed | Watch Anime Online Free";
+        $this->data['metaDesc'] = "Watch Anime English Subbed/Dubbed Online in HD at AnimeCenter! Over 41000 Episodes" .
+        ", and 2,146 Anime Series!";
+        $this->data['metaKey'] = "Watch Anime Online, Anime Subbed/Dubbed, Anime Episodes, Anime Stream, " .
+            "Subbed Anime, Dubbed Anime";
 
         return view('home.index', $this->data);
     }
