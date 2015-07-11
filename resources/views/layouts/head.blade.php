@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-            {{ isset($metaTitle) ? $metaTitle :
-            "Watch Anime Online Free | Anime Shows, Movies and OVAs in English Subbed and Dubbed" }}
-        </title>
+        <title>{{ isset($pageTitle) ? $pageTitle :
+            "Watch Anime Online Free | Anime Shows, Movies and OVAs in English Subbed and Dubbed" }}</title>
+        @if ($metaTitle)
+            <meta name="title" content="{{ $metaTitle }}">
+        @endif
+        @if ($metaDesc)
+            <meta name="description" content="{{ $metaDesc }}"/>
+        @endif
+        @if ($metaKey)
+            <meta name="keywords" content="{{ $metaKey }}"/>
+        @endif
         <meta name="sth-site-verification" content="bf6527dae5e1867e7d5b65f8c47eb99c"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="google-site-verification" content="5cikZ3O5_LPFgVIEN_S0EHXxFbnjG62VdpcYQZ1c3hk"/>
