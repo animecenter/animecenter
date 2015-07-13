@@ -64,8 +64,9 @@
                                 @if($anime['prequel'])
                                     <div class="text">
                                         <span>Prequel: </span>
-                                        <a href="{{ url($anime['prequel']['type2'] . "-anime/" .
-                                        $anime['prequel']['slug']) }}">
+                                        <a href="{{ url($anime['prequel']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $anime['prequel']['slug'] :
+                                        $options[2]['value'] . $anime['prequel']['slug']) }}">
                                             {{ $anime['prequel']['title'] }}
                                         </a>
                                     </div>
@@ -73,8 +74,9 @@
                                 @if($anime['sequel'])
                                     <div class="text">
                                         <span>Sequel: </span>
-                                        <a href="{{ url(($anime['sequel']['type2'] == "dubbed") ?
-                                        $options[3]['value'] : $options[2]['value'] . $anime['sequel']['slug']) }}">
+                                        <a href="{{ url(($anime['sequel']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $anime['sequel']['slug'] :
+                                        $options[2]['value'] . $anime['sequel']['slug'])) }}">
                                             {{ $anime['sequel']['title'] }}
                                         </a>
                                     </div>
@@ -82,8 +84,9 @@
                                 @if($anime['story'])
                                     <div class="text">
                                         <span>Parent Story: </span>
-                                        <a href="{{ url(($anime['story']['type2'] == "dubbed") ?
-                                        $options[3]['value'] : $options[2]['value'] . $anime['story']['slug']) }}">
+                                        <a href="{{ url($anime['story']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $anime['story']['slug'] :
+                                        $options[2]['value'] . $anime['story']['slug']) }}">
                                             {{ $anime['story']['title'] }}
                                         </a>
                                     </div>
@@ -91,8 +94,9 @@
                                 @if ($anime['side_story'])
                                     <div class="text">
                                         <span>Side Story: </span>
-                                        <a href="{{ url(($anime['side_story']['type2'] == "dubbed") ?
-                                        $options[3]['value'] : $options[2]['value'] . $anime['side_story']['slug']) }}">
+                                        <a href="{{ url($anime['side_story']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $anime['side_story']['slug'] :
+                                        $options[2]['value'] . $anime['side_story']['slug']) }}">
                                             {{ $anime['side_story']['title'] }}
                                         </a>
                                     </div>
@@ -100,8 +104,9 @@
                                 @if ($anime['spin_off'])
                                     <div class="text">
                                         <span>Spin Off: </span>
-                                        <a href="{{ url(($anime['spin_off']['type2'] == "dubbed") ?
-                                        $options[3]['value'] : $options[2]['value'] . $anime['spin_off']['slug']) }}">
+                                        <a href="{{ url($anime['spin_off']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $anime['spin_off']['slug'] :
+                                        $options[2]['value'] . $anime['spin_off']['slug']) }}">
                                             {{ $anime['spin_off']['title'] }}
                                         </a>
                                     </div>
@@ -109,8 +114,9 @@
                                 @if ($anime['alternative'])
                                     <div class="text">
                                         <span>Alternative: </span>
-                                        <a href="{{ url(($anime['alternative']['type2'] == "dubbed") ?
-                                        $options[3]['value'] : $options[2]['value'] . $anime['alternative']['slug']) }}">
+                                        <a href="{{ url($anime['alternative']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $anime['alternative']['slug'] :
+                                        $options[2]['value'] . $anime['alternative']['slug']) }}">
                                             {{ $anime['alternative']['title'] }}
                                         </a>
                                     </div>
@@ -118,8 +124,9 @@
                                 @if($anime['other'])
                                     <div class="text">
                                         <span>Other: </span>
-                                        <a href="{{ url(($anime['other']['type2'] == "dubbed") ?
-                                        $options[3]['value'] : $options[2]['value'] . $anime['other']['slug']) }}">
+                                        <a href="{{ url($anime['other']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $anime['other']['slug'] :
+                                        $options[2]['value'] . $anime['other']['slug']) }}">
                                             {{ $anime['other']['title'] }}
                                         </a>
                                     </div>
