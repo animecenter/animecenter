@@ -107,4 +107,7 @@ $router->group([
 
     // Admin cache routes...
     $router->get('purge-cache', 'CacheController@getPurge');
+
+    // Sitemap routes...
+    $router->get('generate-sitemap', 'SitemapController@getGenerate');
 });

@@ -102,6 +102,11 @@
                                 </a>
                             </li>
                             <li class="parent">
+                                <a href="{{ url('admin/generate-sitemap') }}">
+                                    Generate Sitemap
+                                </a>
+                            </li>
+                            <li class="parent">
                                 <a href="{{ url('admin/purge-cache') }}">
                                     Purge Cache
                                 </a>

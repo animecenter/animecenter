@@ -59,8 +59,9 @@
                                 @if($anime['prequel'])
                                     <div class="text">
                                         <span>Prequel: </span>
-                                        <a href="{{ url($relations['prequel']['type2'] . "-anime/" .
-                                        $relations['prequel']['slug']) }}">
+                                        <a href="{{ url($relations['prequel']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $relations['prequel']['slug'] :
+                                        $options[2]['value'] . $relations['prequel']['slug']) }}">
                                             {{ $relations['prequel']['title'] }}
                                         </a>
                                     </div>
@@ -68,8 +69,9 @@
                                 @if($anime['sequel'])
                                     <div class="text">
                                         <span>Sequel: </span>
-                                        <a href="{{ url(($relations['sequel']['type2'] == "dubbed") ?
-                                        $options[3]['value'] : $options[2]['value'] . $relations['sequel']['slug']) }}">
+                                        <a href="{{ url(($relations['sequel']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $relations['sequel']['slug'] :
+                                        $options[2]['value'] . $relations['sequel']['slug'])) }}">
                                             {{ $relations['sequel']['title'] }}
                                         </a>
                                     </div>
@@ -77,8 +79,9 @@
                                 @if($anime['story'])
                                     <div class="text">
                                         <span>Parent Story: </span>
-                                        <a href="{{ url(($relations['story']['type2'] == "dubbed") ?
-                                        $options[3]['value'] : $options[2]['value'] . $relations['story']['slug']) }}">
+                                        <a href="{{ url($relations['story']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $relations['story']['slug'] :
+                                        $options[2]['value'] . $relations['story']['slug']) }}">
                                             {{ $relations['story']['title'] }}
                                         </a>
                                     </div>
@@ -86,8 +89,9 @@
                                 @if ($anime['side_story'])
                                     <div class="text">
                                         <span>Side Story: </span>
-                                        <a href="{{ url(($relations['side_story']['type2'] == "dubbed") ?
-                                        $options[3]['value'] : $options[2]['value'] . $relations['side_story']['slug']) }}">
+                                        <a href="{{ url($relations['side_story']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $relations['side_story']['slug'] :
+                                        $options[2]['value'] . $relations['side_story']['slug']) }}">
                                             {{ $relations['side_story']['title'] }}
                                         </a>
                                     </div>
@@ -95,8 +99,9 @@
                                 @if ($anime['spin_off'])
                                     <div class="text">
                                         <span>Spin Off: </span>
-                                        <a href="{{ url(($relations['spin_off']['type2'] == "dubbed") ?
-                                        $options[3]['value'] : $options[2]['value'] . $relations['spin_off']['slug']) }}">
+                                        <a href="{{ url($relations['spin_off']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $relations['spin_off']['slug'] :
+                                        $options[2]['value'] . $relations['spin_off']['slug']) }}">
                                             {{ $relations['spin_off']['title'] }}
                                         </a>
                                     </div>
@@ -104,8 +109,9 @@
                                 @if ($anime['alternative'])
                                     <div class="text">
                                         <span>Alternative: </span>
-                                        <a href="{{ url(($relations['alternative']['type2'] == "dubbed") ?
-                                        $options[3]['value'] : $options[2]['value'] . $relations['alternative']['slug']) }}">
+                                        <a href="{{ url($relations['alternative']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $relations['alternative']['slug'] :
+                                        $options[2]['value'] . $relations['alternative']['slug']) }}">
                                             {{ $relations['alternative']['title'] }}
                                         </a>
                                     </div>
@@ -113,8 +119,9 @@
                                 @if($anime['other'])
                                     <div class="text">
                                         <span>Other: </span>
-                                        <a href="{{ url(($relations['other']['type2'] == "dubbed") ?
-                                        $options[3]['value'] : $options[2]['value'] . $relations['other']['slug']) }}">
+                                        <a href="{{ url($relations['other']['type2'] == "dubbed" ?
+                                        $options[3]['value'] . $relations['other']['slug'] :
+                                        $options[2]['value'] . $relations['other']['slug']) }}">
                                             {{ $relations['other']['title'] }}
                                         </a>
                                     </div>
