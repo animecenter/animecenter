@@ -85,7 +85,7 @@ class SearchController extends Controller
                     ->get();
             }
         } else {
-            $animes = $this->anime->where('title', 'LIKE', $request['title'].'%')
+            $animes = $this->anime->where('title', 'LIKE', '%'.$request['title'].'%')
                 ->orderBy('title', 'ASC')
                 ->get();
         }
