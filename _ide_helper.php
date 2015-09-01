@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.6 (LTS) on 2015-07-07.
+ * Generated for Laravel 5.1.12 (LTS) on 2015-09-01.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -432,6 +432,16 @@ namespace {
         }
         
         /**
+         * Determine if middleware has been disabled for the application.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function shouldSkipMiddleware(){
+            return \Illuminate\Foundation\Application::shouldSkipMiddleware();
+        }
+        
+        /**
          * Determine if the application configuration is cached.
          *
          * @return bool 
@@ -752,7 +762,7 @@ namespace {
         /**
          * Register a shared binding in the container.
          *
-         * @param string $abstract
+         * @param string|array $abstract
          * @param \Closure|string|null $concrete
          * @return void 
          * @static 
@@ -1552,6 +1562,37 @@ namespace {
     class Blade extends \Illuminate\Support\Facades\Blade{
         
         /**
+         * Minifies the output before saving it.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */
+        public static function compileMinify($value){
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::compileMinify($value);
+        }
+        
+        /**
+         * Return the compilers.
+         *
+         * @return string[] 
+         * @static 
+         */
+        public static function getCompilers(){
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::getCompilers();
+        }
+        
+        /**
+         * Return the blade minifier instance.
+         *
+         * @return \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier 
+         * @static 
+         */
+        public static function getBladeMinifier(){
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::getBladeMinifier();
+        }
+        
+        /**
          * Compile the view at the given path.
          *
          * @param string $path
@@ -1559,7 +1600,8 @@ namespace {
          * @static 
          */
         public static function compile($path = null){
-            \Illuminate\View\Compilers\BladeCompiler::compile($path);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::compile($path);
         }
         
         /**
@@ -1569,7 +1611,8 @@ namespace {
          * @static 
          */
         public static function getPath(){
-            return \Illuminate\View\Compilers\BladeCompiler::getPath();
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::getPath();
         }
         
         /**
@@ -1580,7 +1623,8 @@ namespace {
          * @static 
          */
         public static function setPath($path){
-            \Illuminate\View\Compilers\BladeCompiler::setPath($path);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::setPath($path);
         }
         
         /**
@@ -1591,7 +1635,8 @@ namespace {
          * @static 
          */
         public static function compileString($value){
-            return \Illuminate\View\Compilers\BladeCompiler::compileString($value);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::compileString($value);
         }
         
         /**
@@ -1602,7 +1647,8 @@ namespace {
          * @static 
          */
         public static function compileEchoDefaults($value){
-            return \Illuminate\View\Compilers\BladeCompiler::compileEchoDefaults($value);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::compileEchoDefaults($value);
         }
         
         /**
@@ -1612,7 +1658,8 @@ namespace {
          * @static 
          */
         public static function getExtensions(){
-            return \Illuminate\View\Compilers\BladeCompiler::getExtensions();
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::getExtensions();
         }
         
         /**
@@ -1623,7 +1670,8 @@ namespace {
          * @static 
          */
         public static function extend($compiler){
-            \Illuminate\View\Compilers\BladeCompiler::extend($compiler);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::extend($compiler);
         }
         
         /**
@@ -1635,7 +1683,19 @@ namespace {
          * @static 
          */
         public static function directive($name, $handler){
-            \Illuminate\View\Compilers\BladeCompiler::directive($name, $handler);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::directive($name, $handler);
+        }
+        
+        /**
+         * Get the list of custom directives.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getCustomDirectives(){
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::getCustomDirectives();
         }
         
         /**
@@ -1645,7 +1705,8 @@ namespace {
          * @static 
          */
         public static function getRawTags(){
-            return \Illuminate\View\Compilers\BladeCompiler::getRawTags();
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::getRawTags();
         }
         
         /**
@@ -1657,7 +1718,8 @@ namespace {
          * @static 
          */
         public static function setRawTags($openTag, $closeTag){
-            \Illuminate\View\Compilers\BladeCompiler::setRawTags($openTag, $closeTag);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::setRawTags($openTag, $closeTag);
         }
         
         /**
@@ -1670,7 +1732,8 @@ namespace {
          * @static 
          */
         public static function setContentTags($openTag, $closeTag, $escaped = false){
-            \Illuminate\View\Compilers\BladeCompiler::setContentTags($openTag, $closeTag, $escaped);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::setContentTags($openTag, $closeTag, $escaped);
         }
         
         /**
@@ -1682,7 +1745,8 @@ namespace {
          * @static 
          */
         public static function setEscapedContentTags($openTag, $closeTag){
-            \Illuminate\View\Compilers\BladeCompiler::setEscapedContentTags($openTag, $closeTag);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::setEscapedContentTags($openTag, $closeTag);
         }
         
         /**
@@ -1692,7 +1756,8 @@ namespace {
          * @static 
          */
         public static function getContentTags(){
-            return \Illuminate\View\Compilers\BladeCompiler::getContentTags();
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::getContentTags();
         }
         
         /**
@@ -1702,7 +1767,8 @@ namespace {
          * @static 
          */
         public static function getEscapedContentTags(){
-            return \Illuminate\View\Compilers\BladeCompiler::getEscapedContentTags();
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::getEscapedContentTags();
         }
         
         /**
@@ -1713,7 +1779,8 @@ namespace {
          * @static 
          */
         public static function setEchoFormat($format){
-            \Illuminate\View\Compilers\BladeCompiler::setEchoFormat($format);
+            //Method inherited from \Illuminate\View\Compilers\BladeCompiler            
+            \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::setEchoFormat($format);
         }
         
         /**
@@ -1725,7 +1792,7 @@ namespace {
          */
         public static function getCompiledPath($path){
             //Method inherited from \Illuminate\View\Compilers\Compiler            
-            return \Illuminate\View\Compilers\BladeCompiler::getCompiledPath($path);
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::getCompiledPath($path);
         }
         
         /**
@@ -1737,7 +1804,7 @@ namespace {
          */
         public static function isExpired($path){
             //Method inherited from \Illuminate\View\Compilers\Compiler            
-            return \Illuminate\View\Compilers\BladeCompiler::isExpired($path);
+            return \GrahamCampbell\HTMLMin\Compilers\MinifyCompiler::isExpired($path);
         }
         
     }
@@ -2832,7 +2899,7 @@ namespace {
          *
          * @param \Closure $callback
          * @return mixed 
-         * @throws \Exception
+         * @throws \Throwable
          * @static 
          */
         public static function transaction($callback){
@@ -2920,6 +2987,17 @@ namespace {
         public static function listen($callback){
             //Method inherited from \Illuminate\Database\Connection            
             \Illuminate\Database\MySqlConnection::listen($callback);
+        }
+        
+        /**
+         * Is Doctrine available?
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function isDoctrineAvailable(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::isDoctrineAvailable();
         }
         
         /**
@@ -3419,11 +3497,13 @@ namespace {
          * @param int $perPage
          * @param array $columns
          * @param string $pageName
+         * @param int|null $page
          * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator 
+         * @throws \InvalidArgumentException
          * @static 
          */
-        public static function paginate($perPage = null, $columns = array(), $pageName = 'page'){
-            return \Illuminate\Database\Eloquent\Builder::paginate($perPage, $columns, $pageName);
+        public static function paginate($perPage = null, $columns = array(), $pageName = 'page', $page = null){
+            return \Illuminate\Database\Eloquent\Builder::paginate($perPage, $columns, $pageName, $page);
         }
         
         /**
@@ -5823,7 +5903,7 @@ namespace {
          * @param array $cookies The COOKIE parameters
          * @param array $files The FILES parameters
          * @param array $server The SERVER parameters
-         * @param string $content The raw body data
+         * @param string|resource $content The raw body data
          * @api 
          * @static 
          */
@@ -7253,6 +7333,22 @@ namespace {
          * @return mixed 
          * @static 
          */
+        public static function onQueue($queue, $view, $data, $callback){
+            return \Illuminate\Mail\Mailer::onQueue($queue, $view, $data, $callback);
+        }
+        
+        /**
+         * Queue a new e-mail message for sending on the given queue.
+         * 
+         * This method didn't match rest of framework's "onQueue" phrasing. Added "onQueue".
+         *
+         * @param string $queue
+         * @param string|array $view
+         * @param array $data
+         * @param \Closure|string $callback
+         * @return mixed 
+         * @static 
+         */
         public static function queueOn($queue, $view, $data, $callback){
             return \Illuminate\Mail\Mailer::queueOn($queue, $view, $data, $callback);
         }
@@ -7603,7 +7699,7 @@ namespace {
          * @param mixed $data
          * @param string $queue
          * @return mixed 
-         * @throws \Exception
+         * @throws \Throwable
          * @static 
          */
         public static function push($job, $data = '', $queue = null){
@@ -8531,7 +8627,7 @@ namespace {
          * @param array $cookies The COOKIE parameters
          * @param array $files The FILES parameters
          * @param array $server The SERVER parameters
-         * @param string $content The raw body data
+         * @param string|resource $content The raw body data
          * @api 
          * @static 
          */
@@ -11398,7 +11494,7 @@ namespace {
          * @param string $view
          * @param array $data
          * @param array $mergeData
-         * @return \Illuminate\View\View 
+         * @return \Illuminate\Contracts\View\View 
          * @static 
          */
         public static function make($view, $data = array(), $mergeData = array()){
@@ -11481,13 +11577,13 @@ namespace {
         /**
          * Add a piece of shared data to the environment.
          *
-         * @param string $key
+         * @param array|string $key
          * @param mixed $value
-         * @return void 
+         * @return mixed 
          * @static 
          */
         public static function share($key, $value = null){
-            \Illuminate\View\Factory::share($key, $value);
+            return \Illuminate\View\Factory::share($key, $value);
         }
         
         /**
@@ -11847,92 +11943,6 @@ namespace {
          */
         public static function getNames(){
             return \Illuminate\View\Factory::getNames();
-        }
-        
-    }
-
-
-    class Socialite extends \Laravel\Socialite\Facades\Socialite{
-        
-        /**
-         * Get a driver instance.
-         *
-         * @param string $driver
-         * @return mixed 
-         * @static 
-         */
-        public static function with($driver){
-            return \Laravel\Socialite\SocialiteManager::with($driver);
-        }
-        
-        /**
-         * Build an OAuth 2 provider instance.
-         *
-         * @param string $provider
-         * @param array $config
-         * @return \Laravel\Socialite\Two\AbstractProvider 
-         * @static 
-         */
-        public static function buildProvider($provider, $config){
-            return \Laravel\Socialite\SocialiteManager::buildProvider($provider, $config);
-        }
-        
-        /**
-         * Format the Twitter server configuration.
-         *
-         * @param array $config
-         * @return array 
-         * @static 
-         */
-        public static function formatConfig($config){
-            return \Laravel\Socialite\SocialiteManager::formatConfig($config);
-        }
-        
-        /**
-         * Get the default driver name.
-         *
-         * @throws \InvalidArgumentException
-         * @return string 
-         * @static 
-         */
-        public static function getDefaultDriver(){
-            return \Laravel\Socialite\SocialiteManager::getDefaultDriver();
-        }
-        
-        /**
-         * Get a driver instance.
-         *
-         * @param string $driver
-         * @return mixed 
-         * @static 
-         */
-        public static function driver($driver = null){
-            //Method inherited from \Illuminate\Support\Manager            
-            return \Laravel\Socialite\SocialiteManager::driver($driver);
-        }
-        
-        /**
-         * Register a custom driver creator Closure.
-         *
-         * @param string $driver
-         * @param \Closure $callback
-         * @return $this 
-         * @static 
-         */
-        public static function extend($driver, $callback){
-            //Method inherited from \Illuminate\Support\Manager            
-            return \Laravel\Socialite\SocialiteManager::extend($driver, $callback);
-        }
-        
-        /**
-         * Get all of the created "drivers".
-         *
-         * @return array 
-         * @static 
-         */
-        public static function getDrivers(){
-            //Method inherited from \Illuminate\Support\Manager            
-            return \Laravel\Socialite\SocialiteManager::getDrivers();
         }
         
     }
