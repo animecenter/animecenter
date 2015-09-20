@@ -175,47 +175,6 @@
 
             <div style="width: 100%; float: left; margin-bottom: 20px;" class="">
                 <div style="float: left;">
-                    <!-- MarketGidComposite Start -->
-                    <div id="MarketGidScriptRootC16203">
-                        <div id="MarketGidPreloadC16203">
-                            <a id="mg_add16203"
-                               href="http://mgid.com/advertisers/?utm_source=widget&utm_medium=text&utm_campaign=add"
-                               target="_blank">Place your ad here</a><br> <a href="http://mgid.com/" target="_blank">
-                                Loading...
-                            </a>
-                        </div>
-                        <script>
-                            (function () {
-                                var D = new Date(), d = document, b = 'body', ce = 'createElement', ac = 'appendChild', st = 'style', ds = 'display', n = 'none', gi = 'getElementById';
-                                var i = d[ce]('iframe');
-                                i[st][ds] = n;
-                                d[gi]("MarketGidScriptRootC16203")[ac](i);
-                                try {
-                                    var iw = i.contentWindow.document;
-                                    iw.open();
-                                    iw.writeln("<ht" + "ml><bo" + "dy></bo" + "dy></ht" + "ml>");
-                                    iw.close();
-                                    var c = iw[b];
-                                }
-                                catch (e) {
-                                    var iw = d;
-                                    var c = d[gi]("MarketGidScriptRootC16203");
-                                }
-                                var dv = iw[ce]('div');
-                                dv.id = "MG_ID";
-                                dv[st][ds] = n;
-                                dv.innerHTML = 16203;
-                                c[ac](dv);
-                                var s = iw[ce]('script');
-                                s.async = 'async';
-                                s.defer = 'defer';
-                                s.charset = 'utf-8';
-                                s.src = "//jsc.mgid.com/1/a/1animefushigi.com.16203.js?t=" + D.getYear() + D.getMonth() + D.getDate() + D.getHours();
-                                c[ac](s);
-                            })();
-                        </script>
-                    </div>
-                    <!-- MarketGidComposite End -->
                 </div>
             </div>
 
