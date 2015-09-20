@@ -24,7 +24,7 @@
                             <!--/content-->
                             <div class="circle">
                                 @for ($i = 0; $i < count($imagesList); $i++)
-                                    <div class="cir <?php if ($i == 0) { echo 'active'; } ?>"></div>
+                                    <div class="cir {{ ($i == 0) ? 'active' : '' }}"></div>
                                 @endfor
                             </div>
                         </div>
