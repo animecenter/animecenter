@@ -1,6 +1,3 @@
-<div class="banner">
-    <iframe src="http://adconscious.com/site/100045" width="728" height="90" frameborder="0" scrolling="no"></iframe>
-</div>
 <div id="featured" class="widget" style="width:245px; margin-left:3px;">
     <div class="block">
         <a href="{{ url($animeBanner['type2'] == "dubbed" ? $options[3]['value'] : $options[2]['value'] .
