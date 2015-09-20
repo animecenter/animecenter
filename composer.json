@@ -1,25 +1,25 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
-    "type": "project",
-    "require": {
-        "php": ">=5.6",
-        "laravel/framework": "5.1.*",
-        "roumen/sitemap": "2.5.*",
-        "laravel/socialite": "~2",
-        "graham-campbell/htmlmin": "~3.1"
-    },
-    "require-dev": {
-        "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1",
-        "laracasts/generators": "~1.1",
-        "barryvdh/laravel-debugbar": "~2",
-        "barryvdh/laravel-ide-helper": "~2",
-        "doctrine/dbal": "~2"
+  "name": "laravel/laravel",
+  "description": "The Laravel Framework.",
+  "keywords": ["framework", "laravel"],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "php": ">=5.6",
+    "laravel/framework": "5.1.*",
+    "roumen/sitemap": "2.5.*",
+    "laravel/socialite": "~2",
+    "graham-campbell/htmlmin": "~4"
+  },
+  "require-dev": {
+    "fzaninotto/faker": "~1.5",
+    "mockery/mockery": "0.9.*",
+    "phpunit/phpunit": "~4.0",
+    "phpspec/phpspec": "~2.3",
+    "laracasts/generators": "~1.1",
+    "barryvdh/laravel-debugbar": "~2",
+    "barryvdh/laravel-ide-helper": "~2",
+    "doctrine/dbal": "~2"
     },
     "autoload": {
         "classmap": [
