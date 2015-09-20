@@ -1,3 +1,5 @@
+<div class="banner">
+</div>
 <div id="featured" class="widget" style="width:245px; margin-left:3px;">
     <div class="block">
         <a href="{{ url($animeBanner['type2'] == "dubbed" ? $options[3]['value'] : $options[2]['value'] .
