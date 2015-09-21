@@ -4,9 +4,6 @@ $(document).ready(function (e) {
     } else {
         var URL = 'http://' + location.hostname + '/';
     }
-    $("#vid-close").click(function (e) {
-        $("#popup-vid").remove();
-    });
     $("#nav li").hover(function (e) {
         $(this).find("ul").show();
     });
@@ -50,7 +47,7 @@ $(document).ready(function (e) {
         $(this).find(".next,.prev").hide();
     });
 
-    $("#slider .next,#slider .prev,#slider .cir").click(function (e) {
+    $("#slider .next, #slider .prev,#slider .cir").click(function (e) {
         if ($(this).hasClass("active")) {
         }
         else {
@@ -94,13 +91,95 @@ $(document).ready(function (e) {
                 $("#slider .slide .content").fadeIn();
                 interval = setInterval("auto_slide()", 10000);
             });
-        }//end else hasClass
+        }
     });
-    /* ---------------- Slider code -------------------------   */
+
+    var url = "http://www.animecenter.tv/";
+    $(".date").datepicker({
+        changeMonth: true,
+        changeYear: true
+    });
+    var current = new Date().getFullYear();
+    var start = current - 80;
+    $(".date").datepicker("option", "yearRange", start + ":" + current);
+    $(".date").datepicker("option", "dateFormat", "yy-mm-d");
+    var vvalue = $(".date").attr("vvalue");
+    if (typeof vvalue == "undefined") {
+        vvalue = '';
+    }
+    if (vvalue.length > 0) {
+        $(".date").datepicker("setDate", vvalue);
+    }
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 50) {
+            $("#header").css("padding", '5px 0');
+            $("#logo img").css({"height": "30px", "width": "180px", "margin-top": '5px'});
+            $("#logo .text").hide();
+            $("#search,#nav").css({"margin-top": '5px'});
+        }
+        else if ($(this).scrollTop() <= 50) {
+            $("#header").css("padding", '10px 0 20px');
+            $("#logo img").css({"height": "38px", "width": "260px", "margin-top": 'auto'});
+            $("#logo .text").show();
+            $("#search,#nav").css({"margin-top": '15px'});
+        }
+    });
+
+    $("#genres .clicks").click(function (e) {
+        var cont = $(this).parent("div").find(".cont");
+        var thiss = $(this);
+        if (cont.is(":visible")) {
+            cont.slideUp();
+            thiss.parent("div").css({'border-width': '1px 0 0 0'});
+            thiss.addClass("deactive");
+        }
+        else {
+            cont.slideDown();
+            thiss.parent("div").css({'border-width': '1px 1px 1px 1px'});
+            thiss.removeClass("deactive");
+        }
+    });
+    $("#genres input[type='reset']").click(function () {
+        $("#genres .box_block span").removeClass("active").removeClass("deactive");
+        $("#genres .radio_block span").removeClass("active");
+        $("#genres .radio_block:first span").addClass("active");
+    });
+
+    $("select.member-select").click(function (e) {
+        event.preventDefault();
+        if ($(this).hasClass("episodes")) {
+            var value = $(this).val();
+            if (value !== 0) {
+                if (value.indexOf("automatically") >= 0) {
+                    var num = prompt("Type numbers of Episodes to be added");
+                    var id = $(this).find("option:selected").attr("val");
+                    $.post(value, { id: id, num: num }, function (data) {
+                        location.reload();
+                    });
+                } else if (value.indexOf("create") >= 0) {
+                    window.location.href = value;
+                }
+            }
+        } else {
+            var value = $(this).val();
+            if (value !== 0) {
+                window.location.href = value;
+            }
+        }
+    });
+
+    $(".report_vid").click(function (e) {
+        var id = $(this).attr("val");
+        $.post(url + "report", {id: id}, function (data) {
+            alert("Thanks");
+            location.reload();
+        });
+    });
 
 });
-/*setTimeout(function(){$('.embbed_content .loading').hide();$('.embbed_content .conn').show();},10000);*/
 var interval = setInterval("auto_slide()", 10000);
+
 function auto_slide() {
     if ($("#slider .images img.active").index() == $("#slider .images img:last").index()) {
         var target = $("#slider .images img:first");
@@ -127,4 +206,4 @@ function auto_slide() {
         $("#slider .slide a.watch").attr("href", links);
         $("#slider .slide .content").fadeIn();
     });
-}//end function
+}

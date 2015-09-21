@@ -41,9 +41,8 @@
                                 <img src="{{ asset('images/' . $anime['image']) }}">
                             </div>
                             <div class="main_title">
-                                {{ (strlen($anime['title']) < 10) ?
-                                $anime['title'] :
-                                substr($anime['title'], 0, 10) . "..." }}
+                                {{ (strlen($anime['title']) < 10) ? $anime['title'] :
+                                    substr($anime['title'], 0, 10) . "..." }}
                             </div>
                         </div>
                         <!--/block-->

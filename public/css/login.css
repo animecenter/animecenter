@@ -20,7 +20,7 @@ body a {
 }
 
 .login_field {
-    background: url(img/login_field_btn.png) no-repeat transparent;
+    background: url(../imgs/login_field_btn.png) no-repeat transparent;
     border: 0;
     width: 364px;
     height: 66px;
@@ -29,7 +29,7 @@ body a {
 }
 
 .login_btn {
-    background: url(img/login_btn.png) no-repeat transparent;
+    background: url(../imgs/login_btn.png) no-repeat transparent;
     border: 0;
     height: 62px;
     width: 384px;
