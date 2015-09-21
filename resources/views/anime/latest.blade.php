@@ -6,17 +6,15 @@
             <div id="sec3" class="sections">
                 <div class="title">Latest Anime Added to the Site</div>
                 @foreach ($animes as $anime)
-                    <a href="{{ url(($anime['type2'] == "dubbed") ?
-                    $options[3]['value'] . $anime['slug'] :
-                    $options[2]['value'] . $anime['slug']) }}">
+                    <a href="{{ url(($anime['type2'] == "dubbed") ? $options[3]['value'] . $anime['slug'] :
+                        $options[2]['value'] . $anime['slug']) }}">
                         <div class="block">
                             <div class="img">
                                 <img src="{{ asset('images/' . $anime['image']) }}">
                             </div>
                             <div class="main_title">
-                                {{ (strlen($anime['title']) < 13) ?
-                                $anime['title'] : substr($anime['title'],
-                                0, 13) . "..." }}
+                                {{ (strlen($anime['title']) < 13) ? $anime['title'] :
+                                    substr($anime['title'],0, 13) . "..." }}
                             </div>
                         </div>
                         <!--/block-->

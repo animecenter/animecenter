@@ -1,6 +1,6 @@
 <div class="widget" id="featured">
     <div class="title">Upcoming Subbed Episodes</div>
-    <script src="{{ asset('css/js/countdown.js') }}"></script>
+    <script src="{{ asset('js/countdown.js') }}"></script>
     <?php
     foreach ($upcomingEpisodes as $episode) {
     $coming = $episode['coming_date'];
@@ -36,7 +36,7 @@
         <div class="date_con2" style="float: left;width: 180px; position: absolute;right: 10px;bottom: 10px;">
             <script>
                 var myCountdown1 = new Countdown({
-                    time: {{ $total_s }}, // 86400 seconds = 1 day
+                    time: "{{ $total_s }}", // 86400 seconds = 1 day
                     width: 180,
                     height: 30,
                     rangeHi: "day",

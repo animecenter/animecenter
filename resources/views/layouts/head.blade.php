@@ -3,17 +3,11 @@
     <head>
         <title>{{ isset($pageTitle) ? $pageTitle :
             "Watch Anime Online Free | Anime Shows, Movies and OVAs in English Subbed and Dubbed" }}</title>
-        @if ($metaTitle)
-            <meta name="title" content="{{ $metaTitle }}">
-        @endif
-        @if ($metaDesc)
-            <meta name="description" content="{{ $metaDesc }}"/>
-        @endif
-        @if ($metaKey)
-            <meta name="keywords" content="{{ $metaKey }}"/>
-        @endif
-        <meta name="sth-site-verification" content="bf6527dae5e1867e7d5b65f8c47eb99c"/>
+        @if ($metaTitle)<meta name="title" content="{{ $metaTitle }}"> @endif
+        @if ($metaDesc)<meta name="description" content="{{ $metaDesc }}"/> @endif
+        @if ($metaKey)<meta name="keywords" content="{{ $metaKey }}"/> @endif
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="sth-site-verification" content="bf6527dae5e1867e7d5b65f8c47eb99c"/>
         <meta name="google-site-verification" content="5cikZ3O5_LPFgVIEN_S0EHXxFbnjG62VdpcYQZ1c3hk"/>
         @if (isset($meta_og_title) && $meta_og_title != '')
             <meta property="og:title" content="{{ $meta_og_title }}"/>
@@ -31,33 +25,7 @@
         @endif
         <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"/>
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"/>
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.bxslider.css') }}"/>
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui-1.10.3.custom.css') }}"/>
-        <script type="text/javascript"> window.suggestmeyes_loaded = true; </script>
-        <script type="text/javascript" src="{{ asset('css/js/jquery-1.9.1.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('css/js/core2.js') }}"></script>
-        <script type="text/javascript" defer="defer" src="{{ asset('css/js/jquery-ui.js') }}"></script>
-        <script defer="defer" type="text/javascript" src="{{ asset('css/js/jquery.raty.min.js') }}"></script>
-        <script defer="defer" type="text/javascript" src="{{ asset('css/js/jquery.raty.js') }}"></script>
-        <script defer="defer" type="text/javascript" src="{{ asset('css/js/core.js') }}"></script>
-        <script defer="defer" type="text/javascript" data-cfasync='true'>var switchTo5x = true;</script>
-
-        <!-- <script type="text/javascript"   defer="defer" data-cfasync='true'>
-        stLight.options({publisher: "0ee3fa60-2817-4ade-b387-244cb1d5d4dd",
-        doNotHash: false, doNotCopy: false, hashAddressBar: false});</script> -->
-        <script defer="defer" type="text/javascript">(function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&amp;appId=188877311299252";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-            $(document).ready(function () {
-                //setTimeout(function(){$("iframe[width=0]").remove();},1000);
-            });
-        </script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}"/>
     </head>
 
     <body>
@@ -65,7 +33,7 @@
             <div id="header_cont">
                 <div id="logo">
                     <a href="{{ url('/') }}">
-                        <img alt='logo' src="{{ asset('css/imgs/animecenter_logo.png') }}">
+                        <img alt='logo' src="{{ asset('imgs/animecenter_logo.png') }}">
                     </a>
                     @if ((strpos($_SERVER['REQUEST_URI'], $options[2]['value']) or
                             strpos($_SERVER['REQUEST_URI'], $options[3]['value'])) && $anime)

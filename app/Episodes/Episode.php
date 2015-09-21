@@ -3,50 +3,53 @@
 namespace App\Episodes;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Query\Builder;
 
 /**
  * App\Episodes\Episode
  *
- * @property integer $id 
+ * @property integer $id
  * @property string $title
  * @property string $slug
- * @property string $subdub 
- * @property integer $show 
+ * @property string $subdub
+ * @property integer $show
  * @property string $not_yet_aired
- * @property string $raw 
- * @property string $hd 
- * @property string $mirror1 
- * @property string $mirror2 
- * @property string $mirror3 
- * @property string $mirror4 
+ * @property string $raw
+ * @property string $hd
+ * @property string $mirror1
+ * @property string $mirror2
+ * @property string $mirror3
+ * @property string $mirror4
  * @property integer $anime_id
- * @property integer $date 
- * @property integer $date2 
- * @property float $rating 
- * @property integer $votes 
- * @property integer $visits 
- * @property integer $order 
- * @property string $coming_date 
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereTitle($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereSubdub($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereShow($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereNotYeird($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereRaw($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereHd($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereMirror1($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereMirror2($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereMirror3($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereMirror4($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereSeries($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereDate($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereDate2($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereRating($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereVotes($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereVisits($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereOrder($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Episodes\Episode whereComingDate($value)
+ * @property integer $date
+ * @property integer $date2
+ * @property float $rating
+ * @property integer $votes
+ * @property integer $visits
+ * @property integer $order
+ * @property string $coming_date
+ * @method static Builder|Episode whereId($value)
+ * @method static Builder|Episode whereTitle($value)
+ * @method static Builder|Episode whereSubdub($value)
+ * @method static Builder|Episode whereShow($value)
+ * @method static Builder|Episode whereNotYetAired($value)
+ * @method static Builder|Episode whereRaw($value)
+ * @method static Builder|Episode whereHd($value)
+ * @method static Builder|Episode whereMirror1($value)
+ * @method static Builder|Episode whereMirror2($value)
+ * @method static Builder|Episode whereMirror3($value)
+ * @method static Builder|Episode whereMirror4($value)
+ * @method static Builder|Episode whereSeries($value)
+ * @method static Builder|Episode whereDate($value)
+ * @method static Builder|Episode whereDate2($value)
+ * @method static Builder|Episode whereRating($value)
+ * @method static Builder|Episode whereVotes($value)
+ * @method static Builder|Episode whereVisits($value)
+ * @method static Builder|Episode whereOrder($value)
+ * @method static Builder|Episode whereComingDate($value)
+ * @property-read \App\Anime\Anime $anime
+ * @method static Builder|Episode whereAnimeId($value)
+ * @method static Builder|Episode whereSlug($value)
  */
 class Episode extends Model
 {
@@ -63,8 +66,6 @@ class Episode extends Model
         'title', 'slug', 'subdub', 'show', 'not_yet_aired', 'raw', 'hd', 'mirror1', 'mirror2', 'mirror3', 'mirror4',
         'anime_id', 'date', 'date2', 'rating', 'votes', 'visits', 'order', 'coming_date'
     ];
-
-//    use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 

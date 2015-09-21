@@ -3,24 +3,22 @@
 namespace App\Genres;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Query\Builder;
 
 /**
  * App\Genres\Genre
  *
- * @property integer $id 
- * @property string $value 
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Animes\Anime[] $animes 
- * @method static \Illuminate\Database\Query\Builder|\App\Genres\Genre whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Genres\Genre whereValue($value)
+ * @property integer $id
+ * @property string $value
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Anime\Anime[] $animes
+ * @method static Builder|Genre whereId($value)
+ * @method static Builder|Genre whereValue($value)
  */
 class Genre extends Model
 {
     protected $table = 'genres';
 
     public $timestamps = false;
-
-//    use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 

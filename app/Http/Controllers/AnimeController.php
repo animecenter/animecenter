@@ -213,6 +213,7 @@ class AnimeController extends Controller
         $this->data['metaKey'] = "Watch {$anime['title']}, {$anime['title']} English Subbed/Dubbed, Download " .
             "{$anime['title']} English Subbed/Dubbed, Watch {$anime['title']} Online";
 
+        ini_set("error_reporting", "E_ALL");
         return view('anime.show', $this->data);
     }
 

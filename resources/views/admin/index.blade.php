@@ -131,7 +131,7 @@
         </div>
         <!--/wrap-->
 
-        <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+        <script src="{{ asset('js/jquery-1.11.3.min.js') }}"></script>
 
         <script>
             $(document).ready(function () {

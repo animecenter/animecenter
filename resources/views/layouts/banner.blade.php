@@ -11,8 +11,8 @@
                 ?>
             </div>
         </a>
-        <div class='rateContainor' style='width:170px;;margin-top:5px;float:left'>
-            <div style='float:left;' value="<?php echo $animeBanner['rating']; ?>" id="<?php echo $animeBanner['id']; ?>"
+        <div class="rateContainor" style="width:170px;;margin-top:5px;float:left">
+            <div style="float: left;" value="<?php echo $animeBanner['rating']; ?>" id="<?php echo $animeBanner['id']; ?>"
                  class='rateDiv'></div>
             <div style='float: left; font-size: 8pt;  width: 100%; display:none' id='hint<?php echo $animeBanner['id']; ?>'></div>
             <div id='hint2<?php echo $animeBanner['id']; ?>' style='width:100%;font-size:8pt;float:left'>
@@ -24,6 +24,7 @@
 </div>
 <!--/featured-->
 <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('scripts')
 <script>
     $(document).ready(function (e) {
         $.ajaxSetup({
@@ -70,3 +71,4 @@
         });
     });
 </script>
+@endsection
