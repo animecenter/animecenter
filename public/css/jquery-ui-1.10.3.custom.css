@@ -719,7 +719,7 @@ button.ui-button::-moz-focus-inner {
 }
 
 .ui-progressbar .ui-progressbar-overlay {
-    background: url("images/animated-overlay.gif");
+    background: url("../imgs/animated-overlay.gif");
     height: 100%;
     filter: alpha(opacity=25);
     opacity: 0.25;
@@ -956,7 +956,7 @@ body .ui-tooltip {
 
 .ui-widget-content {
     border: 1px outset #00AE45;
-    background: #fff url(images/ui-bg_inset-soft_10_fff_1x100.png) 50% bottom repeat-x;
+    background: #fff url(../imgs/ui-bg_inset-soft_10_fff_1x100.png) 50% bottom repeat-x;
     color: #373737;
     font-size: 11px;
 }
@@ -985,7 +985,7 @@ ui-widget {
 
 .progressBar .ui-widget-header {
     border: 1px solid #3f7506;
-    background: #3a8104 url(images/ui-bg_highlight-soft_33_3a8104_1x100.png) 50% 50% repeat-x;
+    background: #3a8104 url(../imgs/ui-bg_highlight-soft_33_3a8104_1x100.png) 50% 50% repeat-x;
 }
 
 .ui-widget-header a {
@@ -1051,7 +1051,7 @@ ui-widget {
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
     border: 1px solid #f9dd34;
-    background: #fbf5d0 url(images/ui-bg_glass_55_fbf5d0_1x400.png) 50% 50% repeat-x;
+    background: #fbf5d0 url(../imgs/ui-bg_glass_55_fbf5d0_1x400.png) 50% 50% repeat-x;
     color: #363636;
 }
 
@@ -1065,7 +1065,7 @@ ui-widget {
 .ui-widget-content .ui-state-error,
 .ui-widget-header .ui-state-error {
     border: 1px solid #fad000;
-    background: #ffdc2e url(images/ui-bg_diagonals-thick_95_ffdc2e_40x40.png) 50% 50% repeat;
+    background: #ffdc2e url(../imgs/ui-bg_diagonals-thick_95_ffdc2e_40x40.png) 50% 50% repeat;
     color: #2b2b2b;
 }
 
@@ -1118,33 +1118,33 @@ ui-widget {
 
 .ui-icon,
 .ui-widget-content .ui-icon {
-    background-image: url(images/ui-icons_72b42d_256x240.png);
+    background-image: url(../imgs/ui-icons_72b42d_256x240.png);
 }
 
 .ui-widget-header .ui-icon {
-    background-image: url(images/ui-icons_ffffff_256x240.png);
+    background-image: url(../imgs/ui-icons_ffffff_256x240.png);
 }
 
 .ui-state-default .ui-icon {
-    background-image: url(images/ui-icons_ffffff_256x240.png);
+    background-image: url(../imgs/ui-icons_ffffff_256x240.png);
 }
 
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon {
-    background-image: url(images/ui-icons_ffffff_256x240.png);
+    background-image: url(../imgs/ui-icons_ffffff_256x240.png);
 }
 
 .ui-state-active .ui-icon {
-    background-image: url(images/ui-icons_ffffff_256x240.png);
+    background-image: url(../imgs/ui-icons_ffffff_256x240.png);
 }
 
 .ui-state-highlight .ui-icon {
-    background-image: url(images/ui-icons_4eb305_256x240.png);
+    background-image: url(../imgs/ui-icons_4eb305_256x240.png);
 }
 
 .ui-state-error .ui-icon,
 .ui-state-error-text .ui-icon {
-    background-image: url(images/ui-icons_cd0a0a_256x240.png);
+    background-image: url(../imgs/ui-icons_cd0a0a_256x240.png);
 }
 
 /* positioning */
@@ -1883,7 +1883,7 @@ ui-widget {
 
 /* Overlays */
 .ui-widget-overlay {
-    background: #444444 url(images/ui-bg_diagonals-thick_15_444444_40x40.png) 50% 50% repeat;
+    background: #444444 url(../imgs/ui-bg_diagonals-thick_15_444444_40x40.png) 50% 50% repeat;
     opacity: .3;
     filter: Alpha(Opacity=30);
 }
@@ -1891,7 +1891,7 @@ ui-widget {
 .ui-widget-shadow {
     margin: 4px 0 0 4px;
     padding: 0px;
-    background: #aaaaaa url(images/ui-bg_diagonals-small_0_aaaaaa_40x40.png) 50% 50% repeat;
+    background: #aaaaaa url(../imgs/ui-bg_diagonals-small_0_aaaaaa_40x40.png) 50% 50% repeat;
     opacity: .3;
     filter: Alpha(Opacity=30);
     border-radius: 4px;

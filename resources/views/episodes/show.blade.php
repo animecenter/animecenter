@@ -119,11 +119,11 @@
                         $min = $diff->format('%i');
                         $second = $diff->format('%s');
                         $total_s = ($day * 86400) + ($hr * 3600) + ($min * 60) + $second; ?>
-                        <script src="{{ asset('css/js/countdown.js') }}"></script>
+                        <script src="{{ asset('js/countdown.js') }}"></script>
                         <div class="date_con">
                             <script>
                                 var myCountdown1 = new Countdown({
-                                    time: {{ $total_s }}, // 86400 seconds = 1 day
+                                    time: "{{ $total_s }}", // 86400 seconds = 1 day
                                     width: 250,
                                     height: 60,
                                     rangeHi: "day",
@@ -142,7 +142,7 @@
                 </div>
                 <div class="rating_div">
                     <div class="views_value view_episode" id="<?php echo $episode['id']; ?>">{{ $episode['visits'] }}<span> Views</span></div>
-                    <div id='rateContainor' style='float: left; width: 200px; margin-left: 20px;'>
+                    <div id='rateContainor' style="float: left; width: 200px; margin-left: 20px;">
                         <div style='float:left;' class='rating' id='rateDiv'></div>
                         <div style='float: left; font-size: 8pt; clear: both; width: 100%; display:none' id='hint'></div>
                         <div id="hint2" style='float:left;font-size:8pt'>
@@ -172,41 +172,14 @@
                 <!--/navigation-->
             </div>
             <!--/sections-->
-
-            <div style="width: 100%; float: left; margin-bottom: 20px;" class="">
-                <div style="float: left;">
-                </div>
-            </div>
-
-            <div style="width: 100%; float: left; margin-bottom: 10px;" class="">
-                <div id="disqus_thread"></div>
-                <script type="text/javascript" data-cfasync='true'>
-                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                    var disqus_shortname = 'animecentertvnetwork'; // required: replace example with your forum shortname
-
-                    /* * * DON'T EDIT BELOW THIS LINE * * */
-                    (function () {
-                        var dsq = document.createElement('script');
-                        dsq.type = 'text/javascript';
-                        dsq.async = true;
-                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                    })();
-                </script>
-                <noscript>
-                    Please enable JavaScript to view the
-                    <a href="http://disqus.com/?ref_noscript">
-                        comments powered by Disqus.
-                    </a>
-                </noscript>
-            </div>
         </div>
         <!--/left_content-->
 
         <div id="right_content">
             @include('layouts.sidebar')
         </div>
-
+        @include('layouts.footer')
+        @section('scripts')
         <script>
             $(document).ready(function (e) {
                 $("#rateDiv").hover(function () {
@@ -218,31 +191,31 @@
                     $("#hint2").show();
                 });
                 $("#rateDiv").raty({
-                    score: {{ $episode['rating'] }},
-                    starHalf: "{{ asset('images/star-half.png') }}",
-                    starOff: "{{ asset('images/star-off.png') }}",
-                    starOn: "{{ asset('images/star-on.png') }}",
-                    starHover: "{{ asset('images/star-hover.png') }}",
-                    target: ("#hint"),
-                    click: function (score, evt) {
-                        $("#hint").show().text("Saving your vote...");
-                        $("#hint2").hide();
-                        $.post("{{ url('rate/episode') }}", {
-                            id: {{ $episode['id'] }},
-                            rate: score
-                        }, function (data) {
-                            $("#hint").show().text("your vote has been saved");
-                            $("#hint2").hide();
-                            setTimeout(function () {
-                                $("#hint").hide();
-                                $("#hint2").show().text(data);
-                            }, 1000);
-                        });
-                    },
-                    width: 120,
-                    targetKeep: true
-                    }
+                            score: "{{ $episode['rating'] }}",
+                            starHalf: "{{ asset('images/star-half.png') }}",
+                            starOff: "{{ asset('images/star-off.png') }}",
+                            starOn: "{{ asset('images/star-on.png') }}",
+                            starHover: "{{ asset('images/star-hover.png') }}",
+                            target: ("#hint"),
+                            click: function (score, evt) {
+                                $("#hint").show().text("Saving your vote...");
+                                $("#hint2").hide();
+                                $.post("{{ url('rate/episode') }}", {
+                                    id: "{{ $episode['id'] }}",
+                                    rate: score
+                                }, function (data) {
+                                    $("#hint").show().text("your vote has been saved");
+                                    $("#hint2").hide();
+                                    setTimeout(function () {
+                                        $("#hint").hide();
+                                        $("#hint2").show().text(data);
+                                    }, 1000);
+                                });
+                            },
+                            width: 120,
+                            targetKeep: true
+                        }
                 );
             });
         </script>
-        @include('layouts.footer')
+        @endsection

@@ -1,4 +1,5 @@
 <?php
+
 require_once("header.php");
 if ((isset($_GET['page_id']) and $_GET['page_id'] != null)) { ?>
 <div id="wrap">
@@ -7,10 +8,10 @@ if ((isset($_GET['page_id']) and $_GET['page_id'] != null)) { ?>
         <div id="left_content">
             <div id="sec2" class="sections">
                 <div class="title">
-                    <?php echo $page_content['p_title']; ?>
+                    <?php echo $page_content['title']; ?>
                 </div>
                 <div class="content">
-                    <?php echo $page_content['p_content']; ?>
+                    <?php echo $page_content['content']; ?>
                 </div>
             </div>
             <!--/sections-->

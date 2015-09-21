@@ -1,5 +1,5 @@
 body {
-    background: #999 url(img/bg-1.png) repeat;
+    background: #999 url(../imgs/bg-1.png) repeat;
     margin: 0;
     padding: 0;
     border: 0;
@@ -272,7 +272,7 @@ ul.list_ob span {
     height: 25px;
     float: right;
     position: relative;
-    background: #bdbcbc url(img/ss.png) center no-repeat;
+    background: #bdbcbc url(../imgs/ss.png) center no-repeat;
     text-indent: -9999999px;
     cursor: pointer;
     border: 0;
@@ -537,7 +537,7 @@ input.textInput, input.textInput2 {
 }
 
 input.textInput2 {
-    background: #bdbcbc url(img/arr.png) no-repeat right;
+    background: #bdbcbc url(../imgs/arr.png) no-repeat right;
     padding-right: 5px;
     background-origin: content-box;
     width: 164px;
@@ -551,7 +551,7 @@ input.checkbox + span {
     width: 18px;
     height: 18px;
     position: relative;
-    background: url(img/check.jpg) no-repeat;
+    background: url(../imgs/check.jpg) no-repeat;
     float: left;
     display: block;
     cursor: pointer;

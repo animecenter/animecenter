@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 'On');
-error_reporting(E_ALL | E_STRICT);
 
 $page_title = "Watch Upcoming Episodes";
 $meta_title = $page_title . " | Watch Anime Online Free";
@@ -15,7 +13,7 @@ $meta_key = "Download " . $page_title . ",Watch " . $page_title . " on iphone,wa
         <div id="left_content">
             <div id="sec4" class="sections">
                 <div class="title">Watch Upcoming Subbed Episodes</div>
-                <script src="<?php echo $url; ?>css/js/countdown.js"></script>
+                <script src="<?php echo $url; ?>js/countdown.js"></script>
                 <?php
                 $episodess = $ob->get_table("an_episodes",
                     "e_coming_date!='' and e_not_yet_aired!='' order by e_coming_date ASC");

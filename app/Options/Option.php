@@ -3,23 +3,21 @@
 namespace App\Options;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Query\Builder;
 
 /**
  * App\Options\Option
  *
- * @property integer $id 
- * @property string $value 
- * @method static \Illuminate\Database\Query\Builder|\App\Options\Option whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Options\Option whereValue($value)
+ * @property integer $id
+ * @property string $value
+ * @method static Builder|Option whereId($value)
+ * @method static Builder|Option whereValue($value)
  */
 class Option extends Model
 {
     protected $table = 'options';
 
     public $timestamps = false;
-
-//    use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 

@@ -104,7 +104,7 @@ body {
 
 #nav li.has_list {
     padding-right: 18px;
-    background: url(imgs/arrow-down.png) 100% center no-repeat;
+    background: url(../imgs/arrow-down.png) 100% center no-repeat;
 }
 
 #nav li ul {
@@ -147,7 +147,7 @@ body {
 }
 
 #search input[type='submit'] {
-    background: url("imgs/icon_search_glass.png") no-repeat;
+    background: url("../imgs/icon_search_glass.png") no-repeat;
     border: 1px solid #C9C9C9;
     border-left: medium none -moz-use-text-color;
     cursor: pointer;
@@ -159,7 +159,7 @@ body {
 }
 
 #search input[type='submit']:hover {
-    background: url("imgs/icon_search_glass.png") no-repeat 0 -28px;
+    background: url("../imgs/icon_search_glass.png") no-repeat 0 -28px;
 }
 
 div.login {
@@ -172,7 +172,7 @@ div.login {
 }
 
 div.login a.profile {
-    background: url(imgs/header_profile.png) left top no-repeat;
+    background: url(../imgs/header_profile.png) left top no-repeat;
     width: 38px;
     height: 18px;
     position: relative;
@@ -208,7 +208,7 @@ div.login ul {
 }
 
 div.login ul .top_ul {
-    background: url(imgs/login_arr.png) 75% top no-repeat;
+    background: url(../imgs/login_arr.png) 75% top no-repeat;
     width: 100%;
     position: absolute;
     left: 0;
@@ -486,7 +486,7 @@ div.login select.member-select {
 }
 
 #slider a.watch {
-    background: url("imgs/featured_slideshow.png") no-repeat scroll 0 -80px transparent;
+    background: url("../imgs/featured_slideshow.png") no-repeat scroll 0 -80px transparent;
     bottom: 15px;
     color: #FFFFFF;
     display: block;
@@ -507,7 +507,7 @@ div.login select.member-select {
 }
 
 #slider a.watch:hover {
-    background: url("imgs/featured_slideshow.png") no-repeat scroll 0 0 transparent;
+    background: url("../imgs/featured_slideshow.png") no-repeat scroll 0 0 transparent;
 }
 
 #slider .circle {
@@ -520,19 +520,19 @@ div.login select.member-select {
 #slider .circle .cir {
     width: 13px;
     height: 15px;
-    background: url("imgs/featured_slideshow1.png") no-repeat scroll -138px -120px transparent;
+    background: url("../imgs/featured_slideshow1.png") no-repeat scroll -138px -120px transparent;
     display: inline-block;
 }
 
 #slider .circle .cir.active, #slider .circle .cir:hover {
-    background: url("imgs/featured_slideshow1.png") no-repeat scroll -152px -120px transparent;
+    background: url("../imgs/featured_slideshow1.png") no-repeat scroll -152px -120px transparent;
 }
 
 #slider .next, #slider .prev {
     position: absolute;
     left: 10px;
     top: 45%;
-    background: url("imgs/featured_slideshow.png") no-repeat scroll -15px -120px transparent;
+    background: url("../imgs/featured_slideshow.png") no-repeat scroll -15px -120px transparent;
     width: 15px;
     height: 30px;
     z-index: 2;
@@ -543,7 +543,7 @@ div.login select.member-select {
 #slider .next {
     left: auto;
     right: 10px;
-    background: url("imgs/featured_slideshow.png") no-repeat scroll 0 -120px transparent;
+    background: url("../imgs/featured_slideshow.png") no-repeat scroll 0 -120px transparent;
 }
 
 #slider .next:hover {
@@ -688,7 +688,7 @@ div.login select.member-select {
 
 #sec2 .play {
     position: absolute;
-    background: url(imgs/play.png) no-repeat;
+    background: url(../imgs/play.png) no-repeat;
     width: 53px;
     height: 39px;
     left: 45px;
@@ -739,7 +739,7 @@ div.login select.member-select {
     width: 100%;
     height: auto;
     overflow: hidden;
-    background: url(imgs/footerbg.png) 100% 0px no-repeat;
+    background: url(../imgs/footerbg.png) 100% 0px no-repeat;
     padding: 10px 0 0;
     border-top: 1px solid #999;
     margin-top: 20px;
@@ -869,7 +869,7 @@ div.login select.member-select {
     float: left;
     width: 100%;
     height: 100%;
-    background: url(images/loading.gif) center center no-repeat;
+    background: url(../imgs/loading.gif) center center no-repeat;
     display: none;
 }
 
@@ -959,7 +959,7 @@ div.login select.member-select {
 }
 
 .navigation a {
-    background: #efefef url(imgs/navigation_btn_bg.jpg) repeat-x;
+    background: #efefef url(../imgs/navigation_btn_bg.jpg) repeat-x;
     border-radius: 5px;
     color: #00b14e;
     font-size: 12px;
@@ -983,11 +983,11 @@ div.login select.member-select {
 
 .navigation a.next {
     float: right;
-    background: url(imgs/next_arr.png) 96% center no-repeat, #efefef url(imgs/navigation_btn_bg.jpg) repeat-x;
+    background: url(../imgs/next_arr.png) 96% center no-repeat, #efefef url(../imgs/navigation_btn_bg.jpg) repeat-x;
 }
 
 .navigation a.prev {
-    background: url(imgs/prev_arr.png) 4% center no-repeat, #efefef url(imgs/navigation_btn_bg.jpg) repeat-x;
+    background: url(../imgs/prev_arr.png) 4% center no-repeat, #efefef url(../imgs/navigation_btn_bg.jpg) repeat-x;
     padding: 8px 8px 8px 20px !important;
 }
 
@@ -1322,7 +1322,7 @@ div.login select.member-select {
 #series li .watched, #series li .not_watched {
     position: relative;
     float: left;
-    background: url(imgs/n.png) left center no-repeat;
+    background: url(../imgs/n.png) left center no-repeat;
     padding-left: 25px;
     color: #008000;
     margin-top: 5px;
@@ -1417,12 +1417,12 @@ div.login select.member-select {
     left: 20px;
     top: -10px;
     cursor: pointer;
-    background: #fff url(imgs/menu-expandeds.png) left center no-repeat;
+    background: #fff url(../imgs/menu-expandeds.png) left center no-repeat;
     padding: 0 10px;
 }
 
 #genres .block .click.deactive {
-    background: #fff url(imgs/menu-collapsed.png) left center no-repeat;
+    background: #fff url(../imgs/menu-collapsed.png) left center no-repeat;
 }
 
 #genres .radio_block, #genres .box_block {
@@ -1451,7 +1451,7 @@ div.login select.member-select {
 #genres .radio_block span {
     position: relative;
     float: left;
-    background: url(imgs/r_bg_1.png);
+    background: url(../imgs/r_bg_1.png);
     width: 22px;
     height: 22px;
     margin-right: 3px;
@@ -1459,13 +1459,13 @@ div.login select.member-select {
 }
 
 #genres .radio_block span.active {
-    background: url(imgs/r_bg_2.png);
+    background: url(../imgs/r_bg_2.png);
 }
 
 #genres .box_block span {
     position: relative;
     float: left;
-    background: url(imgs/b_bg_1.png);
+    background: url(../imgs/b_bg_1.png);
     width: 22px;
     height: 22px;
     margin-right: 5px;
@@ -1473,11 +1473,11 @@ div.login select.member-select {
 }
 
 #genres .box_block span.active {
-    background: url(imgs/b_bg_2.png);
+    background: url(../imgs/b_bg_2.png);
 }
 
 #genres .box_block span.deactive {
-    background: url(imgs/b_bg_3.png);
+    background: url(../imgs/b_bg_3.png);
 }
 
 #genres .block label {
@@ -1634,12 +1634,12 @@ div.login select.member-select {
     top: 56%;
     width: 9px;
     height: 15px;
-    background: url(imgs/prevv.png);
+    background: url(../imgs/prevv.png);
     cursor: pointer;
 }
 
 #watchlist .next {
-    background: url(imgs/nextt.png);
+    background: url(../imgs/nextt.png);
     left: auto;
     right: 5px;
 }
@@ -1681,7 +1681,7 @@ div.login select.member-select {
 .btn_fav {
     position: relative;
     float: left;
-    background: #F1F1F1 url(imgs/star.png) no-repeat 5px center;
+    background: #F1F1F1 url(../imgs/star.png) no-repeat 5px center;
     border: 1px solid #E0E0E0;
     border-radius: 3px;
     color: #00b14e;
@@ -1700,11 +1700,11 @@ div.login select.member-select {
 }
 
 .add-watch.btn_fav {
-    background: #F1F1F1 url(imgs/list.png) no-repeat 5px center;
+    background: #F1F1F1 url(../imgs/list.png) no-repeat 5px center;
 }
 
 .add-animi.btn_fav {
-    background: #F1F1F1 url(imgs/plus.png) no-repeat 5px center;
+    background: #F1F1F1 url(../imgs/plus.png) no-repeat 5px center;
 }
 
 .latest-episode {
@@ -2065,7 +2065,7 @@ div.login select.member-select {
 }
 
 .ui-progressbar .ui-progressbar-overlay {
-    background: url("images/animated-overlay.gif");
+    background: url("../imgs/animated-overlay.gif");
     height: 100%;
     filter: alpha(opacity=25);
     opacity: 0.25

@@ -38,13 +38,8 @@
                     <div class="block">
                         <a href="{{ url($options[2]['value'] . $anime['slug']) }}">
                             <img class="eimg" src="{{ asset('images/' . $anime['image']) }}">
-                            <div class="sub_title">
-                                {{
-                                    (strlen($anime['title']) < 20) ?
-                                    $anime['title'] :
-                                    substr($anime['title'], 0, 20) . "..."
-                                }}
-                            </div>
+                            <div class="sub_title">{{ (strlen($anime['title']) < 20) ? $anime['title'] :
+                                substr($anime['title'], 0, 20) . "..." }}</div>
                         </a>
                         <div class="rateContainor" style="width: 220px; margin-top: 5px; float: left">
                             <div style="float: left;" value="{{ $anime['rating'] }}"
@@ -54,7 +49,7 @@
                             <div id="hint2{{ $anime['id'] }}"
                                 style="width: 100%; font-size: 8pt; float: left">
                                 <?php echo "Average: " . sprintf("%.2f", $anime['rating']) .
-                                        " ( " . $anime['votes'] . " votes)" ?>
+                                        " ( " . $anime['votes'] . " votes)"; ?>
                             </div>
                         </div>
                     </div>
@@ -68,6 +63,7 @@
             @include("layouts.sidebar")
         </div>
         @include("layouts.footer")
+        @section('scripts')
         <script>
             $(document).ready(function() {
                 $(".rateDiv").hover(function () {
@@ -108,3 +104,4 @@
                 });
             });
         </script>
+        @endsection
