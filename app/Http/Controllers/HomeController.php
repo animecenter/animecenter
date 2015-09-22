@@ -11,7 +11,6 @@ use App\Pages\Page;
 
 class HomeController extends Controller
 {
-
     /**
      * @var Anime
      */

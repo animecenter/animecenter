@@ -35,22 +35,22 @@ class SitemapController extends Controller
             if ($timeDiff < 3600) {
                 $freq = 'always';
                 $rank = 0.8;
-            } else if ($timeDiff < 42300) {
+            } elseif ($timeDiff < 42300) {
                 $freq = 'hourly';
                 $rank = 0.7;
-            } else if ($timeDiff < 129600) {
+            } elseif ($timeDiff < 129600) {
                 $freq = 'daily';
                 $rank = 0.6;
-            } else if ($timeDiff < 604800) {
+            } elseif ($timeDiff < 604800) {
                 $freq = 'weekly';
                 $rank = 0.5;
-            } else if ($timeDiff < 2592000) {
+            } elseif ($timeDiff < 2592000) {
                 $freq = 'monthly';
                 $rank = 0.4;
-            } else if ($timeDiff < 31104000) {
+            } elseif ($timeDiff < 31104000) {
                 $freq = 'yearly';
                 $rank = 0.3;
-            } else if ($timeDiff > 31104000) {
+            } elseif ($timeDiff > 31104000) {
                 $freq = 'never';
                 $rank = 0.2;
             }
@@ -81,7 +81,7 @@ class SitemapController extends Controller
                 if ($show == 0) {
                     $freq = 'monthly';
                 }
-            } else if ($timeDiff < 42300) {
+            } elseif ($timeDiff < 42300) {
                 $freq = 'hourly';
                 $rank = 0.6;
                 if ($show == 1) {
@@ -90,7 +90,7 @@ class SitemapController extends Controller
                 if ($show == 0) {
                     $freq = 'monthly';
                 }
-            } else if ($timeDiff < 129600) {
+            } elseif ($timeDiff < 129600) {
                 $freq = 'daily';
                 $rank = 0.5;
                 if ($show == 1) {
@@ -99,7 +99,7 @@ class SitemapController extends Controller
                 if ($show == 0) {
                     $freq = 'monthly';
                 }
-            } else if ($timeDiff < 604800) {
+            } elseif ($timeDiff < 604800) {
                 $freq = 'weekly';
                 $rank = 0.4;
                 if ($show == 1) {
@@ -108,7 +108,7 @@ class SitemapController extends Controller
                 if ($show == 0) {
                     $freq = 'monthly';
                 }
-            } else if ($timeDiff < 2592000) {
+            } elseif ($timeDiff < 2592000) {
                 $freq = 'monthly';
                 $rank = 0.3;
                 if ($show == 1) {
@@ -117,13 +117,13 @@ class SitemapController extends Controller
                 if ($show == 0) {
                     $freq = 'yearly';
                 }
-            } else if ($timeDiff < 31104000) {
+            } elseif ($timeDiff < 31104000) {
                 $freq = 'yearly';
                 $rank = 0.2;
                 if ($show == 1) {
                     $rank = $rank + 0.2;
                 }
-            } else if ($timeDiff > 31104000) {
+            } elseif ($timeDiff > 31104000) {
                 $freq = 'never';
                 $rank = 0.1;
                 if ($show == 1) {
@@ -137,7 +137,6 @@ class SitemapController extends Controller
 
             // create sitemap
             $sitemap->store('xml', 'sitemap');
-
         } catch (Exception $e) {
             dd($e);
         }

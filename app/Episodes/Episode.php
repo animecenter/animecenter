@@ -76,5 +76,4 @@ class Episode extends Model
     {
         return $this->belongsTo('App\Anime\Anime');
     }
-
 }

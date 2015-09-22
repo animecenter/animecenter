@@ -6,11 +6,9 @@ use App\Anime\Anime;
 use App\Episodes\Episode;
 use App\Options\Option;
 use App\Pages\Page;
-use DateTime;
 
 class EpisodeController extends Controller
 {
-
     /**
      * @var Episode
      */
@@ -53,17 +51,17 @@ class EpisodeController extends Controller
 
     public function getEpisode($slug)
     {
-        $this->data['episode'] = $episode = $episode = $this->episode->with('anime')
+        $this->data['episode'] = $episode = $this->episode->with('anime')
             ->where('slug', '=', $slug)->firstOrFail();
         $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
         $this->data['nextEpisode'] = $this->episode
             ->where('anime_id', '=', $episode->anime->id)
-            ->where('order', '>', $episode->order)
+            ->where('order', '>', $episode['order'])
             ->orderBy('order')
             ->first();
         $this->data['prevEpisode'] = $this->episode
             ->where('anime_id', '=', $episode->anime->id)
-            ->where('order', '<', $episode->order)
+            ->where('order', '<', $episode['order'])
             ->orderBy('order', 'desc')
             ->first();
         $this->data['mainLink'] = $this->data['options'][4]['value'] . $episode['slug'];
@@ -107,17 +105,21 @@ class EpisodeController extends Controller
 
     public function getEpisodeMirror($slug, $mirror)
     {
-        $this->data['episode'] = $episode = $episode = $this->episode->with('anime')
+        $mirrors = ['hd', 'mirror1', 'mirror2', 'mirror3', 'mirror4', 'raw', 'subdub'];
+        if (!in_array($mirror, $mirrors)) {
+            abort(404, "That is not a valid mirror!");
+        }
+        $this->data['episode'] = $episode = $this->episode->with('anime')
             ->where('slug', '=', $slug)->where($mirror, '<>', '')->firstOrFail();
         $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
         $this->data['nextEpisode'] = $this->episode
             ->where('anime_id', '=', $episode->anime->id)
-            ->where('order', '>', $episode->order)
+            ->where('order', '>', $episode['order'])
             ->orderBy('order')
             ->first();
         $this->data['prevEpisode'] = $this->episode
             ->where('anime_id', '=', $episode->anime->id)
-            ->where('order', '<', $episode->order)
+            ->where('order', '<', $episode['order'])
             ->orderBy('order', 'desc')
             ->first();
         $this->data['mainLink'] = $this->data['options'][4]['value'] . $episode['slug'];
@@ -167,7 +169,8 @@ class EpisodeController extends Controller
             ->orderBy('date', 'DESC')
             ->paginate(24);
         $this->data['pageTitle'] = "Latest Episodes | Watch Anime Online Free";
-        $this->data['metaTitle'] = "Watch the Latest Episode for Free Online | Watch Anime Online Free just in Animecenter.tv";
+        $this->data['metaTitle'] = "Watch the Latest Episode for Free Online | Watch Anime Online Free just in " .
+            "Animecenter.tv";
         $this->data['metaDesc'] = "Watch Latest Anime Episodes added to the site! Latest English Subbed/Dubbed Anime";
         $this->data['metaKey'] = "Latest Anime Episodes, Watch Latest Anime Episodes, Watch on Iphone, Watch Anime" .
             " Online, English Subbed/Dubbed";
