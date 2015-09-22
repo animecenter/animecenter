@@ -61,12 +61,12 @@ class AnimeController extends Controller
                 ->where('title', 'like', 'a%')
                 ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
-        } else if ($letter === '0-9') {
+        } elseif ($letter === '0-9') {
             $this->data['animes'] = $anime = $this->anime
                 ->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
                 ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
-        } else if (preg_match('/^([a-z])$/', $letter) === 1) {
+        } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
             $this->data['animes'] = $anime = $this->anime
                 ->where('title', 'like', $letter.'%')
                 ->where('type2', '<>', 'dubbed')
@@ -90,12 +90,12 @@ class AnimeController extends Controller
                 ->where('title', 'like', 'a%')
                 ->where('type2', '=', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
-        } else if ($letter === '0-9') {
+        } elseif ($letter === '0-9') {
             $this->data['animes'] = $anime = $this->anime
                 ->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
                 ->where('type2', '=', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
-        } else if (preg_match('/^([a-z])$/', $letter) === 1) {
+        } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
             $this->data['animes'] = $anime = $this->anime
                 ->where('title', 'like', $letter.'%')
                 ->where('type2', '=', 'dubbed')
@@ -119,12 +119,12 @@ class AnimeController extends Controller
                 ->where('title', 'like', 'a%')
                 ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->paginate(20);
-        } else if ($letter === '0-9') {
+        } elseif ($letter === '0-9') {
             $this->data['animes'] = $anime = $this->anime
                 ->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
                 ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->paginate(20);
-        } else if (preg_match('/^([a-z])$/', $letter) === 1) {
+        } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
             $this->data['animes'] = $anime = $this->anime
                 ->where('title', 'like', $letter.'%')
                 ->where('type2', '<>', 'dubbed')
@@ -148,12 +148,12 @@ class AnimeController extends Controller
                 ->where('title', 'like', 'a%')
                 ->where('type2', '=', 'dubbed')
                 ->orderBy('title', 'ASC')->paginate(20);
-        } else if ($letter === '0-9') {
+        } elseif ($letter === '0-9') {
             $this->data['animes'] = $anime = $this->anime
                 ->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
                 ->where('type2', '=', 'dubbed')
                 ->orderBy('title', 'ASC')->paginate(20);
-        } else if (preg_match('/^([a-z])$/', $letter) === 1) {
+        } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
             $this->data['animes'] = $anime = $this->anime
                 ->where('title', 'like', $letter.'%')
                 ->where('type2', '=', 'dubbed')
@@ -177,7 +177,7 @@ class AnimeController extends Controller
         }])->where('slug', '=', $slug)->where('type2', '<>', 'dubbed')->firstOrFail();
         $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
         $this->data['lastEpisode'] = $this->episode->where('anime_id', '=', $anime['id'])
-            ->where('not_yet_aired', '=', NULL)
+            ->where('not_yet_aired', '=', null)
             ->orWhere('anime_id', '=', $anime['id'])
             ->where('not_yet_aired', '=', '')
             ->orderBy('id', 'DESC')
@@ -223,7 +223,7 @@ class AnimeController extends Controller
         }])->where('slug', '=', $slug)->where('type2', '=', 'dubbed')->firstOrFail();
         $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
         $this->data['lastEpisode'] = $this->episode->where('anime_id', '=', $anime['id'])
-            ->where('not_yet_aired', '=', NULL)
+            ->where('not_yet_aired', '=', null)
             ->orWhere('anime_id', '=', $anime['id'])
             ->where('not_yet_aired', '=', '')
             ->orderBy('id', 'DESC')

@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 
 class AnimeController extends Controller
 {
-
     /**
      * @var Anime
      */

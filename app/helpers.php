@@ -1,6 +1,7 @@
 <?php
 
-function thumbcreate($video_field) {
+function thumbcreate($video_field)
+{
     global $url;
     $video = str_replace("<iframe", "", $video_field);
     $start = '"http:';
