@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Pages\Page;
 use App\Http\Controllers\Controller;
+use App\Pages\Page;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
@@ -67,7 +67,7 @@ class PageController extends Controller
             'title' => $request['title'],
             'content' => $request['content'],
             'link' => $request['link'],
-            'order' => $request['order'] ? $request['order'] : NULL,
+            'order' => $request['order'] ? $request['order'] : null,
             'position' => $request['position']
         ]);
         $msg = 'Page was created successfully!';
@@ -102,7 +102,7 @@ class PageController extends Controller
         $page->title = $request['title'];
         $page->content = $request['content'];
         $page->link = $request['link'];
-        $page->order = $request['order'] ? $request['order'] : NULL;
+        $page->order = $request['order'] ? $request['order'] : null;
         $page->position = $request['position'];
         $page->save();
         $msg = 'Page was updated successfully!';

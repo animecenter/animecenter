@@ -77,7 +77,7 @@ class SearchController extends Controller
             } else {
                 $animes = $this->anime->where('title', 'LIKE', '%'.$request['title'].'%')
                     ->where(function ($query) use ($genres) {
-                        foreach($genres as $genre) {
+                        foreach ($genres as $genre) {
                             $query->orWhere('genres', 'LIKE', '%'.$genre.'%');
                         }
                     })

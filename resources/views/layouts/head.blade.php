@@ -39,7 +39,7 @@
                             strpos($_SERVER['REQUEST_URI'], $options[3]['value'])) && $anime)
                         <div class="text">Watch <span>{{ $anime['title'] }}</span> in
                             English Subbed-Dubbed Online for Free</div>
-                    @elseif (strpos($_SERVER['REQUEST_URI'], $options[4]['value']) && $episode)
+                    @elseif (strpos($_SERVER['REQUEST_URI'], $options[4]['value']) && isset($episode) && $episode)
                         <div class="text">Watch <span>{{ $episode['title'] }}</span>
                             in English Subbed-Dubbed Online for Free</div>
                     @else
