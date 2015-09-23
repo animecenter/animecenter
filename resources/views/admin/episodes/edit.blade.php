@@ -17,7 +17,7 @@
             <select class="select" name="anime_id">
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] }}" {{ $episode['anime_id'] == $anime['id'] ?
-                        'selected="selected"' : '' }}>{{ $anime['title'] }}</option>
+                        'selected=selected' : '' }}>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
