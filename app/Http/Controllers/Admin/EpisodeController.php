@@ -174,12 +174,13 @@ class EpisodeController extends Controller
      */
     public function postEdit($id = 0, Request $request)
     {
+        dd($id);
         $episode = $this->episode->findOrFail($id);
         $episode->anime_id = $request['anime_id'];
         $episode->title = $request['title'];
         $episode->slug = str_slug($request['title']);
         $episode->subdub = $request['subdub'];
-        $episode->show = $request['show'] ? 1 : 0;
+        $episode->show = ($request['show']) ? 1 : 0;
         $episode->not_yet_aired = $request['not_yet_aired'];
         $episode->raw = $request['raw'];
         $episode->hd = $request['hd'];
@@ -187,7 +188,7 @@ class EpisodeController extends Controller
         $episode->mirror2 = $request['mirror2'];
         $episode->mirror3 = $request['mirror3'];
         $episode->mirror4 = $request['mirror4'];
-        $episode->date = $request['reset'] === "1" ? time() : ($episode->date ? $episode->date : time());
+        $episode->date = ($request['reset'] === "1") ? time() : (($episode->date) ? $episode->date : time());
         $episode->date2 = time();
         $episode->coming_date = $request['coming_date'] ? $request['coming_date'] : null;
         $episode->save();
