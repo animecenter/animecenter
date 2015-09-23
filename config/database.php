@@ -61,7 +61,7 @@ return [
             'charset'   => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => '',
-            'strict'    => true,
+            'strict'    => false,
         ],
 
         'mysql1' => [
@@ -73,7 +73,7 @@ return [
             'charset'   => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => '',
-            'strict'    => true,
+            'strict'    => false,
         ],
 
         'pgsql' => [
