@@ -175,7 +175,6 @@ class EpisodeController extends Controller
     public function postEdit($id = 0, Request $request)
     {
         $episode = $this->episode->findOrFail($id);
-        dd($episode);
         $episode->anime_id = $request['anime_id'];
         $episode->title = $request['title'];
         $episode->slug = str_slug($request['title']);
