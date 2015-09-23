@@ -15,7 +15,7 @@ function thumbcreate($video_field)
         if (file_exists('animethumb/' . $file . '.jpg')) {
             $path = $url . 'animethumb/' . $file . '.jpg';
         } else {
-            $path = $url . 'css/imgs/no-image.jpg';
+            $path = $url . 'imgs/no-image.jpg';
         }
     }
     return $path;
