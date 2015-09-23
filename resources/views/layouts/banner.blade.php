@@ -1,4 +1,5 @@
 <div class="banner">
+    <iframe src="http://adconscious.com/site/100045" width="728" height="90" frameborder="0" scrolling="no"></iframe>
 </div>
 <div id="featured" class="widget" style="width:245px; margin-left:3px;">
     <div class="block">
@@ -7,7 +8,8 @@
             <img class='eimg' src="<?php echo asset("images/" . $animeBanner['image']); ?>">
             <div class="sub_title" style="width:170px;">
                 <?php
-                    echo(strlen($animeBanner['title']) < 20) ? $animeBanner['title'] : substr($animeBanner['title'], 0, 20) . "...";
+                    echo(strlen($animeBanner['title']) < 20) ? $animeBanner['title'] :
+                            substr($animeBanner['title'], 0, 20) . "...";
                 ?>
             </div>
         </a>
@@ -16,7 +18,8 @@
                  class='rateDiv'></div>
             <div style='float: left; font-size: 8pt;  width: 100%; display:none' id='hint<?php echo $animeBanner['id']; ?>'></div>
             <div id='hint2<?php echo $animeBanner['id']; ?>' style='width:100%;font-size:8pt;float:left'>
-                <?php echo "Average: " . sprintf("%.2f", $animeBanner['rating']) . " ( " . $animeBanner['votes'] . " votes)" ?>
+                <?php echo "Average: " . sprintf("%.2f", $animeBanner['rating']) .
+                        " ( " . $animeBanner['votes'] . " votes)" ?>
             </div>
         </div>
     </div>

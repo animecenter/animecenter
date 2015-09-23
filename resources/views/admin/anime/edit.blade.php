@@ -27,9 +27,9 @@
             <div class="smallTitle">Type2:</div>
             <select class="select" name="type2">
                 <option value="subbed" {{ ($currentAnime['type2'] == "subbed") ?
-                'selected="selected"' : '' }}>subbed</option>
+                'selected=selected' : '' }}>subbed</option>
                 <option value="dubbed" {{ ($currentAnime['type2'] == "dubbed") ?
-                'selected="selected"' : '' }}>dubbed</option>
+                'selected=selected' : '' }}>dubbed</option>
             </select>
             <input value="" type="text" class="textInput2"/>
         </div>
@@ -45,9 +45,9 @@
             <div class="smallTitle">Status:</div>
             <select class="select" name="status">
                 <option value="ongoing" {{ ($currentAnime['status'] == "ongoing") ?
-                'selected="selected"' : '' }}>Ongoing</option>
+                'selected=selected' : '' }}>Ongoing</option>
                 <option value="finished" {{ ($currentAnime['status'] == "finished") ?
-                'selected="selected"' : '' }}>Finished</option>
+                'selected=selected' : '' }}>Finished</option>
             </select>
             <input value="" type="text" class="textInput2"/>
         </div>
@@ -59,7 +59,7 @@
                 <option value="">Not Selected</option>
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" {{
-                        $currentAnime['prequel'] === $anime['id'] . "," . $anime['title'] ? 'selected="selected"' : ''
+                        $currentAnime['prequel'] === $anime['id'] . "," . $anime['title'] ? 'selected=selected' : ''
                         }}>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
