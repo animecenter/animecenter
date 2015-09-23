@@ -147,9 +147,7 @@ class EpisodeController extends Controller
         ]);
         $msg = 'Episode was created successfully!';
 
-        return redirect()
-            ->to('watch/' . $episode->slug)
-            ->with('success', $msg);
+        return redirect()->to('watch/' . $episode->slug)->with('success', $msg);
     }
 
     /**
