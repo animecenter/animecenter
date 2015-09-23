@@ -23,9 +23,9 @@
             <div class="smallTitle">Position:</div>
             <select class="select" name="position">
                 <option value="top">Top</option>
-                <option value="bottom1" {{ $page['position'] == "bottom1" ? "selected='selected'" : '' }}>Bottom 1</option>
-                <option value="bottom2" {{ $page['position'] == "bottom2" ? "selected='selected'" : '' }}>Bottom 2</option>
-                <option value="bottom3" {{ $page['position'] == "bottom3" ? "selected='selected'" : '' }}>Bottom 3</option>
+                <option value="bottom1" {{ $page['position'] == "bottom1" ? 'selected=selected' : '' }}>Bottom 1</option>
+                <option value="bottom2" {{ $page['position'] == "bottom2" ? 'selected=selected' : '' }}>Bottom 2</option>
+                <option value="bottom3" {{ $page['position'] == "bottom3" ? 'selected=selected' : '' }}>Bottom 3</option>
             </select>
             <input value="" type="text" class="textInput2"/>
         </div>
