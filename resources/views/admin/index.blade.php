@@ -150,12 +150,12 @@
                     var v = $(this).children("input").prop("checked");
                     if (v) {
                         $(this).children("span").css({
-                            'background': "url({{ asset('css/img/checked.jpg') }})"
+                            'background': "url({{ asset('imgs/checked.jpg') }})"
                         });
                     }
                     else {
                         $(this).children("span").css({
-                            'background': "url({{ asset('css/img/check.jpg') }})"
+                            'background': "url({{ asset('imgs/check.jpg') }})"
                         });
                     }
                 });
@@ -163,13 +163,13 @@
                 $(".inputCheck span").click(function () {
                     if (!$(this).parent('div').children('input').prop('checked')) {
                         $(this).css({
-                            'background': "url({{ asset('css/img/checked.jpg') }})"
+                            'background': "url({{ asset('imgs/checked.jpg') }})"
                         });
                         $(this).parent('div').children('input').prop("checked", true);
                     }
                     else {
                         $(this).css({
-                            'background': "url({{ asset('css/img/check.jpg') }})"
+                            'background': "url({{ asset('imgs/check.jpg') }})"
                         });
                         $(this).parent('div').children('input').removeAttr('checked');
                     }
