@@ -74,7 +74,7 @@
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
                         if ($currentAnime['sequel'] == $anime['id'] . "," . $anime['title']) {
-                            echo "selected='selected'";
+                            echo 'selected=selected';
                         } ?>>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
@@ -89,7 +89,7 @@
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
                         if ($currentAnime['story'] == $anime['id'] . "," . $anime['title']) {
-                            echo "selected='selected'";
+                            echo 'selected=selected';
                         } ?>>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
@@ -104,7 +104,7 @@
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
                         if ($currentAnime['side_story'] == $anime['id'] . "," . $anime['title']) {
-                            echo "selected='selected'";
+                            echo 'selected=selected';
                         } ?>>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
@@ -119,7 +119,7 @@
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
                         if ($currentAnime['spin_off'] == $anime['id'] . "," . $anime['title']) {
-                            echo "selected='selected'";
+                            echo 'selected=selected';
                         } ?>>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
@@ -134,7 +134,7 @@
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
                         if ($currentAnime['alternative'] == $anime['id'] . "," . $anime['title']) {
-                            echo "selected='selected'";
+                            echo 'selected=selected';
                         } ?>>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
@@ -149,7 +149,7 @@
                 @foreach ($animes as $anime)
                     <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
                         if ($currentAnime['other'] == $anime['id'] . "," . $anime['title']) {
-                            echo "selected='selected'";
+                            echo 'selected=selected';
                         } ?>>{{ $anime['title'] }}
                     </option>
                 @endforeach

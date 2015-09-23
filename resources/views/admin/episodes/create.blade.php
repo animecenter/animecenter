@@ -15,8 +15,9 @@
             <div class="smallTitle">Anime:</div>
             <select class="select" name="anime_id">
                 @foreach ($animes as $anime)
-                    <option value="{{ $anime['id'] }}" {{ $currentAnime && $currentAnime['id'] === $anime['id'] ?
-                    "selected='selected'" : old('anime_id') ? "selected='selected'" : '' }}>{{ $anime['title'] }}</option>
+                    <option value="{{ $anime['id'] }}" {{ ($currentAnime && $currentAnime['id'] === $anime['id']) ?
+                        'selected=selected' : ((old('anime_id')) ? 'selected=selected' : '')
+                        }}>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
             <input name="" value="" type="text" class="textInput2"/>
