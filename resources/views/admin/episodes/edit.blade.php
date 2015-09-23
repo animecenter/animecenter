@@ -20,13 +20,12 @@
                         'selected=selected' : '' }}>{{ $anime['title'] }}</option>
                 @endforeach
             </select>
-            <input name="" value="" type="text" class="textInput2"/>
         </div>
         <!--/inputSelectarea-->
 
         <div class="inputNOption" style="">
             <div class="smallTitle">
-                Coming Date: <a href="#" class="prevBT set_date" val="<?php echo
+                Coming Date: <a href="#" class="prevBT set_date" data-val="<?php echo
                     date('Y-m-d H:i:s', strtotime(date("Y-m-d H:i:s") . "+7 day")); ?>">
                     Set Date
                 </a>
@@ -117,7 +116,7 @@
     <script>
         $(document).ready(function () {
             $(".set_date").click(function () {
-                $(this).parent("div").parent("div").find("input[type='text']").val($(this).attr("val"));
+                $(this).parent("div").parent("div").find("input[type='text']").val($(this).attr("data-val"));
             });
         });
     </script>
