@@ -107,7 +107,9 @@ class EpisodeController extends Controller
                     'anime_id' => $request['id'],
                     'date' => $date,
                     'date2' => $date,
-                    'order' => $order
+                    'order' => $order,
+                    'rating' => 0,
+                    'votes' => 0
                 ]);
                 $nextEpisode++;
             }
@@ -174,7 +176,6 @@ class EpisodeController extends Controller
      */
     public function postEdit($id = 0, Request $request)
     {
-        dd($id);
         $episode = $this->episode->findOrFail($id);
         $episode->anime_id = $request['anime_id'];
         $episode->title = $request['title'];
