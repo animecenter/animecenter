@@ -40,7 +40,7 @@
 
         <div class="inputCheck">
             <input type="checkbox" class="checkbox" name="show" value="1" {{ ($episode['show'] == 1) ?
-            'checked=checked' : ((old('show')) ? 'checked=checked' : '') }}/>
+            'checked=checked' : ((old('show')) ? 'checked=checked' : '') }} />
             <span></span>
             <div class="smallTitle">Show in home page</div>
         </div>
@@ -48,7 +48,7 @@
 
         <div class="inputCheck">
             <input type="checkbox" class="checkbox" name="reset" value="1" {{ ($episode['reset'] == 1) ?
-            'checked=checked' : ((old('reset')) ? 'checked=checked' : '') }}/>
+            'checked=checked' : ((old('reset')) ? 'checked=checked' : '') }} />
             <span></span>
             <div class="smallTitle">Reset time</div>
         </div>
