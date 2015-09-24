@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Cache;
 use Carbon\Carbon;
+use DOMDocument;
 use Illuminate\Database\DatabaseManager;
 
 class DatabaseController extends Controller
@@ -23,20 +25,22 @@ class DatabaseController extends Controller
     public function getUpdate()
     {
         // Get all the animes from MAL with alt titles if they have them
-        $animes = $this->db->connection('mysql1')->table('animes')
-            ->leftJoin('titles as titles1', function ($join) {
-                $join->on('titles1.titlable_id', '=', 'animes.id')
-                    ->where('titles1.titlable_type', '=', 'Anime')
-                    ->where('titles1.language', '=', 'English');
-            })
-            ->leftJoin('titles as titles2', function ($join) {
-                $join->on('titles2.titlable_id', '=', 'animes.id')
-                    ->where('titles2.titlable_type', '=', 'Anime')
-                    ->where('titles2.language', '=', 'Synonyms');
-            })
-            ->select(['animes.id', 'animes.title', 'titles1.title as alt_title1', 'titles2.title as alt_title2'])
-            ->orderBy('id')
-            ->get();
+        $animes = Cache::remember('animes', 180, function() {
+            return $this->db->connection('mysql1')->table('animes')
+                ->leftJoin('titles as titles1', function ($join) {
+                    $join->on('titles1.titlable_id', '=', 'animes.id')
+                        ->where('titles1.titlable_type', '=', 'Anime')
+                        ->where('titles1.language', '=', 'English');
+                })
+                ->leftJoin('titles as titles2', function ($join) {
+                    $join->on('titles2.titlable_id', '=', 'animes.id')
+                        ->where('titles2.titlable_type', '=', 'Anime')
+                        ->where('titles2.language', '=', 'Synonyms');
+                })
+                ->select(['animes.id', 'animes.title', 'titles1.title as alt_title1', 'titles2.title as alt_title2'])
+                ->orderBy('id')
+                ->get();
+        });
 
         // Get current timestamp
         $timestamp = Carbon::now()->toDateTimeString();
@@ -67,8 +71,11 @@ class DatabaseController extends Controller
                         'rating', 'votes', 'visits', 'order', 'coming_date'
                     ]);
 
+                // Get current anime translation
+                $translation = ($currentAnime->type2 === 'subbed') ? 'Subbed' : 'Dubbed';
 
                 foreach ($episodes as $episode) {
+
                     // Check if anime has this episode
                     $exists = $this->db->connection('mysql1')->table('episodes')->where('anime_id', '=', $anime->id)
                         ->where('number', '=', $episode->order)->first(['id']);
@@ -83,43 +90,47 @@ class DatabaseController extends Controller
                         $episodeID = $exists->id;
                     }
 
-                    // Get current anime translation
-                    $translation = ($currentAnime->type2 === 'subbed') ? 'Subbed' : 'Dubbed';
-
-                    if ($episode->hd) {
+                    if ($episode->hd && strpos(strtolower($episode->hd), 'iframe') !== false) {
 
                         // Get src url from frame or embed
                         $dom = new DOMDocument();
-                        $dom->loadHTML($episode->hd);
-                        $src = $dom->getAttribute('src');
+                        if ($dom->loadHTML($episode->hd)) {
+                            $src = $dom->getElementsByTagName("iframe")[0]->getAttribute('src');
 
-                        // Check if mirror exists first
-                        $mirror = $this->db->connection('mysql1')->table('mirrors')
-                            ->where('episode_id', '=', $episodeID)
-                            ->where('quality', '=', 'HD')
-                            ->where('translation', '=', $translation)
-                            ->where('url', '=', $src)
-                            ->first();
+                            // Check if mirror exists first
+                            $mirror = $this->db->connection('mysql1')->table('mirrors')->where('url', '=', $src)
+                                ->first(['id']);
 
-                        if (!$mirror) {
+                            if (!$mirror) {
 
-                            // Get mirror source name
-                            $url = explode('.', parse_url($src, PHP_URL_HOST));
-                            $numberOfElements = count($url);
-                            $mirrorSourceName = ucfirst($url[$numberOfElements - 1]);
+                                // Get mirror source name
+                                $url = explode('.', parse_url($src, PHP_URL_HOST));
+                                $numberOfElements = count($url);
+                                $mirrorSourceName = ucfirst($url[$numberOfElements - 2]);
 
-                            // Check if mirror source exists if not create it
-                            $mirrorSourceID = $this->db->connection('mysql1')->table('mirror_sources')->insertGetId([
-                                'name' => $mirrorSourceName, 'created_at' => $timestamp, 'updated_at' => $timestamp
-                            ]);
+                                // Check if mirror source exists if not create it
+                                $mirrorSourceID = $this->db->connection('mysql1')->table('mirror_sources')
+                                    ->where('name', '=', $mirrorSourceName)->first(['id']);
+                                if (!$mirrorSourceID) {
+                                    $mirrorSourceID = $this->db->connection('mysql1')->table('mirror_sources')
+                                        ->insertGetId([
+                                        'name' => $mirrorSourceName, 'created_at' => $timestamp,
+                                            'updated_at' => $timestamp
+                                        ]);
+                                } else {
+                                    $mirrorSourceID = $mirrorSourceID->id;
+                                }
 
-                            // Insert mirror for current episode
-                            $this->db->connection('mysql1')->table('mirrors')->insert([
-                                'user_id' => 1, 'episode_id' => $episodeID, 'mirror_source_id' => $mirrorSourceID,
-                                'language_id' => 1, 'url' => $src, 'translation' => $translation, 'quality' => 'HD',
-                                'active' => 1, 'created_at' => $timestamp, 'updated_at' => $timestamp
-                            ]);
+                                // Insert mirror for current episode
+                                $this->db->connection('mysql1')->table('mirrors')->insert([
+                                    'user_id' => 1, 'episode_id' => $episodeID, 'mirror_source_id' => $mirrorSourceID,
+                                    'language_id' => 1, 'url' => $src, 'translation' => $translation, 'quality' => 'HD',
+                                    'active' => 1, 'created_at' => $timestamp, 'updated_at' => $timestamp
+                                ]);
+                            }
                         }
+                    } else {
+                        print_r($episode->hd);
                     }
                 }
             }
