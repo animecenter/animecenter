@@ -22,6 +22,5 @@
     </script>
 </div>
 <div style="width: 100%; height: auto; float: left; margin-bottom: 10px;">
-    <script type="text/javascript" src="http://www.evolvenation.com/delivery.js?id=15&size=300x250"></script>
 </div>
 </div>
