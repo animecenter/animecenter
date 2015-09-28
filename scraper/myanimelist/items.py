@@ -7,6 +7,7 @@
 
 from scrapy.item import Item, Field
 
+
 class Anime(Item):
     title = Field()
     synopsis = Field()
@@ -25,6 +26,28 @@ class Anime(Item):
     ending = Field()
     image_url = Field()
 
+
+class Character(Item):
+    alias = Field()
+    name = Field()
+    japanese = Field()
+    synopsis = Field()
+    voices = Field()
+    animes = Field()
+    mangas = Field()
+    mal_id = Field()
+    image_url = Field()
+
+
+class Fansub(Item):
+    title = Field()
+    short = Field()
+    website = Field()
+    irc = Field()
+    language = Field()
+    animes = Field()
+
+
 class Manga(Item):
     mal_id = Field()
     title = Field()
@@ -41,6 +64,17 @@ class Manga(Item):
     related = Field()
     image_url = Field()
 
+
+class Mirror(Item):
+    anime = Field()
+    episode = Field()
+    website = Field()
+    url = Field()
+    translation = Field()
+    date = Field()
+    quality = Field()
+
+
 class Person(Item):
     name = Field()
     mal_id = Field()
@@ -53,31 +87,3 @@ class Person(Item):
     voices = Field()
     staffs = Field()
     mangas = Field()
-
-class Character(Item):
-    alias = Field()
-    name = Field()
-    japanese = Field()
-    synopsis = Field()
-    voices = Field()
-    animes = Field()
-    mangas = Field()
-    mal_id = Field()
-    image_url = Field()
-
-class Fansub(Item):
-    title = Field()
-    short = Field()
-    website = Field()
-    irc = Field()
-    language = Field()
-    animes = Field()
-
-class Mirror(Item):
-    anime = Field()
-    episode = Field()
-    website = Field()
-    url = Field()
-    translation = Field()
-    date = Field()
-    quality = Field()

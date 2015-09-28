@@ -6,9 +6,9 @@ from myanimelist.items import Mirror
 class MirrorSpider(scrapy.Spider):
     name = "mirror"
     allowed_domains = ["animerush.tv"]
-    start_urls = (
+    start_urls = [
         'http://www.animerush.tv/anime-series-list/',
-    )
+    ]
 
     def parse(self, response):
         for anime in response.xpath('//div[@class="amin_box2"]/div[2]/div/a/@href').extract():

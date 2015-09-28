@@ -54,17 +54,17 @@ class AnimeSpider(scrapy.Spider):
         item['synopsis'] = re.sub(r'\([^)]*\)', '', response.xpath(
             'string(//h2[text()="Synopsis"]/..)').extract()[0].replace('EditSynopsis', '').replace(
             '\n\n', '\n')).split('EditBackground')[0]
-        item['alternative_titles'] = '---div---'.join(response.xpath(
+        item['alternative_titles'] = '---div---'.join([x for x in response.xpath(
             '//div[preceding-sibling::h2="Alternative Titles" and following-sibling::h2="Information"]//text()'
-        ).extract()).replace('---div--- ', '---union---')
-        item['type'] = response.xpath('//span[text()="Type:"]/../text()').extract()[0].strip()
-        item['episodes'] = response.xpath('//span[text()="Episodes:"]/../text()').extract()[0].strip()
-        item['status'] = response.xpath('//span[text()="Status:"]/../text()').extract()[0].strip()
-        item['dates'] = response.xpath('//span[text()="Aired:"]/../text()').extract()[0].strip().replace('  ', ' ')
+        ).extract() if '\n    ' not in x]).replace('---div--- ', '---union---').replace('\n  ', '')
+        item['type'] = response.xpath('//span[text()="Type:"]/../text()').extract()[1].strip()
+        item['episodes'] = response.xpath('//span[text()="Episodes:"]/../text()').extract()[1].strip()
+        item['status'] = response.xpath('//span[text()="Status:"]/../text()').extract()[1].strip()
+        item['dates'] = response.xpath('//span[text()="Aired:"]/../text()').extract()[1].strip().replace('  ', ' ')
         item['producers'] = response.xpath('//span[text()="Producers:"]/../a/text()').extract()
-        item['genres'] = response.xpath('//span[text()="Genres:"]/../a/span/text()').extract()
-        item['duration'] = response.xpath('//span[text()="Duration:"]/../text()').extract()[0].strip()
-        item['classification'] = response.xpath('//span[text()="Rating:"]/../text()').extract()[0].strip()
+        item['genres'] = response.xpath('//span[text()="Genres:"]/../span/a/text()').extract()
+        item['duration'] = response.xpath('//span[text()="Duration:"]/../text()').extract()[1].strip()
+        item['classification'] = response.xpath('//span[text()="Rating:"]/../text()').extract()[1].strip()
         relations = []
         for relation in response.xpath('//table[@class="anime_detail_related_anime"]/tr'):
             relationship = relation.xpath('td/text()').extract()[0]

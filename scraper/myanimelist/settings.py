@@ -63,8 +63,12 @@ EXTENSIONS = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'myanimelist.pipelines.anime.MySQLStorePipeline': 300,
-    'myanimelist.pipelines.mirror.MySQLStorePipeline': 600,
+    'myanimelist.pipelines.anime.MySQLStorePipeline': 100,
+    'myanimelist.pipelines.character.MySQLStorePipeline': 200,
+    'myanimelist.pipelines.fansub.MySQLStorePipeline': 300,
+    'myanimelist.pipelines.manga.MySQLStorePipeline': 400,
+    'myanimelist.pipelines.mirror.MySQLStorePipeline': 500,
+    'myanimelist.pipelines.person.MySQLStorePipeline': 600,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
