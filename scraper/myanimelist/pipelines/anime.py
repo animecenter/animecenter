@@ -129,11 +129,11 @@ class MySQLStorePipeline(object):
         if item['duration']:
             if 'hr' in item['duration'] and 'min' in item['duration']:
                 duration = item['duration'].split(' hr. ')
-                duration = '0' + duration[0] + '-' + duration[1].split(' min.')[0]
+                duration = '0' + duration[0] + '-' + duration[1].split(' min.')[0] + '-00'
             elif 'Unknown' in item['duration']:
                 duration = None
             elif 'min' not in item['duration']:
-                duration = '0' + item['duration'].split(' hr.')[0] + '-00'
+                duration = '0' + item['duration'].split(' hr.')[0] + '-00-00'
             else:
                 duration = item['duration']
                 print duration
