@@ -16,7 +16,7 @@ class CreateEpisodesTable extends Migration
             $table->string('slug', 191)->unique()->nullable();
             $table->text('synopsis')->nullable();
             $table->boolean('status')->default(false);
-            $table->datetime('air_date')->nullable();
+            $table->timestamp('aired_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

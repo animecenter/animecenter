@@ -6,9 +6,9 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 from myanimelist.items import Anime
+import datetime
 import MySQLdb
 from slugify import Slugify
-import datetime
 
 
 class MySQLStorePipeline(object):
@@ -309,19 +309,3 @@ class MySQLStorePipeline(object):
             return self.cursor.fetchone()[0]
         else:
             return None
-
-    @staticmethod
-    def process_manga(item):
-        return item
-
-    @staticmethod
-    def process_person(item):
-        return item
-
-    @staticmethod
-    def process_character(item):
-        return item
-
-    @staticmethod
-    def process_fansub(item):
-        return item
