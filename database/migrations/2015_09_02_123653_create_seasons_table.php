@@ -3,20 +3,21 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateOptionsTable extends Migration
+class CreateSeasonsTable extends Migration
 {
+
     public function up()
     {
-        Schema::create('options', function (Blueprint $table) {
+        Schema::create('seasons', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('value')->nullable();
+            $table->string('name', 191)->unique();
+            $table->boolean('active')->default(true);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
     public function down()
     {
-        Schema::drop('options');
+        Schema::drop('seasons');
     }
 }

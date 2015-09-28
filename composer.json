@@ -9,7 +9,8 @@
     "laravel/framework": "5.1.*",
     "roumen/sitemap": "2.5.*",
     "laravel/socialite": "~2",
-    "graham-campbell/htmlmin": "~4"
+    "graham-campbell/htmlmin": "~4",
+    "rap2hpoutre/laravel-log-viewer": "~0.4"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.5",
