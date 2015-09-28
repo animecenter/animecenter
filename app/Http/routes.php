@@ -109,4 +109,7 @@ $router->group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => 'a
 
     // Database routes...
     $router->get('database/update', 'DatabaseController@getUpdate');
+
+    // Logs routes...
+    $router->get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });

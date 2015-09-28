@@ -3,17 +3,16 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatePagesTable extends Migration
+class CreateBannersTable extends Migration
 {
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('banners', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 255);
+            $table->string('link_to', 191)->unique();
             $table->text('content')->nullable();
-            $table->string('link', 255);
-            $table->integer('order')->unsigned()->nullable();
-            $table->string('position', 255)->default('top');
+            $table->string('big_title', 255)->nullable();
+            $table->string('small_title', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -21,6 +20,6 @@ class CreatePagesTable extends Migration
 
     public function down()
     {
-        Schema::drop('pages');
+        Schema::drop('banners');
     }
 }

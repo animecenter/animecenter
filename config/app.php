@@ -147,7 +147,8 @@ return [
 
         // Packages Service Providers...
         Roumen\Sitemap\SitemapServiceProvider::class,
-        GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class
+        GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
     ],
 
