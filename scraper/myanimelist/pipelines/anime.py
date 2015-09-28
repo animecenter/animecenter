@@ -5,7 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
-from myanimelist.items import Anime, Manga, Person, Character, Fansub
+from myanimelist.items import Anime
 import MySQLdb
 from slugify import Slugify
 import datetime
@@ -24,10 +24,11 @@ class MySQLStorePipeline(object):
         self.cursor.execute('SET CHARACTER SET utf8mb4')
         self.cursor.execute('SET character_set_connection=utf8mb4')
 
+        # Slugify instance
         self.slugger = Slugify(to_lower=True)
 
     def process_item(self, item, spider):
-        if spider.name is not 'mirror':
+        if spider.name is 'anime':
             if spider.name is 'anime':
                 return self.process_anime(item)
             elif spider.name is 'manga':
