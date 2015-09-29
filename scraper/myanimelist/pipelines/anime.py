@@ -43,7 +43,40 @@ class MySQLStorePipeline(object):
         self.get_genres(item, anime_id)
         self.get_producers(item, anime_id)
         self.get_titles(item, anime_id)
+        self.get_relations(item)
         return item
+
+    def get_relations(self, item):
+        if item['related']:
+            for relation in item['related']:
+                try:
+                    relationship = relation.split(': ')[0]
+                    relationable_type = 'Anime' if ': anime -' in relation else relationable_type = 'Manga'
+                    related_id = relation.split(' - ')[1]
+
+                    self.cursor.execute(
+                        'INSERT IGNORE INTO `relationships` (`name`, `created_at`, `updated_at`) '
+                        'VALUES (%s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)', (relationship,)
+                    )
+                    self.db.commit()
+
+                    self.cursor.execute(
+                        'SELECT `id` FROM `relationships` WHERE `name` = %s LIMIT 1', (relationship,)
+                    )
+                    self.db.commit()
+                    relationship_id = self.cursor.fetchone()[0]
+
+                    self.cursor.execute(
+                        'INSERT IGNORE INTO `relations` '
+                        '(`relationship_id`, `relationable_id`, `relationable_type`, `related_id`, `created_at`, '
+                        '`updated_at`) '
+                        'VALUES (%s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)',
+                        (relationship_id, item['mal_id'], relationable_type, related_id)
+                    )
+                    self.db.commit()
+
+                except MySQLdb.Error, e:
+                    print 'Error %d: %s' % (e.args[0], e.args[1])
 
     def get_titles(self, item, anime_id):
         if item['alternative_titles']:
