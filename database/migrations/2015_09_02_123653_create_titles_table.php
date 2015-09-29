@@ -11,9 +11,9 @@ class CreateTitlesTable extends Migration
         Schema::create('titles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 191)->unique();
-            $table->integer('language_id')->unsigned();
+            $table->string('language');
             $table->integer('titlable_id')->unsigned();
-            $table->string('titlable_type');
+            $table->string('titlable_type', 15);
             $table->timestamps();
             $table->softDeletes();
         });
