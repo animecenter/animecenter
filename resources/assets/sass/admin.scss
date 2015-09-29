@@ -1,0 +1,813 @@
+body {
+  background: #999 url(../imgs/bg-1.png) repeat;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  font-family: 'Port Lligat Sans', sans-serif;
+}
+
+form {
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+#wrap {
+  width: 1200px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+#header {
+  width: 100%;
+  height: 69px;
+  position: relative;
+  float: left;
+}
+
+#logo {
+  width: 233px;
+  height: 61px;
+  position: relative;
+  float: left;
+  margin-top: 5px;
+  margin-right: 22px;
+}
+
+#logo img {
+  position: relative;
+  width: 209px;
+  height: 61px;
+  display: block;
+
+}
+
+#note {
+  width: 311px;
+  height: auto;
+  position: relative;
+  float: left;
+  font-size: 14px;
+  text-align: left;
+  margin-top: 23px;
+}
+
+.noteF {
+  color: #6a5827;
+  float: left;
+  padding-right: 5px;
+}
+
+.noteS {
+  color: #e8a713;
+  float: left;
+  padding-right: 5px;
+}
+
+.noteIcon {
+  color: #fff;
+  float: left;
+  width: 23px;
+  height: 22px;
+  border-radius: 50%;
+  background: #e8a713;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.green {
+  color: #098925
+}
+
+.yellow {
+  color: #726B00
+}
+
+.right {
+  float: right !important
+}
+
+.left {
+  float: left !important
+}
+
+.right input#submit {
+  position: relative;
+  margin: 0;
+  width: 50px;
+  height: 16px;
+  font-size: 10px
+}
+
+.inputNOption.right {
+  width: 230px !important;
+}
+
+#info_login {
+  width: 630px;
+  float: left;
+  position: relative;
+  text-align: right;
+  margin-top: 18px;
+}
+
+#info_login img {
+  width: 31px;
+  height: 31px;
+  position: relative;
+  float: right;
+  margin-right: 10px;
+
+}
+
+#info_u {
+  position: relative;
+  float: left;
+  padding: 0 2px;
+  color: #6a5827;
+  margin-top: 5px;
+  font-family: Condiment;
+}
+
+#info_u a {
+  font-family: Arial, Helvetica, sans-serif;
+  color: inherit;
+  margin-left: 5px;
+  text-decoration: none;
+}
+
+#info_u a:hover {
+  color: #3E0000;
+}
+
+.sp1 {
+  position: relative;
+  color: #e8a713;
+  float: left;
+  margin: 0 2px;
+  line-height: 23px;
+}
+
+.res {
+  color: #6A5827;
+  float: left;
+  font-size: 18px;
+  height: auto;
+  margin-top: 10px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+}
+
+ul.list_ob {
+  list-style: none;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+ul.list_ob li {
+  width: 100%;
+  height: auto;
+  position: relative;
+  float: left;
+  border-bottom: 1px solid #e8a713;
+  margin-top: 10px;
+
+}
+
+ul.list_ob span {
+  width: 85%;
+  height: auto;
+  overflow: hidden;
+  float: left;
+  padding-bottom: 3px;
+}
+
+.prevBT {
+  position: absolute;
+  bottom: 2px;
+  right: 0;
+  width: 60px;
+  height: 20px;
+  background: #e8a713;
+  border: 1px dashed #6a5827;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  color: #000;
+  text-decoration: none;
+  box-shadow: 1px 1px 10px #a9a9a9;
+
+}
+
+.prevBT.set_date {
+  position: relative;
+  float: left;
+  margin-top: 10px;
+}
+
+.prevBT:hover {
+  box-shadow: none;
+
+}
+
+.update {
+  right: 70px;
+}
+
+.add {
+  position: relative;
+  float: left;
+  margin: 20px 0 0 20px;
+}
+
+/*-------------- Content Style ----------------------------*/
+#content {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  float: left;
+}
+
+#leftContent {
+  width: 231px;
+  height: auto;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  text-align: left;
+}
+
+#search {
+  width: 233px;
+  height: 25px;
+  position: relative;
+  float: right;
+}
+
+#search input#ss {
+  width: 192px;
+  height: 25px;
+  float: left;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+}
+
+#search input#sub {
+  width: 41px;
+  height: 25px;
+  float: right;
+  position: relative;
+  background: #bdbcbc url(../imgs/ss.png) center no-repeat;
+  text-indent: -9999999px;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+}
+
+#navBarR {
+  width: 233px;
+  height: auto;
+  overflow: hidden;
+  float: left;
+  text-align: left;
+  direction: rtl;
+  margin-top: 10px;
+
+}
+
+#navBarR ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 233px;
+  height: auto;
+  overflow: hidden;
+
+}
+
+#navBarR ul a {
+  color: #000;
+  font-size: 18px;
+  height: 25px;
+  width: 200px;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+#navBarR ul a:hover, #navBarR ul a:active {
+  color: #e8a713;
+}
+
+#navBarR li.parent {
+  width: 233px;
+  height: auto;
+  float: left;
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+  background: #cecdcd;
+
+}
+
+#navBarR li.parent:first-child {
+  margin-top: 0;
+}
+
+#navBarR li.parent > a {
+  font-size: 18px;
+  height: 25px;
+  width: 220px;
+  background: #bdbcbc;
+  position: relative;
+  float: left;
+  padding: 0 5px 0 5px;
+}
+
+#navBarR ul li.child {
+  width: 218px;
+  height: 25px;
+  float: left;
+  position: relative;
+  padding: 0 5px 0 5px;
+  border-top: 2px dotted #666;
+}
+
+#navBarR ul li.child:first-child {
+  border-top: 0px;
+}
+
+#rightContent {
+  position: relative;
+  width: 950px;
+  height: auto;
+  overflow: hidden;
+  float: right;
+}
+
+.bigTitle {
+  font-size: 33px;
+  float: left;
+  position: relative;
+  clear: both;
+  width: 100%;
+}
+
+.subtitle {
+  font-size: 20px;
+  float: left;
+  position: relative;
+  clear: both;
+  width: 100%;
+  border-bottom: 5px solid #cfcfcf;
+  margin-top: 20px;
+  color: #6A5827;
+}
+
+.smallTitle {
+  position: relative;
+  font-size: 16px;
+  float: left;
+  line-height: 15px;
+  width: 95px;
+  padding-right: 1px;
+}
+
+.inputCheck .smallTitle {
+  width: auto;
+  min-width: 95px;
+}
+
+.ratingDiv .smallTitle {
+  width: auto;
+  min-width: 150px;
+}
+
+.ratingDiv {
+  width: 100%;
+  position: relative;
+  float: left;
+  margin-top: 20px;
+}
+
+.stars {
+  position: relative;
+  float: left;
+}
+
+.stars img {
+  position: relative;
+  cursor: pointer;
+}
+
+.inputWoption {
+  width: 314px;
+  height: auto;
+  position: relative;
+  float: left;
+  margin-top: 20px;
+}
+
+.inputWoption a {
+  color: #000;
+  padding-left: 2px;
+  text-decoration: none;
+}
+
+.inputWoption ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 5px;
+  float: left;
+  width: 100%;
+
+}
+
+.inputWoption ul li {
+  display: inline;
+  float: left;
+  cursor: pointer;
+  margin-right: 5px;
+  float: left;
+  text-align: left;
+
+}
+
+.inputNOption {
+  width: 314px;
+  height: auto;
+  position: relative;
+  float: left;
+  margin-top: 20px;
+}
+
+.inputSelectarea {
+  width: 314px;
+  height: auto;
+  position: relative;
+  float: left;
+  margin-top: 20px;
+}
+
+.inputPass {
+  width: 314px;
+  height: auto;
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.inputTextarea, .inputTextarea2 {
+  width: 100%;
+  height: 120px;
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  margin-top: 20px;
+
+}
+
+.inputUpload {
+  float: left;
+  height: auto;
+  margin-top: 20px;
+  position: relative;
+  width: 500px;
+}
+
+.inputTextarea2 {
+  height: 100px;
+  width: 60%;
+}
+
+.inputCheck {
+  height: auto;
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.errorMessage {
+  position: relative;
+  width: 99%;
+  height: auto;
+  overflow: hidden;
+  background: #BDBCBC;
+  border: 1px dashed #f00;
+  color: #F00;
+  z-index: 99999;
+  display: none;
+}
+
+.errorMessage ul {
+}
+
+.errorMessage li {
+}
+
+input.textInput, input.textInput2 {
+  width: 164px;
+  height: 16px;
+  position: relative;
+  float: left;
+  border: 1px dashed #e8a713;
+  background: #bdbcbc;
+  border-radius: 10px;
+  padding: 0 3px;
+  font-size: 12px;
+}
+
+input.textInput2 {
+  background: #bdbcbc url(../imgs/arr.png) no-repeat right;
+  padding-right: 5px;
+  background-origin: content-box;
+  width: 164px;
+}
+
+input.checkbox {
+  display: none;
+}
+
+input.checkbox + span {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  background: url(../imgs/check.jpg) no-repeat;
+  float: left;
+  display: block;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+select.select {
+  width: 164px;
+  height: 20px;
+  position: absolute;
+  left: 100px;
+  top: 0;
+  border: 1px dashed #e8a713;
+  background: #bdbcbc;
+  border-radius: 10px;
+  font-size: 14px;
+  z-index: 999;
+  margin-right: 10px;
+
+}
+
+input#submit {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 125px;
+  height: 27px;
+  float: right;
+  position: relative;
+  border: 2px dashed #6a5827;
+  background: #e8a713;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 20px 2px 5px 2px;
+  box-shadow: 1px 1px 10px #a9a9a9;
+}
+
+input#submit:hover {
+  box-shadow: none;
+}
+
+textarea.textarea, textarea.textarea2 {
+  background: #BDBCBC;
+  border: 1px dashed #E8A713;
+  border-radius: 10px 10px 10px 10px;
+  clear: both;
+  float: left;
+  font-size: 12px;
+  height: 80px;
+  margin-top: 20px;
+  padding: 0 3px;
+  position: relative;
+  resize: none;
+  width: 80%;
+}
+
+textarea.textarea2 {
+  width: 80%;
+  height: 90px;
+}
+
+.divOptional {
+  position: relative;
+  width: 30px;
+  height: 10px;
+  float: left;
+  font-size: 9px;
+  margin-left: 5px;
+}
+
+.divOptional2 {
+  position: relative;
+  width: 30px;
+  height: 10px;
+  float: left;
+  font-size: 9px;
+  margin-left: 5px;
+  color: #F00;
+}
+
+.line {
+  width: 100%;
+  height: 5px;
+  background: #cfcfcf;
+  position: relative;
+  float: left;
+  margin-top: 10px;
+}
+
+.clear {
+  clear: both;
+}
+
+/*-------------- End Content Style ------------------------*/
+#login_wrap {
+  width: 618px;
+  position: relative;
+  margin: auto;
+}
+
+#login_logo {
+  width: inherit;
+  height: 153px;
+  margin-top: 85px;
+  position: relative;
+}
+
+#login_content {
+  margin-top: 50px;
+  width: inherit;
+  height: 322px;
+  position: relative;
+}
+
+.text {
+  text-align: center;
+  vertical-align: middle;
+  color: #595959;
+  font-size: 36px;
+  margin-bottom: 30px;
+  font-family: "Condiment";
+
+}
+
+#image {
+  width: 613px;
+  height: 61px;
+  position: relative;
+  margin-top: 40px;
+  margin-bottom: 50px;
+
+}
+
+#Pass input {
+  background: #e1b622;
+  width: 604px;
+  height: 37px;
+  border: medium #6a5827 solid;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  padding: 0px 5px;
+  text-align: center;
+  color: #6a5827;
+}
+
+#forget_pass {
+  width: 280px;
+  height: 60px;
+  font-size: 14px;
+  color: #595959;
+  margin-top: 3px;
+  float: right;
+  text-align: right;
+  position: relative;
+}
+
+#cl {
+  cursor: pointer;
+}
+
+#forget_pass input#em {
+  width: 217px;
+  height: 22px;
+  border: 1px dashed #6a5827;
+  border-radius: 10px;
+  background: #e8a713;
+  position: absolute;
+  top: 33px;
+  right: 0px;
+  padding: 0 56px 0 5px;
+  display: none;
+}
+
+#forget_pass input#su {
+  width: 43px;
+  height: 33px;
+  border: 1px dashed #e8a713;
+  background: #6a5827;
+  position: absolute;
+  top: 27px;
+  right: 13px;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+#forget_pass img {
+  position: absolute;
+  left: 25px;
+  top: 8px;
+  display: none;
+}
+
+#forget_pass img.active {
+  display: block;
+}
+
+#login_footer {
+  position: relative;
+  width: 618px;
+  height: 30px;
+  font-size: 14px;
+  color: #595959;
+  margin-top: 85px;
+}
+
+#login_footer #f_right {
+  width: 250px;
+  height: 30px;
+  float: right;
+  font-family: 'Port Lligat Sans', sans-serif;
+  color: #6a5827;
+  text-align: right;
+}
+
+#login_footer #f_left {
+  width: 250px;
+  height: 30px;
+  float: left;
+  font-family: 'Port Lligat Sans', sans-serif;
+  color: #6a5827;
+  text-align: left;
+}
+
+#footer {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  background: #666;
+  color: #fff;
+}
+
+#pro {
+  position: relative;
+  float: right;
+  margin: 5px 5px 0 0;
+}
+
+#pro span {
+  color: #fff;
+  margin-top: 5px;
+  float: left;
+  margin-right: 5px;
+}
+
+#copy {
+  float: left;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+

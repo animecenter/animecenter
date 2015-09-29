@@ -3,164 +3,64 @@
     <div id="content">
         @include("layouts.banner")
         <div id="left_content">
-            <div class="green_info">
-                {{ $animes->count() . " series found for " . $query }}
-            </div>
-            <?php 
-            foreach ($animes as $anime) {
-                //Get Age Color
-                switch ($anime['age']) {
-                    case "Anyone":
-                        $color = "#EE82EE";
-                        break;
-                    case "Teen +17":
-                        $color = "#CC0033";
-                        break;
-                    case "Teen +18":
-                        $color = "#FF0000";
-                        break;
-                    default:
-                        $color = "#C86464";
-                }
-            ?>
-            <div class="sections" id="series">
-                <div class="series">
-                    <a href="{{ url(($anime['type2'] == "dubbed") ?
-                    $options[3]['value'] . $anime['slug'] :
-                    $options[2]['value'] . $anime['slug']) }}">
-                        <div class="main_title">
-                            {{ $anime['title'] }}
-                        </div>
-                    </a>
-                    <div class="content">
-                        <div class="categories">
-                            <a href="#" class="{{ $anime['type2'] }}">
-                                English {{ $anime['type2'] }}
-                            </a>
-                        </div>
-                        <a href="{{ url(($anime['type2'] == "dubbed") ?
-                        $options[3]['value'] . $anime['slug'] :
-                        $options[2]['value'] . $anime['slug']) }}">
-                            <div class="img">
-                                <img src="{{ asset('images/' . $anime['image']) }}">
-                            </div>
-                        </a>
-                        <div class="texts">
-                            @if (isset($anime['content']) and $anime['content'] != null)
-                                {!! $anime['content'] !!}
-                            @else
-                                <div class="text">
-                                    <span>Genres:</span>
-                                    {{ $anime['genres'] }}
-                                </div>
-                                <div class="text">
-                                    <span>Episodes:</span>
-                                    {{ $anime['episodes'] }}
-                                </div>
-                                <div class="text">
-                                    <span>Type:</span>
-                                    {{ $anime['type'] }}
-                                </div>
-                                @if($anime['prequel'])
-                                    <div class="text">
-                                        <span>Prequel: </span>
-                                        <a href="{{ url($anime['prequel']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $anime['prequel']['slug'] :
-                                        $options[2]['value'] . $anime['prequel']['slug']) }}">
-                                            {{ $anime['prequel']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                @if($anime['sequel'])
-                                    <div class="text">
-                                        <span>Sequel: </span>
-                                        <a href="{{ url(($anime['sequel']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $anime['sequel']['slug'] :
-                                        $options[2]['value'] . $anime['sequel']['slug'])) }}">
-                                            {{ $anime['sequel']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                @if($anime['story'])
-                                    <div class="text">
-                                        <span>Parent Story: </span>
-                                        <a href="{{ url($anime['story']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $anime['story']['slug'] :
-                                        $options[2]['value'] . $anime['story']['slug']) }}">
-                                            {{ $anime['story']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                @if ($anime['side_story'])
-                                    <div class="text">
-                                        <span>Side Story: </span>
-                                        <a href="{{ url($anime['side_story']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $anime['side_story']['slug'] :
-                                        $options[2]['value'] . $anime['side_story']['slug']) }}">
-                                            {{ $anime['side_story']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                @if ($anime['spin_off'])
-                                    <div class="text">
-                                        <span>Spin Off: </span>
-                                        <a href="{{ url($anime['spin_off']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $anime['spin_off']['slug'] :
-                                        $options[2]['value'] . $anime['spin_off']['slug']) }}">
-                                            {{ $anime['spin_off']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                @if ($anime['alternative'])
-                                    <div class="text">
-                                        <span>Alternative: </span>
-                                        <a href="{{ url($anime['alternative']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $anime['alternative']['slug'] :
-                                        $options[2]['value'] . $anime['alternative']['slug']) }}">
-                                            {{ $anime['alternative']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                @if($anime['other'])
-                                    <div class="text">
-                                        <span>Other: </span>
-                                        <a href="{{ url($anime['other']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $anime['other']['slug'] :
-                                        $options[2]['value'] . $anime['other']['slug']) }}">
-                                            {{ $anime['other']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                <div class="text age">
-                                    <span>Age Permission: </span>
-                                    <span class="age" style="background: {{ $color }}">
-                                        {{ $anime['age'] }}
-                                    </span>
-                                </div>
-                                <div class="text">
-                                    <span>Plot Summary:</span>
-                                    {!! $anime['description'] !!}
-                                </div>
-                                <div class="text alternative">
-                                    <span>Alternative Titles:</span>
-                                    {!! $anime['alternative_title'] !!}
-                                </div>
-                            @endif
-                            </div>
-                            <!--/texts-->
-                        </div>
-                        <!--/content-->
-                    </div>
-                    <!--/series-->
+            <div class="sections" id="genres">
+                <div class="title">
+                    Category Browser
                 </div>
+                <div class="content">
+                    Select Anime Genre(s) from the boxes, and click "Search" button. For Example: You like Action,
+                    Adventure and Martial Arts Anime, select the genres and go! Thats all.
+                </div>
+                <form method="get" action="{{ url('search') }}">
+                    <div class="input_search">
+                        <label>Anime </label>
+                        <input type="text" name="title" placeholder="Search Anime Name"/>
+                    </div>
+                    <div class="block">
+                        <div class="click">Scope</div>
+                        <div class="cont">
+                            <div class="label">Items containing:</div>
+                            <div class="radio_block">
+                                <input type="radio" name="scope" value="all" checked="checked"/>
+                                <span></span>
+                                <label><strong>All</strong> Terms</label>
+                            </div>
+                            <div class="radio_block">
+                                <input type="radio" name="scope" value="any"/>
+                                <span></span>
+                                <label><strong>Any</strong> Terms</label>
+                            </div>
+                        </div>
+                        <!--/cont-->
+                    </div>
+                    <!--/block-->
+                    <div class="block">
+                        <div class="click">Categories</div>
+                        <div class="cont">
+                            <div class="label">Genre(s):</div>
+                            @foreach ($genres as $genre)
+                                <div class="box_block">
+                                    <input type="checkbox" name="genres[]"
+                                           value="{{ $genre['value'] }}"/>
+                                    <span></span>
+                                    <label>{{ $genre['value'] }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                        <!--/cont-->
+                    </div>
+                    <!--/block-->
+                    <input type="submit" value="Search"/>
+                    <input type="reset" value="Reset"/>
+                </form>
+                @if (isset($_GET['msg']) and $_GET['msg'] == 'f')
+                    <div class="error">Error, you must type name or select genres</div>
+                @endif
+            </div>
             <!--/sections-->
-            <?php } ?>
         </div>
         <!--/left_content-->
         <div id="right_content">
-            @include("layouts.sidebar")
+            @include('layouts.sidebar')
         </div>
-        @include("layouts.footer")
-    </div>
-    <!--/content-->
-</div>
+        @include('layouts.footer')

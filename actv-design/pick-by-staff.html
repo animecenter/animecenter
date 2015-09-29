@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <title>
+      SB Admin 2 - Bootstrap Admin Theme
+    </title><!-- Bootstrap Core CSS -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel=
+    "stylesheet"><!-- MetisMenu CSS -->
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel=
+    "stylesheet"><!-- Timeline CSS -->
+    <link href="../dist/css/timeline.css" rel="stylesheet"><!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel=
+    "stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- Navigation -->
+      <nav class="navbar navbar-default navbar-static-top navbottom" role=
+      "navigation">
+        <div class="navbar-header col-md-6">
+          <button class="navbar-toggle" data-target=".navbar-collapse"
+          data-toggle="collapse" type="button"><span class="sr-only">Toggle
+          navigation</span> <span class="icon-bar"></span> <span class=
+          "icon-bar"></span> <span class="icon-bar"></span></button> <a class=
+          "navbar-brand" href="index.html"><img alt="animecenter.co" height=
+          "35" src="../public/img/logo.png" width="180"></a> <!-- /input-group -->
+        </div><!-- /.navbar-header -->
+        <ul class="nav navbar-top-links navbar-collapse">
+          <li style="list-style: none; display: inline">
+            <div class="col-md-3">
+              <form action="" class="search-form">
+                <div class="form-group has-feedback">
+                  <label class="sr-only" for="search">Search</label>
+                  <input class="form-control" id="search" name="search"
+                  placeholder="search" type="text"> <span class=
+                  "glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+              </form>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href=
+            "#"><i class="fa fa-envelope fa-fw"></i> <i class=
+            "fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu dropdown-messages">
+              <li>
+                <a href="#">
+                <div>
+                  <strong>John Smith</strong> <span class=
+                  "pull-right text-muted"><em>Yesterday</em></span>
+                </div>
+                <div>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Pellentesque eleifend...
+                </div></a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                <div>
+                  <strong>John Smith</strong> <span class=
+                  "pull-right text-muted"><em>Yesterday</em></span>
+                </div>
+                <div>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Pellentesque eleifend...
+                </div></a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                <div>
+                  <strong>John Smith</strong> <span class=
+                  "pull-right text-muted"><em>Yesterday</em></span>
+                </div>
+                <div>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Pellentesque eleifend...
+                </div></a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="text-center" href="#"><strong>Read All
+                Messages</strong> <i class="fa fa-angle-right"></i></a>
+              </li>
+            </ul><!-- /.dropdown-messages -->
+          </li><!-- /.dropdown -->
+          <!-- /.dropdown -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href=
+            "#"><i class="fa fa-bell fa-fw"></i> <i class=
+            "fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu dropdown-alerts">
+              <li>
+                <a href="#">
+                <div>
+                  <i class="fa fa-comment fa-fw"></i> New Comment <span class=
+                  "pull-right text-muted small">4 minutes ago</span>
+                </div></a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                <div>
+                  <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                  <span class="pull-right text-muted small">12 minutes
+                  ago</span>
+                </div></a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                <div>
+                  <i class="fa fa-envelope fa-fw"></i> Message Sent
+                  <span class="pull-right text-muted small">4 minutes
+                  ago</span>
+                </div></a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                <div>
+                  <i class="fa fa-tasks fa-fw"></i> New Task <span class=
+                  "pull-right text-muted small">4 minutes ago</span>
+                </div></a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                <div>
+                  <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                  <span class="pull-right text-muted small">4 minutes
+                  ago</span>
+                </div></a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="text-center" href="#"><strong>See All Alerts</strong>
+                <i class="fa fa-angle-right"></i></a>
+              </li>
+            </ul><!-- /.dropdown-alerts -->
+          </li><!-- /.dropdown -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href=
+            "#"><i class="fa fa-user fa-fw"></i> <i class=
+            "fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu dropdown-user">
+              <li>
+                <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="login.html"><i class="fa fa-sign-out fa-fw"></i>
+                Logout</a>
+              </li>
+            </ul><!-- /.dropdown-user -->
+          </li><!-- /.dropdown -->
+        </ul><!-- /.navbar-top-links -->
+        <div class="navbar1 sidebar" role="navigation">
+          <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+              <!-- /input-group -->
+              <li>
+                <a href="#"><i class="fa fa-video-camera fa-fw text-white"></i>
+                Anime List</a>
+              </li>
+              <li>
+                <a href="#"><i class=
+                "glyphicon glyphicon-book fa-fw text-darkblue"></i> Read
+                Manga</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-star fa-fw text-yellow"></i>
+                Favorites</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-heart fa-fw text-danger"></i>
+                Recomendations</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-check fa-fw text-success"></i> New
+                Episodes</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-edit fa-fw text-pink"></i>
+                Reviews</a>
+              </li>
+              <li>
+                <a href="#"><i class=
+                "fa fa-thumbs-up fa-fw text-lightblue"></i> Pick by Staff</a>
+              </li>
+              <li>
+                <a href="#"><i class=
+                "glyphicon glyphicon-fire text-orange"></i> Hot Anime</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-list-ul fa-fw text-purple"></i>
+                Anime by Season</a>
+              </li>
+              <li>
+                <a href="#"><i class=
+                "glyphicon glyphicon-random fa-fw text-darkpink"></i> Random
+                Anime</a>
+              </li>
+            </ul>
+          </div><!-- /.sidebar-collapse -->
+          <div class="navbar-collapse">
+            <i class=
+            "fa fa-money fa-fw text-success colorside sidebarmoney"></i><br>
+            <h1 class="coolfont text-white center colorside">
+              Sponsorships
+            </h1>
+            <div class="text-white center colorside">
+             Do you want to contribute? Learn more
+              <div class="text-yellow center colorside">
+                you can help in other ways is not always about money.
+                <button class="btn btn-success center" type=
+                "button">Contribute</button>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.navbar-static-side -->
+      </nav>
+      <div id="page-wrapper">
+      <div class="around">
+       <div class="row">
+          <div class="col-lg-8">
+            <h1 class="page-header">
+               <i class="fa fa-thumbs-up fa-fw text-lightblue"></i> Pick by Staff
+            </h1>
+          <div class="row">
+                    <div class="col-md-3">
+                      <a class="thumbnail" href="#"><img alt="" src=
+                      "public/img/anime/73852.jpg"><span class=
+                      "titleanimeseason">Gatchaman Crowds Insight</span></a>
+                    </div>
+                    <div class="col-md-3">
+                      <a class="thumbnail" href="#"><img alt="" src=
+                      "public/img/anime/74683.jpg"><span class=
+                      "titleanimeseason">Charlotte cczxczxc xvxcvxcvxcvxcvcvxv dv dsvsvvxcvxcvxcvxcvxc </span></a>
+                    </div>
+                    <div class="col-md-3">
+                      <a class="thumbnail" href="#"><img alt="" src=
+                      "public/img/anime/75104.jpg"><span class=
+                      "titleanimeseason">God Eater!</span></a>
+                    </div>
+                    <div class="col-md-3">
+                      <a class="thumbnail" href="#"><img alt="" src=
+                      "public/img/anime/75764.jpg"><span class=
+                      "titleanimeseason">God Eater!</span></a>
+                    </div>
+                  </div>
+              
+                  <div class="row">
+                    <div class="col-md-3">
+                      <a class="thumbnail" href="#"><img alt="" src=
+                      "public/img/anime/74415.jpg"><span class=
+                      "titleanimeseason">God Eater!</span></a>
+                    </div>
+                    <div class="col-md-3">
+                      <a class="thumbnail" href="#"><img alt="" src=
+                      "public/img/anime/74929.jpg"><span class=
+                      "titleanimeseason">God Eater!</span></a>
+                    </div>
+                    <div class="col-md-3">
+                      <a class="thumbnail" href="#"><img alt="" src=
+                      "public/img/anime/75106.jpg"><span class=
+                      "titleanimeseason">God Eater!</span></a>
+                    </div>
+                    <div class="col-md-3">
+                      <a class="thumbnail" href="#"><img alt="" src=
+                      "public/img/anime/72943.jpg"><span class=
+                      "titleanimeseason">God Eater!</span></a>
+                    </div>
+                  </div>
+                
+                <div class="row">
+                    <div class="col-md-3">
+                      <a class="thumbnail" href="#"><img alt="" src=
+                      "public/img/anime/69455.jpg"><span class=
+                      "titleanimeseason">God Eater!</span></a>
+                    </div>
+                    <div class="col-md-3">
+                      <a class="thumbnail" href="#"><img alt="" src=
+                      "public/img/anime/72775.jpg"><span class=
+                      "titleanimeseason">God Eater!</span></a>
+                    </div>
+                    <div class="col-md-3">
+                      <a class="thumbnail" href="#"><img alt="" src=
+                      "public/img/anime/73588.jpg"><span class=
+                      "titleanimeseason">God Eater!</span></a>
+                    </div>
+                    <div class="col-md-3">
+                      <a class="thumbnail" href="#"><img alt="" src=
+                      "public/img/anime/75082.jpg"><span class=
+                      "titleanimeseason">God Eater!</span></a>
+                    </div>
+                  </div>
+                                 <div class="row">
+    <div class="col-md-8">
+           <ul class="pagination">
+              <li class="disabled"><a href="#">«</a></li>
+              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
+</div>            
+          
+          <div class="col-lg-4">
+            <h1 class="page-header">
+              <i class="fa fa-thumbs-up fa-fw text-lightblue"></i> Like Us
+            </h1>
+            <img alt="Flower" src="public/img/facebookinner.png" style="width:315px;">
+            <script src="http://www.evolvenation.com/delivery.js?id=15&size=300x250" type="text/javascript"></script>
+          </div>
+        </div>
+        </div>
+         </body>
+           <footer class="pull-right">
+     
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="col-md-4">
+              <ul class="unstyled">
+                <li>Applications
+                </li>
+                <li></li>
+                <li>
+                  <a href="#">Product for Mac</a>
+                </li>
+                <li>
+                  <a href="#">Product for Windows</a>
+                </li>
+                <li>
+                  <a href="#">Product for Eclipse</a>
+                </li>
+                <li>
+                  <a href="#">Product mobile apps</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <ul class="unstyled">
+                <li>Services
+                </li>
+                <li></li>
+                <li>
+                  <a href="#">Web analytics</a>
+                </li>
+                <li>
+                  <a href="#">Presentations</a>
+                </li>
+                <li>
+                  <a href="#">Code snippets</a>
+                </li>
+                <li>
+                  <a href="#">Job board</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <ul class="unstyled">
+                <li>Social
+                </li>
+                <li></li>
+                <li>
+                  <a href="#"><i class=
+                  "fa fa-facebook-square fa-fw text-success"></i>Facebook</a>
+                </li>
+                <li>
+                  <a href="#"><i class=
+                  "fa fa-twitter-square fa-fw text-success"></i>Twitter</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr>
+          <div class="col-lg-8">
+            
+              <p class="muted">
+                © 2015 AnimeCenter.CO. All rights reserved
+              </p>
+            </div>
+    </footer>
+      </div><!-- /#page-wrapper -->
+    </div><!-- /#wrapper -->
+    
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script> <!-- Bootstrap Core JavaScript -->
+     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script> <!-- Metis Menu Plugin JavaScript -->
+     <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script> <!-- Morris Charts JavaScript -->
+     <script src="../bower_components/raphael/raphael-min.js"></script> <script src="../bower_components/morrisjs/morris.min.js"></script> <script src="../js/morris-data.js"></script> <!-- Custom Theme JavaScript -->
+     <script src="../dist/js/sb-admin-2.js"></script>
+</html>
