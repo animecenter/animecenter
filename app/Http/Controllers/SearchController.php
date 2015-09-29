@@ -56,10 +56,26 @@ class SearchController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @return Response
+     */
+    public function index()
+    {
+        $this->data['pageTitle'] = $pageTitle = "Category Browser";
+        $this->data['metaTitle'] = $pageTitle . " | Watch Anime Online Free";
+        $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " . $pageTitle . " English Sub/Dub, Download " . $pageTitle . " for free,Watch " . $pageTitle . "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
+        $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
+        $this->data['genres'] = $this->genre->orderBy('value')->get();
+
+        return view('search.index', $this->data);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
      * @param Request $request
      * @return view
      */
-    public function index(Request $request)
+    public function show(Request $request)
     {
         $this->validate($request, $this->rules);
         $this->data['pageTitle'] = $pageTitle = 'Animecenter.tv';
@@ -92,7 +108,7 @@ class SearchController extends Controller
         $this->data['query'] = $request['genres'] ? $genres : $request['title'];
         $this->data['animes'] = $this->getRelatedForEachAnime($animes);
 
-        return view('search.index', $this->data);
+        return view('search.show', $this->data);
     }
 
     public function getRelatedForEachAnime(Collection $animes)
