@@ -25,7 +25,7 @@ class MySQLStorePipeline(object):
         self.slugger = Slugify(to_lower=True)
 
     def process_item(self, item, spider):
-        if spider.name is 'mirror':
+        if spider.name is 'mirror' or spider.name is 'mirror_home':
             return self.process_mirror(item)
         else:
             return item

@@ -3,20 +3,16 @@ import scrapy
 from myanimelist.items import Mirror
 
 
-class MirrorSpider(scrapy.Spider):
-    name = "mirror"
-    allowed_domains = ["animerush.tv"]
+class MirrorHomeSpider(scrapy.Spider):
+    name = 'mirror_home'
+    allowed_domains = ['animerush.tv']
     start_urls = [
-        'http://www.animerush.tv/anime-series-list/',
+        'http://www.animerush.tv/latest-anime-episodes/',
     ]
 
     def parse(self, response):
-        for anime in response.xpath('//div[@class="amin_box2"]/div[2]/div/a/@href').extract():
-            yield scrapy.Request(anime, callback=self.parse_anime)
-
-    def parse_anime(self, response):
-        for episode in response.xpath('//div[@class="episode_list"]/a/@href').extract():
-            yield scrapy.Request(episode, callback=self.parse_episode)
+        for episode in response.xpath('//ol[@class="list"]/div/ol/a/@href').extract():
+            yield scrapy.Request('http://www.animerush.tv' + episode, callback=self.parse_episode)
 
     def parse_episode(self, response):
         for mirror in response.xpath('//*[@id="episodes"]/div/div/span/a/@href').extract():
