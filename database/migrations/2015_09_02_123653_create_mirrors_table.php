@@ -11,6 +11,7 @@ class CreateMirrorsTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
 			$table->integer('episode_id')->unsigned();
+			$table->integer('translator_id')->unsigned()->nullable();
 			$table->integer('mirror_source_id')->unsigned();
             $table->integer('language_id')->unsigned()->default(1);
             $table->string('url', 191)->unique();
