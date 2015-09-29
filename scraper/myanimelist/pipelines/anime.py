@@ -29,16 +29,7 @@ class MySQLStorePipeline(object):
 
     def process_item(self, item, spider):
         if spider.name is 'anime':
-            if spider.name is 'anime':
-                return self.process_anime(item)
-            elif spider.name is 'manga':
-                return self.process_manga(item)
-            elif spider.name is 'person':
-                return self.process_person(item)
-            elif spider.name is 'character':
-                return self.process_character(item)
-            else:
-                return self.process_fansub(item)
+            return self.process_anime(item)
         else:
             return item
 
