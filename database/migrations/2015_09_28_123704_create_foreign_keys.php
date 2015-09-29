@@ -61,16 +61,29 @@ class CreateForeignKeys extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
-        Schema::table('role_user', function (Blueprint $table) {
+        Schema::table('mirror_reports', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('mirror_id')->references('id')->on('mirrors')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
+        Schema::table('permission_role', function (Blueprint $table) {
+            $table->foreign('permission_id')->references('id')->on('permissions')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreign('role_id')->references('id')->on('roles')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
-        Schema::table('permission_role', function (Blueprint $table) {
-            $table->foreign('permission_id')->references('id')->on('permissions')
+        Schema::table('relations', function (Blueprint $table) {
+            $table->foreign('relationship_id')->references('id')->on('relationships')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+        });
+        Schema::table('role_user', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreign('role_id')->references('id')->on('roles')
@@ -113,13 +126,20 @@ class CreateForeignKeys extends Migration
             $table->dropForeign('mirrors_episode_id_foreign');
             $table->dropForeign('mirrors_mirror_source_id_foreign');
         });
-        Schema::table('role_user', function (Blueprint $table) {
-            $table->dropForeign('role_user_user_id_foreign');
-            $table->dropForeign('role_user_role_id_foreign');
+        Schema::table('mirror_reports', function (Blueprint $table) {
+            $table->dropForeign('mirror_reports_user_id_foreign');
+            $table->dropForeign('mirror_reports_mirror_id_foreign');
         });
         Schema::table('permission_role', function (Blueprint $table) {
             $table->dropForeign('permission_role_permission_id_foreign');
             $table->dropForeign('permission_role_role_id_foreign');
+        });
+        Schema::table('relations', function (Blueprint $table) {
+            $table->dropForeign('relations_relationship_id_foreign');
+        });
+        Schema::table('role_user', function (Blueprint $table) {
+            $table->dropForeign('role_user_user_id_foreign');
+            $table->dropForeign('role_user_role_id_foreign');
         });
         Schema::table('votes', function (Blueprint $table) {
             $table->dropForeign('votes_user_id_foreign');
