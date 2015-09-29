@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use Illuminate\Database\DatabaseManager;
 use Cache;
 use Carbon\Carbon;
 use DOMDocument;
+use Illuminate\Console\Command;
+use Illuminate\Database\DatabaseManager;
 use Log;
 
 class UpdateDatabase extends Command

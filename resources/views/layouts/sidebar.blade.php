@@ -1,26 +1,72 @@
-<div style="width: 100%; height: auto; float: left; margin-bottom: 5px;">
-</div>
-<div class="widget" id="facebook">
-    <div class="fb-page" data-href="https://www.facebook.com/Animecentertv" data-width="300" data-height="258"
-         data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"
-         data-show-posts="false">
-        <div class="fb-xfbml-parse-ignore">
-            <blockquote cite="https://www.facebook.com/Animecentertv">
-                <a href="https://www.facebook.com/Animecentertv">Animecenter.TV Network</a>
-            </blockquote>
-        </div>
-    </div>
-</div>
-<!--/facebook-->
-<div style="width: 100%; height: auto; float: left; margin-bottom: 10px;">
-    <script type="text/javascript" src="http://www.evolvenation.com/delivery.js?id=15&size=300x250"></script>
-</div>
-<div style="width: 100%; height: auto; float: left; margin-bottom: 5px;">
-    <script id="cid0020000097531107619" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js"
-            style="width: 300px;height: 450px;">
-        {"handle":"animecenterco","arch":"js","styles":{"a":"00AE45","b":100,"c":"FFFFFF","d":"FFFFFF","k":"00AE45","l":"00AE45","m":"00AE45","n":"FFFFFF","p":"10.35","q":"00AE45","r":100,"t":0,"surl":0,"allowpm":0,"fwtickm":1}}
-    </script>
-</div>
-<div style="width: 100%; height: auto; float: left; margin-bottom: 10px;">
-</div>
+<div class="col-sm-3 col-md-2 sidebar">
+    <ul id="side-menu" class="nav nav-sidebar navbar-collapse">
+        <!-- /input-group -->
+        <li>
+            <a href="anime-list.php">
+                <i class="fa fa-video-camera fa-fw text-white"></i>
+                Anime List
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="glyphicon glyphicon-book fa-fw text-darkblue"></i>
+                Read Manga
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-star fa-fw text-yellow"></i>
+                Favorites
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-heart fa-fw text-danger"></i>
+                Recomendations
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-check fa-fw text-success"></i> New
+                Episodes
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-edit fa-fw text-pink"></i>
+                Reviews
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="glyphicon glyphicon-tags fa-fw text-lightblue"></i>  Genres
+            </a>
+        </li>
+        <li>
+            <a href="hot-anime.php">
+                <i class="glyphicon glyphicon-fire text-orange"></i> Hot Anime
+            </a>
+        </li>
+        <li>
+            <a href="anime-by-season.php">
+                <i class="fa fa-list-ul fa-fw text-purple"></i> Anime by Season
+            </a>
+        </li>
+        <li>
+            <a href="random-anime.php">
+                <i class="glyphicon glyphicon-random fa-fw text-darkpink"></i> Random Anime
+            </a>
+        </li>
+        <li>
+            <i class="fa fa-money fa-fw text-success colorside sidebarmoney"></i><br>
+            <h1 class="coolfont text-white center colorside">Sponsorships</h1>
+            <div class="text-white center colorside">
+                Do you want to contribute? Learn more
+                <div class="text-yellow center colorside">
+                    you can help in other ways is not always about money.
+                    <button class="btn btn-success center" type="button">Contribute</button>
+                </div>
+            </div>
+        </li>
+    </ul>
 </div>

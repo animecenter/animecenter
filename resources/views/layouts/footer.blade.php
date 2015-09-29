@@ -1,91 +1,57 @@
-            <div id="footer">
-                <div class="menu">
-                    <div class="title">AnimeCenter</div>
-                    <ul>
-                        <?php
-                        foreach ($bottomPagesList as $bottomPage) {
-                            if (isset($bottomPage['link']) and $bottomPage['link'] != null) {
-                                $link = $bottomPage['link'];
-                            } else {
-                                $link = $url . "page.php?page_id=" . $bottomPage['id'];
-                            } ?>
-                            <li>
-                                <a href="{{ url($link) }}">
-                                    {{ $bottomPage['title'] }}
-                                </a>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-                <!--/menu-->
-
-                <div class="menu">
-                    <div class="title">Popular Anime Series</div>
-                    <ul>
-                        <?php
-                        foreach ($bottomPagesList2 as $bottomPage) {
-                            if (isset($bottomPage['link']) and $bottomPage['link'] != null) {
-                                $link = $bottomPage['link'];
-                            } else {
-                                $link = $url . "page.php?page_id=" . $bottomPage['id'];
-                            }
-                        ?>
-                            <li>
-                                <a href="{{ url($link) }}">
-                                    {{ $bottomPage['title'] }}
-                                </a>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-                <!--/menu-->
-
-                <div class="menu">
-                    <div class="title">Affiliates</div>
-                    <ul>
-                        <?php
-                        foreach ($bottomPagesList3 as $bottomPage) {
-                            if (isset($bottomPage['link']) and $bottomPage['link'] != null) {
-                                $link = $bottomPage['link'];
-                            } else {
-                                $link = $url . "page.php?page_id=" . $bottomPage['id'];
-                            } ?>
-                            <li>
-                                <a href="{{ url($link) }}">
-                                    {{ $bottomPage['title'] }}
-                                </a>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-                <!--/menu-->
-            </div>
-            <!--/footer-->
+<footer id="footer" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 footer">
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="unstyled">
+                <li>Applications</li>
+                <li>
+                    <a href="#">Product for Mac</a>
+                </li>
+                <li>
+                    <a href="#">Product for Windows</a>
+                </li>
+                <li>
+                    <a href="#">Product for Eclipse</a>
+                </li>
+                <li>
+                    <a href="#">Product mobile apps</a>
+                </li>
+            </ul>
         </div>
-        <!--wrap-->
-
-        <script type="text/javascript">
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            ga('create', 'UA-47886553-1', 'auto');
-            ga('send', 'pageview');
-        </script>
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=188877311299252";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
-        <script type="text/javascript" src="{{ asset('js/jquery-1.11.3.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/jquery-ui.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/jquery.raty.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
-        @yield('scripts')
-
-    </body>
-</html>
+        <div class="col-md-4">
+            <ul class="unstyled">
+                <li>Services</li>
+                <li>
+                    <a href="#">Web analytics</a>
+                </li>
+                <li>
+                    <a href="#">Presentations</a>
+                </li>
+                <li>
+                    <a href="#">Code snippets</a>
+                </li>
+                <li>
+                    <a href="#">Job board</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul class="unstyled">
+                <li>Social</li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-facebook-square fa-fw text-success"></i>Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-twitter-square fa-fw text-success"></i>Twitter
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-12">
+            <hr>
+            <p class="muted">© 2015 AnimeCenter.CO. All rights reserved</p>
+        </div>
+    </div>
+</footer>
