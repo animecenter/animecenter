@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Options;
+namespace AC\Options;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
- * App\Options\Option
+ * AC\Options\Option
  *
  * @property integer $id
  * @property string $value

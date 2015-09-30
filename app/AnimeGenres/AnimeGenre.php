@@ -1,11 +1,11 @@
 <?php
 
-namespace App\AnimeGenres;
+namespace AC\AnimeGenres;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\AnimeGenres\AnimeGenre
+ * AC\AnimeGenres\AnimeGenre
  *
  */
 class AnimeGenre extends Model

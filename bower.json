@@ -22,6 +22,12 @@
   "overrides": {
     "modernizr": {
       "main": "modernizr.js"
+    },
+    "font-awesome": {
+      "main": "./fonts/*"
+    },
+    "plyr": {
+      "main": "!./dist/sprite.svg"
     }
   }
 }

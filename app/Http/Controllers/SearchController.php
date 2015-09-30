@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace AC\Http\Controllers;
 
-use App\Anime\Anime;
-use App\Options\Option;
-use App\Pages\Page;
+use AC\Anime\Anime;
+use AC\Options\Option;
+use AC\Pages\Page;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 

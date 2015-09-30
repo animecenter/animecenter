@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace AC\Http\Controllers\Admin;
 
-use App\Anime\Anime;
-use App\Genres\Genre;
-use App\Http\Controllers\Controller;
+use AC\Anime\Anime;
+use AC\Genres\Genre;
+use AC\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Users;
+namespace AC\Users;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -13,7 +13,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
 /**
- * App\User
+ * AC\User
  *
  * @property integer $id
  * @property string $username

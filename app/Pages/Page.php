@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Pages;
+namespace AC\Pages;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
- * App\Pages\Page
+ * AC\Pages\Page
  *
  * @property integer $id
  * @property string $title

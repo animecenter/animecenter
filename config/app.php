@@ -140,10 +140,10 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        AC\Providers\AppServiceProvider::class,
+        AC\Providers\AuthServiceProvider::class,
+        AC\Providers\EventServiceProvider::class,
+        AC\Providers\RouteServiceProvider::class,
 
         // Packages Service Providers...
         Roumen\Sitemap\SitemapServiceProvider::class,

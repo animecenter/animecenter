@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Episodes;
+namespace AC\Episodes;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
- * App\Episodes\Episode
+ * AC\Episodes\Episode
  *
  * @property integer $id
  * @property string $title
@@ -47,7 +47,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Episode whereVisits($value)
  * @method static Builder|Episode whereOrder($value)
  * @method static Builder|Episode whereComingDate($value)
- * @property-read \App\Anime\Anime $anime
+ * @property-read \AC\Anime\Anime $anime
  * @method static Builder|Episode whereAnimeId($value)
  * @method static Builder|Episode whereSlug($value)
  */
@@ -74,6 +74,6 @@ class Episode extends Model
      */
     public function anime()
     {
-        return $this->belongsTo('App\Anime\Anime');
+        return $this->belongsTo('AC\Anime\Anime');
     }
 }

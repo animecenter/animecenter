@@ -16,9 +16,5 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('js/jquery.raty.min.js') }}"></script>
-<script src="{{ asset('app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 @yield('scripts')

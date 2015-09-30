@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace AC\Providers;
 
 use Barryvdh\Debugbar\ServiceProvider as DebugBarServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Using class based composers...
         view()->composer(
-            'errors/404', 'App\Http\ViewComposers\ErrorPageComposer'
+            'errors/404', 'AC\Http\ViewComposers\ErrorPageComposer'
         );
     }
 
