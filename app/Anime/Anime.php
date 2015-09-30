@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Anime;
+namespace AC\Anime;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
- * App\Anime\Anime
+ * AC\Anime\Anime
  *
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Episodes\Episode[] $episodes
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Genres\Genre[] $genres
+ * @property-read \Illuminate\Database\Eloquent\Collection|\AC\Episodes\Episode[] $episodes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\AC\Genres\Genre[] $genres
  * @property integer $id
  * @property string $title
  * @property string $content
@@ -83,11 +83,11 @@ class Anime extends Model
 
     public function episodes()
     {
-        return $this->hasMany('App\Episodes\Episode', 'anime_id');
+        return $this->hasMany('AC\Episodes\Episode', 'anime_id');
     }
 
     public function genres()
     {
-        return $this->belongsToMany('App\Genres\Genre', 'anime_genre', 'anime_id', 'genre_id');
+        return $this->belongsToMany('AC\Genres\Genre', 'anime_genre', 'anime_id', 'genre_id');
     }
 }

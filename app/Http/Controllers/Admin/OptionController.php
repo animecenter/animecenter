@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace AC\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Options\Option;
+use AC\Http\Controllers\Controller;
+use AC\Options\Option;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 

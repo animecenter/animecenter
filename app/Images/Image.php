@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Images;
+namespace AC\Images;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
- * App\Images\Image
+ * AC\Images\Image
  *
  * @property integer $id
  * @property string $bigtitle

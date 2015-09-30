@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace AC\Http\Controllers;
 
-use App\Anime\Anime;
-use App\Episodes\Episode;
+use AC\Anime\Anime;
+use AC\Episodes\Episode;
 use DB;
 use Illuminate\Http\Request;
 
