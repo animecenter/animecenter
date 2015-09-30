@@ -1,5 +1,5 @@
 body {
-  background: #999 url(../imgs/bg-1.png) repeat;
+  background: #999 url(../img/bg-1.png) repeat;
   margin: 0;
   padding: 0;
   border: 0;
@@ -122,7 +122,6 @@ form {
   position: relative;
   float: right;
   margin-right: 10px;
-
 }
 
 #info_u {
@@ -131,7 +130,6 @@ form {
   padding: 0 2px;
   color: #6a5827;
   margin-top: 5px;
-  font-family: Condiment;
 }
 
 #info_u a {
@@ -272,7 +270,7 @@ ul.list_ob span {
   height: 25px;
   float: right;
   position: relative;
-  background: #bdbcbc url(../imgs/ss.png) center no-repeat;
+  background: #bdbcbc url(../img/ss.png) center no-repeat;
   text-indent: -9999999px;
   cursor: pointer;
   border: 0;
@@ -350,7 +348,7 @@ ul.list_ob span {
 }
 
 #navBarR ul li.child:first-child {
-  border-top: 0px;
+  border-top: 0;
 }
 
 #rightContent {
@@ -432,12 +430,10 @@ ul.list_ob span {
 
 .inputWoption ul {
   list-style: none;
-  margin: 0;
   padding: 0;
-  margin-top: 5px;
+  margin: 5px 0 0;
   float: left;
   width: 100%;
-
 }
 
 .inputWoption ul li {
@@ -445,9 +441,7 @@ ul.list_ob span {
   float: left;
   cursor: pointer;
   margin-right: 5px;
-  float: left;
   text-align: left;
-
 }
 
 .inputNOption {
@@ -537,7 +531,7 @@ input.textInput, input.textInput2 {
 }
 
 input.textInput2 {
-  background: #bdbcbc url(../imgs/arr.png) no-repeat right;
+  background: #bdbcbc url(../img/arr.png) no-repeat right;
   padding-right: 5px;
   background-origin: content-box;
   width: 164px;
@@ -551,7 +545,7 @@ input.checkbox + span {
   width: 18px;
   height: 18px;
   position: relative;
-  background: url(../imgs/check.jpg) no-repeat;
+  background: url(../img/check.jpg) no-repeat;
   float: left;
   display: block;
   cursor: pointer;
@@ -574,9 +568,7 @@ select.select {
 }
 
 input#submit {
-  border: 0;
   padding: 0;
-  margin: 0;
   width: 125px;
   height: 27px;
   float: right;
@@ -645,7 +637,6 @@ textarea.textarea2 {
   clear: both;
 }
 
-/*-------------- End Content Style ------------------------*/
 #login_wrap {
   width: 618px;
   position: relative;
@@ -672,8 +663,6 @@ textarea.textarea2 {
   color: #595959;
   font-size: 36px;
   margin-bottom: 30px;
-  font-family: "Condiment";
-
 }
 
 #image {
@@ -682,7 +671,6 @@ textarea.textarea2 {
   position: relative;
   margin-top: 40px;
   margin-bottom: 50px;
-
 }
 
 #Pass input {
@@ -693,7 +681,7 @@ textarea.textarea2 {
   border-radius: 15px;
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
-  padding: 0px 5px;
+  padding: 0 5px;
   text-align: center;
   color: #6a5827;
 }
@@ -721,7 +709,7 @@ textarea.textarea2 {
   background: #e8a713;
   position: absolute;
   top: 33px;
-  right: 0px;
+  right: 0;
   padding: 0 56px 0 5px;
   display: none;
 }
@@ -809,5 +797,3 @@ textarea.textarea2 {
   margin-top: 10px;
   margin-left: 5px;
 }
-
-
