@@ -7,8 +7,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../index.php">
-                <img src="public/img/logo.png" alt="animecenter.co" height="35" width="180">
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="{{ asset('img/logo.png') }}" alt="animecenter.co" height="35" width="180">
             </a>
         </div>
         <!-- /.navbar-header -->
