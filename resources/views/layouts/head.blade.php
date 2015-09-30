@@ -22,5 +22,5 @@
 <meta name="sth-site-verification" content="bf6527dae5e1867e7d5b65f8c47eb99c">
 <meta name="google-site-verification" content="5cikZ3O5_LPFgVIEN_S0EHXxFbnjG62VdpcYQZ1c3hk">
 <link rel="icon" href="{{ asset('favicon.ico') }}">
-<link href="public/css/sb-admin-2.css" rel="stylesheet">
-<link href="{{ asset('css/main.css') }}" rel="stylesheet">
+<link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">

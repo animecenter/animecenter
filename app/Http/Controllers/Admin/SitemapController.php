@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace AC\Http\Controllers\Admin;
 
 use App;
-use App\Http\Controllers\Controller;
+use AC\Http\Controllers\Controller;
 use DB;
 use Exception;
 

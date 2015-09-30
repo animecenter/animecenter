@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace AC\Http\Controllers;
 
-use App\Anime\Anime;
-use App\Episodes\Episode;
-use App\Genres\Genre;
-use App\Images\Image;
-use App\Options\Option;
-use App\Pages\Page;
+use AC\Anime\Anime;
+use AC\Episodes\Episode;
+use AC\Genres\Genre;
+use AC\Images\Image;
+use AC\Options\Option;
+use AC\Pages\Page;
 
 class PageController extends Controller
 {

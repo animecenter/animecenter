@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace AC\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use AC\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 
 class AdminController extends Controller

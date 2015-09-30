@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace AC\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Images\Image;
+use AC\Http\Controllers\Controller;
+use AC\Images\Image;
 use Illuminate\Auth\Guard;
 use Illuminate\Http\Request;
 

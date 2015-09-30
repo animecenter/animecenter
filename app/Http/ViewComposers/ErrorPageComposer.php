@@ -2,9 +2,9 @@
 
 namespace app\Http\ViewComposers;
 
-use App\Anime\Anime;
-use App\Options\Option;
-use App\Pages\Page;
+use AC\Anime\Anime;
+use AC\Options\Option;
+use AC\Pages\Page;
 use Illuminate\Contracts\View\View;
 
 class ErrorPageComposer

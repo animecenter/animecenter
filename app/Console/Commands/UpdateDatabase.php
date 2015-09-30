@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace AC\Console\Commands;
 
 use Cache;
 use Carbon\Carbon;
