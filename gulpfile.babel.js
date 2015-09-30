@@ -7,13 +7,15 @@ import {stream as wiredep} from 'wiredep';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 var mainBowerFiles = require('main-bower-files');
+var exec = require('child_process').exec;
 
+// Minify, and autoprefix css. Copy them to the css directory.
 gulp.task('css', () => {
     return gulp.src('resources/assets/sass/*.scss')
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
         .pipe($.sass.sync({
-            outputStyle: 'expanded',
+            outputStyle: 'compressed',
             precision: 10,
             includePaths: [
                 'components/bootstrap-sass-official/assets/stylesheets',
@@ -27,30 +29,14 @@ gulp.task('css', () => {
         .pipe(reload({stream: true}));
 });
 
-function lint(files, options) {
-    return () => {
-        return gulp.src(files)
-            .pipe(reload({stream: true, once: true}))
-            .pipe($.eslint(options))
-            .pipe($.eslint.format())
-            .pipe($.if(!browserSync.active, $.eslint.failAfterError()))
-            .pipe(gulp.dest('public/js'));
-    };
-}
-const testLintOptions = {
-    env: {
-        mocha: true
-    }
-};
+// Get components fonts and copy them to the fonts directory.
+gulp.task('fonts', () => {
+    return gulp.src(mainBowerFiles('**/*.{eot,svg,ttf,woff,woff2}'))
+        .pipe(gulp.dest('public/fonts'))
+        .pipe($.size());
+});
 
-gulp.task('lint', lint([
-    'resources/assets/vendor/jquery.js',
-    'resources/assets/vendor/bootstrap.js',
-    'resources/assets/vendor/**/*.js',
-    'resources/assets/js/**/*.js'
-]));
-gulp.task('lint:test', lint('tests/spec/**/*.js', testLintOptions));
-
+// Minify images and copy them to the images directory.
 gulp.task('images', () => {
     return gulp.src('resources/assets/img/**/*')
         .pipe($.if($.if.isFile, $.cache($.imagemin({
@@ -60,54 +46,77 @@ gulp.task('images', () => {
             // as hooks for embedding and styling
             svgoPlugins: [{cleanupIDs: false}]
         }))
-            .on('error', function (err) {
+            .on('error', (err) => {
                 console.log(err);
                 this.end();
             })))
-        .pipe(gulp.dest('public/img'));
-});
-
-gulp.task('fonts', () => {
-    return gulp.src(mainBowerFiles('**/*.{eot,svg,ttf,woff,woff2}'))
-        .pipe(gulp.dest('public/fonts'))
+        .pipe(gulp.dest('public/img'))
         .pipe($.size());
 });
 
-gulp.task('clean', del.bind(null, ['dist']));
+function lint(files, options) {
+    return () => {
+        return gulp.src(files)
+            .pipe(reload({stream: true, once: true}))
+            .pipe($.eslint(options))
+            .pipe($.eslint.format())
+            .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
+    };
+}
+const testLintOptions = {
+    env: {
+        mocha: true
+    }
+};
 
-gulp.task('serve', ['css', 'fonts'], () => {
+gulp.task('lint', lint(['resources/assets/js/**/*.js', '!resources/assets/js/vendor/**/*']));
+gulp.task('lint:test', lint('tests/spec/**/*.js', testLintOptions));
+
+// Copy components javascript files to vendor folder.
+gulp.task('vendor', () => {
+    return gulp.src(mainBowerFiles({checkExistence: true, filter: ['**/*.js']}))
+        .pipe(gulp.dest('resources/assets/js/vendor'))
+        .pipe($.size());
+});
+
+// Concatenate together all js from vendor into one minify file for the application.
+gulp.task('concat', ['vendor'], () => {
+    return gulp.src([
+        'resources/assets/js/vendor/jquery.js',
+        'resources/assets/js/vendor/bootstrap.js',
+        'resources/assets/js/vendor/**/*.js',
+        'resources/assets/js/**/*.js'
+    ])
+        .pipe($.concat('app.js'))
+        .pipe($.uglify())
+        .on('error', (err) => {
+            console.log(err);
+            this.end();
+        })
+        .pipe(gulp.dest('public/js'))
+        .pipe($.size());
+});
+
+gulp.task('js', ['concat']);
+
+gulp.task('serve', ['build'], () => {
     browserSync({
-        notify: false,
-        port: 9000,
-        server: {
-            baseDir: ['public'],
-            routes: {
-                '/components': 'components'
-            }
+        options: {
+            proxy: 'localhost:80'
         }
     });
 
     gulp.watch([
-        'resources/views/**/*.php',
-        'public/js/*.js',
         'public/css/*.css',
+        'public/fonts/**/*',
         'public/img/**/*',
-        'public/fonts/**/*'
+        'public/js/*.js',
+        'resources/views/**/*.php'
     ]).on('change', reload);
 
     gulp.watch('resources/assets/sass/**/*.scss', ['css']);
-    gulp.watch('resources/assets/js/**/*.js', ['lint']);
-    gulp.watch('bower.json', ['wiredep', 'fonts']);
-});
-
-gulp.task('serve:dist', () => {
-    browserSync({
-        notify: false,
-        port: 9000,
-        server: {
-            baseDir: ['dist']
-        }
-    });
+    gulp.watch('resources/assets/js/**/*.js', ['js']);
+    gulp.watch('bower.json', ['bower:install']);
 });
 
 gulp.task('serve:test', () => {
@@ -127,25 +136,13 @@ gulp.task('serve:test', () => {
     gulp.watch('tests/spec/**/*.js', ['lint:test']);
 });
 
-// inject bower components
-gulp.task('wiredep', () => {
-    gulp.src('resources/assets/sass/*.scss')
-    .pipe(wiredep({
-        ignorePath: /^(\.\.\/)+/
-    }))
-    .pipe(gulp.dest('public/css'));
-    gulp.src('app/*.html')
-        .pipe(wiredep({
-            exclude: ['bootstrap-sass'],
-            ignorePath: /^(\.\.\/)*\.\./
-        }))
-    .pipe(gulp.dest('public/'));
+// Watch for any changes and reload the browser
+gulp.task('watch', ['serve']);
+
+// Runs all commands to build the application and returns the size of all assets except for the upload folder.
+gulp.task('build', ['css', 'fonts', 'images', 'js'], () => {
+    return gulp.src(['public/**/*', '!public/uploads']).pipe($.size({title: 'build', gzip: true}));
 });
 
-gulp.task('build', ['css', 'fonts', 'js', 'images'], () => {
-    return gulp.src('public/**/*').pipe($.size({title: 'build', gzip: true}));
-});
-
-gulp.task('default', ['clean'], () => {
-    gulp.start('build');
-});
+// Default command for gulp. Runs the build command.
+gulp.task('default', ['build']);
