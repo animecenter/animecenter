@@ -40,16 +40,16 @@ $router->get('anime', 'AnimeController@getIndex');
 $router->get('anime/{slug}', 'AnimeController@getBySlug');
 $router->get('anime/latest', 'AnimeController@getLatest');
 $router->get('anime/subbed', 'AnimeController@getSubbed');
-$router->get('anime/subbed/{letter}', 'AnimeController@getSubbedByLetter');
+$router->get('anime/subbed/{letter}', 'AnimeController@getSubbed');
 $router->get('anime/dubbed', 'AnimeController@getDubbed');
-$router->get('anime/dubbed/{letter}', 'AnimeController@getDubbedByLetter');
+$router->get('anime/dubbed/{letter}', 'AnimeController@getDubbed');
+$router->get('anime/random', 'AnimeController@getRandom');
+$router->get('anime/top', 'AnimeController@getTop');
 
 // Episodes routes...
 $router->get('episodes/latest', 'EpisodeController@getLatest');
 $router->get('watch/{slug}/{mirror}', 'EpisodeController@getEpisodeMirror');
 $router->get('watch/{slug}', 'EpisodeController@getEpisode');
-
-// Genres routes...
 
 // Search routes...
 $router->get('browse', 'SearchController@index');
