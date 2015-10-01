@@ -161,7 +161,7 @@
                 <div class="form-group has-feedback">
                     <label class="sr-only" for="search">Search</label>
                     <input class="form-control" id="search" name="search" placeholder="search" type="text">
-                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    <span class="fa fa-search form-control-feedback"></span>
                 </div>
             </form>
         </div>

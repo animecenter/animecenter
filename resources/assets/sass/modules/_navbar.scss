@@ -1,0 +1,42 @@
+.navbar-nav > li > a {
+  background-color: #ffffff;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+  background-color: #000;
+}
+
+.navbar-form {
+  margin: 0;
+}
+
+.navbar-form .form-group {
+  margin: 13px 0;
+}
+
+.navbar-default {
+  background: #ffffff;
+  margin-bottom: 0;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.navbar-brand {
+  height: 60px;
+  padding: 12px;
+}
+
+.navbar-brand > img {
+  margin: 0;
+}
+
+.navbar-collapse {
+  background: transparent;
+  border-top: 0;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 19.5px;
+    padding-bottom: 19.5px;
+  }
+}

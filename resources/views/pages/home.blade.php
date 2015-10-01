@@ -10,86 +10,86 @@
             <div class="row">
                 <div class="col-xs-12 col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/158x68" alt="">
-                        <span class="episodetile">Overlord is the best Anime</span>
-                        Episode 9 <span class="timerealase">20 minutes ago</span>
+                        <img src="http://placehold.it/158x89" alt="">
+                        <span class="episode-title">Overlord is the best Anime</span>
+                        Episode 9 <span class="time-release">20 minutes ago</span>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/158x68" alt="">
-                        <span class="episodetile">Overlord</span>
-                        Episode 9 <span class="timerealase">50 minutes ago</span>
+                        <img src="http://placehold.it/158x89" alt="">
+                        <span class="episode-title">Overlord</span>
+                        Episode 9 <span class="time-release">50 minutes ago</span>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/158x68" alt="">
-                        <span class="episodetile">Overlord</span>
-                        Episode 9 <span class="timerealase">1 hour ago</span>
+                        <img src="http://placehold.it/158x89" alt="">
+                        <span class="episode-title">Overlord</span>
+                        Episode 9 <span class="time-release">1 hour ago</span>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/158x68" alt="">
-                        <span class="episodetile">Overlord</span>
-                        Episode 9 <span class="timerealase">3 hours ago</span>
+                        <img src="http://placehold.it/158x89" alt="">
+                        <span class="episode-title">Overlord</span>
+                        Episode 9 <span class="time-release">3 hours ago</span>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/158x68" alt="">
-                        <span class="episodetile">Overlord</span>
-                        Episode 9 <span class="timerealase">1 day ago</span>
+                        <img src="http://placehold.it/158x89" alt="">
+                        <span class="episode-title">Overlord</span>
+                        Episode 9 <span class="time-release">1 day ago</span>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/158x68" alt="">
-                        <span class="episodetile">Overlord</span>
-                        Episode 9 <span class="timerealase">3 days ago</span>
+                        <img src="http://placehold.it/158x89" alt="">
+                        <span class="episode-title">Overlord</span>
+                        Episode 9 <span class="time-release">3 days ago</span>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/158x68" alt="">
-                        <span class="episodetile">Overlord</span>
-                        Episode 9 <span class="timerealase">1 week ago</span>
+                        <img src="http://placehold.it/158x89" alt="">
+                        <span class="episode-title">Overlord</span>
+                        Episode 9 <span class="time-release">1 week ago</span>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/158x68" alt="">
-                        <span class="episodetile">Overlord</span>
-                        Episode 9 <span class="timerealase">2 weeks ago</span>
+                        <img src="http://placehold.it/158x89" alt="">
+                        <span class="episode-title">Overlord</span>
+                        Episode 9 <span class="time-release">2 weeks ago</span>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/158x68" alt="">
-                        <span class="episodetile">Overlord</span>
-                        Episode 9 <span class="timerealase">3 weeks ago</span>
+                        <img src="http://placehold.it/158x89" alt="">
+                        <span class="episode-title">Overlord</span>
+                        Episode 9 <span class="time-release">3 weeks ago</span>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/158x68" alt="">
-                        <span class="episodetile">Overlord</span>
-                        Episode 9 <span class="timerealase">1 month ago</span>
+                        <img src="http://placehold.it/158x89" alt="">
+                        <span class="episode-title">Overlord</span>
+                        Episode 9 <span class="time-release">1 month ago</span>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/158x68" alt="">
-                        <span class="episodetile">Overlord</span>
-                        Episode 9 <span class="timerealase">2 months ago</span>
+                        <img src="http://placehold.it/158x89" alt="">
+                        <span class="episode-title">Overlord</span>
+                        Episode 9 <span class="time-release">2 months ago</span>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/158x68" alt="">
-                        <span class="episodetile">Overlord</span>
-                        Episode 9 <span class="timerealase">1 year ago</span>
+                        <img src="http://placehold.it/158x89" alt="">
+                        <span class="episode-title">Overlord</span>
+                        Episode 9 <span class="time-release">1 year ago</span>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                 Upcoming Anime Episodes
             </h1>
             <div class="notice notice-lg">
-                <div class="imgcounter">
+                <div class="counter-img">
                     <img src="http://placehold.it/157x68" alt="">
                 </div>
                 <div class="counter">
@@ -108,7 +108,7 @@
                 Episode 427
             </div>
             <div class="notice notice-lg">
-                <div class="imgcounter">
+                <div class="counter-img">
                     <img src="http://placehold.it/157x68" alt="">
                 </div>
                 <div class="counter">
@@ -117,7 +117,7 @@
                 Episode 9
             </div>
             <div class="notice notice-lg">
-                <div class="imgcounter">
+                <div class="counter-img">
                     <img src="http://placehold.it/157x68" alt="">
                 </div>
                 <div class="counter">
@@ -126,7 +126,7 @@
                 Episode 10
             </div>
             <div class="notice notice-lg">
-                <div class="imgcounter">
+                <div class="counter-img">
                     <img src="http://placehold.it/157x68" alt="">
                 </div>
                 <div class="counter">
@@ -135,7 +135,7 @@
                 Episode 22
             </div>
             <div class="notice notice-lg">
-                <div class="imgcounter">
+                <div class="counter-img">
                     <img src="http://placehold.it/157x68" alt="">
                 </div>
                 <div class="counter">
@@ -157,53 +157,25 @@
                             <div class="col-md-3">
                                 <a class="thumbnail" href="#">
                                     <img src="http://placehold.it/157x68" alt="">
-                                    <span class="titleanimeseason">God Eater!</span>
+                                    <span class="anime-season-title">God Eater!</span>
                                 </a>
                             </div>
                             <div class="col-md-3">
                                 <a class="thumbnail" href="#">
                                     <img src="http://placehold.it/157x68" alt="">
-                                    <span class="titleanimeseason">Charlotte</span>
+                                    <span class="anime-season-title">Charlotte</span>
                                 </a>
                             </div>
                             <div class="col-md-3">
                                 <a class="thumbnail" href="#">
                                     <img src="http://placehold.it/157x68" alt="">
-                                    <span class="titleanimeseason">God Eater!</span>
+                                    <span class="anime-season-title">God Eater!</span>
                                 </a>
                             </div>
                             <div class="col-md-3">
                                 <a class="thumbnail" href="#">
                                     <img src="http://placehold.it/157x68" alt="">
-                                    <span class="titleanimeseason">God Eater!</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <a class="thumbnail" href="#">
-                                    <img src="http://placehold.it/157x68" alt="">
-                                    <span class="titleanimeseason">God Eater!</span>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a class="thumbnail" href="#">
-                                    <img src="http://placehold.it/157x68" alt="">
-                                    <span class="titleanimeseason">God Eater!</span>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a class="thumbnail" href="#">
-                                    <img src="http://placehold.it/157x68" alt="">
-                                    <span class="titleanimeseason">God Eater!</span>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a class="thumbnail" href="#">
-                                    <img src="http://placehold.it/157x68" alt="">
-                                    <span class="titleanimeseason">God Eater!</span>
+                                    <span class="anime-season-title">God Eater!</span>
                                 </a>
                             </div>
                         </div>
@@ -213,25 +185,53 @@
                             <div class="col-md-3">
                                 <a class="thumbnail" href="#">
                                     <img src="http://placehold.it/157x68" alt="">
-                                    <span class="titleanimeseason">God Eater!</span>
+                                    <span class="anime-season-title">God Eater!</span>
                                 </a>
                             </div>
                             <div class="col-md-3">
                                 <a class="thumbnail" href="#">
                                     <img src="http://placehold.it/157x68" alt="">
-                                    <span class="titleanimeseason">God Eater!</span>
+                                    <span class="anime-season-title">God Eater!</span>
                                 </a>
                             </div>
                             <div class="col-md-3">
                                 <a class="thumbnail" href="#">
                                     <img src="http://placehold.it/157x68" alt="">
-                                    <span class="titleanimeseason">God Eater!</span>
+                                    <span class="anime-season-title">God Eater!</span>
                                 </a>
                             </div>
                             <div class="col-md-3">
                                 <a class="thumbnail" href="#">
                                     <img src="http://placehold.it/157x68" alt="">
-                                    <span class="titleanimeseason">God Eater!</span>
+                                    <span class="anime-season-title">God Eater!</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a class="thumbnail" href="#">
+                                    <img src="http://placehold.it/157x68" alt="">
+                                    <span class="anime-season-title">God Eater!</span>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a class="thumbnail" href="#">
+                                    <img src="http://placehold.it/157x68" alt="">
+                                    <span class="anime-season-title">God Eater!</span>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a class="thumbnail" href="#">
+                                    <img src="http://placehold.it/157x68" alt="">
+                                    <span class="anime-season-title">God Eater!</span>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a class="thumbnail" href="#">
+                                    <img src="http://placehold.it/157x68" alt="">
+                                    <span class="anime-season-title">God Eater!</span>
                                 </a>
                             </div>
                         </div>

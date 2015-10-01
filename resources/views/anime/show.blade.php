@@ -1,260 +1,165 @@
-@include('layouts.head')
-<div id="wrap">
-    <div id="content">
-        @include('layouts.banner')
-        <div id="left_content">
-            <div class="sec_top_one">
-                <div class="fb-like" style="height: 30px;" data-href="{{
-                    url($anime['type2'] . "-anime/" . $anime['slug']) }}"
-                    data-width="450" data-show-faces="false" data-send="true"></div>
-                @if (Auth::user())
-                    <a href="{{ url('admin/anime/edit/' . $anime['id']) }}" class="edit_top">
-                        Edit
-                    </a>
-                @endif
-            </div>
-            <div class="sections" id="series">
-                <div class="series">
-                    <div class="main_title">
-                        {{ $anime['title'] }}
-                        @if(Auth::user())
-                            <div class="login">
-                                <select class="member-select episodes">
-                                    <option selected="selected" value="0">Add Episode</option>
-                                    <option value="{{ url('admin/episodes/create/' . $anime['id']) }}">
-                                        Add Episode Manually
-                                    </option>
-                                    <option value="{{ url('admin/episodes/create/automatically') }}" val="{{ $anime['id'] }}">
-                                        Add Episode Automatically
-                                    </option>
-                                </select>
-                            </div>
-                            <!--/login-->
-                        @endif
-                    </div>
-                    <div class="content">
-                        <div class="categories">
-                            <a href="#" class="{{ $anime['type2'] }}">
-                                English {{ $anime['type2'] }}
-                            </a>
-                        </div>
-                        <div class="img">
-                            <img src="{{ asset('images/' . $anime['image']) }}">
-                        </div>
+@extends('layouts.index')
 
-                        <div class="texts">
-                            @if($anime['content'])
-                                {!! $anime['content'] !!}
-                            @else
-                                <div class="text">
-                                    <span>Genres:</span>
-                                    {{ str_replace(",", ", ", $anime['genres']) }}
-                                </div>
-                                <div class="text">
-                                    <span>Episodes:</span> {{ $anime['episodes'] }}
-                                </div>
-                                <div class="text">
-                                    <span>Type:</span> {{ $anime['type'] }}
-                                </div>
-                                @if($anime['prequel'])
-                                    <div class="text">
-                                        <span>Prequel: </span>
-                                        <a href="{{ url($relations['prequel']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $relations['prequel']['slug'] :
-                                        $options[2]['value'] . $relations['prequel']['slug']) }}">
-                                            {{ $relations['prequel']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                @if($anime['sequel'])
-                                    <div class="text">
-                                        <span>Sequel: </span>
-                                        <a href="{{ url(($relations['sequel']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $relations['sequel']['slug'] :
-                                        $options[2]['value'] . $relations['sequel']['slug'])) }}">
-                                            {{ $relations['sequel']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                @if($anime['story'])
-                                    <div class="text">
-                                        <span>Parent Story: </span>
-                                        <a href="{{ url($relations['story']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $relations['story']['slug'] :
-                                        $options[2]['value'] . $relations['story']['slug']) }}">
-                                            {{ $relations['story']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                @if ($anime['side_story'])
-                                    <div class="text">
-                                        <span>Side Story: </span>
-                                        <a href="{{ url($relations['side_story']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $relations['side_story']['slug'] :
-                                        $options[2]['value'] . $relations['side_story']['slug']) }}">
-                                            {{ $relations['side_story']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                @if ($anime['spin_off'])
-                                    <div class="text">
-                                        <span>Spin Off: </span>
-                                        <a href="{{ url($relations['spin_off']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $relations['spin_off']['slug'] :
-                                        $options[2]['value'] . $relations['spin_off']['slug']) }}">
-                                            {{ $relations['spin_off']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                @if ($anime['alternative'])
-                                    <div class="text">
-                                        <span>Alternative: </span>
-                                        <a href="{{ url($relations['alternative']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $relations['alternative']['slug'] :
-                                        $options[2]['value'] . $relations['alternative']['slug']) }}">
-                                            {{ $relations['alternative']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                @if($anime['other'])
-                                    <div class="text">
-                                        <span>Other: </span>
-                                        <a href="{{ url($relations['other']['type2'] == "dubbed" ?
-                                        $options[3]['value'] . $relations['other']['slug'] :
-                                        $options[2]['value'] . $relations['other']['slug']) }}">
-                                            {{ $relations['other']['title'] }}
-                                        </a>
-                                    </div>
-                                @endif
-                                <div class="text age">
-                                    <span>Age Permission: </span>
-                                    <span class="age" style="background: {{ $color }}">
-                                        {{ $anime['age'] }}
-                                    </span>
-                                </div>
-                                <div class="text">
-                                    <span>Plot Summary:</span>
-                                    {!! $anime['description'] !!}
-                                </div>
-                                <div class="text alternative">
-                                    <span>Alternative Titles:</span>
-                                    {!! $anime['alternative_title'] !!}
-                                </div>
-                            @endif
-                        </div>
-                        <!--/texts-->
-                        @if ($lastEpisode)
-                            <div class="latest-episode">
-                                <a href="{{ url($options[4]['value'] . $lastEpisode['slug']) }}">
-                                    <div class="row main">Latest Episode</div>
-                                    <div class="row sec">
-                                        {{ str_replace($anime['title'], "", $lastEpisode['title']) }}
-                                    </div>
-                                    <div class="row la">Watch now</div>
-                                </a>
-                            </div>
-                            <!--/latest-episode-->
-                        @endif
-                    </div>
-                    <!--/content-->
+@section('content')
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 anime-background"></div>
+            <div class="col-xs-12 col-md-12 anime-background-2">
+                <div class="col-xs-12 col-md-3">
+                    <img src="public/img/anime/Jitsuwa.png">
                 </div>
-                <!--/series-->
-                <div class="rating_div">
-                    <div class="views_value view_series" id="{{ $anime['id'] }}">{{ $anime['visits'] }}<span> Views</span></div>
-                    <div id="rateContainor" style="float: left; width: 200px; margin-left: 20px;">
-                        <div style="float:left;" value="{{ $anime['rating'] }}" id="rateDiv" class="rating"></div>
-                        <div style="float: left; font-size: 8pt; clear: both; width: 100%; display:none" id="hint"></div>
-                        <div id="hint2" style="float: left; font-size: 8pt">
-                            <?php
-                            echo "Average: " . (($anime['rating']) ?
-                                sprintf("%.2f", $anime['rating']) : 0) . " ( " .
-                                    (($anime['votes']) ? $anime['votes'] : 0) . " votes)" ?>
-                        </div>
+                <div class="col-xs-12 col-md-6">
+                    <h1>Jitsu wa Watashi wa</h1>
+                    <div class="text-success">
+                        Type:<span class="text-white"> TV</span>
+                    </div>
+                    <div class="text-success">
+                        Episodes:<span class="text-white"> Unknown</span>
+                    </div>
+                    <div class="text-success">
+                        Status:<span class="text-white"> Currently Airing</span>
+                    </div>
+                    <div class="text-success">
+                        Aired:<span class="text-white"> Jul 12, 2015 to ?</span>
+                    </div>
+                    <div class="text-success">
+                        Producers:<span class="text-white"> Bandai Visual, ufotable, Aniplex of AmericaL</span>
+                    </div>
+                    <div class="text-success">
+                        Genres:<span class="text-white"> Comedy, Fantasy, Romance, School, Shounen</span>
+                    </div>
+                    <div class="text-success">
+                        Duration:<span class="text-white"> 23 min. per episode</span>
+                    </div>
+                    <div class="text-success">
+                        Rating:<span class="text-white"> R - 17+ (violence & profanity)</span>
                     </div>
                 </div>
-                <div class="title" style="margin-bottom:5px;">
-                    {{ $anime['title'] }} Episodes
+                <div class="col-xs-11 col-md-10">
+                    <div class="text-success">
+                        Synopsis:
+                        <span class="text-white">
+                        Anime adaptation of Bandai Namco's PSP action game series "God Eater."
+                        Set in a post-apocalyptic Japan in the year 2071. The world has been mostly destroyed by
+                        mysterious monsters known as the Aragami. An organization known as Fenrir was made to exterminate
+                        Aragami using 'God Arcs', weapons made from Aragami cells. Those who specialize in exterminating
+                        Aragami are known as God Eaters. Their God Arcs originally could only keep a single form, however
+                        a new type has been discovered that can switch between gun and blade form. Since then, they have been
+                        classified new-types and the previous as old-types.
+                        </span>
+                    </div>
                 </div>
-                <div class="episodes">
-                    <ul>
-                        @foreach($anime['relations']['episodes'] as $episode)
-                            <li class="leaf">
-                                <a href="{{ url($options[4]['value'] . $episode['slug']) }}">
-                                    {{ $episode['title'] }}
-                                </a>
-                                @if($episode['not_yet_aired'] != null)
-                                    <span>Not Yet Aired</span>
-                                @endif
-                            </li>
-                        @endforeach
-                    </ul>
+                <ul class="col-xs-1 col-md-2 anime-side">
+                    <li>
+                        <i class="fa fa-star fa-fw text-yellow"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-heart fa-fw text-danger"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-edit fa-fw text-pink"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-book fa-fw text-dark-blue"></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-12 anime-footer">
+                <div class="col-xs-12 col-md-3">
+                    <a href="#">
+                        <i class="fa fa-star fa-fw text-yellow"></i>
+                        <i class="fa fa-star fa-fw text-yellow"></i>
+                        <i class="fa fa-star fa-fw text-yellow"></i>
+                        <i class="fa fa-star fa-fw text-yellow"></i>
+                        <i class="fa fa-star fa-fw text-white"></i>
+                    </a>
                 </div>
-                <!--/episodes-->
+                <div class="col-xs-12 col-md-3">
+                    <i class="fa fa-facebook fa-fw text-success"></i>
+                    <i class="fa fa-twitter fa-fw text-success"></i>
+                    <i class="fa fa-google-plus fa-fw text-success"></i>
+                    <i class="fa fa-reddit fa-fw text-success"></i>
+                    <i class="fa fa-pinterest fa-fw text-success"></i>
+                </div>
+                <div class="col-xs-12 col-md-3"></div>
+                <div class="col-xs-12 col-md-3">
+                    <i class="fa fa-eye-open fa-fw text-success"></i>
+                    <span class="text-white"> Views 13,345 </span>
+                </div>
             </div>
-            <!--/sections-->
-            <div style="width:100%;float:left;margin-bottom:10px" class="">
-                <div id="disqus_thread"></div>
-                <script type="text/javascript" data-cfasync='true'>
-                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                    var disqus_shortname = 'animecentertvnetwork'; // required: replace example with your forum shortname
-                    // /* * * DON'T EDIT BELOW THIS LINE * * */
-                    (function () {
-                        var dsq = document.createElement('script');
-                        dsq.type = 'text/javascript';
-                        dsq.async = true;
-                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                    })();
-                </script>
-                <noscript>
-                    Please enable JavaScript to view the
-                    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-                </noscript>
+        </div>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 episode-list">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            <i class="fa fa-video-camera fa-fw text-success"></i> All Episodes
+                        </th>
+                        <th>
+                            Subbed or Dubbed<i class="fa fa-question fa-fw text-success"></i>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="active">
+                        <td>
+                            <i class="fa fa-video-camera fa-fw text-success"></i> Episode 1
+                        </td>
+                        <td>
+                            <button class="label label-success" type="button">Subbed</button>
+                            <button class="label label-purple" type="button">Dubbed</button>
+                        </td>
+                    </tr>
+                    <tr class="success">
+                        <td>
+                            <i class="fa fa-video-camera fa-fw text-success"></i> Episode 2
+                        </td>
+                        <td>
+                            <button class="label label-success" type="button">Subbed</button>
+                            <button class="label label-purple" type="button">Dubbed</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-video-camera fa-fw text-success"></i> Episode 3
+                        </td>
+                        <td>
+                            <button class="label label-success" type="button">Subbed</button>
+                            <button class="label label-purple" type="button">Dubbed</button>
+                        </td>
+                    </tr>
+                    <tr class="warning">
+                        <td>
+                            <i class="fa fa-video-camera fa-fw text-success"></i> Episode 4
+                        </td>
+                        <td>
+                            <button class="label label-success" type="button">Subbed</button>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-video-camera fa-fw text-success"></i> Episode 5
+                        </td>
+                        <td>
+                            <button class="label label-success" type="button">Subbed</button>
+                            <button class="label label-purple" type="button">Dubbed</button>
+                        </td>
+                    </tr>
+                    <tr class="danger">
+                        <td>
+                            <i class="fa fa-video-camera fa-fw text-success"></i> Episode 6
+                        </td>
+                        <td>
+                            <button class="label label-success" type="button">Subbed</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <div style="width: 100%; float: left; margin-bottom: 10px;" class=""></div>
         </div>
-        <!--/left_content-->
-        <div id="right_content">
-            @include('layouts.sidebar')
-        </div>
-        <!--/content-->
-        @include('layouts.footer')
-        @section('scripts')
-        <script>
-            $(document).ready(function (e) {
-                $("#rateDiv").hover(function () {
-                    $("#hint").show();
-                    $("#hint2").hide();
-                });
-                $("#rateDiv").mouseleave(function () {
-                    $("#hint").hide();
-                    $("#hint2").show();
-                });
-                $("#rateDiv").raty({
-                    score: "{{ $anime['rating'] }}",
-                    starHalf: "{{ asset('images/star-half.png') }}",
-                    starOff: "{{ asset('images/star-off.png') }}",
-                    starOn: "{{ asset('images/star-on.png') }}",
-                    starHover: "{{ asset('images/star-hover.png') }}",
-                    target: ("#hint"),
-                    click: function (score, evt) {
-                        $("#hint").show().text("Saving your vote...");
-                        $("#hint2").hide();
-                        $.post("{{ url('rate/anime') }}", {
-                            id: "{{ $anime['id'] }}",
-                            rate: score
-                        }, function (data) {
-                            $("#hint").show().text("your vote has been saved");
-                            $("#hint2").hide();
-                            setTimeout(function () {
-                                $("#hint").hide();
-                                $("#hint2").show().text(data);
-                            }, 1000);
-                        });
-                    },
-                    width: 110,
-                    targetKeep: true
-                });
-            });
-        </script>
-        @endsection
+    </div>
+@endsection
