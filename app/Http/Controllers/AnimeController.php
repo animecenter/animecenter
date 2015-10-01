@@ -4,8 +4,6 @@ namespace AC\Http\Controllers;
 
 use AC\Anime\Anime;
 use AC\Episodes\Episode;
-use AC\Options\Option;
-use AC\Pages\Page;
 
 /**
  * @property  data
@@ -25,37 +23,41 @@ class AnimeController extends Controller
     private $episode;
 
     /**
-     * @var Option
-     */
-    private $option;
-
-    /**
-     * @var Page
-     */
-    private $page;
-
-    /**
      * @param Anime $anime
      * @param Episode $episode
-     * @param Option $option
-     * @param Page $page
      */
-    public function __construct(Anime $anime, Episode $episode, Option $option, Page $page)
+    public function __construct(Anime $anime, Episode $episode)
     {
         $this->anime = $anime;
         $this->episode = $episode;
-        $this->option = $option;
-        $this->page = $page;
-        $this->data['animeBanner'] = $this->anime->orderByRaw("RAND()")->where('type2', '=', 'subbed')->take(1)->first();
-        $this->data['topPagesList'] = $this->page->where('position', '=', 'top')->orderBy('order')->get();
-        $this->data['bottomPagesList'] = $this->page->where('position', '=', 'bottom1')->orderBy('order')->get();
-        $this->data['bottomPagesList2'] = $this->page->where('position', '=', 'bottom2')->orderBy('order')->get();
-        $this->data['bottomPagesList3'] = $this->page->where('position', '=', 'bottom3')->orderBy('order')->get();
-        $this->data['options'] = $this->option->all();
     }
 
     public function getIndex()
     {
+        $this->data['animes'] = $this->anime->orderBy('id', 'DESC')->paginate(20);
+        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List | Watch Anime Online Free";
+        $this->data['metaTitle'] = "Subbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
+        $this->data['metaDesc'] = $pageTitle . "!. Watch English Subbed. Watch English Sub, Download " .
+            "Anime for free. Watch Online English Subbed Online for Free only at Anime Center";
+        $this->data['metaKey'] = "Anime Subbed, Watch Anime, Download Anime, Watch Anime on iphone, Anime for Free";
+
+        return view('anime.index', $this->data);
+    }
+
+    public function getListByLetter($letter = '')
+    {
+        if (!$letter) {
+            $this->data['animes'] = $anime = $this->anime->where('title', 'like', 'a%')->orderBy('title', 'ASC')->paginate(20);
+        } elseif ($letter === '0-9') {
+            $this->data['animes'] = $anime = $this->anime->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
+                ->orderBy('title', 'ASC')->paginate(20);
+        } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
+            $this->data['animes'] = $anime = $this->anime->where('title', 'like', $letter.'%')
+                ->orderBy('title', 'ASC')->paginate(20);
+        } else {
+            // log user trying to access url that was not declare
+            return redirect()->back();
+        }
         $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List | Watch Anime Online Free";
         $this->data['metaTitle'] = "Subbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
         $this->data['metaDesc'] = $pageTitle . "!. Watch English Subbed. Watch English Sub, Download " .
@@ -70,17 +72,14 @@ class AnimeController extends Controller
         if (!$letter) {
             $this->data['animes'] = $anime = $this->anime
                 ->where('title', 'like', 'a%')
-                ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
         } elseif ($letter === '0-9') {
             $this->data['animes'] = $anime = $this->anime
                 ->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
-                ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
         } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
             $this->data['animes'] = $anime = $this->anime
                 ->where('title', 'like', $letter.'%')
-                ->where('type2', '<>', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
         } else {
             return redirect()->back();
@@ -99,17 +98,14 @@ class AnimeController extends Controller
         if (!$letter) {
             $this->data['animes'] = $anime = $this->anime
                 ->where('title', 'like', 'a%')
-                ->where('type2', '=', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
         } elseif ($letter === '0-9') {
             $this->data['animes'] = $anime = $this->anime
                 ->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
-                ->where('type2', '=', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
         } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
             $this->data['animes'] = $anime = $this->anime
                 ->where('title', 'like', $letter.'%')
-                ->where('type2', '=', 'dubbed')
                 ->orderBy('title', 'ASC')->get();
         } else {
             return redirect()->back();
@@ -127,7 +123,7 @@ class AnimeController extends Controller
     {
         $this->data['anime'] = $anime = $this->anime->with(['episodes' => function ($query) {
             $query->orderBy('order', 'asc');
-        }])->where('slug', '=', $slug)->where('type2', '<>', 'dubbed')->firstOrFail();
+        }])->where('slug', '=', $slug)->firstOrFail();
         $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
         $this->data['lastEpisode'] = $this->episode->where('anime_id', '=', $anime['id'])
             ->where('not_yet_aired', '=', null)

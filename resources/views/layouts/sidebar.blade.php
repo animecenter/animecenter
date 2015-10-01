@@ -1,6 +1,5 @@
 <div class="col-sm-3 col-md-2 sidebar">
     <ul id="side-menu" class="nav nav-sidebar navbar-collapse">
-        <!-- /input-group -->
         <li>
             <a href="{{ url('anime') }}">
                 <i class="fa fa-video-camera fa-fw text-white"></i>
@@ -57,12 +56,12 @@
                 <i class="fa fa-random fa-fw text-dark-pink"></i> Random Anime
             </a>
         </li>
-        <li>
-            <i class="fa fa-money fa-fw text-success colorside sidebarmoney"></i><br>
-            <h1 class="coolfont text-white center colorside">Sponsorships</h1>
-            <div class="text-white center colorside">
-                Do you want to contribute? Learn more
-                <div class="text-yellow center colorside">
+        <li class="text-center">
+            <i class="fa fa-money fa-fw text-success color-side sidebar-money"></i><br>
+            <h1 class="coolfont text-white center color-side">Sponsorships</h1>
+            <div class="text-white center color-side">
+                Do you want to contribute? <br>Learn more
+                <div class="text-yellow center color-side">
                     <button class="btn btn-success center" type="button">Contribute</button>
                 </div>
             </div>

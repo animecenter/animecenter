@@ -16,10 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Using class based composers...
-        view()->composer(
-            'errors/404', 'AC\Http\ViewComposers\ErrorPageComposer'
-        );
+
     }
 
     /**

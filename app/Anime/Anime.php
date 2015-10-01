@@ -15,7 +15,6 @@ use Illuminate\Database\Query\Builder;
  * @property string $content
  * @property string $type
  * @property string $age
- * @property string $type2
  * @property string $status
  * @property string $prequel
  * @property string $sequel
@@ -60,6 +59,28 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Anime whereDate($value)
  * @method static Builder|Anime whereDate2($value)
  * @method static Builder|Anime whereSlug($value)
+ * @property integer $mal_id
+ * @property string $synopsis
+ * @property integer $type_id
+ * @property string $release_date
+ * @property string $end_date
+ * @property string $duration
+ * @property integer $season_id
+ * @property integer $classification_id
+ * @property string $created_at
+ * @property string $updated_at
+ * @property \Carbon\Carbon $deleted_at
+ * @method static Builder|Anime whereMalId($value)
+ * @method static Builder|Anime whereSynopsis($value)
+ * @method static Builder|Anime whereTypeId($value)
+ * @method static Builder|Anime whereReleaseDate($value)
+ * @method static Builder|Anime whereEndDate($value)
+ * @method static Builder|Anime whereDuration($value)
+ * @method static Builder|Anime whereSeasonId($value)
+ * @method static Builder|Anime whereClassificationId($value)
+ * @method static Builder|Anime whereCreatedAt($value)
+ * @method static Builder|Anime whereUpdatedAt($value)
+ * @method static Builder|Anime whereDeletedAt($value)
  */
 class Anime extends Model
 {
