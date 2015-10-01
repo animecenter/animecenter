@@ -2,14 +2,14 @@
     <ul id="side-menu" class="nav nav-sidebar navbar-collapse">
         <!-- /input-group -->
         <li>
-            <a href="anime-list.php">
+            <a href="{{ url('anime') }}">
                 <i class="fa fa-video-camera fa-fw text-white"></i>
                 Anime List
             </a>
         </li>
         <li>
-            <a href="#">
-                <i class="glyphicon glyphicon-book fa-fw text-darkblue"></i>
+            <a href="https://mangacenter.co">
+                <i class="fa fa-book fa-fw text-dark-blue"></i>
                 Read Manga
             </a>
         </li>
@@ -22,7 +22,7 @@
         <li>
             <a href="#">
                 <i class="fa fa-heart fa-fw text-danger"></i>
-                Recomendations
+                Recommendations
             </a>
         </li>
         <li>
@@ -39,12 +39,12 @@
         </li>
         <li>
             <a href="#">
-                <i class="glyphicon glyphicon-tags fa-fw text-lightblue"></i>  Genres
+                <i class="fa fa-tags fa-fw text-light-blue"></i>  Genres
             </a>
         </li>
         <li>
-            <a href="hot-anime.php">
-                <i class="glyphicon glyphicon-fire text-orange"></i> Hot Anime
+            <a href="{{ url('anime/top') }}">
+                <i class="fa fa-fire text-orange"></i> Top Anime
             </a>
         </li>
         <li>
@@ -53,8 +53,8 @@
             </a>
         </li>
         <li>
-            <a href="random-anime.php">
-                <i class="glyphicon glyphicon-random fa-fw text-darkpink"></i> Random Anime
+            <a href="{{ url('anime/random') }}">
+                <i class="fa fa-random fa-fw text-dark-pink"></i> Random Anime
             </a>
         </li>
         <li>
@@ -63,7 +63,6 @@
             <div class="text-white center colorside">
                 Do you want to contribute? Learn more
                 <div class="text-yellow center colorside">
-                    you can help in other ways is not always about money.
                     <button class="btn btn-success center" type="button">Contribute</button>
                 </div>
             </div>
