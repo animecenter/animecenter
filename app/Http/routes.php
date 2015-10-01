@@ -39,6 +39,7 @@ $router->post('password/reset', 'Auth\PasswordController@postReset');
 $router->get('anime', 'AnimeController@getIndex');
 $router->get('anime/{slug}', 'AnimeController@getBySlug');
 $router->get('anime/latest', 'AnimeController@getLatest');
+$router->get('anime/list/{letter}', 'AnimeController@getListByLetter');
 $router->get('anime/subbed', 'AnimeController@getSubbed');
 $router->get('anime/subbed/{letter}', 'AnimeController@getSubbed');
 $router->get('anime/dubbed', 'AnimeController@getDubbed');

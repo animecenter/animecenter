@@ -20,6 +20,14 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Page whereLink($value)
  * @method static Builder|Page whereOrder($value)
  * @method static Builder|Page wherePosition($value)
+ * @property string $slug
+ * @property string $created_at
+ * @property string $updated_at
+ * @property \Carbon\Carbon $deleted_at
+ * @method static \Illuminate\Database\Query\Builder|\AC\Pages\Page whereSlug($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Pages\Page whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Pages\Page whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Pages\Page whereDeletedAt($value)
  */
 class Page extends Model
 {

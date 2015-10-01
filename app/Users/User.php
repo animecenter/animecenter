@@ -31,6 +31,8 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @method static Builder|User whereCreatedAt($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @method static Builder|User whereDeletedAt($value)
+ * @property string $name
+ * @method static \Illuminate\Database\Query\Builder|\AC\Users\User whereName($value)
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
