@@ -28,125 +28,50 @@
                 <div class="col-md-12">
                     <div class="btn-toolbar">
                         <div class="btn-group btn-group-sm">
-                            <a class="btn btn-default">A</a>
-                            <a class="btn btn-default">B</a>
-                            <a class="btn btn-default">C</a>
-                            <a class="btn btn-default">D</a>
-                            <a class="btn btn-default">E</a>
-                            <a class="btn btn-default">F</a>
-                            <a class="btn btn-default">G</a>
-                            <a class="btn btn-default">H</a>
-                            <a class="btn btn-default">I</a>
-                            <a class="btn btn-default">J</a>
-                            <a class="btn btn-default">K</a>
-                            <a class="btn btn-default">L</a>
-                            <a class="btn btn-default">M</a>
-                            <a class="btn btn-default">N</a>
-                            <a class="btn btn-default">O</a>
-                            <a class="btn btn-default">P</a>
-                            <a class="btn btn-default">Q</a>
-                            <a class="btn btn-default">R</a>
-                            <a class="btn btn-default">S</a>
-                            <a class="btn btn-default">T</a>
-                            <a class="btn btn-default">U</a>
-                            <a class="btn btn-default">V</a>
-                            <a class="btn btn-default">W</a>
-                            <a class="btn btn-default">X</a>
-                            <a class="btn btn-default">Y</a>
-                            <a class="btn btn-default">Z</a>
+                            <a href="{{ url('anime/list/a') }}" class="btn btn-default">A</a>
+                            <a href="{{ url('anime/list/b') }}" class="btn btn-default">B</a>
+                            <a href="{{ url('anime/list/c') }}" class="btn btn-default">C</a>
+                            <a href="{{ url('anime/list/d') }}" class="btn btn-default">D</a>
+                            <a href="{{ url('anime/list/e') }}" class="btn btn-default">E</a>
+                            <a href="{{ url('anime/list/f') }}" class="btn btn-default">F</a>
+                            <a href="{{ url('anime/list/g') }}" class="btn btn-default">G</a>
+                            <a href="{{ url('anime/list/h') }}" class="btn btn-default">H</a>
+                            <a href="{{ url('anime/list/i') }}" class="btn btn-default">I</a>
+                            <a href="{{ url('anime/list/j') }}" class="btn btn-default">J</a>
+                            <a href="{{ url('anime/list/k') }}" class="btn btn-default">K</a>
+                            <a href="{{ url('anime/list/l') }}" class="btn btn-default">L</a>
+                            <a href="{{ url('anime/list/m') }}" class="btn btn-default">M</a>
+                            <a href="{{ url('anime/list/n') }}" class="btn btn-default">N</a>
+                            <a href="{{ url('anime/list/o') }}" class="btn btn-default">O</a>
+                            <a href="{{ url('anime/list/p') }}" class="btn btn-default">P</a>
+                            <a href="{{ url('anime/list/q') }}" class="btn btn-default">Q</a>
+                            <a href="{{ url('anime/list/r') }}" class="btn btn-default">R</a>
+                            <a href="{{ url('anime/list/s') }}" class="btn btn-default">S</a>
+                            <a href="{{ url('anime/list/t') }}" class="btn btn-default">T</a>
+                            <a href="{{ url('anime/list/u') }}" class="btn btn-default">U</a>
+                            <a href="{{ url('anime/list/v') }}" class="btn btn-default">V</a>
+                            <a href="{{ url('anime/list/w') }}" class="btn btn-default">W</a>
+                            <a href="{{ url('anime/list/x') }}" class="btn btn-default">X</a>
+                            <a href="{{ url('anime/list/y') }}" class="btn btn-default">Y</a>
+                            <a href="{{ url('anime/list/z') }}" class="btn btn-default">Z</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <a class="thumbnail" href="#">
-                        <img alt="" src="public/img/anime/73852.jpg">
-                        <span class="anime-season-title">Gatchaman Crowds Insight</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a class="thumbnail" href="#">
-                        <img alt="" src="public/img/anime/74683.jpg">
-                        <span class="anime-season-title">
-                            Charlotte cczxczxc xvxcvxcvxcvxcvcvxv dv dsvsvvxcvxcvxcvxcvxc
-                        </span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a class="thumbnail" href="#">
-                        <img alt="" src="public/img/anime/75104.jpg">
-                        <span class="anime-season-title">God Eater!</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a class="thumbnail" href="#">
-                        <img alt="" src="public/img/anime/75764.jpg">
-                        <span class="anime-season-title">God Eater!</span>
-                    </a>
-                </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
-                    <a class="thumbnail" href="#">
-                        <img alt="" src="public/img/anime/74415.jpg">
-                        <span class="anime-season-title">God Eater!</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a class="thumbnail" href="#">
-                        <img alt="" src="public/img/anime/74929.jpg">
-                        <span class="anime-season-title">God Eater!</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a class="thumbnail" href="#">
-                        <img alt="" src="public/img/anime/75106.jpg">
-                        <span class="anime-season-title">God Eater!</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a class="thumbnail" href="#">
-                        <img alt="" src="public/img/anime/72943.jpg">
-                        <span class="anime-season-title">God Eater!</span>
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <a class="thumbnail" href="#">
-                        <img alt="" src="public/img/anime/69455.jpg">
-                        <span class="anime-season-title">God Eater!</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a class="thumbnail" href="#">
-                        <img alt="" src="public/img/anime/72775.jpg">
-                        <span class="anime-season-title">God Eater!</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a class="thumbnail" href="#">
-                        <img alt="" src="public/img/anime/73588.jpg">
-                        <span class="anime-season-title">God Eater!</span>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a class="thumbnail" href="#">
-                        <img alt="" src="public/img/anime/75082.jpg">
-                        <span class="anime-season-title">God Eater!</span>
-                    </a>
-                </div>
+                @foreach ($animes as $anime)
+                    <div class="col-md-3">
+                        <a class="thumbnail" href="{{ url('anime/' . $anime->slug) }}">
+                            <img src="{{ $anime->photo ? asset($anime->photo) : 'https://placehold.it/150x250' }}"
+                                 alt="{{ $anime->title }}">
+                            <h2 class="anime-season-title">{{ $anime->title }}</h2>
+                        </a>
+                    </div>
+                @endforeach
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    <ul class="pagination">
-                        <li class="disabled"><a href="#">«</a></li>
-                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>
+                    {!! $animes !!}
                 </div>
             </div>
         </div>
@@ -155,7 +80,17 @@
             <h1 class="page-header">
                 <i class="fa fa-thumbs-up fa-fw text-light-blue"></i> Like Us
             </h1>
-            <img alt="Flower" src="public/img/facebookinner.png" style="width:315px;">
+            <div class="widget" id="facebook">
+                <div class="fb-page" data-href="https://www.facebook.com/Animecentertv" data-width="300" data-height="258"
+                     data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"
+                     data-show-posts="false">
+                    <div class="fb-xfbml-parse-ignore">
+                        <blockquote cite="https://www.facebook.com/Animecentertv">
+                            <a href="https://www.facebook.com/Animecentertv">Animecenter.TV Network</a>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
             <script src="http://www.evolvenation.com/delivery.js?id=15&size=300x250" type="text/javascript"></script>
         </div>
     </div>

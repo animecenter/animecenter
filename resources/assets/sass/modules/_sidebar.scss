@@ -26,6 +26,16 @@
   background-color: #a7b1c2;
 }
 
+.color-side {
+  background-color: #293846;
+}
+
+.sidebar-money {
+  font-size: 35px !important;
+  width: 100% !important;
+  padding-top: 10px;
+}
+
 @media (min-width: 768px) {
   .sidebar {
     position: fixed;

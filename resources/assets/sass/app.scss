@@ -62,6 +62,7 @@ $secondary-font: 'Oswald';
 // Main CSS
 body {
   padding-top: 60px;
+  background-color: #f8f8f8;
 }
 
 h1 {
@@ -97,15 +98,34 @@ a {
 }
 
 .page-header {
-  padding-bottom: 9px;
   border-bottom: 1px solid #23B95D;
-  display: inline-block;
-  width: 100%;
+  margin: 20px 0 10px;
+}
+
+.thumbnail {
+  margin-bottom: 10px;
 }
 
 .btn-purple {
   background-color: #8970B3;
   color: white;
+}
+
+.center {
+  display: block;
+  margin: auto;
+  padding: 5px 20px;
+  text-align: center;
+}
+
+.media {
+  background-color: #ffffff;
+}
+
+.media-heading {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .menu-filter {
@@ -184,7 +204,6 @@ a {
 }
 
 #footer {
-  margin-top: 150px;
   background-color: white;
   padding-top: 20px;
 }

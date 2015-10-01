@@ -3,8 +3,6 @@
 namespace AC\Http\Controllers;
 
 use AC\Anime\Anime;
-use AC\Options\Option;
-use AC\Pages\Page;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -22,35 +20,13 @@ class SearchController extends Controller
         'genres' => 'array',
         'scope' => 'string|alpha|max:3'
     ];
-    /**
-     * @var Page
-     */
-    private $page;
-    /**
-     * @var Option
-     */
-    private $option;
 
     /**
      * @param Anime $anime
-     * @param Page $page
-     * @param Option $option
      */
-    public function __construct(Anime $anime, Page $page, Option $option)
+    public function __construct(Anime $anime)
     {
         $this->anime = $anime;
-        $this->page = $page;
-        $this->option = $option;
-        $this->data['animeBanner'] = $this->anime->orderByRaw("RAND()")->where('type2', '=', 'subbed')->take(1)->first();
-        $this->data['topPagesList'] = $this->page->where('position', '=', 'top')
-            ->orderBy('order')->get();
-        $this->data['bottomPagesList'] = $this->page->where('position', '=', 'bottom1')
-            ->orderBy('order')->get();
-        $this->data['bottomPagesList2'] = $this->page->where('position', '=', 'bottom2')
-            ->orderBy('order')->get();
-        $this->data['bottomPagesList3'] = $this->page->where('position', '=', 'bottom3')
-            ->orderBy('order')->get();
-        $this->data['options'] = $this->option->all();
     }
 
     /**

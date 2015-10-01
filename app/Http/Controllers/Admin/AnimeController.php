@@ -159,7 +159,6 @@ class AnimeController extends Controller
         $anime->slug = str_slug($request['title']);
         $anime->episodes = $request['episodes'];
         $anime->type = $request['type'];
-        $anime->type2 = $request['type2'];
         $anime->age = $request['age'];
         $anime->status = $request['status'];
         $anime->prequel = $request['prequel'];

@@ -50,6 +50,22 @@ use Illuminate\Database\Query\Builder;
  * @property-read \AC\Anime\Anime $anime
  * @method static Builder|Episode whereAnimeId($value)
  * @method static Builder|Episode whereSlug($value)
+ * @property float $number
+ * @property string $name
+ * @property string $synopsis
+ * @property boolean $status
+ * @property string $aired_at
+ * @property string $created_at
+ * @property string $updated_at
+ * @property \Carbon\Carbon $deleted_at
+ * @method static \Illuminate\Database\Query\Builder|\AC\Episodes\Episode whereNumber($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Episodes\Episode whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Episodes\Episode whereSynopsis($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Episodes\Episode whereStatus($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Episodes\Episode whereAiredAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Episodes\Episode whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Episodes\Episode whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Episodes\Episode whereDeletedAt($value)
  */
 class Episode extends Model
 {
