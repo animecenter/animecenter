@@ -1,10 +1,10 @@
 <?php
 
-namespace AC\Http\ViewComposers;
+namespace AC\Composers;
 
-use AC\Options\Option;
-use AC\Pages\Page;
-use AC\SEO\SEO;
+use AC\Models\Option;
+use AC\Models\Page;
+use AC\Models\SEO;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\View\View;
 
@@ -56,6 +56,7 @@ class AppComposer
         $this->data['user'] = $this->auth->user();
         $this->data['options'] = $this->option->all();
         $this->data['pages'] = $this->page->get();
+
         // TODO: Get meta data
         $this->data['pageTitle'] = "";
         $this->data['metaTitle'] = "";

@@ -3,24 +3,26 @@
 @section('content')
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <div class="row">
-            <div class="col-xs-12 col-md-12 anime-background"></div>
-            <div class="col-xs-12 col-md-12 anime-background-2">
-                <div class="col-xs-12 col-md-3">
-                    <img src="public/img/anime/Jitsuwa.png">
+            <div class="media anime-background-2">
+                <div class="media-left">
+                    <img src="{{ asset($anime->photo ? $anime->photo : 'https://placehold.it/225x350') }}">
                 </div>
-                <div class="col-xs-12 col-md-6">
-                    <h1>Jitsu wa Watashi wa</h1>
+                <div class="media-body">
+                    <h1>{{ $anime->title }}</h1>
+                    @if ($anime->type)
                     <div class="text-success">
-                        Type:<span class="text-white"> TV</span>
+                        Type:<span class="text-white"> {{ $anime->type->name }}</span>
+                    </div>
+                    @endif
+                    <div class="text-success">
+                        Episodes:<span class="text-white"> {{ $anime->episodes ? $anime->episodes : 'Unknown' }}</span>
                     </div>
                     <div class="text-success">
-                        Episodes:<span class="text-white"> Unknown</span>
+                        Status:<span class="text-white"> {{ $anime->status }}</span>
                     </div>
                     <div class="text-success">
-                        Status:<span class="text-white"> Currently Airing</span>
-                    </div>
-                    <div class="text-success">
-                        Aired:<span class="text-white"> Jul 12, 2015 to ?</span>
+                        Aired:<span class="text-white"> {{ $anime->release_date ? $anime->release_date . ' to ' . (
+                        $anime->end_date ? $anime->end_date : '?') : 'Unknown' }}</span>
                     </div>
                     <div class="text-success">
                         Producers:<span class="text-white"> Bandai Visual, ufotable, Aniplex of AmericaL</span>
@@ -35,19 +37,17 @@
                         Rating:<span class="text-white"> R - 17+ (violence & profanity)</span>
                     </div>
                 </div>
-                <div class="col-xs-11 col-md-10">
-                    <div class="text-success">
-                        Synopsis:
-                        <span class="text-white">
-                        Anime adaptation of Bandai Namco's PSP action game series "God Eater."
-                        Set in a post-apocalyptic Japan in the year 2071. The world has been mostly destroyed by
-                        mysterious monsters known as the Aragami. An organization known as Fenrir was made to exterminate
-                        Aragami using 'God Arcs', weapons made from Aragami cells. Those who specialize in exterminating
-                        Aragami are known as God Eaters. Their God Arcs originally could only keep a single form, however
-                        a new type has been discovered that can switch between gun and blade form. Since then, they have been
-                        classified new-types and the previous as old-types.
-                        </span>
-                    </div>
+                <div class="text-success">
+                    Synopsis:
+                    <span class="text-white">
+                    Anime adaptation of Bandai Namco's PSP action game series "God Eater."
+                    Set in a post-apocalyptic Japan in the year 2071. The world has been mostly destroyed by
+                    mysterious monsters known as the Aragami. An organization known as Fenrir was made to exterminate
+                    Aragami using 'God Arcs', weapons made from Aragami cells. Those who specialize in exterminating
+                    Aragami are known as God Eaters. Their God Arcs originally could only keep a single form, however
+                    a new type has been discovered that can switch between gun and blade form. Since then, they have been
+                    classified new-types and the previous as old-types.
+                    </span>
                 </div>
                 <ul class="col-xs-1 col-md-2 anime-side">
                     <li>

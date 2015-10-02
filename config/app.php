@@ -142,9 +142,9 @@ return [
          */
         AC\Providers\AppServiceProvider::class,
         AC\Providers\AuthServiceProvider::class,
+        AC\Providers\ComposerServiceProvider::class,
         AC\Providers\EventServiceProvider::class,
         AC\Providers\RouteServiceProvider::class,
-        AC\Providers\ViewServiceProvider::class,
 
         // Packages Service Providers...
         Roumen\Sitemap\SitemapServiceProvider::class,

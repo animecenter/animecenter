@@ -2,11 +2,11 @@
 
 namespace AC\Providers;
 
-use AC\Http\ViewComposers\AppComposer;
-use AC\Http\ViewComposers\ErrorComposer;
+use AC\Composers\AppComposer;
+use AC\Composers\ErrorComposer;
 use Illuminate\Support\ServiceProvider;
 
-class ViewServiceProvider extends ServiceProvider
+class ComposerServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -17,8 +17,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         // Using class based composers...
         view()->composer(
-            '*', AppComposer::class,
-            'errors/404', ErrorComposer::class
+            '*', AppComposer::class
         );
     }
 
