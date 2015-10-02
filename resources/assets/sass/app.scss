@@ -33,6 +33,7 @@
 
 // Components w/ JavaScript
 @import "bootstrap/modals";
+@import "bootstrap/carousel";
 
 // Utility classes
 @import "bootstrap/utilities";
@@ -58,6 +59,7 @@ $secondary-font: 'Oswald';
 @import "modules/sidebar";
 @import "modules/footer";
 @import "modules/timeline";
+@import "modules/carousel";
 
 // Main CSS
 body {
@@ -66,44 +68,50 @@ body {
 }
 
 h1 {
-  font-size: 24px;
-}
-
-h2 {
   font-size: 18px;
 }
 
-h3 {
+h2 {
   font-size: 17px;
+  font-weight: bold;
 }
 
-h4 {
+h3 {
   font-size: 16px;
 }
 
-h5 {
+h4 {
   font-size: 15px;
 }
 
-h6 {
+h5 {
   font-size: 14px;
+}
+
+h6 {
+  font-size: 13px;
 }
 
 p {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 a {
-  font-size: 14px;
+  font-size: 13px;
+  color: #000000;
 }
 
 .page-header {
   border-bottom: 1px solid #23B95D;
   margin: 20px 0 10px;
+  font-weight: bold;
+  float: left;
+  width: 100%;
 }
 
 .thumbnail {
   margin-bottom: 10px;
+  color: #000000;
 }
 
 .btn-purple {
@@ -119,6 +127,7 @@ a {
 }
 
 .media {
+  display: block;
   background-color: #ffffff;
 }
 
@@ -196,7 +205,6 @@ a {
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 20px;
-
 }
 
 .anime-footer a {
@@ -250,12 +258,54 @@ a {
   font-size: 12px;
 }
 
+.episode-title {
+  margin: 10px 0;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
 .label {
   border: none;
   font-size: 12px;
 }
 
+.thumbnail .caption {
+  padding: 0;
+}
+
 .label-purple {
   background-color: #8970B3;
   color: white;
+}
+
+.caption .time-release {
+  font-style: italic;
+  text-align: right;
+  font-size: 10px;
+  color: #23B95D;
+  margin: 0;
+}
+
+.caption p {
+  margin: 0 0 5px;
+}
+
+.thumbnail > img, .thumbnail a > img {
+  width: 100%;
+}
+
+.btn-toolbar {
+  margin: 10px 0 10px -5px;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .center-block .thumbnail {
+    width: 300px;
+    margin: 0 auto 10px;
+  }
 }
