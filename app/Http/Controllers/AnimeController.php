@@ -2,8 +2,9 @@
 
 namespace AC\Http\Controllers;
 
-use AC\Anime\Anime;
-use AC\Episodes\Episode;
+use AC\Models\Anime;
+use AC\Models\Episode;
+use Carbon\Carbon;
 
 /**
  * @property  data
@@ -35,6 +36,8 @@ class AnimeController extends Controller
     public function getIndex()
     {
         $this->data['animes'] = $this->anime->orderBy('id', 'DESC')->paginate(20);
+
+        // TODO: Meta data on view composer
         $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List | Watch Anime Online Free";
         $this->data['metaTitle'] = "Subbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
         $this->data['metaDesc'] = $pageTitle . "!. Watch English Subbed. Watch English Sub, Download " .
@@ -58,6 +61,8 @@ class AnimeController extends Controller
             // log user trying to access url that was not declare
             return redirect()->back();
         }
+
+        // TODO: Meta data on view composer
         $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List | Watch Anime Online Free";
         $this->data['metaTitle'] = "Subbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
         $this->data['metaDesc'] = $pageTitle . "!. Watch English Subbed. Watch English Sub, Download " .
@@ -84,6 +89,8 @@ class AnimeController extends Controller
         } else {
             return redirect()->back();
         }
+
+        // TODO: Meta data on view composer
         $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List | Watch Anime Online Free";
         $this->data['metaTitle'] = "Subbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
         $this->data['metaDesc'] = $pageTitle . "!. Watch English Subbed. Watch English Sub, Download " .
@@ -110,6 +117,8 @@ class AnimeController extends Controller
         } else {
             return redirect()->back();
         }
+
+        // TODO: Meta data on view composer
         $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Dubbed Anime List | Watch Anime Online Free";
         $this->data['metaTitle'] = "Dubbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
         $this->data['metaDesc'] = $pageTitle . "!. Watch English Dubbed. Watch English Dub, Download " .
@@ -121,40 +130,21 @@ class AnimeController extends Controller
 
     public function getBySlug($slug)
     {
-        $this->data['anime'] = $anime = $this->anime->with(['episodes' => function ($query) {
-            $query->orderBy('order', 'asc');
+        $this->data['anime'] = $anime = $this->anime->with([
+            'type' => function ($query) {
+            $query->select(['id', 'name']);
+        }, 'episodes' => function ($query) {
+            $query->orderBy('number', 'asc');
         }])->where('slug', '=', $slug)->firstOrFail();
-        $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
+
+        // TODO: Update number of views
+        // $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
+
         $this->data['lastEpisode'] = $this->episode->where('anime_id', '=', $anime['id'])
-            ->where('not_yet_aired', '=', null)
-            ->orWhere('anime_id', '=', $anime['id'])
-            ->where('not_yet_aired', '=', '')
-            ->orderBy('id', 'DESC')
-            ->first();
-        $this->data['genres'] = explode(",", $anime['genres']);
-        $this->data['type'] = explode(",", $anime['type']);
-        $countSimilar = $this->anime->where('id', '=', $anime['id'])
-            ->where('genres', '=', $anime['genres'])
-            ->take(12)->count();
-        $this->data['animeSimilar'] = $this->anime->where('id', '=', $anime['id'])
-            ->where('genres', '=', $anime['genres'])
-            ->take(rand(0, $countSimilar))
-            ->get();
-        switch ($anime['age']) {
-            case "Anyone":
-                $color = "#EE82EE";
-                break;
-            case "Teen +17":
-                $color = "#CC0033";
-                break;
-            case "Teen +18":
-                $color = "#FF0000";
-                break;
-            default:
-                $color = "#C86464";
-        }
-        $this->data['color'] = $color;
-        $this->data['relations'] = $this->getRelated($anime);
+            ->where('aired_at', '<', Carbon::now()->toDateTimeString())
+            ->orderBy('number', 'DESC')->first();
+
+        // TODO: Meta data on view composer
         $this->data['pageTitle'] = $title = $anime['title'] . " English Subbed/Dubbed in HD";
         $this->data['metaTitle'] = "Watch {$anime['title']} Online for Free | Watch Anime Online Free";
         $this->data['metaDesc'] = "Watch " . $title . " Online. Download " . $title . " Online. Watch " .
@@ -165,24 +155,11 @@ class AnimeController extends Controller
         return view('anime.show', $this->data);
     }
 
-    public function getRelated(Anime $anime)
-    {
-        $relations = [
-            'prequel', 'sequel', 'story', 'side_story', 'spin_off', 'alternative', 'other'
-        ];
-        $related = [];
-        foreach ($relations as $relation) {
-            if ($anime[$relation]) {
-                $related[$relation] = $this->anime
-                    ->where('id', '=', explode(',', $anime[$relation])[0])->first();
-            }
-        }
-        return $related;
-    }
-
     public function getLatest()
     {
         $this->data['animes'] = $this->anime->orderBy('id', 'DESC')->paginate(20);
+
+        // TODO: Meta data on view composer
         $this->data['pageTitle'] = "Latest Anime | Watch Anime Online Free";
         $this->data['metaTitle'] = "Watch the Latest Anime for Free Online | Watch Anime Online Free just in Animecenter.tv";
         $this->data['metaDesc'] = "Watch Latest Anime added to the site! Latest English Subbed/Dubbed Anime";

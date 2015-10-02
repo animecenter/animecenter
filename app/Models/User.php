@@ -1,6 +1,6 @@
 <?php
 
-namespace AC\Users;
+namespace AC\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -32,7 +32,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @method static Builder|User whereUpdatedAt($value)
  * @method static Builder|User whereDeletedAt($value)
  * @property string $name
- * @method static \Illuminate\Database\Query\Builder|\AC\Users\User whereName($value)
+ * @method static Builder|User whereName($value)
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
