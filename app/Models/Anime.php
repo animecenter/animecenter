@@ -97,8 +97,8 @@ class Anime extends Model
         'type_id'           => 'int',
         'episodes'          => 'int',
         'status'            => 'string',
-        'release_date'      => 'date',
-        'end_date'          => 'date',
+        'release_date'      => 'string',
+        'end_date'          => 'string',
         'duration'          => 'float',
         'season_id'         => 'int',
         'classification_id' => 'int'
@@ -112,6 +112,16 @@ class Anime extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get classification.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function classification()
+    {
+        return $this->belongsTo(Classification::class, 'classification_id', 'id');
+    }
 
     /**
      * Get all episodes.
@@ -131,6 +141,26 @@ class Anime extends Model
     public function genres()
     {
         return $this->belongsToMany(Genre::class, 'anime_genre', 'anime_id', 'genre_id');
+    }
+
+    /**
+     * Get all producers.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function producers()
+    {
+        return $this->belongsToMany(Producer::class, 'anime_producer', 'anime_id', 'producer_id');
+    }
+
+    /**
+     * Get season.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function season()
+    {
+        return $this->belongsTo(Season::class, 'season_id', 'id');
     }
 
     /**
