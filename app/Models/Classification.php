@@ -10,14 +10,14 @@ use Illuminate\Database\Query\Builder;
  *
  * @property integer $id
  * @property string $name
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon $deleted_at
  * @method static Builder|Classification whereId($value)
  * @method static Builder|Classification whereName($value)
- * @property string $created_at
- * @property string $updated_at
- * @property string $deleted_at
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Classification whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Classification whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Classification whereDeletedAt($value)
+ * @method static Builder|Classification whereCreatedAt($value)
+ * @method static Builder|Classification whereUpdatedAt($value)
+ * @method static Builder|Classification whereDeletedAt($value)
  */
 class Classification extends Model
 {
@@ -47,14 +47,14 @@ class Classification extends Model
      *
      * @var string[]
      */
-    protected $guarded = [''];
+    protected $guarded = ['created_at', 'updated_at', 'deleted_at'];
 
     /**
      * The attributes that should be mutated to dates.
      *
      * @var string[]
      */
-    protected $dates = [''];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     /**
      * The attributes that should be casted to native types.
