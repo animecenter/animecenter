@@ -10,8 +10,12 @@ class CreateGenresTable extends Migration
     {
         Schema::create('genres', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 191)->unique();
+            $table->string('name', 191);
+            $table->string('model', 191);
             $table->text('description')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+            $table->unique(['name', 'model']);
         });
     }
 

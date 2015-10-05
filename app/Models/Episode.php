@@ -29,6 +29,8 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Episode whereCreatedAt($value)
  * @method static Builder|Episode whereUpdatedAt($value)
  * @method static Builder|Episode whereDeletedAt($value)
+ * @property boolean $active
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Episode whereActive($value)
  */
 class Episode extends Model
 {

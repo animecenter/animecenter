@@ -10,7 +10,11 @@ class CreateTypesTable extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 191)->unique();
+            $table->string('name', 191);
+            $table->string('model', 191);
+            $table->timestamps();
+            $table->softDeletes();
+            $table->unique(['name', 'model']);
         });
     }
 
