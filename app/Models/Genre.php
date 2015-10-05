@@ -10,21 +10,19 @@ use Illuminate\Database\Query\Builder;
  *
  * @property integer $id
  * @property string $name
- * @property string $type
+ * @property string $model
  * @property string $description
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  * @method static Builder|Genre whereId($value)
  * @method static Builder|Genre whereName($value)
- * @method static Builder|Genre whereType($value)
+ * @method static Builder|Genre whereModel($value)
  * @method static Builder|Genre whereDescription($value)
- * @property string $model
- * @property string $created_at
- * @property string $updated_at
- * @property string $deleted_at
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Genre whereModel($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Genre whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Genre whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Genre whereDeletedAt($value)
+ * @method static Builder|Genre whereCreatedAt($value)
+ * @method static Builder|Genre whereUpdatedAt($value)
+ * @method static Builder|Genre whereDeletedAt($value)
  */
 class Genre extends Model
 {
@@ -54,14 +52,14 @@ class Genre extends Model
      *
      * @var string[]
      */
-    protected $guarded = [''];
+    protected $guarded = ['created_at', 'updated_at', 'deleted_at'];
 
     /**
      * The attributes that should be mutated to dates.
      *
      * @var string[]
      */
-    protected $dates = [''];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     /**
      * The attributes that should be casted to native types.

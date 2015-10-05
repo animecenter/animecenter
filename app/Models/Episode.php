@@ -13,7 +13,7 @@ use Illuminate\Database\Query\Builder;
  * @property float $number
  * @property string $name
  * @property string $synopsis
- * @property boolean $status
+ * @property boolean $active
  * @property \Carbon\Carbon $aired_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -24,13 +24,11 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Episode whereNumber($value)
  * @method static Builder|Episode whereName($value)
  * @method static Builder|Episode whereSynopsis($value)
- * @method static Builder|Episode whereStatus($value)
+ * @method static Builder|Episode whereActive($value)
  * @method static Builder|Episode whereAiredAt($value)
  * @method static Builder|Episode whereCreatedAt($value)
  * @method static Builder|Episode whereUpdatedAt($value)
  * @method static Builder|Episode whereDeletedAt($value)
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Episode whereActive($value)
  */
 class Episode extends Model
 {
@@ -80,7 +78,7 @@ class Episode extends Model
         'number' => 'float',
         'name' => 'string',
         'synopsis' => 'string',
-        'status' => 'boolean'
+        'active' => 'boolean'
     ];
 
     /**
