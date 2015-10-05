@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Relation
@@ -14,17 +15,72 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $related_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property string $deleted_at
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Relation whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Relation whereRelationshipId($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Relation whereRelationableId($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Relation whereRelationableType($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Relation whereRelatedId($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Relation whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Relation whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Relation whereDeletedAt($value)
+ * @property \Carbon\Carbon $deleted_at
+ * @method static Builder|Relation whereId($value)
+ * @method static Builder|Relation whereRelationshipId($value)
+ * @method static Builder|Relation whereRelationableId($value)
+ * @method static Builder|Relation whereRelationableType($value)
+ * @method static Builder|Relation whereRelatedId($value)
+ * @method static Builder|Relation whereCreatedAt($value)
+ * @method static Builder|Relation whereUpdatedAt($value)
+ * @method static Builder|Relation whereDeletedAt($value)
  */
 class Relation extends Model
 {
-    //
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'relations';
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = true;
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var string[]
+     */
+    protected $hidden = [''];
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var string[]
+     */
+    protected $guarded = ['created_at', 'updated_at', 'deleted_at'];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var string[]
+     */
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var string[]
+     */
+    protected $casts = [
+        'id'                => 'int',
+        'relationship_id'   => 'int',
+        'relationable_id'   => 'int',
+        'relationable_type' => 'string',
+        'related_id'        => 'int'
+    ];
+
+    /**
+     * The validation rules.
+     *
+     * @var string[]
+     */
+    public $rules = [
+        'id' => 'required|integer|min:1'
+    ];
 }

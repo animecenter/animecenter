@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Type
@@ -12,34 +13,68 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $model
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Type whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Type whereName($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Type whereModel($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Type whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Type whereUpdatedAt($value)
+ * @property \Carbon\Carbon $deleted_at
+ * @method static Builder|Type whereId($value)
+ * @method static Builder|Type whereName($value)
+ * @method static Builder|Type whereModel($value)
+ * @method static Builder|Type whereCreatedAt($value)
+ * @method static Builder|Type whereUpdatedAt($value)
+ * @method static Builder|Type whereDeletedAt($value)
  */
 class Type extends Model
 {
     /**
-     * The database table used by the model.
+     * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'types';
 
     /**
-     * The attributes that are mass assignable.
+     * Indicates if the model should be timestamped.
      *
-     * @var array
+     * @var bool
      */
-    protected $fillable = ['name', 'model'];
+    public $timestamps = true;
 
     /**
-     * The attributes excluded from the model's JSON form.
+     * The attributes that should be hidden for arrays.
      *
-     * @var array
+     * @var string[]
      */
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = [''];
 
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var string[]
+     */
+    protected $guarded = ['created_at', 'updated_at', 'deleted_at'];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var string[]
+     */
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var string[]
+     */
+    protected $casts = [
+        'id'    => 'int',
+        'name'  => 'string',
+        'model' => 'string'
+    ];
+
+    /**
+     * The validation rules.
+     *
+     * @var string[]
+     */
+    public $rules = [
+        'id' => 'required|integer|min:1'
+    ];
 }
