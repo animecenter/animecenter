@@ -17,6 +17,14 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Genre whereName($value)
  * @method static Builder|Genre whereType($value)
  * @method static Builder|Genre whereDescription($value)
+ * @property string $model
+ * @property string $created_at
+ * @property string $updated_at
+ * @property string $deleted_at
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Genre whereModel($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Genre whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Genre whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Genre whereDeletedAt($value)
  */
 class Genre extends Model
 {

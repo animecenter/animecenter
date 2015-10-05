@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Role
@@ -13,16 +14,70 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $description
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property string $deleted_at
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Role whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Role whereName($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Role whereDisplayName($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Role whereDescription($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Role whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Role whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Role whereDeletedAt($value)
+ * @property \Carbon\Carbon $deleted_at
+ * @method static Builder|Role whereId($value)
+ * @method static Builder|Role whereName($value)
+ * @method static Builder|Role whereDisplayName($value)
+ * @method static Builder|Role whereDescription($value)
+ * @method static Builder|Role whereCreatedAt($value)
+ * @method static Builder|Role whereUpdatedAt($value)
+ * @method static Builder|Role whereDeletedAt($value)
  */
 class Role extends Model
 {
-    //
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'roles';
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = true;
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var string[]
+     */
+    protected $hidden = [''];
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var string[]
+     */
+    protected $guarded = ['created_at', 'updated_at', 'deleted_at'];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var string[]
+     */
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var string[]
+     */
+    protected $casts = [
+        'id'           => 'int',
+        'name'         => 'string',
+        'display_name' => 'string',
+        'description'  => 'string',
+    ];
+
+    /**
+     * The validation rules.
+     *
+     * @var string[]
+     */
+    public $rules = [
+        'id' => 'required|integer|min:1'
+    ];
 }

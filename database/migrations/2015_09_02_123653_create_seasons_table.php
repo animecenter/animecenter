@@ -13,6 +13,7 @@ class CreateSeasonsTable extends Migration
             $table->string('name', 191)->unique();
             $table->boolean('active')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

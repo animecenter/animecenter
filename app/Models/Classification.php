@@ -12,6 +12,12 @@ use Illuminate\Database\Query\Builder;
  * @property string $name
  * @method static Builder|Classification whereId($value)
  * @method static Builder|Classification whereName($value)
+ * @property string $created_at
+ * @property string $updated_at
+ * @property string $deleted_at
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Classification whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Classification whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Classification whereDeletedAt($value)
  */
 class Classification extends Model
 {
