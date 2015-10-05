@@ -1,6 +1,6 @@
 <?php
 
-namespace AC\Producers;
+namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;

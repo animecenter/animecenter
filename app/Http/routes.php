@@ -37,15 +37,17 @@ $router->post('password/reset', 'Auth\PasswordController@postReset');
 
 // Anime routes...
 $router->get('anime', 'AnimeController@getIndex');
-$router->get('anime/{slug}', 'AnimeController@getBySlug');
-$router->get('anime/latest', 'AnimeController@getLatest');
 $router->get('anime/list/{letter}', 'AnimeController@getListByLetter');
+$router->get('anime/latest', 'AnimeController@getLatest');
 $router->get('anime/subbed', 'AnimeController@getSubbed');
 $router->get('anime/subbed/{letter}', 'AnimeController@getSubbed');
 $router->get('anime/dubbed', 'AnimeController@getDubbed');
 $router->get('anime/dubbed/{letter}', 'AnimeController@getDubbed');
 $router->get('anime/random', 'AnimeController@getRandom');
 $router->get('anime/top', 'AnimeController@getTop');
+$router->get('anime/producers/{id}', 'AnimeController@getByProducerID');
+$router->get('anime/genres/{id}', 'AnimeController@getByGenreID');
+$router->get('anime/{slug}', 'AnimeController@getBySlug');
 
 // Episodes routes...
 $router->get('episodes/latest', 'EpisodeController@getLatest');

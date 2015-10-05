@@ -226,6 +226,7 @@ class UpdateDatabase extends Command
      */
     protected function getAnimes()
     {
+        // TODO: Filter hentai anime
         $animes = Cache::remember('animes', 180, function () {
             return $this->db->connection('mysql1')->table('animes')
                 ->leftJoin('titles as titles1', function ($join) {

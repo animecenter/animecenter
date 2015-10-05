@@ -21,33 +21,38 @@
                         Status:<span class="text-white"> {{ $anime->status }}</span>
                     </div>
                     <div class="text-success">
-                        Aired:<span class="text-white"> {{ $anime->release_date ? $anime->release_date . ' to ' . (
-                        $anime->end_date ? $anime->end_date : '?') : 'Unknown' }}</span>
+                        Aired:<span class="text-white"> {{ ($anime->release_date) ?
+                            ($anime->release_date . ' to ' . ($anime->end_date ? $anime->end_date : '?')) :
+                        'Unknown' }}</span>
                     </div>
                     <div class="text-success">
-                        Producers:<span class="text-white"> Bandai Visual, ufotable, Aniplex of AmericaL</span>
+                        Producers:
+                        <span class="text-white">
+                            @foreach ($anime->producers as $key => $producer)
+                                <a href="{{ url('anime/producers/' . $producer->id) }}">
+                                    {{ $producer->name . ($key < $producersCount ? ',' : '') }}
+                                </a>
+                            @endforeach
+                        </span>
                     </div>
                     <div class="text-success">
-                        Genres:<span class="text-white"> Comedy, Fantasy, Romance, School, Shounen</span>
+                        Genres:
+                        <span class="text-white">
+                            @foreach ($anime->genres as $genre)
+                                {{ $genre->name }}
+                            @endforeach
+                        </span>
                     </div>
                     <div class="text-success">
                         Duration:<span class="text-white"> 23 min. per episode</span>
                     </div>
                     <div class="text-success">
-                        Rating:<span class="text-white"> R - 17+ (violence & profanity)</span>
+                        Rating:<span class="text-white">{{ $anime->classification->name }}</span>
                     </div>
                 </div>
                 <div class="text-success">
                     Synopsis:
-                    <span class="text-white">
-                    Anime adaptation of Bandai Namco's PSP action game series "God Eater."
-                    Set in a post-apocalyptic Japan in the year 2071. The world has been mostly destroyed by
-                    mysterious monsters known as the Aragami. An organization known as Fenrir was made to exterminate
-                    Aragami using 'God Arcs', weapons made from Aragami cells. Those who specialize in exterminating
-                    Aragami are known as God Eaters. Their God Arcs originally could only keep a single form, however
-                    a new type has been discovered that can switch between gun and blade form. Since then, they have been
-                    classified new-types and the previous as old-types.
-                    </span>
+                    <p class="text-white">{{ $anime->synopsis }}</p>
                 </div>
                 <ul class="col-xs-1 col-md-2 anime-side">
                     <li>
