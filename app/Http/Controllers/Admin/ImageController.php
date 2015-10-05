@@ -3,7 +3,7 @@
 namespace AC\Http\Controllers\Admin;
 
 use AC\Http\Controllers\Controller;
-use AC\Images\Image;
+use AC\Models\Image;
 use Illuminate\Auth\Guard;
 use Illuminate\Http\Request;
 

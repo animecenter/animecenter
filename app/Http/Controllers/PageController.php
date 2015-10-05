@@ -2,11 +2,11 @@
 
 namespace AC\Http\Controllers;
 
-use AC\Anime\Anime;
-use AC\Episodes\Episode;
-use AC\Genres\Genre;
-use AC\Images\Image;
-use AC\Pages\Page;
+use AC\Models\Anime;
+use AC\Models\Episode;
+use AC\Models\Genre;
+use AC\Models\Image;
+use AC\Models\Page;
 
 class PageController extends Controller
 {

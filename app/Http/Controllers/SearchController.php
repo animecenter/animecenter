@@ -2,7 +2,7 @@
 
 namespace AC\Http\Controllers;
 
-use AC\Anime\Anime;
+use AC\Models\Anime;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 

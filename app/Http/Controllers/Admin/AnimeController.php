@@ -2,9 +2,9 @@
 
 namespace AC\Http\Controllers\Admin;
 
-use AC\Anime\Anime;
-use AC\Genres\Genre;
 use AC\Http\Controllers\Controller;
+use AC\Models\Anime;
+use AC\Models\Genre;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
