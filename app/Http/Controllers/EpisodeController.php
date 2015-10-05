@@ -2,8 +2,8 @@
 
 namespace AC\Http\Controllers;
 
-use AC\Anime\Anime;
-use AC\Episodes\Episode;
+use AC\Models\Anime;
+use AC\Models\Episode;
 
 class EpisodeController extends Controller
 {

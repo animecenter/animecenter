@@ -51,8 +51,8 @@ $fifth-color: #f5f5f5;
 
 // Font family
 $font-stack: 'PT Sans', Helvetica, sans-serif;
-$primary-font: 'Roboto';
-$secondary-font: 'Oswald';
+$primary-font: "Roboto";
+$secondary-font: "Oswald";
 
 // Modules
 @import "modules/navbar";
@@ -98,11 +98,11 @@ p {
 
 a {
   font-size: 13px;
-  color: #000000;
+  color: #000;
 }
 
 .page-header {
-  border-bottom: 1px solid #23B95D;
+  border-bottom: 1px solid #23b95d;
   margin: 20px 0 10px;
   font-weight: bold;
   float: left;
@@ -111,12 +111,12 @@ a {
 
 .thumbnail {
   margin-bottom: 10px;
-  color: #000000;
+  color: #000;
 }
 
 .btn-purple {
-  background-color: #8970B3;
-  color: white;
+  background-color: #8970b3;
+  color: #fff;
 }
 
 .center {
@@ -128,7 +128,7 @@ a {
 
 .media {
   display: block;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .media-heading {
@@ -144,7 +144,7 @@ a {
 
 .anime-title {
   background: #293846;
-  color: white;
+  color: #fff;
   text-shadow: 0 1px 1px #000;
   border-bottom: 1px solid #000;
 }
@@ -161,35 +161,35 @@ a {
 }
 
 .text-white {
-  color: #ffffff
+  color: #fff;
 }
 
 .text-yellow {
-  color: #ffff00
+  color: #ff0;
 }
 
 .text-pink {
-  color: #FF9FB0
+  color: #FF9FB0;
 }
 
 .text-light-blue {
-  color: #09bfff
+  color: #09bfff;
 }
 
 .text-orange {
-  color: #ffa500
+  color: #ffa500;
 }
 
 .text-purple {
-  color: #8970B3
+  color: #8970b3;
 }
 
 .text-dark-pink {
-  color: #ff27d7
+  color: #ff27d7;
 }
 
 .text-dark-blue {
-  color: #0084ff
+  color: #0084ff;
 }
 
 .text-danger {
@@ -197,22 +197,23 @@ a {
 }
 
 .text-success {
-  color: #23B95D;
+  color: #23b95d;
 }
 
 .anime-footer {
-  background-color: black;
+  background-color: #000;
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 20px;
-}
 
-.anime-footer a {
-  color: white;
+  a {
+    color: #fff;
+  }
+
 }
 
 #footer {
-  background-color: white;
+  background-color: #fff;
   padding-top: 20px;
 }
 
@@ -220,12 +221,8 @@ a {
   background-size: cover;
   height: 100%;
   width: 100%;
-  -webkit-filter: blur(8px);
-  -moz-filter: blur(8px);
-  -o-filter: blur(8px);
-  -ms-filter: blur(8px);
   filter: blur(8px);
-  content: ' ';
+  content: " ";
   position: absolute;
   z-index: -1;
   overflow: hidden;
@@ -233,7 +230,7 @@ a {
 
 .anime-background-2 {
   background: rgba(0, 0, 0, 0.6);
-  color: white;
+  color: #fff;
   text-shadow: 0 1px 1px #000;
   padding: 10px;
 }
@@ -248,10 +245,10 @@ a {
   font-size: 30px;
   padding: 10px;
   text-align: center;
-}
+  li {
+    padding-top: 10px;
+  }
 
-.anime-side li {
-  padding-top: 10px;
 }
 
 .episode-list {
@@ -275,20 +272,22 @@ a {
 }
 
 .label-purple {
-  background-color: #8970B3;
-  color: white;
+  background-color: #8970b3;
+  color: #fff;
 }
 
-.caption .time-release {
-  font-style: italic;
-  text-align: right;
-  font-size: 10px;
-  color: #23B95D;
-  margin: 0;
-}
+.caption {
+  .time-release {
+    font-style: italic;
+    text-align: right;
+    font-size: 10px;
+    color: #23b95d;
+    margin: 0;
+  }
 
-.caption p {
-  margin: 0 0 5px;
+  p {
+    margin: 0 0 5px;
+  }
 }
 
 .thumbnail > img, .thumbnail a > img {

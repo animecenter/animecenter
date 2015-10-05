@@ -3,7 +3,7 @@
 namespace AC\Http\Controllers\Admin;
 
 use AC\Http\Controllers\Controller;
-use AC\Options\Option;
+use AC\Models\Option;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 

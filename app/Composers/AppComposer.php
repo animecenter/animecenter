@@ -4,7 +4,6 @@ namespace AC\Composers;
 
 use AC\Models\Option;
 use AC\Models\Page;
-use AC\Models\SEO;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\View\View;
 
@@ -26,23 +25,16 @@ class AppComposer
     private $option;
 
     /**
-     * @var SEO
-     */
-    private $seo;
-
-    /**
      * Create a new page error composer.
      * @param Guard $auth
      * @param Page $page
      * @param Option $option
-     * @param SEO $seo
      */
-    public function __construct(Guard $auth, Page $page, Option $option, SEO $seo)
+    public function __construct(Guard $auth, Page $page, Option $option)
     {
         $this->auth = $auth;
         $this->page = $page;
         $this->option = $option;
-        $this->seo = $seo;
     }
 
     /**
