@@ -37,22 +37,34 @@ $router->post('password/reset', 'Auth\PasswordController@postReset');
 
 // Anime routes...
 $router->get('anime', 'AnimeController@getIndex');
-$router->get('anime/list/{letter}', 'AnimeController@getListByLetter');
 $router->get('anime/latest', 'AnimeController@getLatest');
+$router->get('anime/latest/{letter}', 'AnimeController@getLatestByLetter');
 $router->get('anime/subbed', 'AnimeController@getSubbed');
-$router->get('anime/subbed/{letter}', 'AnimeController@getSubbed');
+$router->get('anime/subbed/{letter}', 'AnimeController@getSubbedByLetter');
 $router->get('anime/dubbed', 'AnimeController@getDubbed');
-$router->get('anime/dubbed/{letter}', 'AnimeController@getDubbed');
-$router->get('anime/random', 'AnimeController@getRandom');
-$router->get('anime/top', 'AnimeController@getTop');
-$router->get('anime/producers/{id}', 'AnimeController@getByProducerID');
+$router->get('anime/dubbed/{letter}', 'AnimeController@getDubbedByLetter');
+$router->get('anime/classification/{id}', 'AnimeController@getByClassificationID');
+$router->get('anime/classification/{id}/{letter}', 'AnimeController@getByClassificationIDAndLetter');
 $router->get('anime/genres/{id}', 'AnimeController@getByGenreID');
-$router->get('anime/{slug}', 'AnimeController@getBySlug');
+$router->get('anime/genres/{id}/{letter}', 'AnimeController@getByGenreIDAndLetter');
+$router->get('anime/producers/{id}', 'AnimeController@getByProducerID');
+$router->get('anime/producers/{id}/{letter}', 'AnimeController@getByProducerIDAndLetter');
+$router->get('anime/season/{id}', 'AnimeController@getBySeasonID');
+$router->get('anime/season/{id}/{letter}', 'AnimeController@getBySeasonIDAndLetter');
+$router->get('anime/type/{id}', 'AnimeController@getByTypeID');
+$router->get('anime/type/{id}/{letter}', 'AnimeController@getByTypeIDAndLetter');
+$router->get('anime/top', 'AnimeController@getTop');
+$router->get('anime/top/{letter}', 'AnimeController@getTopByLetter');
+$router->get('anime/random', 'AnimeController@getRandom');
+$router->get('anime/{letter}', 'AnimeController@getIndex');
 
 // Episodes routes...
 $router->get('episodes/latest', 'EpisodeController@getLatest');
-$router->get('watch/{slug}/{mirror}', 'EpisodeController@getEpisodeMirror');
-$router->get('watch/{slug}', 'EpisodeController@getEpisode');
+
+// Watch routes...
+$router->get('watch/{slug}', 'WatchController@getBySlug');
+$router->get('watch/{slug}/episode/{number}', 'WatchController@getEpisode');
+$router->get('watch/{slug}/episode/{number}/{mirror}', 'WatchController@getEpisodeMirror');
 
 // Search routes...
 $router->get('explore', 'SearchController@index');

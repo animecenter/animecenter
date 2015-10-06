@@ -74,4 +74,14 @@ class Relationship extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get relations.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function relations()
+    {
+        return $this->hasMany(Relation::class, 'relationship_id', 'id');
+    }
 }

@@ -105,7 +105,7 @@ class Anime extends Model
         'status'            => 'string',
         'release_date'      => 'string',
         'end_date'          => 'string',
-        'duration'          => 'float',
+        'duration'          => 'string',
         'season_id'         => 'int',
         'classification_id' => 'int'
     ];
@@ -170,6 +170,16 @@ class Anime extends Model
     }
 
     /**
+     * Get relations.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function relations()
+    {
+        return $this->morphMany(Relation::class, 'relations');
+    }
+
+    /**
      * Get season.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -219,4 +229,18 @@ class Anime extends Model
         return $this->morphMany(Vote::class, 'votes');
     }
 
+    /**
+     * Get the anime's duration.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getDurationAttribute($value)
+    {
+        $value = explode(':', $value);
+        $hours = str_replace([0], '', $value[0]);
+        $minutes = str_replace([0], '', $value[1]);
+        // $secs = str_replace([0], '', $value[2]);
+        return (($hours) ? $hours . ' hr. ' : '') . (($minutes) ? $minutes . ' min. per episode' : 'Unknown');
+    }
 }
