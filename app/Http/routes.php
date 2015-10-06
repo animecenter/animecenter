@@ -55,7 +55,7 @@ $router->get('watch/{slug}/{mirror}', 'EpisodeController@getEpisodeMirror');
 $router->get('watch/{slug}', 'EpisodeController@getEpisode');
 
 // Search routes...
-$router->get('browse', 'SearchController@index');
+$router->get('explore', 'SearchController@index');
 $router->get('search', 'SearchController@show');
 
 // Rating routes...

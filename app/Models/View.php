@@ -18,6 +18,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|View whereViewableId($value)
  * @method static Builder|View whereViewableType($value)
  * @method static Builder|View whereCount($value)
+ * @property-read \ $viewable
  */
 class View extends Model
 {
@@ -77,4 +78,14 @@ class View extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get all of the owning viewable models.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function viewable()
+    {
+        return $this->morphTo();
+    }
 }

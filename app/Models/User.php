@@ -31,6 +31,11 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @method static Builder|User whereCreatedAt($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @method static Builder|User whereDeletedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|Image[] $images
+ * @property-read \Illuminate\Database\Eloquent\Collection|Mirror[] $mirrors
+ * @property-read \Illuminate\Database\Eloquent\Collection|MirrorReport[] $mirrorReports
+ * @property-read \Illuminate\Database\Eloquent\Collection|Role[] $roles
+ * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
@@ -83,4 +88,54 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'password'       => 'string',
         'remember_token' => 'string'
     ];
+
+    /**
+     * Get images.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get mirrors.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function mirrors()
+    {
+        return $this->hasMany(Mirror::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get mirror reports.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function mirrorReports()
+    {
+        return $this->hasMany(MirrorReport::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get roles.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user', 'role_id', 'user_id');
+    }
+
+    /**
+     * Get votes.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function votes()
+    {
+        return $this->hasMany(Vote::class, 'user_id', 'id');
+    }
 }

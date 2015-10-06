@@ -25,8 +25,14 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ * @property-read Classification $classification
  * @property-read \Illuminate\Database\Eloquent\Collection|Genre[] $genres
+ * @property-read \Illuminate\Database\Eloquent\Collection|Producer[] $producers
+ * @property-read Season $season
+ * @property-read \Illuminate\Database\Eloquent\Collection|Title[] $titles
  * @property-read Type $type
+ * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
+ * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
  * @method static Builder|Anime whereId($value)
  * @method static Builder|Anime whereMalId($value)
  * @method static Builder|Anime whereTitle($value)
@@ -124,7 +130,7 @@ class Anime extends Model
     }
 
     /**
-     * Get all episodes.
+     * Get episodes.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -134,7 +140,7 @@ class Anime extends Model
     }
 
     /**
-     * Get all genres.
+     * Get genres.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -144,7 +150,17 @@ class Anime extends Model
     }
 
     /**
-     * Get all producers.
+     * Get image.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'images');
+    }
+
+    /**
+     * Get producers.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -164,6 +180,16 @@ class Anime extends Model
     }
 
     /**
+     * Get titles.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function titles()
+    {
+        return $this->morphMany(Title::class, 'titles');
+    }
+
+    /**
      * Get type.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -172,4 +198,25 @@ class Anime extends Model
     {
         return $this->belongsTo(Type::class, 'type_id', 'id');
     }
+
+    /**
+     * Get views.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function views()
+    {
+        return $this->morphMany(View::class, 'viewable');
+    }
+
+    /**
+     * Get votes.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function votes()
+    {
+        return $this->morphMany(Vote::class, 'votes');
+    }
+
 }

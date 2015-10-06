@@ -18,6 +18,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|MirrorSource whereCreatedAt($value)
  * @method static Builder|MirrorSource whereUpdatedAt($value)
  * @method static Builder|MirrorSource whereDeletedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|Mirror[] $mirrors
  */
 class MirrorSource extends Model
 {
@@ -74,4 +75,14 @@ class MirrorSource extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get mirrors.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function mirrors()
+    {
+        return $this->hasMany(Mirror::class, 'mirror_source_id', 'id');
+    }
 }

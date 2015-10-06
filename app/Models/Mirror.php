@@ -36,6 +36,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Mirror whereCreatedAt($value)
  * @method static Builder|Mirror whereUpdatedAt($value)
  * @method static Builder|Mirror whereDeletedAt($value)
+ * @property-read Episode $episode
+ * @property-read MirrorSource $mirrorSource
+ * @property-read \Illuminate\Database\Eloquent\Collection|MirrorReport[] $mirrorReports
  */
 class Mirror extends Model
 {
@@ -101,4 +104,35 @@ class Mirror extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get episode.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function episode()
+    {
+        return $this->belongsTo(Episode::class, 'id', 'episode_id');
+    }
+
+    /**
+     * Get mirror source.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function mirrorSource()
+    {
+        return $this->belongsTo(MirrorSource::class, 'id', 'mirror_id');
+    }
+
+    /**
+     * Get mirror reports.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function mirrorReports()
+    {
+        return $this->hasMany(MirrorReport::class, 'mirror_id', 'id');
+    }
+
 }

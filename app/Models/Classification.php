@@ -18,6 +18,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Classification whereCreatedAt($value)
  * @method static Builder|Classification whereUpdatedAt($value)
  * @method static Builder|Classification whereDeletedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  */
 class Classification extends Model
 {
@@ -74,4 +75,14 @@ class Classification extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get animes.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function animes()
+    {
+        return $this->hasMany(Anime::class, 'classification_id', 'id');
+    }
 }

@@ -29,6 +29,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Episode whereCreatedAt($value)
  * @method static Builder|Episode whereUpdatedAt($value)
  * @method static Builder|Episode whereDeletedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|Mirror[] $mirrors
+ * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
+ * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
  */
 class Episode extends Model
 {
@@ -92,9 +95,41 @@ class Episode extends Model
 
     /**
      * Get the anime that owns the episode.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function anime()
     {
-        return $this->belongsTo(Anime::class);
+        return $this->belongsTo(Anime::class, 'anime_id', 'id');
+    }
+
+    /**
+     * Get all mirrors.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function mirrors()
+    {
+        return $this->hasMany(Mirror::class, 'episode_id', 'id');
+    }
+
+    /**
+     * Get all of the episodes views.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function views()
+    {
+        return $this->morphMany(View::class, 'viewable');
+    }
+
+    /**
+     * Get votes.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function votes()
+    {
+        return $this->morphMany(Vote::class, 'votes');
     }
 }
