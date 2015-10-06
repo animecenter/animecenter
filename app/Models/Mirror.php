@@ -134,5 +134,4 @@ class Mirror extends Model
     {
         return $this->hasMany(MirrorReport::class, 'mirror_id', 'id');
     }
-
 }

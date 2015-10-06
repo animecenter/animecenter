@@ -2,9 +2,13 @@
 
 namespace AC\Http\Controllers;
 
-use AC\Repositories\AnimeRepository as Anime;
+use AC\Models\Classification;
+use AC\Models\Genre;
+use AC\Models\Producer;
+use AC\Models\Season;
+use AC\Models\Type;
+use AC\Repositories\EloquentAnimeRepository as Anime;
 use AC\Models\Episode;
-use Carbon\Carbon;
 
 class AnimeController extends Controller
 {
@@ -16,135 +20,199 @@ class AnimeController extends Controller
     private $anime;
 
     /**
+     * @var Classification
+     */
+    private $classification;
+
+    /**
      * @var Episode
      */
     private $episode;
 
     /**
-     * @param Anime $anime
-     * @param Episode $episode
+     * @var Genre
      */
-    public function __construct(Anime $anime, Episode $episode)
+    private $genre;
+
+    /**
+     * @var Producer
+     */
+    private $producer;
+
+    /**
+     * @var Season
+     */
+    private $season;
+
+    /**
+     * @var Type
+     */
+    private $type;
+
+    /**
+     * @param Anime $anime
+     * @param Classification $classification
+     * @param Episode $episode
+     * @param Genre $genre
+     * @param Producer $producer
+     * @param Season $season
+     * @param Type $type
+     */
+    public function __construct(Anime $anime, Classification $classification, Episode $episode, Genre $genre, Producer $producer, Season $season, Type $type)
     {
         $this->anime = $anime;
+        $this->classification = $classification;
         $this->episode = $episode;
+        $this->genre = $genre;
+        $this->producer = $producer;
+        $this->season = $season;
+        $this->type = $type;
+
+        $this->data['classifications'] = $this->classification->where('name', '<>', 'Rx - Hentai')->get(['id', 'name']);
+        $this->data['genres'] = $this->genre->where('model', '=', 'Anime')->get(['id', 'name']);
+        $this->data['producers'] = $this->producer->get(['id', 'name']);
+        $this->data['seasons'] = $this->season->orderBy('name', 'DESC')->get(['id', 'name']);
+        $this->data['types'] = $this->type->where('model', '=', 'Anime')->get(['id', 'name']);
     }
 
-    public function getIndex()
+    public function getIndex($letter = '')
     {
-        $this->data['animes'] = $this->anime->all();
-
-        // TODO: Meta data on view composer
-        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List | Watch Anime Online Free";
-        $this->data['metaTitle'] = "Subbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
-        $this->data['metaDesc'] = $pageTitle . "!. Watch English Subbed. Watch English Sub, Download " .
-            "Anime for free. Watch Online English Subbed Online for Free only at Anime Center";
-        $this->data['metaKey'] = "Anime Subbed, Watch Anime, Download Anime, Watch Anime on iphone, Anime for Free";
+        $this->data['animes'] = $this->anime->getAllByLetter($letter);
+        $this->data['currentURL'] = $this->getCurrentURL($letter);
 
         return view('anime.index', $this->data);
     }
 
     public function getLatest()
     {
-        $this->data['animes'] = $this->anime->latest();
-
-        // TODO: Meta data on view composer
-        $this->data['pageTitle'] = "Latest Anime | Watch Anime Online Free";
-        $this->data['metaTitle'] = "Watch the Latest Anime for Free Online | Watch Anime Online Free just in Animecenter.tv";
-        $this->data['metaDesc'] = "Watch Latest Anime added to the site! Latest English Subbed/Dubbed Anime";
-        $this->data['metaKey'] = "Latest Anime, Watch Latest Anime, Watch on Iphone, Watch Anime" . " Online, English Subbed/Dubbed";
+        $this->data['animes'] = $this->anime->getLatestByLetter();
+        $this->data['currentURL'] = $this->getCurrentURL();
 
         return view('anime.index', $this->data);
     }
 
-    public function getBySlug($slug)
+    public function getLatestByLetter($letter)
     {
-        $this->data['anime'] = $anime = $this->anime->getBySlug($slug);
-        $this->data['producersCount'] = $anime->producers->count() - 1;
+        $this->data['animes'] = $this->anime->getLatestByLetter($letter);
+        $this->data['currentURL'] = $this->getCurrentURL($letter);
 
-        // TODO: Update number of views
-        // $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
-
-        $this->data['lastEpisode'] = $this->episode->where('anime_id', '=', $anime['id'])
-            ->where('aired_at', '<', Carbon::now()->toDateTimeString())
-            ->orderBy('number', 'DESC')->first();
-
-        // TODO: Meta data on view composer
-        $this->data['pageTitle'] = $title = $anime['title'] . " English Subbed/Dubbed in HD";
-        $this->data['metaTitle'] = "Watch {$anime['title']} Online for Free | Watch Anime Online Free";
-        $this->data['metaDesc'] = "Watch " . $title . " Online. Download " . $title . " Online. Watch " .
-            $anime['title'] . " English Sub/Dub HD";
-        $this->data['metaKey'] = "Watch {$anime['title']}, {$anime['title']} English Subbed/Dubbed, Download " .
-            "{$anime['title']} English Subbed/Dubbed, Watch {$anime['title']} Online";
-
-        return view('anime.show', $this->data);
+        return view('anime.index', $this->data);
     }
 
-    public function getByProducerID($id = 0)
+    public function getByClassificationID($id = 0)
     {
-        $this->data['animes'] = $this->anime->getByProducer($id);
+        $this->data['animes'] = $this->anime->getByClassificationAndLetter($id);
+        $this->data['currentURL'] = $this->getCurrentURL();
 
-        // TODO: Meta data on view composer
-        $this->data['pageTitle'] = "Latest Anime | Watch Anime Online Free";
-        $this->data['metaTitle'] = "Watch the Latest Anime for Free Online | Watch Anime Online Free just in Animecenter.tv";
-        $this->data['metaDesc'] = "Watch Latest Anime added to the site! Latest English Subbed/Dubbed Anime";
-        $this->data['metaKey'] = "Latest Anime, Watch Latest Anime, Watch on Iphone, Watch Anime" . " Online, English Subbed/Dubbed";
+        return view('anime.index', $this->data);
+    }
+
+    public function getByClassificationIDAndLetter($id = 0, $letter = '')
+    {
+        $this->data['animes'] = $this->anime->getByClassificationAndLetter($id, $letter);
+        $this->data['currentURL'] = $this->getCurrentURL($letter);
 
         return view('anime.index', $this->data);
     }
 
     public function getByGenreID($id = 0)
     {
-        $this->data['animes'] = $this->anime->getByGenre($id);
-
-        // TODO: Meta data on view composer
-        $this->data['pageTitle'] = "Latest Anime | Watch Anime Online Free";
-        $this->data['metaTitle'] = "Watch the Latest Anime for Free Online | Watch Anime Online Free just in Animecenter.tv";
-        $this->data['metaDesc'] = "Watch Latest Anime added to the site! Latest English Subbed/Dubbed Anime";
-        $this->data['metaKey'] = "Latest Anime, Watch Latest Anime, Watch on Iphone, Watch Anime" . " Online, English Subbed/Dubbed";
+        $this->data['animes'] = $this->anime->getByGenreAndLetter($id);
+        $this->data['currentURL'] = $this->getCurrentURL();
 
         return view('anime.index', $this->data);
     }
 
-    public function getListByLetter($letter = '')
+    public function getByGenreIDAndLetter($id = 0, $letter = '')
     {
-        $this->data['animes'] = $animes = $this->anime->getAllByLetter($letter);
-
-        // TODO: Meta data on view composer
-        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List | Watch Anime Online Free";
-        $this->data['metaTitle'] = "Subbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
-        $this->data['metaDesc'] = $pageTitle . "!. Watch English Subbed. Watch English Sub, Download " .
-            "Anime for free. Watch Online English Subbed Online for Free only at Anime Center";
-        $this->data['metaKey'] = "Anime Subbed, Watch Anime, Download Anime, Watch Anime on iphone, Anime for Free";
+        $this->data['animes'] = $this->anime->getByGenreAndLetter($id, $letter);
+        $this->data['currentURL'] = $this->getCurrentURL($letter);
 
         return view('anime.index', $this->data);
     }
 
-    public function getSubbed($letter = '')
+    public function getByProducerID($id = 0)
     {
-        $this->data['animes'] = $this->anime->getByLetter($letter);
+        $this->data['animes'] = $this->anime->getByProducerAndLetter($id);
+        $this->data['currentURL'] = $this->getCurrentURL();
 
-        // TODO: Meta data on view composer
-        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Subbed Anime List | Watch Anime Online Free";
-        $this->data['metaTitle'] = "Subbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
-        $this->data['metaDesc'] = $pageTitle . "!. Watch English Subbed. Watch English Sub, Download " .
-            "Anime for free. Watch Online English Subbed Online for Free only at Anime Center";
-        $this->data['metaKey'] = "Anime Subbed, Watch Anime, Download Anime, Watch Anime on iphone, Anime for Free";
-
-        return view('anime.list-subbed', $this->data);
+        return view('anime.index', $this->data);
     }
 
-    public function getDubbed($letter = '')
+    public function getByProducerIDAndLetter($id = 0, $letter = '')
     {
-        $this->data['animes'] = $this->anime->getByLetter($letter);
+        $this->data['animes'] = $this->anime->getByProducerAndLetter($id, $letter);
+        $this->data['currentURL'] = $this->getCurrentURL($letter);
 
-        // TODO: Meta data on view composer
-        $this->data['pageTitle'] = $pageTitle = "Watch Anime Online / Dubbed Anime List | Watch Anime Online Free";
-        $this->data['metaTitle'] = "Dubbed Anime List for Free | Watch Anime Online Free just in Animecenter.tv";
-        $this->data['metaDesc'] = $pageTitle . "!. Watch English Dubbed. Watch English Dub, Download " .
-            "Anime for free. Watch Online English Dubbed Online for Free only at Anime Center";
-        $this->data['metaKey'] = "Anime Dubbed, Watch Anime, Download Anime, Watch Anime on iphone, Anime for Free";
+        return view('anime.index', $this->data);
+    }
 
-        return view('anime.list-dubbed', $this->data);
+    public function getBySeasonID($id = 0)
+    {
+        $this->data['animes'] = $this->anime->getBySeasonAndLetter($id);
+        $this->data['currentURL'] = $this->getCurrentURL();
+
+        return view('anime.index', $this->data);
+    }
+
+    public function getBySeasonIDAndLetter($id = 0, $letter = '')
+    {
+        $this->data['animes'] = $this->anime->getBySeasonAndLetter($id, $letter);
+        $this->data['currentURL'] = $this->getCurrentURL($letter);
+
+        return view('anime.index', $this->data);
+    }
+
+    public function getByTypeID($id = 0)
+    {
+        $this->data['animes'] = $this->anime->getByTypeAndLetter($id);
+        $this->data['currentURL'] = $this->getCurrentURL();
+
+        return view('anime.index', $this->data);
+    }
+
+    public function getByTypeIDAndLetter($id = 0, $letter = '')
+    {
+        $this->data['animes'] = $this->anime->getByTypeAndLetter($id, $letter);
+        $this->data['currentURL'] = $this->getCurrentURL($letter);
+
+        return view('anime.index', $this->data);
+    }
+
+    public function getSubbed()
+    {
+        $this->data['animes'] = $this->anime->getSubbedByLetter();
+        $this->data['currentURL'] = $this->getCurrentURL();
+
+        return view('anime.index', $this->data);
+    }
+
+    public function getSubbedByLetter($letter = '')
+    {
+        $this->data['animes'] = $this->anime->getSubbedByLetter($letter);
+        $this->data['currentURL'] = $this->getCurrentURL();
+
+        return view('anime.index', $this->data);
+    }
+
+    public function getDubbed()
+    {
+        $this->data['animes'] = $this->anime->getDubbedByLetter();
+        $this->data['currentURL'] = $this->getCurrentURL();
+
+        return view('anime.index', $this->data);
+    }
+
+    public function getDubbedByLetter($letter = '')
+    {
+        $this->data['animes'] = $this->anime->getDubbedByLetter($letter);
+        $this->data['currentURL'] = $this->getCurrentURL();
+
+        return view('anime.index', $this->data);
+    }
+
+    public function getCurrentURL($letter = '')
+    {
+        return $letter ? str_replace('/' . $letter, '', request()->path()) : request()->path();
     }
 }
