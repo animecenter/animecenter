@@ -44,30 +44,16 @@
                         </span>
                     </div>
                     <div class="text-success">
-                        Duration:<span class="text-white"> 23 min. per episode</span>
+                        Duration:<span class="text-white"> {{ $anime->duration }}</span>
                     </div>
                     <div class="text-success">
-                        Rating:<span class="text-white">{{ $anime->classification->name }}</span>
+                        Rating:<span class="text-white"> {{ $anime->classification->name }}</span>
                     </div>
                 </div>
                 <div class="text-success">
                     Synopsis:
-                    <p class="text-white">{{ $anime->synopsis }}</p>
+                    <p class="text-white"> {{ $anime->synopsis }}</p>
                 </div>
-                <ul class="col-xs-1 col-md-2 anime-side">
-                    <li>
-                        <i class="fa fa-star fa-fw text-yellow"></i>
-                    </li>
-                    <li>
-                        <i class="fa fa-heart fa-fw text-danger"></i>
-                    </li>
-                    <li>
-                        <i class="fa fa-edit fa-fw text-pink"></i>
-                    </li>
-                    <li>
-                        <i class="fa fa-book fa-fw text-dark-blue"></i>
-                    </li>
-                </ul>
             </div>
             <div class="col-xs-12 col-md-12 anime-footer">
                 <div class="col-xs-12 col-md-3">

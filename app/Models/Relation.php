@@ -83,4 +83,24 @@ class Relation extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get relations.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function relationable()
+    {
+        return $this->morphTo();
+    }
+
+    /**
+     * Get relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function relationship()
+    {
+        return $this->belongsTo(Relationship::class, 'id', 'relationship_id');
+    }
 }

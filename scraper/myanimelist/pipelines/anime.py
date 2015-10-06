@@ -309,14 +309,14 @@ class MySQLStorePipeline(object):
             year = date[0]
             month = int(date[1])
             if month >= 10:
-                season = 'Fall '
+                season = ' Fall'
             elif month >= 7:
-                season = 'Summer '
+                season = ' Summer'
             elif month >= 4:
-                season = 'Spring '
+                season = ' Spring'
             else:
-                season = 'Winter '
-            season = season + year
+                season = ' Winter'
+            season = year + season
 
             # Create a new season if it doesn't exist
             self.cursor.execute(
