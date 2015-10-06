@@ -20,6 +20,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Season whereCreatedAt($value)
  * @method static Builder|Season whereUpdatedAt($value)
  * @method static Builder|Season whereDeletedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  */
 class Season extends Model
 {
@@ -77,4 +78,14 @@ class Season extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get animes.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function animes()
+    {
+        return $this->hasMany(Anime::class, 'season_id', 'id');
+    }
 }

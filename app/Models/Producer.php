@@ -18,6 +18,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Producer whereCreatedAt($value)
  * @method static Builder|Producer whereUpdatedAt($value)
  * @method static Builder|Producer whereDeletedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  */
 class Producer extends Model
 {
@@ -74,4 +75,14 @@ class Producer extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get all animes.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function animes()
+    {
+        return $this->belongsToMany(Anime::class, 'anime_producer', 'anime_id', 'producer_id');
+    }
 }

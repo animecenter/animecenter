@@ -24,6 +24,8 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Vote whereCreatedAt($value)
  * @method static Builder|Vote whereUpdatedAt($value)
  * @method static Builder|Vote whereDeletedAt($value)
+ * @property-read \ $votes
+ * @property-read User $user
  */
 class Vote extends Model
 {
@@ -83,4 +85,24 @@ class Vote extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get all of the owning votes models.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function votes()
+    {
+        return $this->morphTo();
+    }
+
+    /**
+     * Get user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id', 'user_id');
+    }
 }

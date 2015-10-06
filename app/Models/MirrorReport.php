@@ -24,6 +24,8 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|MirrorReport whereCreatedAt($value)
  * @method static Builder|MirrorReport whereUpdatedAt($value)
  * @method static Builder|MirrorReport whereDeletedAt($value)
+ * @property-read Mirror $mirror
+ * @property-read User $user
  */
 class MirrorReport extends Model
 {
@@ -83,4 +85,24 @@ class MirrorReport extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get mirror.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function mirror()
+    {
+        return $this->belongsTo(Mirror::class, 'id', 'mirror_id');
+    }
+
+    /**
+     * Get user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id', 'user_id');
+    }
 }
