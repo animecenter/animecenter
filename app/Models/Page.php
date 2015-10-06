@@ -22,6 +22,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Page whereCreatedAt($value)
  * @method static Builder|Page whereUpdatedAt($value)
  * @method static Builder|Page whereDeletedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
  */
 class Page extends Model
 {
@@ -80,4 +81,14 @@ class Page extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get all of the pages views.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function views()
+    {
+        return $this->morphMany(View::class, 'viewable');
+    }
 }

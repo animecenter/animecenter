@@ -20,6 +20,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Type whereCreatedAt($value)
  * @method static Builder|Type whereUpdatedAt($value)
  * @method static Builder|Type whereDeletedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  */
 class Type extends Model
 {
@@ -77,4 +78,14 @@ class Type extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get animes.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function animes()
+    {
+        return $this->hasMany(Anime::class, 'type_id', 'id');
+    }
 }

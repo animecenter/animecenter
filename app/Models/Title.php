@@ -24,6 +24,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Title whereCreatedAt($value)
  * @method static Builder|Title whereUpdatedAt($value)
  * @method static Builder|Title whereDeletedAt($value)
+ * @property-read \ $titles
  */
 class Title extends Model
 {
@@ -83,4 +84,14 @@ class Title extends Model
     public $rules = [
         'id' => 'required|integer|min:1'
     ];
+
+    /**
+     * Get all of the owning viewable models.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function titles()
+    {
+        return $this->morphTo();
+    }
 }
