@@ -1,12 +1,9 @@
-.navbar-nav > li > a {
-  background-color: #ffffff;
-}
-
 .nav > li > a:focus, .nav > li > a:hover {
-  background-color: #000;
+  background-color: #F8F8F8;
 }
 
 .navbar-form {
+  padding: 0;
   margin: 0;
 }
 
@@ -15,10 +12,9 @@
 }
 
 .navbar-default {
-  background: #ffffff;
+  background-color: #fff;
   margin: 0;
-  border-bottom: 1px solid #e7e7e7;
-  height: 60px;
+  border: 0;
 }
 
 .navbar-brand {
@@ -35,9 +31,18 @@
   border-top: 0;
 }
 
-@media (min-width: 768px) {
-  .navbar-nav > li > a {
-    padding-top: 19.5px;
-    padding-bottom: 19.5px;
-  }
+.navbar-header {
+  background-color: #fff;
+}
+
+.navbar-collapse {
+  padding: 0;
+}
+
+.navbar-nav {
+  float: none;
+}
+
+.navbar-header {
+  float: none;
 }

@@ -63,7 +63,6 @@ $secondary-font: "Oswald";
 
 // Main CSS
 body {
-  padding-top: 60px;
   background-color: #f8f8f8;
 }
 
@@ -143,14 +142,14 @@ a {
 }
 
 .anime-title {
-  background: #293846;
+  background: #fff;
   color: #fff;
   text-shadow: 0 1px 1px #000;
   border-bottom: 1px solid #000;
 }
 
 .anime-content {
-  background: #293846;
+  background: #fff;
   color: #fff;
   height: auto;
   overflow: hidden;
@@ -290,8 +289,8 @@ a {
   }
 }
 
-.thumbnail > img, .thumbnail a > img {
-  width: 100%;
+.main {
+  margin-left: 250px;
 }
 
 .btn-toolbar {

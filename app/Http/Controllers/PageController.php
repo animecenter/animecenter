@@ -4,12 +4,15 @@ namespace AC\Http\Controllers;
 
 use AC\Models\Anime;
 use AC\Models\Episode;
-use AC\Models\Genre;
-use AC\Models\Image;
 use AC\Models\Page;
 
 class PageController extends Controller
 {
+    /**
+     * @var Page
+     */
+    private $page;
+
     /**
      * @var Anime
      */
@@ -21,34 +24,15 @@ class PageController extends Controller
     private $episode;
 
     /**
-     * @var Genre
-     */
-    private $genre;
-
-    /**
-     * @var Image
-     */
-    private $image;
-
-    /**
-     * @var Page
-     */
-    private $page;
-
-    /**
+     * @param Page $page
      * @param Anime $anime
      * @param Episode $episode
-     * @param Genre $genre
-     * @param Image $image
-     * @param Page $page
      */
-    public function __construct(Anime $anime, Episode $episode, Genre $genre, Image $image, Page $page)
+    public function __construct(Page $page, Anime $anime, Episode $episode)
     {
+        $this->page = $page;
         $this->anime = $anime;
         $this->episode = $episode;
-        $this->genre = $genre;
-        $this->image = $image;
-        $this->page = $page;
     }
 
     /**

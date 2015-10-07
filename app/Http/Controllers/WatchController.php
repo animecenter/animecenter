@@ -38,8 +38,7 @@ class WatchController extends Controller
         // $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
 
         $this->data['lastEpisode'] = $this->episode->where('anime_id', '=', $anime['id'])
-            ->where('aired_at', '<', Carbon::now()->toDateTimeString())
-            ->orderBy('number', 'DESC')->first();
+            ->where('aired_at', '<', Carbon::now()->toDateTimeString())->orderBy('number', 'DESC')->first();
 
         return view('anime.show', $this->data);
     }

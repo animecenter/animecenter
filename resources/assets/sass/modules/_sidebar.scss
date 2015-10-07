@@ -1,11 +1,8 @@
 .nav-sidebar {
-  margin-right: -21px;
-  margin-left: -20px;
   padding: 0;
 }
 
 .sidebar li > a {
-  background-color: #293846;
   color: #a7b1c2;
   padding: 10px 10px;
 }
@@ -18,7 +15,7 @@
 
 .sidebar::-webkit-scrollbar {
   width: 12px;
-  background-color: #293846;
+  background-color: #fff;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
@@ -27,7 +24,7 @@
 }
 
 .color-side {
-  background-color: #293846;
+  background-color: #fff;
 }
 
 .sidebar-money {
@@ -36,21 +33,41 @@
   padding-top: 10px;
 }
 
-@media (min-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 60px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: block;
-    padding: 0 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: #293846;
+.sidebar {
+  position: fixed;
+  width: 250px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #fff;
+  border-right: 1px solid #dcdcdc;
+}
+
+.sign-up {
+  margin-left: 12px;
+}
+
+.login .btn, .sign-up .btn {
+  padding: 10px 30px;
+}
+
+.search-form {
+
+  .input-group {
+    width: 219px;
   }
-  .navbar-nav > li > a {
-    padding-top: 19.5px;
-    padding-bottom: 19.5px;
+
+  .input-group-addon {
+    background-color: #fff;
+    height: 32px;
+    border: 0;
+    top: 1px;
+    right: 1px;
+    border-radius: 0;
   }
+
 }

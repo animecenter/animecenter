@@ -5,14 +5,12 @@
 </head>
 <body>
     <div id="wrapper">
-        @include('layouts.navbar')
-        <div class="container-fluid">
-            <div class="row">
-                @include('layouts.sidebar')
+        @include('layouts.sidebar')
+        <div class="main">
+            <div class="container-fluid">
                 @yield('content')
-                @include('layouts.footer')
             </div>
-        </div>
+        @include('layouts.footer')
     </div>
     @include('layouts.scripts')
 </body>

@@ -53,6 +53,8 @@ $router->get('anime/seasons/{id}', 'AnimeController@getBySeasonID');
 $router->get('anime/seasons/{id}/{letter}', 'AnimeController@getBySeasonIDAndLetter');
 $router->get('anime/types/{id}', 'AnimeController@getByTypeID');
 $router->get('anime/types/{id}/{letter}', 'AnimeController@getByTypeIDAndLetter');
+$router->get('anime/status/{id}', 'AnimeController@getByStatusID');
+$router->get('anime/status/{id}/{letter}', 'AnimeController@getByStatusIDAndLetter');
 $router->get('anime/top', 'AnimeController@getTop');
 $router->get('anime/top/{letter}', 'AnimeController@getTopByLetter');
 $router->get('anime/random', 'AnimeController@getRandom');
