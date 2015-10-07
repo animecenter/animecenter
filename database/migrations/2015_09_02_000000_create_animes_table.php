@@ -17,7 +17,7 @@ class CreateAnimesTable extends Migration
             $table->text('synopsis')->nullable();
             $table->integer('type_id')->unsigned()->nullable();
             $table->integer('episodes')->unsigned()->nullable();
-            $table->string('status')->nullable();
+            $table->integer('status_id')->unsigned()->nullable();
             $table->date('release_date')->nullable();
             $table->date('end_date')->nullable();
             $table->time('duration')->nullable();

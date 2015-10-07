@@ -3,7 +3,6 @@
 namespace AC\Http\Controllers;
 
 use AC\Models\Anime;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -38,8 +37,11 @@ class SearchController extends Controller
     {
         $this->data['pageTitle'] = $pageTitle = "Category Browser";
         $this->data['metaTitle'] = $pageTitle . " | Watch Anime Online Free";
-        $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " . $pageTitle . " English Sub/Dub, Download " . $pageTitle . " for free,Watch " . $pageTitle . "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
-        $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
+        $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " .
+            $pageTitle . " English Sub/Dub, Download " . $pageTitle . " for free,Watch " . $pageTitle .
+            "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
+        $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime " .
+            "online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
         $this->data['genres'] = $this->genre->orderBy('value')->get();
 
         return view('search.index', $this->data);
@@ -56,8 +58,11 @@ class SearchController extends Controller
         $this->validate($request, $this->rules);
         $this->data['pageTitle'] = $pageTitle = 'Animecenter.tv';
         $this->data['metaTitle'] = $pageTitle . " | Watch Anime Online Free";
-        $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " . $pageTitle . " English Sub/Dub, Download " . $pageTitle . " for free,Watch " . $pageTitle . "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
-        $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
+        $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " .
+            $pageTitle . " English Sub/Dub, Download " . $pageTitle . " for free,Watch " . $pageTitle .
+            "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
+        $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime online," .
+            " English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
         if ($request['scope'] && $request['genres']) {
             $genres = $request['genres'];
             if ($request['scope'] === 'all') {
@@ -85,24 +90,5 @@ class SearchController extends Controller
         $this->data['animes'] = $this->getRelatedForEachAnime($animes);
 
         return view('search.show', $this->data);
-    }
-
-    public function getRelatedForEachAnime(Collection $animes)
-    {
-        $relations = [
-            'prequel', 'sequel', 'story', 'side_story', 'spin_off', 'alternative', 'other'
-        ];
-        foreach ($animes as $key => $anime) {
-            foreach ($relations as $relation) {
-                if ($anime[$relation]) {
-                    $animesRelated = explode(',', $anime[$relation])[0];
-                    $anime[$relation] = $this->anime
-                        ->where('id', '=', $animesRelated)
-                        ->first();
-                }
-            }
-            $animes[$key] = $anime;
-        }
-        return $animes;
     }
 }
