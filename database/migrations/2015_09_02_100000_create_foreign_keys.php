@@ -8,16 +8,14 @@ class CreateForeignKeys extends Migration
 
     public function up()
     {
-        Schema::table('password_resets', function (Blueprint $table) {
-            $table->foreign('email')->references('email')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-        });
         Schema::table('animes', function (Blueprint $table) {
             $table->foreign('type_id')->references('id')->on('types')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->foreign('season_id')->references('id')->on('seasons')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('status_id')->references('id')->on('statuses')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->foreign('classification_id')->references('id')->on('classifications')
@@ -69,6 +67,11 @@ class CreateForeignKeys extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
+        Schema::table('password_resets', function (Blueprint $table) {
+            $table->foreign('email')->references('email')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
         Schema::table('permission_role', function (Blueprint $table) {
             $table->foreign('permission_id')->references('id')->on('permissions')
                 ->onUpdate('cascade')
@@ -105,6 +108,7 @@ class CreateForeignKeys extends Migration
         Schema::table('animes', function (Blueprint $table) {
             $table->dropForeign('animes_type_id_foreign');
             $table->dropForeign('animes_season_id_foreign');
+            $table->dropForeign('animes_status_id_foreign');
             $table->dropForeign('animes_classification_id_foreign');
         });
         Schema::table('anime_genre', function (Blueprint $table) {
