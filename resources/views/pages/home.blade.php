@@ -27,19 +27,23 @@
         </div>
         <div class="col-xs-12 col-md-4">
             <h2 class="page-header">Upcoming Anime Episodes</h2>
-            @foreach ($upcomingEpisodes as $episode)
-                <a href="{{ url('anime/' . $episode->anime->slug . '/episode/' . $episode->number) }}" class="media">
-                    <div class="media-left">
-                        <img src="{{ $episode->photo ? asset($episode->photo) : 'http://placehold.it/50x85' }}"
-                             alt="{{ $episode->title }}">
-                    </div>
-                    <div class="media-body">
-                        <h3 class="media-heading">{{ (strlen($episode->anime->title) > 21) ?
+            <div class="row">
+                <div class="col-xs-12">
+                    @foreach ($upcomingEpisodes as $episode)
+                        <a href="{{ url('anime/' . $episode->anime->slug . '/episode/' . $episode->number) }}" class="media">
+                            <div class="media-left">
+                                <img src="{{ $episode->photo ? asset($episode->photo) : 'http://placehold.it/50x85' }}"
+                                     alt="{{ $episode->title }}">
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading">{{ (strlen($episode->anime->title) > 21) ?
                             mb_substr($episode->anime->title, 0, 18) . '...' : $episode->anime->title }}</h3>
-                        <p>{{ 'Episode ' . $episode->number }}</p>
-                    </div>
-                </a>
-            @endforeach
+                                <p>{{ 'Episode ' . $episode->number }}</p>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">

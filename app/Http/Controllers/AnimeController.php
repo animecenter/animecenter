@@ -2,13 +2,12 @@
 
 namespace AC\Http\Controllers;
 
-use AC\Models\Classification;
-use AC\Models\Genre;
-use AC\Models\Producer;
-use AC\Models\Season;
-use AC\Models\Type;
 use AC\Repositories\EloquentAnimeRepository as Anime;
-use AC\Models\Episode;
+use AC\Repositories\EloquentClassificationRepository as Classification;
+use AC\Repositories\EloquentGenreRepository as Genre;
+use AC\Repositories\EloquentProducerRepository as Producer;
+use AC\Repositories\EloquentSeasonRepository as Season;
+use AC\Repositories\EloquentTypeRepository as Type;
 
 class AnimeController extends Controller
 {
@@ -23,11 +22,6 @@ class AnimeController extends Controller
      * @var Classification
      */
     private $classification;
-
-    /**
-     * @var Episode
-     */
-    private $episode;
 
     /**
      * @var Genre
@@ -52,27 +46,25 @@ class AnimeController extends Controller
     /**
      * @param Anime $anime
      * @param Classification $classification
-     * @param Episode $episode
      * @param Genre $genre
      * @param Producer $producer
      * @param Season $season
      * @param Type $type
      */
-    public function __construct(Anime $anime, Classification $classification, Episode $episode, Genre $genre, Producer $producer, Season $season, Type $type)
+    public function __construct(Anime $anime, Classification $classification, Genre $genre, Producer $producer, Season $season, Type $type)
     {
         $this->anime = $anime;
         $this->classification = $classification;
-        $this->episode = $episode;
         $this->genre = $genre;
         $this->producer = $producer;
         $this->season = $season;
         $this->type = $type;
 
-        $this->data['classifications'] = $this->classification->where('name', '<>', 'Rx - Hentai')->get(['id', 'name']);
-        $this->data['genres'] = $this->genre->where('model', '=', 'Anime')->get(['id', 'name']);
-        $this->data['producers'] = $this->producer->get(['id', 'name']);
-        $this->data['seasons'] = $this->season->orderBy('name', 'DESC')->get(['id', 'name']);
-        $this->data['types'] = $this->type->where('model', '=', 'Anime')->get(['id', 'name']);
+        $this->data['classifications'] = $this->classification->all();
+        $this->data['genres'] = $this->genre->all();
+        $this->data['producers'] = $this->producer->all();
+        $this->data['seasons'] = $this->season->all();
+        $this->data['types'] = $this->type->all();
     }
 
     public function getIndex($letter = '')
