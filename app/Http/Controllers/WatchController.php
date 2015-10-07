@@ -5,6 +5,7 @@ namespace AC\Http\Controllers;
 use AC\Http\Requests;
 use AC\Models\Episode;
 use AC\Repositories\EloquentAnimeRepository as Anime;
+use Carbon\Carbon;
 
 class WatchController extends Controller
 {

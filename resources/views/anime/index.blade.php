@@ -8,12 +8,6 @@
                 <h2 class="pull-left no-margin"><i class="fa fa-video-camera fa-fw text-success"></i> Anime List</h2>
                 <div class="btn-toolbar pull-right no-margin" role="toolbar">
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-success">
-                            <i class="fa fa-th"></i>
-                        </button>
-                        <button type="button" class="btn btn-success">
-                            <i class="fa fa-list"></i>
-                        </button>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                                 Classification <span class="caret"></span>
@@ -21,7 +15,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 @foreach ($classifications as $classification)
                                     <li>
-                                        <a href="{{ url('anime/classification/' . $classification->id) }}">
+                                        <a href="{{ url('anime/classifications/' . $classification->id) }}">
                                             {{ $classification->name }}
                                         </a>
                                     </li>
@@ -49,7 +43,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 @foreach ($producers as $producer)
                                     <li>
-                                        <a href="{{ url('anime/producer/' . $producer->id) }}">
+                                        <a href="{{ url('anime/producers/' . $producer->id) }}">
                                             {{ $producer->name }}
                                         </a>
                                     </li>
@@ -85,7 +79,7 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 @foreach ($types as $type)
-                                    <li><a href="{{ url('anime/type/' . $type->id) }}">{{ $type->name }}</a></li>
+                                    <li><a href="{{ url('anime/types/' . $type->id) }}">{{ $type->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
