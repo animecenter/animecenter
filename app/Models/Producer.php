@@ -83,6 +83,6 @@ class Producer extends Model
      */
     public function animes()
     {
-        return $this->belongsToMany(Anime::class, 'anime_producer', 'anime_id', 'producer_id');
+        return $this->belongsToMany(Anime::class, 'anime_producer', 'producer_id', 'anime_id');
     }
 }
