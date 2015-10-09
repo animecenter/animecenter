@@ -291,4 +291,19 @@ class EloquentAnimeRepository
             abort(404, $letter . ' was not found');
         }
     }
+
+    /**
+     * @param string $animeSlug
+     * @param int $episodeNumber
+     * @return \Illuminate\Database\Eloquent\Model|static
+     */
+    public function getMirrors($animeSlug = '', $episodeNumber = 0)
+    {
+        return $this->anime->with([
+            'episode' => function ($query) use ($episodeNumber) {
+                $query->where('number', '=', $episodeNumber)->firstOrFail();
+            },
+            'episode.mirrors.mirrorSource'
+        ])->where('slug', '=', $animeSlug)->firstOrFail();
+    }
 }

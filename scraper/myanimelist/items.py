@@ -13,7 +13,7 @@ class Anime(Item):
     synopsis = Field()
     alternative_titles = Field()
     type = Field()
-    episodes = Field()
+    number_of_episodes = Field()
     status = Field()
     dates = Field()
     producers = Field()

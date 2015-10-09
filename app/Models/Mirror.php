@@ -122,7 +122,7 @@ class Mirror extends Model
      */
     public function mirrorSource()
     {
-        return $this->belongsTo(MirrorSource::class, 'id', 'mirror_id');
+        return $this->belongsTo(MirrorSource::class, 'mirror_source_id', 'id');
     }
 
     /**
