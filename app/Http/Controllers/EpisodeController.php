@@ -2,8 +2,7 @@
 
 namespace AC\Http\Controllers;
 
-use AC\Models\Anime;
-use AC\Models\Episode;
+use AC\Repositories\EloquentEpisodeRepository as Episode;
 
 class EpisodeController extends Controller
 {
@@ -13,27 +12,18 @@ class EpisodeController extends Controller
     private $episode;
 
     /**
-     * @var Anime
-     */
-    private $anime;
-
-    /**
      * @param Episode $episode
-     * @param Anime $anime
      */
-    public function __construct(Episode $episode, Anime $anime)
+    public function __construct(Episode $episode)
     {
         $this->episode = $episode;
-        $this->anime = $anime;
     }
 
     public function getLatest()
     {
-        $this->data['episodes'] = $episode = $this->episode->with('anime')
-            ->where('show', '=', '1')
-            ->where('date', '>', strtotime('-1 month'))
-            ->orderBy('date', 'DESC')
-            ->paginate(24);
+        $this->data['episodes'] = $this->episode->latestPaginate();
+
+        // TODO: Get metadata...
         $this->data['pageTitle'] = "Latest Episodes | Watch Anime Online Free";
         $this->data['metaTitle'] = "Watch the Latest Episode for Free Online | Watch Anime Online Free just in " .
             "Animecenter.tv";
