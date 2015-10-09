@@ -126,7 +126,7 @@
                     <i class="fa fa-thumbs-up fa-fw text-light-blue"></i> Like Us
                 </h1>
                 <img alt="Flower" src="public/img/facebookinner.png" style="width:315px;">
-                <script src="http://www.evolvenation.com/delivery.js?id=15&size=300x250" type="text/javascript"></script>
+                <script src="http://www.evolvenation.com/delivery.js?id=15&size=300x250"></script>
             </div>
         </div>
     </div>

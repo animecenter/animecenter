@@ -37,7 +37,7 @@ class MirrorSpider(scrapy.Spider):
                 item['website'] = website[0].replace('s Video', '').replace('HD Video', '').replace(' Video', '')
                 item['anime'] = response.xpath('//*[@id="left-column"]/div[2]/div/div[1]/a/text()').extract()[0]
                 item['episode'] = response.xpath('//h1/text()').extract()[0].split(' Episode ')[1]
-                item['translation'] = response.xpath('//div[@class="episode_on"]/div/span[2]/text()').extract()[0]
+                item['translation'] = response.xpath('//div[@class="episode_on"]/div/span[2]/text()').extract()[0].lower()
                 item['date'] = response.xpath('//div[@class="episode_on"]/div/span[3]/text()').extract()[0]
                 if response.xpath('//div[@class="episode_on"]/div/div/img/@alt').extract():
                     item['quality'] = 'HD'
