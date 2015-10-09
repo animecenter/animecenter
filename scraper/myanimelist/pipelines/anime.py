@@ -170,14 +170,14 @@ class MySQLStorePipeline(object):
         try:
             self.cursor.execute(
                 'INSERT IGNORE INTO `animes` '
-                '(`mal_id`, `title`, `slug`, `image`, `synopsis`, `type_id`, `episodes`, `status`, `release_date`, '
-                '`end_date`, `duration`, `season_id`, `classification_id`, `created_at`, `updated_at`)'
+                '(`mal_id`, `title`, `slug`, `image`, `synopsis`, `type_id`, `number_of_episodes`, `status`, '
+                '`release_date`, `end_date`, `duration`, `season_id`, `classification_id`, `created_at`, `updated_at`)'
                 ' VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)',
                 (
                     item['mal_id'].encode('utf-8'), item['title'].encode('utf-8'),
                     self.slugger(item['title'].encode('utf-8')), item['image_url'], item['synopsis'].encode('utf-8'),
-                    type_id, self.get_episodes(item['episodes']), item['status'].encode('utf-8'), release_date,
-                    end_date, duration, season_id, classification_id
+                    type_id, self.get_episodes(item['number_of_episodes']), item['status'].encode('utf-8'),
+                    release_date, end_date, duration, season_id, classification_id
                 )
             )
             self.db.commit()
