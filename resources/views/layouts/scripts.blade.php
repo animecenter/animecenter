@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -17,7 +17,8 @@
     }(document, 'script', 'facebook-jssdk'));
 </script>
 <script src="{{ asset('js/app.js') }}"></script>
-<script type='text/javascript' id="__bs_script__">//<![CDATA[
+<script id="__bs_script__">//<![CDATA[
     document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.9.7.js'><\/script>".replace("HOST", location.hostname));
-    //]]></script>
+    //]]>
+</script>
 @yield('scripts')

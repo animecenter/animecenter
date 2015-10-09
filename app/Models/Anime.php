@@ -253,4 +253,9 @@ class Anime extends Model
         // $secs = str_replace([0], '', $value[2]);
         return (($hours) ? $hours . ' hr. ' : '') . (($minutes) ? $minutes . ' min. per episode' : 'Unknown');
     }
+
+    public function getSlugAttribute($value)
+    {
+        return 'anime/watch/' . $value;
+    }
 }

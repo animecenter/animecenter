@@ -94,7 +94,7 @@ class Episode extends Model
     ];
 
     /**
-     * Get the anime that owns the episode.
+     * Get anime that owns the episode.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -104,7 +104,17 @@ class Episode extends Model
     }
 
     /**
-     * Get all mirrors.
+     * Get mirror that belong to the episode.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function mirror()
+    {
+        return $this->hasOne(Mirror::class, 'episode_id', 'id');
+    }
+
+    /**
+     * Get mirrors that belong to the episode.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -114,7 +124,7 @@ class Episode extends Model
     }
 
     /**
-     * Get all of the episodes views.
+     * Get views that belong to the episode.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
@@ -131,5 +141,10 @@ class Episode extends Model
     public function votes()
     {
         return $this->morphMany(Vote::class, 'votes');
+    }
+
+    public function getSlugAttribute()
+    {
+        return 'episode/' . $this->number;
     }
 }
