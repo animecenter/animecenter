@@ -15,7 +15,7 @@ use Illuminate\Database\Query\Builder;
  * @property string $image
  * @property string $synopsis
  * @property integer $type_id
- * @property \Illuminate\Database\Eloquent\Collection|Episode[] $episodes
+ * @property integer $number_of_episodes
  * @property string $status
  * @property string $release_date
  * @property string $end_date
@@ -40,7 +40,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Anime whereImage($value)
  * @method static Builder|Anime whereSynopsis($value)
  * @method static Builder|Anime whereTypeId($value)
- * @method static Builder|Anime whereEpisodes($value)
+ * @method static Builder|Anime whereNumberOfEpisodes($value)
  * @method static Builder|Anime whereStatus($value)
  * @method static Builder|Anime whereReleaseDate($value)
  * @method static Builder|Anime whereEndDate($value)
@@ -127,6 +127,16 @@ class Anime extends Model
     public function classification()
     {
         return $this->belongsTo(Classification::class, 'classification_id', 'id');
+    }
+
+    /**
+     * Get episode.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function episode()
+    {
+        return $this->hasOne(Episode::class, 'anime_id');
     }
 
     /**

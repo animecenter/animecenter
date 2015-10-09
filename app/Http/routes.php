@@ -64,9 +64,9 @@ $router->get('anime/{letter}', 'AnimeController@getIndex');
 $router->get('episodes/latest', 'EpisodeController@getLatest');
 
 // Watch routes...
-$router->get('watch/{slug}', 'WatchController@getBySlug');
-$router->get('watch/{slug}/episode/{number}', 'WatchController@getEpisode');
 $router->get('watch/{slug}/episode/{number}/{mirror}', 'WatchController@getEpisodeMirror');
+$router->get('watch/{slug}/episode/{number}', 'WatchController@getEpisode');
+$router->get('watch/{slug}', 'WatchController@getBySlug');
 
 // Search routes...
 $router->get('explore', 'SearchController@index');

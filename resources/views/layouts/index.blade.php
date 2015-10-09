@@ -9,8 +9,9 @@
         <div class="main">
             <div class="container-fluid">
                 @yield('content')
+                @include('layouts.footer')
             </div>
-        @include('layouts.footer')
+        </div>
     </div>
     @include('layouts.scripts')
 </body>

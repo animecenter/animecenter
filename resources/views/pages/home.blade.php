@@ -8,7 +8,7 @@
                 <div class="row">
                     @foreach($episodes as $episode)
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="{{ url('anime/' . $episode->anime->slug . '/episode/' . $episode->number) }}"
+                            <a href="{{ url('watch/' . $episode->anime->slug . '/episode/' . $episode->number) }}"
                                class="thumbnail">
                                 <img src="{{ asset($episode->photo ? $episode->photo : 'http://placehold.it/300x150') }}"
                                      alt="{{ $episode->title }}">
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     @foreach ($upcomingEpisodes as $episode)
-                        <a href="{{ url('anime/' . $episode->anime->slug . '/episode/' . $episode->number) }}" class="media">
+                        <a href="{{ url('watch/' . $episode->anime->slug . '/episode/' . $episode->number) }}" class="media">
                             <div class="media-left">
                                 <img src="{{ $episode->photo ? asset($episode->photo) : 'http://placehold.it/50x85' }}"
                                      alt="{{ $episode->title }}">
@@ -55,7 +55,7 @@
                         <div class="row">
                             @foreach ($items as $anime)
                                 <div class="col-xs-6 col-md-3">
-                                    <a href="{{ url('anime/' . $anime->slug) }}" class="thumbnail">
+                                    <a href="{{ url('watch/' . $anime->slug) }}" class="thumbnail">
                                         <img src="http://placehold.it/150x225" alt="">
                                         <div class="caption">
                                             <h3 class="episode-title">{{ (strlen($anime->title) > 12) ?
