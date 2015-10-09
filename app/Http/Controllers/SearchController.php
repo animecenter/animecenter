@@ -2,16 +2,11 @@
 
 namespace AC\Http\Controllers;
 
-use AC\Models\Anime;
+use AC\Repositories\EloquentAnimeRepository as Anime;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    /**
-     * @var Anime
-     */
-    private $anime;
-
     private $data;
 
     private $rules = [
@@ -19,6 +14,11 @@ class SearchController extends Controller
         'genres' => 'array',
         'scope' => 'string|alpha|max:3'
     ];
+
+    /**
+     * @var Anime
+     */
+    private $anime;
 
     /**
      * @param Anime $anime

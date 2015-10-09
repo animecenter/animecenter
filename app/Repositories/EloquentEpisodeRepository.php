@@ -35,7 +35,8 @@ class EloquentEpisodeRepository
         $timestamp = Carbon::now()->toDateTimeString();
         return $this->episode->whereHas('anime', function ($query) use ($timestamp) {
             $query->where('release_date', '<', $timestamp);
-        })->with('anime')->where('aired_at', '<', $timestamp)->orderBy('aired_at', 'DESC')->take(12)->get();
+        })->has('mirror')->with(['anime', 'mirror'])->where('aired_at', '<', $timestamp)
+            ->orderBy('aired_at', 'DESC')->take(12)->get();
     }
 
     /**

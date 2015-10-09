@@ -37,6 +37,9 @@ $router->post('password/reset', 'Auth\PasswordController@postReset');
 
 // Anime routes...
 $router->get('anime', 'AnimeController@getIndex');
+$router->get('anime/watch/{animeSlug}/episode/{episodeNumber}/{translation}/{mirrorID}', 'AnimeController@getMirror');
+$router->get('anime/watch/{animeSlug}/episode/{episodeNumber}/{translation}', 'AnimeController@getEpisode');
+$router->get('anime/watch/{animeSlug}', 'AnimeController@getAnime');
 $router->get('anime/latest', 'AnimeController@getLatest');
 $router->get('anime/latest/{letter}', 'AnimeController@getLatestByLetter');
 $router->get('anime/subbed', 'AnimeController@getSubbed');
@@ -62,11 +65,6 @@ $router->get('anime/{letter}', 'AnimeController@getIndex');
 
 // Episodes routes...
 $router->get('episodes/latest', 'EpisodeController@getLatest');
-
-// Watch routes...
-$router->get('watch/{slug}/episode/{number}/{mirror}', 'WatchController@getEpisodeMirror');
-$router->get('watch/{slug}/episode/{number}', 'WatchController@getEpisode');
-$router->get('watch/{slug}', 'WatchController@getBySlug');
 
 // Search routes...
 $router->get('explore', 'SearchController@index');

@@ -6,9 +6,9 @@
             <h2 class="page-header">New Anime Episodes</h2>
             <div class="center-block">
                 <div class="row">
-                    @foreach($episodes as $episode)
+                    @foreach ($episodes as $episode)
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                            <a href="{{ url('watch/' . $episode->anime->slug . '/episode/' . $episode->number) }}"
+                            <a href="{{ url($episode->anime->slug . '/' . $episode->slug . '/' . $episode->mirror->translation) }}"
                                class="thumbnail">
                                 <img src="{{ asset($episode->photo ? $episode->photo : 'http://placehold.it/300x150') }}"
                                      alt="{{ $episode->title }}">
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     @foreach ($upcomingEpisodes as $episode)
-                        <a href="{{ url('watch/' . $episode->anime->slug . '/episode/' . $episode->number) }}" class="media">
+                        <a href="{{ url($episode->anime->slug . '/' . $episode->slug) }}" class="media">
                             <div class="media-left">
                                 <img src="{{ $episode->photo ? asset($episode->photo) : 'http://placehold.it/50x85' }}"
                                      alt="{{ $episode->title }}">
@@ -55,7 +55,7 @@
                         <div class="row">
                             @foreach ($items as $anime)
                                 <div class="col-xs-6 col-md-3">
-                                    <a href="{{ url('watch/' . $anime->slug) }}" class="thumbnail">
+                                    <a href="{{ url($anime->slug) }}" class="thumbnail">
                                         <img src="http://placehold.it/150x225" alt="">
                                         <div class="caption">
                                             <h3 class="episode-title">{{ (strlen($anime->title) > 12) ?

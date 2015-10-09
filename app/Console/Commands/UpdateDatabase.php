@@ -131,7 +131,7 @@ class UpdateDatabase extends Command
      */
     protected function getTranslation($currentAnime)
     {
-        return ($currentAnime->type2 == 'subbed') ? 'Subbed' : 'Dubbed';
+        return ($currentAnime->type2 == 'subbed') ? 'subbed' : 'dubbed';
     }
 
     /**
