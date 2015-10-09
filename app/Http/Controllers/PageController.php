@@ -2,12 +2,14 @@
 
 namespace AC\Http\Controllers;
 
-use AC\Models\Anime;
-use AC\Models\Episode;
 use AC\Models\Page;
+use AC\Repositories\EloquentAnimeRepository as Anime;
+use AC\Repositories\EloquentEpisodeRepository as Episode;
 
 class PageController extends Controller
 {
+    protected $data;
+
     /**
      * @var Page
      */
@@ -42,18 +44,29 @@ class PageController extends Controller
      */
     public function getHome()
     {
-        $this->data['episodes'] = $this->episode->with('anime')->orderBy('updated_at', 'DESC')->take('12')->get();
-        $this->data['upcomingEpisodes'] = $this->episode->with('anime')->where('aired_at', '<>', '')
-            ->orderBy('aired_at', 'ASC')->take(5)->get();
-        $this->data['animes'] = $this->anime->orderBy('id', 'DESC')->take(12)->get();
+        $this->data['episodes'] = $this->episode->latest();
+        $this->data['upcomingEpisodes'] = $this->episode->upcoming();
+        $this->data['animes'] = $this->anime->currentSeason();
 
-        $this->data['pageTitle'] = $title = "AnimeCenter: Watch Anime English Subbed/Dubbed Online in HD";
-        $this->data['metaTitle'] = "Watch Anime Online English Subbed/Dubbed | Watch Anime Online Free";
-        $this->data['metaDesc'] = "Watch Anime English Subbed/Dubbed Online in HD at AnimeCenter! Over 41000 Episodes" .
-            ", and 2,146 Anime Series!";
-        $this->data['metaKey'] = "Watch Anime Online, Anime Subbed/Dubbed, Anime Episodes, Anime Stream, " .
-            "Subbed Anime, Dubbed Anime";
+        // TODO: Get meta data...
+        $this->data['pageTitle'] = 'AnimeCenter: Watch Anime English Subbed/Dubbed Online in HD';
+        $this->data['metaTitle'] = 'Watch Anime Online English Subbed/Dubbed | Watch Anime Online Free';
+        $this->data['metaDesc'] = 'Watch Anime English Subbed/Dubbed Online in HD at AnimeCenter! Over 41000 Episodes' .
+            ', and 2,146 Anime Series!';
+        $this->data['metaKey'] = 'Watch Anime Online, Anime Subbed/Dubbed, Anime Episodes, Anime Stream, ' .
+            'Subbed Anime, Dubbed Anime';
 
         return view('pages.home', $this->data);
+    }
+
+    /**
+     * Get page by slug.
+     *
+     * @param string $slug
+     * @return \Illuminate\View\View
+     */
+    public function getBySlug($slug = '')
+    {
+        return view('pages.show', ['page' => $this->page->where('slug', '=', $slug)->take(1)->findOrFail()]);
     }
 }

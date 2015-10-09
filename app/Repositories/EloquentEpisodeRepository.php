@@ -22,9 +22,37 @@ class EloquentEpisodeRepository
 
     public function all()
     {
-        return $this->episode->whereHas('animes', function ($query) {
-            $query->has('episodes')->where('release_date', '<', Carbon::now()->toDateTimeString());
+        return $this->episode->whereHas('anime', function ($query) {
+            $query->where('release_date', '<', Carbon::now()->toDateTimeString());
         })->get(['id', 'name']);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function latest()
+    {
+        $timestamp = Carbon::now()->toDateTimeString();
+        return $this->episode->whereHas('anime', function ($query) use ($timestamp) {
+            $query->where('release_date', '<', $timestamp);
+        })->with('anime')->where('aired_at', '<', $timestamp)->orderBy('aired_at', 'DESC')->take(12)->get();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function latestPaginate()
+    {
+        $timestamp = Carbon::now()->toDateTimeString();
+        return $this->episode->whereHas('anime', function ($query) use ($timestamp) {
+            $query->where('release_date', '<', $timestamp);
+        })->with('anime')->where('aired_at', '<', $timestamp)->orderBy('aired_at', 'DESC')->paginate(20);
+    }
+
+    public function upcoming()
+    {
+        return $this->episode->with('anime')->where('aired_at', '>', Carbon::now()->toDateTimeString())
+            ->orderBy('aired_at', 'ASC')->take(5)->get();
     }
 
     /**

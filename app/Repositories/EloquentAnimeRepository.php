@@ -306,4 +306,32 @@ class EloquentAnimeRepository
             'episode.mirrors.mirrorSource'
         ])->where('slug', '=', $animeSlug)->firstOrFail();
     }
+
+    public function currentSeason()
+    {
+        $month = DATE('m');
+        $year = DATE('Y');
+
+        // Retrieve season
+        if ($month >= '03' && $month <= '06') {
+            $season = 'Spring';
+        } else if ($month >= '07' && $month <= '09') {
+            $season = 'Summer';
+        } else if ($month >= '10' && $month <= '12') {
+            $season = 'Fall';
+        } else {
+            $season = 'Winter';
+        }
+
+        $seasonName = $season . ' '  . $year;
+        return $this->getBySeason($seasonName);
+    }
+
+    public function getBySeason($seasonName = '')
+    {
+        return $this->anime->has('episodes')->whereHas('season', function ($query) use ($seasonName) {
+            $query->where('seasons.name', '=', $seasonName);
+        })->where('release_date', '<', Carbon::now()->toDateTimeString())
+            ->orderBy('release_date', 'DESC')->take(12)->get();
+    }
 }
