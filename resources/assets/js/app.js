@@ -1,19 +1,34 @@
-$(document).ready(function () {
+$(window).load(function() {
+  var episodeElement = document.querySelector('.grid-episode');
+  var animeElement = document.querySelector('.grid-anime');
+  if (animeElement) {
+    var animeGrid = new Masonry(animeElement, {
+      columnWidth: 170,
+      itemSelector: '.grid-item',
+    });
+  }
+  if (episodeElement) {
+    var episodeGrid = new Masonry(episodeElement, {
+      columnWidth: '.grid-sizer',
+      itemSelector: '.grid-item',
+      percentPosition: true,
+    });
+  }
 
-    var url = 'http://www.animecenter.tv/';
+  var url = 'http://www.animecenter.tv/';
 
     $('#sec2').find('.block').on('mouseenter mouseleave', function (event) {
-        if (event.name == 'mouseenter') {
-            $(this).find('.play').show();
-        } else {
-            $(this).find('.play').hide();
-        }
+      if (event.name === 'mouseenter') {
+        $(this).find('.play').show();
+      } else {
+        $(this).find('.play').hide();
+      }
     });
 
     var genres = $('#genres');
     genres.find('.radio_block input:checked').parent('div').find('span').addClass('active');
 
-    genres.find('.radio_block span').click(function () {
+    genres.find('.radio_block span').click(function() {
         genres.find('.radio_block span').removeClass('active');
         $(this).addClass('active');
         $(this).parent('div').find('input').prop('checked', true);
@@ -21,20 +36,19 @@ $(document).ready(function () {
 
     genres.find('.box_block input:checked').parent('div').find('span').addClass('active');
 
-    genres.find('.box_block span').click(function () {
+    genres.find('.box_block span').click(function($) {
         if ($(this).hasClass('active')) {
             $(this).removeClass('active').addClass('deactive');
             $(this).parent('div').find('input').prop('checked', false);
         }
         else if ($(this).hasClass('deactive')) {
             $(this).removeClass('deactive');
-        }
-        else {
+        } else {
             $(this).addClass('active');
             $(this).parent('div').find('input').prop('checked', true);
         }
     });
-    genres.find('.clicks').click(function () {
+    genres.find('.clicks').click(function() {
         var cont = $(this).parent('div').find('.cont');
         var $this = $(this);
         if (cont.is(':visible')) {
@@ -48,7 +62,7 @@ $(document).ready(function () {
             $this.removeClass('deactive');
         }
     });
-    genres.find('input[type="reset"]').click(function () {
+    genres.find('input[type="reset"]').click(function() {
         genres.find('.box_block span').removeClass('active').removeClass('deactive');
         genres.find('.radio_block span').removeClass('active');
         genres.find('.radio_block:first span').addClass('active');
@@ -83,5 +97,4 @@ $(document).ready(function () {
             location.reload();
         });
     });
-
-});
+});;;

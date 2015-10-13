@@ -358,6 +358,11 @@ class EloquentAnimeRepository
         return $this->anime->has('episodes')->whereHas('season', function ($query) use ($seasonName) {
             $query->where('seasons.name', '=', $seasonName);
         })->where('release_date', '<', Carbon::now()->toDateTimeString())
-            ->orderBy('release_date', 'DESC')->take(12)->get();
+            ->orderBy('release_date', 'DESC')->take(4)->get();
+    }
+
+    public function search($query)
+    {
+        return $this->anime->where('title', 'LIKE', '%'.$query.'%')->orderBy('title', 'ASC')->get();
     }
 }

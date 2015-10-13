@@ -16,7 +16,8 @@
     "bootstrap-sass-official": "~3",
     "jquery": "~2",
     "modernizr": "~2",
-    "font-awesome": "~4"
+    "font-awesome": "~4",
+    "masonry": "~3.3"
   },
   "overrides": {
     "modernizr": {
@@ -24,6 +25,9 @@
     },
     "font-awesome": {
       "main": "./fonts/*"
+    },
+    "masonry": {
+      "main": "dist/masonry.pkgd.js"
     }
   }
 }
