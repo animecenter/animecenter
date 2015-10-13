@@ -161,23 +161,25 @@
                     <a href="{{ url($currentURL . '/0-9') }}" class="btn btn-default">0-9</a>
                 </div>
             </div>
-            <div class="row">
+        </div>
+        <div class="col-xs-12">
+            <div class="grid grid-anime">
                 @foreach ($animes as $anime)
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="grid-item">
                         <a class="thumbnail" href="{{ url($anime->slug) }}">
                             <img src="{{ $anime->photo ? asset($anime->photo) : 'https://placehold.it/150x250' }}"
                                  alt="{{ $anime->title }}">
-                            <h3 class="episode-title">{{ (strlen($anime->title) > 12) ?
-                                mb_substr($anime->title, 0, 9) . '...' : $anime->title }}</h3>
+                            <div class="caption">
+                                <h3 class="episode-title">{{ (strlen($anime->title) > 18) ?
+                                    mb_substr($anime->title, 0, 15) . '...' : $anime->title }}</h3>
+                            </div>
                         </a>
                     </div>
                 @endforeach
             </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    {!! $animes !!}
-                </div>
-            </div>
+        </div>
+        <div class="col-xs-12">
+            {!! $animes !!}
         </div>
     </div>
 @endsection

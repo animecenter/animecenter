@@ -140,7 +140,7 @@ class Episode extends Model
      */
     public function votes()
     {
-        return $this->morphMany(Vote::class, 'votes');
+        return $this->morphMany(Vote::class, 'voteable');
     }
 
     public function getSlugAttribute()

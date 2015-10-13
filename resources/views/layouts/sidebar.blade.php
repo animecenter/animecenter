@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('img/logo.png') }}" alt="animecenter.co" height="35" width="180">
+                    <img src="{{ asset('img/logo.png') }}" alt="animecenter.co" height="auto" width="auto">
                 </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
@@ -122,11 +122,11 @@
                         </li>
                     @endif
                     <li>
-                        <form action="" class="navbar-form search-form">
+                        <form action="{{ url('search') }}" class="navbar-form search-form">
                             <div class="form-group">
                                 <label class="sr-only" for="search">Search</label>
                                 <div class="input-group">
-                                    <input class="form-control" id="search" name="search" placeholder="search" type="text">
+                                    <input class="form-control" id="q" name="q" placeholder="search" type="text">
                                     <span class="fa fa-search form-control-feedback input-group-addon"></span>
                                 </div>
                             </div>

@@ -9,12 +9,6 @@ class SearchController extends Controller
 {
     private $data;
 
-    private $rules = [
-        'title' => 'string',
-        'genres' => 'array',
-        'scope' => 'string|alpha|max:3'
-    ];
-
     /**
      * @var Anime
      */
@@ -35,6 +29,7 @@ class SearchController extends Controller
      */
     public function index()
     {
+        // TODO: Get meta data...
         $this->data['pageTitle'] = $pageTitle = "Category Browser";
         $this->data['metaTitle'] = $pageTitle . " | Watch Anime Online Free";
         $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " .
@@ -42,6 +37,7 @@ class SearchController extends Controller
             "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
         $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime " .
             "online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
+
         $this->data['genres'] = $this->genre->orderBy('value')->get();
 
         return view('search.index', $this->data);
@@ -55,40 +51,22 @@ class SearchController extends Controller
      */
     public function show(Request $request)
     {
-        $this->validate($request, $this->rules);
-        $this->data['pageTitle'] = $pageTitle = 'Animecenter.tv';
-        $this->data['metaTitle'] = $pageTitle . " | Watch Anime Online Free";
-        $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " .
-            $pageTitle . " English Sub/Dub, Download " . $pageTitle . " for free,Watch " . $pageTitle .
-            "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
-        $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime online," .
-            " English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
-        if ($request['scope'] && $request['genres']) {
-            $genres = $request['genres'];
-            if ($request['scope'] === 'all') {
-                $genres = implode(",", $genres);
-                $animes = $this->anime->where('title', 'LIKE', '%'.$request['title'].'%')
-                    ->where('genres', 'LIKE', '%'.$genres.'%')
-                    ->orderBy('title', 'ASC')
-                    ->get();
-            } else {
-                $animes = $this->anime->where('title', 'LIKE', '%'.$request['title'].'%')
-                    ->where(function ($query) use ($genres) {
-                        foreach ($genres as $genre) {
-                            $query->orWhere('genres', 'LIKE', '%'.$genre.'%');
-                        }
-                    })
-                    ->orderBy('title', 'ASC')
-                    ->get();
-            }
-        } else {
-            $animes = $this->anime->where('title', 'LIKE', '%'.$request['title'].'%')
-                ->orderBy('title', 'ASC')
-                ->get();
-        }
-        $this->data['query'] = $request['genres'] ? $genres : $request['title'];
-        $this->data['animes'] = $this->getRelatedForEachAnime($animes);
+        if ($request['q']) {
+            $this->data['animes'] = $this->anime->search($request['q']);
+            $this->data['query'] = $request['q'];
 
-        return view('search.show', $this->data);
+            // TODO: Get meta data...
+            $this->data['pageTitle'] = $pageTitle = 'Animecenter.tv';
+            $this->data['metaTitle'] = $pageTitle . " | Watch Anime Online Free";
+            $this->data['metaDesc'] = "Watch " . $pageTitle . "!,Watch " . $pageTitle . "! English Subbed/Dubbed,Watch " .
+                $pageTitle . " English Sub/Dub, Download " . $pageTitle . " for free,Watch " . $pageTitle .
+                "! Online English Subbed and Dubbed  for Free Online only at Anime Center";
+            $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime online," .
+                " English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
+
+            return view('search.show', $this->data);
+        } else {
+            abort(404, "You are not searching for anything");
+        }
     }
 }
