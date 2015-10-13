@@ -301,6 +301,54 @@ a {
   margin: 0;
 }
 
+.grid-anime .grid-item {
+  width: 160px;
+}
+
+@media (max-width: $screen-xs-max) {
+  .grid-episode .grid-item {
+    width: 99%;
+    max-width: 300px;
+  }
+
+  .grid-episode .grid-sizer {
+    width: 100%;
+  }
+}
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+  .grid-episode .grid-item {
+    width: 49%;
+    max-width: 300px;
+  }
+
+  .grid-episode .grid-sizer {
+    width: 50%;
+  }
+}
+
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+  .grid-episode .grid-item {
+    width: 32%;
+    max-width: 300px;
+  }
+
+  .grid-episode .grid-sizer {
+    width: 33.33%;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .grid-episode .grid-item {
+    width: 24%;
+    max-width: 300px;
+  }
+
+  .grid-episode .grid-sizer {
+    width: 25%;
+  }
+}
+
 @media (max-width: 768px) {
   .center-block .thumbnail {
     width: 300px;

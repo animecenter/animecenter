@@ -85,7 +85,7 @@ gulp.task('concat', ['vendor'], () => {
         'resources/assets/js/vendor/jquery.js',
         'resources/assets/js/vendor/bootstrap.js',
         'resources/assets/js/vendor/**/*.js',
-        'resources/assets/js/**/*.js'
+        'resources/assets/js/**/*.js',
     ])
         .pipe($.concat('app.js'))
         .pipe($.uglify())

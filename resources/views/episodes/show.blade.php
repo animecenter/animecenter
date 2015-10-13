@@ -63,7 +63,7 @@
                             </script>
                         </div>
                         <div class="date_img">
-                            <img src="{{ asset("images/" . $anime['episode']['anime']['image']) }}">
+                            <img src="{{ asset("images/" . $anime['episode']['image']) }}">
                         </div>
                         <?php } ?>
                         <p>ETA: {{ $anime->episode->aired_at }}</p>
@@ -81,10 +81,10 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-2">
-                            <p> {{ $anime->episode->views }}<span> Views</span></p>
+                            <p>{{ $anime->episode->views }}<span> Views</span></p>
                         </div>
                         <div class="col-xs-10">
-                            // TODO: display avg votes...
+                            <p>{{ $anime->episode->votes }}<span> Votes</span></p>
                         </div>
                     </div>
                 </div>
@@ -139,7 +139,13 @@
             </div>
             <div class="chat">
                 <script id="cid0020000097531107619" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js">
-                    {"handle":"animecenterco","arch":"js","styles":{"a":"00AE45","b":100,"c":"FFFFFF","d":"FFFFFF","k":"00AE45","l":"00AE45","m":"00AE45","n":"FFFFFF","p":"10.35","q":"00AE45","r":100,"t":0,"surl":0,"allowpm":0,"fwtickm":1}}
+                    {
+                        "handle": "animecenterco", "arch": "js", "styles": {
+                            "a": "00AE45", "b": 100, "c": "FFFFFF", "d": "FFFFFF", "k": "00AE45", "l": "00AE45",
+                            "m": "00AE45", "n": "FFFFFF", "p": "10.35", "q": "00AE45", "r": 100, "t": 0, "surl": 0,
+                            "allowpm": 0, "fwtickm": 1
+                        }
+                    }
                 </script>
             </div>
         </div>
