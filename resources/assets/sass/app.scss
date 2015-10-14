@@ -55,7 +55,6 @@ $primary-font: "Roboto";
 $secondary-font: "Oswald";
 
 // Modules
-@import "modules/navbar";
 @import "modules/sidebar";
 @import "modules/footer";
 @import "modules/timeline";
@@ -289,10 +288,6 @@ a {
   }
 }
 
-.main {
-  margin-left: 250px;
-}
-
 .btn-toolbar {
   margin: 10px 0 10px -5px;
 }
@@ -305,14 +300,38 @@ a {
   width: 160px;
 }
 
+.letter li {
+  float: left;
+}
+
+@media (max-width: $screen-xs-min) {
+  .grid-episode {
+    height: auto !important;
+    .grid-item {
+      width: 100%;
+      max-width: 300px;
+      position: relative !important;
+      left: initial !important;
+      top: initial !important;
+      margin: 0 auto;
+    }
+    .grid-sizer {
+      width: 100%;
+    }
+  }
+}
+
 @media (max-width: $screen-xs-max) {
+  .main {
+    padding-top: 51px;
+  }
   .grid-episode .grid-item {
-    width: 99%;
+    width: 49%;
     max-width: 300px;
   }
 
   .grid-episode .grid-sizer {
-    width: 100%;
+    width: 50%;
   }
 }
 
@@ -338,6 +357,12 @@ a {
   }
 }
 
+@media (min-width: $screen-sm-min) {
+  .main {
+    margin-left: 250px;
+  }
+}
+
 @media (min-width: $screen-lg-min) {
   .grid-episode .grid-item {
     width: 24%;
@@ -346,12 +371,5 @@ a {
 
   .grid-episode .grid-sizer {
     width: 25%;
-  }
-}
-
-@media (max-width: 768px) {
-  .center-block .thumbnail {
-    width: 300px;
-    margin: 0 auto 10px;
   }
 }
