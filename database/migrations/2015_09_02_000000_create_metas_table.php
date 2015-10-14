@@ -12,7 +12,15 @@ class CreateMetasTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('metas', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('route', 191)->unique();
+            $table->string('title');
+            $table->string('keywords');
+            $table->string('description');
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -22,6 +30,6 @@ class CreateMetasTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('metas');
     }
 }

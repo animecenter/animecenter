@@ -35,20 +35,15 @@
 
 .sidebar {
   position: fixed;
-  width: 250px;
+  width: 100%;
   top: 0;
-  bottom: 0;
   left: 0;
   z-index: 1000;
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #fff;
-  border-right: 1px solid #dcdcdc;
-}
-
-.sign-up {
-  margin-left: 12px;
+  border-bottom: 1px solid #dcdcdc;
 }
 
 .login .btn, .sign-up .btn {
@@ -64,10 +59,91 @@
   .input-group-addon {
     background-color: #fff;
     height: 32px;
+    width: 32px;
     border: 0;
     top: 1px;
     right: 1px;
     border-radius: 0;
   }
+}
 
+.nav > li > a:focus, .nav > li > a:hover {
+  background-color: #F8F8F8;
+}
+
+.navbar-form {
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-form .form-group {
+  margin: 13px 0;
+}
+
+.navbar-default {
+  background-color: #fff;
+  margin: 0;
+  border: 0;
+}
+
+.navbar-brand {
+  height: 50px;
+  padding: 12px;
+}
+
+.navbar-brand > img {
+  margin: 0;
+}
+
+.navbar-collapse {
+  background: transparent;
+  border-top: 0;
+}
+
+.navbar-header {
+  background-color: #fff;
+}
+
+.navbar-collapse {
+  padding: 0;
+}
+
+.navbar-nav {
+  float: none;
+  margin: 7.5px 0;
+}
+
+.navbar-header {
+  float: none;
+}
+
+.nav-sidebar a {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+@media (max-width: $screen-xs-max) {
+  .navbar-form .form-group {
+    margin: 0;
+  }
+  .navbar-nav li:last-child, .search-form .input-group {
+    width: 100%;
+  }
+  .login, .sign-up {
+    width: 50%;
+  }
+  .navbar-nav li {
+    float: left;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .sidebar {
+    width: 250px;
+    bottom: 0;
+    border-right: 1px solid #dcdcdc;
+    border-bottom: 0;
+  }
+  .sign-up {
+    margin-left: 12px;
+  }
 }
