@@ -37,31 +37,10 @@ $router->post('password/reset', 'Auth\PasswordController@postReset');
 
 // Anime routes...
 $router->get('anime', 'AnimeController@getIndex');
+$router->get('anime/random', 'AnimeController@getRandom');
 $router->get('anime/watch/{animeSlug}/episode/{episodeNumber}/{translation}/{mirrorID}', 'AnimeController@getMirror');
 $router->get('anime/watch/{animeSlug}/episode/{episodeNumber}/{translation}', 'AnimeController@getEpisode');
 $router->get('anime/watch/{animeSlug}', 'AnimeController@getAnime');
-$router->get('anime/latest', 'AnimeController@getLatest');
-$router->get('anime/latest/{letter}', 'AnimeController@getLatestByLetter');
-$router->get('anime/subbed', 'AnimeController@getSubbed');
-$router->get('anime/subbed/{letter}', 'AnimeController@getSubbedByLetter');
-$router->get('anime/dubbed', 'AnimeController@getDubbed');
-$router->get('anime/dubbed/{letter}', 'AnimeController@getDubbedByLetter');
-$router->get('anime/classifications/{id}', 'AnimeController@getByClassificationID');
-$router->get('anime/classifications/{id}/{letter}', 'AnimeController@getByClassificationIDAndLetter');
-$router->get('anime/genres/{id}', 'AnimeController@getByGenreID');
-$router->get('anime/genres/{id}/{letter}', 'AnimeController@getByGenreIDAndLetter');
-$router->get('anime/producers/{id}', 'AnimeController@getByProducerID');
-$router->get('anime/producers/{id}/{letter}', 'AnimeController@getByProducerIDAndLetter');
-$router->get('anime/seasons/{id}', 'AnimeController@getBySeasonID');
-$router->get('anime/seasons/{id}/{letter}', 'AnimeController@getBySeasonIDAndLetter');
-$router->get('anime/types/{id}', 'AnimeController@getByTypeID');
-$router->get('anime/types/{id}/{letter}', 'AnimeController@getByTypeIDAndLetter');
-$router->get('anime/status/{id}', 'AnimeController@getByStatusID');
-$router->get('anime/status/{id}/{letter}', 'AnimeController@getByStatusIDAndLetter');
-$router->get('anime/top', 'AnimeController@getTop');
-$router->get('anime/top/{letter}', 'AnimeController@getTopByLetter');
-$router->get('anime/random', 'AnimeController@getRandom');
-$router->get('anime/{letter}', 'AnimeController@getIndex');
 
 // Episodes routes...
 $router->get('episodes/latest', 'EpisodeController@getLatest');
