@@ -13,6 +13,7 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|Relation[] $relations
  * @method static Builder|Relationship whereId($value)
  * @method static Builder|Relationship whereName($value)
  * @method static Builder|Relationship whereCreatedAt($value)

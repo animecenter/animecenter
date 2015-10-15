@@ -19,6 +19,11 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @property-read Anime $anime
+ * @property-read Mirror $mirror
+ * @property-read \Illuminate\Database\Eloquent\Collection|Mirror[] $mirrors
+ * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
+ * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
+ * @property-read mixed $slug
  * @method static Builder|Episode whereId($value)
  * @method static Builder|Episode whereAnimeId($value)
  * @method static Builder|Episode whereNumber($value)
@@ -29,9 +34,6 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Episode whereCreatedAt($value)
  * @method static Builder|Episode whereUpdatedAt($value)
  * @method static Builder|Episode whereDeletedAt($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|Mirror[] $mirrors
- * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
- * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
  */
 class Episode extends Model
 {

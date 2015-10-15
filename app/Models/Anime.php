@@ -50,6 +50,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Anime whereCreatedAt($value)
  * @method static Builder|Anime whereUpdatedAt($value)
  * @method static Builder|Anime whereDeletedAt($value)
+ * @property-read Episode $episode
+ * @property-read \Illuminate\Database\Eloquent\Collection|Episode[] $episodes
+ * @property-read \Illuminate\Database\Eloquent\Collection|Relation[] $relations
  */
 class Anime extends Model
 {
