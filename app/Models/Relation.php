@@ -16,6 +16,8 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ * @property-read \ $relationable
+ * @property-read Relationship $relationship
  * @method static Builder|Relation whereId($value)
  * @method static Builder|Relation whereRelationshipId($value)
  * @method static Builder|Relation whereRelationableId($value)

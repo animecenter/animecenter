@@ -22,6 +22,10 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ * @property-read Episode $episode
+ * @property-read MirrorSource $mirrorSource
+ * @property-read \Illuminate\Database\Eloquent\Collection|MirrorReport[] $mirrorReports
+ * @property-read mixed $slug
  * @method static Builder|Mirror whereId($value)
  * @method static Builder|Mirror whereUserId($value)
  * @method static Builder|Mirror whereEpisodeId($value)
@@ -36,9 +40,6 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Mirror whereCreatedAt($value)
  * @method static Builder|Mirror whereUpdatedAt($value)
  * @method static Builder|Mirror whereDeletedAt($value)
- * @property-read Episode $episode
- * @property-read MirrorSource $mirrorSource
- * @property-read \Illuminate\Database\Eloquent\Collection|MirrorReport[] $mirrorReports
  */
 class Mirror extends Model
 {
