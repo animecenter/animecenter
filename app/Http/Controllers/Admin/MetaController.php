@@ -2,9 +2,8 @@
 
 namespace AC\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use AC\Http\Requests;
 use AC\Http\Controllers\Controller;
+use AC\Http\Requests;
 
 class MetaController extends Controller
 {
