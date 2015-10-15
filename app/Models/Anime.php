@@ -272,4 +272,14 @@ class Anime extends Model
     {
         return 'anime/watch/' . $value;
     }
+
+    public function getPhotoAttribute()
+    {
+        return $this->image ? $this->image : 'https://placehold.it/300x150';
+    }
+
+    public function getShortTitleAttribute()
+    {
+        return (strlen($this->title) > 18) ? mb_substr($this->title, 0, 15) . '...' : $this->title;
+    }
 }

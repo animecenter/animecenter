@@ -149,4 +149,24 @@ class Episode extends Model
     {
         return 'episode/' . $this->number;
     }
+
+    public function getPhotoAttribute()
+    {
+        return $this->image ? $this->image : 'https://placehold.it/300x150';
+    }
+
+    public function getShortTitleAttribute()
+    {
+        return strlen($this->anime->title) > 15 ? mb_substr($this->anime->title, 0, 12) . '...' : $this->anime->title;
+    }
+
+    public function getUpcomingPhotoAttribute()
+    {
+        return $this->image ? $this->image : 'http://placehold.it/50x85';
+    }
+
+    public function getUpcomingTitleAttribute()
+    {
+        return strlen($this->anime->title) > 21 ? mb_substr($this->anime->title, 0, 18) . '...' : $this->anime->title;
+    }
 }

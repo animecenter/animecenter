@@ -13,10 +13,11 @@
                         @foreach ($episodes as $episode)
                             <div class="grid-item">
                                 <a href="{{ url($episode->anime->slug . '/' . $episode->slug . '/' . $episode->mirror->translation) }}" class="thumbnail">
-                                    <img src="{{ asset($episode->photo ? $episode->photo : 'http://placehold.it/300x150') }}" alt="{{ $episode->title }}">
+                                    <img src="{{ asset($episode->photo) }}" alt="{{ $episode->title }}" width="300" height="150">
                                     <div class="caption">
-                                        <h3 class="episode-title">{{ ((strlen($episode->anime->title) > 15)  ?
-                                        mb_substr($episode->anime->title, 0, 12) . '...' : $episode->anime->title) . ' ' . $episode->number }}</h3>
+                                        <h3 class="episode-title">
+                                            {{ $episode->shortTitle . ' ' . $episode->number }}
+                                        </h3>
                                         <p class="time-release">20 minutes ago</p>
                                     </div>
                                 </a>
@@ -32,10 +33,11 @@
                         @foreach ($animes as $anime)
                             <div class="grid-item">
                                 <a href="{{ url($anime->slug) }}" class="thumbnail">
-                                    <img src="http://placehold.it/150x225" alt="">
+                                    <img src="{{ asset($anime->photo) }}" alt="{{ $anime->title }}" width="150" height="225">
                                     <div class="caption">
-                                        <h3 class="episode-title">{{ (strlen($anime->title) > 18) ?
-                                            mb_substr($anime->title, 0, 15) . '...' : $anime->title }}</h3>
+                                        <h3 class="episode-title">
+                                            {{ $anime->shortTitle }}
+                                        </h3>
                                     </div>
                                 </a>
                             </div>
@@ -53,12 +55,10 @@
                     @foreach ($upcomingEpisodes as $episode)
                         <a href="{{ url($episode->anime->slug . '/' . $episode->slug) }}" class="media">
                             <div class="media-left">
-                                <img src="{{ $episode->photo ? asset($episode->photo) : 'http://placehold.it/50x85' }}"
-                                     alt="{{ $episode->title }}">
+                                <img src="{{ asset($anime->upcomingPhoto) }}" alt="{{ $episode->title }}">
                             </div>
                             <div class="media-body">
-                                <h3 class="media-heading">{{ (strlen($episode->anime->title) > 21) ?
-                                    mb_substr($episode->anime->title, 0, 18) . '...' : $episode->anime->title }}</h3>
+                                <h3 class="media-heading">{{ $episode->upcomingTitle }}</h3>
                                 <p>{{ 'Episode ' . $episode->number }}</p>
                             </div>
                         </a>

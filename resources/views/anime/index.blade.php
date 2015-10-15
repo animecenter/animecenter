@@ -140,11 +140,12 @@
                 @foreach ($animes as $anime)
                     <div class="grid-item">
                         <a class="thumbnail" href="{{ url($anime->slug) }}">
-                            <img src="{{ $anime->photo ? asset($anime->photo) : 'https://placehold.it/150x250' }}"
-                                 alt="{{ $anime->title }}">
+                            <img src="{{ $anime->photo }}" alt="{{ $anime->title }}" width="150" height="250">
                             <div class="caption">
-                                <h3 class="episode-title">{{ (strlen($anime->title) > 18) ?
-                                    mb_substr($anime->title, 0, 15) . '...' : $anime->title }}</h3>
+                                <h3 class="episode-title">
+                                    {{ (strlen($anime->title) > 18) ? mb_substr($anime->title, 0, 15) . '...' :
+                                    $anime->title }}
+                                </h3>
                             </div>
                         </a>
                     </div>
