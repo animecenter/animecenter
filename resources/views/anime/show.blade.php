@@ -9,53 +9,53 @@
                 </div>
                 <div class="media-body">
                     <h1>{{ $anime->title }}</h1>
-                    @if ($anime->type)
-                        <div class="text-success">
-                            Type:<span class="text-white"> {{ $anime->type->name }}</span>
-                        </div>
-                    @endif
-                    <div class="text-success">
-                        Episodes:<span class="text-white">
-                            {{ $anime->number_of_episodes ? $anime->number_of_episodes : 'Unknown' }}
-                        </span>
-                    </div>
-                    <div class="text-success">
-                        Status:<span class="text-white"> {{ $anime->status }}</span>
-                    </div>
-                    <div class="text-success">
-                        Aired:<span class="text-white"> {{ ($anime->release_date) ?
-                        ($anime->release_date . ' to ' . ($anime->end_date ? $anime->end_date : '?')) :
-                    'Unknown' }}</span>
-                    </div>
-                    <div class="text-success">
-                        Producers:
-                    <span class="text-white">
+                    <p class="text-white">
+                        <span class="text-success">Type: </span>
+                        @if ($anime->type)
+                            <a href="{{ url('anime?type=' . $anime->type->id) }}">{{ $anime->type->name }}</a>
+                        @else
+                            Unknown
+                        @endif
+                    </p>
+                    <p class="text-white">
+                        <span class="text-success">Episodes: </span>
+                        {{ $anime->number_of_episodes }}
+                    </p>
+                    <p class="text-white">
+                        <span class="text-success">Status: </span>{{ $anime->status }}
+                    </p>
+                    <p class="text-white">
+                        <span class="text-success">Aired: </span>
+                        {{ ($anime->release_date) ? ($anime->release_date . ' to ' .
+                            ($anime->end_date ? $anime->end_date : '?')) : 'Unknown' }}
+                    </p>
+                    <p class="text-white">
+                        <span class="text-success">Producers: </span>
                         @foreach ($anime->producers as $key => $producer)
-                            <a href="{{ url('anime/producers/' . $producer->id) }}">
+                            <a href="{{ url('anime?producer=' . $producer->id) }}">
                                 {{ $producer->name . ($key < $producersCount ? ',' : '') }}
                             </a>
                         @endforeach
-                    </span>
-                    </div>
-                    <div class="text-success">
-                        Genres:
-                    <span class="text-white">
+                    </p>
+                    <p class="text-white">
+                        <span class="text-success">Genres: </span>
                         @foreach ($anime->genres as $genre)
                             {{ $genre->name }}
                         @endforeach
-                    </span>
-                    </div>
-                    <div class="text-success">
-                        Duration:<span class="text-white"> {{ $anime->duration }}</span>
-                    </div>
-                    <div class="text-success">
-                        Rating:<span class="text-white"> {{ $anime->classification->name }}</span>
-                    </div>
+                    </p>
+                    <p class="text-white">
+                        <span class="text-success">Duration: </span>{{ $anime->duration }}
+                    </p>
+                    <p class="text-white">
+                        <span class="text-success">Rating: </span>
+                        <a href="{{ url('anime?classification=' . $anime->classification->id) }}">
+                            {{ $anime->classification->name }}
+                        </a>
+                    </p>
                 </div>
-                <div class="text-success">
-                    Synopsis:
-                    <p class="text-white"> {{ $anime->synopsis }}</p>
-                </div>
+                <p class="text-white">
+                    <span class="text-success">Synopsis: </span>{{ $anime->synopsis }}
+                </p>
             </div>
         </div>
         <div class="col-xs-12">
@@ -84,7 +84,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-md-8 episode-list">
+        <div class="col-xs-12 episode-list">
             <table class="table">
                 <thead>
                     <tr>
@@ -97,24 +97,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="active">
-                        <td>
-                            <i class="fa fa-video-camera fa-fw text-success"></i> Episode 1
-                        </td>
-                        <td>
-                            <button class="label label-success" type="button">Subbed</button>
-                            <button class="label label-purple" type="button">Dubbed</button>
-                        </td>
-                    </tr>
                     @foreach ($anime['episodes'] as $episode)
                         <tr>
                             <td>
                                 <i class="fa fa-video-camera fa-fw text-success"></i> Episode {{ $episode->number }}
                             </td>
-                            <td>
-                                <button class="label label-success" type="button">Subbed</button>
-                                <button class="label label-purple" type="button">Dubbed</button>
-                            </td>
+                            @if (!$episode->mirrors->isEmpty())
+                                <td>
+                                    <a href="{{ url($anime->slug . '/episode/' . $episode->number . '/' . $episode->mirrors->first()->id) }}" class="label label-success">Subbed</a>
+                                    @if (empty($episode->mirrors->where('translation', 'subbed')))
+                                        <button class="label label-purple" type="button">Dubbed</button>
+                                    @endif
+                                </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>

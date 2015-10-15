@@ -240,145 +240,6 @@ class EloquentAnimeRepository
     }
 
     /**
-     * Get latest anime by letter.
-     *
-     * @param string $letter
-     * @return mixed
-     */
-    public function getLatestByLetter($letter = '')
-    {
-        $timestamp = Carbon::now()->toDateTimeString();
-        if (!$letter) {
-            return $this->anime->has('episodes')->where('release_date', '<', $timestamp)
-                ->orderBy('release_date', 'DESC')->paginate(20);
-        } elseif ($letter === '0-9') {
-            return $this->anime->has('episodes')->where('release_date', '<', $timestamp)
-                ->whereRaw("title NOT REGEXP '^[[:alpha:]]'")->orderBy('release_date', 'DESC')->paginate(20);
-        } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
-            return $this->anime->has('episodes')->where('release_date', '<', $timestamp)
-                ->where('title', 'like', $letter.'%')->orderBy('release_date', 'DESC')->paginate(20);
-        } else {
-            abort(404, $letter . ' was not found');
-        }
-    }
-
-    /**
-     * Get anime by producer id and letter.
-     *
-     * @param int $id
-     * @param string $letter
-     * @return mixed
-     */
-    public function getByProducerAndLetter($id = 0, $letter = '')
-    {
-        $timestamp = Carbon::now()->toDateTimeString();
-        if (!$letter) {
-            return $this->anime->has('episodes')->whereHas('producers', function ($query) use ($id) {
-                $query->where('producers.id', '=', $id);
-            })->where('release_date', '<', $timestamp)->orderBy('release_date', 'DESC')->paginate(20);
-        } elseif ($letter === '0-9') {
-            return $this->anime->has('episodes')->whereHas('producers', function ($query) use ($id) {
-                $query->where('producers.id', '=', $id);
-            })->where('release_date', '<', $timestamp)->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
-                ->orderBy('release_date', 'DESC')->paginate(20);
-        } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
-            return $this->anime->has('episodes')->whereHas('producers', function ($query) use ($id) {
-                $query->where('producers.id', '=', $id);
-            })->where('release_date', '<', $timestamp)->where('title', 'like', $letter.'%')
-                ->orderBy('release_date', 'DESC')->paginate(20);
-        } else {
-            abort(404, $letter . ' was not found');
-        }
-    }
-
-    /**
-     * Get anime by genre id and letter.
-     *
-     * @param int $id
-     * @param string $letter
-     * @return mixed
-     */
-    public function getByGenreAndLetter($id = 0, $letter = '')
-    {
-        $timestamp = Carbon::now()->toDateTimeString();
-        if (!$letter) {
-            return $this->anime->has('episodes')->whereHas('genres', function ($query) use ($id) {
-                $query->where('genres.id', '=', $id);
-            })->where('release_date', '<', $timestamp)->orderBy('release_date', 'DESC')->paginate(20);
-        } elseif ($letter === '0-9') {
-            return $this->anime->has('episodes')->whereHas('genres', function ($query) use ($id) {
-                $query->where('genres.id', '=', $id);
-            })->where('release_date', '<', $timestamp)->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
-                ->orderBy('release_date', 'DESC')->paginate(20);
-        } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
-            return $this->anime->has('episodes')->whereHas('genres', function ($query) use ($id) {
-                $query->where('genres.id', '=', $id);
-            })->where('release_date', '<', $timestamp)->where('title', 'like', $letter.'%')
-                ->orderBy('release_date', 'DESC')->paginate(20);
-        } else {
-            abort(404, $letter . ' was not found');
-        }
-    }
-
-    /**
-     * Get anime by classification id and letter.
-     *
-     * @param int $id
-     * @param string $letter
-     * @return mixed
-     */
-    public function getByClassificationAndLetter($id = 0, $letter = '')
-    {
-        $timestamp = Carbon::now()->toDateTimeString();
-        if (!$letter) {
-            return $this->anime->has('episodes')->whereHas('classification', function ($query) use ($id) {
-                $query->where('classifications.id', '=', $id);
-            })->where('release_date', '<', $timestamp)->orderBy('release_date', 'DESC')->paginate(20);
-        } elseif ($letter === '0-9') {
-            return $this->anime->has('episodes')->whereHas('classification', function ($query) use ($id) {
-                $query->where('classifications.id', '=', $id);
-            })->where('release_date', '<', $timestamp)->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
-                ->orderBy('release_date', 'DESC')->paginate(20);
-        } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
-            return $this->anime->has('episodes')->whereHas('classification', function ($query) use ($id) {
-                $query->where('classifications.id', '=', $id);
-            })->where('release_date', '<', $timestamp)->where('title', 'like', $letter.'%')
-                ->orderBy('release_date', 'DESC')->paginate(20);
-        } else {
-            abort(404, $letter . ' was not found');
-        }
-    }
-
-    /**
-     * Get anime by classification id and letter.
-     *
-     * @param int $id
-     * @param string $letter
-     * @return mixed
-     */
-    public function getBySeasonAndLetter($id = 0, $letter = '')
-    {
-        $timestamp = Carbon::now()->toDateTimeString();
-        if (!$letter) {
-            return $this->anime->has('episodes')->whereHas('season', function ($query) use ($id) {
-                $query->where('seasons.id', '=', $id);
-            })->where('release_date', '<', $timestamp)->orderBy('release_date', 'DESC')->paginate(20);
-        } elseif ($letter === '0-9') {
-            return $this->anime->has('episodes')->whereHas('season', function ($query) use ($id) {
-                $query->where('seasons.id', '=', $id);
-            })->where('release_date', '<', $timestamp)->whereRaw("title NOT REGEXP '^[[:alpha:]]'")
-                ->orderBy('release_date', 'DESC')->paginate(20);
-        } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
-            return $this->anime->has('episodes')->whereHas('season', function ($query) use ($id) {
-                $query->where('seasons.id', '=', $id);
-            })->where('release_date', '<', $timestamp)->where('title', 'like', $letter.'%')
-                ->orderBy('release_date', 'DESC')->paginate(20);
-        } else {
-            abort(404, $letter . ' was not found');
-        }
-    }
-
-    /**
      * @param string $animeSlug
      * @param int $episodeNumber
      * @param string $translation
@@ -419,6 +280,9 @@ class EloquentAnimeRepository
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function currentSeason()
     {
         $month = DATE('m');
@@ -439,6 +303,10 @@ class EloquentAnimeRepository
         return $this->getBySeasonName($seasonName);
     }
 
+    /**
+     * @param string $seasonName
+     * @return mixed
+     */
     public function getBySeasonName($seasonName = '')
     {
         return $this->anime->has('episodes')->whereHas('season', function ($query) use ($seasonName) {
@@ -447,8 +315,36 @@ class EloquentAnimeRepository
             ->orderBy('release_date', 'DESC')->take(4)->get();
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function search($query)
     {
         return $this->anime->where('title', 'LIKE', '%'.$query.'%')->orderBy('title', 'ASC')->get();
+    }
+
+    /**
+     * Get random anime.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getRandom()
+    {
+        return $this->anime->with([
+            'classification' => function ($query) {
+                $query->select(['id', 'name']);
+            }, 'episodes' => function ($query) {
+                $query->orderBy('number', 'asc');
+            }, 'genres' => function ($query) {
+                $query->select(['id', 'name']);
+            }, 'producers' => function ($query) {
+                $query->select(['id', 'name']);
+            }, 'season' => function ($query) {
+                $query->select(['id', 'name']);
+            }, 'type' => function ($query) {
+                $query->select(['id', 'name']);
+            }
+        ])->whereRaw('RAND()')->firstOrFail();
     }
 }
