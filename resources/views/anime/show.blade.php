@@ -104,7 +104,7 @@
                             </td>
                             @if (!$episode->mirrors->isEmpty())
                                 <td>
-                                    <a href="{{ url($anime->slug . '/episode/' . $episode->number . '/' . $episode->mirrors->first()->id) }}" class="label label-success">Subbed</a>
+                                    <a href="{{ url($anime->slug . '/episode/' . $episode->number . '/subbed/' . $episode->mirrors->first()->id) }}" class="label label-success">Subbed</a>
                                     @if (empty($episode->mirrors->where('translation', 'subbed')))
                                         <button class="label label-purple" type="button">Dubbed</button>
                                     @endif
