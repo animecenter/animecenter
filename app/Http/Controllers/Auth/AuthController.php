@@ -3,7 +3,7 @@
 namespace AC\Http\Controllers\Auth;
 
 use AC\Http\Controllers\Controller;
-use AC\User;
+use AC\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Validator;
@@ -23,10 +23,13 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    private $username = 'username';
-    private $loginPath = 'login';
-    private $redirectTo = 'admin';
-    private $redirectPath = 'admin';
+    protected $username = 'username';
+
+    protected $loginPath = '/login';
+
+    protected $redirectTo = '/dashboard';
+
+    protected $redirectPath = '/dashboard';
 
     /**
      * Create a new authentication controller instance.

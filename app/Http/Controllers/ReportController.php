@@ -2,9 +2,8 @@
 
 namespace AC\Http\Controllers;
 
-use Illuminate\Http\Request;
 use AC\Http\Requests;
-use AC\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
