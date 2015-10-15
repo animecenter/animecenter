@@ -164,6 +164,24 @@ class AnimeController extends Controller
         return view('episodes.show', $this->data);
     }
 
+    /**
+     * Get random anime.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function getRandom()
+    {
+        $this->data['anime'] = $anime = $this->anime->getRandom();
+        $this->data['producersCount'] = $anime['producers']->count() - 1;
+
+        // TODO: Update number of views
+        // $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
+
+        $this->data['lastEpisode'] = $this->episode->getLastEpisode($anime['id']);
+
+        return view('anime.show', $this->data);
+    }
+
     public function getCurrentURL($letter = '')
     {
         return $letter ? str_replace('/' . $letter, '', request()->path()) : request()->path();

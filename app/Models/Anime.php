@@ -254,6 +254,17 @@ class Anime extends Model
         return (($hours) ? $hours . ' hr. ' : '') . (($minutes) ? $minutes . ' min. per episode' : 'Unknown');
     }
 
+    /**
+     * Get number of episodes attribute.
+     *
+     * @param $value
+     * @return string
+     */
+    public function getNumberOfEpisodesAttribute($value)
+    {
+        return $value ? $value : 'Unknown';
+    }
+
     public function getSlugAttribute($value)
     {
         return 'anime/watch/' . $value;
