@@ -70,6 +70,32 @@ $router->group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => 'a
     $router->get('animes/list', 'AnimeController@getList');
     $router->get('animes/list/deleted', 'AnimeController@getListDeleted');
 
+    // Banners routes...
+    $router->get('banners', 'BannerController@index');
+    $router->get('banners/create', 'BannerController@getCreate');
+    $router->post('banners/create', 'BannerController@postCreate');
+    $router->get('banners/edit/{id}', 'BannerController@getEdit');
+    $router->post('banners/edit/{id}', 'BannerController@postEdit');
+    $router->post('banners/delete/{id}', 'BannerController@postDelete');
+    $router->get('banners/deleted', 'BannerController@getDeleted');
+    $router->post('banners/deleted/{id}', 'BannerController@postDeleted');
+    $router->post('banners/recover/{id}', 'BannerController@postRecover');
+    $router->get('banners/list', 'BannerController@getList');
+    $router->get('banners/list/deleted', 'BannerController@getListDeleted');
+
+    // Classifications routes...
+    $router->get('classifications', 'ClassificationController@index');
+    $router->get('classifications/create', 'ClassificationController@getCreate');
+    $router->post('classifications/create', 'ClassificationController@postCreate');
+    $router->get('classifications/edit/{id}', 'ClassificationController@getEdit');
+    $router->post('classifications/edit/{id}', 'ClassificationController@postEdit');
+    $router->post('classifications/delete/{id}', 'ClassificationController@postDelete');
+    $router->get('classifications/deleted', 'ClassificationController@getDeleted');
+    $router->post('classifications/deleted/{id}', 'ClassificationController@postDeleted');
+    $router->post('classifications/recover/{id}', 'ClassificationController@postRecover');
+    $router->get('classifications/list', 'ClassificationController@getList');
+    $router->get('classifications/list/deleted', 'ClassificationController@getListDeleted');
+
     // Episodes routes...
     $router->get('episodes', 'EpisodeController@index');
     $router->get('episodes/create', 'EpisodeController@getCreate');
@@ -83,6 +109,19 @@ $router->group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => 'a
     $router->get('episodes/list', 'EpisodeController@getList');
     $router->get('episodes/list/deleted', 'EpisodeController@getListDeleted');
 
+    // Genres routes...
+    $router->get('genres', 'GenreController@index');
+    $router->get('genres/create', 'GenreController@getCreate');
+    $router->post('genres/create', 'GenreController@postCreate');
+    $router->get('genres/edit/{id}', 'GenreController@getEdit');
+    $router->post('genres/edit/{id}', 'GenreController@postEdit');
+    $router->post('genres/delete/{id}', 'GenreController@postDelete');
+    $router->get('genres/deleted', 'GenreController@getDeleted');
+    $router->post('genres/deleted/{id}', 'GenreController@postDeleted');
+    $router->post('genres/recover/{id}', 'GenreController@postRecover');
+    $router->get('genres/list', 'GenreController@getList');
+    $router->get('genres/list/deleted', 'GenreController@getListDeleted');
+
     // Images routes...
     $router->get('images', 'ImageController@index');
     $router->get('images/create', 'ImageController@getCreate');
@@ -95,6 +134,19 @@ $router->group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => 'a
     $router->post('images/recover/{id}', 'ImageController@postRecover');
     $router->get('images/list', 'ImageController@getList');
     $router->get('images/list/deleted', 'ImageController@getListDeleted');
+
+    // Mirrors routes...
+    $router->get('mirrors', 'MirrorController@index');
+    $router->get('mirrors/create', 'MirrorController@getCreate');
+    $router->post('mirrors/create', 'MirrorController@postCreate');
+    $router->get('mirrors/edit/{id}', 'MirrorController@getEdit');
+    $router->post('mirrors/edit/{id}', 'MirrorController@postEdit');
+    $router->post('mirrors/delete/{id}', 'MirrorController@postDelete');
+    $router->get('mirrors/deleted', 'MirrorController@getDeleted');
+    $router->post('mirrors/deleted/{id}', 'MirrorController@postDeleted');
+    $router->post('mirrors/recover/{id}', 'MirrorController@postRecover');
+    $router->get('mirrors/list', 'MirrorController@getList');
+    $router->get('mirrors/list/deleted', 'MirrorController@getListDeleted');
 
     // Options routes...
     $router->get('options', 'OptionController@index');
@@ -121,6 +173,19 @@ $router->group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => 'a
     $router->post('pages/recover/{id}', 'PageController@postRecover');
     $router->get('pages/list', 'PageController@getList');
     $router->get('pages/list/deleted', 'PageController@getListDeleted');
+
+    // Producers routes...
+    $router->get('producers', 'ProducerController@index');
+    $router->get('producers/create', 'ProducerController@getCreate');
+    $router->post('producers/create', 'ProducerController@postCreate');
+    $router->get('producers/edit/{id}', 'ProducerController@getEdit');
+    $router->post('producers/edit/{id}', 'ProducerController@postEdit');
+    $router->post('producers/delete/{id}', 'ProducerController@postDelete');
+    $router->get('producers/deleted', 'ProducerController@getDeleted');
+    $router->post('producers/deleted/{id}', 'ProducerController@postDeleted');
+    $router->post('producers/recover/{id}', 'ProducerController@postRecover');
+    $router->get('producers/list', 'ProducerController@getList');
+    $router->get('producers/list/deleted', 'ProducerController@getListDeleted');
 
     // Users routes...
     $router->get('users', 'UserController@index');
