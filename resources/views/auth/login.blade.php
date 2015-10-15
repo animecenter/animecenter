@@ -1,23 +1,45 @@
 @extends('layouts.index')
 
 @section('content')
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-        <form class="form-signin" action="{{ url('login') }}" method="post">
-            <h2>Please sign in</h2>
-            <div class="form-group">
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" class="form-control" placeholder="Email" required="" autofocus="">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1>Sign in</h1>
+                </div>
+                <div class="panel-body">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form class="form-horizontal sign-in" action="{{ url('login') }}" method="post">
+                        {!! csrf_field() !!}
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="username">Username</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="username" value="{{ old('username') }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="password">Password</label>
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">Log in</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" class="form-control" placeholder="Password" required="">
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </form>
+        </div>
     </div>
 @endsection
