@@ -281,6 +281,23 @@ class EloquentAnimeRepository
     }
 
     /**
+     * Get current anime episode mirror by id.
+     *
+     * @param string $animeSlug
+     * @param int $episodeNumber
+     * @param string $translation
+     * @param string $mirrorID
+     * @return \Illuminate\Database\Eloquent\Model|static
+     */
+    public function getMirror($animeSlug = '', $episodeNumber = 0, $translation = '', $mirrorID = '')
+    {
+        return $this->anime->with(['episode.mirror'])->whereHas('episode.mirror', function($query) use ($episodeNumber, $translation, $mirrorID) {
+            $query->where('mirrors.id', '=', $mirrorID)
+                ->where('mirrors.translation', '=', $translation)->where('episodes.number', '=', $episodeNumber);
+        })->where('slug', '=', $animeSlug)->firstOrFail();
+    }
+
+    /**
      * @return mixed
      */
     public function currentSeason()

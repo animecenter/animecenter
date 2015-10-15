@@ -135,31 +135,31 @@ class AnimeController extends Controller
         return view('episodes.show', $this->data);
     }
 
-    public function getMirror($animeSlug = '', $mirrorID = '')
+    /**
+     * Get mirror for current anime episode.
+     *
+     * @param string $animeSlug
+     * @param int $episodeNumber
+     * @param string $translation
+     * @param string $mirrorID
+     * @return \Illuminate\View\View
+     */
+    public function getMirror($animeSlug = '', $episodeNumber = 0, $translation = '', $mirrorID = '')
     {
-        $this->data['episode'] = $episode = $this->episode->with('anime')->where('id', '=', $mirrorID)->firstOrFail();
+        $this->data['anime'] = $anime = $this->anime->getMirror($animeSlug, $episodeNumber, $translation, $mirrorID);
 
         // TODO: Update episode views + 1...
         // $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
 
-        $this->data['nextEpisode'] = $this->episode
-            ->where('anime_id', '=', $episode->anime->id)
-            ->where('order', '>', $episode['order'])
-            ->orderBy('order')
-            ->first();
-        $this->data['prevEpisode'] = $this->episode
-            ->where('anime_id', '=', $episode->anime->id)
-            ->where('order', '<', $episode['order'])
-            ->orderBy('order', 'desc')
-            ->first();
-        $this->data['mainLink'] = $this->data['options'][4]['value'] . $episode['slug'];
-        $this->data['currentMirror'] = $mirror;
-        $this->data['pageTitle'] = $title = $episode['title'] . " English Subbed/Dubbed in HD";
-        $this->data['metaTitle'] = "Watch {$episode['title']} Online for Free | Watch Anime Online Free";
+        $this->data['nextEpisode'] = $this->episode->getNextEpisode($anime->id, $anime->episode->number);
+        $this->data['prevEpisode'] = $this->episode->getPreviousEpisode($anime->id, $anime->episode->number);
+
+        $this->data['pageTitle'] = $title = $anime->episode['title'] . " English Subbed/Dubbed in HD";
+        $this->data['metaTitle'] = "Watch {$anime->episode['title']} Online for Free | Watch Anime Online Free";
         $this->data['metaDesc'] = "Watch " . $title . " Online. Download " . $title . " Online. Watch " .
-            $episode['title'] . " English Sub/Dub HD";
-        $this->data['metaKey'] = "Watch {$episode['title']}, {$episode['title']} English Subbed/Dubbed, Download " .
-            "{$episode['title']} English Subbed/Dubbed, Watch {$episode['title']} Online";
+            $anime->episode['title'] . " English Sub/Dub HD";
+        $this->data['metaKey'] = "Watch {$anime->episode['title']}, {$anime->episode['title']} English Subbed/Dubbed, Download " .
+            "{$anime->episode['title']} English Subbed/Dubbed, Watch {$anime->episode['title']} Online";
 
         return view('episodes.show', $this->data);
     }
