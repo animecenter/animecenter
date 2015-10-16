@@ -56,7 +56,7 @@ class PageController extends Controller
         $this->data['metaKey'] = 'Watch Anime Online, Anime Subbed/Dubbed, Anime Episodes, Anime Stream, ' .
             'Subbed Anime, Dubbed Anime';
 
-        return view('pages.home', $this->data);
+        return view('app.pages.home', $this->data);
     }
 
     /**
@@ -67,6 +67,6 @@ class PageController extends Controller
      */
     public function getBySlug($slug = '')
     {
-        return view('pages.show', ['page' => $this->page->where('slug', '=', $slug)->take(1)->findOrFail()]);
+        return view('app.pages.show', ['page' => $this->page->where('slug', '=', $slug)->take(1)->findOrFail()]);
     }
 }

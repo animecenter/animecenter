@@ -85,7 +85,7 @@ class AnimeController extends Controller
         $this->data['seasons'] = $this->season->all();
         $this->data['types'] = $this->type->all();
 
-        return view('anime.index', $this->data);
+        return view('app.anime.index', $this->data);
     }
 
     /**
@@ -104,7 +104,7 @@ class AnimeController extends Controller
 
         $this->data['lastEpisode'] = $this->episode->getLastEpisode($anime['id']);
 
-        return view('anime.show', $this->data);
+        return view('app.anime.show', $this->data);
     }
 
     /**
@@ -132,7 +132,7 @@ class AnimeController extends Controller
         $this->data['metaKey'] = "Watch {$anime['title']}, {$anime['title']} English Subbed/Dubbed, Download " .
             "{$anime['title']} English Subbed/Dubbed, Watch {$anime['title']} Online";
 
-        return view('episodes.show', $this->data);
+        return view('app.episodes.show', $this->data);
     }
 
     /**
@@ -161,7 +161,7 @@ class AnimeController extends Controller
         $this->data['metaKey'] = "Watch {$anime->episode['title']}, {$anime->episode['title']} English Subbed/Dubbed, Download " .
             "{$anime->episode['title']} English Subbed/Dubbed, Watch {$anime->episode['title']} Online";
 
-        return view('episodes.show', $this->data);
+        return view('app.episodes.show', $this->data);
     }
 
     /**
@@ -179,7 +179,7 @@ class AnimeController extends Controller
 
         $this->data['lastEpisode'] = $this->episode->getLastEpisode($anime['id']);
 
-        return view('anime.show', $this->data);
+        return view('app.anime.show', $this->data);
     }
 
     public function getCurrentURL($letter = '')

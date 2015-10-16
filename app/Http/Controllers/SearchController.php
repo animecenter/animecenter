@@ -40,7 +40,7 @@ class SearchController extends Controller
 
         $this->data['genres'] = $this->genre->orderBy('value')->get();
 
-        return view('search.index', $this->data);
+        return view('app.search.index', $this->data);
     }
 
     /**
@@ -64,7 +64,7 @@ class SearchController extends Controller
             $this->data['metaKey'] = "Download " . $pageTitle . ",Watch " . $pageTitle . " on iphone,watch anime online," .
                 " English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime";
 
-            return view('search.show', $this->data);
+            return view('app.search.show', $this->data);
         } else {
             abort(404, "You are not searching for anything");
         }

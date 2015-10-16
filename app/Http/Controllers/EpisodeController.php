@@ -31,6 +31,6 @@ class EpisodeController extends Controller
         $this->data['metaKey'] = "Latest Anime Episodes, Watch Latest Anime Episodes, Watch on Iphone, Watch Anime" .
             " Online, English Subbed/Dubbed";
 
-        return view('episodes.latest', $this->data);
+        return view('app.episodes.latest', $this->data);
     }
 }

@@ -24,7 +24,7 @@
       "main": "modernizr.js"
     },
     "font-awesome": {
-      "main": "./fonts/*"
+      "main": "fonts/*"
     },
     "masonry": {
       "main": "dist/masonry.pkgd.js"

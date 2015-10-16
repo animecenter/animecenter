@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.index')
+@extends('dashboard.layouts.main')
 @section('content')
     <div class="bigTitle">Images List</div>
     <a href="{{ url('admin/images/create') }}" class="prevBT add">Add</a>
