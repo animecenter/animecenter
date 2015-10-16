@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.index')
+@extends('dashboard.layouts.main')
 @section('content')
     <div class="bigTitle">Edit Page</div>
     <form action="{{ url('admin/pages/edit/' . $page['id']) }}" method="post">

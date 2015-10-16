@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.index')
+@extends('dashboard.layouts.main')
 @section('content')
     <div class="bigTitle">Theme Options</div>
     <form action="{{ url('admin/options/edit') }}" method="post" enctype="multipart/form-data">
