@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.index')
+@extends('dashboard.layouts.main')
 @section('content')
     <div class="bigTitle">Edit Episode</div>
     <form action="{{ url('admin/episodes/edit/' . $episode['id']) }}" method="post" enctype="multipart/form-data">

@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.index')
+@extends('dashboard.layouts.main')
 @section('content')
     <div class="bigTitle">Pages List</div>
     <a href="{{ url('admin/pages/create') }}" class="prevBT add">Add</a>

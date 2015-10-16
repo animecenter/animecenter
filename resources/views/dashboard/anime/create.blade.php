@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.index')
+@extends('dashboard.layouts.main')
 @section('content')
     <div class="bigTitle">Add New</div>
     <form action="{{ url('admin/anime/create') }}" method="post" enctype="multipart/form-data">
