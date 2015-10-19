@@ -5,8 +5,13 @@ namespace AC\Http\Controllers\Dashboard;
 use AC\Http\Controllers\Controller;
 use AC\Models\Anime;
 use AC\Models\Episode;
+use Datatable;
+use DB;
+use Form;
+use Html;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
+use FA;
 
 class EpisodeController extends Controller
 {
@@ -46,7 +51,6 @@ class EpisodeController extends Controller
      */
     public function index()
     {
-        $this->data['episodes'] = $this->episode->orderBy('id', 'DESC')->get();
         $this->data['user'] = $this->auth->user();
 
         return view('dashboard.episodes.index', $this->data);
@@ -210,5 +214,32 @@ class EpisodeController extends Controller
         $msg = 'Episode was deleted successfully!';
 
         return redirect()->action('Admin\EpisodeController@index')->with('success', $msg);
+    }
+
+    public function getList()
+    {
+        $list = collect(DB::table('episodes')->join('animes', 'episodes.anime_id', '=', 'animes.id')
+            ->orderBy('episodes.id', 'DESC')
+            ->get(['episodes.id', 'episodes.number', 'episodes.active', 'episodes.aired_at', 'animes.title as animeTitle']));
+
+        return Datatable::collection($list)
+            ->showColumns('animeTitle', 'number', 'aired_at', 'active', 'actions')
+            ->searchColumns(['animeTitle'])
+            ->orderColumns('animeTitle', 'number', 'aired_at', 'active')
+            ->addColumn('active', function ($model) {
+                return $model->active === 1 ? 'Active' : 'Inactive';
+            })
+            ->addColumn('actions', function ($model) {
+                $editIcon = FA::icon('pencil-square-o')->__toString() . ' ';
+                $deleteIcon = FA::icon('trash-o')->__toString() . ' ';
+                $editUrl = url('admin/episodes/edit', $model->id);
+                $deleteUrl = url('admin/episodes/delete', $model->id);
+                return html_entity_decode(
+                    Html::link($editUrl, $editIcon . '', ['class' => 'btn btn-sm btn-default pull-left']).
+                    Form::open(['url' => $deleteUrl, 'class' => '']).
+                    Form::button($deleteIcon, ['class' => 'btn btn-sm btn-danger btn-delete', 'type' => 'submit']).
+                    Form::close()
+                );
+            })->make();
     }
 }

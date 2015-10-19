@@ -47,3 +47,29 @@
 @import "vendor/datepicker3";
 @import "vendor/daterangepicker-bs3";
 @import "vendor/bootstrap3-wysihtml5";
+@import "vendor/dataTables.bootstrap";
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: block;
+  font-family: 'Fontawesome';
+  opacity: 0.5;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+table.dataTable thead .sorting:after {
+  opacity: 0.2;
+  content: "\f0dc"; /* sort */
+}
+table.dataTable thead .sorting_asc:after {
+  content: "\f160"; /* sort-by-attributes */
+}
+table.dataTable thead .sorting_desc:after {
+  content: "\f161"; /* sort-by-attributes-alt */
+}

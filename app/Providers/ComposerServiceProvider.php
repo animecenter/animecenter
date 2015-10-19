@@ -19,6 +19,10 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer(
             ['app.layouts.main'], AppComposer::class
         );
+
+        view()->composer(
+            ['dashboard.layouts.main'], DashboardComposer::class
+        );
     }
 
     /**

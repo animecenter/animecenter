@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.20 (LTS) on 2015-10-15.
+ * Generated for Laravel 5.1.20 (LTS) on 2015-10-19.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1271,7 +1271,7 @@ namespace {
         /**
          * Get the currently authenticated user.
          *
-         * @return \AC\Users\User|null 
+         * @return \AC\Models\User|null 
          * @static 
          */
         public static function user(){
@@ -1373,7 +1373,7 @@ namespace {
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \AC\Users\User 
+         * @return \AC\Models\User 
          * @static 
          */
         public static function loginUsingId($id, $remember = false){
@@ -1478,7 +1478,7 @@ namespace {
         /**
          * Return the currently cached user.
          *
-         * @return \AC\Users\User|null 
+         * @return \AC\Models\User|null 
          * @static 
          */
         public static function getUser(){
@@ -1520,7 +1520,7 @@ namespace {
         /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \AC\Users\User 
+         * @return \AC\Models\User 
          * @static 
          */
         public static function getLastAttempted(){
@@ -12119,6 +12119,1124 @@ namespace {
          */
         public static function getNames(){
             return \Illuminate\View\Factory::getNames();
+        }
+        
+    }
+
+
+    class Datatable extends \Chumper\Datatable\Facades\DatatableFacade{
+        
+        /**
+         * 
+         *
+         * @param $query
+         * @return \Chumper\Datatable\Engines\QueryEngine 
+         * @static 
+         */
+        public static function query($query){
+            return \Chumper\Datatable\Datatable::query($query);
+        }
+        
+        /**
+         * 
+         *
+         * @param $collection
+         * @return \Chumper\Datatable\Engines\CollectionEngine 
+         * @static 
+         */
+        public static function collection($collection){
+            return \Chumper\Datatable\Datatable::collection($collection);
+        }
+        
+        /**
+         * 
+         *
+         * @return \Chumper\Datatable\Table 
+         * @static 
+         */
+        public static function table(){
+            return \Chumper\Datatable\Datatable::table();
+        }
+        
+        /**
+         * 
+         *
+         * @return bool True if the plugin should handle this request, false otherwise
+         * @static 
+         */
+        public static function shouldHandle(){
+            return \Chumper\Datatable\Datatable::shouldHandle();
+        }
+        
+    }
+
+
+    class Form extends \Collective\Html\FormFacade{
+        
+        /**
+         * Open up a new HTML form.
+         *
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function open($options = array()){
+            return \Collective\Html\FormBuilder::open($options);
+        }
+        
+        /**
+         * Create a new model based form builder.
+         *
+         * @param mixed $model
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function model($model, $options = array()){
+            return \Collective\Html\FormBuilder::model($model, $options);
+        }
+        
+        /**
+         * Set the model instance on the form builder.
+         *
+         * @param mixed $model
+         * @return void 
+         * @static 
+         */
+        public static function setModel($model){
+            \Collective\Html\FormBuilder::setModel($model);
+        }
+        
+        /**
+         * Close the current form.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function close(){
+            return \Collective\Html\FormBuilder::close();
+        }
+        
+        /**
+         * Generate a hidden field with the current CSRF token.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function token(){
+            return \Collective\Html\FormBuilder::token();
+        }
+        
+        /**
+         * Create a form label element.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function label($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::label($name, $value, $options);
+        }
+        
+        /**
+         * Create a form input field.
+         *
+         * @param string $type
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function input($type, $name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::input($type, $name, $value, $options);
+        }
+        
+        /**
+         * Create a text input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function text($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::text($name, $value, $options);
+        }
+        
+        /**
+         * Create a password input field.
+         *
+         * @param string $name
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function password($name, $options = array()){
+            return \Collective\Html\FormBuilder::password($name, $options);
+        }
+        
+        /**
+         * Create a hidden input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function hidden($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::hidden($name, $value, $options);
+        }
+        
+        /**
+         * Create an e-mail input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function email($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::email($name, $value, $options);
+        }
+        
+        /**
+         * Create a tel input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function tel($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::tel($name, $value, $options);
+        }
+        
+        /**
+         * Create a number input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function number($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::number($name, $value, $options);
+        }
+        
+        /**
+         * Create a date input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function date($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::date($name, $value, $options);
+        }
+        
+        /**
+         * Create a time input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function time($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::time($name, $value, $options);
+        }
+        
+        /**
+         * Create a url input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function url($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::url($name, $value, $options);
+        }
+        
+        /**
+         * Create a file input field.
+         *
+         * @param string $name
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function file($name, $options = array()){
+            return \Collective\Html\FormBuilder::file($name, $options);
+        }
+        
+        /**
+         * Create a textarea input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function textarea($name, $value = null, $options = array()){
+            return \Collective\Html\FormBuilder::textarea($name, $value, $options);
+        }
+        
+        /**
+         * Create a select box field.
+         *
+         * @param string $name
+         * @param array $list
+         * @param string $selected
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function select($name, $list = array(), $selected = null, $options = array()){
+            return \Collective\Html\FormBuilder::select($name, $list, $selected, $options);
+        }
+        
+        /**
+         * Create a select range field.
+         *
+         * @param string $name
+         * @param string $begin
+         * @param string $end
+         * @param string $selected
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function selectRange($name, $begin, $end, $selected = null, $options = array()){
+            return \Collective\Html\FormBuilder::selectRange($name, $begin, $end, $selected, $options);
+        }
+        
+        /**
+         * Create a select year field.
+         *
+         * @param string $name
+         * @param string $begin
+         * @param string $end
+         * @param string $selected
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function selectYear(){
+            return \Collective\Html\FormBuilder::selectYear();
+        }
+        
+        /**
+         * Create a select month field.
+         *
+         * @param string $name
+         * @param string $selected
+         * @param array $options
+         * @param string $format
+         * @return string 
+         * @static 
+         */
+        public static function selectMonth($name, $selected = null, $options = array(), $format = '%B'){
+            return \Collective\Html\FormBuilder::selectMonth($name, $selected, $options, $format);
+        }
+        
+        /**
+         * Get the select option for the given value.
+         *
+         * @param string $display
+         * @param string $value
+         * @param string $selected
+         * @return string 
+         * @static 
+         */
+        public static function getSelectOption($display, $value, $selected){
+            return \Collective\Html\FormBuilder::getSelectOption($display, $value, $selected);
+        }
+        
+        /**
+         * Create a checkbox input field.
+         *
+         * @param string $name
+         * @param mixed $value
+         * @param bool $checked
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function checkbox($name, $value = 1, $checked = null, $options = array()){
+            return \Collective\Html\FormBuilder::checkbox($name, $value, $checked, $options);
+        }
+        
+        /**
+         * Create a radio button input field.
+         *
+         * @param string $name
+         * @param mixed $value
+         * @param bool $checked
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function radio($name, $value = null, $checked = null, $options = array()){
+            return \Collective\Html\FormBuilder::radio($name, $value, $checked, $options);
+        }
+        
+        /**
+         * Create a HTML reset input element.
+         *
+         * @param string $value
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function reset($value, $attributes = array()){
+            return \Collective\Html\FormBuilder::reset($value, $attributes);
+        }
+        
+        /**
+         * Create a HTML image input element.
+         *
+         * @param string $url
+         * @param string $name
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function image($url, $name = null, $attributes = array()){
+            return \Collective\Html\FormBuilder::image($url, $name, $attributes);
+        }
+        
+        /**
+         * Create a submit button element.
+         *
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function submit($value = null, $options = array()){
+            return \Collective\Html\FormBuilder::submit($value, $options);
+        }
+        
+        /**
+         * Create a button element.
+         *
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function button($value = null, $options = array()){
+            return \Collective\Html\FormBuilder::button($value, $options);
+        }
+        
+        /**
+         * Get the ID attribute for a field name.
+         *
+         * @param string $name
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function getIdAttribute($name, $attributes){
+            return \Collective\Html\FormBuilder::getIdAttribute($name, $attributes);
+        }
+        
+        /**
+         * Get the value that should be assigned to the field.
+         *
+         * @param string $name
+         * @param string $value
+         * @return mixed 
+         * @static 
+         */
+        public static function getValueAttribute($name, $value = null){
+            return \Collective\Html\FormBuilder::getValueAttribute($name, $value);
+        }
+        
+        /**
+         * Get a value from the session's old input.
+         *
+         * @param string $name
+         * @return mixed 
+         * @static 
+         */
+        public static function old($name){
+            return \Collective\Html\FormBuilder::old($name);
+        }
+        
+        /**
+         * Determine if the old input is empty.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function oldInputIsEmpty(){
+            return \Collective\Html\FormBuilder::oldInputIsEmpty();
+        }
+        
+        /**
+         * Get the session store implementation.
+         *
+         * @return \Illuminate\Session\Store $session
+         * @static 
+         */
+        public static function getSessionStore(){
+            return \Collective\Html\FormBuilder::getSessionStore();
+        }
+        
+        /**
+         * Set the session store implementation.
+         *
+         * @param \Illuminate\Session\Store $session
+         * @return $this 
+         * @static 
+         */
+        public static function setSessionStore($session){
+            return \Collective\Html\FormBuilder::setSessionStore($session);
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param callable $macro
+         * @return void 
+         * @static 
+         */
+        public static function macro($name, $macro){
+            \Collective\Html\FormBuilder::macro($name, $macro);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */
+        public static function hasMacro($name){
+            return \Collective\Html\FormBuilder::hasMacro($name);
+        }
+        
+    }
+
+
+    class Html extends \Collective\Html\HtmlFacade{
+        
+        /**
+         * Convert an HTML string to entities.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */
+        public static function entities($value){
+            return \Collective\Html\HtmlBuilder::entities($value);
+        }
+        
+        /**
+         * Convert entities to HTML characters.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */
+        public static function decode($value){
+            return \Collective\Html\HtmlBuilder::decode($value);
+        }
+        
+        /**
+         * Generate a link to a JavaScript file.
+         *
+         * @param string $url
+         * @param array $attributes
+         * @param bool $secure
+         * @return string 
+         * @static 
+         */
+        public static function script($url, $attributes = array(), $secure = null){
+            return \Collective\Html\HtmlBuilder::script($url, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a link to a CSS file.
+         *
+         * @param string $url
+         * @param array $attributes
+         * @param bool $secure
+         * @return string 
+         * @static 
+         */
+        public static function style($url, $attributes = array(), $secure = null){
+            return \Collective\Html\HtmlBuilder::style($url, $attributes, $secure);
+        }
+        
+        /**
+         * Generate an HTML image element.
+         *
+         * @param string $url
+         * @param string $alt
+         * @param array $attributes
+         * @param bool $secure
+         * @return string 
+         * @static 
+         */
+        public static function image($url, $alt = null, $attributes = array(), $secure = null){
+            return \Collective\Html\HtmlBuilder::image($url, $alt, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a link to a Favicon file.
+         *
+         * @param string $url
+         * @param array $attributes
+         * @param bool $secure
+         * @return string 
+         * @static 
+         */
+        public static function favicon($url, $attributes = array(), $secure = null){
+            return \Collective\Html\HtmlBuilder::favicon($url, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a HTML link.
+         *
+         * @param string $url
+         * @param string $title
+         * @param array $attributes
+         * @param bool $secure
+         * @return string 
+         * @static 
+         */
+        public static function link($url, $title = null, $attributes = array(), $secure = null){
+            return \Collective\Html\HtmlBuilder::link($url, $title, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a HTTPS HTML link.
+         *
+         * @param string $url
+         * @param string $title
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function secureLink($url, $title = null, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::secureLink($url, $title, $attributes);
+        }
+        
+        /**
+         * Generate a HTML link to an asset.
+         *
+         * @param string $url
+         * @param string $title
+         * @param array $attributes
+         * @param bool $secure
+         * @return string 
+         * @static 
+         */
+        public static function linkAsset($url, $title = null, $attributes = array(), $secure = null){
+            return \Collective\Html\HtmlBuilder::linkAsset($url, $title, $attributes, $secure);
+        }
+        
+        /**
+         * Generate a HTTPS HTML link to an asset.
+         *
+         * @param string $url
+         * @param string $title
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function linkSecureAsset($url, $title = null, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::linkSecureAsset($url, $title, $attributes);
+        }
+        
+        /**
+         * Generate a HTML link to a named route.
+         *
+         * @param string $name
+         * @param string $title
+         * @param array $parameters
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function linkRoute($name, $title = null, $parameters = array(), $attributes = array()){
+            return \Collective\Html\HtmlBuilder::linkRoute($name, $title, $parameters, $attributes);
+        }
+        
+        /**
+         * Generate a HTML link to a controller action.
+         *
+         * @param string $action
+         * @param string $title
+         * @param array $parameters
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function linkAction($action, $title = null, $parameters = array(), $attributes = array()){
+            return \Collective\Html\HtmlBuilder::linkAction($action, $title, $parameters, $attributes);
+        }
+        
+        /**
+         * Generate a HTML link to an email address.
+         *
+         * @param string $email
+         * @param string $title
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function mailto($email, $title = null, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::mailto($email, $title, $attributes);
+        }
+        
+        /**
+         * Obfuscate an e-mail address to prevent spam-bots from sniffing it.
+         *
+         * @param string $email
+         * @return string 
+         * @static 
+         */
+        public static function email($email){
+            return \Collective\Html\HtmlBuilder::email($email);
+        }
+        
+        /**
+         * Generate an ordered list of items.
+         *
+         * @param array $list
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function ol($list, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::ol($list, $attributes);
+        }
+        
+        /**
+         * Generate an un-ordered list of items.
+         *
+         * @param array $list
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function ul($list, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::ul($list, $attributes);
+        }
+        
+        /**
+         * Generate a description list of items.
+         *
+         * @param array $list
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function dl($list, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::dl($list, $attributes);
+        }
+        
+        /**
+         * Build an HTML attribute string from an array.
+         *
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function attributes($attributes){
+            return \Collective\Html\HtmlBuilder::attributes($attributes);
+        }
+        
+        /**
+         * Obfuscate a string to prevent spam-bots from sniffing it.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */
+        public static function obfuscate($value){
+            return \Collective\Html\HtmlBuilder::obfuscate($value);
+        }
+        
+        /**
+         * Generate a meta tag.
+         *
+         * @param string $name
+         * @param string $content
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */
+        public static function meta($name, $content, $attributes = array()){
+            return \Collective\Html\HtmlBuilder::meta($name, $content, $attributes);
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param callable $macro
+         * @return void 
+         * @static 
+         */
+        public static function macro($name, $macro){
+            \Collective\Html\HtmlBuilder::macro($name, $macro);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */
+        public static function hasMacro($name){
+            return \Collective\Html\HtmlBuilder::hasMacro($name);
+        }
+        
+    }
+
+
+    class FA extends \Khill\Fontawesome\FontAwesomeFacade{
+        
+        /**
+         * HTML link to the FontAwesome CSS file through the bootstrapcdn
+         *
+         * @see http://www.bootstrapcdn.com/
+         * @return string HTML link element
+         * @static 
+         */
+        public static function css(){
+            return \Khill\Fontawesome\FontAwesome::css();
+        }
+        
+        /**
+         * Stores icon to be rendered later
+         *
+         * @access public
+         * @param string $label Label of icon to save in collection
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $label is not a string
+         * @throws Khill\Fontawesome\Exceptions\CollectionIconException If store() method called without defining an icon
+         * @return void 
+         * @static 
+         */
+        public static function store($label){
+            \Khill\Fontawesome\FontAwesome::store($label);
+        }
+        
+        /**
+         * Retrieve icon from collection
+         *
+         * @access public
+         * @param string $label Icon label used in store method
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $label is not a string
+         * @throws Khill\Fontawesome\Exceptions\CollectionIconException If icon $label is not set
+         * @return string HTML icon string
+         * @static 
+         */
+        public static function collection($label){
+            return \Khill\Fontawesome\FontAwesome::collection($label);
+        }
+        
+        /**
+         * Sets which icon to use
+         *
+         * @access public
+         * @param string $icon Icon label, ommiting fa- prefix
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function icon($icon){
+            return \Khill\Fontawesome\FontAwesome::icon($icon);
+        }
+        
+        /**
+         * Adds extra classes to icon or stack
+         *
+         * @access public
+         * @param string $class CSS class
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $class is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function addClass($class){
+            return \Khill\Fontawesome\FontAwesome::addClass($class);
+        }
+        
+        /**
+         * Sets the icon or stack to be a fixed width
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function fixedWidth($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::fixedWidth($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be larger
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function lg($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::lg($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be 2 times larger
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function x2($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::x2($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be 3 times larger
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function x3($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::x3($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be 4 times larger
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function x4($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::x4($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be 5 times larger
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function x5($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::x5($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be inverted in color
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function inverse($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::inverse($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be rotated 90 degrees
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function rotate90($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::rotate90($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be rotated 180 degrees
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function rotate180($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::rotate180($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be rotated 270 degrees
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function rotate270($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::rotate270($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be flipped horizontally
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function flipHorizontal($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::flipHorizontal($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be flipped vertically
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function flipVertical($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::flipVertical($icon);
+        }
+        
+        /**
+         * Sets the icon to spin
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function spin($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::spin($icon);
+        }
+        
+        /**
+         * Sets a border around the icon
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function border($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::border($icon);
+        }
+        
+        /**
+         * Pulls the icon to the left
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function left($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::left($icon);
+        }
+        
+        /**
+         * Pulls the icon to the left
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function right($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::right($icon);
+        }
+        
+        /**
+         * Builds unordered list with icons
+         *
+         * @param string $iconLabel Default icon used in list (optional)
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function ul($iconLabel = ''){
+            return \Khill\Fontawesome\FontAwesome::ul($iconLabel);
+        }
+        
+        /**
+         * Adds items to unordered list with icons
+         *
+         * @param string|array $iconLine Adds a line or lines to the unordered list
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function li($iconLine = ''){
+            return \Khill\Fontawesome\FontAwesome::li($iconLine);
+        }
+        
+        /**
+         * Sets the top icon to be used in a stack
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a non empty string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function stack($icon){
+            return \Khill\Fontawesome\FontAwesome::stack($icon);
+        }
+        
+        /**
+         * Sets the bottom icon to be used in a stack
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a non empty string
+         * @throws Khill\Fontawesome\Exceptions\IncompleteStackException If The on() method was called without the stack() method
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function on($icon){
+            return \Khill\Fontawesome\FontAwesome::on($icon);
         }
         
     }

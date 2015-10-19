@@ -5,6 +5,7 @@ namespace AC\Http\Controllers\Dashboard;
 use AC\Http\Controllers\Controller;
 use AC\Models\Anime;
 use AC\Models\Genre;
+use DB;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,7 @@ class AnimeController extends Controller
      */
     public function index()
     {
-        $this->data['animes'] = $this->anime->orderBy('date', 'DESC')->get();
+        $this->data['animes'] = DB::table('animes')->orderBy('created_at', 'DESC')->get(['id', 'title', 'slug', 'status']);
         $this->data['user'] = $this->auth->user();
 
         return view('dashboard.anime.index', $this->data);
@@ -139,7 +140,7 @@ class AnimeController extends Controller
     {
         $this->data['currentAnime'] = $this->anime->findOrFail($id);
         $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
-        $this->data['genres'] = $this->genre->orderBy('value', 'ASC')->get();
+        $this->data['genres'] = $this->genre->orderBy('name', 'ASC')->get();
         $this->data['user'] = $this->auth->user();
 
         return view('dashboard.anime.edit', $this->data);
