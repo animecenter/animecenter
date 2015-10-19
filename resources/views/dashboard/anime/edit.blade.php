@@ -1,6 +1,10 @@
 @extends('dashboard.layouts.main')
+
+@section('title')
+    Editing {{ $currentAnime->title }}
+@endsection
+
 @section('content')
-    <div class="bigTitle">Edit Anime</div>
     <form action="{{ url('admin/anime/edit/' . $currentAnime['id']) }}" method="post" enctype="multipart/form-data">
 
         {!! csrf_field() !!}

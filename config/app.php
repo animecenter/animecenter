@@ -151,6 +151,9 @@ return [
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         BackupManager\Laravel\Laravel5ServiceProvider::class,
+        Chumper\Datatable\DatatableServiceProvider::class,
+        Khill\Fontawesome\FontAwesomeServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -199,6 +202,11 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        'Datatable' => Chumper\Datatable\Facades\DatatableFacade::class,
+        'FA'        => Khill\Fontawesome\FontAwesome::class,
+        'Form'      => Collective\Html\FormFacade::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
 
     ],
 
