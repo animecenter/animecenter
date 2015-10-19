@@ -3,6 +3,7 @@
 namespace AC\Providers;
 
 use AC\Composers\AppComposer;
+use AC\Composers\DashboardComposer;
 use AC\Composers\ErrorComposer;
 use Illuminate\Support\ServiceProvider;
 

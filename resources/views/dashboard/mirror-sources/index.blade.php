@@ -1,17 +1,16 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Genres List
+    Mirror Sources
 @endsection
 
 @section('content')
     <div class="box">
         <div class="box-body">
-            <table id="genres" class="table table-bordered table-striped">
+            <table id="mirror-sources" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Model</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -19,7 +18,6 @@
                 <tfoot>
                     <tr>
                         <th>Name</th>
-                        <th>Model</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>
@@ -31,11 +29,10 @@
 @section('scripts')
     <script>
         jQuery(function () {
-            jQuery('#genres').dataTable({
+            jQuery('#mirror-sources').dataTable({
                 "aoColumns": [
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
+                    {"sWidth": "50%"},
+                    {"sWidth": "50%"},
                 ],
                 "aLengthMenu": [
                     [10, 25, 50, 100, 99999999],
@@ -52,7 +49,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/genres/list') }}",
+                "sAjaxSource": "{{ url('dashboard/mirror-sources/list') }}",
                 "bServerSide": true
             });
         });

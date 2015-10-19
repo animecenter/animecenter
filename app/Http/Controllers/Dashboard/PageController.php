@@ -4,7 +4,6 @@ namespace AC\Http\Controllers\Dashboard;
 
 use AC\Http\Controllers\Controller;
 use AC\Models\Page;
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -14,21 +13,14 @@ class PageController extends Controller
      */
     private $page;
 
-    /**
-     * @var Guard
-     */
-    private $auth;
-
     private $data;
 
     /**
      * @param Page $page
-     * @param Guard $auth
      */
-    public function __construct(Page $page, Guard $auth)
+    public function __construct(Page $page)
     {
         $this->page = $page;
-        $this->auth = $auth;
     }
     /**
      * Display a listing of the resource.
@@ -37,7 +29,6 @@ class PageController extends Controller
      */
     public function index()
     {
-        $this->data['user'] = $this->auth->user();
         $this->data['pages'] = $this->page->orderBy('id', 'desc')->get();
 
         return view('dashboard.pages.index', $this->data);
@@ -50,9 +41,7 @@ class PageController extends Controller
      */
     public function getCreate()
     {
-        $this->data['user'] = $this->auth->user();
-
-        return view('dashboard.pages.create', $this->data);
+        return view('dashboard.pages.create');
     }
 
     /**
@@ -72,7 +61,7 @@ class PageController extends Controller
         ]);
         $msg = 'Page was created successfully!';
 
-        return redirect()->action('Admin\PageController@index')->with('success', $msg);
+        return redirect()->action('Dashboard\PageController@index')->with('success', $msg);
     }
 
     /**
@@ -84,7 +73,6 @@ class PageController extends Controller
     public function getEdit($id = 0)
     {
         $this->data['page'] = $this->page->findOrFail($id);
-        $this->data['user'] = $this->auth->user();
 
         return view('dashboard.pages.edit', $this->data);
     }
@@ -107,7 +95,7 @@ class PageController extends Controller
         $page->save();
         $msg = 'Page was updated successfully!';
 
-        return redirect()->action('Admin\PageController@index')->with('success', $msg);
+        return redirect()->action('Dashboard\PageController@index')->with('success', $msg);
     }
 
     /**
@@ -121,6 +109,6 @@ class PageController extends Controller
         $this->page->findOrFail($id)->delete();
         $msg = 'Page was deleted successfully!';
 
-        return redirect()->action('Admin\PageController@index')->with('success', $msg);
+        return redirect()->action('Dashboard\PageController@index')->with('success', $msg);
     }
 }

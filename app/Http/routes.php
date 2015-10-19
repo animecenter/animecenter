@@ -148,6 +148,19 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('mirrors/list', 'MirrorController@getList');
     $router->get('mirrors/list/deleted', 'MirrorController@getListDeleted');
 
+    // Mirror Sources routes...
+    $router->get('mirror-sources', 'MirrorSourceController@index');
+    $router->get('mirror-sources/create', 'MirrorSourceController@getCreate');
+    $router->post('mirror-sources/create', 'MirrorSourceController@postCreate');
+    $router->get('mirror-sources/edit/{id}', 'MirrorSourceController@getEdit');
+    $router->post('mirror-sources/edit/{id}', 'MirrorSourceController@postEdit');
+    $router->post('mirror-sources/delete/{id}', 'MirrorSourceController@postDelete');
+    $router->get('mirror-sources/deleted', 'MirrorSourceController@getDeleted');
+    $router->post('mirror-sources/deleted/{id}', 'MirrorSourceController@postDeleted');
+    $router->post('mirror-sources/recover/{id}', 'MirrorSourceController@postRecover');
+    $router->get('mirror-sources/list', 'MirrorSourceController@getList');
+    $router->get('mirror-sources/list/deleted', 'MirrorSourceController@getListDeleted');
+
     // Options routes...
     $router->get('options', 'OptionController@index');
     $router->get('options/create', 'OptionController@getCreate');
@@ -186,6 +199,19 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->post('producers/recover/{id}', 'ProducerController@postRecover');
     $router->get('producers/list', 'ProducerController@getList');
     $router->get('producers/list/deleted', 'ProducerController@getListDeleted');
+
+    // Calendar Seasons routes...
+    $router->get('calendar-seasons', 'CalendarSeasonController@index');
+    $router->get('calendar-seasons/create', 'CalendarSeasonController@getCreate');
+    $router->post('calendar-seasons/create', 'CalendarSeasonController@postCreate');
+    $router->get('calendar-seasons/edit/{id}', 'CalendarSeasonController@getEdit');
+    $router->post('calendar-seasons/edit/{id}', 'CalendarSeasonController@postEdit');
+    $router->post('calendar-seasons/delete/{id}', 'CalendarSeasonController@postDelete');
+    $router->get('calendar-seasons/deleted', 'CalendarSeasonController@getDeleted');
+    $router->post('calendar-seasons/deleted/{id}', 'CalendarSeasonController@postDeleted');
+    $router->post('calendar-seasons/recover/{id}', 'CalendarSeasonController@postRecover');
+    $router->get('calendar-seasons/list', 'CalendarSeasonController@getList');
+    $router->get('calendar-seasons/list/deleted', 'CalendarSeasonController@getListDeleted');
 
     // Users routes...
     $router->get('users', 'UserController@index');
