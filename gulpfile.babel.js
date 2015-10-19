@@ -117,6 +117,7 @@ gulp.task('concat', ['vendor'], () => {
     return gulp.src([
       path.join(pathTo.assets.js, folder, 'vendor/jquery.js'),
       path.join(pathTo.assets.js, folder, 'vendor/bootstrap.js'),
+      path.join(pathTo.assets.js, folder, 'vendor/jquery.*.js'),
       path.join(pathTo.assets.js, folder, 'vendor/**/*.js'),
       path.join(pathTo.assets.js, folder, '**/*.js'),
     ])

@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Anime List
+    Classifications List
 @endsection
 
 @section('content')
@@ -10,23 +10,19 @@
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Slug</th>
-                        <th>Status</th>
+                        <th>Name</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($animes as $anime)
+                    @foreach ($classifications as $classification)
                         <tr>
-                            <td>{{ $anime->title }}</td>
-                            <td>{{ $anime->slug }}</td>
-                            <td>{{ $anime->status }}</td>
+                            <td>{{ $classification->name }}</td>
                             <td>
-                                <a href="{{ url('dashboard/animes/edit', [$anime->id]) }}"
+                                <a href="{{ url('dashboard/classifications/edit', [$classification->id]) }}"
                                    class="btn btn-sm btn-warning pull-left"><i class="fa fa-pencil-square-o"></i></a>
-                                <a href="{{ url('dashboard/animes/delete', [$anime->id]) }}"
-                                   onclick="return confirm('Are you sure wants to delete this anime?')"
+                                <a href="{{ url('dashboard/classifications/delete', [$classification->id]) }}"
+                                   onclick="return confirm('Are you sure wants to delete this classification?')"
                                    class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
@@ -35,8 +31,6 @@
                 <tfoot>
                     <tr>
                         <th>Title</th>
-                        <th>Slug</th>
-                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>

@@ -12,7 +12,10 @@
     "graham-campbell/htmlmin": "~4",
     "rap2hpoutre/laravel-log-viewer": "~0.4",
     "backup-manager/laravel": "^1.0",
-    "league/flysystem-dropbox": "^1.0"
+    "league/flysystem-dropbox": "^1.0",
+    "chumper/datatable": "dev-develop",
+    "khill/fontawesomephp": "^1.0",
+    "laravelcollective/html": "^5.1"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.5",
