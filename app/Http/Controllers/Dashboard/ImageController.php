@@ -4,7 +4,6 @@ namespace AC\Http\Controllers\Dashboard;
 
 use AC\Http\Controllers\Controller;
 use AC\Models\Image;
-use Illuminate\Auth\Guard;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -15,18 +14,11 @@ class ImageController extends Controller
     private $image;
 
     /**
-     * @var Guard
-     */
-    private $auth;
-
-    /**
      * @param Image $image
-     * @param Guard $auth
      */
-    public function __construct(Image $image, Guard $auth)
+    public function __construct(Image $image)
     {
         $this->image = $image;
-        $this->auth = $auth;
     }
 
     /**
@@ -37,7 +29,6 @@ class ImageController extends Controller
     public function index()
     {
         $this->data['images'] = $this->image->orderBy('date', 'desc')->get();
-        $this->data['user'] = $this->auth->user();
 
         return view('dashboard.images.index', $this->data);
     }
@@ -49,9 +40,7 @@ class ImageController extends Controller
      */
     public function getCreate()
     {
-        $this->data['user'] = $this->auth->user();
-
-        return view('dashboard.images.create', $this->data);
+        return view('dashboard.images.create');
     }
 
     /**
@@ -79,7 +68,7 @@ class ImageController extends Controller
         ]);
         $msg = 'Image was created successfully!';
 
-        return redirect()->action('Admin\ImageController@index')->with('success', $msg);
+        return redirect()->action('Dashboard\ImageController@index')->with('success', $msg);
     }
 
     /**
@@ -91,7 +80,6 @@ class ImageController extends Controller
     public function getEdit($id = 0)
     {
         $this->data['image'] = $this->image->findorFail($id);
-        $this->data['user'] = $this->auth->user();
 
         return view('dashboard.images.edit', $this->data);
     }
@@ -127,7 +115,7 @@ class ImageController extends Controller
         $image->save();
         $msg = 'Image was updated successfully!';
 
-        return redirect()->action('Admin\ImageController@index')->with('success', $msg);
+        return redirect()->action('Dashboard\ImageController@index')->with('success', $msg);
     }
 
     /**
@@ -143,6 +131,6 @@ class ImageController extends Controller
         $image->delete();
         $msg = 'Image was deleted successfully!';
 
-        return redirect()->action('Admin\ImageController@index')->with('success', $msg);
+        return redirect()->action('Dashboard\ImageController@index')->with('success', $msg);
     }
 }

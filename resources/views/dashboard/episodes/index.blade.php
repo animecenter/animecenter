@@ -33,22 +33,22 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#episodes').dataTable({
+    <script>
+        jQuery(function () {
+            jQuery('#episodes').dataTable({
                 "aoColumns": [
-                    {},
-                    {},
-                    {},
-                    {},
-                    {}
+                    {"sWidth": "20%"},
+                    {"sWidth": "20%"},
+                    {"sWidth": "20%"},
+                    {"sWidth": "20%"},
+                    {"sWidth": "20%"}
                 ],
                 "aLengthMenu": [
                     [10, 25, 50, 100, 99999999],
                     [10, 25, 50, 100, "All"]
                 ],
                 "iDisplayLength": 100,
-                "bSort": false,
+                "bSort": true,
                 "bAutoWidth": false,
                 "sPaginationType": "bootstrap",
                 "oLanguage": {

@@ -5,11 +5,11 @@ namespace AC\Http\Controllers\Dashboard;
 use AC\Http\Controllers\Controller;
 use AC\Models\Anime;
 use AC\Models\Episode;
+use Cache;
 use Datatable;
 use DB;
 use Form;
 use Html;
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use FA;
 
@@ -25,23 +25,16 @@ class EpisodeController extends Controller
      */
     private $episode;
 
-    /**
-     * @var Guard
-     */
-    private $auth;
-
     private $data;
 
     /**
      * @param Anime $anime
      * @param Episode $episode
-     * @param Guard $auth
      */
-    public function __construct(Anime $anime, Episode $episode, Guard $auth)
+    public function __construct(Anime $anime, Episode $episode)
     {
         $this->anime = $anime;
         $this->episode = $episode;
-        $this->auth = $auth;
     }
 
     /**
@@ -51,9 +44,7 @@ class EpisodeController extends Controller
      */
     public function index()
     {
-        $this->data['user'] = $this->auth->user();
-
-        return view('dashboard.episodes.index', $this->data);
+        return view('dashboard.episodes.index');
     }
 
     /**
@@ -65,7 +56,6 @@ class EpisodeController extends Controller
     {
         $this->data['currentAnime'] = '';
         $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
-        $this->data['user'] = $this->auth->user();
 
         return view('dashboard.episodes.create', $this->data);
     }
@@ -74,7 +64,6 @@ class EpisodeController extends Controller
     {
         $this->data['currentAnime'] = $this->anime->where('id', '=', $id)->first();
         $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
-        $this->data['user'] = $this->auth->user();
 
         return view('dashboard.episodes.create', $this->data);
     }
@@ -166,7 +155,6 @@ class EpisodeController extends Controller
     {
         $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
         $this->data['episode'] = $this->episode->findOrFail($id);
-        $this->data['user'] = $this->auth->user();
 
         return view('dashboard.episodes.edit', $this->data);
     }
@@ -213,14 +201,17 @@ class EpisodeController extends Controller
         $this->episode->findOrFail($id)->delete();
         $msg = 'Episode was deleted successfully!';
 
-        return redirect()->action('Admin\EpisodeController@index')->with('success', $msg);
+        return redirect()->action('Dashboard\EpisodeController@index')->with('success', $msg);
     }
 
     public function getList()
     {
-        $list = collect(DB::table('episodes')->join('animes', 'episodes.anime_id', '=', 'animes.id')
-            ->orderBy('episodes.id', 'DESC')
-            ->get(['episodes.id', 'episodes.number', 'episodes.active', 'episodes.aired_at', 'animes.title as animeTitle']));
+        $list = Cache::remember('dashboard-episodes', '60', function() {
+            return collect(DB::table('episodes')->join('animes', 'episodes.anime_id', '=', 'animes.id')
+                ->orderBy('episodes.id', 'DESC')
+                ->get(['episodes.id', 'episodes.number', 'episodes.active', 'episodes.aired_at', 'animes.title as animeTitle'])
+            );
+        });
 
         return Datatable::collection($list)
             ->showColumns('animeTitle', 'number', 'aired_at', 'active', 'actions')
@@ -232,10 +223,10 @@ class EpisodeController extends Controller
             ->addColumn('actions', function ($model) {
                 $editIcon = FA::icon('pencil-square-o')->__toString() . ' ';
                 $deleteIcon = FA::icon('trash-o')->__toString() . ' ';
-                $editUrl = url('admin/episodes/edit', $model->id);
-                $deleteUrl = url('admin/episodes/delete', $model->id);
+                $editUrl = url('dashboard/episodes/edit', $model->id);
+                $deleteUrl = url('dashboard/episodes/delete', $model->id);
                 return html_entity_decode(
-                    Html::link($editUrl, $editIcon . '', ['class' => 'btn btn-sm btn-default pull-left']).
+                    Html::link($editUrl, $editIcon . '', ['class' => 'btn btn-sm btn-warning pull-left']).
                     Form::open(['url' => $deleteUrl, 'class' => '']).
                     Form::button($deleteIcon, ['class' => 'btn btn-sm btn-danger btn-delete', 'type' => 'submit']).
                     Form::close()

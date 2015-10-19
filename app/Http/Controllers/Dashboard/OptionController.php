@@ -4,7 +4,6 @@ namespace AC\Http\Controllers\Dashboard;
 
 use AC\Http\Controllers\Controller;
 use AC\Models\Option;
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
 class OptionController extends Controller
@@ -14,21 +13,14 @@ class OptionController extends Controller
      */
     private $option;
 
-    /**
-     * @var Guard
-     */
-    private $auth;
-
     private $data;
 
     /**
      * @param Option $option
-     * @param Guard $auth
      */
-    public function __construct(Option $option, Guard $auth)
+    public function __construct(Option $option)
     {
         $this->option = $option;
-        $this->auth = $auth;
     }
 
     /**
@@ -38,7 +30,6 @@ class OptionController extends Controller
     public function getEdit()
     {
         $this->data['options'] = $this->option->all();
-        $this->data['user'] = $this->auth->user();
 
         return view('dashboard.options.edit', $this->data);
     }
