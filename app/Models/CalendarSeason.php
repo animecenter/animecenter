@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Season
+ * AC\Models\CalendarSeason
  *
  * @property integer $id
  * @property string $name
@@ -14,22 +14,22 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
- * @method static Builder|Season whereId($value)
- * @method static Builder|Season whereName($value)
- * @method static Builder|Season whereActive($value)
- * @method static Builder|Season whereCreatedAt($value)
- * @method static Builder|Season whereUpdatedAt($value)
- * @method static Builder|Season whereDeletedAt($value)
+ * @method static Builder|CalendarSeason whereId($value)
+ * @method static Builder|CalendarSeason whereName($value)
+ * @method static Builder|CalendarSeason whereActive($value)
+ * @method static Builder|CalendarSeason whereCreatedAt($value)
+ * @method static Builder|CalendarSeason whereUpdatedAt($value)
+ * @method static Builder|CalendarSeason whereDeletedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  */
-class Season extends Model
+class CalendarSeason extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'seasons';
+    protected $table = 'calendar_seasons';
 
     /**
      * Indicates if the model should be timestamped.
@@ -86,6 +86,6 @@ class Season extends Model
      */
     public function animes()
     {
-        return $this->hasMany(Anime::class, 'season_id', 'id');
+        return $this->hasMany(Anime::class, 'calendar_season_id', 'id');
     }
 }

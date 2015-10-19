@@ -28,7 +28,7 @@ use Illuminate\Database\Query\Builder;
  * @property-read Classification $classification
  * @property-read \Illuminate\Database\Eloquent\Collection|Genre[] $genres
  * @property-read \Illuminate\Database\Eloquent\Collection|Producer[] $producers
- * @property-read Season $season
+ * @property-read CalendarSeason $calendarSeason
  * @property-read \Illuminate\Database\Eloquent\Collection|Title[] $titles
  * @property-read Type $type
  * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
@@ -45,7 +45,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Anime whereReleaseDate($value)
  * @method static Builder|Anime whereEndDate($value)
  * @method static Builder|Anime whereDuration($value)
- * @method static Builder|Anime whereSeasonId($value)
+ * @method static Builder|Anime whereCalendarSeasonId($value)
  * @method static Builder|Anime whereClassificationId($value)
  * @method static Builder|Anime whereCreatedAt($value)
  * @method static Builder|Anime whereUpdatedAt($value)
@@ -97,20 +97,20 @@ class Anime extends Model
      * @var string[]
      */
     protected $casts = [
-        'id'                => 'int',
-        'mal_id'            => 'int',
-        'title'             => 'string',
-        'slug'              => 'string',
-        'image'             => 'string',
-        'synopsis'          => 'string',
-        'type_id'           => 'int',
-        'episodes'          => 'int',
-        'status'            => 'string',
-        'release_date'      => 'string',
-        'end_date'          => 'string',
-        'duration'          => 'string',
-        'season_id'         => 'int',
-        'classification_id' => 'int'
+        'id'                 => 'int',
+        'mal_id'             => 'int',
+        'title'              => 'string',
+        'slug'               => 'string',
+        'image'              => 'string',
+        'synopsis'           => 'string',
+        'type_id'            => 'int',
+        'episodes'           => 'int',
+        'status'             => 'string',
+        'release_date'       => 'string',
+        'end_date'           => 'string',
+        'duration'           => 'string',
+        'calendar_season_id' => 'int',
+        'classification_id'  => 'int'
     ];
 
     /**
@@ -193,13 +193,13 @@ class Anime extends Model
     }
 
     /**
-     * Get season.
+     * Get calendar season.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function season()
+    public function calendarSeason()
     {
-        return $this->belongsTo(Season::class, 'season_id', 'id');
+        return $this->belongsTo(CalendarSeason::class, 'calendar_season_id', 'id');
     }
 
     /**
