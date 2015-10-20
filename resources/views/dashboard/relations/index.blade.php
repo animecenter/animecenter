@@ -1,25 +1,31 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Genres List
+    Relations
 @endsection
 
 @section('content')
     <div class="box">
         <div class="box-body">
-            <table id="genres" class="table table-bordered table-striped">
+            <table id="relations" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Relationship</th>
+                        <th>Related To</th>
                         <th>Model</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Relationship</th>
+                        <th>Related To</th>
                         <th>Model</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>
@@ -31,11 +37,14 @@
 @section('scripts')
     <script>
         jQuery(function () {
-            jQuery('#genres').dataTable({
+            jQuery('#relations').dataTable({
                 "aoColumns": [
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
+                    {"sWidth": "16%"},
+                    {"sWidth": "16%"},
+                    {"sWidth": "16%"},
+                    {"sWidth": "16%"},
+                    {"sWidth": "16%"},
+                    {"sWidth": "16%"},
                 ],
                 "aLengthMenu": [
                     [10, 25, 50, 100, 99999999],
@@ -52,7 +61,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/genres/list') }}",
+                "sAjaxSource": "{{ url('dashboard/relations/list') }}",
                 "bServerSide": true
             });
         });

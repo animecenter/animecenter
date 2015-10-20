@@ -11,6 +11,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -18,6 +19,7 @@
                 <tfoot>
                     <tr>
                         <th>Name</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>
@@ -31,8 +33,9 @@
         jQuery(function () {
             jQuery('#mirror-sources').dataTable({
                 "aoColumns": [
-                    {"sWidth": "50%"},
-                    {"sWidth": "50%"},
+                    {"sWidth": "33%"},
+                    {"sWidth": "33%"},
+                    {"sWidth": "33%"},
                 ],
                 "aLengthMenu": [
                     [10, 25, 50, 100, 99999999],

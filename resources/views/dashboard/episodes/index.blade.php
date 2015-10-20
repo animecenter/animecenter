@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Episodes List
+    Episodes
 @endsection
 
 @section('content')

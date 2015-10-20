@@ -18,6 +18,7 @@ class CreateMetasTable extends Migration
             $table->string('title');
             $table->string('keywords');
             $table->string('description');
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

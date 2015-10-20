@@ -1,13 +1,13 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Seasons
+    Calendar Seasons
 @endsection
 
 @section('content')
     <div class="box">
         <div class="box-body">
-            <table id="seasons" class="table table-bordered table-striped">
+            <table id="calendar-seasons" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -31,7 +31,7 @@
 @section('scripts')
     <script>
         jQuery(function () {
-            jQuery('#seasons').dataTable({
+            jQuery('#calendar-seasons').dataTable({
                 "aoColumns": [
                     {"sWidth": "33%"},
                     {"sWidth": "33%"},
@@ -52,7 +52,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/seasons/list') }}",
+                "sAjaxSource": "{{ url('dashboard/calendar-seasons/list') }}",
                 "bServerSide": true
             });
         });
