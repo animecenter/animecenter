@@ -46,7 +46,7 @@ class PageController extends Controller
     {
         $this->data['episodes'] = $this->episode->latest();
         $this->data['upcomingEpisodes'] = $this->episode->upcoming();
-        $this->data['animes'] = $this->anime->currentSeason();
+        $this->data['animes'] = $this->anime->currentCalendarSeason();
 
         // TODO: Get meta data...
         $this->data['pageTitle'] = 'AnimeCenter: Watch Anime English Subbed/Dubbed Online in HD';

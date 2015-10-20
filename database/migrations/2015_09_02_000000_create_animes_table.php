@@ -21,7 +21,7 @@ class CreateAnimesTable extends Migration
             $table->date('release_date')->nullable();
             $table->date('end_date')->nullable();
             $table->time('duration')->nullable();
-            $table->integer('season_id')->unsigned()->nullable();
+            $table->integer('calendar_season_id')->unsigned()->nullable();
             $table->integer('classification_id')->unsigned()->nullable();
             $table->float('rating')->default(0);
             $table->integer('views')->default(0);

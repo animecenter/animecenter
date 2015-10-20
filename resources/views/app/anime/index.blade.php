@@ -74,9 +74,13 @@
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             <span class="fa fa-list-ul fa-fw text-purple"></span> Season <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu" role="menu" data-id="season">
-                            @foreach ($seasons as $season)
-                                <li><a href="#" data-value="{{ $season->id }}">{{ $season->name }}</a></li>
+                        <ul class="dropdown-menu" role="menu" data-id="calendarSeason">
+                            @foreach ($calendarSeasons as $calendarSeason)
+                                <li>
+                                    <a href="#" data-value="{{ $calendarSeason->id }}">
+                                        {{ $calendarSeason->name }}
+                                    </a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -85,8 +89,12 @@
                             <span class="fa fa-list-ul fa-fw text-purple"></span> Year <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu" data-id="year">
-                            @foreach ($seasons as $season)
-                                <li><a href="#" data-value="{{ $season->id }}">{{ $season->name }}</a></li>
+                            @foreach ($calendarSeasons as $calendarSeason)
+                                <li>
+                                    <a href="#" data-value="{{ $calendarSeason->id }}">
+                                        {{ $calendarSeason->name }}
+                                    </a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
