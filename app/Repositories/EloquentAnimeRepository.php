@@ -43,7 +43,7 @@ class EloquentAnimeRepository
                 $query->select(['id', 'name']);
             }, 'producers' => function ($query) {
                 $query->select(['id', 'name']);
-            }, 'season' => function ($query) {
+            }, 'calendarSeason' => function ($query) {
                 $query->select(['id', 'name']);
             }, 'type' => function ($query) {
                 $query->select(['id', 'name']);
@@ -73,8 +73,8 @@ class EloquentAnimeRepository
         if ($request->has('type')) {
             $anime = $this->getByType($anime, $parameters['type']);
         }
-        if ($request->has('season')) {
-            $anime = $this->getBySeason($anime, $parameters['season']);
+        if ($request->has('calendarSeason')) {
+            $anime = $this->getByCalendarSeason($anime, $parameters['calendarSeason']);
         }
         if ($request->has('year')) {
             $anime = $this->getByYear($anime, $parameters['year']);
@@ -152,16 +152,16 @@ class EloquentAnimeRepository
     }
 
     /**
-     * Get anime by season.
+     * Get anime by calendar season.
      *
      * @param $anime
      * @param int $id
      * @return mixed
      */
-    public function getBySeason($anime, $id = 0)
+    public function getByCalendarSeason($anime, $id = 0)
     {
-        return $anime->whereHas('season', function ($query) use ($id) {
-            $query->where('seasons.id', '=', $id);
+        return $anime->whereHas('calendarSeason', function ($query) use ($id) {
+            $query->where('calendar_seasons.id', '=', $id);
         });
     }
 
@@ -300,34 +300,34 @@ class EloquentAnimeRepository
     /**
      * @return mixed
      */
-    public function currentSeason()
+    public function currentCalendarSeason()
     {
         $month = DATE('m');
         $year = DATE('Y');
 
-        // Retrieve season
+        // Retrieve calendar season
         if ($month >= '03' && $month <= '06') {
-            $season = 'Spring';
+            $calendarSeason = 'Spring';
         } elseif ($month >= '07' && $month <= '09') {
-            $season = 'Summer';
+            $calendarSeason = 'Summer';
         } elseif ($month >= '10' && $month <= '12') {
-            $season = 'Fall';
+            $calendarSeason = 'Fall';
         } else {
-            $season = 'Winter';
+            $calendarSeason = 'Winter';
         }
 
-        $seasonName = $season . ' '  . $year;
-        return $this->getBySeasonName($seasonName);
+        $seasonName = $calendarSeason . ' '  . $year;
+        return $this->getByCalendarSeasonName($seasonName);
     }
 
     /**
      * @param string $seasonName
      * @return mixed
      */
-    public function getBySeasonName($seasonName = '')
+    public function getByCalendarSeasonName($seasonName = '')
     {
-        return $this->anime->has('episodes')->whereHas('season', function ($query) use ($seasonName) {
-            $query->where('seasons.name', '=', $seasonName);
+        return $this->anime->has('episodes')->whereHas('calendarSeason', function ($query) use ($seasonName) {
+            $query->where('calendar_seasons.name', '=', $seasonName);
         })->where('release_date', '<', Carbon::now()->toDateTimeString())
             ->orderBy('release_date', 'DESC')->take(4)->get();
     }
@@ -357,7 +357,7 @@ class EloquentAnimeRepository
                 $query->select(['id', 'name']);
             }, 'producers' => function ($query) {
                 $query->select(['id', 'name']);
-            }, 'season' => function ($query) {
+            }, 'calendarSeason' => function ($query) {
                 $query->select(['id', 'name']);
             }, 'type' => function ($query) {
                 $query->select(['id', 'name']);

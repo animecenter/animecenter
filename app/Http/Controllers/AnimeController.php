@@ -7,7 +7,7 @@ use AC\Repositories\EloquentClassificationRepository as Classification;
 use AC\Repositories\EloquentEpisodeRepository as Episode;
 use AC\Repositories\EloquentGenreRepository as Genre;
 use AC\Repositories\EloquentProducerRepository as Producer;
-use AC\Repositories\EloquentSeasonRepository as Season;
+use AC\Repositories\EloquentCalendarSeasonRepository as CalendarSeason;
 use AC\Repositories\EloquentTypeRepository as Type;
 use Illuminate\Http\Request;
 
@@ -41,9 +41,9 @@ class AnimeController extends Controller
     private $producer;
 
     /**
-     * @var Season
+     * @var CalendarSeason
      */
-    private $season;
+    private $calendarSeason;
 
     /**
      * @var Type
@@ -56,17 +56,17 @@ class AnimeController extends Controller
      * @param Episode $episode
      * @param Genre $genre
      * @param Producer $producer
-     * @param Season $season
+     * @param CalendarSeason $calendarSeason
      * @param Type $type
      */
-    public function __construct(Anime $anime, Classification $classification, Episode $episode, Genre $genre, Producer $producer, Season $season, Type $type)
+    public function __construct(Anime $anime, Classification $classification, Episode $episode, Genre $genre, Producer $producer, CalendarSeason $calendarSeason, Type $type)
     {
         $this->anime = $anime;
         $this->classification = $classification;
         $this->episode = $episode;
         $this->genre = $genre;
         $this->producer = $producer;
-        $this->season = $season;
+        $this->calendarSeason = $calendarSeason;
         $this->type = $type;
     }
 
@@ -82,7 +82,7 @@ class AnimeController extends Controller
         $this->data['classifications'] = $this->classification->all();
         $this->data['genres'] = $this->genre->all();
         $this->data['producers'] = $this->producer->all();
-        $this->data['seasons'] = $this->season->all();
+        $this->data['calendarSeasons'] = $this->calendarSeason->all();
         $this->data['types'] = $this->type->all();
 
         return view('app.anime.index', $this->data);
