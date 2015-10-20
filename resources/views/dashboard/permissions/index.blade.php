@@ -1,17 +1,17 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Genres List
+    Permissions
 @endsection
 
 @section('content')
     <div class="box">
         <div class="box-body">
-            <table id="genres" class="table table-bordered table-striped">
+            <table id="permissions" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Model</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -19,7 +19,7 @@
                 <tfoot>
                     <tr>
                         <th>Name</th>
-                        <th>Model</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>
@@ -31,7 +31,7 @@
 @section('scripts')
     <script>
         jQuery(function () {
-            jQuery('#genres').dataTable({
+            jQuery('#permissions').dataTable({
                 "aoColumns": [
                     {"sWidth": "33%"},
                     {"sWidth": "33%"},
@@ -52,7 +52,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/genres/list') }}",
+                "sAjaxSource": "{{ url('dashboard/permissions/list') }}",
                 "bServerSide": true
             });
         });

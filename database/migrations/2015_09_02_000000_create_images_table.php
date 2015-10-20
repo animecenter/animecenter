@@ -18,6 +18,7 @@ class CreateImagesTable extends Migration
             $table->integer('imageable_id')->unsigned();
             $table->string('imageable_type', 15);
             $table->string('path', 191)->unique();
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

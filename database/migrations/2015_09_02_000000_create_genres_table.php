@@ -13,6 +13,7 @@ class CreateGenresTable extends Migration
             $table->string('name', 191);
             $table->string('model', 191);
             $table->text('description')->nullable();
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();
             $table->unique(['name', 'model']);

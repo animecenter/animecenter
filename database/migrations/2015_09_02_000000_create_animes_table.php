@@ -25,6 +25,7 @@ class CreateAnimesTable extends Migration
             $table->integer('classification_id')->unsigned()->nullable();
             $table->float('rating')->default(0);
             $table->integer('views')->default(0);
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

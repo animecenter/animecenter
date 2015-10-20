@@ -3,11 +3,11 @@
 namespace AC\Http\Controllers;
 
 use AC\Repositories\EloquentAnimeRepository as Anime;
+use AC\Repositories\EloquentCalendarSeasonRepository as CalendarSeason;
 use AC\Repositories\EloquentClassificationRepository as Classification;
 use AC\Repositories\EloquentEpisodeRepository as Episode;
 use AC\Repositories\EloquentGenreRepository as Genre;
 use AC\Repositories\EloquentProducerRepository as Producer;
-use AC\Repositories\EloquentCalendarSeasonRepository as CalendarSeason;
 use AC\Repositories\EloquentTypeRepository as Type;
 use Illuminate\Http\Request;
 

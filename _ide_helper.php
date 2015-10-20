@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.20 (LTS) on 2015-10-19.
+ * Generated for Laravel 5.1.20 (LTS) on 2015-10-20.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -12171,6 +12171,333 @@ namespace {
     }
 
 
+    class FA extends \Khill\Fontawesome\FontAwesomeFacade{
+        
+        /**
+         * HTML link to the FontAwesome CSS file through the bootstrapcdn
+         *
+         * @see http://www.bootstrapcdn.com/
+         * @return string HTML link element
+         * @static 
+         */
+        public static function css(){
+            return \Khill\Fontawesome\FontAwesome::css();
+        }
+        
+        /**
+         * Stores icon to be rendered later
+         *
+         * @access public
+         * @param string $label Label of icon to save in collection
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $label is not a string
+         * @throws Khill\Fontawesome\Exceptions\CollectionIconException If store() method called without defining an icon
+         * @return void 
+         * @static 
+         */
+        public static function store($label){
+            \Khill\Fontawesome\FontAwesome::store($label);
+        }
+        
+        /**
+         * Retrieve icon from collection
+         *
+         * @access public
+         * @param string $label Icon label used in store method
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $label is not a string
+         * @throws Khill\Fontawesome\Exceptions\CollectionIconException If icon $label is not set
+         * @return string HTML icon string
+         * @static 
+         */
+        public static function collection($label){
+            return \Khill\Fontawesome\FontAwesome::collection($label);
+        }
+        
+        /**
+         * Sets which icon to use
+         *
+         * @access public
+         * @param string $icon Icon label, ommiting fa- prefix
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function icon($icon){
+            return \Khill\Fontawesome\FontAwesome::icon($icon);
+        }
+        
+        /**
+         * Adds extra classes to icon or stack
+         *
+         * @access public
+         * @param string $class CSS class
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $class is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function addClass($class){
+            return \Khill\Fontawesome\FontAwesome::addClass($class);
+        }
+        
+        /**
+         * Sets the icon or stack to be a fixed width
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function fixedWidth($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::fixedWidth($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be larger
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function lg($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::lg($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be 2 times larger
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function x2($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::x2($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be 3 times larger
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function x3($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::x3($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be 4 times larger
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function x4($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::x4($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be 5 times larger
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function x5($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::x5($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be inverted in color
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function inverse($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::inverse($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be rotated 90 degrees
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function rotate90($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::rotate90($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be rotated 180 degrees
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function rotate180($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::rotate180($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be rotated 270 degrees
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function rotate270($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::rotate270($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be flipped horizontally
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function flipHorizontal($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::flipHorizontal($icon);
+        }
+        
+        /**
+         * Sets the icon or stack to be flipped vertically
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function flipVertical($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::flipVertical($icon);
+        }
+        
+        /**
+         * Sets the icon to spin
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function spin($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::spin($icon);
+        }
+        
+        /**
+         * Sets a border around the icon
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function border($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::border($icon);
+        }
+        
+        /**
+         * Pulls the icon to the left
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function left($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::left($icon);
+        }
+        
+        /**
+         * Pulls the icon to the left
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function right($icon = ''){
+            return \Khill\Fontawesome\FontAwesome::right($icon);
+        }
+        
+        /**
+         * Builds unordered list with icons
+         *
+         * @param string $iconLabel Default icon used in list (optional)
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function ul($iconLabel = ''){
+            return \Khill\Fontawesome\FontAwesome::ul($iconLabel);
+        }
+        
+        /**
+         * Adds items to unordered list with icons
+         *
+         * @param string|array $iconLine Adds a line or lines to the unordered list
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function li($iconLine = ''){
+            return \Khill\Fontawesome\FontAwesome::li($iconLine);
+        }
+        
+        /**
+         * Sets the top icon to be used in a stack
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a non empty string
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function stack($icon){
+            return \Khill\Fontawesome\FontAwesome::stack($icon);
+        }
+        
+        /**
+         * Sets the bottom icon to be used in a stack
+         *
+         * @access public
+         * @param string $icon Icon label
+         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a non empty string
+         * @throws Khill\Fontawesome\Exceptions\IncompleteStackException If The on() method was called without the stack() method
+         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
+         * @static 
+         */
+        public static function on($icon){
+            return \Khill\Fontawesome\FontAwesome::on($icon);
+        }
+        
+    }
+
+
     class Form extends \Collective\Html\FormFacade{
         
         /**
@@ -12910,333 +13237,6 @@ namespace {
          */
         public static function hasMacro($name){
             return \Collective\Html\HtmlBuilder::hasMacro($name);
-        }
-        
-    }
-
-
-    class FA extends \Khill\Fontawesome\FontAwesomeFacade{
-        
-        /**
-         * HTML link to the FontAwesome CSS file through the bootstrapcdn
-         *
-         * @see http://www.bootstrapcdn.com/
-         * @return string HTML link element
-         * @static 
-         */
-        public static function css(){
-            return \Khill\Fontawesome\FontAwesome::css();
-        }
-        
-        /**
-         * Stores icon to be rendered later
-         *
-         * @access public
-         * @param string $label Label of icon to save in collection
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $label is not a string
-         * @throws Khill\Fontawesome\Exceptions\CollectionIconException If store() method called without defining an icon
-         * @return void 
-         * @static 
-         */
-        public static function store($label){
-            \Khill\Fontawesome\FontAwesome::store($label);
-        }
-        
-        /**
-         * Retrieve icon from collection
-         *
-         * @access public
-         * @param string $label Icon label used in store method
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $label is not a string
-         * @throws Khill\Fontawesome\Exceptions\CollectionIconException If icon $label is not set
-         * @return string HTML icon string
-         * @static 
-         */
-        public static function collection($label){
-            return \Khill\Fontawesome\FontAwesome::collection($label);
-        }
-        
-        /**
-         * Sets which icon to use
-         *
-         * @access public
-         * @param string $icon Icon label, ommiting fa- prefix
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function icon($icon){
-            return \Khill\Fontawesome\FontAwesome::icon($icon);
-        }
-        
-        /**
-         * Adds extra classes to icon or stack
-         *
-         * @access public
-         * @param string $class CSS class
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $class is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function addClass($class){
-            return \Khill\Fontawesome\FontAwesome::addClass($class);
-        }
-        
-        /**
-         * Sets the icon or stack to be a fixed width
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function fixedWidth($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::fixedWidth($icon);
-        }
-        
-        /**
-         * Sets the icon or stack to be larger
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function lg($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::lg($icon);
-        }
-        
-        /**
-         * Sets the icon or stack to be 2 times larger
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function x2($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::x2($icon);
-        }
-        
-        /**
-         * Sets the icon or stack to be 3 times larger
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function x3($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::x3($icon);
-        }
-        
-        /**
-         * Sets the icon or stack to be 4 times larger
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function x4($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::x4($icon);
-        }
-        
-        /**
-         * Sets the icon or stack to be 5 times larger
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function x5($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::x5($icon);
-        }
-        
-        /**
-         * Sets the icon or stack to be inverted in color
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function inverse($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::inverse($icon);
-        }
-        
-        /**
-         * Sets the icon or stack to be rotated 90 degrees
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function rotate90($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::rotate90($icon);
-        }
-        
-        /**
-         * Sets the icon or stack to be rotated 180 degrees
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function rotate180($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::rotate180($icon);
-        }
-        
-        /**
-         * Sets the icon or stack to be rotated 270 degrees
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function rotate270($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::rotate270($icon);
-        }
-        
-        /**
-         * Sets the icon or stack to be flipped horizontally
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function flipHorizontal($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::flipHorizontal($icon);
-        }
-        
-        /**
-         * Sets the icon or stack to be flipped vertically
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function flipVertical($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::flipVertical($icon);
-        }
-        
-        /**
-         * Sets the icon to spin
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function spin($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::spin($icon);
-        }
-        
-        /**
-         * Sets a border around the icon
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function border($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::border($icon);
-        }
-        
-        /**
-         * Pulls the icon to the left
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function left($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::left($icon);
-        }
-        
-        /**
-         * Pulls the icon to the left
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function right($icon = ''){
-            return \Khill\Fontawesome\FontAwesome::right($icon);
-        }
-        
-        /**
-         * Builds unordered list with icons
-         *
-         * @param string $iconLabel Default icon used in list (optional)
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function ul($iconLabel = ''){
-            return \Khill\Fontawesome\FontAwesome::ul($iconLabel);
-        }
-        
-        /**
-         * Adds items to unordered list with icons
-         *
-         * @param string|array $iconLine Adds a line or lines to the unordered list
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function li($iconLine = ''){
-            return \Khill\Fontawesome\FontAwesome::li($iconLine);
-        }
-        
-        /**
-         * Sets the top icon to be used in a stack
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a non empty string
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function stack($icon){
-            return \Khill\Fontawesome\FontAwesome::stack($icon);
-        }
-        
-        /**
-         * Sets the bottom icon to be used in a stack
-         *
-         * @access public
-         * @param string $icon Icon label
-         * @throws Khill\Fontawesome\Exceptions\BadLabelException If $icon is not a non empty string
-         * @throws Khill\Fontawesome\Exceptions\IncompleteStackException If The on() method was called without the stack() method
-         * @return \Khill\Fontawesome\Khill\Fontawesome\FontAwesome FontAwesome object
-         * @static 
-         */
-        public static function on($icon){
-            return \Khill\Fontawesome\FontAwesome::on($icon);
         }
         
     }

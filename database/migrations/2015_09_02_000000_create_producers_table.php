@@ -11,6 +11,7 @@ class CreateProducersTable extends Migration
         Schema::create('producers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 191)->unique();
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
