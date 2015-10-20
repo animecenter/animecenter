@@ -1,25 +1,27 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Genres List
+    Users
 @endsection
 
 @section('content')
     <div class="box">
         <div class="box-body">
-            <table id="genres" class="table table-bordered table-striped">
+            <table id="users" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Model</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Model</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>
@@ -31,11 +33,12 @@
 @section('scripts')
     <script>
         jQuery(function () {
-            jQuery('#genres').dataTable({
+            jQuery('#users').dataTable({
                 "aoColumns": [
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
+                    {"sWidth": "25%"},
+                    {"sWidth": "25%"},
+                    {"sWidth": "25%"},
+                    {"sWidth": "25%"},
                 ],
                 "aLengthMenu": [
                     [10, 25, 50, 100, 99999999],
@@ -52,7 +55,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/genres/list') }}",
+                "sAjaxSource": "{{ url('dashboard/users/list') }}",
                 "bServerSide": true
             });
         });

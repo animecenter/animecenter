@@ -12,6 +12,7 @@ class CreatePagesTable extends Migration
             $table->string('title', 191)->unique();
             $table->string('slug', 191)->unique();
             $table->text('content')->nullable();
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

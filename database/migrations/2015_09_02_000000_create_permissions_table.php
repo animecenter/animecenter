@@ -17,6 +17,7 @@ class CreatePermissionsTable extends Migration
             $table->string('name', 191)->unique();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

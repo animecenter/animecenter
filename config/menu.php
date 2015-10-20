@@ -4,6 +4,7 @@ return [
     'admin' => [
         'animes',
         'banners',
+        'calendar seasons',
         'classifications',
         'episodes',
         'genres',
@@ -20,7 +21,6 @@ return [
         'relations',
         'relationships',
         'roles',
-        'seasons',
         'statuses',
         'titles',
         'types',

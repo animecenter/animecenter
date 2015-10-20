@@ -16,8 +16,9 @@ class CreateMirrorReportsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('mirror_id')->unsigned();
-            $table->boolean('verified');
-            $table->boolean('broken');
+            $table->boolean('verified')->default(false);
+            $table->boolean('broken')->default(false);
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

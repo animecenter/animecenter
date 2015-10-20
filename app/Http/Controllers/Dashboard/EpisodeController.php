@@ -8,10 +8,10 @@ use AC\Models\Episode;
 use Cache;
 use Datatable;
 use DB;
+use FA;
 use Form;
 use Html;
 use Illuminate\Http\Request;
-use FA;
 
 class EpisodeController extends Controller
 {

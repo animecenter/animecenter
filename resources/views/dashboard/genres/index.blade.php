@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Genres List
+    Genres
 @endsection
 
 @section('content')
@@ -12,6 +12,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Model</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -20,6 +21,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Model</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>
@@ -33,9 +35,10 @@
         jQuery(function () {
             jQuery('#genres').dataTable({
                 "aoColumns": [
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
+                    {"sWidth": "25%"},
+                    {"sWidth": "25%"},
+                    {"sWidth": "25%"},
+                    {"sWidth": "25%"},
                 ],
                 "aLengthMenu": [
                     [10, 25, 50, 100, 99999999],

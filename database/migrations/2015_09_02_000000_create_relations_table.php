@@ -18,6 +18,7 @@ class CreateRelationsTable extends Migration
             $table->integer('relationable_id')->unsigned();
             $table->string('relationable_type', 15);
             $table->integer('related_id')->unsigned();
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -1,25 +1,29 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Genres List
+    Views
 @endsection
 
 @section('content')
     <div class="box">
         <div class="box-body">
-            <table id="genres" class="table table-bordered table-striped">
+            <table id="views" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Model</th>
+                        <th>Date</th>
+                        <th>Title</th>
+                        <th>Count</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Model</th>
+                        <th>Date</th>
+                        <th>Title</th>
+                        <th>Count</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>
@@ -31,11 +35,13 @@
 @section('scripts')
     <script>
         jQuery(function () {
-            jQuery('#genres').dataTable({
+            jQuery('#views').dataTable({
                 "aoColumns": [
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
+                    {"sWidth": "20%"},
+                    {"sWidth": "20%"},
+                    {"sWidth": "20%"},
+                    {"sWidth": "20%"},
+                    {"sWidth": "20%"},
                 ],
                 "aLengthMenu": [
                     [10, 25, 50, 100, 99999999],
@@ -52,7 +58,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/genres/list') }}",
+                "sAjaxSource": "{{ url('dashboard/views/list') }}",
                 "bServerSide": true
             });
         });

@@ -2,10 +2,22 @@
 
 namespace AC\Http\Controllers\Dashboard;
 
-use AC\Http\Controllers\Controller;
-use AC\Http\Requests;
+use DB;
 
-class UserController extends Controller
+class UserController extends DashboardController
 {
-    //
+    public function index()
+    {
+        return view('dashboard.users.index');
+    }
+
+    public function getList()
+    {
+        $list = collect(DB::table('users')->get(['id', 'username', 'email', 'active']));
+        $showColumns = ['username', 'email', 'active'];
+        $searchColumns = ['username', 'email', 'active'];
+        $orderColumns = ['username', 'email', 'active'];
+
+        return parent::getDataTableList('users', $list, $showColumns, $searchColumns, $orderColumns);
+    }
 }

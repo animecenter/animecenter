@@ -1,25 +1,33 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Genres List
+    Mirrors
 @endsection
 
 @section('content')
     <div class="box">
         <div class="box-body">
-            <table id="genres" class="table table-bordered table-striped">
+            <table id="mirrors" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Model</th>
+                        <th>Anime Title</th>
+                        <th>Episode Number</th>
+                        <th>Mirror Source</th>
+                        <th>Translation</th>
+                        <th>Quality</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Model</th>
+                        <th>Anime Title</th>
+                        <th>Episode Number</th>
+                        <th>Mirror Source</th>
+                        <th>Translation</th>
+                        <th>Quality</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>
@@ -31,11 +39,15 @@
 @section('scripts')
     <script>
         jQuery(function () {
-            jQuery('#genres').dataTable({
+            jQuery('#mirrors').dataTable({
                 "aoColumns": [
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
+                    {"sWidth": "14%"},
+                    {"sWidth": "14%"},
+                    {"sWidth": "14%"},
+                    {"sWidth": "14%"},
+                    {"sWidth": "14%"},
+                    {"sWidth": "14%"},
+                    {"sWidth": "14%"},
                 ],
                 "aLengthMenu": [
                     [10, 25, 50, 100, 99999999],
@@ -52,7 +64,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/genres/list') }}",
+                "sAjaxSource": "{{ url('dashboard/mirrors/list') }}",
                 "bServerSide": true
             });
         });

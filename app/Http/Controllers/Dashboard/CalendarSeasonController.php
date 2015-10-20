@@ -15,6 +15,8 @@ class CalendarSeasonController extends DashboardController
     {
         $list = collect(DB::table('calendar_seasons')->get(['id', 'name', 'active']));
 
-        return parent::getDataTableList('calendar-seasons', $list, ['name', 'active', 'actions'], ['name', 'active'], ['name', 'active']);
+        return parent::getDataTableList(
+            'calendar-seasons', $list, ['name', 'active', 'actions'], ['name', 'active'], ['name', 'active']
+        );
     }
 }

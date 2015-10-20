@@ -12,6 +12,7 @@ class CreateTypesTable extends Migration
             $table->increments('id');
             $table->string('name', 191);
             $table->string('model', 191);
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();
             $table->unique(['name', 'model']);

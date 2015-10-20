@@ -27,6 +27,9 @@ class DashboardController extends Controller
             ->showColumns($showColumns)
             ->searchColumns($searchColumns)
             ->orderColumns($orderColumns)
+            ->addColumn('active', function ($model) {
+                return $model->active === 1 ? 'Active' : 'Inactive';
+            })
             ->addColumn('actions', function ($model) use ($url) {
                 $editIcon = FA::icon('pencil-square-o')->__toString() . ' ';
                 $deleteIcon = FA::icon('trash-o')->__toString() . ' ';
