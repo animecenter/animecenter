@@ -1,27 +1,26 @@
-## Laravel PHP Framework
+# animecenter
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## What is animecenter?
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+animecenter is an anime aggregation platform. Every link and information on animecenter is found on the open internet. We don't host any illegal content on our server. 
+If you think otherwise, please let us know.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## What main software does animecenter use?
 
-## Official Documentation
+- [Laravel](http://laravel.com) for the backend.
+- [Bootstrap](https://getbootstrap.com) for styling pages.
+- [jQuery](https://jquery.con) for dynamic content.
+- [Scrapy](https://scrapy.org/) for data and links aggregation. The code is private.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+## To Do
 
-## Contributing
+- Finish the new design and new admin interface.
+- Implement Reviews, and Recommendations.
+- Make tests and add repository to travis.
+- Make a API in Laravel.
+- Use React for the frontend.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+## License
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+animecenter is licensed under the [CPAL-1.0](http://opensource.org/licenses/CPAL-1.0) license.
+For better understanding of what you can do with it visit [tldrlegal.com](https://tldrlegal.com/license/common-public-attribution-license-version-1.0-(cpal-1.0)).
