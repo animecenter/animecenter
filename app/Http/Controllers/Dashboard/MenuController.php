@@ -6,11 +6,6 @@ use DB;
 
 class MenuController extends DashboardController
 {
-    public function index()
-    {
-        return view('dashboard.mirror-sources.index');
-    }
-
     public function getList()
     {
         $list = collect(DB::table('mirror_sources')->get(['id', 'name']));

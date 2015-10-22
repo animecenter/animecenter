@@ -58,7 +58,7 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('/', 'DashboardController@index');
 
     // Animes routes...
-    $router->get('animes', 'AnimeController@index');
+    $router->get('{animes}', 'AnimeController@index');
     $router->get('animes/create', 'AnimeController@getCreate');
     $router->post('animes/create', 'AnimeController@postCreate');
     $router->get('animes/edit/{id}', 'AnimeController@getEdit');
@@ -71,7 +71,7 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('animes/list/deleted', 'AnimeController@getListDeleted');
 
     // Banners routes...
-    $router->get('banners', 'BannerController@index');
+    $router->get('{banners}', 'BannerController@index');
     $router->get('banners/create', 'BannerController@getCreate');
     $router->post('banners/create', 'BannerController@postCreate');
     $router->get('banners/edit/{id}', 'BannerController@getEdit');
@@ -83,8 +83,21 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('banners/list', 'BannerController@getList');
     $router->get('banners/list/deleted', 'BannerController@getListDeleted');
 
+    // Calendar Seasons routes...
+    $router->get('{calendar-seasons}', 'CalendarSeasonController@index');
+    $router->get('calendar-seasons/create', 'CalendarSeasonController@getCreate');
+    $router->post('calendar-seasons/create', 'CalendarSeasonController@postCreate');
+    $router->get('calendar-seasons/edit/{id}', 'CalendarSeasonController@getEdit');
+    $router->post('calendar-seasons/edit/{id}', 'CalendarSeasonController@postEdit');
+    $router->post('calendar-seasons/delete/{id}', 'CalendarSeasonController@postDelete');
+    $router->get('calendar-seasons/deleted', 'CalendarSeasonController@getDeleted');
+    $router->post('calendar-seasons/deleted/{id}', 'CalendarSeasonController@postDeleted');
+    $router->post('calendar-seasons/recover/{id}', 'CalendarSeasonController@postRecover');
+    $router->get('calendar-seasons/list', 'CalendarSeasonController@getList');
+    $router->get('calendar-seasons/list/deleted', 'CalendarSeasonController@getListDeleted');
+
     // Classifications routes...
-    $router->get('classifications', 'ClassificationController@index');
+    $router->get('{classifications}', 'ClassificationController@index');
     $router->get('classifications/create', 'ClassificationController@getCreate');
     $router->post('classifications/create', 'ClassificationController@postCreate');
     $router->get('classifications/edit/{id}', 'ClassificationController@getEdit');
@@ -97,7 +110,7 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('classifications/list/deleted', 'ClassificationController@getListDeleted');
 
     // Episodes routes...
-    $router->get('episodes', 'EpisodeController@index');
+    $router->get('{episodes}', 'EpisodeController@index');
     $router->get('episodes/create', 'EpisodeController@getCreate');
     $router->post('episodes/create', 'EpisodeController@postCreate');
     $router->get('episodes/edit/{id}', 'EpisodeController@getEdit');
@@ -110,7 +123,7 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('episodes/list/deleted', 'EpisodeController@getListDeleted');
 
     // Genres routes...
-    $router->get('genres', 'GenreController@index');
+    $router->get('{genres}', 'GenreController@index');
     $router->get('genres/create', 'GenreController@getCreate');
     $router->post('genres/create', 'GenreController@postCreate');
     $router->get('genres/edit/{id}', 'GenreController@getEdit');
@@ -123,7 +136,7 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('genres/list/deleted', 'GenreController@getListDeleted');
 
     // Images routes...
-    $router->get('images', 'ImageController@index');
+    $router->get('{images}', 'ImageController@index');
     $router->get('images/create', 'ImageController@getCreate');
     $router->post('images/create', 'ImageController@postCreate');
     $router->get('images/edit/{id}', 'ImageController@getEdit');
@@ -135,8 +148,34 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('images/list', 'ImageController@getList');
     $router->get('images/list/deleted', 'ImageController@getListDeleted');
 
+    // Menus routes...
+    $router->get('{menus}', 'MenuController@index');
+    $router->get('menus/create', 'MenuController@getCreate');
+    $router->post('menus/create', 'MenuController@postCreate');
+    $router->get('menus/edit/{id}', 'MenuController@getEdit');
+    $router->post('menus/edit/{id}', 'MenuController@postEdit');
+    $router->post('menus/delete/{id}', 'MenuController@postDelete');
+    $router->get('menus/deleted', 'MenuController@getDeleted');
+    $router->post('menus/deleted/{id}', 'MenuController@postDeleted');
+    $router->post('menus/recover/{id}', 'MenuController@postRecover');
+    $router->get('menus/list', 'MenuController@getList');
+    $router->get('menus/list/deleted', 'MenuController@getListDeleted');
+
+    // Metas routes...
+    $router->get('{metas}', 'MetaController@index');
+    $router->get('metas/create', 'MetaController@getCreate');
+    $router->post('metas/create', 'MetaController@postCreate');
+    $router->get('metas/edit/{id}', 'MetaController@getEdit');
+    $router->post('metas/edit/{id}', 'MetaController@postEdit');
+    $router->post('metas/delete/{id}', 'MetaController@postDelete');
+    $router->get('metas/deleted', 'MetaController@getDeleted');
+    $router->post('metas/deleted/{id}', 'MetaController@postDeleted');
+    $router->post('metas/recover/{id}', 'MetaController@postRecover');
+    $router->get('metas/list', 'MetaController@getList');
+    $router->get('metas/list/deleted', 'MetaController@getListDeleted');
+
     // Mirrors routes...
-    $router->get('mirrors', 'MirrorController@index');
+    $router->get('{mirrors}', 'MirrorController@index');
     $router->get('mirrors/create', 'MirrorController@getCreate');
     $router->post('mirrors/create', 'MirrorController@postCreate');
     $router->get('mirrors/edit/{id}', 'MirrorController@getEdit');
@@ -148,8 +187,21 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('mirrors/list', 'MirrorController@getList');
     $router->get('mirrors/list/deleted', 'MirrorController@getListDeleted');
 
+    // Mirror Reports routes...
+    $router->get('{mirror-reports}', 'MirrorReportController@index');
+    $router->get('mirror-reports/create', 'MirrorReportController@getCreate');
+    $router->post('mirror-reports/create', 'MirrorReportController@postCreate');
+    $router->get('mirror-reports/edit/{id}', 'MirrorReportController@getEdit');
+    $router->post('mirror-reports/edit/{id}', 'MirrorReportController@postEdit');
+    $router->post('mirror-reports/delete/{id}', 'MirrorReportController@postDelete');
+    $router->get('mirror-reports/deleted', 'MirrorReportController@getDeleted');
+    $router->post('mirror-reports/deleted/{id}', 'MirrorReportController@postDeleted');
+    $router->post('mirror-reports/recover/{id}', 'MirrorReportController@postRecover');
+    $router->get('mirror-reports/list', 'MirrorReportController@getList');
+    $router->get('mirror-reports/list/deleted', 'MirrorReportController@getListDeleted');
+
     // Mirror Sources routes...
-    $router->get('mirror-sources', 'MirrorSourceController@index');
+    $router->get('{mirror-sources}', 'MirrorSourceController@index');
     $router->get('mirror-sources/create', 'MirrorSourceController@getCreate');
     $router->post('mirror-sources/create', 'MirrorSourceController@postCreate');
     $router->get('mirror-sources/edit/{id}', 'MirrorSourceController@getEdit');
@@ -162,7 +214,7 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('mirror-sources/list/deleted', 'MirrorSourceController@getListDeleted');
 
     // Options routes...
-    $router->get('options', 'OptionController@index');
+    $router->get('{options}', 'OptionController@index');
     $router->get('options/create', 'OptionController@getCreate');
     $router->post('options/create', 'OptionController@postCreate');
     $router->get('options/edit/{id}', 'OptionController@getEdit');
@@ -175,7 +227,7 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('options/list/deleted', 'OptionController@getListDeleted');
 
     // Pages routes...
-    $router->get('pages', 'PageController@index');
+    $router->get('{pages}', 'PageController@index');
     $router->get('pages/create', 'PageController@getCreate');
     $router->post('pages/create', 'PageController@postCreate');
     $router->get('pages/edit/{id}', 'PageController@getEdit');
@@ -187,8 +239,21 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('pages/list', 'PageController@getList');
     $router->get('pages/list/deleted', 'PageController@getListDeleted');
 
+    // Permissions routes...
+    $router->get('{permissions}', 'PermissionController@index');
+    $router->get('permissions/create', 'PermissionController@getCreate');
+    $router->post('permissions/create', 'PermissionController@postCreate');
+    $router->get('permissions/edit/{id}', 'PermissionController@getEdit');
+    $router->post('permissions/edit/{id}', 'PermissionController@postEdit');
+    $router->post('permissions/delete/{id}', 'PermissionController@postDelete');
+    $router->get('permissions/deleted', 'PermissionController@getDeleted');
+    $router->post('permissions/deleted/{id}', 'PermissionController@postDeleted');
+    $router->post('permissions/recover/{id}', 'PermissionController@postRecover');
+    $router->get('permissions/list', 'PermissionController@getList');
+    $router->get('permissions/list/deleted', 'PermissionController@getListDeleted');
+
     // Producers routes...
-    $router->get('producers', 'ProducerController@index');
+    $router->get('{producers}', 'ProducerController@index');
     $router->get('producers/create', 'ProducerController@getCreate');
     $router->post('producers/create', 'ProducerController@postCreate');
     $router->get('producers/edit/{id}', 'ProducerController@getEdit');
@@ -200,21 +265,86 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->get('producers/list', 'ProducerController@getList');
     $router->get('producers/list/deleted', 'ProducerController@getListDeleted');
 
-    // Calendar Seasons routes...
-    $router->get('calendar-seasons', 'CalendarSeasonController@index');
-    $router->get('calendar-seasons/create', 'CalendarSeasonController@getCreate');
-    $router->post('calendar-seasons/create', 'CalendarSeasonController@postCreate');
-    $router->get('calendar-seasons/edit/{id}', 'CalendarSeasonController@getEdit');
-    $router->post('calendar-seasons/edit/{id}', 'CalendarSeasonController@postEdit');
-    $router->post('calendar-seasons/delete/{id}', 'CalendarSeasonController@postDelete');
-    $router->get('calendar-seasons/deleted', 'CalendarSeasonController@getDeleted');
-    $router->post('calendar-seasons/deleted/{id}', 'CalendarSeasonController@postDeleted');
-    $router->post('calendar-seasons/recover/{id}', 'CalendarSeasonController@postRecover');
-    $router->get('calendar-seasons/list', 'CalendarSeasonController@getList');
-    $router->get('calendar-seasons/list/deleted', 'CalendarSeasonController@getListDeleted');
+    // Relations routes...
+    $router->get('{relations}', 'RelationController@index');
+    $router->get('relations/create', 'RelationController@getCreate');
+    $router->post('relations/create', 'RelationController@postCreate');
+    $router->get('relations/edit/{id}', 'RelationController@getEdit');
+    $router->post('relations/edit/{id}', 'RelationController@postEdit');
+    $router->post('relations/delete/{id}', 'RelationController@postDelete');
+    $router->get('relations/deleted', 'RelationController@getDeleted');
+    $router->post('relations/deleted/{id}', 'RelationController@postDeleted');
+    $router->post('relations/recover/{id}', 'RelationController@postRecover');
+    $router->get('relations/list', 'RelationController@getList');
+    $router->get('relations/list/deleted', 'RelationController@getListDeleted');
+
+    // Relationships routes...
+    $router->get('{relationships}', 'RelationshipController@index');
+    $router->get('relationships/create', 'RelationshipController@getCreate');
+    $router->post('relationships/create', 'RelationshipController@postCreate');
+    $router->get('relationships/edit/{id}', 'RelationshipController@getEdit');
+    $router->post('relationships/edit/{id}', 'RelationshipController@postEdit');
+    $router->post('relationships/delete/{id}', 'RelationshipController@postDelete');
+    $router->get('relationships/deleted', 'RelationshipController@getDeleted');
+    $router->post('relationships/deleted/{id}', 'RelationshipController@postDeleted');
+    $router->post('relationships/recover/{id}', 'RelationshipController@postRecover');
+    $router->get('relationships/list', 'RelationshipController@getList');
+    $router->get('relationships/list/deleted', 'RelationshipController@getListDeleted');
+
+    // Roles routes...
+    $router->get('{roles}', 'RoleController@index');
+    $router->get('roles/create', 'RoleController@getCreate');
+    $router->post('roles/create', 'RoleController@postCreate');
+    $router->get('roles/edit/{id}', 'RoleController@getEdit');
+    $router->post('roles/edit/{id}', 'RoleController@postEdit');
+    $router->post('roles/delete/{id}', 'RoleController@postDelete');
+    $router->get('roles/deleted', 'RoleController@getDeleted');
+    $router->post('roles/deleted/{id}', 'RoleController@postDeleted');
+    $router->post('roles/recover/{id}', 'RoleController@postRecover');
+    $router->get('roles/list', 'RoleController@getList');
+    $router->get('roles/list/deleted', 'RoleController@getListDeleted');
+
+    // Statuses routes...
+    $router->get('{statuses}', 'StatusController@index');
+    $router->get('statuses/create', 'StatusController@getCreate');
+    $router->post('statuses/create', 'StatusController@postCreate');
+    $router->get('statuses/edit/{id}', 'StatusController@getEdit');
+    $router->post('statuses/edit/{id}', 'StatusController@postEdit');
+    $router->post('statuses/delete/{id}', 'StatusController@postDelete');
+    $router->get('statuses/deleted', 'StatusController@getDeleted');
+    $router->post('statuses/deleted/{id}', 'StatusController@postDeleted');
+    $router->post('statuses/recover/{id}', 'StatusController@postRecover');
+    $router->get('statuses/list', 'StatusController@getList');
+    $router->get('statuses/list/deleted', 'StatusController@getListDeleted');
+
+    // Titles routes...
+    $router->get('{titles}', 'TitleController@index');
+    $router->get('titles/create', 'TitleController@getCreate');
+    $router->post('titles/create', 'TitleController@postCreate');
+    $router->get('titles/edit/{id}', 'TitleController@getEdit');
+    $router->post('titles/edit/{id}', 'TitleController@postEdit');
+    $router->post('titles/delete/{id}', 'TitleController@postDelete');
+    $router->get('titles/deleted', 'TitleController@getDeleted');
+    $router->post('titles/deleted/{id}', 'TitleController@postDeleted');
+    $router->post('titles/recover/{id}', 'TitleController@postRecover');
+    $router->get('titles/list', 'TitleController@getList');
+    $router->get('titles/list/deleted', 'TitleController@getListDeleted');
+
+    // Types routes...
+    $router->get('{types}', 'TypeController@index');
+    $router->get('types/create', 'TypeController@getCreate');
+    $router->post('types/create', 'TypeController@postCreate');
+    $router->get('types/edit/{id}', 'TypeController@getEdit');
+    $router->post('types/edit/{id}', 'TypeController@postEdit');
+    $router->post('types/delete/{id}', 'TypeController@postDelete');
+    $router->get('types/deleted', 'TypeController@getDeleted');
+    $router->post('types/deleted/{id}', 'TypeController@postDeleted');
+    $router->post('types/recover/{id}', 'TypeController@postRecover');
+    $router->get('types/list', 'TypeController@getList');
+    $router->get('types/list/deleted', 'TypeController@getListDeleted');
 
     // Users routes...
-    $router->get('users', 'UserController@index');
+    $router->get('{users}', 'UserController@index');
     $router->get('users/create', 'UserController@getCreate');
     $router->post('users/create', 'UserController@postCreate');
     $router->get('users/edit/{id}', 'UserController@getEdit');

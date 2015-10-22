@@ -2,15 +2,18 @@
 
 namespace AC\Http\Controllers\Dashboard;
 
-use AC\Http\Controllers\Controller;
-use AC\Http\Requests;
 use DB;
 
-class ClassificationController extends Controller
+class ClassificationController extends DashboardController
 {
-    public function index()
+    public function getList()
     {
-        $classifications = DB::table('classifications')->orderBy('name')->get(['id', 'name']);
-        return view('dashboard.classifications.index', ['classifications' => $classifications]);
+        $slug = 'classifications';
+        $list = collect(DB::table('classifications')->orderBy('name')->get(['id', 'name', 'active']));
+        $showColumns = [];
+
+        return parent::getDataTableList(
+            $slug, $list, ['name', 'active'], ['name', 'active'], ['name', 'active']
+        );
     }
 }

@@ -128,7 +128,7 @@ class EloquentAnimeRepository
             return $anime->whereHas('episodes.mirrors', function ($query) {
                 $query->where('mirrors.translation', '=', 'subbed');
             });
-        } else if ($language === 'dubbed') {
+        } elseif ($language === 'dubbed') {
             return $anime->whereHas('episodes.mirrors', function ($query) {
                 $query->where('mirrors.translation', '=', 'dubbed');
             });
@@ -232,7 +232,7 @@ class EloquentAnimeRepository
     {
         if ($sortBy === 'upcoming') {
             return $anime->where('release_date', '>', Carbon::now()->toDateTimeString());
-        } else if ($sortBy === 'latest') {
+        } elseif ($sortBy === 'latest') {
             return $anime->where('release_date', '<', Carbon::now()->toDateTimeString());
         } else {
             abort(404, $sortBy . " is not a valid value");
@@ -291,7 +291,7 @@ class EloquentAnimeRepository
      */
     public function getMirror($animeSlug = '', $episodeNumber = 0, $translation = '', $mirrorID = '')
     {
-        return $this->anime->with(['episode.mirror'])->whereHas('episode.mirror', function($query) use ($episodeNumber, $translation, $mirrorID) {
+        return $this->anime->with(['episode.mirror'])->whereHas('episode.mirror', function ($query) use ($episodeNumber, $translation, $mirrorID) {
             $query->where('mirrors.id', '=', $mirrorID)
                 ->where('mirrors.translation', '=', $translation)->where('episodes.number', '=', $episodeNumber);
         })->where('slug', '=', $animeSlug)->firstOrFail();
