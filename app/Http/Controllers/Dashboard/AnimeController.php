@@ -5,7 +5,6 @@ namespace AC\Http\Controllers\Dashboard;
 use AC\Models\Anime;
 use AC\Models\Genre;
 use DB;
-use Illuminate\Http\Request;
 
 class AnimeController extends DashboardController
 {
@@ -33,12 +32,13 @@ class AnimeController extends DashboardController
 
     public function getList()
     {
+        $url = 'animes';
         $list = collect(DB::table('animes')->get(['id', 'title', 'slug', 'active']));
-        $showColumns = ['title', 'slug', 'active'];
+        $showColumns = ['title', 'slug', 'active', 'actions'];
         $searchColumns = ['title', 'slug', 'active'];
         $orderColumns = ['title', 'slug', 'active'];
 
-        return parent::getDataTableList('users', $list, $showColumns, $searchColumns, $orderColumns);
+        return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
 
     /**

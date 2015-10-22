@@ -26,7 +26,7 @@ class OptionController extends DashboardController
     {
         $url = 'options';
         $list = collect(DB::table('options')->get(['id', 'name', 'active']));
-        $showColumns = ['name', 'active'];
+        $showColumns = ['name', 'active', 'actions'];
         $searchColumns = ['name', 'active'];
         $orderColumns = ['name', 'active'];
 
