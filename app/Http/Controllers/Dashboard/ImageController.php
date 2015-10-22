@@ -2,11 +2,10 @@
 
 namespace AC\Http\Controllers\Dashboard;
 
-use AC\Http\Controllers\Controller;
 use AC\Models\Image;
 use Illuminate\Http\Request;
 
-class ImageController extends Controller
+class ImageController extends DashboardController
 {
     /**
      * @var Image
@@ -19,18 +18,6 @@ class ImageController extends Controller
     public function __construct(Image $image)
     {
         $this->image = $image;
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        $this->data['images'] = $this->image->orderBy('date', 'desc')->get();
-
-        return view('dashboard.images.index', $this->data);
     }
 
     /**

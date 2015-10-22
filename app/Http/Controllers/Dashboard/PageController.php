@@ -2,11 +2,10 @@
 
 namespace AC\Http\Controllers\Dashboard;
 
-use AC\Http\Controllers\Controller;
 use AC\Models\Page;
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class PageController extends DashboardController
 {
     /**
      * @var Page
@@ -21,17 +20,6 @@ class PageController extends Controller
     public function __construct(Page $page)
     {
         $this->page = $page;
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
-    {
-        $this->data['pages'] = $this->page->orderBy('id', 'desc')->get();
-
-        return view('dashboard.pages.index', $this->data);
     }
 
     /**

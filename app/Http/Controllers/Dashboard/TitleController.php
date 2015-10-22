@@ -2,10 +2,7 @@
 
 namespace AC\Http\Controllers\Dashboard;
 
-use AC\Http\Controllers\Controller;
-use AC\Http\Requests;
-
-class TitleController extends Controller
+class TitleController extends DashboardController
 {
     //
 }

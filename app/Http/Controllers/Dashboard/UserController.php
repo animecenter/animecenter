@@ -6,11 +6,6 @@ use DB;
 
 class UserController extends DashboardController
 {
-    public function index()
-    {
-        return view('dashboard.users.index');
-    }
-
     public function getList()
     {
         $list = collect(DB::table('users')->get(['id', 'username', 'email', 'active']));

@@ -2,18 +2,13 @@
 
 namespace AC\Http\Controllers\Dashboard;
 
-use AC\Http\Controllers\Controller;
 use AC\Models\Anime;
 use AC\Models\Episode;
 use Cache;
-use Datatable;
 use DB;
-use FA;
-use Form;
-use Html;
 use Illuminate\Http\Request;
 
-class EpisodeController extends Controller
+class EpisodeController extends DashboardController
 {
     /**
      * @var Anime
@@ -35,16 +30,6 @@ class EpisodeController extends Controller
     {
         $this->anime = $anime;
         $this->episode = $episode;
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
-    {
-        return view('dashboard.episodes.index');
     }
 
     /**
@@ -204,33 +189,22 @@ class EpisodeController extends Controller
         return redirect()->action('Dashboard\EpisodeController@index')->with('success', $msg);
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getList()
     {
-        $list = Cache::remember('dashboard-episodes', '60', function() {
+        $url = 'episodes';
+        $list = Cache::remember('dashboard-episodes', '60', function () {
             return collect(DB::table('episodes')->join('animes', 'episodes.anime_id', '=', 'animes.id')
                 ->orderBy('episodes.id', 'DESC')
                 ->get(['episodes.id', 'episodes.number', 'episodes.active', 'episodes.aired_at', 'animes.title as animeTitle'])
             );
         });
+        $showColumns = ['animeTitle', 'number', 'aired_at', 'active', 'actions'];
+        $searchColumns = ['animeTitle', 'active'];
+        $orderColumns = ['animeTitle', 'number', 'aired_at', 'active'];
 
-        return Datatable::collection($list)
-            ->showColumns('animeTitle', 'number', 'aired_at', 'active', 'actions')
-            ->searchColumns(['animeTitle'])
-            ->orderColumns('animeTitle', 'number', 'aired_at', 'active')
-            ->addColumn('active', function ($model) {
-                return $model->active === 1 ? 'Active' : 'Inactive';
-            })
-            ->addColumn('actions', function ($model) {
-                $editIcon = FA::icon('pencil-square-o')->__toString() . ' ';
-                $deleteIcon = FA::icon('trash-o')->__toString() . ' ';
-                $editUrl = url('dashboard/episodes/edit', $model->id);
-                $deleteUrl = url('dashboard/episodes/delete', $model->id);
-                return html_entity_decode(
-                    Html::link($editUrl, $editIcon . '', ['class' => 'btn btn-sm btn-warning pull-left']).
-                    Form::open(['url' => $deleteUrl, 'class' => '']).
-                    Form::button($deleteIcon, ['class' => 'btn btn-sm btn-danger btn-delete', 'type' => 'submit']).
-                    Form::close()
-                );
-            })->make();
+        return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
 }

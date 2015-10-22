@@ -2,11 +2,10 @@
 
 namespace AC\Http\Controllers\Dashboard;
 
-use AC\Http\Controllers\Controller;
 use AC\Models\Option;
-use Illuminate\Http\Request;
+use DB;
 
-class OptionController extends Controller
+class OptionController extends DashboardController
 {
     /**
      * @var Option
@@ -21,6 +20,17 @@ class OptionController extends Controller
     public function __construct(Option $option)
     {
         $this->option = $option;
+    }
+
+    public function getList()
+    {
+        $url = 'options';
+        $list = collect(DB::table('options')->get(['id', 'name', 'active']));
+        $showColumns = ['name', 'active'];
+        $searchColumns = ['name', 'active'];
+        $orderColumns = ['name', 'active'];
+
+        return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
 
     /**
