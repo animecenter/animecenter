@@ -11,11 +11,9 @@ class ProducerController extends DashboardController
         $url = 'producers';
         $list = collect(DB::table('producers')->orderBy('name')->get(['id', 'name', 'active']));
         $showColumns = ['name', 'active', 'actions'];
-        $searchColumns = ['name'];
+        $searchColumns = ['name', 'active'];
         $orderColumns = ['name', 'active'];
 
-        return parent::getDataTableList(
-            $url, $list, $showColumns, $searchColumns, $orderColumns
-        );
+        return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
 }
