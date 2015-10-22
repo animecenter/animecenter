@@ -14,20 +14,22 @@ If you think otherwise, please let us know.
 
 ## Contributions
 
+Everyone is welcome to contribute. You can do it in the following ways:
+
 If you want a new feature, make an issue with all details.
 
 If you find a bug, make an issue describing how you came upon it and what os, browser, etc you are using.
 
-If you want to contribute, fork the project and pick an issue to solve. When you finish solving it, do a pull request.
+If you want to contribute code, fork the project and pick an issue to solve. When you finish solving it, do a pull request.
 There is a higher chance for a feature to be accepted if you make tests for it.
 
 ## To Do
 
-- Finish the new design and new admin interface.
-- Implement Reviews, and Recommendations.
-- Make tests and add repository to travis.
-- Make a API in Laravel.
-- Use React for the frontend.
+- [ ] Finish the new design and new admin interface.
+- [ ] Implement Reviews, and Recommendations.
+- [ ] Make tests and add repository to travis.
+- [ ] Make a API in Laravel.
+- [ ] Use React for the frontend.
 
 ## License
 
