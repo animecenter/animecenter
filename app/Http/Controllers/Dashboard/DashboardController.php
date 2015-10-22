@@ -14,10 +14,14 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param string $slug
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index($slug = '')
     {
+        if ($slug) {
+            return view('dashboard.' . $slug . '.index');
+        }
         return view('dashboard.index');
     }
 
@@ -34,7 +38,7 @@ class DashboardController extends Controller
                 $editIcon = FA::icon('pencil-square-o')->__toString() . ' ';
                 $deleteIcon = FA::icon('trash-o')->__toString() . ' ';
                 $editUrl = url('dashboard/' . $url . '/edit', $model->id);
-                $deleteUrl = url('dashboard/' . $url . '    /delete', $model->id);
+                $deleteUrl = url('dashboard/' . $url . '/delete', $model->id);
                 return html_entity_decode(
                     Html::link($editUrl, $editIcon . '', ['class' => 'btn btn-sm btn-warning pull-left']).
                     Form::open(['url' => $deleteUrl]).

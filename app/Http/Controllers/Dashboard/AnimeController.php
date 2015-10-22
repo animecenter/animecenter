@@ -2,13 +2,12 @@
 
 namespace AC\Http\Controllers\Dashboard;
 
-use AC\Http\Controllers\Controller;
 use AC\Models\Anime;
 use AC\Models\Genre;
 use DB;
 use Illuminate\Http\Request;
 
-class AnimeController extends Controller
+class AnimeController extends DashboardController
 {
     /**
      * @var Anime
@@ -32,17 +31,14 @@ class AnimeController extends Controller
         $this->genre = $genre;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
+    public function getList()
     {
-        $this->data['animes'] = DB::table('animes')->orderBy('created_at', 'DESC')
-            ->get(['id', 'title', 'slug', 'status']);
+        $list = collect(DB::table('animes')->get(['id', 'title', 'slug', 'active']));
+        $showColumns = ['title', 'slug', 'active'];
+        $searchColumns = ['title', 'slug', 'active'];
+        $orderColumns = ['title', 'slug', 'active'];
 
-        return view('dashboard.anime.index', $this->data);
+        return parent::getDataTableList('users', $list, $showColumns, $searchColumns, $orderColumns);
     }
 
     /**

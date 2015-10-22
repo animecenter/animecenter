@@ -6,15 +6,16 @@ use DB;
 
 class ProducerController extends DashboardController
 {
-    public function index()
-    {
-        return view('dashboard.producers.index');
-    }
-
     public function getList()
     {
-        $list = collect(DB::table('producers')->get(['id', 'name']));
+        $url = 'producers';
+        $list = collect(DB::table('producers')->orderBy('name')->get(['id', 'name', 'active']));
+        $showColumns = ['name', 'active', 'actions'];
+        $searchColumns = ['name'];
+        $orderColumns = ['name', 'active'];
 
-        return parent::getDataTableList('producers', $list, ['name', 'actions'], ['name'], ['name']);
+        return parent::getDataTableList(
+            $url, $list, $showColumns, $searchColumns, $orderColumns
+        );
     }
 }

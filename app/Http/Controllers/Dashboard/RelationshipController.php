@@ -2,10 +2,7 @@
 
 namespace AC\Http\Controllers\Dashboard;
 
-use AC\Http\Controllers\Controller;
-use AC\Http\Requests;
-
-class RelationshipController extends Controller
+class RelationshipController extends DashboardController
 {
     //
 }
