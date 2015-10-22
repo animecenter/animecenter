@@ -12,6 +12,12 @@ If you think otherwise, please let us know.
 - [jQuery](https://jquery.con) for dynamic content.
 - [Scrapy](https://scrapy.org/) for data and links aggregation. The code is private.
 
+## Contributions
+
+If you want a new feature, make an issue.
+If you want to contribute, fork the project and pick an issue to solve. When you finish solving it, do a pull request.
+There is a higher chance for a feature to be accepted if you make tests for it.
+
 ## To Do
 
 - Finish the new design and new admin interface.
