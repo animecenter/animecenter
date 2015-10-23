@@ -250,11 +250,15 @@ class Anime extends Model
      */
     public function getDurationAttribute($value)
     {
+        if (!$value) {
+            return 'Unknown';
+        }
         $value = explode(':', $value);
         $hours = str_replace([0], '', $value[0]);
         $minutes = str_replace([0], '', $value[1]);
-        // $secs = str_replace([0], '', $value[2]);
-        return (($hours) ? $hours . ' hr. ' : '') . (($minutes) ? $minutes . ' min. per episode' : 'Unknown');
+        $secs = str_replace([0], '', $value[2]);
+
+        return ($hours ? $hours . ' hr. ' : '') . ($minutes ? $minutes . ' min. per episode' : '');
     }
 
     /**
@@ -275,7 +279,7 @@ class Anime extends Model
 
     public function getPhotoAttribute()
     {
-        return $this->image ? $this->image : 'https://placehold.it/300x150';
+        return $this->image ? $this->image : 'https://placehold.it/225x320';
     }
 
     public function getShortTitleAttribute()
