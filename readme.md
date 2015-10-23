@@ -20,8 +20,18 @@ We don't host any illegal content on our server. If you think otherwise, please 
 ### Requirements
 
 1. [Git](https://git-scm.com/download)
-2. [VirtualBox 5.x](https://www.virtualbox.org/wiki/Downloads)
-3. [Vagrant](https://www.vagrantup.com/downloads.html)
+2. PHP 5.6
+    - Windows
+        - TODO:
+    - Ubuntu
+        1. `sudo apt-get update && sudo apt-get install python-software-properties`
+        2. `sudo add-apt-repository ppa:ondrej/php5-5.6 && sudo apt-get update && sudo apt-get install php5`
+        3. To confirm: `php5 -v`
+    - Mac OS X
+        1. `curl -s http://php-osx.liip.ch/install.sh | bash -s 5.6`
+        2. Write into your ~/.profile file the following `export PATH=/usr/local/php5/bin:$PATH`
+3. [VirtualBox 5.x](https://www.virtualbox.org/wiki/Downloads)
+4. [Vagrant](https://www.vagrantup.com/downloads.html)
 
 ### Setup
 
