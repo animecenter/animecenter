@@ -25,7 +25,7 @@ We don't host any illegal content on our server. If you think otherwise, please 
 
 ### Setup
 
-1. Clone this repository: `git clone git@github.com:animecenter/animecenter.git`
+1. Clone this repository: `git clone https://github.com/animecenter/animecenter.git`
 2. In the command line change directory to the animecenter repository you just downloaded with `cd path/to/directory` and run the following commands:
     1. Checkout the development branch with `git checkout development`
     2. Use one of the following commands depending on your Operating System:
