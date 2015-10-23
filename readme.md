@@ -26,11 +26,13 @@ We don't host any illegal content on our server. If you think otherwise, please 
 ### Setup
 
 1. Clone this repository: `git clone git@github.com:animecenter/animecenter.git`
-2. In the command line change directory to the animecenter repository you just downloaded with `cd path/to/directory` and run the following command:
-    - Mac / Linux:
-        `php vendor/bin/homestead make`
-    - Windows:
-        `vendor\bin\homestead make`
+2. In the command line change directory to the animecenter repository you just downloaded with `cd path/to/directory` and run the following commands:
+    1. Checkout the development branch with `git checkout development`
+    2. Use one of the following commands depending on your Operating System:
+        - Mac / Linux:
+            `php vendor/bin/homestead make`
+        - Windows:
+            `vendor\bin\homestead make`
 3. Update `Homestead.yaml` with the following settings:
     1. Change `map: homestead.app` to `map: animecenter.app`
     2. If you don't have a SSH key, run `ssh-keygen -t rsa -C "you@homestead"` in the command line. Windows users should use Git Bash.
