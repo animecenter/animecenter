@@ -17,22 +17,32 @@ We don't host any illegal content on our server. If you think otherwise, please 
 
 ## Development
 
+### Requirements
+
+1. [Git](https://git-scm.com/download)
+2. [VirtualBox 5.x](https://www.virtualbox.org/wiki/Downloads)
+3. [Vagrant](https://www.vagrantup.com/downloads.html)
+
 ### Setup
 
-1. We need to install [Homestead](http://laravel.com/docs/homestead) first because it comes with almost all 
-requirements to start developing right away on the codebase.
-2. You need to clone this repository: `git clone git@github.com:animecenter/animecenter.git`
-3. Update your `Homestead.yml` with the following settings:
-    1. Add the path for the cloned animecenter repository to the `folders` list
-    2. Add a site `animecenter.app` for the animecenter repository to the `sites` list
-    3. Add a database called `animecenter` to the `databases` list
-    4. Run `homestead provision`
-4. SSH into your Homestead box and run the following commands:
+1. Clone this repository: `git clone git@github.com:animecenter/animecenter.git`
+2. In the command line change directory to the animecenter repository you just downloaded with `cd path/to/directory` and run the following command:
+    - Mac / Linux:
+        `php vendor/bin/homestead make`
+    - Windows:
+        `vendor\bin\homestead make`
+3. Update `Homestead.yaml` with the following settings:
+    1. Change `map: homestead.app` to `map: animecenter.app`
+    2. If you don't have a SSH key, run `ssh-keygen -t rsa -C "you@homestead"` in the command line. Windows users should use Git Bash.
+    3. Run `vagrant up` in the command line
+4. SSH into your Homestead box with `vagrant ssh`, go to folder containing the code with `cd /home/vagrant/animecenter` and run the following commands to install development dependencies:
     1. `composer install`
     2. `php artisan migrate --seed --env=local`
     3. `npm install`
     4. `bower install`
-5. Add `192.168.10.10 animecenter.app` to your computer's `hosts` file
+5. Add `192.168.10.10 animecenter.app` to your computer's `hosts` file.
+    - On Mac and Linux, this file is located at `/etc/hosts`. 
+    - On Windows, it is located at `C:\Windows\System32\drivers\etc\hosts`.
 6. Visit animecenter.app in the browser.
 7. Start developing!
 

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8b4e08c6b70712c303ced067343ec4ff",
-    "content-hash": "a912a2ad51d376d88f3394fc8fe5f1e8",
+    "hash": "11590d0ed14c27714e4adbda5a53fb90",
+    "content-hash": "3c768ae691b247407ad57c03e2f0479a",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3513,6 +3513,47 @@
             "time": "2015-08-19 14:29:06"
         },
         {
+            "name": "laravel/homestead",
+            "version": "v2.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/homestead.git",
+                "reference": "301484041e062bb62b42d2bbbf0d636408d0f6b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/homestead/zipball/301484041e062bb62b42d2bbbf0d636408d0f6b4",
+                "reference": "301484041e062bb62b42d2bbbf0d636408d0f6b4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "symfony/console": "~2.0",
+                "symfony/process": "~2.0"
+            },
+            "bin": [
+                "homestead"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Homestead\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "A virtual machine for web artisans.",
+            "time": "2015-10-01 17:07:30"
+        },
+        {
             "name": "maximebf/debugbar",
             "version": "v1.10.4",
             "source": {
@@ -3632,6 +3673,55 @@
                 "testing"
             ],
             "time": "2015-04-02 19:54:00"
+        },
+        {
+            "name": "orangehill/iseed",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orangehill/iseed.git",
+                "reference": "0886919f3f0f7513ec334af22beeddcb3f28b7e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orangehill/iseed/zipball/0886919f3f0f7513ec334af22beeddcb3f28b7e2",
+                "reference": "0886919f3f0f7513ec334af22beeddcb3f28b7e2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/filesystem": "5.x",
+                "mockery/mockery": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Orangehill\\Iseed": "src/"
+                },
+                "classmap": [
+                    "src/Orangehill/Iseed/Exceptions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tihomir Opacic",
+                    "email": "tihomir.opacic@orangehilldev.com"
+                }
+            ],
+            "description": "Generate a new Laravel database seed file based on data from the existing database table.",
+            "keywords": [
+                "artisan",
+                "generators",
+                "laravel",
+                "seed"
+            ],
+            "time": "2015-03-19 09:48:32"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -4695,7 +4785,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "chumper/datatable": 20
+        "chumper/datatable": 20,
+        "orangehill/iseed": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

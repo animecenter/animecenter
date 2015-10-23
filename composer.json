@@ -25,7 +25,9 @@
     "laracasts/generators": "~1.1",
     "barryvdh/laravel-debugbar": "~2",
     "barryvdh/laravel-ide-helper": "~2",
-    "doctrine/dbal": "~2"
+    "doctrine/dbal": "~2",
+    "orangehill/iseed": "dev-master",
+    "laravel/homestead": "^2.1"
     },
   "autoload": {
     "classmap": [

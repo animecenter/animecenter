@@ -48,9 +48,13 @@
                     </p>
                     <p class="text-white">
                         <span class="text-success">Rating: </span>
-                        <a href="{{ url('anime?classification=' . $anime->classification->id) }}">
-                            {{ $anime->classification->name }}
-                        </a>
+                        @if ($anime->classification)
+                            <a href="{{ url('anime?classification=' . $anime->classification->id) }}">
+                                {{ $anime->classification->name }}
+                            </a>
+                        @else
+                            Unknown
+                        @endif
                     </p>
                 </div>
                 <p class="text-white">
