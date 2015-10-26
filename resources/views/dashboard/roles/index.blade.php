@@ -11,6 +11,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Display Name</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -19,6 +20,7 @@
                 <tfoot>
                     <tr>
                         <th>Name</th>
+                        <th>Display Name</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -33,9 +35,10 @@
         jQuery(function () {
             jQuery('#roles').dataTable({
                 "aoColumns": [
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
+                    {"sWidth": "25%"},
+                    {"sWidth": "25%"},
+                    {"sWidth": "25%"},
+                    {"sWidth": "25%"},
                 ],
                 "aLengthMenu": [
                     [10, 25, 50, 100, 99999999],

@@ -1,47 +1,50 @@
 @extends('dashboard.layouts.main')
+
+@section('title')
+    Create a page
+@endsection
+
 @section('content')
-    <div class="bigTitle">Add New</div>
-    <form action="{{ url('admin/pages/create') }}" method="post">
-
-        {!! csrf_field() !!}
-
-        <div class="inputNOption">
-            <div class="smallTitle">Title:</div>
-            <input name="title" value="{{ old('title') }}" type="text" class="textInput"/>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form role="form" method="post" action="{{ url('dashboard/pages/create') }}">
+                        {!! csrf_field() !!}
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input page="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Slug</label>
+                            <input page="text" class="form-control" name="slug" value="{{ old('slug') }}" placeholder="Slug">
+                        </div>
+                        <div class="form-group">
+                            <label>Content</label>
+                            <textarea name="content" id="" cols="30" rows="10" placeholder="content">{{ old('content') }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Status:</label>
+                            <label class="checkbox-inline">
+                                <input page="checkbox" class="checkbox" name="active" value="1" {{ old('active') === '1' ? 'checked' : '' }}>
+                                Active
+                            </label>
+                        </div>
+                        <button page="submit" class="btn btn-success">Save</button>
+                        <a href="{{ url('dashboard/pages') }}" class="btn btn-default">Go back</a>
+                    </form>
+                </div>
+            </div>
         </div>
-        <!--/inputNOption-->
-
-        <div class="inputNOption">
-            <div class="smallTitle">Order:</div>
-            <input name="order" value="{{ old('order') }}" type="text" class="textInput"/>
-        </div>
-        <!--/inputNOption-->
-
-        <div class="inputSelectarea">
-            <div class="smallTitle">Position:</div>
-            <select class="select" name="position">
-                <option value="top">Top</option>
-                <option value="bottom1">Bottom 1</option>
-                <option value="bottom2">Bottom 2</option>
-                <option value="bottom3">Bottom 3</option>
-            </select>
-            <input value="" type="text" class="textInput2"/>
-        </div>
-        <!--/inputSelectarea-->
-
-        <div class="inputTextarea">
-            <div class="smallTitle">Content:</div>
-            <textarea class="textarea" name="content" rows="30">{{ old('content') }}</textarea>
-        </div>
-        <!--/inputTextarea-->
-
-        <div class="inputNOption">
-            <div class="smallTitle">Link:</div>
-            <input name="link" value="{{ old('link') }}" type="text" class="textInput"/>
-        </div>
-        <!--/inputNOption-->
-
-        <input type="submit" id="submit" value="Add"/>
-
-    </form>
+    </div>
 @endsection

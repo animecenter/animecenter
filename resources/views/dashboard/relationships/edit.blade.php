@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Edit type
+    Edit relationship
 @endsection
 
 @section('content')
@@ -19,29 +19,24 @@
                             </ul>
                         </div>
                     @endif
-                    <form role="form" method="post" action="{{ url('dashboard/types/edit/' . $type->id) }}">
+                    <form role="form" method="post" action="{{ url('dashboard/relationships/edit/' . $relationship->id) }}">
                         {!! csrf_field() !!}
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" name="name" value="{{
-                                old('name') ? old('name') : $type->name }}" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <label>Model</label>
-                            <input type="text" class="form-control" name="model" value="{{
-                                old('model') ? old('model') : $type->model }}" placeholder="Model">
+                            <input relationship="text" class="form-control" name="name" value="{{
+                                old('name') ? old('name') : $relationship->name }}" placeholder="Name">
                         </div>
                         <div class="form-group">
                             <label>Status:</label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" class="checkbox" name="active" value="1" {{
+                                <input relationship="checkbox" class="checkbox" name="active" value="1" {{
                                     (old('active') ? (old('active') === '1' ? 'checked' : '') :
-                                    ($type->active ? 'checked' : '')) }}>
+                                    ($relationship->active ? 'checked' : '')) }}>
                                 Active
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-success">Save</button>
-                        <a href="{{ url('dashboard/types') }}" class="btn btn-default">Go back</a>
+                        <button relationship="submit" class="btn btn-success">Save</button>
+                        <a href="{{ url('dashboard/relationships') }}" class="btn btn-default">Go back</a>
                     </form>
                 </div>
             </div>
