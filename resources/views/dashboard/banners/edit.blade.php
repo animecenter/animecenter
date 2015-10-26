@@ -19,17 +19,23 @@
                             </ul>
                         </div>
                     @endif
-                    <form role="form" method="post" action="{{ url('dashboard/types/edit/' . $type->id) }}">
+                    <form role="form" method="post" action="{{ url('dashboard/banners/edit/' . $type->id) }}">
                         {!! csrf_field() !!}
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" name="name" value="{{
-                                old('name') ? old('name') : $type->name }}" placeholder="Name">
+                            <label>Title</label>
+                            <input type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Title">
                         </div>
                         <div class="form-group">
-                            <label>Model</label>
-                            <input type="text" class="form-control" name="model" value="{{
-                                old('model') ? old('model') : $type->model }}" placeholder="Model">
+                            <label>Link to</label>
+                            <input type="text" class="form-control" name="link_to" value="{{ old('link_to') }}" placeholder="Link to">
+                        </div>
+                        <div class="form-group">
+                            <label>Big Title</label>
+                            <input type="text" class="form-control" name="big_title" value="{{ old('big_title') }}" placeholder="Big Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Content</label>
+                            <input type="text" class="form-control" name="content" value="{{ old('content') }}" placeholder="Content">
                         </div>
                         <div class="form-group">
                             <label>Status:</label>
@@ -41,7 +47,7 @@
                             </label>
                         </div>
                         <button type="submit" class="btn btn-success">Save</button>
-                        <a href="{{ url('dashboard/types') }}" class="btn btn-default">Go back</a>
+                        <a href="{{ url('dashboard/banners') }}" class="btn btn-default">Go back</a>
                     </form>
                 </div>
             </div>

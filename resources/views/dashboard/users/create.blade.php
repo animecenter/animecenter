@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Edit type
+    Create a user
 @endsection
 
 @section('content')
@@ -19,29 +19,33 @@
                             </ul>
                         </div>
                     @endif
-                    <form role="form" method="post" action="{{ url('dashboard/types/edit/' . $type->id) }}">
+                    <form role="form" method="post" action="{{ url('dashboard/users/create') }}">
                         {!! csrf_field() !!}
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" name="name" value="{{
-                                old('name') ? old('name') : $type->name }}" placeholder="Name">
+                            <label>Username</label>
+                            <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username">
                         </div>
                         <div class="form-group">
-                            <label>Model</label>
-                            <input type="text" class="form-control" name="model" value="{{
-                                old('model') ? old('model') : $type->model }}" placeholder="Model">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label>Password Confirmation</label>
+                            <input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Password Confirmation">
                         </div>
                         <div class="form-group">
                             <label>Status:</label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" class="checkbox" name="active" value="1" {{
-                                    (old('active') ? (old('active') === '1' ? 'checked' : '') :
-                                    ($type->active ? 'checked' : '')) }}>
+                                <input type="checkbox" class="checkbox" name="active" value="1" {{ old('active') === '1' ? 'checked' : '' }}>
                                 Active
                             </label>
                         </div>
                         <button type="submit" class="btn btn-success">Save</button>
-                        <a href="{{ url('dashboard/types') }}" class="btn btn-default">Go back</a>
+                        <a href="{{ url('dashboard/users') }}" class="btn btn-default">Go back</a>
                     </form>
                 </div>
             </div>

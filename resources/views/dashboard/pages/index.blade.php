@@ -10,7 +10,8 @@
             <table id="pages" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Slug</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -18,7 +19,8 @@
                 <tbody></tbody>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Slug</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -33,9 +35,10 @@
         jQuery(function () {
             jQuery('#pages').dataTable({
                 "aoColumns": [
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
+                    {"sWidth": "25%"},
+                    {"sWidth": "25%"},
+                    {"sWidth": "25%"},
+                    {"sWidth": "25%"},
                 ],
                 "aLengthMenu": [
                     [10, 25, 50, 100, 99999999],

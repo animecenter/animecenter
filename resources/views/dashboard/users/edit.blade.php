@@ -19,17 +19,27 @@
                             </ul>
                         </div>
                     @endif
-                    <form role="form" method="post" action="{{ url('dashboard/types/edit/' . $type->id) }}">
+                    <form role="form" method="post" action="{{ url('dashboard/users/edit/' . $user->id) }}">
                         {!! csrf_field() !!}
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" name="name" value="{{
-                                old('name') ? old('name') : $type->name }}" placeholder="Name">
+                            <label>Username</label>
+                            <input type="text" class="form-control" name="username" value="{{
+                                old('username') ? old('username') : $user->username }}" placeholder="Username">
                         </div>
                         <div class="form-group">
-                            <label>Model</label>
-                            <input type="text" class="form-control" name="model" value="{{
-                                old('model') ? old('model') : $type->model }}" placeholder="Model">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" value="{{
+                                old('email') ? old('email') : $user->email }}" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" value="{{
+                                old('password') ? old('password') : $user->password }}" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label>Password Confirmation</label>
+                            <input type="password" class="form-control" name="password_confirmation" value="{{
+                                old('password_confirmation') }}" placeholder="Password Confirmation">
                         </div>
                         <div class="form-group">
                             <label>Status:</label>
@@ -41,7 +51,7 @@
                             </label>
                         </div>
                         <button type="submit" class="btn btn-success">Save</button>
-                        <a href="{{ url('dashboard/types') }}" class="btn btn-default">Go back</a>
+                        <a href="{{ url('dashboard/users') }}" class="btn btn-default">Go back</a>
                     </form>
                 </div>
             </div>
