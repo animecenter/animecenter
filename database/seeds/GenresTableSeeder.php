@@ -1,5 +1,6 @@
 <?php
 
+use AC\Models\Genre;
 use Illuminate\Database\Seeder;
 
 class GenresTableSeeder extends Seeder {
@@ -21,7 +22,7 @@ class GenresTableSeeder extends Seeder {
         ];
 
 		foreach ($genres['animes'] as $genre) {
-			AC\Models\Genre::firstOrCreate(['name' => $genre, 'model' => 'Anime', 'active' => 1]);
+			Genre::firstOrCreate(['name' => $genre, 'model' => 'Anime', 'active' => 1]);
 		}
 	}
 

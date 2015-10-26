@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -53,9 +54,21 @@ use Illuminate\Database\Query\Builder;
  * @property-read Episode $episode
  * @property-read \Illuminate\Database\Eloquent\Collection|Episode[] $episodes
  * @property-read \Illuminate\Database\Eloquent\Collection|Relation[] $relations
+ * @property integer $status_id
+ * @property integer $calendar_season_id
+ * @property float $rating
+ * @property boolean $active
+ * @property-read mixed $photo
+ * @property-read mixed $short_title
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Anime whereStatusId($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Anime whereRating($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Anime whereViews($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Anime whereActive($value)
  */
 class Anime extends Model
 {
+    use SoftDeletes;
+
     /**
      * The table associated with the model.
      *

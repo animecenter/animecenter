@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -24,9 +25,15 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Banner whereCreatedAt($value)
  * @method static Builder|Banner whereUpdatedAt($value)
  * @method static Builder|Banner whereDeletedAt($value)
+ * @property string $title
+ * @property boolean $active
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Banner whereTitle($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Banner whereActive($value)
  */
 class Banner extends Model
 {
+    use SoftDeletes;
+
     /**
      * The table associated with the model.
      *

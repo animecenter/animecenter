@@ -13,7 +13,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{ url('dashboard/' . str_slug($model)) }}">All</a></li>
                         <li><a href="{{ url('dashboard/' . str_slug($model) . '/create') }}">Create new</a></li>
-                        <li><a href="{{ url('dashboard/' . str_slug($model) . '/deleted') }}">Trash</a></li>
+                        <li><a href="{{ url('dashboard/' . str_slug($model) . '/trash') }}">Trash</a></li>
                     </ul>
                 </li>
             @endforeach

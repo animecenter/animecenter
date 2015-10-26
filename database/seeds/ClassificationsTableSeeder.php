@@ -1,5 +1,6 @@
 <?php
 
+use AC\Models\Classification;
 use Illuminate\Database\Seeder;
 
 class ClassificationsTableSeeder extends Seeder {
@@ -17,7 +18,7 @@ class ClassificationsTableSeeder extends Seeder {
         ];
 
 		foreach ($classifications as $classification) {
-			AC\Models\Classification::firstOrCreate(['name' => $classification, 'active' => 1]);
+			Classification::firstOrCreate(['name' => $classification, 'active' => 1]);
 		}
 	}
 

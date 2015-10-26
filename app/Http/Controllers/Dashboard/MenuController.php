@@ -8,8 +8,8 @@ class MenuController extends DashboardController
 {
     public function getList()
     {
-        $url = 'mirror-sources';
-        $list = collect(DB::table('mirror_sources')->get(['id', 'name', 'active']));
+        $url = 'menus';
+        $list = collect(DB::table('menus')->get(['id', 'name', 'active']));
         $showColumns = ['name', 'active', 'actions'];
         $searchColumns = ['name', 'active'];
         $orderColumns = ['name', 'active'];

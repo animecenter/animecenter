@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -21,9 +22,13 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Type whereUpdatedAt($value)
  * @method static Builder|Type whereDeletedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
+ * @property boolean $active
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Type whereActive($value)
  */
 class Type extends Model
 {
+    use SoftDeletes;
+
     /**
      * The table associated with the model.
      *
