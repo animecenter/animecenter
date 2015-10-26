@@ -1,42 +1,50 @@
 @extends('dashboard.layouts.main')
+
+@section('title')
+    Edit option
+@endsection
+
 @section('content')
-    <div class="bigTitle">Theme Options</div>
-    <form action="{{ url('admin/options/edit') }}" method="post" enctype="multipart/form-data">
-
-        {!! csrf_field() !!}
-
-        <div class="inputTextarea">
-            <div class="smallTitle">Title Right:</div>
-            <textarea class="textarea" name="title">{{ $options[0]['value'] }}</textarea>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form role="form" method="post" action="{{ url('dashboard/options/edit/' . $option->id) }}">
+                        {!! csrf_field() !!}
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name" value="{{
+                                old('name') ? old('name') : $option->name }}" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Value</label>
+                            <input type="text" class="form-control" name="value" value="{{
+                                old('value') ? old('value') : $option->value }}" placeholder="Value">
+                        </div>
+                        <div class="form-group">
+                            <label>Status:</label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" class="checkbox" name="active" value="1" {{
+                                    (old('active') ? (old('active') === '1' ? 'checked' : '') :
+                                    ($option->active ? 'checked' : '')) }}>
+                                Active
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success">Save</button>
+                        <a href="{{ url('dashboard/options') }}" class="btn btn-default">Go back</a>
+                    </form>
+                </div>
+            </div>
         </div>
-        <!--/inputTextarea-->
-
-        <div class="inputTextarea">
-            <div class="smallTitle">Text Right:</div>
-            <textarea class="textarea" name="text">{{ $options[1]['value'] }}</textarea>
-        </div>
-        <!--/inputTextarea-->
-
-        <div class="inputTextarea">
-            <div class="smallTitle">Subbed Link:</div>
-            <textarea class="textarea" name="subbed">{{ $options[2]['value'] }}</textarea>
-        </div>
-        <!--/inputTextarea-->
-
-        <div class="inputTextarea">
-            <div class="smallTitle">Dubbed Link:</div>
-            <textarea class="textarea" name="dubbed">{{ $options[3]['value'] }}</textarea>
-        </div>
-        <!--/inputTextarea-->
-
-        <div class="inputTextarea">
-            <div class="smallTitle">Episode Link:</div>
-            <textarea class="textarea" name="episode">{{ $options[4]['value'] }}</textarea>
-        </div>
-        <!--/inputTextarea-->
-
-        <div class="clear"></div>
-        <input type="submit" id="submit" value="Update"/>
-
-    </form>
+    </div>
 @endsection

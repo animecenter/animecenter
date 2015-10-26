@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Permissions
+    Trashed permissions
 @endsection
 
 @section('content')
@@ -9,21 +9,21 @@
         <div class="box-body">
             <table id="permissions" class="table table-bordered table-striped">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Display Name</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Display Name</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
                 </thead>
                 <tbody></tbody>
                 <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Display Name</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Display Name</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
                 </tfoot>
             </table>
         </div>
@@ -55,7 +55,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/permissions/list') }}",
+                "sAjaxSource": "{{ url('dashboard/permissions/list/trash') }}",
                 "bServerSide": true
             });
         });

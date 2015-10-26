@@ -26,7 +26,7 @@
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Name">
                         </div>
                         <div class="form-group">
-                            <label>Name</label>
+                            <label>Model</label>
                             <input type="text" class="form-control" name="model" value="{{ old('model') }}" placeholder="Model">
                         </div>
                         <div class="form-group">
