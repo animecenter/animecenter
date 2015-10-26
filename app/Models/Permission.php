@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -22,9 +23,13 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Permission whereCreatedAt($value)
  * @method static Builder|Permission whereUpdatedAt($value)
  * @method static Builder|Permission whereDeletedAt($value)
+ * @property boolean $active
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Permission whereActive($value)
  */
 class Permission extends Model
 {
+    use SoftDeletes;
+
     /**
      * The table associated with the model.
      *

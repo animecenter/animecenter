@@ -1,5 +1,6 @@
 <?php
 
+use AC\Models\Anime;
 use Illuminate\Database\Seeder;
 
 class AnimesTableSeeder extends Seeder {
@@ -11,7 +12,7 @@ class AnimesTableSeeder extends Seeder {
 	 */
 	public function run()
 	{
-        factory(AC\Models\Anime::class, 100)->create();
+        factory(Anime::class, 100)->create();
 	}
 
 }

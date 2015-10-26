@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -26,9 +27,13 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|MirrorReport whereDeletedAt($value)
  * @property-read Mirror $mirror
  * @property-read User $user
+ * @property boolean $active
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\MirrorReport whereActive($value)
  */
 class MirrorReport extends Model
 {
+    use SoftDeletes;
+
     /**
      * The table associated with the model.
      *

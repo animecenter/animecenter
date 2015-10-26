@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -24,9 +25,13 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Image whereCreatedAt($value)
  * @method static Builder|Image whereUpdatedAt($value)
  * @method static Builder|Image whereDeletedAt($value)
+ * @property boolean $active
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Image whereActive($value)
  */
 class Image extends Model
 {
+    use SoftDeletes;
+
     /**
      * The table associated with the model.
      *

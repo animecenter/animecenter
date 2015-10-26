@@ -1,5 +1,10 @@
 <?php
 
+use AC\Models\Episode;
+use AC\Models\Mirror;
+use AC\Models\MirrorSource;
+use AC\Models\User;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class MirrorsTableSeeder extends Seeder {
@@ -17,23 +22,23 @@ class MirrorsTableSeeder extends Seeder {
         ];
 
 		foreach ($mirrorSources as $mirrorSource) {
-			AC\Models\MirrorSource::firstOrCreate(['name' => $mirrorSource, 'active' => 1]);
+			MirrorSource::firstOrCreate(['name' => $mirrorSource, 'active' => 1]);
 		}
 
-        $users = AC\Models\User::all(['id']);
-        $episodes = AC\Models\Episode::all(['id']);
-        $mirrorSources = AC\Models\MirrorSource::all(['id']);
+        $users = User::all(['id']);
+        $episodes = Episode::all(['id']);
+        $mirrorSources = MirrorSource::all(['id']);
         $translations = collect(['subbed', 'dubbed']);
         $qualities = collect(['SD', 'HD']);
         $urls = collect([
             'http://www.mp4upload.com/embed-'
         ]);
-        $faker = Faker\Factory::create();
+        $faker = Factory::create();
 
         foreach ($episodes as $episode) {
             $numberOfMirrors = rand(1, 5);
             for ($x = 1; $x < $numberOfMirrors; $x++) {
-                AC\Models\Mirror::firstOrCreate([
+                Mirror::firstOrCreate([
                     'user_id' => $users->random()->id,
                     'episode_id' => $episode->id,
                     'mirror_source_id' => $mirrorSources->random()->id,

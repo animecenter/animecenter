@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -23,9 +24,13 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Genre whereCreatedAt($value)
  * @method static Builder|Genre whereUpdatedAt($value)
  * @method static Builder|Genre whereDeletedAt($value)
+ * @property boolean $active
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Genre whereActive($value)
  */
 class Genre extends Model
 {
+    use SoftDeletes;
+
     /**
      * The table associated with the model.
      *
@@ -38,7 +43,7 @@ class Genre extends Model
      *
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * The attributes that should be hidden for arrays.

@@ -36,6 +36,8 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @property-read \Illuminate\Database\Eloquent\Collection|MirrorReport[] $mirrorReports
  * @property-read \Illuminate\Database\Eloquent\Collection|Role[] $roles
  * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
+ * @property boolean $active
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\User whereActive($value)
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {

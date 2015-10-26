@@ -1,5 +1,8 @@
 <?php
 
+use AC\Models\Anime;
+use AC\Models\Episode;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class EpisodesTableSeeder extends Seeder {
@@ -11,12 +14,12 @@ class EpisodesTableSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		$animes = AC\Models\Anime::all(['id', 'number_of_episodes', 'release_date', 'end_date']);
-        $faker = Faker\Factory::create();
+		$animes = Anime::all(['id', 'number_of_episodes', 'release_date', 'end_date']);
+        $faker = Factory::create();
 
 		foreach ($animes as $anime) {
 			for ($x = 1; $x < $anime->number_of_episodes; $x++) {
-				AC\Models\Episode::firstOrCreate([
+				Episode::firstOrCreate([
 					'anime_id' => $anime->id,
 					'number' => $x,
 					'name' => rand(0, 1) === 1 ? $faker->name : null,
