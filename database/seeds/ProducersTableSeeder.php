@@ -1,5 +1,6 @@
 <?php
 
+use AC\Models\Producer;
 use Illuminate\Database\Seeder;
 
 class ProducersTableSeeder extends Seeder {
@@ -164,7 +165,7 @@ class ProducersTableSeeder extends Seeder {
         ];
 
 		foreach ($producers as $producer) {
-			AC\Models\Producer::firstOrCreate(['name' => $producer, 'active' => 1]);
+			Producer::firstOrCreate(['name' => $producer, 'active' => 1]);
 		}
 	}
 

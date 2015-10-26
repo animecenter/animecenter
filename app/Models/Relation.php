@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -26,9 +27,13 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Relation whereCreatedAt($value)
  * @method static Builder|Relation whereUpdatedAt($value)
  * @method static Builder|Relation whereDeletedAt($value)
+ * @property boolean $active
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Relation whereActive($value)
  */
 class Relation extends Model
 {
+    use SoftDeletes;
+
     /**
      * The table associated with the model.
      *

@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -34,9 +35,16 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Episode whereCreatedAt($value)
  * @method static Builder|Episode whereUpdatedAt($value)
  * @method static Builder|Episode whereDeletedAt($value)
+ * @property-read mixed $photo
+ * @property-read mixed $short_title
+ * @property-read mixed $upcoming_photo
+ * @property-read mixed $upcoming_title
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Episode whereSlug($value)
  */
 class Episode extends Model
 {
+    use SoftDeletes;
+
     /**
      * The table associated with the model.
      *

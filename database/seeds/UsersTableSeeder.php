@@ -1,5 +1,6 @@
 <?php
 
+use AC\Models\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder {
@@ -11,7 +12,13 @@ class UsersTableSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		factory(AC\Models\User::class, 50)->create();
+        User::firstOrCreate([
+            'username' => 'admin',
+            'email' => 'admin@animecenter.tv',
+            'password' => bcrypt('actvadmin'),
+            'active' => 1
+        ]);
+		factory(User::class, 50)->create();
 	}
 
 }

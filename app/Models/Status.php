@@ -3,13 +3,28 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * AC\Models\Status
  *
+ * @property integer $id
+ * @property string $name
+ * @property boolean $active
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon $deleted_at
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Status whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Status whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Status whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Status whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Status whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Status whereDeletedAt($value)
  */
 class Status extends Model
 {
+    use SoftDeletes;
+
     /**
      * The table associated with the model.
      *

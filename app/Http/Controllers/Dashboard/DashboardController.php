@@ -4,6 +4,7 @@ namespace AC\Http\Controllers\Dashboard;
 
 use AC\Http\Controllers\Controller;
 use Datatable;
+use DB;
 use FA;
 use Form;
 use Html;
@@ -14,14 +15,10 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param string $slug
      * @return \Illuminate\View\View
      */
-    public function index($slug = '')
+    public function index()
     {
-        if ($slug) {
-            return view('dashboard.' . $slug . '.index');
-        }
         return view('dashboard.index');
     }
 
@@ -36,13 +33,38 @@ class DashboardController extends Controller
             })
             ->addColumn('actions', function ($model) use ($url) {
                 $editIcon = FA::icon('pencil-square-o')->__toString() . ' ';
-                $deleteIcon = FA::icon('trash-o')->__toString() . ' ';
+                $trashIcon = FA::icon('trash-o')->__toString() . ' ';
                 $editUrl = url('dashboard/' . $url . '/edit', $model->id);
-                $deleteUrl = url('dashboard/' . $url . '/delete', $model->id);
+                $trashUrl = url('dashboard/' . $url . '/trash', $model->id);
                 return html_entity_decode(
                     Html::link($editUrl, $editIcon . '', ['class' => 'btn btn-sm btn-warning pull-left']).
-                    Form::open(['url' => $deleteUrl]).
-                    Form::button($deleteIcon, ['class' => 'btn btn-sm btn-danger btn-delete', 'type' => 'submit']).
+                    Form::open(['url' => $trashUrl]).
+                    Form::button($trashIcon, ['class' => 'btn btn-sm btn-danger', 'type' => 'submit']).
+                    Form::close()
+                );
+            })->make();
+    }
+
+    public function getDataTableListTrash($url = '', Collection $list, $showColumns = [], $searchColumns = [], $orderColumns = [])
+    {
+        return Datatable::collection($list)
+            ->showColumns($showColumns)
+            ->searchColumns($searchColumns)
+            ->orderColumns($orderColumns)
+            ->addColumn('active', function ($model) {
+                return $model->active === 1 ? 'Active' : 'Inactive';
+            })
+            ->addColumn('actions', function ($model) use ($url) {
+                $recoverIcon = FA::icon('exchange')->__toString() . ' ';
+                $deleteIcon = FA::icon('trash-o')->__toString() . ' ';
+                $recoverURL = url('dashboard/' . $url . '/recover', $model->id);
+                $deleteURL = url('dashboard/' . $url . '/delete', $model->id);
+                return html_entity_decode(
+                    Form::open(['url' => $recoverURL]).
+                    Form::button($recoverIcon, ['class' => 'btn btn-sm btn-success pull-left', 'type' => 'submit']).
+                    Form::close().
+                    Form::open(['url' => $deleteURL]).
+                    Form::button($deleteIcon, ['class' => 'btn btn-sm btn-danger', 'type' => 'submit']).
                     Form::close()
                 );
             })->make();

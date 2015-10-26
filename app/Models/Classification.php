@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -19,9 +20,13 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Classification whereUpdatedAt($value)
  * @method static Builder|Classification whereDeletedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
+ * @property boolean $active
+ * @method static Builder|Classification whereActive($value)
  */
 class Classification extends Model
 {
+    use SoftDeletes;
+
     /**
      * The table associated with the model.
      *
@@ -34,7 +39,7 @@ class Classification extends Model
      *
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * The attributes that should be hidden for arrays.

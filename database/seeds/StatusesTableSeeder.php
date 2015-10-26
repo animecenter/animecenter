@@ -1,5 +1,6 @@
 <?php
 
+use AC\Models\Status;
 use Illuminate\Database\Seeder;
 
 class StatusesTableSeeder extends Seeder {
@@ -14,7 +15,7 @@ class StatusesTableSeeder extends Seeder {
 		$statuses = ['Not yet aired', 'Currently Airing', 'Finished Airing'];
 
 		foreach ($statuses as $status) {
-			AC\Models\Status::firstOrCreate(['name' => $status, 'active' => 1]);
+			Status::firstOrCreate(['name' => $status, 'active' => 1]);
 		}
 	}
 

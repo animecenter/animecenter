@@ -3,6 +3,7 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -25,9 +26,13 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Title whereUpdatedAt($value)
  * @method static Builder|Title whereDeletedAt($value)
  * @property-read \ $titles
+ * @property boolean $active
+ * @method static \Illuminate\Database\Query\Builder|\AC\Models\Title whereActive($value)
  */
 class Title extends Model
 {
+    use SoftDeletes;
+
     /**
      * The table associated with the model.
      *
