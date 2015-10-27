@@ -84,7 +84,7 @@ class GenreController extends DashboardController
         $genre->description = $request['description'];
         $genre->active = $request['active'] === '1' ? 1 : 0;
         $genre->save();
-        $msg = 'Genre was created successfully!';
+        $msg = 'Genre was edited successfully!';
 
         return redirect()->action('Dashboard\GenreController@index')->with('success', $msg);
     }

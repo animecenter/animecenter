@@ -84,7 +84,7 @@ class PermissionController extends DashboardController
         $permission->description = $request['description'];
         $permission->active = $request['active'] === '1' ? 1 : 0;
         $permission->save();
-        $msg = 'Permission was created successfully!';
+        $msg = 'Permission was edited successfully!';
 
         return redirect()->action('Dashboard\PermissionController@index')->with('success', $msg);
     }

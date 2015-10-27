@@ -29,13 +29,13 @@
                         <div class="form-group">
                             <label>Display Name</label>
                             <input type="text" class="form-control" name="display_name" value="{{
-                                old('display_name') ? old('display_name') : $permission->display_name
+                                old('display_name') ? old('display_name') : $role->display_name
                                 }}" placeholder="Display Name">
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea name="description" cols="30" rows="10">{{
-                                old('description') ? old('description') : $permission->description }}</textarea>
+                            <textarea name="description" cols="30" rows="10" placeholder="Description">{{
+                                old('description') ? old('description') : $role->description }}</textarea>
                         </div>
                         <div class="form-group">
                             <label>Status:</label>

@@ -80,7 +80,7 @@ class ClassificationController extends DashboardController
         $classification->name = $request['name'];
         $classification->active = $request['active'] === '1' ? 1 : 0;
         $classification->save();
-        $msg = 'Classification was created successfully!';
+        $msg = 'Classification was edited successfully!';
 
         return redirect()->action('Dashboard\ClassificationController@index')->with('success', $msg);
     }

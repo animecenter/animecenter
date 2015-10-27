@@ -23,16 +23,16 @@
                         {!! csrf_field() !!}
                         <div class="form-group">
                             <label>Name</label>
-                            <input relationship="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Name">
+                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Name">
                         </div>
                         <div class="form-group">
                             <label>Status:</label>
                             <label class="checkbox-inline">
-                                <input relationship="checkbox" class="checkbox" name="active" value="1" {{ old('active') === '1' ? 'checked' : '' }}>
+                                <input type="checkbox" class="checkbox" name="active" value="1" {{ old('active') === '1' ? 'checked' : '' }}>
                                 Active
                             </label>
                         </div>
-                        <button relationship="submit" class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success">Save</button>
                         <a href="{{ url('dashboard/relationships') }}" class="btn btn-default">Go back</a>
                     </form>
                 </div>

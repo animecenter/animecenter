@@ -23,24 +23,24 @@
                         {!! csrf_field() !!}
                         <div class="form-group">
                             <label>Title</label>
-                            <input page="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Title">
+                            <input type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Title">
                         </div>
                         <div class="form-group">
                             <label>Slug</label>
-                            <input page="text" class="form-control" name="slug" value="{{ old('slug') }}" placeholder="Slug">
+                            <input type="text" class="form-control" name="slug" value="{{ old('slug') }}" placeholder="Slug">
                         </div>
                         <div class="form-group">
                             <label>Content</label>
-                            <textarea name="content" id="" cols="30" rows="10" placeholder="content">{{ old('content') }}</textarea>
+                            <textarea name="content" cols="30" rows="10" placeholder="Content">{{ old('content') }}</textarea>
                         </div>
                         <div class="form-group">
                             <label>Status:</label>
                             <label class="checkbox-inline">
-                                <input page="checkbox" class="checkbox" name="active" value="1" {{ old('active') === '1' ? 'checked' : '' }}>
+                                <input type="checkbox" class="checkbox" name="active" value="1" {{ old('active') === '1' ? 'checked' : '' }}>
                                 Active
                             </label>
                         </div>
-                        <button page="submit" class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success">Save</button>
                         <a href="{{ url('dashboard/pages') }}" class="btn btn-default">Go back</a>
                     </form>
                 </div>

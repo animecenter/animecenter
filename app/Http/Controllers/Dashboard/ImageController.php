@@ -3,6 +3,7 @@
 namespace AC\Http\Controllers\Dashboard;
 
 use AC\Models\Image;
+use DB;
 use Illuminate\Http\Request;
 
 class ImageController extends DashboardController
@@ -20,10 +21,15 @@ class ImageController extends DashboardController
         $this->image = $image;
     }
 
+    public function index()
+    {
+        return view('dashboard.images.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function getCreate()
     {
@@ -31,48 +37,38 @@ class ImageController extends DashboardController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a new resource.
      *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postCreate(Request $request)
     {
-        try {
-            $filename = rand(00000000, 99999999) . '_' . $request['file']->getClientOriginalName();
-            $request['file']->move("images/", $filename);
-            chmod(public_path("images/" . $filename), 0644);
-        } catch (Exception $e) {
-            dd($e);
-        }
-        $this->image->create([
-            'bigtitle' => $request['bigtitle'],
-            'smalltitle' => $request['smalltitle'],
-            'desc' => $request['desc'],
-            'file' => $filename,
-            'link' => $request['link'],
-            'date' => date("Y-m-d H:i:s")
-        ]);
+        $image = new $this->image;
+        $image->name = $request['name'];
+        $image->active = $request['active'] === '1' ? 1 : 0;
+        $image->save();
         $msg = 'Image was created successfully!';
 
         return redirect()->action('Dashboard\ImageController@index')->with('success', $msg);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing a resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return \Illuminate\View\View
      */
     public function getEdit($id = 0)
     {
-        $this->data['image'] = $this->image->findorFail($id);
-
-        return view('dashboard.images.edit', $this->data);
+        return view(
+            'dashboard.images.edit',
+            ['image' => DB::table('images')->where('id', '=', $id)->first()]
+        );
     }
 
     /**
-     * Update the specified resource in storage.
+     * Edit a resource.
      *
      * @param int $id
      * @param Request $request
@@ -81,43 +77,99 @@ class ImageController extends DashboardController
     public function postEdit($id = 0, Request $request)
     {
         $image = $this->image->findOrFail($id);
-        if ($request['new_file']) {
-            try {
-                $filename = rand(00000000, 99999999) . '_' . $request['new_file']->getClientOriginalName();
-                $request['new_file']->move("images/", $filename);
-                chmod(public_path("images/" . $filename), 0644);
-                if ($image['file']) {
-                    unlink(public_path("images/" . $image['file']));
-                }
-                $image->file = $filename;
-            } catch (Exception $e) {
-                dd($e);
-            }
-        }
-        $image->bigtitle = $request['bigtitle'];
-        $image->smalltitle = $request['smalltitle'];
-        $image->desc = $request['desc'];
-        $image->link = $request['link'];
-        $image->date = date("Y-m-d H:i:s");
+        $image->name = $request['name'];
+        $image->active = $request['active'] === '1' ? 1 : 0;
         $image->save();
-        $msg = 'Image was updated successfully!';
+        $msg = 'Image was edited successfully!';
 
         return redirect()->action('Dashboard\ImageController@index')->with('success', $msg);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Show trash resources.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function getTrash()
+    {
+        return view('dashboard.images.trash');
+    }
+
+    /**
+     * Trash resource by id.
      *
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function getDelete($id = 0)
+    public function postTrash($id = 0)
     {
-        $image = $this->image->findOrFail($id);
-        unlink(public_path("images/" . $image['file']));
-        $image->delete();
-        $msg = 'Image was deleted successfully!';
+        $this->image->findOrFail($id)->delete();
+        $msg = 'Image was trashed successfully!';
 
         return redirect()->action('Dashboard\ImageController@index')->with('success', $msg);
+    }
+
+    /**
+     * Delete resource by id.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postDelete($id = 0)
+    {
+        $this->image->withTrashed()->findOrFail($id)->forceDelete();
+        $msg = 'Image was deleted successfully!';
+
+        return redirect()->action('Dashboard\ImageController@getTrash')->with('success', $msg);
+    }
+
+    /**
+     * Recover resource from trash by id.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postRecover($id = 0)
+    {
+        $this->image->withTrashed()->findOrFail($id)->restore();
+        $msg = 'Image was recovered successfully!';
+
+        return redirect()->action('Dashboard\ImageController@getTrash')->with('success', $msg);
+    }
+
+    /**
+     * Get resource listing
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getList()
+    {
+        $url = 'images';
+        $list = collect(
+            DB::table('images')->where('deleted_at', '=', null)->get(['id', 'name', 'active'])
+        );
+        $showColumns = ['name', 'active', 'actions'];
+        $searchColumns = ['name', 'active'];
+        $orderColumns = ['name', 'active'];
+
+        return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
+    }
+
+    /**
+     * Get trash resource listing
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getListTrash()
+    {
+        $url = 'images';
+        $list = collect(
+            DB::table('images')->where('deleted_at', '<>', '')->get(['id', 'name', 'active'])
+        );
+        $showColumns = ['name', 'active', 'actions'];
+        $searchColumns = ['name', 'active'];
+        $orderColumns = ['name', 'active'];
+
+        return parent::getDataTableListTrash($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
 }

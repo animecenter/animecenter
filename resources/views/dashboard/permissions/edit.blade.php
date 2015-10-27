@@ -23,12 +23,12 @@
                         {!! csrf_field() !!}
                         <div class="form-group">
                             <label>Name</label>
-                            <input permission="text" class="form-control" name="name" value="{{
+                            <input type="text" class="form-control" name="name" value="{{
                                 old('name') ? old('name') : $permission->name }}" placeholder="Name">
                         </div>
                         <div class="form-group">
                             <label>Display Name</label>
-                            <input permission="text" class="form-control" name="display_name" value="{{
+                            <input type="text" class="form-control" name="display_name" value="{{
                                 old('display_name') ? old('display_name') : $permission->display_name
                                 }}" placeholder="Display Name">
                         </div>
@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <label>Status:</label>
                             <label class="checkbox-inline">
-                                <input permission="checkbox" class="checkbox" name="active" value="1" {{
+                                <input type="checkbox" class="checkbox" name="active" value="1" {{
                                     (old('active') ? (old('active') === '1' ? 'checked' : '') :
                                     ($permission->active ? 'checked' : '')) }}>
                                 Active

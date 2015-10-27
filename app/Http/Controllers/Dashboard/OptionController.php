@@ -82,7 +82,7 @@ class OptionController extends DashboardController
         $option->value = $request['value'];
         $option->active = $request['active'] === '1' ? 1 : 0;
         $option->save();
-        $msg = 'Option was created successfully!';
+        $msg = 'Option was edited successfully!';
 
         return redirect()->action('Dashboard\OptionController@index')->with('success', $msg);
     }

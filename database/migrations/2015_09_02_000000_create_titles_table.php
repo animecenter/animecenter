@@ -12,8 +12,8 @@ class CreateTitlesTable extends Migration
             $table->increments('id');
             $table->string('title', 191)->unique();
             $table->string('language');
-            $table->integer('titlable_id')->unsigned();
-            $table->string('titlable_type', 15);
+            $table->integer('titleable_id')->unsigned();
+            $table->string('titleable_type', 15);
             $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();

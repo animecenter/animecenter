@@ -47,7 +47,7 @@ class UserController extends DashboardController
         $user = new $this->user;
         $user->username = $request['username'];
         $user->email = $request['email'];
-        $user->password = $request['password'];
+        $user->password = bcrypt($request['password']);
         $user->active = $request['active'] === '1' ? 1 : 0;
         $user->save();
         $msg = 'User was created successfully!';
@@ -65,7 +65,7 @@ class UserController extends DashboardController
     {
         return view(
             'dashboard.users.edit',
-            ['user' => DB::table('calendar_seasons')->where('id', '=', $id)->first()]
+            ['user' => DB::table('users')->where('id', '=', $id)->first()]
         );
     }
 
@@ -81,10 +81,10 @@ class UserController extends DashboardController
         $user = $this->user->findOrFail($id);
         $user->username = $request['username'];
         $user->email = $request['email'];
-        $user->password = $request['password'];
+        $user->password = bcrypt($request['password']);
         $user->active = $request['active'] === '1' ? 1 : 0;
         $user->save();
-        $msg = 'User was created successfully!';
+        $msg = 'User was edited successfully!';
 
         return redirect()->action('Dashboard\UserController@index')->with('success', $msg);
     }
@@ -150,11 +150,11 @@ class UserController extends DashboardController
     {
         $url = 'users';
         $list = collect(
-            DB::table('calendar_seasons')->where('deleted_at', '=', null)->get(['id', 'username', 'email', 'active'])
+            DB::table('users')->where('deleted_at', '=', null)->get(['id', 'username', 'email', 'active'])
         );
-        $showColumns = ['name', 'username', 'email', 'active', 'actions'];
-        $searchColumns = ['name', 'username', 'email', 'active'];
-        $orderColumns = ['name', 'username', 'email', 'active'];
+        $showColumns = ['username', 'email', 'active', 'actions'];
+        $searchColumns = ['username', 'email', 'active'];
+        $orderColumns = ['username', 'email', 'active'];
 
         return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
@@ -168,11 +168,11 @@ class UserController extends DashboardController
     {
         $url = 'users';
         $list = collect(
-            DB::table('calendar_seasons')->where('deleted_at', '<>', '')->get(['id', 'username', 'email', 'active'])
+            DB::table('users')->where('deleted_at', '<>', '')->get(['id', 'username', 'email', 'active'])
         );
-        $showColumns = ['name', 'username', 'email', 'active', 'actions'];
-        $searchColumns = ['name', 'username', 'email', 'active'];
-        $orderColumns = ['name', 'username', 'email', 'active'];
+        $showColumns = ['username', 'email', 'active', 'actions'];
+        $searchColumns = ['username', 'email', 'active'];
+        $orderColumns = ['username', 'email', 'active'];
 
         return parent::getDataTableListTrash($url, $list, $showColumns, $searchColumns, $orderColumns);
     }

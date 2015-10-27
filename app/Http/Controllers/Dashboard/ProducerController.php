@@ -80,7 +80,7 @@ class ProducerController extends DashboardController
         $producer->name = $request['name'];
         $producer->active = $request['active'] === '1' ? 1 : 0;
         $producer->save();
-        $msg = 'Producers was created successfully!';
+        $msg = 'Producers was edited successfully!';
 
         return redirect()->action('Dashboard\ProducerController@index')->with('success', $msg);
     }
