@@ -12,8 +12,8 @@ use Illuminate\Database\Query\Builder;
  * @property integer $id
  * @property string $title
  * @property string $language
- * @property integer $titlable_id
- * @property string $titlable_type
+ * @property integer $titleable_id
+ * @property string $titleable_type
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
@@ -77,8 +77,8 @@ class Title extends Model
         'id'            => 'int',
         'title'         => 'string',
         'language'      => 'string',
-        'titlable_id'   => 'int',
-        'titlable_type' => 'string'
+        'titleable_id'   => 'int',
+        'titleable_type' => 'string'
     ];
 
     /**

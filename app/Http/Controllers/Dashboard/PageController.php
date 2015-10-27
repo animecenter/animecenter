@@ -45,7 +45,7 @@ class PageController extends DashboardController
     public function postCreate(Request $request)
     {
         $page = new $this->page;
-        $page->name = $request['name'];
+        $page->title = $request['title'];
         $page->slug = $request['slug'];
         $page->content = $request['content'];
         $page->active = $request['active'] === '1' ? 1 : 0;
@@ -79,12 +79,12 @@ class PageController extends DashboardController
     public function postEdit($id = 0, Request $request)
     {
         $page = $this->page->findOrFail($id);
-        $page->name = $request['name'];
+        $page->title = $request['title'];
         $page->slug = $request['slug'];
         $page->content = $request['content'];
         $page->active = $request['active'] === '1' ? 1 : 0;
         $page->save();
-        $msg = 'Page was created successfully!';
+        $msg = 'Page was edited successfully!';
 
         return redirect()->action('Dashboard\PageController@index')->with('success', $msg);
     }
@@ -150,11 +150,11 @@ class PageController extends DashboardController
     {
         $url = 'pages';
         $list = collect(
-            DB::table('pages')->where('deleted_at', '=', null)->get(['id', 'name', 'slug', 'active'])
+            DB::table('pages')->where('deleted_at', '=', null)->get(['id', 'title', 'slug', 'active'])
         );
-        $showColumns = ['name', 'slug', 'active', 'actions'];
-        $searchColumns = ['name', 'slug', 'active'];
-        $orderColumns = ['name', 'slug', 'active'];
+        $showColumns = ['title', 'slug', 'active', 'actions'];
+        $searchColumns = ['title', 'slug', 'active'];
+        $orderColumns = ['title', 'slug', 'active'];
 
         return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
@@ -168,11 +168,11 @@ class PageController extends DashboardController
     {
         $url = 'pages';
         $list = collect(
-            DB::table('pages')->where('deleted_at', '<>', '')->get(['id', 'name', 'slug', 'active'])
+            DB::table('pages')->where('deleted_at', '<>', '')->get(['id', 'title', 'slug', 'active'])
         );
-        $showColumns = ['name', 'slug', 'active', 'actions'];
-        $searchColumns = ['name', 'slug', 'active'];
-        $orderColumns = ['name', 'slug', 'active'];
+        $showColumns = ['title', 'slug', 'active', 'actions'];
+        $searchColumns = ['title', 'slug', 'active'];
+        $orderColumns = ['title', 'slug', 'active'];
 
         return parent::getDataTableListTrash($url, $list, $showColumns, $searchColumns, $orderColumns);
     }

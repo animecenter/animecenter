@@ -84,7 +84,7 @@ class RoleController extends DashboardController
         $role->description = $request['description'];
         $role->active = $request['active'] === '1' ? 1 : 0;
         $role->save();
-        $msg = 'Role was created successfully!';
+        $msg = 'Role was edited successfully!';
 
         return redirect()->action('Dashboard\RoleController@index')->with('success', $msg);
     }

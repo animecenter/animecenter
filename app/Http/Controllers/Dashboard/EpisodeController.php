@@ -2,34 +2,28 @@
 
 namespace AC\Http\Controllers\Dashboard;
 
-use AC\Models\Anime;
 use AC\Models\Episode;
-use Cache;
 use DB;
 use Illuminate\Http\Request;
 
 class EpisodeController extends DashboardController
 {
     /**
-     * @var Anime
-     */
-    private $anime;
-
-    /**
      * @var Episode
      */
     private $episode;
 
-    private $data;
-
     /**
-     * @param Anime $anime
      * @param Episode $episode
      */
-    public function __construct(Anime $anime, Episode $episode)
+    public function __construct(Episode $episode)
     {
-        $this->anime = $anime;
         $this->episode = $episode;
+    }
+
+    public function index()
+    {
+        return view('dashboard.episodes.index');
     }
 
     /**
@@ -39,113 +33,52 @@ class EpisodeController extends DashboardController
      */
     public function getCreate()
     {
-        $this->data['currentAnime'] = '';
-        $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
-
-        return view('dashboard.episodes.create', $this->data);
-    }
-
-    public function getCreateByAnimeID($id = 0)
-    {
-        $this->data['currentAnime'] = $this->anime->where('id', '=', $id)->first();
-        $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
-
-        return view('dashboard.episodes.create', $this->data);
-    }
-
-    public function postCreateAutomatically(Request $request)
-    {
-        if ($request['id'] && $request['num'] && $request['num'] > 0) {
-            $date = time();
-            $anime = $this->anime->where('id', '=', $request['id'])->first();
-            // $lastEpisode = $this->episode->where('anime_id', '=', $request['id'])->get()->max('order');
-            $lastEpisode = $this->episode->where('anime_id', '=', $request['id'])->orderBy('order', 'desc')
-                ->first();
-            if ($lastEpisode) {
-                $currentEpisode = $lastEpisode['order'];
-                $nextEpisode = (int) $currentEpisode + 1;
-            } else {
-                $nextEpisode = 1;
-            }
-            for ($i = 0; $i < $request['num']; $i++) {
-                $title = $anime["title"] . ' Episode ' . $nextEpisode;
-                $con = '<div id="yeird"><div class="text"><span>Anime Title:</span>' . $anime["title"] . '</div>
-                    <div class="text"><span>Episode Number:</span>' . $anime["title"] . ' Episode ' . $nextEpisode . '</div>
-                    <div class="text"><span>Status:</span>Upcoming</div>
-                    <div class="text"><span>About ' . $anime["title"] . ':</span>' . $anime["description"] . '</div>
-                    <div class="text"><span class="big">We don\'t have a video available for <strong>' .
-                    $anime["title"] . ' Episode ' . $nextEpisode . ' </strong>yet. Please check back later or visit our
-                    <strong><a href="' . url('/') . '">HOMEPAGE</a></strong> for the Latest Anime Episodes.</span></div>
-                </div>';
-                $order = $nextEpisode;
-                $this->episode->create([
-                    'title' => $title,
-                    'slug' => str_slug($title),
-                    'not_yet_aired' => $con,
-                    'anime_id' => $request['id'],
-                    'date' => $date,
-                    'date2' => $date,
-                    'order' => $order,
-                    'rating' => 0,
-                    'votes' => 0
-                ]);
-                $nextEpisode++;
-            }
-        }
+        return view(
+            'dashboard.episodes.create',
+            ['animes' => DB::table('animes')->orderBy('title')->get(['id', 'title'])]
+        );
     }
 
     /**
-     * Create the specified resource in storage.
+     * Create a new resource.
      *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postCreate(Request $request)
     {
-        $order = explode(' ', $request['title']);
-        $episode = $this->episode->create([
-            'anime_id' => $request['anime_id'],
-            'title' => $request['title'],
-            'slug' => str_slug($request['title']),
-            'subdub' => $request['subdub'],
-            'not_yet_aired' => $request['not_yet_aired'],
-            'raw' => $request['raw'],
-            'hd' => $request['hd'],
-            'mirror1' => $request['mirror1'],
-            'mirror2' => $request['mirror2'],
-            'mirror3' => $request['mirror3'],
-            'mirror4' => $request['mirror4'],
-            'date' => time(),
-            'date2' => time(),
-            'rating' => 0,
-            'votes' => 0,
-            'visits' => 0,
-            'order' => (int) end($order),
-            'coming_date' => $request['coming_date'],
-            'show' => $request['show'] ? 1 : 0,
-            'created_at' => date('Y-m-d H:i:s')
-        ]);
+        $episode = new $this->episode;
+        $episode->anime_id = $request['anime_id'];
+        $episode->number = $request['number'];
+        $episode->title = $request['title'];
+        $episode->synopsis = $request['synopsis'];
+        $episode->active = $request['active'] === '1' ? 1 : 0;
+        $episode->aired_at = $request['aired_at'];
+        $episode->save();
         $msg = 'Episode was created successfully!';
 
-        return redirect()->to('watch/' . $episode->slug)->with('success', $msg);
+        return redirect()->action('Dashboard\EpisodeController@index')->with('success', $msg);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing a resource.
      *
      * @param int $id
      * @return \Illuminate\View\View
      */
     public function getEdit($id = 0)
     {
-        $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
-        $this->data['episode'] = $this->episode->findOrFail($id);
-
-        return view('dashboard.episodes.edit', $this->data);
+        return view(
+            'dashboard.episodes.edit',
+            [
+                'episode' => DB::table('episodes')->where('id', '=', $id)->first(),
+                'animes' => DB::table('animes')->orderBy('title')->get(['id', 'title'])
+            ]
+        );
     }
 
     /**
-     * Update the specified resource in storage.
+     * Edit a resource.
      *
      * @param int $id
      * @param Request $request
@@ -155,56 +88,106 @@ class EpisodeController extends DashboardController
     {
         $episode = $this->episode->findOrFail($id);
         $episode->anime_id = $request['anime_id'];
+        $episode->number = $request['number'];
         $episode->title = $request['title'];
-        $episode->slug = str_slug($request['title']);
-        $episode->subdub = $request['subdub'];
-        $episode->show = ($request['show']) ? 1 : 0;
-        $episode->not_yet_aired = $request['not_yet_aired'];
-        $episode->raw = $request['raw'];
-        $episode->hd = $request['hd'];
-        $episode->mirror1 = $request['mirror1'];
-        $episode->mirror2 = $request['mirror2'];
-        $episode->mirror3 = $request['mirror3'];
-        $episode->mirror4 = $request['mirror4'];
-        $episode->date = ($request['reset'] === "1") ? time() : (($episode->date) ? $episode->date : time());
-        $episode->date2 = time();
-        $episode->coming_date = $request['coming_date'] ? $request['coming_date'] : null;
+        $episode->synopsis = $request['synopsis'];
+        $episode->active = $request['active'] === '1' ? 1 : 0;
+        $episode->aired_at = $request['aired_at'];
         $episode->save();
-        $msg = 'Episode was updated successfully!';
-
-        return redirect()->action('EpisodeController@getEpisode', [$episode->slug])->with('success', $msg);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function getDelete($id = 0)
-    {
-        $this->episode->findOrFail($id)->delete();
-        $msg = 'Episode was deleted successfully!';
+        $msg = 'Episode was edited successfully!';
 
         return redirect()->action('Dashboard\EpisodeController@index')->with('success', $msg);
     }
 
     /**
+     * Show trash resources.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function getTrash()
+    {
+        return view('dashboard.episodes.trash');
+    }
+
+    /**
+     * Trash resource by id.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postTrash($id = 0)
+    {
+        $this->episode->findOrFail($id)->delete();
+        $msg = 'Episode was trashed successfully!';
+
+        return redirect()->action('Dashboard\EpisodeController@index')->with('success', $msg);
+    }
+
+    /**
+     * Delete resource by id.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postDelete($id = 0)
+    {
+        $this->episode->withTrashed()->findOrFail($id)->forceDelete();
+        $msg = 'Episode was deleted successfully!';
+
+        return redirect()->action('Dashboard\EpisodeController@getTrash')->with('success', $msg);
+    }
+
+    /**
+     * Recover resource from trash by id.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postRecover($id = 0)
+    {
+        $this->episode->withTrashed()->findOrFail($id)->restore();
+        $msg = 'Episode was recovered successfully!';
+
+        return redirect()->action('Dashboard\EpisodeController@getTrash')->with('success', $msg);
+    }
+
+    /**
+     * Get resource listing
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function getList()
     {
         $url = 'episodes';
-        $list = Cache::remember('dashboard-episodes', '60', function () {
-            return collect(DB::table('episodes')->join('animes', 'episodes.anime_id', '=', 'animes.id')
-                ->orderBy('episodes.id', 'DESC')
+        $list = collect(
+            DB::table('episodes')->join('animes', 'episodes.anime_id', '=', 'animes.id')
+                ->where('episodes.deleted_at', '=', null)->orderBy('episodes.id', 'DESC')
                 ->get(['episodes.id', 'episodes.number', 'episodes.active', 'episodes.aired_at', 'animes.title as animeTitle'])
-            );
-        });
+        );
         $showColumns = ['animeTitle', 'number', 'aired_at', 'active', 'actions'];
         $searchColumns = ['animeTitle', 'active'];
         $orderColumns = ['animeTitle', 'number', 'aired_at', 'active'];
 
         return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
+    }
+
+    /**
+     * Get trash resource listing
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getListTrash()
+    {
+        $url = 'episodes';
+        $list = collect(
+            DB::table('episodes')->join('animes', 'episodes.anime_id', '=', 'animes.id')
+                ->where('episodes.deleted_at', '<>', '')->orderBy('episodes.id', 'DESC')
+                ->get(['episodes.id', 'episodes.number', 'episodes.active', 'episodes.aired_at', 'animes.title as animeTitle'])
+        );
+        $showColumns = ['animeTitle', 'number', 'aired_at', 'active', 'actions'];
+        $searchColumns = ['animeTitle', 'active'];
+        $orderColumns = ['animeTitle', 'number', 'aired_at', 'active'];
+
+        return parent::getDataTableListTrash($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
 }

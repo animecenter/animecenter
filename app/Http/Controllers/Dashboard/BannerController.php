@@ -86,7 +86,7 @@ class BannerController extends DashboardController
         $banner->content = $request['content'];
         $banner->active = $request['active'] === '1' ? 1 : 0;
         $banner->save();
-        $msg = 'Banner was created successfully!';
+        $msg = 'Banner was edited successfully!';
 
         return redirect()->action('Dashboard\BannerController@index')->with('success', $msg);
     }
