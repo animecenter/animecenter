@@ -3,8 +3,8 @@
 namespace AC\Http\Controllers\Dashboard;
 
 use AC\Models\Anime;
-use AC\Models\Genre;
 use DB;
+use Illuminate\Http\Request;
 
 class AnimeController extends DashboardController
 {
@@ -14,31 +14,16 @@ class AnimeController extends DashboardController
     private $anime;
 
     /**
-     * @var Genre
-     */
-    private $genre;
-
-    private $data;
-
-    /**
      * @param Anime $anime
-     * @param Genre $genre
      */
-    public function __construct(Anime $anime, Genre $genre)
+    public function __construct(Anime $anime)
     {
         $this->anime = $anime;
-        $this->genre = $genre;
     }
 
-    public function getList()
+    public function index()
     {
-        $url = 'animes';
-        $list = collect(DB::table('animes')->get(['id', 'title', 'slug', 'active']));
-        $showColumns = ['title', 'slug', 'active', 'actions'];
-        $searchColumns = ['title', 'slug', 'active'];
-        $orderColumns = ['title', 'slug', 'active'];
-
-        return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
+        return view('dashboard.animes.index');
     }
 
     /**
@@ -48,92 +33,42 @@ class AnimeController extends DashboardController
      */
     public function getCreate()
     {
-        $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
-        $this->data['genres'] = $this->genre->orderBy('value', 'ASC')->get();
-
-        return view('dashboard.anime.create', $this->data);
+        return view('dashboard.animes.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a new resource.
      *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postCreate(Request $request)
     {
-        if ($request['position1'] && $request['position2']) {
-            $position = "all";
-        } elseif ($request['position1'] && !$request['position2']) {
-            $position = "recently";
-        } elseif (!$request['position1'] && $request['position2']) {
-            $position = "featured";
-        } else {
-            $position = "none";
-        }
-        if ($request['image']) {
-            try {
-                $filename = rand(00000000, 99999999) . '_' . $request['image']->getClientOriginalName();
-                $request['image']->move("images/", $filename);
-                chmod(public_path("images/" . $filename), 0644);
-            } catch (Exception $e) {
-                dd($e);
-            }
-        } else {
-            $filename = '';
-        }
-        $title = $request['type2'] === 'dubbed' ? $request['title'] . ' Dubbed' : $request['title'];
-        $anime = $this->anime->create([
-            'title' => $title,
-            'slug' => str_slug($title),
-            'content' => $request['content'],
-            'genres' => $request['genres'] ? implode(',', $request['genres']) : '',
-            'episodes' => $request['episodes'],
-            'type' => $request['type'],
-            'type2' => $request['type2'],
-            'age' => $request['age'],
-            'status' => $request['status'],
-            'prequel' => $request['prequel'],
-            'sequel' => $request['sequel'],
-            'story' => $request['story'],
-            'side_story' => $request['side_story'],
-            'spin_off' => $request['spin_off'],
-            'other' => $request['other'],
-            'alternative' => $request['alternative'],
-            'position' => $position,
-            'description' => $request['description'],
-            'alternative_title' => $request['alternative_title'],
-            'image' => $filename,
-            'date' => time(),
-            'date2' => time(),
-            'rating' => 0,
-            'visits' => 0,
-            'votes' => 0,
-        ]);
+        $anime = new $this->anime;
+        $anime->name = $request['name'];
+        $anime->active = $request['active'] === '1' ? 1 : 0;
+        $anime->save();
         $msg = 'Anime was created successfully!';
 
-        return redirect()
-            ->to($anime['type2'] === "dubbed" ? 'dubbed-anime/' . $anime->slug : 'subbed-anime/' . $anime->slug)
-            ->with('success', $msg);
+        return redirect()->action('Dashboard\AnimeController@index')->with('success', $msg);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing a resource.
      *
      * @param int $id
      * @return \Illuminate\View\View
      */
     public function getEdit($id = 0)
     {
-        $this->data['currentAnime'] = $this->anime->findOrFail($id);
-        $this->data['animes'] = $this->anime->orderBy('title', 'ASC')->get();
-        $this->data['genres'] = $this->genre->orderBy('name', 'ASC')->get();
-
-        return view('dashboard.anime.edit', $this->data);
+        return view(
+            'dashboard.animes.edit',
+            ['anime' => DB::table('animes')->where('id', '=', $id)->first()]
+        );
     }
 
     /**
-     * Update the specified resource in storage.
+     * Edit a resource.
      *
      * @param int $id
      * @param Request $request
@@ -142,65 +77,97 @@ class AnimeController extends DashboardController
     public function postEdit($id = 0, Request $request)
     {
         $anime = $this->anime->findOrFail($id);
-        $anime->title = $request['title'];
-        $anime->slug = str_slug($request['title']);
-        $anime->episodes = $request['episodes'];
-        $anime->type = $request['type'];
-        $anime->age = $request['age'];
-        $anime->status = $request['status'];
-        $anime->prequel = $request['prequel'];
-        $anime->sequel = $request['sequel'];
-        $anime->story = $request['story'];
-        $anime->side_story = $request['side_story'];
-        $anime->spin_off = $request['spin_off'];
-        $anime->alternative = $request['alternative'];
-        $anime->other = $request['other'];
-        $anime->genres = $request['genres'] ? implode(',', $request['genres']) : '';
-        $anime->description = $request['description'];
-        $anime->alternative_title = $request['alternative_title'];
-        $anime->content = $request['content'];
-        if ($request['position1'] && $request['position2']) {
-            $anime->position = "all";
-        } elseif ($request['position1'] && !$request['position2']) {
-            $anime->position = "recently";
-        } elseif (!$request['position1'] && $request['position2']) {
-            $anime->position = "featured";
-        } else {
-            $anime->position = "none";
-        }
-        if ($request['new_image']) {
-            try {
-                $filename = rand(00000000, 99999999) . '_' . $request['new_image']->getClientOriginalName();
-                $request['new_image']->move("images", $filename);
-                if (file_exists(public_path("images/" . $request['image']))) {
-                    unlink(public_path("images/" . $request['image']));
-                }
-                $anime->image = $filename;
-            } catch (Exception $e) {
-                dd($e);
-            }
-        }
+        $anime->name = $request['name'];
+        $anime->active = $request['active'] === '1' ? 1 : 0;
         $anime->save();
-        $msg = 'Anime was updated successfully!';
+        $msg = 'Anime was edited successfully!';
 
-        return redirect()
-            ->to($anime['type2'] === "dubbed" ? 'dubbed-anime/' . $anime->slug : 'subbed-anime/' . $anime->slug)
-            ->with('success', $msg);
+        return redirect()->action('Dashboard\AnimeController@index')->with('success', $msg);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Show trash resources.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function getTrash()
+    {
+        return view('dashboard.animes.trash');
+    }
+
+    /**
+     * Trash resource by id.
      *
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function getDelete($id = 0)
+    public function postTrash($id = 0)
     {
-        $anime = $this->anime->findOrFail($id);
-        $anime['image'] ? unlink(public_path("images/" . $anime['image'])) : '';
-        $anime->delete();
-        $msg = 'Anime was deleted successfully!';
+        $this->anime->findOrFail($id)->delete();
+        $msg = 'Anime was trashed successfully!';
 
         return redirect()->action('Dashboard\AnimeController@index')->with('success', $msg);
+    }
+
+    /**
+     * Delete resource by id.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postDelete($id = 0)
+    {
+        $this->anime->withTrashed()->findOrFail($id)->forceDelete();
+        $msg = 'Anime was deleted successfully!';
+
+        return redirect()->action('Dashboard\AnimeController@getTrash')->with('success', $msg);
+    }
+
+    /**
+     * Recover resource from trash by id.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postRecover($id = 0)
+    {
+        $this->anime->withTrashed()->findOrFail($id)->restore();
+        $msg = 'Anime was recovered successfully!';
+
+        return redirect()->action('Dashboard\AnimeController@getTrash')->with('success', $msg);
+    }
+
+    /**
+     * Get resource listing
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getList()
+    {
+        $url = 'animes';
+        $list = collect(DB::table('animes')->where('deleted_at', '=', null)->get(['id', 'name', 'active']));
+        $showColumns = ['name', 'active', 'actions'];
+        $searchColumns = ['name', 'active'];
+        $orderColumns = ['name', 'active'];
+
+        return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
+    }
+
+    /**
+     * Get trash resource listing
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getListTrash()
+    {
+        $url = 'animes';
+        $list = collect(
+            DB::table('animes')->where('deleted_at', '<>', '')->get(['id', 'name', 'active'])
+        );
+        $showColumns = ['name', 'active', 'actions'];
+        $searchColumns = ['name', 'active'];
+        $orderColumns = ['name', 'active'];
+
+        return parent::getDataTableListTrash($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
 }

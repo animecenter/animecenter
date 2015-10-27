@@ -80,7 +80,7 @@ class CalendarSeasonController extends DashboardController
         $calendarSeason->name = $request['name'];
         $calendarSeason->active = $request['active'] === '1' ? 1 : 0;
         $calendarSeason->save();
-        $msg = 'Calendar Season was created successfully!';
+        $msg = 'Calendar Season was edited successfully!';
 
         return redirect()->action('Dashboard\CalendarSeasonController@index')->with('success', $msg);
     }
@@ -145,7 +145,9 @@ class CalendarSeasonController extends DashboardController
     public function getList()
     {
         $url = 'calendar-seasons';
-        $list = collect(DB::table('calendar_seasons')->where('deleted_at', '=', null)->get(['id', 'name', 'active']));
+        $list = collect(
+            DB::table('calendar_seasons')->where('deleted_at', '=', null)->get(['id', 'name', 'active'])
+        );
         $showColumns = ['name', 'active', 'actions'];
         $searchColumns = ['name', 'active'];
         $orderColumns = ['name', 'active'];

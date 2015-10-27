@@ -22,7 +22,7 @@ class EpisodesTableSeeder extends Seeder {
 				Episode::firstOrCreate([
 					'anime_id' => $anime->id,
 					'number' => $x,
-					'name' => rand(0, 1) === 1 ? $faker->name : null,
+					'title' => rand(0, 1) === 1 ? $faker->name : null,
 					'synopsis' => rand(0, 1) === 1 ? $faker->text() : null,
 					'active' => 1,
 					'aired_at' => ($x === 1) ? $anime->release_date : $faker->dateTimeBetween()

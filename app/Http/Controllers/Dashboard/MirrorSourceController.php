@@ -80,7 +80,7 @@ class MirrorSourceController extends DashboardController
         $mirrorSource->name = $request['name'];
         $mirrorSource->active = $request['active'] === '1' ? 1 : 0;
         $mirrorSource->save();
-        $msg = 'Mirror source was created successfully!';
+        $msg = 'Mirror source was edited successfully!';
 
         return redirect()->action('Dashboard\MirrorSourceController@index')->with('success', $msg);
     }

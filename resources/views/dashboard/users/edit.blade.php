@@ -39,14 +39,14 @@
                         <div class="form-group">
                             <label>Password Confirmation</label>
                             <input type="password" class="form-control" name="password_confirmation" value="{{
-                                old('password_confirmation') }}" placeholder="Password Confirmation">
+                                old('password') ? old('password') : $user->password }}" placeholder="Password Confirmation">
                         </div>
                         <div class="form-group">
                             <label>Status:</label>
                             <label class="checkbox-inline">
                                 <input type="checkbox" class="checkbox" name="active" value="1" {{
                                     (old('active') ? (old('active') === '1' ? 'checked' : '') :
-                                    ($type->active ? 'checked' : '')) }}>
+                                    ($user->active ? 'checked' : '')) }}>
                                 Active
                             </label>
                         </div>

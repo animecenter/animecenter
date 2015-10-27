@@ -1,31 +1,31 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Titles
+    Trashed episodes
 @endsection
 
 @section('content')
     <div class="box">
         <div class="box-body">
-            <table id="titles" class="table table-bordered table-striped">
+            <table id="episodes" class="table table-bordered table-striped">
                 <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Language</th>
-                        <th>Alternative Title</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
+                <tr>
+                    <th>Anime Title</th>
+                    <th>Episode Number</th>
+                    <th>Aired At</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
                 </thead>
                 <tbody></tbody>
                 <tfoot>
-                    <tr>
-                        <th>Title</th>
-                        <th>Language</th>
-                        <th>Alternative Title</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
+                <tr>
+                    <th>Anime Title</th>
+                    <th>Episode Number</th>
+                    <th>Aired At</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
                 </tfoot>
             </table>
         </div>
@@ -35,7 +35,7 @@
 @section('scripts')
     <script>
         jQuery(function () {
-            jQuery('#titles').dataTable({
+            jQuery('#episodes').dataTable({
                 "aoColumns": [
                     {"sWidth": "20%"},
                     {"sWidth": "20%"},
@@ -58,7 +58,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/titles/list') }}",
+                "sAjaxSource": "{{ url('dashboard/episodes/list/trash') }}",
                 "bServerSide": true
             });
         });

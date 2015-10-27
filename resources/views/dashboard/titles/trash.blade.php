@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Titles
+    Trashed titles
 @endsection
 
 @section('content')
@@ -9,23 +9,19 @@
         <div class="box-body">
             <table id="titles" class="table table-bordered table-striped">
                 <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Language</th>
-                        <th>Alternative Title</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
                 </thead>
                 <tbody></tbody>
                 <tfoot>
-                    <tr>
-                        <th>Title</th>
-                        <th>Language</th>
-                        <th>Alternative Title</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
                 </tfoot>
             </table>
         </div>
@@ -37,11 +33,9 @@
         jQuery(function () {
             jQuery('#titles').dataTable({
                 "aoColumns": [
-                    {"sWidth": "20%"},
-                    {"sWidth": "20%"},
-                    {"sWidth": "20%"},
-                    {"sWidth": "20%"},
-                    {"sWidth": "20%"},
+                    {"sWidth": "33%"},
+                    {"sWidth": "33%"},
+                    {"sWidth": "33%"},
                 ],
                 "aLengthMenu": [
                     [10, 25, 50, 100, 99999999],
@@ -58,7 +52,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/titles/list') }}",
+                "sAjaxSource": "{{ url('dashboard/titles/list/trash') }}",
                 "bServerSide": true
             });
         });

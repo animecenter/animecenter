@@ -82,7 +82,7 @@ class TypeController extends DashboardController
         $type->model = $request['model'];
         $type->active = $request['active'] === '1' ? 1 : 0;
         $type->save();
-        $msg = 'Type was created successfully!';
+        $msg = 'Type was edited successfully!';
 
         return redirect()->action('Dashboard\TypeController@index')->with('success', $msg);
     }

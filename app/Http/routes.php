@@ -189,8 +189,6 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
 
     // Mirror Reports routes...
     $router->get('mirror-reports', 'MirrorReportController@index');
-    $router->get('mirror-reports/create', 'MirrorReportController@getCreate');
-    $router->post('mirror-reports/create', 'MirrorReportController@postCreate');
     $router->get('mirror-reports/edit/{id}', 'MirrorReportController@getEdit');
     $router->post('mirror-reports/edit/{id}', 'MirrorReportController@postEdit');
     $router->get('mirror-reports/trash', 'MirrorReportController@getTrash');

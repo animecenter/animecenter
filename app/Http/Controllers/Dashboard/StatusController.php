@@ -80,7 +80,7 @@ class StatusController extends DashboardController
         $status->name = $request['name'];
         $status->active = $request['active'] === '1' ? 1 : 0;
         $status->save();
-        $msg = 'Status was created successfully!';
+        $msg = 'Status was edited successfully!';
 
         return redirect()->action('Dashboard\StatusController@index')->with('success', $msg);
     }

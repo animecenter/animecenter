@@ -12,8 +12,7 @@ class CreateEpisodesTable extends Migration
             $table->increments('id');
             $table->integer('anime_id')->unsigned();
             $table->float('number')->unsigned();
-            $table->string('name')->nullable();
-            $table->string('slug', 191)->unique()->nullable();
+            $table->string('title')->nullable();
             $table->text('synopsis')->nullable();
             $table->boolean('active')->default(false);
             $table->timestamp('aired_at')->nullable();
