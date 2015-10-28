@@ -58,7 +58,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/images/list') }}",
+                "sAjaxSource": "{{ url('dashboard/images/list/' . request()->segment(3)) }}",
                 "bServerSide": true
             });
         });

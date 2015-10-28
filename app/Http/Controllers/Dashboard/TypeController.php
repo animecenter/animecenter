@@ -94,7 +94,7 @@ class TypeController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.types.trash');
+        return view('dashboard.types.index');
     }
 
     /**

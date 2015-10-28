@@ -98,7 +98,7 @@ class BannerController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.banners.trash');
+        return view('dashboard.banners.index');
     }
 
     /**

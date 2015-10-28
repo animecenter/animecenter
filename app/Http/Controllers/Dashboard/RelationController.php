@@ -92,7 +92,7 @@ class RelationController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.calendar-seasons.trash');
+        return view('dashboard.calendar-seasons.index');
     }
 
     /**

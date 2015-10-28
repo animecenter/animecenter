@@ -96,7 +96,7 @@ class PageController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.pages.trash');
+        return view('dashboard.pages.index');
     }
 
     /**

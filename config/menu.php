@@ -3,22 +3,41 @@
 return [
     'admin' => [
         'Anime' => [
-            'name' => 'Animes', 'slug' => 'animes'
+            'name' => 'Animes', 'slug' => 'animes', 'submenu' => [
+                'CalendarSeason' => [
+                    'name' => 'Calendar Seasons', 'slug' => 'calendar-seasons'
+                ],
+                'Classification' => [
+                    'name' => 'Classifications', 'slug' => 'classifications'
+                ],
+                'Episode' => [
+                    'name' => 'Episodes', 'slug' => 'episodes'
+                ],
+                'Genre' => [
+                    'name' => 'Genres', 'slug' => 'genres'
+                ],
+                'Producer' => [
+                    'name' => 'Producers', 'slug' => 'producers'
+                ],
+                'Status' => [
+                    'name' => 'Statuses', 'slug' => 'statuses'
+                ],
+                'Relation' => [
+                    'name' => 'Relations', 'slug' => 'relations'
+                ],
+                'Relationship' => [
+                    'name' => 'Relationships', 'slug' => 'relationships'
+                ],
+                'Title' => [
+                    'name' => 'Titles', 'slug' => 'titles'
+                ],
+                'Type' => [
+                    'name' => 'Types', 'slug' => 'types'
+                ],
+            ]
         ],
         'Banner' => [
             'name' => 'Banners', 'slug' => 'banners'
-        ],
-        'CalendarSeason' => [
-            'name' => 'Calendar Seasons', 'slug' => 'calendar-seasons'
-        ],
-        'Classification' => [
-            'name' => 'Classifications', 'slug' => 'classifications'
-        ],
-        'Episode' => [
-            'name' => 'Episodes', 'slug' => 'episodes'
-        ],
-        'Genre' => [
-            'name' => 'Genres', 'slug' => 'genres'
         ],
         'Image' => [
             'name' => 'Images', 'slug' => 'images'
@@ -30,13 +49,14 @@ return [
             'name' => 'Metas', 'slug' => 'metas'
         ],
         'Mirror' => [
-            'name' => 'Mirrors', 'slug' => 'mirrors'
-        ],
-        'MirrorReport' => [
-            'name' => 'Mirror Reports', 'slug' => 'mirror-reports'
-        ],
-        'MirrorSource' => [
-            'name' => 'Mirror Sources', 'slug' => 'mirror-sources'
+            'name' => 'Mirrors', 'slug' => 'mirrors', 'submenu' => [
+                'MirrorReport' => [
+                    'name' => 'Reports', 'slug' => 'mirror-reports'
+                ],
+                'MirrorSource' => [
+                    'name' => 'Sources', 'slug' => 'mirror-sources'
+                ]
+            ]
         ],
         'Option' => [
             'name' => 'Options', 'slug' => 'options'
@@ -44,32 +64,15 @@ return [
         'Page' => [
             'name' => 'Pages', 'slug' => 'pages'
         ],
-        'Permission' => [
-            'name' => 'Permissions', 'slug' => 'permissions'
-        ],
-        'Producer' => [
-            'name' => 'Producers', 'slug' => 'producers'
-        ],
-        'Relation' => [
-            'name' => 'Relations', 'slug' => 'relations'
-        ],
-        'Relationship' => [
-            'name' => 'Relationships', 'slug' => 'relationships'
-        ],
-        'Role' => [
-            'name' => 'Roles', 'slug' => 'roles'
-        ],
-        'Status' => [
-            'name' => 'Statuses', 'slug' => 'statuses'
-        ],
-        'Title' => [
-            'name' => 'Titles', 'slug' => 'titles'
-        ],
-        'Type' => [
-            'name' => 'Types', 'slug' => 'types'
-        ],
         'User' => [
-            'name' => 'Users', 'slug' => 'users'
+            'name' => 'Users', 'slug' => 'users', 'submenu' => [
+                'Permission' => [
+                    'name' => 'Permissions', 'slug' => 'permissions'
+                ],
+                'Role' => [
+                    'name' => 'Roles', 'slug' => 'roles'
+                ],
+            ]
         ]
     ]
 ];

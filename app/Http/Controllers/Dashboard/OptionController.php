@@ -94,7 +94,7 @@ class OptionController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.options.trash');
+        return view('dashboard.options.index');
     }
 
     /**

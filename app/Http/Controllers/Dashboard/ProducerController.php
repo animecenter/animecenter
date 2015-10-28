@@ -92,7 +92,7 @@ class ProducerController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.producers.trash');
+        return view('dashboard.producers.index');
     }
 
     /**

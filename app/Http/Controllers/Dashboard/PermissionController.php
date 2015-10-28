@@ -96,7 +96,7 @@ class PermissionController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.permissions.trash');
+        return view('dashboard.permissions.index');
     }
 
     /**

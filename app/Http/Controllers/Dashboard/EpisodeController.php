@@ -106,7 +106,7 @@ class EpisodeController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.episodes.trash');
+        return view('dashboard.episodes.index');
     }
 
     /**

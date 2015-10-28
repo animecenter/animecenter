@@ -98,7 +98,7 @@ class MetaController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.metas.trash');
+        return view('dashboard.metas.index');
     }
 
     /**
