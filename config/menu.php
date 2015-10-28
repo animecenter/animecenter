@@ -3,73 +3,73 @@
 return [
     'admin' => [
         'Anime' => [
-            'name' => 'anime', 'slug' => 'animes'
+            'name' => 'Animes', 'slug' => 'animes'
         ],
         'Banner' => [
-            'name' => 'banner', 'slug' => 'banners'
+            'name' => 'Banners', 'slug' => 'banners'
         ],
         'CalendarSeason' => [
-            'name' => 'calendar season', 'slug' => 'calendar-seasons'
+            'name' => 'Calendar Seasons', 'slug' => 'calendar-seasons'
         ],
         'Classification' => [
-            'name' => 'classification', 'slug' => 'classifications'
+            'name' => 'Classifications', 'slug' => 'classifications'
         ],
         'Episode' => [
-            'name' => 'episode', 'slug' => 'episodes'
+            'name' => 'Episodes', 'slug' => 'episodes'
         ],
         'Genre' => [
-            'name' => 'genre', 'slug' => 'genres'
+            'name' => 'Genres', 'slug' => 'genres'
         ],
         'Image' => [
-            'name' => 'image', 'slug' => 'images'
+            'name' => 'Images', 'slug' => 'images'
         ],
         'Menu' => [
-            'name' => 'menu', 'slug' => 'menus'
+            'name' => 'Menus', 'slug' => 'menus'
         ],
         'Meta' => [
-            'name' => 'meta', 'slug' => 'metas'
+            'name' => 'Metas', 'slug' => 'metas'
         ],
         'Mirror' => [
-            'name' => 'mirror', 'slug' => 'mirrors'
+            'name' => 'Mirrors', 'slug' => 'mirrors'
         ],
         'MirrorReport' => [
-            'name' => 'mirror report', 'slug' => 'mirror-reports'
+            'name' => 'Mirror Reports', 'slug' => 'mirror-reports'
         ],
         'MirrorSource' => [
-            'name' => 'mirror source', 'slug' => 'mirror-sources'
+            'name' => 'Mirror Sources', 'slug' => 'mirror-sources'
         ],
         'Option' => [
-            'name' => 'option', 'slug' => 'options'
+            'name' => 'Options', 'slug' => 'options'
         ],
         'Page' => [
-            'name' => 'page', 'slug' => 'pages'
+            'name' => 'Pages', 'slug' => 'pages'
         ],
         'Permission' => [
-            'name' => 'permission', 'slug' => 'permissions'
+            'name' => 'Permissions', 'slug' => 'permissions'
         ],
         'Producer' => [
-            'name' => 'producer', 'slug' => 'producers'
+            'name' => 'Producers', 'slug' => 'producers'
         ],
         'Relation' => [
-            'name' => 'relation', 'slug' => 'relations'
+            'name' => 'Relations', 'slug' => 'relations'
         ],
         'Relationship' => [
-            'name' => 'relationship', 'slug' => 'relationships'
+            'name' => 'Relationships', 'slug' => 'relationships'
         ],
         'Role' => [
-            'name' => 'role', 'slug' => 'roles'
+            'name' => 'Roles', 'slug' => 'roles'
         ],
         'Status' => [
-            'name' => 'status', 'slug' => 'statuses'
+            'name' => 'Statuses', 'slug' => 'statuses'
         ],
         'Title' => [
-            'name' => 'title', 'slug' => 'titles'
+            'name' => 'Titles', 'slug' => 'titles'
         ],
         'Type' => [
-            'name' => 'type', 'slug' => 'types'
+            'name' => 'Types', 'slug' => 'types'
         ],
         'User' => [
-            'name' => 'user', 'slug' => 'users'
+            'name' => 'Users', 'slug' => 'users'
         ]
     ]
 ];

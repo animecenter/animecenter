@@ -10,10 +10,10 @@
                     </a>
                     <ul class="treeview-menu">
                         <li {{ !request()->segment(3) && request()->segment(2) === $menu['slug'] ? 'class=active' : '' }}>
-                            <a href="{{ url('dashboard/' . $menu['slug']) }}">All</a>
+                            <a href="{{ url('dashboard/' . $menu['slug']) }}">All {{ $menu['name'] }}</a>
                         </li>
                         <li {{ strpos(request()->segment(3), 'create') !== false ? 'class=active' : '' }}>
-                            <a href="{{ url('dashboard/' . $menu['slug'] . '/create') }}">Create new</a>
+                            <a href="{{ url('dashboard/' . $menu['slug'] . '/create') }}">Add New</a>
                         </li>
                         <li {{ strpos(request()->segment(3), 'trash') !== false ? 'class=active' : '' }}>
                             <a href="{{ url('dashboard/' . $menu['slug'] . '/trash') }}">Trash</a>
