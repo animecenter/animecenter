@@ -10,7 +10,9 @@
             <table id="titles" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Language</th>
+                    <th>Alternative Title</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -18,7 +20,9 @@
                 <tbody></tbody>
                 <tfoot>
                 <tr>
-                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Language</th>
+                    <th>Alternative Title</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -33,9 +37,11 @@
         jQuery(function () {
             jQuery('#titles').dataTable({
                 "aoColumns": [
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
-                    {"sWidth": "33%"},
+                    {"sWidth": "20%"},
+                    {"sWidth": "20%"},
+                    {"sWidth": "20%"},
+                    {"sWidth": "20%"},
+                    {"sWidth": "20%"},
                 ],
                 "aLengthMenu": [
                     [10, 25, 50, 100, 99999999],

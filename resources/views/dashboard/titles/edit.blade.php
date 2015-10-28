@@ -22,9 +22,52 @@
                     <form role="form" method="post" action="{{ url('dashboard/titles/edit/' . $title->id) }}">
                         {!! csrf_field() !!}
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" name="name" value="{{
-                                old('name') ? old('name') : $title->name }}" placeholder="Name">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" name="title" value="{{
+                                old('title') ? old('title') : $title->title }}" placeholder="Title">
+                        </div>
+                        <div class="form-group">
+                            <label for="language">Language</label>
+                            <input type="text" class="form-control" name="language" value="{{
+                                old('language') ? old('language') : $title->language }}" placeholder="Language">
+                        </div>
+                        <div class="form-group">
+                            <select name="titleable_type" class="form-control" id="type">
+                                @if (!isset($title->titleable_type))
+                                    <option selected>Select type of alternative title</option>
+                                    <option value="Anime">Anime</option>
+                                    <option value="Manga">Manga</option>
+                                @else
+                                    <option value="Anime" {{
+                                        old('titleable_type') === 'Anime' || $title->titleable_type === 'Anime' ?
+                                        'selected' : '' }}>Anime</option>
+                                    <option value="Manga" {{
+                                        old('titleable_type') === 'Manga' || $title->titleable_type === 'Manga' ?
+                                        'selected' : '' }}>Manga</option>
+                                @endif
+                            </select>
+                        </div>
+                        <div class="form-group selection {{
+                            old('titleable_type') === 'Anime' || $title->titleable_type === 'Anime' ? '' : 'hidden' }}">
+                            <select name="anime_id" class="form-control" id="anime_id">
+                                <option selected>Select anime</option>
+                                @foreach ($animes as $anime)
+                                    <option value="{{ $anime->id }}" {{
+                                        old('anime_id') === $anime->id || $title->titleable_id === $anime->id ?
+                                        'selected' : '' }}>{{ $anime->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group selection {{
+                            old('titleable_type') === 'Manga' || $title->titleable_type === 'Manga' ? '' : 'hidden' }}">
+                            <select name="manga_id" class="form-control" id="manga_id">
+                                <option selected>Select manga</option>
+                                @foreach ($animes as $anime)
+                                    <option value="{{ $anime->id }}" {{
+                                        old('anime_id') === $anime->id || $title->titleable_id === $anime->id ?
+                                        'selected' : '' }}>{{ $anime->title }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Status:</label>
@@ -42,4 +85,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        jQuery(function () {
+            jQuery('#type').on('change', function() {
+                jQuery('#' + $(this).val().toLowerCase() + '_id').parent().removeClass('hidden').siblings('.selection').addClass('hidden');
+            });
+        });
+    </script>
 @endsection
