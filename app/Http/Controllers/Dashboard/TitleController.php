@@ -157,10 +157,22 @@ class TitleController extends DashboardController
     public function getList()
     {
         $url = 'titles';
-        $list = collect(DB::table('titles')->where('deleted_at', '=', null)->get(['id', 'name', 'active']));
-        $showColumns = ['name', 'active', 'actions'];
-        $searchColumns = ['name', 'active'];
-        $orderColumns = ['name', 'active'];
+        $list = collect(
+            DB::table('titles')->leftJoin('animes', function($join) {
+                $join->on('titles.titleable_id', '=', 'animes.id')->where('titles.titleable_type', '=', 'Anime');
+            })
+                //->leftJoin('mangas', function($join) {
+                    //$join->on('titles.titleable_id', '=', 'mangas.id')->where('titles.titleable_type', '=', 'Manga');
+                //})
+                ->where('titles.deleted_at', '=', null)
+                ->get([
+                    'titles.id', 'titles.title', 'titles.language', 'animes.title as altTitle', 'titles.active',
+                    //'mangas.title as altTitle',
+                ])
+        );
+        $showColumns = ['title', 'language', 'altTitle', 'active', 'actions'];
+        $searchColumns = ['title', 'language', 'altTitle', 'active'];
+        $orderColumns = ['title', 'language', 'altTitle', 'active'];
 
         return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
@@ -174,11 +186,21 @@ class TitleController extends DashboardController
     {
         $url = 'titles';
         $list = collect(
-            DB::table('titles')->where('deleted_at', '<>', '')->get(['id', 'name', 'active'])
+            DB::table('titles')->leftJoin('animes', function($join) {
+                $join->on('titles.titleable_id', '=', 'animes.id')->where('titles.titleable_type', '=', 'Anime');
+            })
+                //->leftJoin('mangas', function($join) {
+                    //$join->on('titles.titleable_id', '=', 'mangas.id')->where('titles.titleable_type', '=', 'Manga');
+                //})
+                ->where('titles.deleted_at', '<>', '')
+                ->get([
+                    'titles.id', 'titles.title', 'titles.language', 'animes.title as altTitle', 'titles.active',
+                    //'mangas.title as altTitle',
+                ])
         );
-        $showColumns = ['name', 'active', 'actions'];
-        $searchColumns = ['name', 'active'];
-        $orderColumns = ['name', 'active'];
+        $showColumns = ['title', 'language', 'altTitle', 'active', 'actions'];
+        $searchColumns = ['title', 'language', 'altTitle', 'active'];
+        $orderColumns = ['title', 'language', 'altTitle', 'active'];
 
         return parent::getDataTableListTrash($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
