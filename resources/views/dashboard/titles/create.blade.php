@@ -30,10 +30,6 @@
                             <input type="text" class="form-control" name="language" value="{{ old('language') }}" placeholder="Language">
                         </div>
                         <div class="form-group">
-                            <label>Language</label>
-                            <input type="text" class="form-control" name="language" value="{{ old('language') }}" placeholder="Language">
-                        </div>
-                        <div class="form-group">
                             <select name="titleable_type" class="form-control" id="type">
                                 <option selected>Select type of alternative title</option>
                                 <option value="Anime">Anime</option>
