@@ -96,7 +96,7 @@ class RoleController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.roles.trash');
+        return view('dashboard.roles.index');
     }
 
     /**

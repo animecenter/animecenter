@@ -6,6 +6,7 @@
 
 @section('content')
     <div class="box">
+        @include('dashboard.layouts.resource-header')
         <div class="box-body">
             <table id="menus" class="table table-bordered table-striped">
                 <thead>
@@ -52,7 +53,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/menus/list') }}",
+                "sAjaxSource": "{{ url('dashboard/menus/list/' . request()->segment(3)) }}",
                 "bServerSide": true
             });
         });

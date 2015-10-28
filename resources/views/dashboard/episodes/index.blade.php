@@ -6,6 +6,7 @@
 
 @section('content')
     <div class="box">
+        @include('dashboard.layouts.resource-header')
         <div class="box-body">
             <table id="episodes" class="table table-bordered table-striped">
                 <thead>
@@ -58,7 +59,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/episodes/list') }}",
+                "sAjaxSource": "{{ url('dashboard/episodes/list/' . request()->segment(3)) }}",
                 "bServerSide": true
             });
         });

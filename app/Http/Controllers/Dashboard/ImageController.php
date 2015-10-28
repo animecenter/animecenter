@@ -92,7 +92,7 @@ class ImageController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.images.trash');
+        return view('dashboard.images.index');
     }
 
     /**

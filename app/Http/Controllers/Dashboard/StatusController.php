@@ -92,7 +92,7 @@ class StatusController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.statuses.trash');
+        return view('dashboard.statuses.index');
     }
 
     /**

@@ -96,7 +96,7 @@ class UserController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.users.trash');
+        return view('dashboard.users.index');
     }
 
     /**

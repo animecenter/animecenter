@@ -104,7 +104,7 @@ class TitleController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.titles.trash');
+        return view('dashboard.titles.index');
     }
 
     /**

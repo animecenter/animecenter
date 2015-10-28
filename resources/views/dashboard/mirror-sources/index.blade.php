@@ -6,6 +6,7 @@
 
 @section('content')
     <div class="box">
+        @include('dashboard.layouts.resource-header')
         <div class="box-body">
             <table id="mirror-sources" class="table table-bordered table-striped">
                 <thead>
@@ -52,7 +53,7 @@
                         "sNext": "Next"
                     }
                 },
-                "sAjaxSource": "{{ url('dashboard/mirror-sources/list') }}",
+                "sAjaxSource": "{{ url('dashboard/mirror-sources/list/' . request()->segment(3)) }}",
                 "bServerSide": true
             });
         });

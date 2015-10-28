@@ -92,7 +92,7 @@ class MirrorSourceController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.mirror-sources.trash');
+        return view('dashboard.mirror-sources.index');
     }
 
     /**
