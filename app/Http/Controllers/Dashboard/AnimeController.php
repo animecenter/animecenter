@@ -92,7 +92,7 @@ class AnimeController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.animes.trash');
+        return view('dashboard.animes.index');
     }
 
     /**

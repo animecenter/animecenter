@@ -92,7 +92,7 @@ class RelationshipController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.relationships.trash');
+        return view('dashboard.relationships.index');
     }
 
     /**

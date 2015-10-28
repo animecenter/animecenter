@@ -92,7 +92,7 @@ class MenuController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.menus.trash');
+        return view('dashboard.menus.index');
     }
 
     /**

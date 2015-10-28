@@ -71,7 +71,7 @@ class MirrorReportController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.mirror-reports.trash');
+        return view('dashboard.mirror-reports.index');
     }
 
     /**

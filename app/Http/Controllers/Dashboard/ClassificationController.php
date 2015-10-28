@@ -92,7 +92,7 @@ class ClassificationController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.classifications.trash');
+        return view('dashboard.classifications.index');
     }
 
     /**

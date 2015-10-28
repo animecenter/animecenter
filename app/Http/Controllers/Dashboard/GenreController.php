@@ -96,7 +96,7 @@ class GenreController extends DashboardController
      */
     public function getTrash()
     {
-        return view('dashboard.genres.trash');
+        return view('dashboard.genres.index');
     }
 
     /**
