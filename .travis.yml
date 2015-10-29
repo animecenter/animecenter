@@ -8,7 +8,15 @@ php:
 sudo: false
 
 install:
+  - travis_retry composer self-update
   - travis_retry composer install --no-interaction --no-scripts --prefer-source
 
+before_script:
+  - mysql -e "CREATE DATABASE IF NOT EXISTS forge;" -uroot
+  - mysql -e "CREATE USER 'forge'@'localhost' IDENTIFIED BY '';" -uroot;
+  - mysql -e "GRANT ALL PRIVILEGES ON forge.* TO 'forge'@'localhost';" -uroot
+  - mysql -e "FLUSH PRIVILEGES;" -uroot
+
 script:
+  - php artisan migrate --seed --env=local
   - vendor/bin/phpunit
