@@ -54,8 +54,6 @@ class MirrorReportController extends DashboardController
     public function postEdit($id = 0, Request $request)
     {
         $mirrorReport = $this->mirrorReport->findOrFail($id);
-        $mirrorReport->user_id = $request['user_id'];
-        $mirrorReport->mirror_id = $request['mirror_id'];
         $mirrorReport->verified = $request['verified'] === '1' ? 1 : 0;
         $mirrorReport->broken = $request['broken'] === '1' ? 1 : 0;
         $mirrorReport->active = $request['active'] === '1' ? 1 : 0;
