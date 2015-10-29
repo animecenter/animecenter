@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Page
+ * AC\Models\Page.
  *
- * @property integer $id
+ * @property int $id
  * @property string $title
  * @property string $slug
  * @property string $content
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|Page whereId($value)
  * @method static Builder|Page whereTitle($value)
  * @method static Builder|Page whereSlug($value)
@@ -24,7 +25,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Page whereUpdatedAt($value)
  * @method static Builder|Page whereDeletedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Page whereActive($value)
  */
 class Page extends Model
@@ -75,7 +78,7 @@ class Page extends Model
         'id'      => 'int',
         'title'   => 'string',
         'slug'    => 'string',
-        'content' => 'string'
+        'content' => 'string',
     ];
 
     /**
@@ -84,7 +87,7 @@ class Page extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

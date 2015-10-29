@@ -7,22 +7,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Anime
+ * AC\Models\Anime.
  *
- * @property integer $id
- * @property integer $mal_id
+ * @property int $id
+ * @property int $mal_id
  * @property string $title
  * @property string $slug
  * @property string $image
  * @property string $synopsis
- * @property integer $type_id
- * @property integer $number_of_episodes
+ * @property int $type_id
+ * @property int $number_of_episodes
  * @property string $status
  * @property string $release_date
  * @property string $end_date
  * @property string $duration
- * @property integer $season_id
- * @property integer $classification_id
+ * @property int $season_id
+ * @property int $classification_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
@@ -34,6 +34,7 @@ use Illuminate\Database\Query\Builder;
  * @property-read Type $type
  * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
  * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
+ *
  * @method static Builder|Anime whereId($value)
  * @method static Builder|Anime whereMalId($value)
  * @method static Builder|Anime whereTitle($value)
@@ -54,12 +55,14 @@ use Illuminate\Database\Query\Builder;
  * @property-read Episode $episode
  * @property-read \Illuminate\Database\Eloquent\Collection|Episode[] $episodes
  * @property-read \Illuminate\Database\Eloquent\Collection|Relation[] $relations
- * @property integer $status_id
- * @property integer $calendar_season_id
+ *
+ * @property int $status_id
+ * @property int $calendar_season_id
  * @property float $rating
- * @property boolean $active
+ * @property bool $active
  * @property-read mixed $photo
  * @property-read mixed $short_title
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Anime whereStatusId($value)
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Anime whereRating($value)
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Anime whereViews($value)
@@ -123,7 +126,7 @@ class Anime extends Model
         'end_date'           => 'string',
         'duration'           => 'string',
         'calendar_season_id' => 'int',
-        'classification_id'  => 'int'
+        'classification_id'  => 'int',
     ];
 
     /**
@@ -132,7 +135,7 @@ class Anime extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**
@@ -258,7 +261,8 @@ class Anime extends Model
     /**
      * Get the anime's duration.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function getDurationAttribute($value)
@@ -271,13 +275,14 @@ class Anime extends Model
         $minutes = str_replace([0], '', $value[1]);
         $secs = str_replace([0], '', $value[2]);
 
-        return ($hours ? $hours . ' hr. ' : '') . ($minutes ? $minutes . ' min. per episode' : '');
+        return ($hours ? $hours.' hr. ' : '').($minutes ? $minutes.' min. per episode' : '');
     }
 
     /**
      * Get number of episodes attribute.
      *
      * @param $value
+     *
      * @return string
      */
     public function getNumberOfEpisodesAttribute($value)
@@ -287,7 +292,7 @@ class Anime extends Model
 
     public function getSlugAttribute($value)
     {
-        return 'anime/watch/' . $value;
+        return 'anime/watch/'.$value;
     }
 
     public function getPhotoAttribute()
@@ -297,6 +302,6 @@ class Anime extends Model
 
     public function getShortTitleAttribute()
     {
-        return (strlen($this->title) > 18) ? mb_substr($this->title, 0, 15) . '...' : $this->title;
+        return (strlen($this->title) > 18) ? mb_substr($this->title, 0, 15).'...' : $this->title;
     }
 }

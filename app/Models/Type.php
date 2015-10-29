@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Type
+ * AC\Models\Type.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $model
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|Type whereId($value)
  * @method static Builder|Type whereName($value)
  * @method static Builder|Type whereModel($value)
@@ -22,7 +23,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Type whereUpdatedAt($value)
  * @method static Builder|Type whereDeletedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Type whereActive($value)
  */
 class Type extends Model
@@ -72,7 +75,7 @@ class Type extends Model
     protected $casts = [
         'id'    => 'int',
         'name'  => 'string',
-        'model' => 'string'
+        'model' => 'string',
     ];
 
     /**
@@ -81,7 +84,7 @@ class Type extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

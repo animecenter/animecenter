@@ -7,20 +7,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\MirrorSource
+ * AC\Models\MirrorSource.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|MirrorSource whereId($value)
  * @method static Builder|MirrorSource whereName($value)
  * @method static Builder|MirrorSource whereCreatedAt($value)
  * @method static Builder|MirrorSource whereUpdatedAt($value)
  * @method static Builder|MirrorSource whereDeletedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|Mirror[] $mirrors
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\MirrorSource whereActive($value)
  */
 class MirrorSource extends Model
@@ -69,7 +72,7 @@ class MirrorSource extends Model
      */
     protected $casts = [
         'id'   => 'int',
-        'name' => 'string'
+        'name' => 'string',
     ];
 
     /**
@@ -78,7 +81,7 @@ class MirrorSource extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

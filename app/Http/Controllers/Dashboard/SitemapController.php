@@ -16,7 +16,7 @@ class SitemapController extends Controller
         $this->basePath = public_path();
 
         // create object
-        $sitemap = App::make("sitemap");
+        $sitemap = App::make('sitemap');
 
         // Add series dynamic URLS
         $animes = DB::table('animes')->orderBy('date', 'desc')->get(['slug', 'type2', 'date', 'date2']);
@@ -31,7 +31,7 @@ class SitemapController extends Controller
                 $timeDiff = $now - $created;
                 $time = $created;
             }
-            $url = url($anime->type2 . "-anime/" . $anime->slug);
+            $url = url($anime->type2.'-anime/'.$anime->slug);
             if ($timeDiff < 3600) {
                 $freq = 'always';
                 $rank = 0.8;
@@ -71,7 +71,7 @@ class SitemapController extends Controller
                 $time = $created;
             }
             $show = $episode->show;
-            $url = url("watch/" . $episode->slug);
+            $url = url('watch/'.$episode->slug);
             if ($timeDiff < 3600) {
                 $freq = 'always';
                 $rank = 0.6;

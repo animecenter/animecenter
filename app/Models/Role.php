@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Role
+ * AC\Models\Role.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $display_name
  * @property string $description
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|Role whereId($value)
  * @method static Builder|Role whereName($value)
  * @method static Builder|Role whereDisplayName($value)
@@ -23,7 +24,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Role whereCreatedAt($value)
  * @method static Builder|Role whereUpdatedAt($value)
  * @method static Builder|Role whereDeletedAt($value)
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Role whereActive($value)
  */
 class Role extends Model
@@ -83,6 +86,6 @@ class Role extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 }
