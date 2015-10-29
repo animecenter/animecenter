@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\MirrorReport
+ * AC\Models\MirrorReport.
  *
  * @property integer $id
  * @property integer $user_id
@@ -20,6 +20,7 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $deleted_at
  * @property-read Mirror $mirror
  * @property-read User $user
+ *
  * @method static Builder|MirrorReport whereId($value)
  * @method static Builder|MirrorReport whereUserId($value)
  * @method static Builder|MirrorReport whereMirrorId($value)
@@ -80,7 +81,7 @@ class MirrorReport extends Model
         'mirror_id' => 'int',
         'verified'  => 'boolean',
         'broken'    => 'boolean',
-        'active'    => 'boolean'
+        'active'    => 'boolean',
     ];
 
     /**
@@ -89,7 +90,7 @@ class MirrorReport extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

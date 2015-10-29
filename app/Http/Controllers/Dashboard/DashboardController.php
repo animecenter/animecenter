@@ -4,7 +4,6 @@ namespace AC\Http\Controllers\Dashboard;
 
 use AC\Http\Controllers\Controller;
 use Datatable;
-use DB;
 use FA;
 use Form;
 use Html;
@@ -32,12 +31,13 @@ class DashboardController extends Controller
                 return $model->active === 1 ? 'Active' : 'Inactive';
             })
             ->addColumn('actions', function ($model) use ($url) {
-                $editIcon = FA::icon('pencil-square-o')->__toString() . ' ';
-                $trashIcon = FA::icon('trash-o')->__toString() . ' ';
-                $editUrl = url('dashboard/' . $url . '/edit', $model->id);
-                $trashUrl = url('dashboard/' . $url . '/trash', $model->id);
+                $editIcon = FA::icon('pencil-square-o')->__toString().' ';
+                $trashIcon = FA::icon('trash-o')->__toString().' ';
+                $editUrl = url('dashboard/'.$url.'/edit', $model->id);
+                $trashUrl = url('dashboard/'.$url.'/trash', $model->id);
+
                 return html_entity_decode(
-                    Html::link($editUrl, $editIcon . '', ['class' => 'btn btn-sm btn-warning pull-left']).
+                    Html::link($editUrl, $editIcon.'', ['class' => 'btn btn-sm btn-warning pull-left']).
                     Form::open(['url' => $trashUrl]).
                     Form::button($trashIcon, ['class' => 'btn btn-sm btn-danger', 'type' => 'submit']).
                     Form::close()
@@ -55,10 +55,11 @@ class DashboardController extends Controller
                 return $model->active === 1 ? 'Active' : 'Inactive';
             })
             ->addColumn('actions', function ($model) use ($url) {
-                $recoverIcon = FA::icon('exchange')->__toString() . ' ';
-                $deleteIcon = FA::icon('trash-o')->__toString() . ' ';
-                $recoverURL = url('dashboard/' . $url . '/recover', $model->id);
-                $deleteURL = url('dashboard/' . $url . '/delete', $model->id);
+                $recoverIcon = FA::icon('exchange')->__toString().' ';
+                $deleteIcon = FA::icon('trash-o')->__toString().' ';
+                $recoverURL = url('dashboard/'.$url.'/recover', $model->id);
+                $deleteURL = url('dashboard/'.$url.'/delete', $model->id);
+
                 return html_entity_decode(
                     Form::open(['url' => $recoverURL]).
                     Form::button($recoverIcon, ['class' => 'btn btn-sm btn-success pull-left', 'type' => 'submit']).

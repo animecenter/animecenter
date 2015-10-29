@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateAnimesTable extends Migration
 {
-
     public function up()
     {
         Schema::create('animes', function (Blueprint $table) {

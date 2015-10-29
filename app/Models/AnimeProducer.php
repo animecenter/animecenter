@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\AnimeProducer
+ * AC\Models\AnimeProducer.
  *
- * @property integer $id
- * @property integer $anime_id
- * @property integer $producer_id
+ * @property int $id
+ * @property int $anime_id
+ * @property int $producer_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|AnimeProducer whereId($value)
  * @method static Builder|AnimeProducer whereAnimeId($value)
  * @method static Builder|AnimeProducer whereProducerId($value)
@@ -64,8 +65,8 @@ class AnimeProducer extends Model
      * @var string[]
      */
     protected $casts = [
-        'anime_id' => 'int',
-        'producer_id' => 'int'
+        'anime_id'    => 'int',
+        'producer_id' => 'int',
     ];
 
     /**
@@ -74,6 +75,6 @@ class AnimeProducer extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 }

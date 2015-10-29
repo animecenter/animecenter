@@ -7,17 +7,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Image
+ * AC\Models\Image.
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $imageable_id
+ * @property int $id
+ * @property int $user_id
+ * @property int $imageable_id
  * @property string $imageable_type
  * @property string $path
  * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|Image whereId($value)
  * @method static Builder|Image whereUserId($value)
  * @method static Builder|Image whereImageableId($value)
@@ -78,7 +79,7 @@ class Image extends Model
         'imageable_id'   => 'int',
         'imageable_type' => 'string',
         'path'           => 'string',
-        'active'         => 'boolean'
+        'active'         => 'boolean',
     ];
 
     /**
@@ -87,6 +88,6 @@ class Image extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 }
