@@ -22,16 +22,35 @@
                     <form role="form" method="post" action="{{ url('dashboard/mirror-reports/edit/' . $mirrorReport->id) }}">
                         {!! csrf_field() !!}
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" name="name" value="{{
-                                old('name') ? old('name') : $mirrorReport->name }}" placeholder="Name">
+                            <p><strong>Username: </strong>{{ $mirrorReport->username }}</p>
+                        </div>
+                        <div class="form-group">
+                            <p>
+                                <strong>URL: </strong>
+                                <a href="{{ url($mirrorReport->url) }}" target="_blank">{{ $mirrorReport->url }}</a>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Verified:</label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" class="checkbox" name="verified" value="1" {{
+                                    old('verified') === '1' || $mirrorReport->verified === 1 ? 'checked' : '' }}>
+                                Active
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>Broken:</label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" class="checkbox" name="broken" value="1" {{
+                                    old('broken') === '1' || $mirrorReport->broken === 1 ? 'checked' : '' }}>
+                                Active
+                            </label>
                         </div>
                         <div class="form-group">
                             <label>Status:</label>
                             <label class="checkbox-inline">
                                 <input type="checkbox" class="checkbox" name="active" value="1" {{
-                                    (old('active') ? (old('active') === '1' ? 'checked' : '') :
-                                    ($mirrorReport->active ? 'checked' : '')) }}>
+                                    old('active') === '1' || $mirrorReport->active === 1 ? 'checked' : '' }}>
                                 Active
                             </label>
                         </div>
