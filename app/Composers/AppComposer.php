@@ -26,8 +26,9 @@ class AppComposer
 
     /**
      * Create a new page error composer.
-     * @param Guard $auth
-     * @param Page $page
+     *
+     * @param Guard  $auth
+     * @param Page   $page
      * @param Option $option
      */
     public function __construct(Guard $auth, Page $page, Option $option)
@@ -40,7 +41,8 @@ class AppComposer
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
+     * @param View $view
+     *
      * @return void
      */
     public function compose(View $view)
@@ -50,10 +52,10 @@ class AppComposer
         $this->data['pages'] = $this->page->get();
 
         // TODO: Get meta data
-        $this->data['pageTitle'] = "";
-        $this->data['metaTitle'] = "";
-        $this->data['metaDesc'] = "";
-        $this->data['metaKey'] = "";
+        $this->data['pageTitle'] = '';
+        $this->data['metaTitle'] = '';
+        $this->data['metaDesc'] = '';
+        $this->data['metaKey'] = '';
 
         $view->with($this->data);
     }

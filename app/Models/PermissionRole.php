@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\PermissionRole
+ * AC\Models\PermissionRole.
  *
- * @property integer $permission_id
- * @property integer $role_id
+ * @property int $permission_id
+ * @property int $role_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|PermissionRole wherePermissionId($value)
  * @method static Builder|PermissionRole whereRoleId($value)
  * @method static Builder|PermissionRole whereCreatedAt($value)
@@ -63,7 +64,7 @@ class PermissionRole extends Model
      */
     protected $casts = [
         'permission_id' => 'int',
-        'role_id'       => 'int'
+        'role_id'       => 'int',
     ];
 
     /**
@@ -72,6 +73,6 @@ class PermissionRole extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 }

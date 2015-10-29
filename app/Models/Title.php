@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Title
+ * AC\Models\Title.
  *
- * @property integer $id
+ * @property int $id
  * @property string $title
  * @property string $language
- * @property integer $titleable_id
+ * @property int $titleable_id
  * @property string $titleable_type
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|Title whereId($value)
  * @method static Builder|Title whereTitle($value)
  * @method static Builder|Title whereLanguage($value)
@@ -26,7 +27,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Title whereUpdatedAt($value)
  * @method static Builder|Title whereDeletedAt($value)
  * @property-read \ $titles
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Title whereActive($value)
  */
 class Title extends Model
@@ -74,11 +77,11 @@ class Title extends Model
      * @var string[]
      */
     protected $casts = [
-        'id'            => 'int',
-        'title'         => 'string',
-        'language'      => 'string',
+        'id'             => 'int',
+        'title'          => 'string',
+        'language'       => 'string',
         'titleable_id'   => 'int',
-        'titleable_type' => 'string'
+        'titleable_type' => 'string',
     ];
 
     /**
@@ -87,7 +90,7 @@ class Title extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

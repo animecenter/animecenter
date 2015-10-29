@@ -51,13 +51,13 @@ class AnimeController extends Controller
     private $type;
 
     /**
-     * @param Anime $anime
+     * @param Anime          $anime
      * @param Classification $classification
-     * @param Episode $episode
-     * @param Genre $genre
-     * @param Producer $producer
+     * @param Episode        $episode
+     * @param Genre          $genre
+     * @param Producer       $producer
      * @param CalendarSeason $calendarSeason
-     * @param Type $type
+     * @param Type           $type
      */
     public function __construct(Anime $anime, Classification $classification, Episode $episode, Genre $genre, Producer $producer, CalendarSeason $calendarSeason, Type $type)
     {
@@ -72,6 +72,7 @@ class AnimeController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\View\View
      */
     public function getIndex(Request $request)
@@ -92,6 +93,7 @@ class AnimeController extends Controller
      * Get anime by slug.
      *
      * @param string $animeSlug
+     *
      * @return \Illuminate\View\View
      */
     public function getAnime($animeSlug = '')
@@ -111,8 +113,9 @@ class AnimeController extends Controller
      * Get episode by anime slug and by episode number.
      *
      * @param string $animeSlug
-     * @param int $episodeNumber
+     * @param int    $episodeNumber
      * @param string $translation
+     *
      * @return \Illuminate\View\View
      */
     public function getEpisode($animeSlug = '', $episodeNumber = 0, $translation = 'all')
@@ -125,11 +128,11 @@ class AnimeController extends Controller
         // $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
 
         // TODO: Get episode meta data.
-        $this->data['pageTitle'] = $title = $anime['title'] . " English Subbed/Dubbed in HD";
+        $this->data['pageTitle'] = $title = $anime['title'].' English Subbed/Dubbed in HD';
         $this->data['metaTitle'] = "Watch {$anime['title']} Online for Free | Watch Anime Online Free";
-        $this->data['metaDesc'] = "Watch " . $title . " Online. Download " . $title . " Online. Watch " .
-            $anime['title'] . " English Sub/Dub HD";
-        $this->data['metaKey'] = "Watch {$anime['title']}, {$anime['title']} English Subbed/Dubbed, Download " .
+        $this->data['metaDesc'] = 'Watch '.$title.' Online. Download '.$title.' Online. Watch '.
+            $anime['title'].' English Sub/Dub HD';
+        $this->data['metaKey'] = "Watch {$anime['title']}, {$anime['title']} English Subbed/Dubbed, Download ".
             "{$anime['title']} English Subbed/Dubbed, Watch {$anime['title']} Online";
 
         return view('app.episodes.show', $this->data);
@@ -139,9 +142,10 @@ class AnimeController extends Controller
      * Get mirror for current anime episode.
      *
      * @param string $animeSlug
-     * @param int $episodeNumber
+     * @param int    $episodeNumber
      * @param string $translation
      * @param string $mirrorID
+     *
      * @return \Illuminate\View\View
      */
     public function getMirror($animeSlug = '', $episodeNumber = 0, $translation = '', $mirrorID = '')
@@ -154,11 +158,11 @@ class AnimeController extends Controller
         $this->data['nextEpisode'] = $this->episode->getNextEpisode($anime->id, $anime->episode->number);
         $this->data['prevEpisode'] = $this->episode->getPreviousEpisode($anime->id, $anime->episode->number);
 
-        $this->data['pageTitle'] = $title = $anime->episode['title'] . " English Subbed/Dubbed in HD";
+        $this->data['pageTitle'] = $title = $anime->episode['title'].' English Subbed/Dubbed in HD';
         $this->data['metaTitle'] = "Watch {$anime->episode['title']} Online for Free | Watch Anime Online Free";
-        $this->data['metaDesc'] = "Watch " . $title . " Online. Download " . $title . " Online. Watch " .
-            $anime->episode['title'] . " English Sub/Dub HD";
-        $this->data['metaKey'] = "Watch {$anime->episode['title']}, {$anime->episode['title']} English Subbed/Dubbed, Download " .
+        $this->data['metaDesc'] = 'Watch '.$title.' Online. Download '.$title.' Online. Watch '.
+            $anime->episode['title'].' English Sub/Dub HD';
+        $this->data['metaKey'] = "Watch {$anime->episode['title']}, {$anime->episode['title']} English Subbed/Dubbed, Download ".
             "{$anime->episode['title']} English Subbed/Dubbed, Watch {$anime->episode['title']} Online";
 
         return view('app.episodes.show', $this->data);
@@ -184,6 +188,6 @@ class AnimeController extends Controller
 
     public function getCurrentURL($letter = '')
     {
-        return $letter ? str_replace('/' . $letter, '', request()->path()) : request()->path();
+        return $letter ? str_replace('/'.$letter, '', request()->path()) : request()->path();
     }
 }

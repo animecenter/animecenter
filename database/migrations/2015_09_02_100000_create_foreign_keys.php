@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateForeignKeys extends Migration
 {
-
     public function up()
     {
         Schema::table('animes', function (Blueprint $table) {

@@ -7,20 +7,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Relationship
+ * AC\Models\Relationship.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Relation[] $relations
+ *
  * @method static Builder|Relationship whereId($value)
  * @method static Builder|Relationship whereName($value)
  * @method static Builder|Relationship whereCreatedAt($value)
  * @method static Builder|Relationship whereUpdatedAt($value)
  * @method static Builder|Relationship whereDeletedAt($value)
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Relationship whereActive($value)
  */
 class Relationship extends Model
@@ -78,7 +81,7 @@ class Relationship extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

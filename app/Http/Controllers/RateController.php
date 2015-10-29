@@ -20,7 +20,7 @@ class RateController extends Controller
     private $episode;
 
     /**
-     * @param Anime $anime
+     * @param Anime   $anime
      * @param Episode $episode
      */
     public function __construct(Anime $anime, Episode $episode)
@@ -43,16 +43,17 @@ class RateController extends Controller
             $currentVotes = $anime->votes ? $anime->votes : 0;
             $currentRating = $anime->rating ? $anime->rating : 0;
             $newVotes = $currentVotes + 1;
-            $newRating = sprintf("%.2f", ($currentRating * $currentVotes + $newRating) / $newVotes);
+            $newRating = sprintf('%.2f', ($currentRating * $currentVotes + $newRating) / $newVotes);
             if ($check) {
-                return "Average: " . $currentRating . " ( " . $currentVotes . " votes)";
+                return 'Average: '.$currentRating.' ( '.$currentVotes.' votes)';
             } else {
                 DB::table('animes')->where('id', '=', $animeID)->update(['rating' => $newRating, 'votes' => $newVotes]);
                 DB::table('ratings')->insert(['target' => $animeID, 'ip' => $ip, 'type' => 'Anime']);
-                return "Average: " . $newRating . " ( " . $newVotes . " votes)";
+
+                return 'Average: '.$newRating.' ( '.$newVotes.' votes)';
             }
         } else {
-            return null;
+            return;
         }
     }
 
@@ -70,16 +71,17 @@ class RateController extends Controller
             $currentVotes = $episode->votes ? $episode->votes : 0;
             $currentRating = $episode->rating ? $episode->rating : 0;
             $newVotes = $currentVotes + 1;
-            $newRating = sprintf("%.2f", ($currentRating * $currentVotes + $newRating) / $newVotes);
+            $newRating = sprintf('%.2f', ($currentRating * $currentVotes + $newRating) / $newVotes);
             if ($check) {
-                return "Average: " . $currentRating . " ( " . $currentVotes . " votes)";
+                return 'Average: '.$currentRating.' ( '.$currentVotes.' votes)';
             } else {
                 DB::table('episodes')->where('id', '=', $episodeID)->update(['rating' => $newRating, 'votes' => $newVotes]);
                 DB::table('ratings')->insert(['target' => $episodeID, 'ip' => $ip, 'type' => 'Episode']);
-                return "Average: " . $newRating . " ( " . $newVotes . " votes)";
+
+                return 'Average: '.$newRating.' ( '.$newVotes.' votes)';
             }
         } else {
-            return null;
+            return;
         }
     }
 }

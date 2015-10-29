@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Meta
+ * AC\Models\Meta.
  *
- * @property integer $id
+ * @property int $id
  * @property string $route
  * @property string $title
  * @property string $keywords
@@ -17,6 +17,7 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|Meta whereId($value)
  * @method static Builder|Meta whereRoute($value)
  * @method static Builder|Meta whereTitle($value)
@@ -25,7 +26,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Meta whereCreatedAt($value)
  * @method static Builder|Meta whereUpdatedAt($value)
  * @method static Builder|Meta whereDeletedAt($value)
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Meta whereActive($value)
  */
 class Meta extends Model
@@ -77,7 +80,7 @@ class Meta extends Model
         'route'       => 'string',
         'title'       => 'string',
         'keywords'    => 'string',
-        'description' => 'string'
+        'description' => 'string',
     ];
 
     /**
@@ -86,6 +89,6 @@ class Meta extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 }
