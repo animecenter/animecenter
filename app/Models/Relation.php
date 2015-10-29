@@ -7,18 +7,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Relation
+ * AC\Models\Relation.
  *
- * @property integer $id
- * @property integer $relationship_id
- * @property integer $relationable_id
+ * @property int $id
+ * @property int $relationship_id
+ * @property int $relationable_id
  * @property string $relationable_type
- * @property integer $related_id
+ * @property int $related_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @property-read \ $relationable
  * @property-read Relationship $relationship
+ *
  * @method static Builder|Relation whereId($value)
  * @method static Builder|Relation whereRelationshipId($value)
  * @method static Builder|Relation whereRelationableId($value)
@@ -27,7 +28,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Relation whereCreatedAt($value)
  * @method static Builder|Relation whereUpdatedAt($value)
  * @method static Builder|Relation whereDeletedAt($value)
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Relation whereActive($value)
  */
 class Relation extends Model
@@ -79,7 +82,7 @@ class Relation extends Model
         'relationship_id'   => 'int',
         'relationable_id'   => 'int',
         'relationable_type' => 'string',
-        'related_id'        => 'int'
+        'related_id'        => 'int',
     ];
 
     /**
@@ -88,7 +91,7 @@ class Relation extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

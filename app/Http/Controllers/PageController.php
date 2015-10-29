@@ -26,8 +26,8 @@ class PageController extends Controller
     private $episode;
 
     /**
-     * @param Page $page
-     * @param Anime $anime
+     * @param Page    $page
+     * @param Anime   $anime
      * @param Episode $episode
      */
     public function __construct(Page $page, Anime $anime, Episode $episode)
@@ -51,9 +51,9 @@ class PageController extends Controller
         // TODO: Get meta data...
         $this->data['pageTitle'] = 'AnimeCenter: Watch Anime English Subbed/Dubbed Online in HD';
         $this->data['metaTitle'] = 'Watch Anime Online English Subbed/Dubbed | Watch Anime Online Free';
-        $this->data['metaDesc'] = 'Watch Anime English Subbed/Dubbed Online in HD at AnimeCenter! Over 41000 Episodes' .
+        $this->data['metaDesc'] = 'Watch Anime English Subbed/Dubbed Online in HD at AnimeCenter! Over 41000 Episodes'.
             ', and 2,146 Anime Series!';
-        $this->data['metaKey'] = 'Watch Anime Online, Anime Subbed/Dubbed, Anime Episodes, Anime Stream, ' .
+        $this->data['metaKey'] = 'Watch Anime Online, Anime Subbed/Dubbed, Anime Episodes, Anime Stream, '.
             'Subbed Anime, Dubbed Anime';
 
         return view('app.pages.home', $this->data);
@@ -63,6 +63,7 @@ class PageController extends Controller
      * Get page by slug.
      *
      * @param string $slug
+     *
      * @return \Illuminate\View\View
      */
     public function getBySlug($slug = '')

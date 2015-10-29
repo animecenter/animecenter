@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateTitlesTable extends Migration
 {
-
     public function up()
     {
         Schema::create('titles', function (Blueprint $table) {

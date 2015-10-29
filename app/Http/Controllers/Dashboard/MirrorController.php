@@ -34,10 +34,10 @@ class MirrorController extends DashboardController
     public function getCreate()
     {
         return view('dashboard.mirrors.create', [
-            'users' => DB::table('users')->orderBy('username')->get(['id', 'username']),
+            'users'    => DB::table('users')->orderBy('username')->get(['id', 'username']),
             'episodes' => DB::table('episodes')->join('animes', 'episodes.anime_id', '=', 'animes.id')
                 ->orderBy('animeTitle')->get(['episodes.id', 'animes.title as animeTitle', 'episodes.number']),
-            'mirrorSources' => DB::table('mirror_sources')->orderBy('name')->get(['id', 'name'])
+            'mirrorSources' => DB::table('mirror_sources')->orderBy('name')->get(['id', 'name']),
         ]);
     }
 
@@ -45,11 +45,12 @@ class MirrorController extends DashboardController
      * Create a new resource.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postCreate(Request $request)
     {
-        $mirror = new $this->mirror;
+        $mirror = new $this->mirror();
         $mirror->user_id = $request['user_id'];
         $mirror->episode_id = $request['episode_id'];
         $mirror->mirror_source_id = $request['mirror_source_id'];
@@ -69,24 +70,26 @@ class MirrorController extends DashboardController
      * Show the form for editing a resource.
      *
      * @param int $id
+     *
      * @return \Illuminate\View\View
      */
     public function getEdit($id = 0)
     {
         return view('dashboard.mirrors.edit', [
-            'mirror' => DB::table('mirrors')->where('id', '=', $id)->first(),
-            'users' => DB::table('users')->orderBy('username')->get(['id', 'username']),
+            'mirror'   => DB::table('mirrors')->where('id', '=', $id)->first(),
+            'users'    => DB::table('users')->orderBy('username')->get(['id', 'username']),
             'episodes' => DB::table('episodes')->join('animes', 'episodes.anime_id', '=', 'animes.id')
                 ->orderBy('animeTitle')->get(['episodes.id', 'animes.title as animeTitle', 'episodes.number']),
-            'mirrorSources' => DB::table('mirror_sources')->orderBy('name')->get(['id', 'name'])
+            'mirrorSources' => DB::table('mirror_sources')->orderBy('name')->get(['id', 'name']),
         ]);
     }
 
     /**
      * Edit a resource.
      *
-     * @param int $id
+     * @param int     $id
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postEdit($id = 0, Request $request)
@@ -121,6 +124,7 @@ class MirrorController extends DashboardController
      * Trash resource by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postTrash($id = 0)
@@ -135,6 +139,7 @@ class MirrorController extends DashboardController
      * Delete resource by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postDelete($id = 0)
@@ -149,6 +154,7 @@ class MirrorController extends DashboardController
      * Recover resource from trash by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postRecover($id = 0)
@@ -169,7 +175,7 @@ class MirrorController extends DashboardController
                 ->where('mirrors.deleted_at', '=', null)
                 ->get([
                     'mirrors.id', 'animes.title', 'episodes.number', 'mirror_sources.name', 'mirrors.translation',
-                    'mirrors.quality', 'mirrors.active'
+                    'mirrors.quality', 'mirrors.active',
                 ])
         );
         $showColumns = ['title', 'number', 'name', 'translation', 'quality', 'active', 'actions'];
@@ -180,7 +186,7 @@ class MirrorController extends DashboardController
     }
 
     /**
-     * Get trash resource listing
+     * Get trash resource listing.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -194,7 +200,7 @@ class MirrorController extends DashboardController
                 ->where('mirrors.deleted_at', '<>', '')
                 ->get([
                     'mirrors.id', 'animes.title', 'episodes.number', 'mirror_sources.name', 'mirrors.translation',
-                    'mirrors.quality', 'mirrors.active'
+                    'mirrors.quality', 'mirrors.active',
                 ])
         );
         $showColumns = ['title', 'number', 'name', 'translation', 'quality', 'active', 'actions'];

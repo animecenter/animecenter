@@ -14,6 +14,7 @@ class DashboardComposer
 
     /**
      * Create a new page error composer.
+     *
      * @param Guard $auth
      */
     public function __construct(Guard $auth)
@@ -24,7 +25,8 @@ class DashboardComposer
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
+     * @param View $view
+     *
      * @return void
      */
     public function compose(View $view)
