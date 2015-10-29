@@ -14,7 +14,7 @@ use Illuminate\Database\Query\Builder;
  * @property int $imageable_id
  * @property string $imageable_type
  * @property string $path
- * @property boolean $active
+ * @property bool $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
