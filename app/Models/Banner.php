@@ -10,25 +10,25 @@ use Illuminate\Database\Query\Builder;
  * AC\Models\Banner
  *
  * @property integer $id
+ * @property string $title
  * @property string $link_to
- * @property string $content
  * @property string $big_title
- * @property string $small_title
+ * @property string $content
+ * @property int $order
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @method static Builder|Banner whereId($value)
+ * @method static Builder|Banner whereTitle($value)
  * @method static Builder|Banner whereLinkTo($value)
- * @method static Builder|Banner whereContent($value)
  * @method static Builder|Banner whereBigTitle($value)
- * @method static Builder|Banner whereSmallTitle($value)
+ * @method static Builder|Banner whereContent($value)
+ * @method static Builder|Banner whereOrder($value)
+ * @method static Builder|Banner whereActive($value)
  * @method static Builder|Banner whereCreatedAt($value)
  * @method static Builder|Banner whereUpdatedAt($value)
  * @method static Builder|Banner whereDeletedAt($value)
- * @property string $title
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Banner whereTitle($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Banner whereActive($value)
  */
 class Banner extends Model
 {
@@ -77,9 +77,10 @@ class Banner extends Model
     protected $casts = [
         'id'          => 'int',
         'link_to'     => 'string',
-        'content'     => 'string',
         'big_title'   => 'string',
-        'small_title' => 'string'
+        'small_title' => 'string',
+        'content'     => 'string',
+        'order'       => 'int'
     ];
 
     /**

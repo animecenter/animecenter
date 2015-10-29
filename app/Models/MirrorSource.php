@@ -11,17 +11,17 @@ use Illuminate\Database\Query\Builder;
  *
  * @property integer $id
  * @property string $name
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|Mirror[] $mirrors
  * @method static Builder|MirrorSource whereId($value)
  * @method static Builder|MirrorSource whereName($value)
+ * @method static Builder|MirrorSource whereActive($value)
  * @method static Builder|MirrorSource whereCreatedAt($value)
  * @method static Builder|MirrorSource whereUpdatedAt($value)
  * @method static Builder|MirrorSource whereDeletedAt($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|Mirror[] $mirrors
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\MirrorSource whereActive($value)
  */
 class MirrorSource extends Model
 {
@@ -68,8 +68,9 @@ class MirrorSource extends Model
      * @var string[]
      */
     protected $casts = [
-        'id'   => 'int',
-        'name' => 'string'
+        'id'     => 'int',
+        'name'   => 'string',
+        'active' => 'boolean'
     ];
 
     /**

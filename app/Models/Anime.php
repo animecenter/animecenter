@@ -17,23 +17,30 @@ use Illuminate\Database\Query\Builder;
  * @property string $synopsis
  * @property integer $type_id
  * @property integer $number_of_episodes
- * @property string $status
+ * @property integer $status_id
  * @property string $release_date
  * @property string $end_date
  * @property string $duration
- * @property integer $season_id
+ * @property integer $calendar_season_id
  * @property integer $classification_id
+ * @property float $rating
+ * @property \Illuminate\Database\Eloquent\Collection|View[] $views
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @property-read Classification $classification
+ * @property-read Episode $episode
+ * @property-read \Illuminate\Database\Eloquent\Collection|Episode[] $episodes
  * @property-read \Illuminate\Database\Eloquent\Collection|Genre[] $genres
  * @property-read \Illuminate\Database\Eloquent\Collection|Producer[] $producers
+ * @property-read \Illuminate\Database\Eloquent\Collection|Relation[] $relations
  * @property-read CalendarSeason $calendarSeason
  * @property-read \Illuminate\Database\Eloquent\Collection|Title[] $titles
  * @property-read Type $type
- * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
  * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
+ * @property-read mixed $photo
+ * @property-read mixed $short_title
  * @method static Builder|Anime whereId($value)
  * @method static Builder|Anime whereMalId($value)
  * @method static Builder|Anime whereTitle($value)
@@ -42,28 +49,18 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Anime whereSynopsis($value)
  * @method static Builder|Anime whereTypeId($value)
  * @method static Builder|Anime whereNumberOfEpisodes($value)
- * @method static Builder|Anime whereStatus($value)
+ * @method static Builder|Anime whereStatusId($value)
  * @method static Builder|Anime whereReleaseDate($value)
  * @method static Builder|Anime whereEndDate($value)
  * @method static Builder|Anime whereDuration($value)
  * @method static Builder|Anime whereCalendarSeasonId($value)
  * @method static Builder|Anime whereClassificationId($value)
+ * @method static Builder|Anime whereRating($value)
+ * @method static Builder|Anime whereViews($value)
+ * @method static Builder|Anime whereActive($value)
  * @method static Builder|Anime whereCreatedAt($value)
  * @method static Builder|Anime whereUpdatedAt($value)
  * @method static Builder|Anime whereDeletedAt($value)
- * @property-read Episode $episode
- * @property-read \Illuminate\Database\Eloquent\Collection|Episode[] $episodes
- * @property-read \Illuminate\Database\Eloquent\Collection|Relation[] $relations
- * @property integer $status_id
- * @property integer $calendar_season_id
- * @property float $rating
- * @property boolean $active
- * @property-read mixed $photo
- * @property-read mixed $short_title
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Anime whereStatusId($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Anime whereRating($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Anime whereViews($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Anime whereActive($value)
  */
 class Anime extends Model
 {
@@ -118,12 +115,13 @@ class Anime extends Model
         'synopsis'           => 'string',
         'type_id'            => 'int',
         'episodes'           => 'int',
-        'status'             => 'string',
+        'status_id'          => 'int',
         'release_date'       => 'string',
         'end_date'           => 'string',
         'duration'           => 'string',
         'calendar_season_id' => 'int',
-        'classification_id'  => 'int'
+        'classification_id'  => 'int',
+        'active'             => 'boolean'
     ];
 
     /**

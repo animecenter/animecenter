@@ -12,7 +12,7 @@ use Illuminate\Database\Query\Builder;
  * @property integer $id
  * @property integer $anime_id
  * @property float $number
- * @property string $name
+ * @property string $title
  * @property string $synopsis
  * @property boolean $active
  * @property \Carbon\Carbon $aired_at
@@ -25,21 +25,20 @@ use Illuminate\Database\Query\Builder;
  * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
  * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
  * @property-read mixed $slug
+ * @property-read mixed $photo
+ * @property-read mixed $short_title
+ * @property-read mixed $upcoming_photo
+ * @property-read mixed $upcoming_title
  * @method static Builder|Episode whereId($value)
  * @method static Builder|Episode whereAnimeId($value)
  * @method static Builder|Episode whereNumber($value)
- * @method static Builder|Episode whereName($value)
+ * @method static Builder|Episode whereTitle($value)
  * @method static Builder|Episode whereSynopsis($value)
  * @method static Builder|Episode whereActive($value)
  * @method static Builder|Episode whereAiredAt($value)
  * @method static Builder|Episode whereCreatedAt($value)
  * @method static Builder|Episode whereUpdatedAt($value)
  * @method static Builder|Episode whereDeletedAt($value)
- * @property-read mixed $photo
- * @property-read mixed $short_title
- * @property-read mixed $upcoming_photo
- * @property-read mixed $upcoming_title
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Episode whereSlug($value)
  */
 class Episode extends Model
 {

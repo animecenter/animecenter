@@ -11,17 +11,17 @@ use Illuminate\Database\Query\Builder;
  *
  * @property integer $id
  * @property string $name
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  * @method static Builder|Classification whereId($value)
  * @method static Builder|Classification whereName($value)
+ * @method static Builder|Classification whereActive($value)
  * @method static Builder|Classification whereCreatedAt($value)
  * @method static Builder|Classification whereUpdatedAt($value)
  * @method static Builder|Classification whereDeletedAt($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
- * @property boolean $active
- * @method static Builder|Classification whereActive($value)
  */
 class Classification extends Model
 {
@@ -68,8 +68,9 @@ class Classification extends Model
      * @var string[]
      */
     protected $casts = [
-        'id'   => 'int',
-        'name' => 'string',
+        'id'     => 'int',
+        'name'   => 'string',
+        'active' => 'boolean'
     ];
 
     /**

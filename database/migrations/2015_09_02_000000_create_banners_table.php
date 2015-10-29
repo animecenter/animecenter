@@ -13,6 +13,7 @@ class CreateBannersTable extends Migration
             $table->string('link_to', 191)->unique();
             $table->string('big_title', 255)->nullable();
             $table->text('content')->nullable();
+            $table->integer('order')->unsigned();
             $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();

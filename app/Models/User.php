@@ -20,24 +20,24 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @property string $email
  * @property string $password
  * @property string $remember_token
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
- * @method static Builder|User whereId($value)
- * @method static Builder|User whereUsername($value)
- * @method static Builder|User whereEmail($value)
- * @method static Builder|User wherePassword($value)
- * @method static Builder|User whereRememberToken($value)
- * @method static Builder|User whereCreatedAt($value)
- * @method static Builder|User whereUpdatedAt($value)
- * @method static Builder|User whereDeletedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|Image[] $images
  * @property-read \Illuminate\Database\Eloquent\Collection|Mirror[] $mirrors
  * @property-read \Illuminate\Database\Eloquent\Collection|MirrorReport[] $mirrorReports
  * @property-read \Illuminate\Database\Eloquent\Collection|Role[] $roles
  * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\User whereActive($value)
+ * @method static Builder|User whereId($value)
+ * @method static Builder|User whereUsername($value)
+ * @method static Builder|User whereEmail($value)
+ * @method static Builder|User wherePassword($value)
+ * @method static Builder|User whereRememberToken($value)
+ * @method static Builder|User whereActive($value)
+ * @method static Builder|User whereCreatedAt($value)
+ * @method static Builder|User whereUpdatedAt($value)
+ * @method static Builder|User whereDeletedAt($value)
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
@@ -88,7 +88,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'username'       => 'string',
         'email'          => 'string',
         'password'       => 'string',
-        'remember_token' => 'string'
+        'remember_token' => 'string',
+        'active'         => 'boolean'
     ];
 
     /**
