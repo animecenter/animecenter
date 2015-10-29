@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Genre
+ * AC\Models\Genre.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $model
  * @property string $description
@@ -17,6 +17,7 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
+ *
  * @method static Builder|Genre whereId($value)
  * @method static Builder|Genre whereName($value)
  * @method static Builder|Genre whereModel($value)
@@ -24,7 +25,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Genre whereCreatedAt($value)
  * @method static Builder|Genre whereUpdatedAt($value)
  * @method static Builder|Genre whereDeletedAt($value)
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Genre whereActive($value)
  */
 class Genre extends Model
@@ -74,7 +77,7 @@ class Genre extends Model
     protected $casts = [
         'id'          => 'int',
         'name'        => 'string',
-        'description' => 'string'
+        'description' => 'string',
     ];
 
     /**
@@ -83,7 +86,7 @@ class Genre extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

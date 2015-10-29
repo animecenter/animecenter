@@ -40,11 +40,12 @@ class PermissionController extends DashboardController
      * Create a new resource.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postCreate(Request $request)
     {
-        $permission = new $this->permission;
+        $permission = new $this->permission();
         $permission->name = $request['name'];
         $permission->display_name = $request['display_name'];
         $permission->description = $request['description'];
@@ -59,6 +60,7 @@ class PermissionController extends DashboardController
      * Show the form for editing a resource.
      *
      * @param int $id
+     *
      * @return \Illuminate\View\View
      */
     public function getEdit($id = 0)
@@ -72,8 +74,9 @@ class PermissionController extends DashboardController
     /**
      * Edit a resource.
      *
-     * @param int $id
+     * @param int     $id
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postEdit($id = 0, Request $request)
@@ -103,6 +106,7 @@ class PermissionController extends DashboardController
      * Trash resource by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postTrash($id = 0)
@@ -117,6 +121,7 @@ class PermissionController extends DashboardController
      * Delete resource by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postDelete($id = 0)
@@ -131,6 +136,7 @@ class PermissionController extends DashboardController
      * Recover resource from trash by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postRecover($id = 0)
@@ -142,7 +148,7 @@ class PermissionController extends DashboardController
     }
 
     /**
-     * Get resource listing
+     * Get resource listing.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -160,7 +166,7 @@ class PermissionController extends DashboardController
     }
 
     /**
-     * Get trash resource listing
+     * Get trash resource listing.
      *
      * @return \Illuminate\Http\JsonResponse
      */

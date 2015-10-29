@@ -32,6 +32,7 @@ class UpdateDatabase extends Command
 
     /**
      * Create a new command instance.
+     *
      * @param DatabaseManager $db
      */
     public function __construct(DatabaseManager $db)
@@ -79,7 +80,7 @@ class UpdateDatabase extends Command
                             $iframes = $dom->getElementsByTagName('embed');
                             $this->insertMirror($iframes, $timestamp, $episodeID, $translation, $quality);
                         } else {
-                            Log::info("HTML that doesn't contain iframe or embed: " . $mirror);
+                            Log::info("HTML that doesn't contain iframe or embed: ".$mirror);
                         }
 
                         libxml_clear_errors();
@@ -91,9 +92,10 @@ class UpdateDatabase extends Command
     }
 
     /**
-     * Get all mirrors from episode
+     * Get all mirrors from episode.
      *
      * @param $episode
+     *
      * @return array
      */
     protected function getMirrors($episode)
@@ -110,7 +112,7 @@ class UpdateDatabase extends Command
     }
 
     /**
-     * Get mirror for episode
+     * Get mirror for episode.
      *
      * @param $mirror
      * @param $mirrors
@@ -120,13 +122,14 @@ class UpdateDatabase extends Command
     {
         ($mirror) ? ((strpos(strtolower($mirror), 'iframe') !== false || strpos(strtolower($mirror), 'embed') !== false)
             ? (($hd) ? $mirrors['hd'] = $mirror : $mirrors[] = $mirror) :
-            Log::info("HTML that doesn't contain iframe or embed: " . $mirror)) : null;
+            Log::info("HTML that doesn't contain iframe or embed: ".$mirror)) : null;
     }
 
     /**
-     * Get translation for current anime
+     * Get translation for current anime.
      *
      * @param $currentAnime
+     *
      * @return string
      */
     protected function getTranslation($currentAnime)
@@ -135,10 +138,11 @@ class UpdateDatabase extends Command
     }
 
     /**
-     * Check if mirror source exists if not create it
+     * Check if mirror source exists if not create it.
      *
      * @param $mirrorSourceName
      * @param $timestamp
+     *
      * @return int
      */
     protected function getMirrorSourceID($mirrorSourceName, $timestamp)
@@ -148,9 +152,9 @@ class UpdateDatabase extends Command
         if (!$exists) {
             $mirrorSourceID = $this->db->connection('mysql1')->table('mirror_sources')
                 ->insertGetId([
-                    'name' => $mirrorSourceName,
+                    'name'       => $mirrorSourceName,
                     'created_at' => $timestamp,
-                    'updated_at' => $timestamp
+                    'updated_at' => $timestamp,
                 ]);
         } else {
             $mirrorSourceID = $exists->id;
@@ -160,7 +164,7 @@ class UpdateDatabase extends Command
     }
 
     /**
-     * Check if anime has this episode if it doesnt have this episode then insert it and get episode id
+     * Check if anime has this episode if it doesnt have this episode then insert it and get episode id.
      *
      * @param $anime
      * @param $episode
@@ -174,11 +178,11 @@ class UpdateDatabase extends Command
             ->where('number', '=', $episode->order)->first(['id']);
         if (!$exists) {
             $episodeID = $this->db->connection('mysql1')->table('episodes')->insertGetId([
-                'anime_id' => $anime->id,
-                'number' => $episode->order,
-                'status' => 1,
+                'anime_id'   => $anime->id,
+                'number'     => $episode->order,
+                'status'     => 1,
                 'created_at' => $timestamp,
-                'updated_at' => $timestamp
+                'updated_at' => $timestamp,
             ]);
         } else {
             $episodeID = $exists->id;
@@ -188,9 +192,10 @@ class UpdateDatabase extends Command
     }
 
     /**
-     * Get all episodes from current anime
+     * Get all episodes from current anime.
      *
      * @param $currentAnime
+     *
      * @return array|static[]
      */
     protected function getEpisodes($currentAnime)
@@ -211,14 +216,14 @@ class UpdateDatabase extends Command
                 'votes',
                 'visits',
                 'order',
-                'coming_date'
+                'coming_date',
             ]);
 
         return $episodes;
     }
 
     /**
-     * Get all the animes from MAL with alt titles if they have them
+     * Get all the animes from MAL with alt titles if they have them.
      *
      * @return mixed
      */
@@ -246,9 +251,10 @@ class UpdateDatabase extends Command
     }
 
     /**
-     * Check if an anime record exists with the same title on the MAL database
+     * Check if an anime record exists with the same title on the MAL database.
      *
      * @param $anime
+     *
      * @return mixed|static
      */
     protected function getAnime($anime)
@@ -271,6 +277,7 @@ class UpdateDatabase extends Command
 
     /**
      * @param $src
+     *
      * @return string
      */
     protected function getMirrorSourceName($src)
@@ -304,16 +311,16 @@ class UpdateDatabase extends Command
 
                 // Insert mirror for current episode
                 $this->db->connection('mysql1')->table('mirrors')->insert([
-                    'user_id' => 1,
-                    'episode_id' => $episodeID,
+                    'user_id'          => 1,
+                    'episode_id'       => $episodeID,
                     'mirror_source_id' => $mirrorSourceID,
-                    'language_id' => 1,
-                    'url' => $src,
-                    'translation' => $translation,
-                    'quality' => ($quality == 'hd') ? 'HD' : 'SD',
-                    'active' => 1,
-                    'created_at' => $timestamp,
-                    'updated_at' => $timestamp
+                    'language_id'      => 1,
+                    'url'              => $src,
+                    'translation'      => $translation,
+                    'quality'          => ($quality == 'hd') ? 'HD' : 'SD',
+                    'active'           => 1,
+                    'created_at'       => $timestamp,
+                    'updated_at'       => $timestamp,
                 ]);
             }
         }

@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Banner
+ * AC\Models\Banner.
  *
- * @property integer $id
+ * @property int $id
  * @property string $link_to
  * @property string $content
  * @property string $big_title
@@ -17,6 +17,7 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|Banner whereId($value)
  * @method static Builder|Banner whereLinkTo($value)
  * @method static Builder|Banner whereContent($value)
@@ -25,8 +26,10 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Banner whereCreatedAt($value)
  * @method static Builder|Banner whereUpdatedAt($value)
  * @method static Builder|Banner whereDeletedAt($value)
+ *
  * @property string $title
- * @property boolean $active
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Banner whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Banner whereActive($value)
  */
@@ -79,7 +82,7 @@ class Banner extends Model
         'link_to'     => 'string',
         'content'     => 'string',
         'big_title'   => 'string',
-        'small_title' => 'string'
+        'small_title' => 'string',
     ];
 
     /**
@@ -88,6 +91,6 @@ class Banner extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 }

@@ -7,20 +7,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Producers\Producer
+ * AC\Producers\Producer.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|Producer whereId($value)
  * @method static Builder|Producer whereName($value)
  * @method static Builder|Producer whereCreatedAt($value)
  * @method static Builder|Producer whereUpdatedAt($value)
  * @method static Builder|Producer whereDeletedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Producer whereActive($value)
  */
 class Producer extends Model
@@ -69,7 +72,7 @@ class Producer extends Model
      */
     protected $casts = [
         'id'   => 'int',
-        'name' => 'string'
+        'name' => 'string',
     ];
 
     /**
@@ -78,7 +81,7 @@ class Producer extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**
