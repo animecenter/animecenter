@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateTypesTable extends Migration
 {
-
     public function up()
     {
         Schema::create('types', function (Blueprint $table) {

@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateEpisodesTable extends Migration
 {
-
     public function up()
     {
         Schema::create('episodes', function (Blueprint $table) {

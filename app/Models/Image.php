@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Image
+ * AC\Models\Image.
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $imageable_id
+ * @property int $id
+ * @property int $user_id
+ * @property int $imageable_id
  * @property string $imageable_type
  * @property string $path
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|Image whereId($value)
  * @method static Builder|Image whereUserId($value)
  * @method static Builder|Image whereImageableId($value)
@@ -25,7 +26,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Image whereCreatedAt($value)
  * @method static Builder|Image whereUpdatedAt($value)
  * @method static Builder|Image whereDeletedAt($value)
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Image whereActive($value)
  */
 class Image extends Model
@@ -77,7 +80,7 @@ class Image extends Model
         'user_id'        => 'int',
         'imageable_id'   => 'int',
         'imageable_type' => 'string',
-        'path'           => 'string'
+        'path'           => 'string',
     ];
 
     /**
@@ -86,6 +89,6 @@ class Image extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 }

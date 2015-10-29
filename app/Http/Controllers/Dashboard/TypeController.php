@@ -40,11 +40,12 @@ class TypeController extends DashboardController
      * Create a new resource.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postCreate(Request $request)
     {
-        $type = new $this->type;
+        $type = new $this->type();
         $type->name = $request['name'];
         $type->model = $request['model'];
         $type->active = $request['active'] === '1' ? 1 : 0;
@@ -58,6 +59,7 @@ class TypeController extends DashboardController
      * Show the form for editing a resource.
      *
      * @param int $id
+     *
      * @return \Illuminate\View\View
      */
     public function getEdit($id = 0)
@@ -71,8 +73,9 @@ class TypeController extends DashboardController
     /**
      * Edit a resource.
      *
-     * @param int $id
+     * @param int     $id
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postEdit($id = 0, Request $request)
@@ -101,6 +104,7 @@ class TypeController extends DashboardController
      * Trash resource by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postTrash($id = 0)
@@ -115,6 +119,7 @@ class TypeController extends DashboardController
      * Delete resource by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postDelete($id = 0)
@@ -129,6 +134,7 @@ class TypeController extends DashboardController
      * Recover resource from trash by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postRecover($id = 0)
@@ -140,7 +146,7 @@ class TypeController extends DashboardController
     }
 
     /**
-     * Get resource listing
+     * Get resource listing.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -158,7 +164,7 @@ class TypeController extends DashboardController
     }
 
     /**
-     * Get trash resource listing
+     * Get trash resource listing.
      *
      * @return \Illuminate\Http\JsonResponse
      */

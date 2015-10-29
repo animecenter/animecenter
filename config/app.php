@@ -154,7 +154,7 @@ return [
         Chumper\Datatable\DatatableServiceProvider::class,
         Khill\Fontawesome\FontAwesomeServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Orangehill\Iseed\IseedServiceProvider::class
+        Orangehill\Iseed\IseedServiceProvider::class,
 
     ],
 

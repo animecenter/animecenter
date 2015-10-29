@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\View
+ * AC\Models\View.
  *
- * @property integer $id
+ * @property int $id
  * @property string $date
- * @property integer $viewable_id
+ * @property int $viewable_id
  * @property string $viewable_type
- * @property integer $count
+ * @property int $count
+ *
  * @method static Builder|View whereId($value)
  * @method static Builder|View whereDate($value)
  * @method static Builder|View whereViewableId($value)
@@ -67,7 +68,7 @@ class View extends Model
         'date'          => 'date',
         'viewable_id'   => 'int',
         'viewable_type' => 'string',
-        'count'         => 'int'
+        'count'         => 'int',
     ];
 
     /**
@@ -76,7 +77,7 @@ class View extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

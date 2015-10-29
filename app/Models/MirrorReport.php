@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\MirrorReport
+ * AC\Models\MirrorReport.
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $mirror_id
- * @property boolean $verified
- * @property boolean $broken
+ * @property int $id
+ * @property int $user_id
+ * @property int $mirror_id
+ * @property bool $verified
+ * @property bool $broken
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|MirrorReport whereId($value)
  * @method static Builder|MirrorReport whereUserId($value)
  * @method static Builder|MirrorReport whereMirrorId($value)
@@ -27,7 +28,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|MirrorReport whereDeletedAt($value)
  * @property-read Mirror $mirror
  * @property-read User $user
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\MirrorReport whereActive($value)
  */
 class MirrorReport extends Model
@@ -79,7 +82,7 @@ class MirrorReport extends Model
         'user_id'   => 'int',
         'mirror_id' => 'int',
         'verified'  => 'boolean',
-        'broken'    => 'boolean'
+        'broken'    => 'boolean',
     ];
 
     /**
@@ -88,7 +91,7 @@ class MirrorReport extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

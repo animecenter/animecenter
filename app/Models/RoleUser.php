@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\RoleUser
+ * AC\Models\RoleUser.
  *
- * @property integer $user_id
- * @property integer $role_id
+ * @property int $user_id
+ * @property int $role_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|RoleUser whereUserId($value)
  * @method static Builder|RoleUser whereRoleId($value)
  * @method static Builder|RoleUser whereCreatedAt($value)
@@ -63,7 +64,7 @@ class RoleUser extends Model
      */
     protected $casts = [
         'user_id' => 'int',
-        'role_id' => 'int'
+        'role_id' => 'int',
     ];
 
     /**
@@ -72,6 +73,6 @@ class RoleUser extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 }

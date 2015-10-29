@@ -30,6 +30,7 @@ class EloquentAnimeRepository
      * Get anime by slug.
      *
      * @param string $slug
+     *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getBySlug($slug = '')
@@ -47,13 +48,14 @@ class EloquentAnimeRepository
                 $query->select(['id', 'name']);
             }, 'type' => function ($query) {
                 $query->select(['id', 'name']);
-            }
+            },
         ])->where('slug', '=', $slug)->firstOrFail();
     }
 
     /**
      * @param $parameters
      * @param Request $request
+     *
      * @return mixed
      */
     public function searchBy($parameters, Request $request)
@@ -102,6 +104,7 @@ class EloquentAnimeRepository
      *
      * @param $anime
      * @param string $letter
+     *
      * @return mixed
      */
     public function getByLetter($anime, $letter = '')
@@ -111,7 +114,7 @@ class EloquentAnimeRepository
         } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
             return $anime->where('title', 'like', $letter.'%');
         } else {
-            abort(404, $letter . ' was not found');
+            abort(404, $letter.' was not found');
         }
     }
 
@@ -120,6 +123,7 @@ class EloquentAnimeRepository
      *
      * @param $anime
      * @param string $language
+     *
      * @return mixed
      */
     public function getByLanguage($anime, $language = '')
@@ -133,7 +137,7 @@ class EloquentAnimeRepository
                 $query->where('mirrors.translation', '=', 'dubbed');
             });
         } else {
-            abort(404, $language . ' was not found');
+            abort(404, $language.' was not found');
         }
     }
 
@@ -142,6 +146,7 @@ class EloquentAnimeRepository
      *
      * @param $anime
      * @param int $id
+     *
      * @return mixed
      */
     public function getByType($anime, $id = 0)
@@ -156,6 +161,7 @@ class EloquentAnimeRepository
      *
      * @param $anime
      * @param int $id
+     *
      * @return mixed
      */
     public function getByCalendarSeason($anime, $id = 0)
@@ -170,6 +176,7 @@ class EloquentAnimeRepository
      *
      * @param $anime
      * @param int $id
+     *
      * @return mixed
      */
     public function getByYear($anime, $id = 0)
@@ -184,6 +191,7 @@ class EloquentAnimeRepository
      *
      * @param $anime
      * @param array $genres
+     *
      * @return mixed
      */
     public function getByGenres($anime, $genres = [])
@@ -198,6 +206,7 @@ class EloquentAnimeRepository
      *
      * @param $anime
      * @param int $id
+     *
      * @return mixed
      */
     public function getByProducer($anime, $id = 0)
@@ -212,6 +221,7 @@ class EloquentAnimeRepository
      *
      * @param $anime
      * @param int $id
+     *
      * @return mixed
      */
     public function getByClassification($anime, $id = 0)
@@ -226,6 +236,7 @@ class EloquentAnimeRepository
      *
      * @param $anime
      * @param string $sortBy
+     *
      * @return mixed
      */
     public function sortBy($anime, $sortBy = '')
@@ -235,14 +246,15 @@ class EloquentAnimeRepository
         } elseif ($sortBy === 'latest') {
             return $anime->where('release_date', '<', Carbon::now()->toDateTimeString());
         } else {
-            abort(404, $sortBy . " is not a valid value");
+            abort(404, $sortBy.' is not a valid value');
         }
     }
 
     /**
      * @param string $animeSlug
-     * @param int $episodeNumber
+     * @param int    $episodeNumber
      * @param string $translation
+     *
      * @return \Illuminate\Database\Eloquent\Model|static
      */
     public function getMirrors($animeSlug = '', $episodeNumber = 0, $translation = '')
@@ -250,14 +262,14 @@ class EloquentAnimeRepository
         $translations = ['all', 'subbed', 'dubbed'];
         if (!in_array($translation, $translations)) {
             // TODO: log current user trying to access unavailable translation...
-            abort(404, "Unavailable translation");
+            abort(404, 'Unavailable translation');
         }
         if ($translation === 'all') {
             return $this->anime->with([
                 'episode' => function ($query) use ($episodeNumber) {
                     $query->where('number', '=', $episodeNumber)->firstOrFail();
                 },
-                'episode.mirrors.mirrorSource'
+                'episode.mirrors.mirrorSource',
             ])->where('slug', '=', $animeSlug)->firstOrFail();
         } elseif ($translation === 'subbed') {
             return $this->anime->with([
@@ -266,7 +278,7 @@ class EloquentAnimeRepository
                 },
                 'episode.mirrors' => function ($query) {
                     $query->with('mirrorSource')->where('mirrors.translation', '=', 'subbed');
-                }
+                },
             ])->where('slug', '=', $animeSlug)->firstOrFail();
         } else {
             return $this->anime->with([
@@ -275,7 +287,7 @@ class EloquentAnimeRepository
                 },
                 'episode.mirrors' => function ($query) {
                     $query->with('mirrorSource')->where('mirrors.translation', '=', 'dubbed');
-                }
+                },
             ])->where('slug', '=', $animeSlug)->firstOrFail();
         }
     }
@@ -284,9 +296,10 @@ class EloquentAnimeRepository
      * Get current anime episode mirror by id.
      *
      * @param string $animeSlug
-     * @param int $episodeNumber
+     * @param int    $episodeNumber
      * @param string $translation
      * @param string $mirrorID
+     *
      * @return \Illuminate\Database\Eloquent\Model|static
      */
     public function getMirror($animeSlug = '', $episodeNumber = 0, $translation = '', $mirrorID = '')
@@ -316,12 +329,14 @@ class EloquentAnimeRepository
             $calendarSeason = 'Winter';
         }
 
-        $seasonName = $calendarSeason . ' '  . $year;
+        $seasonName = $calendarSeason.' '.$year;
+
         return $this->getByCalendarSeasonName($seasonName);
     }
 
     /**
      * @param string $seasonName
+     *
      * @return mixed
      */
     public function getByCalendarSeasonName($seasonName = '')
@@ -334,6 +349,7 @@ class EloquentAnimeRepository
 
     /**
      * @param $query
+     *
      * @return mixed
      */
     public function search($query)
@@ -361,7 +377,7 @@ class EloquentAnimeRepository
                 $query->select(['id', 'name']);
             }, 'type' => function ($query) {
                 $query->select(['id', 'name']);
-            }
+            },
         ])->whereRaw('RAND()')->firstOrFail();
     }
 }

@@ -30,6 +30,7 @@ class MirrorReportController extends DashboardController
      * Show the form for editing a resource.
      *
      * @param int $id
+     *
      * @return \Illuminate\View\View
      */
     public function getEdit($id = 0)
@@ -39,16 +40,17 @@ class MirrorReportController extends DashboardController
                 ->join('mirrors', 'mirror_reports.mirror_id', '=', 'mirrors.id')->where('mirror_reports.id', '=', $id)
                 ->first([
                     'mirror_reports.id', 'users.username', 'mirrors.url', 'mirror_reports.verified',
-                    'mirror_reports.broken', 'mirror_reports.active'
-                ])
+                    'mirror_reports.broken', 'mirror_reports.active',
+                ]),
         ]);
     }
 
     /**
      * Edit a resource.
      *
-     * @param int $id
+     * @param int     $id
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postEdit($id = 0, Request $request)
@@ -77,6 +79,7 @@ class MirrorReportController extends DashboardController
      * Trash resource by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postTrash($id = 0)
@@ -91,6 +94,7 @@ class MirrorReportController extends DashboardController
      * Delete resource by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postDelete($id = 0)
@@ -105,6 +109,7 @@ class MirrorReportController extends DashboardController
      * Recover resource from trash by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postRecover($id = 0)
@@ -116,7 +121,7 @@ class MirrorReportController extends DashboardController
     }
 
     /**
-     * Get resource listing
+     * Get resource listing.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -129,7 +134,7 @@ class MirrorReportController extends DashboardController
                 ->where('mirror_reports.deleted_at', '=', null)
                 ->get([
                     'mirror_reports.id', 'users.username', 'mirrors.url', 'mirror_reports.verified',
-                    'mirror_reports.broken', 'mirror_reports.active'
+                    'mirror_reports.broken', 'mirror_reports.active',
                 ])
         );
         $showColumns = ['username', 'url', 'verified', 'broken', 'active', 'actions'];
@@ -140,7 +145,7 @@ class MirrorReportController extends DashboardController
     }
 
     /**
-     * Get trash resource listing
+     * Get trash resource listing.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -153,7 +158,7 @@ class MirrorReportController extends DashboardController
                 ->where('mirror_reports.deleted_at', '<>', '')
                 ->get([
                     'mirror_reports.id', 'users.username', 'mirrors.url', 'mirror_reports.verified',
-                    'mirror_reports.broken', 'mirror_reports.active'
+                    'mirror_reports.broken', 'mirror_reports.active',
                 ])
         );
         $showColumns = ['username', 'url', 'verified', 'broken', 'active', 'actions'];
