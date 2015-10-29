@@ -146,7 +146,9 @@ return [
         AC\Providers\EventServiceProvider::class,
         AC\Providers\RouteServiceProvider::class,
 
-        // Packages Service Providers...
+        /*
+         * Packages Service Providers...
+         */
         Roumen\Sitemap\SitemapServiceProvider::class,
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
@@ -154,7 +156,7 @@ return [
         Chumper\Datatable\DatatableServiceProvider::class,
         Khill\Fontawesome\FontAwesomeServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Orangehill\Iseed\IseedServiceProvider::class
+        Orangehill\Iseed\IseedServiceProvider::class,
 
     ],
 

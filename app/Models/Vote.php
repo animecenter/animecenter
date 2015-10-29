@@ -6,16 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Vote
+ * AC\Models\Vote.
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $voteable_id
+ * @property int $id
+ * @property int $user_id
+ * @property int $voteable_id
  * @property string $voteable_type
  * @property float $rating
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|Vote whereId($value)
  * @method static Builder|Vote whereUserId($value)
  * @method static Builder|Vote whereVoteableId($value)
@@ -74,7 +75,7 @@ class Vote extends Model
         'user_id'       => 'int',
         'voteable_id'   => 'int',
         'voteable_type' => 'string',
-        'rating'        => 'double'
+        'rating'        => 'double',
     ];
 
     /**
@@ -83,7 +84,7 @@ class Vote extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\CalendarSeason
+ * AC\Models\CalendarSeason.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
- * @property boolean $active
+ * @property bool $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|CalendarSeason whereId($value)
  * @method static Builder|CalendarSeason whereName($value)
  * @method static Builder|CalendarSeason whereActive($value)
@@ -70,7 +71,7 @@ class CalendarSeason extends Model
     protected $casts = [
         'id'     => 'int',
         'name'   => 'string',
-        'active' => 'boolean'
+        'active' => 'boolean',
     ];
 
     /**
@@ -79,7 +80,7 @@ class CalendarSeason extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

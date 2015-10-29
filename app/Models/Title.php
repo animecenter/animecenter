@@ -7,18 +7,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Title
+ * AC\Models\Title.
  *
- * @property integer $id
+ * @property int $id
  * @property string $title
  * @property string $language
- * @property integer $titleable_id
+ * @property int $titleable_id
  * @property string $titleable_type
  * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @property-read \ $titles
+ *
  * @method static Builder|Title whereId($value)
  * @method static Builder|Title whereTitle($value)
  * @method static Builder|Title whereLanguage($value)
@@ -74,12 +75,12 @@ class Title extends Model
      * @var string[]
      */
     protected $casts = [
-        'id'            => 'int',
-        'title'         => 'string',
-        'language'      => 'string',
+        'id'             => 'int',
+        'title'          => 'string',
+        'language'       => 'string',
         'titleable_id'   => 'int',
         'titleable_type' => 'string',
-        'active'         => 'boolean'
+        'active'         => 'boolean',
     ];
 
     /**
@@ -88,7 +89,7 @@ class Title extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

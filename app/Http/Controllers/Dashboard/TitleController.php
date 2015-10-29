@@ -43,14 +43,15 @@ class TitleController extends DashboardController
      * Create a new resource.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postCreate(Request $request)
     {
-        $title = new $this->title;
+        $title = new $this->title();
         $title->title = $request['title'];
         $title->language = $request['language'];
-        $title->titleable_id = $request[mb_strtolower($request['titleable_type']) . '_id'];
+        $title->titleable_id = $request[mb_strtolower($request['titleable_type']).'_id'];
         $title->titleable_type = $request['titleable_type'];
         $title->active = $request['active'] === '1' ? 1 : 0;
         $title->save();
@@ -63,6 +64,7 @@ class TitleController extends DashboardController
      * Show the form for editing a resource.
      *
      * @param int $id
+     *
      * @return \Illuminate\View\View
      */
     public function getEdit($id = 0)
@@ -70,8 +72,8 @@ class TitleController extends DashboardController
         return view(
             'dashboard.titles.edit',
             [
-                'title' => DB::table('titles')->where('id', '=', $id)->first(),
-                'animes' => DB::table('animes')->orderBy('title')->get(['id', 'title'])
+                'title'  => DB::table('titles')->where('id', '=', $id)->first(),
+                'animes' => DB::table('animes')->orderBy('title')->get(['id', 'title']),
             ]
         );
     }
@@ -79,8 +81,9 @@ class TitleController extends DashboardController
     /**
      * Edit a resource.
      *
-     * @param int $id
+     * @param int     $id
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postEdit($id = 0, Request $request)
@@ -88,7 +91,7 @@ class TitleController extends DashboardController
         $title = $this->title->findOrFail($id);
         $title->title = $request['title'];
         $title->language = $request['language'];
-        $title->titleable_id = $request[mb_strtolower($request['titleable_type']) . '_id'];
+        $title->titleable_id = $request[mb_strtolower($request['titleable_type']).'_id'];
         $title->titleable_type = $request['titleable_type'];
         $title->active = $request['active'] === '1' ? 1 : 0;
         $title->save();
@@ -111,6 +114,7 @@ class TitleController extends DashboardController
      * Trash resource by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postTrash($id = 0)
@@ -125,6 +129,7 @@ class TitleController extends DashboardController
      * Delete resource by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postDelete($id = 0)
@@ -139,6 +144,7 @@ class TitleController extends DashboardController
      * Recover resource from trash by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postRecover($id = 0)
@@ -150,7 +156,7 @@ class TitleController extends DashboardController
     }
 
     /**
-     * Get resource listing
+     * Get resource listing.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -158,7 +164,7 @@ class TitleController extends DashboardController
     {
         $url = 'titles';
         $list = collect(
-            DB::table('titles')->leftJoin('animes', function($join) {
+            DB::table('titles')->leftJoin('animes', function ($join) {
                 $join->on('titles.titleable_id', '=', 'animes.id')->where('titles.titleable_type', '=', 'Anime');
             })
                 //->leftJoin('mangas', function($join) {
@@ -178,7 +184,7 @@ class TitleController extends DashboardController
     }
 
     /**
-     * Get trash resource listing
+     * Get trash resource listing.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -186,7 +192,7 @@ class TitleController extends DashboardController
     {
         $url = 'titles';
         $list = collect(
-            DB::table('titles')->leftJoin('animes', function($join) {
+            DB::table('titles')->leftJoin('animes', function ($join) {
                 $join->on('titles.titleable_id', '=', 'animes.id')->where('titles.titleable_type', '=', 'Anime');
             })
                 //->leftJoin('mangas', function($join) {
