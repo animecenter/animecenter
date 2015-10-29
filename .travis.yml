@@ -9,12 +9,12 @@ sudo: false
 
 install:
   - travis_retry composer self-update
-  - travis_retry composer install --no-interaction --no-scripts --prefer-source
+  - travis_retry composer install --no-interaction --prefer-source
 
 before_script:
-  - mysql -e "CREATE DATABASE IF NOT EXISTS forge;" -uroot
-  - mysql -e "CREATE USER 'forge'@'localhost' IDENTIFIED BY '';" -uroot;
-  - mysql -e "GRANT ALL PRIVILEGES ON forge.* TO 'forge'@'localhost';" -uroot
+  - mysql -e "CREATE DATABASE IF NOT EXISTS homestead;" -uroot
+  - mysql -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';" -uroot;
+  - mysql -e "GRANT ALL PRIVILEGES ON homestead.* TO 'homestead'@'localhost';" -uroot
   - mysql -e "FLUSH PRIVILEGES;" -uroot
 
 script:
