@@ -33,7 +33,12 @@ class MirrorController extends DashboardController
      */
     public function getCreate()
     {
-        return view('dashboard.mirrors.create');
+        return view('dashboard.mirrors.create', [
+            'users' => DB::table('users')->orderBy('username')->get(['id', 'username']),
+            'episodes' => DB::table('episodes')->join('animes', 'episodes.anime_id', '=', 'animes.id')
+                ->orderBy('animeTitle')->get(['episodes.id', 'animes.title as animeTitle', 'episodes.number']),
+            'mirrorSources' => DB::table('mirror_sources')->orderBy('name')->get(['id', 'name'])
+        ]);
     }
 
     /**
@@ -45,7 +50,14 @@ class MirrorController extends DashboardController
     public function postCreate(Request $request)
     {
         $mirror = new $this->mirror;
-        $mirror->name = $request['name'];
+        $mirror->user_id = $request['user_id'];
+        $mirror->episode_id = $request['episode_id'];
+        $mirror->mirror_source_id = $request['mirror_source_id'];
+        $mirror->language_id = $request['language_id'];
+        $mirror->url = $request['url'];
+        $mirror->translation = $request['translation'];
+        $mirror->quality = $request['quality'];
+        $mirror->mobile_friendly = $request['mobile_friendly'] === '1' ? 1 : 0;
         $mirror->active = $request['active'] === '1' ? 1 : 0;
         $mirror->save();
         $msg = 'Mirror was created successfully!';
@@ -61,10 +73,13 @@ class MirrorController extends DashboardController
      */
     public function getEdit($id = 0)
     {
-        return view(
-            'dashboard.mirrors.edit',
-            ['mirror' => DB::table('mirrors')->where('id', '=', $id)->first()]
-        );
+        return view('dashboard.mirrors.edit', [
+            'mirror' => DB::table('mirrors')->where('id', '=', $id)->first(),
+            'users' => DB::table('users')->orderBy('username')->get(['id', 'username']),
+            'episodes' => DB::table('episodes')->join('animes', 'episodes.anime_id', '=', 'animes.id')
+                ->orderBy('animeTitle')->get(['episodes.id', 'animes.title as animeTitle', 'episodes.number']),
+            'mirrorSources' => DB::table('mirror_sources')->orderBy('name')->get(['id', 'name'])
+        ]);
     }
 
     /**
@@ -77,7 +92,14 @@ class MirrorController extends DashboardController
     public function postEdit($id = 0, Request $request)
     {
         $mirror = $this->mirror->findOrFail($id);
-        $mirror->name = $request['name'];
+        $mirror->user_id = $request['user_id'];
+        $mirror->episode_id = $request['episode_id'];
+        $mirror->mirror_source_id = $request['mirror_source_id'];
+        $mirror->language_id = $request['language_id'];
+        $mirror->url = $request['url'];
+        $mirror->translation = $request['translation'];
+        $mirror->quality = $request['quality'];
+        $mirror->mobile_friendly = $request['mobile_friendly'] === '1' ? 1 : 0;
         $mirror->active = $request['active'] === '1' ? 1 : 0;
         $mirror->save();
         $msg = 'Mirror was edited successfully!';
@@ -140,15 +162,16 @@ class MirrorController extends DashboardController
     public function getList()
     {
         $url = 'mirrors';
-        $list = collect(DB::table('mirrors')
-            ->join('episodes', 'mirrors.episode_id', '=', 'episodes.id')
-            ->join('animes', 'episodes.anime_id', '=', 'animes.id')
-            ->join('mirror_sources', 'mirrors.mirror_source_id', '=', 'mirror_sources.id')
-            ->where('mirrors.deleted_at', '=', null)
-            ->get([
-                'mirrors.id', 'animes.title', 'episodes.number', 'mirror_sources.name', 'mirrors.translation',
-                'mirrors.quality', 'mirrors.active'
-            ]));
+        $list = collect(
+            DB::table('mirrors')->join('episodes', 'mirrors.episode_id', '=', 'episodes.id')
+                ->join('animes', 'episodes.anime_id', '=', 'animes.id')
+                ->join('mirror_sources', 'mirrors.mirror_source_id', '=', 'mirror_sources.id')
+                ->where('mirrors.deleted_at', '=', null)
+                ->get([
+                    'mirrors.id', 'animes.title', 'episodes.number', 'mirror_sources.name', 'mirrors.translation',
+                    'mirrors.quality', 'mirrors.active'
+                ])
+        );
         $showColumns = ['title', 'number', 'name', 'translation', 'quality', 'active', 'actions'];
         $searchColumns = ['title', 'number', 'name', 'translation', 'quality', 'active'];
         $orderColumns = ['title', 'number', 'name', 'translation', 'quality', 'active'];
@@ -164,15 +187,16 @@ class MirrorController extends DashboardController
     public function getListTrash()
     {
         $url = 'mirrors';
-        $list = collect(DB::table('mirrors')
-            ->join('episodes', 'mirrors.episode_id', '=', 'episodes.id')
-            ->join('animes', 'episodes.anime_id', '=', 'animes.id')
-            ->join('mirror_sources', 'mirrors.mirror_source_id', '=', 'mirror_sources.id')
-            ->where('mirrors.deleted_at', '<>', '')
-            ->get([
-                'mirrors.id', 'animes.title', 'episodes.number', 'mirror_sources.name', 'mirrors.translation',
-                'mirrors.quality', 'mirrors.active'
-            ]));
+        $list = collect(
+            DB::table('mirrors')->join('episodes', 'mirrors.episode_id', '=', 'episodes.id')
+                ->join('animes', 'episodes.anime_id', '=', 'animes.id')
+                ->join('mirror_sources', 'mirrors.mirror_source_id', '=', 'mirror_sources.id')
+                ->where('mirrors.deleted_at', '<>', '')
+                ->get([
+                    'mirrors.id', 'animes.title', 'episodes.number', 'mirror_sources.name', 'mirrors.translation',
+                    'mirrors.quality', 'mirrors.active'
+                ])
+        );
         $showColumns = ['title', 'number', 'name', 'translation', 'quality', 'active', 'actions'];
         $searchColumns = ['title', 'number', 'name', 'translation', 'quality', 'active'];
         $orderColumns = ['title', 'number', 'name', 'translation', 'quality', 'active'];

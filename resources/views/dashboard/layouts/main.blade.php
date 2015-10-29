@@ -9,10 +9,14 @@
             @include('dashboard.layouts.sidebar')
             <main class="content-wrapper">
                 <section class="content-header">
-                    <h1 class="pull-left">@yield('title')</h1>
-                    <a href="{{ url('dashboard/' . request()->segment(2) . '/create') }}" class="btn btn-success">
-                        Add New
-                    </a>
+                    <h1 {{ request()->segment(2) ? 'class=pull-left' : '' }}>
+                        @yield('title')
+                    </h1>
+                    @if (request()->segment(2))
+                        <a href="{{ url('dashboard/' . request()->segment(2) . '/create') }}" class="btn btn-success">
+                            Add New
+                        </a>
+                    @endif
                 </section>
                 <section class="content">
                     @yield('content')
