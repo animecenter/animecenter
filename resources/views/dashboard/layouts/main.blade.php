@@ -9,10 +9,11 @@
             @include('dashboard.layouts.sidebar')
             <main class="content-wrapper">
                 <section class="content-header">
-                    <h1 {{ request()->segment(2) ? 'class=pull-left' : '' }}>
+                    <h1 {{ request()->segment(2) && request()->segment(2) !== 'mirror-reports' ?
+                        'class=pull-left' : '' }}>
                         @yield('title')
                     </h1>
-                    @if (request()->segment(2))
+                    @if (request()->segment(2) && request()->segment(2) !== 'mirror-reports')
                         <a href="{{ url('dashboard/' . request()->segment(2) . '/create') }}" class="btn btn-success">
                             Add New
                         </a>
