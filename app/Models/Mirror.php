@@ -12,7 +12,6 @@ use Illuminate\Database\Query\Builder;
  * @property integer $id
  * @property integer $user_id
  * @property integer $episode_id
- * @property integer $translator_id
  * @property integer $mirror_source_id
  * @property integer $language_id
  * @property string $url
@@ -90,7 +89,6 @@ class Mirror extends Model
         'id'               => 'int',
         'user_id'          => 'int',
         'episode_id'       => 'int',
-        'translator_id'    => 'int',
         'mirror_source_id' => 'int',
         'language_id'      => 'int',
         'url'              => 'string',

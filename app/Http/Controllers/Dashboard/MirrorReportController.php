@@ -34,13 +34,14 @@ class MirrorReportController extends DashboardController
      */
     public function getEdit($id = 0)
     {
-        return view(
-            'dashboard.mirror-reports.edit',
-            [
-                'mirrorReport' => DB::table('mirror_reports')->where('id', '=', $id)->first(),
-                'users' => DB::table('users')->orderBy('id')->get()
-            ]
-        );
+        return view('dashboard.mirror-reports.edit', [
+            'mirrorReport' => DB::table('mirror_reports')->join('users', 'mirror_reports.user_id', '=', 'users.id')
+                ->join('mirrors', 'mirror_reports.mirror_id', '=', 'mirrors.id')->where('mirror_reports.id', '=', $id)
+                ->first([
+                    'mirror_reports.id', 'users.username', 'mirrors.url', 'mirror_reports.verified',
+                    'mirror_reports.broken', 'mirror_reports.active'
+                ])
+        ]);
     }
 
     /**
