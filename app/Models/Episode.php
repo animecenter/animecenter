@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Episode
+ * AC\Models\Episode.
  *
- * @property integer $id
- * @property integer $anime_id
+ * @property int $id
+ * @property int $anime_id
  * @property float $number
  * @property string $title
  * @property string $synopsis
- * @property boolean $active
+ * @property bool $active
  * @property \Carbon\Carbon $aired_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -29,6 +29,7 @@ use Illuminate\Database\Query\Builder;
  * @property-read mixed $short_title
  * @property-read mixed $upcoming_photo
  * @property-read mixed $upcoming_title
+ *
  * @method static Builder|Episode whereId($value)
  * @method static Builder|Episode whereAnimeId($value)
  * @method static Builder|Episode whereNumber($value)
@@ -85,12 +86,12 @@ class Episode extends Model
      * @var string[]
      */
     protected $casts = [
-        'id'   => 'int',
+        'id'       => 'int',
         'anime_id' => 'int',
-        'number' => 'float',
-        'name' => 'string',
+        'number'   => 'float',
+        'name'     => 'string',
         'synopsis' => 'string',
-        'active' => 'boolean'
+        'active'   => 'boolean',
     ];
 
     /**
@@ -99,7 +100,7 @@ class Episode extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**
@@ -154,7 +155,7 @@ class Episode extends Model
 
     public function getSlugAttribute()
     {
-        return 'episode/' . $this->number;
+        return 'episode/'.$this->number;
     }
 
     public function getPhotoAttribute()
@@ -164,7 +165,7 @@ class Episode extends Model
 
     public function getShortTitleAttribute()
     {
-        return strlen($this->anime->title) > 15 ? mb_substr($this->anime->title, 0, 12) . '...' : $this->anime->title;
+        return strlen($this->anime->title) > 15 ? mb_substr($this->anime->title, 0, 12).'...' : $this->anime->title;
     }
 
     public function getUpcomingPhotoAttribute()
@@ -174,6 +175,6 @@ class Episode extends Model
 
     public function getUpcomingTitleAttribute()
     {
-        return strlen($this->anime->title) > 21 ? mb_substr($this->anime->title, 0, 18) . '...' : $this->anime->title;
+        return strlen($this->anime->title) > 21 ? mb_substr($this->anime->title, 0, 18).'...' : $this->anime->title;
     }
 }

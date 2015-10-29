@@ -33,6 +33,7 @@ class EloquentEpisodeRepository
     public function latest()
     {
         $timestamp = Carbon::now()->toDateTimeString();
+
         return $this->episode->whereHas('anime', function ($query) use ($timestamp) {
             $query->where('release_date', '<', $timestamp);
         })->has('mirror')->with(['anime', 'mirror'])->where('aired_at', '<', $timestamp)
@@ -45,6 +46,7 @@ class EloquentEpisodeRepository
     public function latestPaginate()
     {
         $timestamp = Carbon::now()->toDateTimeString();
+
         return $this->episode->whereHas('anime', function ($query) use ($timestamp) {
             $query->where('release_date', '<', $timestamp);
         })->with('anime')->where('aired_at', '<', $timestamp)->orderBy('aired_at', 'DESC')->paginate(20);
@@ -59,6 +61,7 @@ class EloquentEpisodeRepository
     /**
      * @param int $animeID
      * @param int $episodeNumber
+     *
      * @return mixed
      */
     public function getNextEpisode($animeID = 0, $episodeNumber = 0)
@@ -70,6 +73,7 @@ class EloquentEpisodeRepository
     /**
      * @param int $animeID
      * @param int $episodeNumber
+     *
      * @return mixed
      */
     public function getPreviousEpisode($animeID = 0, $episodeNumber = 0)
@@ -80,6 +84,7 @@ class EloquentEpisodeRepository
 
     /**
      * @param string $animeID
+     *
      * @return mixed
      */
     public function getLastEpisode($animeID = '')

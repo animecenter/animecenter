@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Option
+ * AC\Models\Option.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $value
  * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|Option whereId($value)
  * @method static Builder|Option whereName($value)
  * @method static Builder|Option whereValue($value)
@@ -72,7 +73,7 @@ class Option extends Model
         'id'     => 'int',
         'name'   => 'string',
         'value'  => 'string',
-        'active' => 'boolean'
+        'active' => 'boolean',
     ];
 
     /**
@@ -81,6 +82,6 @@ class Option extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 }

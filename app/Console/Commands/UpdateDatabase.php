@@ -32,6 +32,7 @@ class UpdateDatabase extends Command
 
     /**
      * Create a new command instance.
+     *
      * @param DatabaseManager $db
      */
     public function __construct(DatabaseManager $db)
@@ -128,6 +129,7 @@ class UpdateDatabase extends Command
      * Get translation for current anime.
      *
      * @param $currentAnime
+     *
      * @return string
      */
     protected function getTranslation($currentAnime)
@@ -140,6 +142,7 @@ class UpdateDatabase extends Command
      *
      * @param $mirrorSourceName
      * @param $timestamp
+     *
      * @return int
      */
     protected function getMirrorSourceID($mirrorSourceName, $timestamp)
@@ -151,7 +154,7 @@ class UpdateDatabase extends Command
                 ->insertGetId([
                     'name'       => $mirrorSourceName,
                     'created_at' => $timestamp,
-                    'updated_at' => $timestamp
+                    'updated_at' => $timestamp,
                 ]);
         } else {
             $mirrorSourceID = $exists->id;
@@ -179,7 +182,7 @@ class UpdateDatabase extends Command
                 'number'     => $episode->order,
                 'status'     => 1,
                 'created_at' => $timestamp,
-                'updated_at' => $timestamp
+                'updated_at' => $timestamp,
             ]);
         } else {
             $episodeID = $exists->id;
@@ -192,6 +195,7 @@ class UpdateDatabase extends Command
      * Get all episodes from current anime.
      *
      * @param $currentAnime
+     *
      * @return array|static[]
      */
     protected function getEpisodes($currentAnime)
@@ -250,6 +254,7 @@ class UpdateDatabase extends Command
      * Check if an anime record exists with the same title on the MAL database.
      *
      * @param $anime
+     *
      * @return mixed|static
      */
     protected function getAnime($anime)
@@ -272,6 +277,7 @@ class UpdateDatabase extends Command
 
     /**
      * @param $src
+     *
      * @return string
      */
     protected function getMirrorSourceName($src)

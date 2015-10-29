@@ -72,6 +72,7 @@ class AnimeController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return \Illuminate\View\View
      */
     public function getIndex(Request $request)
@@ -161,8 +162,8 @@ class AnimeController extends Controller
         $this->data['metaTitle'] = "Watch {$anime->episode['title']} Online for Free | Watch Anime Online Free";
         $this->data['metaDesc'] = 'Watch '.$title.' Online. Download '.$title.' Online. Watch '.
             $anime->episode['title'].' English Sub/Dub HD';
-        $this->data['metaKey'] = "Watch {$anime->episode['title']}, {$anime->episode['title']} English Subbed/Dubbed, '.
-            'Download {$anime->episode['title']} English Subbed/Dubbed, Watch {$anime->episode['title']} Online";
+        $this->data['metaKey'] = "Watch {$anime->episode['title']}, {$anime->episode['title']} English Subbed/Dubbed,".
+            " Download {$anime->episode['title']} English Subbed/Dubbed, Watch {$anime->episode['title']} Online";
 
         return view('app.episodes.show', $this->data);
     }

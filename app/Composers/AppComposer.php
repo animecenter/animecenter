@@ -26,8 +26,9 @@ class AppComposer
 
     /**
      * Create a new page error composer.
-     * @param Guard $auth
-     * @param Page  $page
+     *
+     * @param Guard  $auth
+     * @param Page   $page
      * @param Option $option
      */
     public function __construct(Guard $auth, Page $page, Option $option)
@@ -41,6 +42,7 @@ class AppComposer
      * Bind data to the view.
      *
      * @param View $view
+     *
      * @return void
      */
     public function compose(View $view)

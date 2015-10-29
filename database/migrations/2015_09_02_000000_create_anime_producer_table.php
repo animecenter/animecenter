@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateAnimeProducerTable extends Migration
 {
-
     public function up()
     {
         Schema::create('anime_producer', function (Blueprint $table) {

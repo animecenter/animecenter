@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Classification
+ * AC\Models\Classification.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
+ *
  * @method static Builder|Classification whereId($value)
  * @method static Builder|Classification whereName($value)
  * @method static Builder|Classification whereActive($value)
@@ -70,7 +71,7 @@ class Classification extends Model
     protected $casts = [
         'id'     => 'int',
         'name'   => 'string',
-        'active' => 'boolean'
+        'active' => 'boolean',
     ];
 
     /**
@@ -79,7 +80,7 @@ class Classification extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

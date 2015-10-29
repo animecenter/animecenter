@@ -7,19 +7,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Relation
+ * AC\Models\Relation.
  *
- * @property integer $id
- * @property integer $relationship_id
- * @property integer $relationable_id
+ * @property int $id
+ * @property int $relationship_id
+ * @property int $relationable_id
  * @property string $relationable_type
- * @property integer $related_id
+ * @property int $related_id
  * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @property-read \ $relationable
  * @property-read Relationship $relationship
+ *
  * @method static Builder|Relation whereId($value)
  * @method static Builder|Relation whereRelationshipId($value)
  * @method static Builder|Relation whereRelationableId($value)
@@ -80,7 +81,7 @@ class Relation extends Model
         'relationable_id'   => 'int',
         'relationable_type' => 'string',
         'related_id'        => 'int',
-        'active'            => 'boolean'
+        'active'            => 'boolean',
     ];
 
     /**
@@ -89,7 +90,7 @@ class Relation extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**

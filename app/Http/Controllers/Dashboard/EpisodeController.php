@@ -43,11 +43,12 @@ class EpisodeController extends DashboardController
      * Create a new resource.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postCreate(Request $request)
     {
-        $episode = new $this->episode;
+        $episode = new $this->episode();
         $episode->anime_id = $request['anime_id'];
         $episode->number = $request['number'];
         $episode->title = $request['title'];
@@ -64,6 +65,7 @@ class EpisodeController extends DashboardController
      * Show the form for editing a resource.
      *
      * @param int $id
+     *
      * @return \Illuminate\View\View
      */
     public function getEdit($id = 0)
@@ -72,7 +74,7 @@ class EpisodeController extends DashboardController
             'dashboard.episodes.edit',
             [
                 'episode' => DB::table('episodes')->where('id', '=', $id)->first(),
-                'animes' => DB::table('animes')->orderBy('title')->get(['id', 'title'])
+                'animes'  => DB::table('animes')->orderBy('title')->get(['id', 'title']),
             ]
         );
     }
@@ -80,8 +82,9 @@ class EpisodeController extends DashboardController
     /**
      * Edit a resource.
      *
-     * @param int $id
+     * @param int     $id
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postEdit($id = 0, Request $request)
@@ -113,6 +116,7 @@ class EpisodeController extends DashboardController
      * Trash resource by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postTrash($id = 0)
@@ -127,6 +131,7 @@ class EpisodeController extends DashboardController
      * Delete resource by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postDelete($id = 0)
@@ -141,6 +146,7 @@ class EpisodeController extends DashboardController
      * Recover resource from trash by id.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postRecover($id = 0)
@@ -152,7 +158,7 @@ class EpisodeController extends DashboardController
     }
 
     /**
-     * Get resource listing
+     * Get resource listing.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -172,7 +178,7 @@ class EpisodeController extends DashboardController
     }
 
     /**
-     * Get trash resource listing
+     * Get trash resource listing.
      *
      * @return \Illuminate\Http\JsonResponse
      */

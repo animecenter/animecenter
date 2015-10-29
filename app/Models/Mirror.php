@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Mirror
+ * AC\Models\Mirror.
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $episode_id
- * @property integer $mirror_source_id
- * @property integer $language_id
+ * @property int $id
+ * @property int $user_id
+ * @property int $episode_id
+ * @property int $mirror_source_id
+ * @property int $language_id
  * @property string $url
  * @property string $translation
  * @property string $quality
- * @property boolean $mobile_friendly
- * @property boolean $active
+ * @property bool $mobile_friendly
+ * @property bool $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
@@ -26,6 +26,7 @@ use Illuminate\Database\Query\Builder;
  * @property-read MirrorSource $mirrorSource
  * @property-read \Illuminate\Database\Eloquent\Collection|MirrorReport[] $mirrorReports
  * @property-read mixed $slug
+ *
  * @method static Builder|Mirror whereId($value)
  * @method static Builder|Mirror whereUserId($value)
  * @method static Builder|Mirror whereEpisodeId($value)
@@ -94,7 +95,7 @@ class Mirror extends Model
         'translation'      => 'string',
         'quality'          => 'string',
         'mobile_friendly'  => 'boolean',
-        'active'           => 'boolean'
+        'active'           => 'boolean',
     ];
 
     /**
@@ -103,7 +104,7 @@ class Mirror extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 
     /**
@@ -138,6 +139,6 @@ class Mirror extends Model
 
     public function getSlugAttribute()
     {
-        return strtolower($this->translation) . '/' . $this->id;
+        return strtolower($this->translation).'/'.$this->id;
     }
 }
