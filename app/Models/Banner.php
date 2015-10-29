@@ -9,13 +9,13 @@ use Illuminate\Database\Query\Builder;
 /**
  * AC\Models\Banner.
  *
- * @property integer $id
+ * @property int $id
  * @property string $title
  * @property string $link_to
  * @property string $big_title
  * @property string $content
  * @property int $order
- * @property boolean $active
+ * @property bool $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at

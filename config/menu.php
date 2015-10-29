@@ -3,7 +3,7 @@
 return [
     'admin' => [
         'Anime' => [
-            'name' => 'Animes', 'slug' => 'animes', 'submenu' => [
+            'name'               => 'Animes', 'slug' => 'animes', 'submenu' => [
                 'CalendarSeason' => [
                     'name' => 'Calendar Seasons', 'slug' => 'calendar-seasons',
                 ],
@@ -49,7 +49,7 @@ return [
             'name' => 'Metas', 'slug' => 'metas',
         ],
         'Mirror' => [
-            'name' => 'Mirrors', 'slug' => 'mirrors', 'submenu' => [
+            'name'             => 'Mirrors', 'slug' => 'mirrors', 'submenu' => [
                 'MirrorReport' => [
                     'name' => 'Reports', 'slug' => 'mirror-reports',
                 ],
@@ -65,7 +65,7 @@ return [
             'name' => 'Pages', 'slug' => 'pages',
         ],
         'User' => [
-            'name' => 'Users', 'slug' => 'users', 'submenu' => [
+            'name'           => 'Users', 'slug' => 'users', 'submenu' => [
                 'Permission' => [
                     'name' => 'Permissions', 'slug' => 'permissions',
                 ],

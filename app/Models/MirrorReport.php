@@ -9,12 +9,12 @@ use Illuminate\Database\Query\Builder;
 /**
  * AC\Models\MirrorReport.
  *
- * @property integer $id
- * @property integer $user_id
- * @property integer $mirror_id
- * @property boolean $verified
- * @property boolean $broken
- * @property boolean $active
+ * @property int $id
+ * @property int $user_id
+ * @property int $mirror_id
+ * @property bool $verified
+ * @property bool $broken
+ * @property bool $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at

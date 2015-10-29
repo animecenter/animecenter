@@ -20,7 +20,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @property string $email
  * @property string $password
  * @property string $remember_token
- * @property boolean $active
+ * @property bool $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
