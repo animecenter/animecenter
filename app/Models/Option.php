@@ -12,17 +12,17 @@ use Illuminate\Database\Query\Builder;
  * @property integer $id
  * @property string $name
  * @property string $value
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @method static Builder|Option whereId($value)
  * @method static Builder|Option whereName($value)
  * @method static Builder|Option whereValue($value)
+ * @method static Builder|Option whereActive($value)
  * @method static Builder|Option whereCreatedAt($value)
  * @method static Builder|Option whereUpdatedAt($value)
  * @method static Builder|Option whereDeletedAt($value)
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Option whereActive($value)
  */
 class Option extends Model
 {
@@ -69,9 +69,10 @@ class Option extends Model
      * @var string[]
      */
     protected $casts = [
-        'id'    => 'int',
-        'name'  => 'string',
-        'value' => 'string'
+        'id'     => 'int',
+        'name'   => 'string',
+        'value'  => 'string',
+        'active' => 'boolean'
     ];
 
     /**

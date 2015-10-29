@@ -14,6 +14,7 @@ use Illuminate\Database\Query\Builder;
  * @property integer $relationable_id
  * @property string $relationable_type
  * @property integer $related_id
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
@@ -24,11 +25,10 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Relation whereRelationableId($value)
  * @method static Builder|Relation whereRelationableType($value)
  * @method static Builder|Relation whereRelatedId($value)
+ * @method static Builder|Relation whereActive($value)
  * @method static Builder|Relation whereCreatedAt($value)
  * @method static Builder|Relation whereUpdatedAt($value)
  * @method static Builder|Relation whereDeletedAt($value)
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Relation whereActive($value)
  */
 class Relation extends Model
 {
@@ -79,7 +79,8 @@ class Relation extends Model
         'relationship_id'   => 'int',
         'relationable_id'   => 'int',
         'relationable_type' => 'string',
-        'related_id'        => 'int'
+        'related_id'        => 'int',
+        'active'            => 'boolean'
     ];
 
     /**

@@ -14,21 +14,21 @@ use Illuminate\Database\Query\Builder;
  * @property integer $mirror_id
  * @property boolean $verified
  * @property boolean $broken
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ * @property-read Mirror $mirror
+ * @property-read User $user
  * @method static Builder|MirrorReport whereId($value)
  * @method static Builder|MirrorReport whereUserId($value)
  * @method static Builder|MirrorReport whereMirrorId($value)
  * @method static Builder|MirrorReport whereVerified($value)
  * @method static Builder|MirrorReport whereBroken($value)
+ * @method static Builder|MirrorReport whereActive($value)
  * @method static Builder|MirrorReport whereCreatedAt($value)
  * @method static Builder|MirrorReport whereUpdatedAt($value)
  * @method static Builder|MirrorReport whereDeletedAt($value)
- * @property-read Mirror $mirror
- * @property-read User $user
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\MirrorReport whereActive($value)
  */
 class MirrorReport extends Model
 {
@@ -79,7 +79,8 @@ class MirrorReport extends Model
         'user_id'   => 'int',
         'mirror_id' => 'int',
         'verified'  => 'boolean',
-        'broken'    => 'boolean'
+        'broken'    => 'boolean',
+        'active'    => 'boolean'
     ];
 
     /**

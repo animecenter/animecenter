@@ -13,19 +13,19 @@ use Illuminate\Database\Query\Builder;
  * @property string $title
  * @property string $slug
  * @property string $content
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
  * @method static Builder|Page whereId($value)
  * @method static Builder|Page whereTitle($value)
  * @method static Builder|Page whereSlug($value)
  * @method static Builder|Page whereContent($value)
+ * @method static Builder|Page whereActive($value)
  * @method static Builder|Page whereCreatedAt($value)
  * @method static Builder|Page whereUpdatedAt($value)
  * @method static Builder|Page whereDeletedAt($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Page whereActive($value)
  */
 class Page extends Model
 {
@@ -75,7 +75,8 @@ class Page extends Model
         'id'      => 'int',
         'title'   => 'string',
         'slug'    => 'string',
-        'content' => 'string'
+        'content' => 'string',
+        'active'  => 'boolean'
     ];
 
     /**

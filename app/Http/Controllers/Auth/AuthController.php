@@ -51,7 +51,7 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'username' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
     }
@@ -59,14 +59,15 @@ class AuthController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return User
      */
     protected function create(array $data)
     {
         return User::create([
             'username' => $data['username'],
-            'email' => $data['email'],
+            'email'    => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
     }

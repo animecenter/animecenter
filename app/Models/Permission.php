@@ -13,6 +13,7 @@ use Illuminate\Database\Query\Builder;
  * @property string $name
  * @property string $display_name
  * @property string $description
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
@@ -20,11 +21,10 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Permission whereName($value)
  * @method static Builder|Permission whereDisplayName($value)
  * @method static Builder|Permission whereDescription($value)
+ * @method static Builder|Permission whereActive($value)
  * @method static Builder|Permission whereCreatedAt($value)
  * @method static Builder|Permission whereUpdatedAt($value)
  * @method static Builder|Permission whereDeletedAt($value)
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Permission whereActive($value)
  */
 class Permission extends Model
 {
@@ -74,7 +74,8 @@ class Permission extends Model
         'id'           => 'int',
         'name'         => 'string',
         'display_name' => 'string',
-        'description'  => 'string'
+        'description'  => 'string',
+        'active'       => 'boolean'
     ];
 
     /**

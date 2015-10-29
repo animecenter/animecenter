@@ -14,6 +14,7 @@ use Illuminate\Database\Query\Builder;
  * @property integer $imageable_id
  * @property string $imageable_type
  * @property string $path
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
@@ -22,11 +23,10 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Image whereImageableId($value)
  * @method static Builder|Image whereImageableType($value)
  * @method static Builder|Image wherePath($value)
+ * @method static Builder|Image whereActive($value)
  * @method static Builder|Image whereCreatedAt($value)
  * @method static Builder|Image whereUpdatedAt($value)
  * @method static Builder|Image whereDeletedAt($value)
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Image whereActive($value)
  */
 class Image extends Model
 {
@@ -77,7 +77,8 @@ class Image extends Model
         'user_id'        => 'int',
         'imageable_id'   => 'int',
         'imageable_type' => 'string',
-        'path'           => 'string'
+        'path'           => 'string',
+        'active'         => 'boolean'
     ];
 
     /**

@@ -13,6 +13,7 @@ use Illuminate\Database\Query\Builder;
  * @property string $name
  * @property string $display_name
  * @property string $description
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
@@ -20,11 +21,10 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Role whereName($value)
  * @method static Builder|Role whereDisplayName($value)
  * @method static Builder|Role whereDescription($value)
+ * @method static Builder|Role whereActive($value)
  * @method static Builder|Role whereCreatedAt($value)
  * @method static Builder|Role whereUpdatedAt($value)
  * @method static Builder|Role whereDeletedAt($value)
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Role whereActive($value)
  */
 class Role extends Model
 {
@@ -75,6 +75,7 @@ class Role extends Model
         'name'         => 'string',
         'display_name' => 'string',
         'description'  => 'string',
+        'active'       => 'boolean'
     ];
 
     /**

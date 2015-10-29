@@ -14,6 +14,7 @@ use Illuminate\Database\Query\Builder;
  * @property string $title
  * @property string $keywords
  * @property string $description
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
@@ -22,11 +23,10 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Meta whereTitle($value)
  * @method static Builder|Meta whereKeywords($value)
  * @method static Builder|Meta whereDescription($value)
+ * @method static Builder|Meta whereActive($value)
  * @method static Builder|Meta whereCreatedAt($value)
  * @method static Builder|Meta whereUpdatedAt($value)
  * @method static Builder|Meta whereDeletedAt($value)
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Meta whereActive($value)
  */
 class Meta extends Model
 {
@@ -77,7 +77,8 @@ class Meta extends Model
         'route'       => 'string',
         'title'       => 'string',
         'keywords'    => 'string',
-        'description' => 'string'
+        'description' => 'string',
+        'active'      => 'boolean'
     ];
 
     /**

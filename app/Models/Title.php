@@ -14,20 +14,20 @@ use Illuminate\Database\Query\Builder;
  * @property string $language
  * @property integer $titleable_id
  * @property string $titleable_type
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ * @property-read \ $titles
  * @method static Builder|Title whereId($value)
  * @method static Builder|Title whereTitle($value)
  * @method static Builder|Title whereLanguage($value)
- * @method static Builder|Title whereTitlableId($value)
- * @method static Builder|Title whereTitlableType($value)
+ * @method static Builder|Title whereTitleableId($value)
+ * @method static Builder|Title whereTitleableType($value)
+ * @method static Builder|Title whereActive($value)
  * @method static Builder|Title whereCreatedAt($value)
  * @method static Builder|Title whereUpdatedAt($value)
  * @method static Builder|Title whereDeletedAt($value)
- * @property-read \ $titles
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Title whereActive($value)
  */
 class Title extends Model
 {
@@ -78,7 +78,8 @@ class Title extends Model
         'title'         => 'string',
         'language'      => 'string',
         'titleable_id'   => 'int',
-        'titleable_type' => 'string'
+        'titleable_type' => 'string',
+        'active'         => 'boolean'
     ];
 
     /**
