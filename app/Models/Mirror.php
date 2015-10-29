@@ -29,7 +29,6 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Mirror whereId($value)
  * @method static Builder|Mirror whereUserId($value)
  * @method static Builder|Mirror whereEpisodeId($value)
- * @method static Builder|Mirror whereTranslatorId($value)
  * @method static Builder|Mirror whereMirrorSourceId($value)
  * @method static Builder|Mirror whereLanguageId($value)
  * @method static Builder|Mirror whereUrl($value)

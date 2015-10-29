@@ -4,6 +4,7 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Status
@@ -14,12 +15,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Status whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Status whereName($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Status whereActive($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Status whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Status whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Status whereDeletedAt($value)
+ * @method static Builder|Status whereId($value)
+ * @method static Builder|Status whereName($value)
+ * @method static Builder|Status whereActive($value)
+ * @method static Builder|Status whereCreatedAt($value)
+ * @method static Builder|Status whereUpdatedAt($value)
+ * @method static Builder|Status whereDeletedAt($value)
  */
 class Status extends Model
 {

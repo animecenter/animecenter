@@ -12,18 +12,18 @@ use Illuminate\Database\Query\Builder;
  * @property integer $id
  * @property string $name
  * @property string $model
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  * @method static Builder|Type whereId($value)
  * @method static Builder|Type whereName($value)
  * @method static Builder|Type whereModel($value)
+ * @method static Builder|Type whereActive($value)
  * @method static Builder|Type whereCreatedAt($value)
  * @method static Builder|Type whereUpdatedAt($value)
  * @method static Builder|Type whereDeletedAt($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Type whereActive($value)
  */
 class Type extends Model
 {
@@ -70,9 +70,10 @@ class Type extends Model
      * @var string[]
      */
     protected $casts = [
-        'id'    => 'int',
-        'name'  => 'string',
-        'model' => 'string'
+        'id'     => 'int',
+        'name'   => 'string',
+        'model'  => 'string',
+        'active' => 'boolean'
     ];
 
     /**

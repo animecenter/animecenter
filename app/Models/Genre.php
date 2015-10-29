@@ -13,6 +13,7 @@ use Illuminate\Database\Query\Builder;
  * @property string $name
  * @property string $model
  * @property string $description
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
@@ -21,11 +22,10 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Genre whereName($value)
  * @method static Builder|Genre whereModel($value)
  * @method static Builder|Genre whereDescription($value)
+ * @method static Builder|Genre whereActive($value)
  * @method static Builder|Genre whereCreatedAt($value)
  * @method static Builder|Genre whereUpdatedAt($value)
  * @method static Builder|Genre whereDeletedAt($value)
- * @property boolean $active
- * @method static \Illuminate\Database\Query\Builder|\AC\Models\Genre whereActive($value)
  */
 class Genre extends Model
 {
@@ -74,7 +74,8 @@ class Genre extends Model
     protected $casts = [
         'id'          => 'int',
         'name'        => 'string',
-        'description' => 'string'
+        'description' => 'string',
+        'active'      => 'boolean'
     ];
 
     /**
