@@ -13,7 +13,7 @@ use Illuminate\Database\Query\Builder;
  * @property string $name
  * @property string $model
  * @property string $description
- * @property boolean $active
+ * @property bool $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at

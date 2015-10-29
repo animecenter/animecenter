@@ -14,7 +14,7 @@ use Illuminate\Database\Query\Builder;
  * @property string $language
  * @property int $titleable_id
  * @property string $titleable_type
- * @property boolean $active
+ * @property bool $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
