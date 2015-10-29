@@ -3,18 +3,18 @@
 use AC\Models\Producer;
 use Illuminate\Database\Seeder;
 
-class ProducersTableSeeder extends Seeder {
-
-	/**
-	 * Auto generated seed file
-	 *
-	 * @return void
-	 */
-	public function run()
-	{
-		$producers = [
-			'10Gauge', '12 Diary Holders', '1st PLACE', '3xCube', '4Kids Entertainment', '501st JOINT FIGHTER WING',
-			'81 Produce', '8bit', 'A Line', 'A-1 Pictures', 'A-Real', 'A.C.G.T.', 'AC Create', 'Academy Productions',
+class ProducersTableSeeder extends Seeder
+{
+    /**
+     * Auto generated seed file.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $producers = [
+            '10Gauge', '12 Diary Holders', '1st PLACE', '3xCube', '4Kids Entertainment', '501st JOINT FIGHTER WING',
+            '81 Produce', '8bit', 'A Line', 'A-1 Pictures', 'A-Real', 'A.C.G.T.', 'AC Create', 'Academy Productions',
             'ACC Production', 'Acchi Kocchi Production Committee', 'ACiD FiLM', 'Actas', 'Active', 'Adult Source Media',
             'ADV Films', 'Advance Syakujii', 'Age', 'Age Global Networks', 'Agent 21', 'Ai Addiction',
             'Ai ga areba Daijobu', 'AIC', 'AIC A.S.T.A.', 'AIC Build', 'AIC Frontier', 'AIC Plus+', 'AIC Spirits',
@@ -164,9 +164,8 @@ class ProducersTableSeeder extends Seeder {
             'Yumeta Company', 'ZERO-A', 'Zero-G Room', 'Zexcs', 'ZIZ', 'ZIZ Entertainment', 'Zyc',
         ];
 
-		foreach ($producers as $producer) {
-			Producer::firstOrCreate(['name' => $producer, 'active' => 1]);
-		}
-	}
-
+        foreach ($producers as $producer) {
+            Producer::firstOrCreate(['name' => $producer, 'active' => 1]);
+        }
+    }
 }

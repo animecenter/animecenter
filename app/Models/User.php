@@ -13,9 +13,9 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
 /**
- * AC\Models\User
+ * AC\Models\User.
  *
- * @property integer $id
+ * @property int $id
  * @property string $username
  * @property string $email
  * @property string $password
@@ -23,6 +23,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|User whereId($value)
  * @method static Builder|User whereUsername($value)
  * @method static Builder|User whereEmail($value)
@@ -36,7 +37,9 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @property-read \Illuminate\Database\Eloquent\Collection|MirrorReport[] $mirrorReports
  * @property-read \Illuminate\Database\Eloquent\Collection|Role[] $roles
  * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\User whereActive($value)
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
@@ -88,7 +91,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'username'       => 'string',
         'email'          => 'string',
         'password'       => 'string',
-        'remember_token' => 'string'
+        'remember_token' => 'string',
     ];
 
     /**

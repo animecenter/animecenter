@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Permission
+ * AC\Models\Permission.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $display_name
  * @property string $description
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static Builder|Permission whereId($value)
  * @method static Builder|Permission whereName($value)
  * @method static Builder|Permission whereDisplayName($value)
@@ -23,7 +24,9 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Permission whereCreatedAt($value)
  * @method static Builder|Permission whereUpdatedAt($value)
  * @method static Builder|Permission whereDeletedAt($value)
- * @property boolean $active
+ *
+ * @property bool $active
+ *
  * @method static \Illuminate\Database\Query\Builder|\AC\Models\Permission whereActive($value)
  */
 class Permission extends Model
@@ -74,7 +77,7 @@ class Permission extends Model
         'id'           => 'int',
         'name'         => 'string',
         'display_name' => 'string',
-        'description'  => 'string'
+        'description'  => 'string',
     ];
 
     /**
@@ -83,6 +86,6 @@ class Permission extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1'
+        'id' => 'required|integer|min:1',
     ];
 }

@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateGenresTable extends Migration
 {
-
     public function up()
     {
         Schema::create('genres', function (Blueprint $table) {

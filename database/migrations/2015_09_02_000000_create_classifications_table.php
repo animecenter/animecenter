@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateClassificationsTable extends Migration
 {
-
     public function up()
     {
         Schema::create('classifications', function (Blueprint $table) {
