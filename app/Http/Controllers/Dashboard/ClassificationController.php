@@ -151,7 +151,9 @@ class ClassificationController extends DashboardController
     public function getList()
     {
         $url = 'classifications';
-        $list = collect(DB::table('classifications')->where('deleted_at', '=', null)->get(['id', 'name', 'active']));
+        $list = collect(
+            DB::table('classifications')->where('deleted_at', '=', null)->get(['id', 'name', 'active'])
+        );
         $showColumns = ['name', 'active', 'actions'];
         $searchColumns = ['name', 'active'];
         $orderColumns = ['name', 'active'];

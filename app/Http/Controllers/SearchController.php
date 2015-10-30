@@ -38,8 +38,6 @@ class SearchController extends Controller
         $this->data['metaKey'] = 'Download '.$pageTitle.',Watch '.$pageTitle.' on iphone,watch anime '.
             'online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime';
 
-        $this->data['genres'] = $this->genre->orderBy('value')->get();
-
         return view('app.search.index', $this->data);
     }
 

@@ -66,10 +66,9 @@ class BannerController extends DashboardController
      */
     public function getEdit($id = 0)
     {
-        return view(
-            'dashboard.banners.edit',
-            ['banner' => DB::table('banners')->where('id', '=', $id)->first()]
-        );
+        return view('dashboard.banners.edit', [
+            'banner' => DB::table('banners')->where('id', '=', $id)->first()
+        ]);
     }
 
     /**

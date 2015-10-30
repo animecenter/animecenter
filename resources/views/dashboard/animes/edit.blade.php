@@ -1,242 +1,106 @@
 @extends('dashboard.layouts.main')
 
 @section('title')
-    Editing {{ $currentAnime->title }}
+    Edit anime
 @endsection
 
 @section('content')
-    <form action="{{ url('admin/anime/edit/' . $currentAnime['id']) }}" method="post" enctype="multipart/form-data">
-
-        {!! csrf_field() !!}
-
-        <div class="inputNOption" style="width: 100%;">
-            <div class="smallTitle">Title:</div>
-            <input name="title" value="{{ $currentAnime['title'] }}" type="text" class="textInput" style="width: 80%;"/>
-        </div>
-        <!--/inputNOption-->
-
-        <div class="inputNOption">
-            <div class="smallTitle">Episodes:</div>
-            <input name="episodes" value="{{ $currentAnime['episodes'] }}" type="text" class="textInput"/>
-        </div>
-        <!--/inputNOption-->
-
-        <div class="inputNOption">
-            <div class="smallTitle">Type:</div>
-            <input name="type" value="{{ $currentAnime['type'] }}" type="text" class="textInput"/>
-        </div>
-        <!--/inputNOption-->
-
-        <div class="inputSelectarea">
-            <div class="smallTitle">Type2:</div>
-            <select class="select" name="type2">
-                <option value="subbed" {{ ($currentAnime['type2'] == "subbed") ?
-                'selected=selected' : '' }}>subbed</option>
-                <option value="dubbed" {{ ($currentAnime['type2'] == "dubbed") ?
-                'selected=selected' : '' }}>dubbed</option>
-            </select>
-            <input value="" type="text" class="textInput2"/>
-        </div>
-        <!--/inputSelectarea-->
-
-        <div class="inputNOption">
-            <div class="smallTitle">Age:</div>
-            <input name="age" value="{{ $currentAnime['age'] }}" type="text" class="textInput"/>
-        </div>
-        <!--/inputNOption-->
-
-        <div class="inputSelectarea">
-            <div class="smallTitle">Status:</div>
-            <select class="select" name="status">
-                <option value="ongoing" {{ ($currentAnime['status'] == "ongoing") ?
-                'selected=selected' : '' }}>Ongoing</option>
-                <option value="finished" {{ ($currentAnime['status'] == "finished") ?
-                'selected=selected' : '' }}>Finished</option>
-            </select>
-            <input value="" type="text" class="textInput2"/>
-        </div>
-        <!--/inputSelectarea-->
-
-        <div class="inputSelectarea">
-            <div class="smallTitle">Prequel:</div>
-            <select class="select" name="prequel">
-                <option value="">Not Selected</option>
-                @foreach ($animes as $anime)
-                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}" {{
-                        $currentAnime['prequel'] === $anime['id'] . "," . $anime['title'] ? 'selected=selected' : ''
-                        }}>{{ $anime['title'] }}</option>
-                @endforeach
-            </select>
-            <input name="" value="" type="text" class="textInput2"/>
-        </div>
-        <!--/inputSelectarea-->
-
-        <div class="inputSelectarea">
-            <div class="smallTitle">Sequel:</div>
-            <select class="select" name="sequel">
-                <option value="">Not Selected</option>
-                @foreach ($animes as $anime)
-                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($currentAnime['sequel'] == $anime['id'] . "," . $anime['title']) {
-                            echo 'selected=selected';
-                        } ?>>{{ $anime['title'] }}</option>
-                @endforeach
-            </select>
-            <input name="" value="" type="text" class="textInput2"/>
-        </div>
-        <!--/inputSelectarea-->
-
-        <div class="inputSelectarea">
-            <div class="smallTitle">Parent Story:</div>
-            <select class="select" name="story">
-                <option value="">Not Selected</option>
-                @foreach ($animes as $anime)
-                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($currentAnime['story'] == $anime['id'] . "," . $anime['title']) {
-                            echo 'selected=selected';
-                        } ?>>{{ $anime['title'] }}</option>
-                @endforeach
-            </select>
-            <input name="" value="" type="text" class="textInput2"/>
-        </div>
-        <!--/inputSelectarea-->
-
-        <div class="inputSelectarea">
-            <div class="smallTitle">Side Story:</div>
-            <select class="select" name="side_story">
-                <option value="">Not Selected</option>
-                @foreach ($animes as $anime)
-                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($currentAnime['side_story'] == $anime['id'] . "," . $anime['title']) {
-                            echo 'selected=selected';
-                        } ?>>{{ $anime['title'] }}</option>
-                @endforeach
-            </select>
-            <input name="" value="" type="text" class="textInput2"/>
-        </div>
-        <!--/inputSelectarea-->
-
-        <div class="inputSelectarea">
-            <div class="smallTitle">Spin - Off:</div>
-            <select class="select" name="spin_off">
-                <option value="">Not Selected</option>
-                @foreach ($animes as $anime)
-                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($currentAnime['spin_off'] == $anime['id'] . "," . $anime['title']) {
-                            echo 'selected=selected';
-                        } ?>>{{ $anime['title'] }}</option>
-                @endforeach
-            </select>
-            <input name="" value="" type="text" class="textInput2"/>
-        </div>
-        <!--/inputSelectarea-->
-
-        <div class="inputSelectarea">
-            <div class="smallTitle">Alternative:</div>
-            <select class="select" name="alternative">
-                <option value="">Not Selected</option>
-                @foreach ($animes as $anime)
-                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($currentAnime['alternative'] == $anime['id'] . "," . $anime['title']) {
-                            echo 'selected=selected';
-                        } ?>>{{ $anime['title'] }}</option>
-                @endforeach
-            </select>
-            <input name="" value="" type="text" class="textInput2"/>
-        </div>
-        <!--/inputSelectarea-->
-
-        <div class="inputSelectarea">
-            <div class="smallTitle">Other:</div>
-            <select class="select" name="other">
-                <option value="">Not Selected</option>
-                @foreach ($animes as $anime)
-                    <option value="{{ $anime['id'] . ',' . $anime['title'] }}" <?php
-                        if ($currentAnime['other'] == $anime['id'] . "," . $anime['title']) {
-                            echo 'selected=selected';
-                        } ?>>{{ $anime['title'] }}
-                    </option>
-                @endforeach
-            </select>
-            <input name="" value="" type="text" class="textInput2"/>
-        </div>
-        <!--/inputSelectarea-->
-
-        <div class="inputTextarea" style="height: auto;">
-            <div class="smallTitle">Genres:</div>
-            <div class="clear"></div>
-            @foreach ($genres as $genre)
-                <div class="inputCheck">
-                    <input type="checkbox" class="checkbox" name="genres[]" value="{{ $genre['value'] }}" <?php
-                        if (strpos($currentAnime['genres'], $genre['value']) !== false) {
-                            echo "checked='checked'";
-                        }?>/>
-                    <span></span>
-                    <div class="smallTitle">
-                        {{ $genre['value'] }}
-                    </div>
-                </div>
-                <!--/inputCheck-->
-            @endforeach
-        </div>
-        <!--/inputTextarea-->
-
-        <div class="inputTextarea" style="height: auto;">
-            <div class="smallTitle">Position:</div>
-            <div class="clear"></div>
-            <div class="inputCheck">
-                <input type="checkbox" class="checkbox" name="position1" value="recently" <?php
-                    if ($currentAnime['position'] == "recently" or $currentAnime['position'] == "all") {
-                        echo "checked='checked'";
-                    } ?>/>
-                <span></span>
-                <div class="smallTitle">
-                    Recently Added Anime
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form role="form" method="post" action="{{ url('dashboard/animes/edit/' . $anime->id) }}">
+                        {!! csrf_field() !!}
+                        <div class="form-group">
+                            <label>MAL ID</label>
+                            <input type="number" class="form-control" name="mal_id" value="{{ old('mal_id') }}" placeholder="MAL ID">
+                        </div>
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Title">
+                        </div>
+                        <div class="form-group">
+                            <label for="slug">Slug</label>
+                            <input type="text" class="form-control" name="slug" value="{{ old('slug') }}" placeholder="Slug">
+                        </div>
+                        <div class="form-group">
+                            <label for="synopsis">Synopsis</label>
+                            <textarea class="form-control" name="synopsis" cols="30" rows="10" placeholder="Synopsis">{{ old('synopsis') }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <select name="type_id" class="form-control">
+                                @foreach ($types as $type)
+                                    <option value="{{ $type->id }}" {{ $type->id === old('type_id') ?
+                                        'selected' : '' }}>{{ $type->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="number_of_episodes">Number of Episodes</label>
+                            <input type="number" class="form-control" name="number_of_episodes" value="{{ old('number_of_episodes') }}" placeholder="Number of Episodes">
+                        </div>
+                        <div class="form-group">
+                            <select name="status_id" class="form-control">
+                                @foreach ($statuses as $status)
+                                    <option value="{{ $status->id }}" {{ $status->id === old('status_id') ?
+                                        'selected' : '' }}>{{ $status->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="release_date">Release Date</label>
+                            <input type="date" class="form-control" name="release_date" value="{{ old('release_date') }}" placeholder="Release Date">
+                        </div>
+                        <div class="form-group">
+                            <label for="end_date">End Date</label>
+                            <input type="date" class="form-control" name="end_date" value="{{ old('end_date') }}" placeholder="End Date">
+                        </div>
+                        <div class="form-group">
+                            <label for="duration">Duration</label>
+                            <input type="datetime" class="form-control" name="duration" value="{{ old('duration') }}" placeholder="Duration">
+                        </div>
+                        <div class="form-group">
+                            <select name="calendar_season_id" class="form-control">
+                                @foreach ($calendarSeasons as $calendarSeason)
+                                    <option value="{{ $calendarSeason->id }}" {{
+                                        $calendarSeason->id === old('calendar_season_id') ?
+                                        'selected' : '' }}>{{ $calendarSeason->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="classification_id" class="form-control">
+                                @foreach ($classifications as $classification)
+                                    <option value="{{ $classification->id }}" {{
+                                        $classification->id === old('classification_id') ?
+                                        'selected' : '' }}>{{ $classification->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Status:</label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" class="checkbox" name="active" value="1" {{
+                                    (old('active') ? (old('active') === '1' ? 'checked' : '') :
+                                    ($anime->active ? 'checked' : '')) }}>
+                                Active
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success">Save</button>
+                        <a href="{{ url('dashboard/animes') }}" class="btn btn-default">Go back</a>
+                    </form>
                 </div>
             </div>
-            <!--/inputCheck-->
-
-            <div class="inputCheck">
-                <input type="checkbox" class="checkbox" name="position2" value="featured" <?php
-                    if ($currentAnime['position'] == "featured" or $currentAnime['position'] == "all") {
-                        echo "checked='checked'";
-                    } ?>/>
-                <span></span>
-                <div class="smallTitle">
-                    Featured Anime
-                </div>
-            </div>
-            <!--/inputCheck-->
         </div>
-        <!--/inputTextarea-->
-
-        <div class="inputUpload">
-            <div class="smallTitle">Image:</div>
-            <img src="{{ asset('images/' . $currentAnime['image']) }}" width="80" height="80"/>
-            <input name="new_image" value="" type="file" class="file"/>
-            <input name="image" value="{{ $currentAnime['image'] }}" type="hidden" class="file"/>
-        </div>
-        <!--/inputUpload-->
-
-        <div class="inputTextarea">
-            <div class="smallTitle">Plot Summary:</div>
-            <textarea class="textarea" name="description">{{ $currentAnime['description'] }}</textarea>
-        </div>
-        <!--/inputTextarea-->
-
-        <div class="inputTextarea">
-            <div class="smallTitle">Alternative Titles:</div>
-            <textarea class="textarea" name="alternative_title">{{ $currentAnime['alternative_title'] }}</textarea>
-        </div>
-        <!--/inputTextarea-->
-
-        <div class="inputTextarea">
-            <div class="smallTitle">Content:</div>
-            <textarea class="textarea" name="content">{{ $currentAnime['content'] }}</textarea>
-        </div>
-        <!--/inputTextarea-->
-
-        <input type="submit" id="submit" value="Update"/>
-
-    </form>
+    </div>
 @endsection
