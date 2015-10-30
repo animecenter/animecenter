@@ -16,6 +16,8 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ * @property-read \ $votes
+ * @property-read User $user
  *
  * @method static Builder|Vote whereId($value)
  * @method static Builder|Vote whereUserId($value)
@@ -25,8 +27,6 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Vote whereCreatedAt($value)
  * @method static Builder|Vote whereUpdatedAt($value)
  * @method static Builder|Vote whereDeletedAt($value)
- * @property-read \ $votes
- * @property-read User $user
  */
 class Vote extends Model
 {

@@ -15,6 +15,7 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  *
  * @method static Builder|CalendarSeason whereId($value)
  * @method static Builder|CalendarSeason whereName($value)
@@ -22,7 +23,6 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|CalendarSeason whereCreatedAt($value)
  * @method static Builder|CalendarSeason whereUpdatedAt($value)
  * @method static Builder|CalendarSeason whereDeletedAt($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  */
 class CalendarSeason extends Model
 {
