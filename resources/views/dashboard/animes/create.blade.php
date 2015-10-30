@@ -22,38 +22,38 @@
                     <form role="form" method="post" action="{{ url('dashboard/animes/create') }}">
                         {!! csrf_field() !!}
                         <div class="form-group">
-                            <label>MAL ID</label>
+                            <label for="mal_id">MAL ID</label>
                             <input type="number" class="form-control" name="mal_id" value="{{ old('mal_id') }}" placeholder="MAL ID">
                         </div>
                         <div class="form-group">
-                            <label>Title</label>
+                            <label for="title">Title</label>
                             <input type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Title">
                         </div>
                         <div class="form-group">
-                            <label>Slug</label>
+                            <label for="slug">Slug</label>
                             <input type="text" class="form-control" name="slug" value="{{ old('slug') }}" placeholder="Slug">
                         </div>
                         <div class="form-group">
-                            <label>Synopsis</label>
-                            <textarea name="synopsis" cols="30" rows="10" placeholder="Synopsis">{{ old('synopsis') }}</textarea>
+                            <label for="synopsis">Synopsis</label>
+                            <textarea class="form-control" name="synopsis" cols="30" rows="10" placeholder="Synopsis">{{ old('synopsis') }}</textarea>
                         </div>
                         <div class="form-group">
+                            <label for="type_id">Select Type</label>
                             <select name="type_id" class="form-control">
                                 @foreach ($types as $type)
-                                    <option value="{{ $type->id }}" {{ $type->id === old('type_id') ?
-                                        'selected' : '' }}>{{ $type->name }}</option>
+                                    <option value="{{ $type->id }}" {{ option_is_selected([$type, 'type_id']) }}>{{ $type->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Number of Episodes</label>
+                            <label for="number_of_episodes">Number of Episodes</label>
                             <input type="number" class="form-control" name="number_of_episodes" value="{{ old('number_of_episodes') }}" placeholder="Number of Episodes">
                         </div>
                         <div class="form-group">
+                            <label for="status_id">Select Status</label>
                             <select name="status_id" class="form-control">
                                 @foreach ($statuses as $status)
-                                    <option value="{{ $status->id }}" {{ $status->id === old('status_id') ?
-                                        'selected' : '' }}>{{ $status->name }}</option>
+                                    <option value="{{ $status->id }}" {{ option_is_selected([$status, 'status_id']) }}>{{ $status->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -70,20 +70,20 @@
                             <input type="time" class="form-control" name="duration" value="{{ old('duration') }}" placeholder="Duration">
                         </div>
                         <div class="form-group">
+                            <label for="calendar_season_id">Select Calendar Season</label>
                             <select name="calendar_season_id" class="form-control">
                                 @foreach ($calendarSeasons as $calendarSeason)
                                     <option value="{{ $calendarSeason->id }}" {{
-                                        $calendarSeason->id === old('calendar_season_id') ?
-                                        'selected' : '' }}>{{ $calendarSeason->name }}</option>
+                                        option_is_selected([$calendarSeason, 'calendar_season_id']) }}>{{ $calendarSeason->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="classification_id">Select Classification</label>
                             <select name="classification_id" class="form-control">
                                 @foreach ($classifications as $classification)
                                     <option value="{{ $classification->id }}" {{
-                                        $classification->id === old('classification_id') ?
-                                        'selected' : '' }}>{{ $classification->name }}</option>
+                                        option_is_selected([$classification, 'classification_id']) }}>{{ $classification->name }}</option>
                                 @endforeach
                             </select>
                         </div>
