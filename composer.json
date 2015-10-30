@@ -33,6 +33,9 @@
     "classmap": [
       "database"
     ],
+    "files": [
+      "App/Http/helpers.php"
+    ],
     "psr-4": {
       "AC\\": "app/"
     }
