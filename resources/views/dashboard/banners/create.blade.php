@@ -38,6 +38,10 @@
                             <input type="text" class="form-control" name="content" value="{{ old('content') }}" placeholder="Content">
                         </div>
                         <div class="form-group">
+                            <label for="order">Order</label>
+                            <input type="number" class="form-control" name="order" value="{{ old('order') }}" placeholder="Order">
+                        </div>
+                        <div class="form-group">
                             <label>Status:</label>
                             <label class="checkbox-inline">
                                 <input type="checkbox" class="checkbox" name="active" value="1" {{ old('active') === '1' ? 'checked' : '' }}>

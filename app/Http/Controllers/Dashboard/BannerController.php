@@ -50,6 +50,7 @@ class BannerController extends DashboardController
         $banner->link_to = $request['link_to'];
         $banner->big_title = $request['big_title'];
         $banner->content = $request['content'];
+        $banner->order = $request['order'];
         $banner->active = $request['active'] === '1' ? 1 : 0;
         $banner->save();
         $msg = 'Banner was created successfully!';
@@ -86,6 +87,7 @@ class BannerController extends DashboardController
         $banner->link_to = $request['link_to'];
         $banner->big_title = $request['big_title'];
         $banner->content = $request['content'];
+        $banner->order = $request['order'];
         $banner->active = $request['active'] === '1' ? 1 : 0;
         $banner->save();
         $msg = 'Banner was edited successfully!';
@@ -157,11 +159,11 @@ class BannerController extends DashboardController
     {
         $url = 'banners';
         $list = collect(
-            DB::table('banners')->where('deleted_at', '=', null)->get(['id', 'title', 'link_to', 'active'])
+            DB::table('banners')->where('deleted_at', '=', null)->get(['id', 'title', 'link_to', 'order', 'active'])
         );
-        $showColumns = ['title', 'link_to', 'active', 'actions'];
+        $showColumns = ['title', 'link_to', 'order', 'active', 'actions'];
         $searchColumns = ['title', 'link_to', 'active'];
-        $orderColumns = ['title', 'link_to', 'active'];
+        $orderColumns = ['title', 'link_to', 'order', 'active'];
 
         return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
@@ -175,11 +177,11 @@ class BannerController extends DashboardController
     {
         $url = 'banners';
         $list = collect(
-            DB::table('banners')->where('deleted_at', '<>', '')->get(['id', 'title', 'link_to', 'active'])
+            DB::table('banners')->where('deleted_at', '<>', '')->get(['id', 'title', 'link_to', 'order', 'active'])
         );
-        $showColumns = ['title', 'link_to', 'active', 'actions'];
+        $showColumns = ['title', 'link_to', 'order', 'active', 'actions'];
         $searchColumns = ['title', 'link_to', 'active'];
-        $orderColumns = ['title', 'link_to', 'active'];
+        $orderColumns = ['title', 'link_to', 'order', 'active'];
 
         return parent::getDataTableListTrash($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
