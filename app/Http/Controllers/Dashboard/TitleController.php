@@ -33,10 +33,9 @@ class TitleController extends DashboardController
      */
     public function getCreate()
     {
-        return view(
-            'dashboard.titles.create',
-            ['animes' => DB::table('animes')->orderBy('title')->get(['id', 'title'])]
-        );
+        return view('dashboard.titles.create', [
+            'animes' => DB::table('animes')->orderBy('title')->get(['id', 'title'])
+        ]);
     }
 
     /**

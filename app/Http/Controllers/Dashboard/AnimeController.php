@@ -33,7 +33,12 @@ class AnimeController extends DashboardController
      */
     public function getCreate()
     {
-        return view('dashboard.animes.create');
+        return view('dashboard.animes.create', [
+            'types' => DB::table('types')->where('model', '=', 'Anime')->orderBy('name')->get(['id', 'name']),
+            'statuses' => DB::table('statuses')->orderBy('name')->get(['id', 'name']),
+            'calendarSeasons' => DB::table('calendar_seasons')->orderBy('name')->get(['id', 'name']),
+            'classifications' => DB::table('classifications')->orderBy('name')->get(['id', 'name']),
+        ]);
     }
 
     /**
@@ -46,7 +51,19 @@ class AnimeController extends DashboardController
     public function postCreate(Request $request)
     {
         $anime = new $this->anime();
-        $anime->name = $request['name'];
+        $anime->mal_id = $request['mal_id'];
+        $anime->title = $request['title'];
+        $anime->slug = $request['slug'];
+        $anime->image = $request['image'];
+        $anime->synopsis = $request['synopsis'];
+        $anime->type_id = $request['type_id'];
+        $anime->number_of_episodes = $request['number_of_episodes'];
+        $anime->status_id = $request['status_id'];
+        $anime->release_date = $request['release_date'];
+        $anime->end_date = $request['end_date'];
+        $anime->duration = $request['duration'];
+        $anime->calendar_season_id = $request['calendar_season_id'];
+        $anime->classification_id = $request['classification_id'];
         $anime->active = $request['active'] === '1' ? 1 : 0;
         $anime->save();
         $msg = 'Anime was created successfully!';
@@ -63,10 +80,13 @@ class AnimeController extends DashboardController
      */
     public function getEdit($id = 0)
     {
-        return view(
-            'dashboard.animes.edit',
-            ['anime' => DB::table('animes')->where('id', '=', $id)->first()]
-        );
+        return view('dashboard.animes.edit', [
+            'anime' => DB::table('animes')->where('id', '=', $id)->first(),
+            'types' => DB::table('types')->where('model', '=', 'Anime')->orderBy('name')->get(['id', 'name']),
+            'statuses' => DB::table('statuses')->orderBy('name')->get(['id', 'name']),
+            'calendarSeasons' => DB::table('calendar_seasons')->orderBy('name')->get(['id', 'name']),
+            'classifications' => DB::table('classifications')->orderBy('name')->get(['id', 'name']),
+        ]);
     }
 
     /**
@@ -80,7 +100,19 @@ class AnimeController extends DashboardController
     public function postEdit($id = 0, Request $request)
     {
         $anime = $this->anime->findOrFail($id);
-        $anime->name = $request['name'];
+        $anime->mal_id = $request['mal_id'];
+        $anime->title = $request['title'];
+        $anime->slug = $request['slug'];
+        $anime->image = $request['image'];
+        $anime->synopsis = $request['synopsis'];
+        $anime->type_id = $request['type_id'];
+        $anime->number_of_episodes = $request['number_of_episodes'];
+        $anime->status_id = $request['status_id'];
+        $anime->release_date = $request['release_date'];
+        $anime->end_date = $request['end_date'];
+        $anime->duration = $request['duration'];
+        $anime->calendar_season_id = $request['calendar_season_id'];
+        $anime->classification_id = $request['classification_id'];
         $anime->active = $request['active'] === '1' ? 1 : 0;
         $anime->save();
         $msg = 'Anime was edited successfully!';
@@ -151,10 +183,12 @@ class AnimeController extends DashboardController
     public function getList()
     {
         $url = 'animes';
-        $list = collect(DB::table('animes')->where('deleted_at', '=', null)->get(['id', 'name', 'active']));
-        $showColumns = ['name', 'active', 'actions'];
-        $searchColumns = ['name', 'active'];
-        $orderColumns = ['name', 'active'];
+        $list = collect(
+            DB::table('animes')->where('deleted_at', '=', null)->get(['id', 'title', 'slug', 'active'])
+        );
+        $showColumns = ['title', 'slug', 'active', 'actions'];
+        $searchColumns = ['title', 'slug', 'active'];
+        $orderColumns = ['title', 'slug', 'active'];
 
         return parent::getDataTableList($url, $list, $showColumns, $searchColumns, $orderColumns);
     }
@@ -168,11 +202,11 @@ class AnimeController extends DashboardController
     {
         $url = 'animes';
         $list = collect(
-            DB::table('animes')->where('deleted_at', '<>', '')->get(['id', 'name', 'active'])
+            DB::table('animes')->where('deleted_at', '<>', '')->get(['id', 'title', 'slug', 'active'])
         );
-        $showColumns = ['name', 'active', 'actions'];
-        $searchColumns = ['name', 'active'];
-        $orderColumns = ['name', 'active'];
+        $showColumns = ['title', 'slug', 'active', 'actions'];
+        $searchColumns = ['title', 'slug', 'active'];
+        $orderColumns = ['title', 'slug', 'active'];
 
         return parent::getDataTableListTrash($url, $list, $showColumns, $searchColumns, $orderColumns);
     }

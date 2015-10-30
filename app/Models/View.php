@@ -13,13 +13,13 @@ use Illuminate\Database\Query\Builder;
  * @property int $viewable_id
  * @property string $viewable_type
  * @property int $count
+ * @property-read \ $viewable
  *
  * @method static Builder|View whereId($value)
  * @method static Builder|View whereDate($value)
  * @method static Builder|View whereViewableId($value)
  * @method static Builder|View whereViewableType($value)
  * @method static Builder|View whereCount($value)
- * @property-read \ $viewable
  */
 class View extends Model
 {

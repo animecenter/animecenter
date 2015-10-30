@@ -153,7 +153,9 @@ class OptionController extends DashboardController
     public function getList()
     {
         $url = 'options';
-        $list = collect(DB::table('options')->where('deleted_at', '=', null)->get(['id', 'name', 'active']));
+        $list = collect(
+            DB::table('options')->where('deleted_at', '=', null)->get(['id', 'name', 'active'])
+        );
         $showColumns = ['name', 'active', 'actions'];
         $searchColumns = ['name', 'active'];
         $orderColumns = ['name', 'active'];

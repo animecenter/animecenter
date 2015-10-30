@@ -151,7 +151,9 @@ class RelationController extends DashboardController
     public function getList()
     {
         $url = 'calendar-seasons';
-        $list = collect(DB::table('calendar_seasons')->where('deleted_at', '=', null)->get(['id', 'name', 'active']));
+        $list = collect(
+            DB::table('calendar_seasons')->where('deleted_at', '=', null)->get(['id', 'name', 'active'])
+        );
         $showColumns = ['name', 'active', 'actions'];
         $searchColumns = ['name', 'active'];
         $orderColumns = ['name', 'active'];
