@@ -104,16 +104,16 @@
                     @foreach ($anime['episodes'] as $episode)
                         <tr>
                             <td>
-                                <i class="fa fa-video-camera fa-fw text-success"></i> Episode {{ $episode->number }}
+                                Episode {{ $episode->number }}
                             </td>
-                            @if (!$episode->mirrors->isEmpty())
-                                <td>
+                            <td>
+                                @if (!$episode->mirrors->isEmpty())
                                     <a href="{{ url($anime->slug . '/episode/' . $episode->number . '/subbed/' . $episode->mirrors->first()->id) }}" class="label label-success">Subbed</a>
                                     @if (empty($episode->mirrors->where('translation', 'subbed')))
                                         <button class="label label-purple" type="button">Dubbed</button>
                                     @endif
-                                </td>
-                            @endif
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

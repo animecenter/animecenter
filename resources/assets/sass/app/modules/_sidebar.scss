@@ -3,7 +3,7 @@
 }
 
 .sidebar li > a {
-  color: #777;
+  color: #a7b1c2;
   padding: 10px 10px;
 }
 
@@ -23,10 +23,6 @@
   background-color: #a7b1c2;
 }
 
-.color-side {
-  background-color: #fff;
-}
-
 .sidebar-money {
   font-size: 35px !important;
   width: 100% !important;
@@ -42,33 +38,64 @@
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #fff;
+  background-color: #293846;
   border-bottom: 1px solid #dcdcdc;
 }
 
-.login .btn, .sign-up .btn {
+li.login a.btn, li.sign-up a.btn {
   padding: 10px 30px;
+  color: #fff;
+}
+
+.navbar-form .input-group > .form-control {
+  border-radius: 5px;
 }
 
 .search-form {
+
+  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #fff;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #fff;
+    opacity:  1;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #fff;
+    opacity:  1;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #fff;
+  }
+
+  .form-control {
+    background-color: #a7b1c2;
+    color: #fff;
+    border: 0;
+  }
 
   .input-group {
     width: 219px;
   }
 
   .input-group-addon {
-    background-color: #fff;
+    background-color: #a7b1c2;
     height: 32px;
     width: 32px;
     border: 0;
     top: 1px;
     right: 1px;
-    border-radius: 0;
+    border-radius: 10px;
   }
 }
 
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+  color: #fff;
+}
+
 .nav > li > a:focus, .nav > li > a:hover {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
+  color: #000;
 }
 
 .navbar-form {
@@ -81,14 +108,15 @@
 }
 
 .navbar-default {
-  background-color: #fff;
+  background-color: #293846;
   margin: 0;
   border: 0;
 }
 
-.navbar-brand {
-  height: 50px;
-  padding: 12px;
+.navbar > .container-fluid .navbar-brand {
+  height: 34px;
+  margin: 8px 0;
+  padding: 0;
 }
 
 .navbar-brand > img {
@@ -98,10 +126,6 @@
 .navbar-collapse {
   background: transparent;
   border-top: 0;
-}
-
-.navbar-header {
-  background-color: #fff;
 }
 
 .navbar-collapse {
