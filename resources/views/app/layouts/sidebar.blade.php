@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('img/logo.png') }}" alt="animecenter.co" height="auto" width="auto">
+                    <img src="{{ asset('img/logo.png') }}" alt="animecenter.co" height="auto" width="220">
                 </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
@@ -115,10 +115,10 @@
                         </li>
                     @else
                         <li class="login">
-                            <a href="{{ url('login') }}" class="btn btn-default">Login</a>
+                            <a href="{{ url('login') }}" class="btn btn-success">Login</a>
                         </li>
                         <li class="sign-up">
-                            <a href="{{ url('sign-up') }}" class="btn btn-default">Sign up</a>
+                            <a href="{{ url('sign-up') }}" class="btn btn-success">Sign up</a>
                         </li>
                     @endif
                     <li>
@@ -149,12 +149,10 @@
                     </li>
                     <li class="text-center">
                         <i class="fa fa-money fa-fw text-success color-side sidebar-money"></i><br>
-                        <h1 class="coolfont center color-side">Sponsorships</h1>
-                        <div class="center color-side">
-                            Do you want to contribute? <br>Learn more
-                            <div class="text-yellow center color-side">
-                                <button class="btn btn-success center" type="button">Contribute</button>
-                            </div>
+                        <h3 class="text-white center">Sponsorships</h3>
+                        <div class="center">
+                            <p class="text-yellow">Do you want to contribute?</p>
+                            <button class="btn btn-success center" type="button">Learn more</button>
                         </div>
                     </li>
                 </ul>
