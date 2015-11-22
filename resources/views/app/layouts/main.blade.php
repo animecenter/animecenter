@@ -5,7 +5,8 @@
 </head>
 <body>
     <div id="wrapper">
-        @include('app.layouts.sidebar')
+        @include('app.layouts.left-sidebar')
+        @yield('right-sidebar')
         <div class="main">
             <div class="container-fluid">
                 @yield('content')

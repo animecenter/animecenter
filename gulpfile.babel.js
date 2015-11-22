@@ -52,7 +52,7 @@ gulp.task('css', () => {
         ],
       }).on('error', $.sass.logError))
       .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
-      .pipe($.sourcemaps.write())
+      //.pipe($.sourcemaps.write())
       .pipe(gulp.dest(pathTo.public.css))
       .pipe($.size())
       .pipe(reload({stream: true})

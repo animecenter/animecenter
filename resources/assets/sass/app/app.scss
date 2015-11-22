@@ -61,9 +61,6 @@ $secondary-font: "Oswald";
 @import "modules/carousel";
 
 // Main CSS
-body {
-  background-color: #f8f8f8;
-}
 
 h1 {
   font-size: 18px;
@@ -110,6 +107,9 @@ a {
 .thumbnail {
   margin-bottom: 10px;
   color: #000;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
 }
 
 .btn-purple {
@@ -256,7 +256,6 @@ a {
 .episode-title {
   margin: 10px 0;
   font-size: 14px;
-  font-weight: bold;
   text-align: center;
 }
 
@@ -303,6 +302,33 @@ a {
 
 .letter li {
   float: left;
+}
+
+.letter .dropdown-menu {
+  background-color: #293846;
+  border: 0;
+  border-radius: 0;
+}
+
+.letter > ul > li {
+  width: 44.5px;
+  height: 44.5px;
+  border-right: 1px solid #F2F2F2;
+  border-bottom: 1px solid #F2F2F2;
+}
+
+.letter > ul > li > a {
+  border-radius: 0;
+  padding: 11.75px 0;
+  width: 100%;
+  border: 0;
+  background-color: #293846;
+  color: #fff;
+}
+
+.letter > ul > li:nth-child(5n) {
+  border: 0;
+  border-bottom: 1px solid #F2F2F2;
 }
 
 @media (max-width: $screen-xs-min) {
@@ -361,6 +387,7 @@ a {
 @media (min-width: $screen-sm-min) {
   .main {
     margin-left: 250px;
+    margin-right: 250px;
   }
 }
 
