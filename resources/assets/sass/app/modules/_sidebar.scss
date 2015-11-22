@@ -33,13 +33,23 @@
   position: fixed;
   width: 100%;
   top: 0;
-  left: 0;
   z-index: 1000;
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #293846;
   border-bottom: 1px solid #dcdcdc;
+}
+
+.sidebar.right {
+  right: 0;
+  background-color: #f2f2f2;
+  border-left: 1px solid #dcdcdc;
+
+  button {
+    background-color: #293846;
+    color: #fff;
+  }
 }
 
 li.login a.btn, li.sign-up a.btn {
@@ -49,6 +59,21 @@ li.login a.btn, li.sign-up a.btn {
 
 .navbar-form .input-group > .form-control {
   border-radius: 5px;
+}
+
+.btn-group-vertical {
+  width: 100%;
+
+  .btn-group {
+    margin: 10px 0;
+  }
+
+  .dropdown-menu {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-top: 0;
+  }
 }
 
 .search-form {
@@ -164,8 +189,7 @@ li.login a.btn, li.sign-up a.btn {
   .sidebar {
     width: 250px;
     bottom: 0;
-    border-right: 1px solid #dcdcdc;
-    border-bottom: 0;
+    border: 0;
   }
   .sign-up {
     margin-left: 12px;
