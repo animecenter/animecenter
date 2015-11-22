@@ -1,3 +1,4 @@
-/vendor
+/components
 /node_modules
+/vendor
 .env

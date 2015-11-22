@@ -1,4 +1,8 @@
 <div style="width: 100%; height: auto; float: left; margin-bottom: 5px;">
+    <script type="text/javascript">
+        kmn_placement = '8c5e53d3a5903ad8e3fa500adef51185';
+    </script>
+    <script type="text/javascript" src="//cdn.komoona.com/scripts/kmn_sa.js"></script>
 </div>
 <div class="widget" id="facebook">
     <div class="fb-page" data-href="https://www.facebook.com/Animecentertv" data-width="300" data-height="258"
