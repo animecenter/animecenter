@@ -96,6 +96,6 @@
         </div>
         <!--/left_content-->
         <div id="right_content">
-            @include('app.layouts.sidebar')
+            @include('app.layouts.left-sidebar')
         </div>
         @include('app.layouts.footer')
