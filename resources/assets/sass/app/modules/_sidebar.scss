@@ -3,7 +3,6 @@
 }
 
 .sidebar li > a {
-  color: #a7b1c2;
   padding: 10px 10px;
 }
 
@@ -37,20 +36,11 @@
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #293846;
+  background-color: #fff;
   border-bottom: 1px solid #dcdcdc;
+  border-right: 1px solid #dcdcdc;
 }
 
-.sidebar.right {
-  right: 0;
-  background-color: #f2f2f2;
-  border-left: 1px solid #dcdcdc;
-
-  button {
-    background-color: #293846;
-    color: #fff;
-  }
-}
 
 li.login a.btn, li.sign-up a.btn {
   padding: 10px 30px;
@@ -79,24 +69,24 @@ li.login a.btn, li.sign-up a.btn {
 .search-form {
 
   ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: #fff;
+    color: #000;
   }
   :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #fff;
+    color:    #000;
     opacity:  1;
   }
   ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #fff;
+    color:    #000;
     opacity:  1;
   }
   :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color:    #fff;
+    color:    #000;
   }
 
   .form-control {
-    background-color: #a7b1c2;
-    color: #fff;
-    border: 0;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #a7b1c2;
   }
 
   .input-group {
@@ -104,7 +94,7 @@ li.login a.btn, li.sign-up a.btn {
   }
 
   .input-group-addon {
-    background-color: #a7b1c2;
+    background-color: #fff;
     height: 32px;
     width: 32px;
     border: 0;
@@ -133,7 +123,7 @@ li.login a.btn, li.sign-up a.btn {
 }
 
 .navbar-default {
-  background-color: #293846;
+  background-color: #fff;
   margin: 0;
   border: 0;
 }
@@ -189,7 +179,7 @@ li.login a.btn, li.sign-up a.btn {
   .sidebar {
     width: 250px;
     bottom: 0;
-    border: 0;
+    border-bottom: 0;
   }
   .sign-up {
     margin-left: 12px;
