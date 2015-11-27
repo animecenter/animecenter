@@ -62,6 +62,10 @@ $secondary-font: "Oswald";
 
 // Main CSS
 
+body {
+  background-color: #f1f1f1;
+}
+
 h1 {
   font-size: 18px;
 }
@@ -97,8 +101,7 @@ a {
 }
 
 .page-header {
-  border-bottom: 1px solid #23b95d;
-  margin: 20px 0 10px;
+  margin: 20px 0 0;
   font-weight: bold;
   float: left;
   width: 100%;
@@ -107,14 +110,66 @@ a {
 .thumbnail {
   margin-bottom: 10px;
   color: #000;
-  padding: 0;
-  border: 0;
+  padding: 12px;
   border-radius: 0;
+  border: 0;
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+}
+
+a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.55);
+  -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.55);
+  -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.55);
+  text-decoration: none;
+
+  .episode-title {
+    color: #0A6DA4;
+  }
 }
 
 .btn-purple {
   background-color: #8970b3;
   color: #fff;
+}
+
+.btn-success {
+  background-color: #23b95d;
+}
+
+.btn-group-vertical {
+  .dropdown-menu {
+    background-color: #17181B;
+    border-radius: 0;
+    a {
+      color: #fff;
+    }
+  }
+}
+
+.btn-group.open .dropdown-toggle {
+  box-shadow: none;
+  border: 0;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+  color: #23B95D;
+}
+
+.btn-default {
+  color: #fff;
+  background-color: #17181B;
+}
+
+.btn-default:hover {
+  color: #fff;
+  background-color: #333333;
+}
+
+.btn-default:active, .btn-default.active, .open>.btn-default.dropdown-toggle, .btn-default:active:hover, .btn-default:active:focus, .btn-default:active.focus, .btn-default.active:hover, .btn-default.active:focus, .btn-default.active.focus, .open>.btn-default.dropdown-toggle:hover, .open>.btn-default.dropdown-toggle:focus, .open>.btn-default.dropdown-toggle.focus {
+  color: #fff;
+  background-color: #333;
 }
 
 .center {
@@ -126,7 +181,7 @@ a {
 
 .media {
   display: block;
-  background-color: #fff;
+  position: relative;
 }
 
 .media-heading {
@@ -138,6 +193,18 @@ a {
 .menu-filter {
   float: right;
   margin-left: 5px;
+}
+
+.anime-list-header {
+  background-color: #3F3F3F;
+  padding: 10px;
+  border-bottom: 1px solid #fff;
+
+  h2 {
+    color: #fff;
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
 }
 
 .anime-title {
@@ -156,6 +223,38 @@ a {
   text-shadow: 0 1px 1px #000;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.nav-tabs {
+  background-color: #fff;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  color: #fff;
+  background-color: #3F3F3F;
+  border-left: 1px solid #3F3F3F;
+}
+
+.nav-tabs>li>a {
+  border-radius: 0;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+  background-color: #3F3F3F;
+  color: #fff;
+  border-bottom: 0;
+}
+
+.anime-tabs {
+  float: left;
+  width: 100%;
+}
+
+.text-dark {
+  color: #000;
 }
 
 .text-white {
@@ -216,37 +315,36 @@ a {
 }
 
 .anime-background {
-  background-size: cover;
   height: 100%;
   width: 100%;
+  -webkit-filter: blur(8px);
+  -moz-filter: blur(8px);
+  -o-filter: blur(8px);
+  -ms-filter: blur(8px);
   filter: blur(8px);
-  content: " ";
   position: absolute;
   z-index: -1;
   overflow: hidden;
 }
 
-.anime-background-2 {
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  text-shadow: 0 1px 1px #000;
-  padding: 10px;
-}
+.anime-media {
+ background-color: rgba(0,0,0,0.6);
 
-.anime-side {
-  background: rgba(0, 0, 0, 0.6);
-  float: right;
-  right: 0;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  font-size: 30px;
-  padding: 10px;
-  text-align: center;
-  li {
-    padding-top: 10px;
+  h1 {
+    color: #fff;
   }
 
+  a {
+    color: #FFFF00;
+  }
+
+  span {
+    font-weight: bold;
+  }
+
+  > p:last-child {
+    padding: 10px;
+  }
 }
 
 .episode-list {
@@ -254,9 +352,11 @@ a {
 }
 
 .episode-title {
-  margin: 10px 0;
-  font-size: 14px;
-  text-align: center;
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: #3f3f3f;
+  font-weight: bold;
+  line-height: 1.5;
 }
 
 .label {
@@ -300,35 +400,43 @@ a {
   float: left;
 }
 
-.letter li {
+.sort-by .btn-default {
+  background-color: #02AF46;
+  border: 0;
+}
+
+.tab-content {
+  float: left;
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #fff;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+.filter-submenu {
+  list-style-type: none;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-submenu li {
   float: left;
 }
 
-.letter .dropdown-menu {
-  background-color: #293846;
-  border: 0;
-  border-radius: 0;
+.filter-submenu > li > a {
+  color: #000;
+  padding: 12px;
+  text-transform: uppercase;
 }
 
-.letter > ul > li {
-  width: 44.5px;
-  height: 44.5px;
-  border-right: 1px solid #F2F2F2;
-  border-bottom: 1px solid #F2F2F2;
-}
-
-.letter > ul > li > a {
-  border-radius: 0;
-  padding: 11.75px 0;
-  width: 100%;
-  border: 0;
-  background-color: #293846;
+.alphabetical li:last-child a {
+  background-color: #01AE45;
   color: #fff;
-}
-
-.letter > ul > li:nth-child(5n) {
-  border: 0;
-  border-bottom: 1px solid #F2F2F2;
+  border-radius: 2px;
 }
 
 @media (max-width: $screen-xs-min) {
@@ -362,6 +470,12 @@ a {
   }
 }
 
+@media (max-width: 1420px) {
+  .container {
+    width: 100%;
+  }
+}
+
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
   .grid-episode .grid-item {
     width: 49%;
@@ -387,7 +501,6 @@ a {
 @media (min-width: $screen-sm-min) {
   .main {
     margin-left: 250px;
-    margin-right: 250px;
   }
 }
 

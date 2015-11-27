@@ -5,7 +5,9 @@
         <div class="col-xs-12 col-lg-8">
             <div class="row">
                 <div class="col-xs-12">
-                    <h2 class="page-header">New Anime Episodes</h2>
+                    <div class="page-header">
+                        <h2>New Anime Episodes</h2>
+                    </div>
                 </div>
                 <div class="col-xs-12">
                     <div class="grid-episode">

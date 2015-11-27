@@ -3,7 +3,11 @@
 @section('content')
     <div class="row">
         <div class="col-xs-12">
-            <div class="media anime-background-2">
+            <div class="media anime-media">
+                <div class="anime-background" style="background:
+                        url({{ asset($anime->photo ? $anime->photo : 'https://placehold.it/225x350') }}) no-repeat no-repeat 50% 35%;
+                        background-size: cover;">
+                </div>
                 <div class="media-left">
                     <img src="{{ asset($anime->photo ? $anime->photo : 'https://placehold.it/225x350') }}">
                 </div>

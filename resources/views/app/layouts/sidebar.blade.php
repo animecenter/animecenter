@@ -1,4 +1,4 @@
-<div class="sidebar right">
+<div class="sidebar">
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -142,16 +142,27 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ url('episodes') }}">
+                            <i class="fa fa-check fa-fw text-purple"></i>
+                            New Episodes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('anime/random') }}">
+                            <i class="fa fa-random fa-fw text-dark-pink"></i> Random
+                        </a>
+                    </li>
+                    <li>
                         <a href="https://mangacenter.co">
                             <i class="fa fa-book fa-fw text-dark-blue"></i>
                             Manga
                         </a>
                     </li>
                     <li class="text-center">
-                        <i class="fa fa-money fa-fw text-success color-side sidebar-money"></i><br>
-                        <h3 class="text-white center">Sponsorships</h3>
+                        <i class="fa fa-money fa-fw text-success sidebar-money"></i><br>
+                        <h3 class="text-dark center">Sponsorships</h3>
                         <div class="center">
-                            <p class="text-yellow">Do you want to contribute?</p>
+                            <p class="text-success">Do you want to contribute?</p>
                             <button class="btn btn-success center" type="button">Learn more</button>
                         </div>
                     </li>
