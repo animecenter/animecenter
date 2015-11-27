@@ -1,83 +1,131 @@
 @extends('app.layouts.main')
 
-@section('right-sidebar')
-    <div class="sidebar right">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="btn-toolbar" role="toolbar">
-                        <div class="btn-group-vertical" role="group">
-                            {{--<li><a href="#"><i class="fa fa-star fa-fw text-yellow"></i>Favorites</a></li>
-                            <li><a href="#"><i class="fa fa-heart fa-fw text-danger"></i>Recommendations</a></li>
-                            <li><a href="#"><i class="fa fa-check fa-fw text-success"></i> New Episodes</a></li>
-                            <li><a href="#"><i class="fa fa-edit fa-fw text-pink"></i>Reviews</a></li>--}}
-                            <div class="btn-group letter" role="group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    Letter <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" data-id="letter">
-                                    <li><a href="#" class="btn btn-default" data-value="a">a</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="b">b</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="c">c</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="d">d</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="e">e</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="f">f</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="g">g</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="h">h</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="i">i</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="j">j</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="k">k</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="l">l</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="m">m</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="n">n</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="o">o</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="p">p</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="q">q</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="r">r</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="s">s</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="t">t</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="u">u</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="v">v</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="w">w</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="x">x</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="y">y</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="z">z</a></li>
-                                    <li><a href="#" class="btn btn-default" data-value="0-9">0-9</a></li>
-                                </ul>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    Language <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu" data-id="language">
-                                    <li><a href="#" data-value="subbed">Subbed</a></li>
-                                    <li><a href="#" data-value="dubbed">Dubbed</a></li>
-                                </ul>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    Type <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu" data-id="type">
-                                    @foreach ($types as $type)
-                                        <li><a href="#" data-value="{{ $type->id }}">{{ $type->name }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <span class="fa fa-list-ul fa-fw text-purple"></span> Season <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu" data-id="calendarSeason">
-                                    @foreach ($calendarSeasons as $calendarSeason)
-                                        <li>
-                                            <a href="#" data-value="{{ $calendarSeason->id }}">
-                                                {{ $calendarSeason->name }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
+@section('content')
+    <div class="row">
+        {{--<div class="col-xs-12">
+            <script src="http://www.evolvenation.com/delivery.js?id=15&size=728x90"></script>
+        </div>--}}
+        <div class="col-xs-12">
+            <div class="page-header anime-list-header">
+                <h2 class="pull-left"><i class="fa fa-video-camera fa-fw text-success"></i> Anime</h2>
+                <div class="btn-group sort-by pull-right" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-sort-amount-asc text-white"></i> Sort By <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" data-id="sortBy">
+                        <li>
+                            <a href="#" data-value="upcoming">
+                                <span class="fa fa-clock-o fa-fw text-light-blue"></span> Upcoming
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-value="latest">Latest</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="anime-tabs" data-example-id="togglable-tabs">
+                <ul id="myTabs" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="alphabetical active">
+                        <a href="#alphabetical" id="alphabetical-tab" role="tab" data-toggle="tab" aria-controls="alphabetical" aria-expanded="true">
+                            <i class="fa fa-sort-alpha-asc text-success"></i> Alphabetical <span class="caret"></span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="genre">
+                        <a href="#genre" role="tab" id="genre-tab" data-toggle="tab" aria-controls="genre" aria-expanded="false">
+                            <i class="fa fa-tags fa-fw text-light-blue"></i> Genre <span class="caret"></span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="language">
+                        <a href="#language" role="tab" id="language-tab" data-toggle="tab" aria-controls="language" aria-expanded="false">
+                            <i class="fa fa-language text-orange"></i> Language <span class="caret"></span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="season">
+                        <a href="#season" role="tab" id="season-tab" data-toggle="tab" aria-controls="language" aria-expanded="false">
+                            <i class="fa fa-google-wallet text-primary"></i> Season <span class="caret"></span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="type">
+                        <a href="#type" role="tab" id="type-tab" data-toggle="tab" aria-controls="type" aria-expanded="false">
+                            <i class="fa fa-exclamation text-danger"></i> Type <span class="caret"></span>
+                        </a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="alphabetical" aria-labelledby="alphabetical-tab">
+                        <ul class="filter-submenu alphabetical" data-id="alphabetical">
+                            <li><a href="#" class="" data-value="a">a</a></li>
+                            <li><a href="#" class="" data-value="b">b</a></li>
+                            <li><a href="#" class="" data-value="c">c</a></li>
+                            <li><a href="#" class="" data-value="d">d</a></li>
+                            <li><a href="#" class="" data-value="e">e</a></li>
+                            <li><a href="#" class="" data-value="f">f</a></li>
+                            <li><a href="#" class="" data-value="g">g</a></li>
+                            <li><a href="#" class="" data-value="h">h</a></li>
+                            <li><a href="#" class="" data-value="i">i</a></li>
+                            <li><a href="#" class="" data-value="j">j</a></li>
+                            <li><a href="#" class="" data-value="k">k</a></li>
+                            <li><a href="#" class="" data-value="l">l</a></li>
+                            <li><a href="#" class="" data-value="m">m</a></li>
+                            <li><a href="#" class="" data-value="n">n</a></li>
+                            <li><a href="#" class="" data-value="o">o</a></li>
+                            <li><a href="#" class="" data-value="p">p</a></li>
+                            <li><a href="#" class="" data-value="q">q</a></li>
+                            <li><a href="#" class="" data-value="r">r</a></li>
+                            <li><a href="#" class="" data-value="s">s</a></li>
+                            <li><a href="#" class="" data-value="t">t</a></li>
+                            <li><a href="#" class="" data-value="u">u</a></li>
+                            <li><a href="#" class="" data-value="v">v</a></li>
+                            <li><a href="#" class="" data-value="w">w</a></li>
+                            <li><a href="#" class="" data-value="x">x</a></li>
+                            <li><a href="#" class="" data-value="y">y</a></li>
+                            <li><a href="#" class="" data-value="z">z</a></li>
+                            <li><a href="#" class="" data-value="#">#</a></li>
+                            <li><a href="#" class="" data-value="view-all">View All</a></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="genre" aria-labelledby="genre-tab">
+                        <ul class="filter-submenu genres" data-id="genres">
+                            @foreach ($genres as $genre)
+                                <li><a href="#" data-value="{{ $genre->id }}">{{ $genre->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="language" aria-labelledby="language-tab">
+                        <ul class="filter-submenu language" data-id="language">
+                            <li><a href="#" data-value="subbed">Subbed</a></li>
+                            <li><a href="#" data-value="dubbed">Dubbed</a></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="season" aria-labelledby="season-tab">
+                        <ul class="filter-submenu season" data-id="season">
+                            <li>
+                                <a href="#" data-value="1"><i class="fa fa-asterisk text-light-blue"></i> Winter</a>
+                            </li>
+                            <li>
+                                <a href="#" data-value="2"><i class="fa fa-tree text-success"></i> Spring</a>
+                            </li>
+                            <li>
+                                <a href="#" data-value="3"><i class="fa fa-sun-o text-orange"></i> Summer</a>
+                            </li>
+                            <li>
+                                <a href="#" data-value="4"><i class="fa fa-leaf text-danger"></i> Fall</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="type" aria-labelledby="type-tab">
+                        <ul class="filter-submenu type" data-id="type">
+                            <li><a href="#" data-value="1"><i class="fa fa-television text-success"></i> TV</a></li>
+                            <li><a href="#" data-value="2"><i class="fa fa-diamond text-success"></i> OVA</a></li>
+                            <li><a href="#" data-value="3"><i class="fa fa-film text-success"></i> Movie</a></li>
+                            <li><a href="#" data-value="4"><i class="fa fa-bookmark text-success"></i> Special</a></li>
+                            <li><a href="#" data-value="5"><i class="fa fa-gg-circle text-success"></i> ONA</a></li>
+                            <li><a href="#" data-value="6"><i class="fa fa-music text-success"></i> Music</a></li>
+                        </ul>
+                    </div>
+                    <!-- <div class="btn-toolbar" role="toolbar">
+                        <div class="btn-group" role="group">
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     <span class="fa fa-list-ul fa-fw text-purple"></span> Year <span class="caret"></span>
@@ -94,26 +142,7 @@
                             </div>
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <span class="fa fa-tags fa-fw text-light-blue"></span>Genre <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu" data-id="genres">
-                                    @foreach ($genres as $genre)
-                                        <li><a href="#" data-value="{{ $genre->id }}">{{ $genre->name }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="btn-group sort-by" role="group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    Sort By <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu" data-id="sortBy">
-                                    <li><a href="#" data-value="upcoming"><span class="fa fa-clock-o fa-fw text-light-blue"></span> Upcoming</a></li>
-                                    <li><a href="#" data-value="latest">Latest</a></li>
-                                </ul>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    Producer <span class="caret"></span>
+                                    <i class="fa fa-user-secret text-warning"></i> Producer <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" data-id="producer">
                                     @foreach ($producers as $producer)
@@ -123,7 +152,7 @@
                             </div>
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    Classification <span class="caret"></span>
+                                    <i class="fa fa-ellipsis-h text-white"></i> Classification <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" data-id="classification">
                                     @foreach ($classifications as $classification)
@@ -131,25 +160,10 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            <a href="{{ url('anime/random') }}" class="btn btn-default">
-                                <i class="fa fa-random fa-fw text-dark-pink"></i> Random
-                            </a>
                         </div>
                     </div>
+                    -->
                 </div>
-            </div>
-        </div>
-    </div>
-@endsection
-
-@section('content')
-    <div class="row">
-        <div class="col-xs-12">
-            <script src="http://www.evolvenation.com/delivery.js?id=15&size=728x90"></script>
-        </div>
-        <div class="col-xs-12">
-            <div class="page-header">
-                <h2 class="pull-left no-margin"><i class="fa fa-video-camera fa-fw text-success"></i> Anime List</h2>
             </div>
         </div>
         <div class="col-xs-12">
