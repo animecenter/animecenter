@@ -143,18 +143,18 @@
                     </li>
                     <li>
                         <a href="{{ url('episodes') }}">
-                            <i class="fa fa-check fa-fw text-purple"></i>
+                            <i class="fa fa-check fa-fw text-success"></i>
                             New Episodes
                         </a>
                     </li>
                     <li>
                         <a href="{{ url('anime/random') }}">
-                            <i class="fa fa-random fa-fw text-dark-pink"></i> Random
+                            <i class="fa fa-random fa-fw text-success"></i> Random
                         </a>
                     </li>
                     <li>
                         <a href="https://mangacenter.co">
-                            <i class="fa fa-book fa-fw text-dark-blue"></i>
+                            <i class="fa fa-book fa-fw text-success"></i>
                             Manga
                         </a>
                     </li>
