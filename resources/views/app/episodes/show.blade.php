@@ -6,7 +6,7 @@
             <div class="row">
                 @if (Auth::user())
                     <div class="col-xs-12">
-                        <a href="{{ url('admin/episodes/edit/' . $anime['episode']->id) }}">
+                        <a href="{{ url('dashboard/episodes/edit/' . $anime['episode']->id) }}">
                             Edit
                         </a>
                     </div>

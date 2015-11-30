@@ -232,20 +232,19 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
   -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   color: #fff;
   background-color: #3F3F3F;
   border-left: 1px solid #3F3F3F;
 }
 
-.nav-tabs>li>a {
+.nav-tabs > li > a {
   border-radius: 0;
 }
 
-.nav>li>a:focus, .nav>li>a:hover {
+.nav > li > a:focus, .nav > li > a:hover {
   background-color: #3F3F3F;
   color: #fff;
-  border-bottom: 0;
 }
 
 .anime-tabs {
