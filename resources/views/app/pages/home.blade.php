@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-header">
-                        <h2>New Anime Episodes</h2>
+                        <h1>New Anime Episodes</h1>
                     </div>
                 </div>
                 <div class="col-xs-12">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12">
-                    <h2 class="page-header">Anime This Season</h2>
+                    <h1 class="page-header">Anime This Season</h1>
                 </div>
                 <div class="col-xs-12">
                     <div class="grid grid-anime">
@@ -51,7 +51,7 @@
         <div class="col-xs-12 col-lg-4">
             <div class="row">
                 <div class="col-xs-12">
-                    <h2 class="page-header">Upcoming Anime Episodes</h2>
+                    <h1 class="page-header">Upcoming Anime Episodes</h1>
                 </div>
                 <div class="col-xs-12">
                     @foreach ($upcomingEpisodes as $episode)
@@ -67,7 +67,7 @@
                     @endforeach
                 </div>
                 <div class="col-xs-12">
-                    <h2 class="page-header">Watch Anime Online</h2>
+                    <h1 class="page-header">Watch Anime Online</h1>
                 </div>
             </div>
         </div>
