@@ -1,93 +1,55 @@
 <footer id="footer" class="row footer">
     <div class="col-md-4">
-        <ul>
+        <ul class="unstyled">
+            <li>Applications</li>
             <li>
-                <a href="{{ url('/') }}">
-                    Watch Anime Online
-                </a>
+                <a href="#">Product for Mac</a>
             </li>
             <li>
-                <a href="{{ url('/anime?language=subbed') }}">
-                    Subbed Anime
-                </a>
+                <a href="#">Product for Windows</a>
             </li>
             <li>
-                <a href="{{ url('/anime?language=dubbed') }}">
-                    Dubbed Anime
-                </a>
+                <a href="#">Product for Eclipse</a>
             </li>
             <li>
-                <a href="{{ url('/episodes?sortBy=latest') }}">
-                    Latest Episodes
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('/anime?sortBy=latest') }}">
-                    Latest Anime
-                </a>
+                <a href="#">Product mobile apps</a>
             </li>
         </ul>
     </div>
     <div class="col-md-4">
-        <ul>
+        <ul class="unstyled">
+            <li>Services</li>
             <li>
-                <a href="{{ url('/anime/watch/naruto-shippuden') }}">
-                    Naruto Shippuden
-                </a>
+                <a href="#">Web analytics</a>
             </li>
             <li>
-                <a href="{{ url('/anime/watch/one-piece') }}">
-                    One Piece
-                </a>
+                <a href="#">Presentations</a>
             </li>
             <li>
-                <a href="{{ url('/anime/watch/fairy-tail') }}">
-                    Fairy Tail
-                </a>
+                <a href="#">Code snippets</a>
             </li>
             <li>
-                <a href="{{ url('/anime/watch/hunter-x-hunter-2011') }}">
-                    Hunter x Hunter 2011
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('/anime/watch/sword-art-online') }}">
-                    Sword Art Online
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('/anime/watch/bleach') }}">
-                    Bleach
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('/anime/watch/attack-on-titan') }}">
-                    Attack on Titan
-                </a>
+                <a href="#">Job board</a>
             </li>
         </ul>
     </div>
     <div class="col-md-4">
-        <ul>
+        <ul class="unstyled">
+            <li>Social</li>
             <li>
-                <a href="http://justanimedubbed.tv/">
-                    Watch Cartoons Online
+                <a href="#">
+                    <i class="fa fa-facebook-square fa-fw text-success"></i>Facebook
                 </a>
             </li>
             <li>
-                <a href="http://www.pinoyanime.tv/">
-                    PinoyAnime
-                </a>
-            </li>
-            <li>
-                <a href="http://anime-exceed.com/">
-                    Anime-Exceed
+                <a href="#">
+                    <i class="fa fa-twitter-square fa-fw text-success"></i>Twitter
                 </a>
             </li>
         </ul>
     </div>
     <div class="col-xs-12">
         <hr>
-        <p class="muted">&#169; 2015 AnimeCenter.co. All rights reserved</p>
+        <p class="muted">© 2015 AnimeCenter.CO. All rights reserved</p>
     </div>
 </footer>
