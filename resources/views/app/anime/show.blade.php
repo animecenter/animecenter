@@ -5,8 +5,8 @@
         <div class="col-xs-12">
             <div class="media anime-media">
                 <div class="anime-background" style="background:
-                        url({{ asset($anime->photo ? $anime->photo : 'https://placehold.it/225x350') }}) no-repeat no-repeat 50% 35%;
-                        background-size: cover;">
+                    url({{ asset($anime->photo ? $anime->photo : 'https://placehold.it/225x350') }}) no-repeat no-repeat 50% 35%;
+                    background-size: cover;">
                 </div>
                 <div class="media-left">
                     <img src="{{ asset($anime->photo ? $anime->photo : 'https://placehold.it/225x350') }}">
@@ -31,13 +31,13 @@
                     <p class="text-white">
                         <span class="text-success">Aired: </span>
                         {{ ($anime->release_date) ? ($anime->release_date . ' to ' .
-                            ($anime->end_date ? $anime->end_date : '?')) : 'Unknown' }}
+                        ($anime->end_date ? $anime->end_date : '?')) : 'Unknown' }}
                     </p>
                     <p class="text-white">
                         <span class="text-success">Producers: </span>
                         @foreach ($anime->producers as $key => $producer)
                             <a href="{{ url('anime?producer=' . $producer->id) }}">
-                                {{ $producer->name . ($key < $producersCount ? ',' : '') }}
+                            {{ $producer->name . ($key < $producersCount ? ',' : '') }}
                             </a>
                         @endforeach
                     </p>
@@ -71,11 +71,11 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-3">
                         <a href="#">
-                            <i class="fa fa-star fa-fw text-yellow"></i>
-                            <i class="fa fa-star fa-fw text-yellow"></i>
-                            <i class="fa fa-star fa-fw text-yellow"></i>
-                            <i class="fa fa-star fa-fw text-yellow"></i>
-                            <i class="fa fa-star fa-fw text-white"></i>
+                        <i class="fa fa-star fa-fw text-yellow"></i>
+                        <i class="fa fa-star fa-fw text-yellow"></i>
+                        <i class="fa fa-star fa-fw text-yellow"></i>
+                        <i class="fa fa-star fa-fw text-yellow"></i>
+                        <i class="fa fa-star fa-fw text-white"></i>
                         </a>
                     </div>
                     <div class="col-xs-12 col-md-3">
@@ -113,9 +113,9 @@
                             <td>
                                 @if (!$episode->mirrors->isEmpty())
                                     <a href="{{ url($anime->slug . '/episode/' . $episode->number . '/subbed/' . $episode->mirrors->first()->id) }}" class="label label-success">Subbed</a>
-                                    @if (empty($episode->mirrors->where('translation', 'subbed')))
-                                        <button class="label label-purple" type="button">Dubbed</button>
-                                    @endif
+                                @if (empty($episode->mirrors->where('translation', 'subbed')))
+                                <button class="label label-purple" type="button">Dubbed</button>
+                                @endif
                                 @endif
                             </td>
                         </tr>
