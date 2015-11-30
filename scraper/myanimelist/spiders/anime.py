@@ -64,7 +64,7 @@ class AnimeSpider(scrapy.Spider):
         item['producers'] = response.xpath('//span[text()="Producers:"]/../a/text()').extract()[0].replace(
             'add some', ''
         )
-        item['genres'] = response.xpath('//span[text()="Genres:"]/../span/a/text()').extract()
+        item['genres'] = response.xpath('//span[text()="Genres:"]/../a/text()').extract()
         item['duration'] = response.xpath('//span[text()="Duration:"]/../text()').extract()[1].strip()
         item['classification'] = response.xpath('//span[text()="Rating:"]/../text()').extract()[1].strip()
         relations = []
@@ -86,4 +86,4 @@ class AnimeSpider(scrapy.Spider):
             item['image_url'] = image_url
         else:
             item['image_url'] = response.xpath('//*[@id="content"]/table/tr/td[1]/div[1]/img/@src').extract()
-        yield item
+        return item
