@@ -8,13 +8,13 @@ use Illuminate\Database\Query\Builder;
 /**
  * AC\Models\Menu.
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
  * @property string $slug
  * @property string $location
- * @property integer $order
- * @property integer $parent_menu_id
- * @property boolean $active
+ * @property int $order
+ * @property int $parent_menu_id
+ * @property bool $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
