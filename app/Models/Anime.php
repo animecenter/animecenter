@@ -7,25 +7,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Anime
+ * AC\Models\Anime.
  *
- * @property integer $id
- * @property integer $mal_id
+ * @property int $id
+ * @property int $mal_id
  * @property string $title
  * @property string $slug
  * @property string $image
  * @property string $synopsis
- * @property integer $type_id
- * @property integer $number_of_episodes
- * @property integer $status_id
+ * @property int $type_id
+ * @property int $number_of_episodes
+ * @property int $status_id
  * @property string $release_date
  * @property string $end_date
  * @property string $duration
- * @property integer $calendar_season_id
- * @property integer $classification_id
+ * @property int $calendar_season_id
+ * @property int $classification_id
  * @property float $rating
  * @property \Illuminate\Database\Eloquent\Collection|View[] $views
- * @property boolean $active
+ * @property bool $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
