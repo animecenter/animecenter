@@ -64,7 +64,7 @@ class CalendarSeasonController extends DashboardController
     public function getEdit($id = 0)
     {
         return view('dashboard.calendar-seasons.edit', [
-            'calendarSeason' => DB::table('calendar_seasons')->where('id', '=', $id)->first()
+            'calendarSeason' => DB::table('calendar_seasons')->where('id', '=', $id)->first(),
         ]);
     }
 
