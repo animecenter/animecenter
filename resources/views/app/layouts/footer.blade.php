@@ -1,5 +1,6 @@
 <footer id="footer" class="row footer">
     <div class="col-md-4">
+        <h4>Animecenter</h4>
         <ul>
             <li>
                 <a href="{{ url('/') }}">
@@ -29,6 +30,7 @@
         </ul>
     </div>
     <div class="col-md-4">
+        <h4>Popular Anime Series</h4>
         <ul>
             <li>
                 <a href="{{ url('/anime/watch/naruto-shippuden') }}">
@@ -68,6 +70,7 @@
         </ul>
     </div>
     <div class="col-md-4">
+        <h4>Affiliates</h4>
         <ul>
             <li>
                 <a href="http://justanimedubbed.tv/">

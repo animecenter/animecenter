@@ -5,6 +5,7 @@ namespace AC\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
+use Route;
 
 /**
  * AC\Models\Meta.
@@ -90,4 +91,32 @@ class Meta extends Model
     public $rules = [
         'id' => 'required|integer|min:1',
     ];
+
+    /**
+     * The list of routes name to remove from meta routes.
+     *
+     * @param array $routes
+     */
+    public function setRoutesToRemove(array $routes = [])
+    {
+        if (isset($routes)) {
+            $this->routesToRemove = array_merge(['dashboard', '_debugbar', 'fontawesome'], $routes);
+        }
+
+        return;
+    }
+
+    /**
+     * The list of meta routes.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function routes()
+    {
+        $this->setRoutesToRemove();
+        return collect(Route::getRoutes()->getRoutes())->filter(function ($item) {
+            return (check_if_string_contains_a_value_from_array($item->uri(), $this->routesToRemove) === false) &&
+            $item->methods()[0] === 'GET';
+        });
+    }
 }

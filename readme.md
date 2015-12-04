@@ -88,4 +88,4 @@ When you finish solving it, do a pull request. There is a higher chance for a fe
 ## License
 
 animecenter is licensed under the [CPAL-1.0](http://opensource.org/licenses/CPAL-1.0) license.
-For better understanding of what you can do with it visit [tldrlegal.com](https://tldrlegal.com/license/common-public-attribution-license-version-1.0-(cpal-1.0)).
+For better understanding of what you can do with the codebase visit [tldrlegal.com](https://tldrlegal.com/license/common-public-attribution-license-version-1.0-(cpal-1.0)).
