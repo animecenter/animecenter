@@ -21,9 +21,14 @@
                     @endif
                     <form role="form" method="post" action="{{ url('dashboard/metas/create') }}">
                         {!! csrf_field() !!}
+
                         <div class="form-group">
-                            <label>Route</label>
-                            <input type="text" class="form-control" name="route" value="{{ old('route') }}" placeholder="Route">
+                            <label for="route">Select Route</label>
+                            <select name="route" class="form-control">
+                                @foreach ($routes as $route)
+                                    <option value="{{ $route->uri() }}">{{ $route->uri() }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Title</label>
@@ -35,7 +40,7 @@
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea name="description" cols="30" rows="10" placeholder="Description">{{ old('keywords') }}</textarea>
+                            <textarea name="description" cols="30" rows="10" placeholder="Description">{{ old('description') }}</textarea>
                         </div>
                         <div class="form-group">
                             <label>Status:</label>

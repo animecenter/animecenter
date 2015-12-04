@@ -33,7 +33,7 @@ class MetaController extends DashboardController
      */
     public function getCreate()
     {
-        return view('dashboard.metas.create');
+        return view('dashboard.metas.create', ['routes' => $this->meta->routes()]);
     }
 
     /**

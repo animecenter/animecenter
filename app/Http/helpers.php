@@ -50,3 +50,24 @@ if (!function_exists('option_is_selected')) {
             ? 'selected' : '';
     }
 }
+
+if (!function_exists('check_if_string_contains_a_value_from_array')) {
+
+    /**
+     * Return true if the string passed contains a value equal to any value from array.
+     *
+     * @param string $string
+     * @param array $values
+     *
+     * @return string
+     */
+    function check_if_string_contains_a_value_from_array($string = '', array $values)
+    {
+        foreach($values as $value) {
+            if (strpos($string, $value) !== false) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

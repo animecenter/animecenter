@@ -2,10 +2,12 @@
 
 namespace AC\Composers;
 
+use AC\Models\Meta;
 use AC\Models\Option;
 use AC\Models\Page;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\View\View;
+use Route;
 
 class AppComposer
 {
@@ -25,17 +27,24 @@ class AppComposer
     private $option;
 
     /**
-     * Create a new page error composer.
-     *
-     * @param Guard  $auth
-     * @param Page   $page
-     * @param Option $option
+     * @var Meta
      */
-    public function __construct(Guard $auth, Page $page, Option $option)
+    private $meta;
+
+    /**
+     * Create a new page composer.
+     *
+     * @param Guard $auth
+     * @param Page $page
+     * @param Option $option
+     * @param Meta $meta
+     */
+    public function __construct(Guard $auth, Page $page, Option $option, Meta $meta)
     {
         $this->auth = $auth;
         $this->page = $page;
         $this->option = $option;
+        $this->meta = $meta;
     }
 
     /**
@@ -52,10 +61,12 @@ class AppComposer
         $this->data['pages'] = $this->page->get();
 
         // TODO: Get meta data
-        $this->data['pageTitle'] = '';
-        $this->data['metaTitle'] = '';
-        $this->data['metaDesc'] = '';
-        $this->data['metaKey'] = '';
+        $url = Route::current()->uri();
+        $meta = $this->meta;//$this->meta->whereRoute($url)->firstOrFail();
+        $this->data['pageTitle'] = $meta->title;
+        $this->data['metaTitle'] = $meta->title;
+        $this->data['metaDesc'] = $meta->description;
+        $this->data['metaKeys'] = $meta->keywords;
 
         $view->with($this->data);
     }
