@@ -90,7 +90,7 @@
                     </div>
 
                     <div class="col-xs-12">
-                        <div class="row">
+                        <div class="row star-views">
                             <div class="pull-left">
                                 <p>{{ $anime->episode->votes }}<span> Votes</span></p>
                             </div>
