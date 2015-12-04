@@ -34,8 +34,8 @@ class AnimeController extends DashboardController
     public function getCreate()
     {
         return view('dashboard.animes.create', [
-            'types' => DB::table('types')->where('model', '=', 'Anime')->orderBy('name')->get(['id', 'name']),
-            'statuses' => DB::table('statuses')->orderBy('name')->get(['id', 'name']),
+            'types'           => DB::table('types')->where('model', '=', 'Anime')->orderBy('name')->get(['id', 'name']),
+            'statuses'        => DB::table('statuses')->orderBy('name')->get(['id', 'name']),
             'calendarSeasons' => DB::table('calendar_seasons')->orderBy('name')->get(['id', 'name']),
             'classifications' => DB::table('classifications')->orderBy('name')->get(['id', 'name']),
         ]);
@@ -81,9 +81,9 @@ class AnimeController extends DashboardController
     public function getEdit($id = 0)
     {
         return view('dashboard.animes.edit', [
-            'anime' => DB::table('animes')->where('id', '=', $id)->first(),
-            'types' => DB::table('types')->where('model', '=', 'Anime')->orderBy('name')->get(['id', 'name']),
-            'statuses' => DB::table('statuses')->orderBy('name')->get(['id', 'name']),
+            'anime'           => DB::table('animes')->where('id', '=', $id)->first(),
+            'types'           => DB::table('types')->where('model', '=', 'Anime')->orderBy('name')->get(['id', 'name']),
+            'statuses'        => DB::table('statuses')->orderBy('name')->get(['id', 'name']),
             'calendarSeasons' => DB::table('calendar_seasons')->orderBy('name')->get(['id', 'name']),
             'classifications' => DB::table('classifications')->orderBy('name')->get(['id', 'name']),
         ]);
