@@ -79,12 +79,12 @@ class AnimeController extends Controller
     {
         $this->data['query'] = $request->except('page');
         $this->data['animes'] = $this->anime->searchBy($this->data['query'], $request);
-        $this->data['currentURL'] = $this->getCurrentURL();
         $this->data['classifications'] = $this->classification->all();
         $this->data['genres'] = $this->genre->all();
         $this->data['producers'] = $this->producer->all();
         $this->data['calendarSeasons'] = $this->calendarSeason->all();
         $this->data['types'] = $this->type->all();
+        $this->data['currentURL'] = $this->getCurrentURL();
 
         return view('app.anime.index', $this->data);
     }
@@ -104,7 +104,7 @@ class AnimeController extends Controller
         // TODO: Update number of views
         // $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
 
-        $this->data['lastEpisode'] = $this->episode->getLastEpisode($anime['id']);
+        $this->data['latestEpisode'] = $this->episode->getLatestEpisode($anime['id']);
 
         return view('app.anime.show', $this->data);
     }
@@ -181,7 +181,7 @@ class AnimeController extends Controller
         // TODO: Update number of views
         // $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
 
-        $this->data['lastEpisode'] = $this->episode->getLastEpisode($anime['id']);
+        $this->data['lastEpisode'] = $this->episode->getLatestEpisode($anime['id']);
 
         return view('app.anime.show', $this->data);
     }

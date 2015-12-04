@@ -87,7 +87,7 @@ class EloquentEpisodeRepository
      *
      * @return mixed
      */
-    public function getLastEpisode($animeID = '')
+    public function getLatestEpisode($animeID = '')
     {
         return $this->episode->where('aired_at', '<', Carbon::now()->toDateTimeString())
             ->where('anime_id', '=', $animeID)->orderBy('number', 'DESC')->first();

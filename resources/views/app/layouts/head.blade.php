@@ -4,7 +4,7 @@
 <title>{{ $pageTitle }}</title>
 <meta name="title" content="{{ $metaTitle }}">
 <meta name="description" content="{{ $metaDesc }}">
-<meta name="keywords" content="{{ $metaKey }}">
+<meta name="keywords" content="{{ $metaKeys }}">
 @if (isset($metaOGTitle) && $metaOGTitle != '')
     <meta property="og:title" content="{{ $metaOGTitle }}">
     <meta property="og:description" content="{{ $metaOGDesc }}">
