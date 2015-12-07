@@ -34,10 +34,10 @@ class AppComposer
     /**
      * Create a new page composer.
      *
-     * @param Guard $auth
-     * @param Page $page
+     * @param Guard  $auth
+     * @param Page   $page
      * @param Option $option
-     * @param Meta $meta
+     * @param Meta   $meta
      */
     public function __construct(Guard $auth, Page $page, Option $option, Meta $meta)
     {
