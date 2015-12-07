@@ -21,6 +21,7 @@ $factory->define(AC\Models\Anime::class, function (Faker\Generator $faker) {
         'type_id'            => rand(0, 1) === 1 ? rand(1, 7) : null,
         'number_of_episodes' => rand(0, 1) === 1 ? rand(1, 24) : null,
         'status_id'          => rand(1, 3),
+        'year'               => $faker->year(),
         'release_date'       => $faker->date(),
         'end_date'           => rand(0, 1) === 1 ? $faker->date() : null,
         'duration'           => rand(0, 1) === 1 ? $faker->time() : null,
