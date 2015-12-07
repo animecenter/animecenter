@@ -16,6 +16,7 @@ use Illuminate\Database\Query\Builder;
  * @property string $image
  * @property string $synopsis
  * @property int $type_id
+ * @property int $year
  * @property int $number_of_episodes
  * @property int $status_id
  * @property string $release_date
@@ -49,6 +50,7 @@ use Illuminate\Database\Query\Builder;
  * @method static Builder|Anime whereImage($value)
  * @method static Builder|Anime whereSynopsis($value)
  * @method static Builder|Anime whereTypeId($value)
+ * @method static Builder|Anime whereYear($value)
  * @method static Builder|Anime whereNumberOfEpisodes($value)
  * @method static Builder|Anime whereStatusId($value)
  * @method static Builder|Anime whereReleaseDate($value)
@@ -115,7 +117,8 @@ class Anime extends Model
         'image'              => 'string',
         'synopsis'           => 'string',
         'type_id'            => 'int',
-        'episodes'           => 'int',
+        'year'               => 'int',
+        'number_of_episodes' => 'int',
         'status_id'          => 'int',
         'release_date'       => 'string',
         'end_date'           => 'string',
