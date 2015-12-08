@@ -1,5 +1,7 @@
 # animecenter
 
+[![StyleCI](https://styleci.io/repos/44687688/shield)](https://styleci.io/repos/44687688)
+
 ## What is animecenter?
 
 animecenter is an anime aggregation platform. Every link and information on animecenter is found on the open internet. 
