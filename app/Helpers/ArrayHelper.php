@@ -4,7 +4,6 @@ namespace AC\Helpers;
 
 class ArrayHelper
 {
-
     /**
      * Get first value in array that is not empty.
      *
