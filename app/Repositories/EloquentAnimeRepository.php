@@ -2,7 +2,6 @@
 
 namespace AC\Repositories;
 
-use AC\Helpers\UserHelper;
 use AC\Models\Anime;
 use AC\Repositories\EloquentUserRepository as User;
 use Cache;
@@ -22,7 +21,7 @@ class EloquentAnimeRepository
 
     /**
      * @param Anime $anime
-     * @param User $user
+     * @param User  $user
      */
     public function __construct(Anime $anime, User $user)
     {
@@ -389,7 +388,7 @@ class EloquentAnimeRepository
         $userID = $this->user->getCurrentUserID();
         $minutes = 1440;
         if ($userID) {
-            Cache::remember($userID . '/' . $slug, $minutes, function () use ($slug) {
+            Cache::remember($userID.'/'.$slug, $minutes, function () use ($slug) {
                 $this->anime->where('slug', '=', $slug)->increment('views');
             });
         }
