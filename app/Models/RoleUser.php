@@ -3,7 +3,6 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\RoleUser.
@@ -14,11 +13,11 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  *
- * @method static Builder|RoleUser whereUserId($value)
- * @method static Builder|RoleUser whereRoleId($value)
- * @method static Builder|RoleUser whereCreatedAt($value)
- * @method static Builder|RoleUser whereUpdatedAt($value)
- * @method static Builder|RoleUser whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|RoleUser whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|RoleUser whereRoleId($value)
+ * @method static \Illuminate\Database\Query\Builder|RoleUser whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|RoleUser whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|RoleUser whereDeletedAt($value)
  */
 class RoleUser extends Model
 {

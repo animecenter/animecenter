@@ -3,7 +3,6 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Menu.
@@ -19,16 +18,16 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  *
- * @method static Builder|Menu whereId($value)
- * @method static Builder|Menu whereName($value)
- * @method static Builder|Menu whereSlug($value)
- * @method static Builder|Menu whereLocation($value)
- * @method static Builder|Menu whereOrder($value)
- * @method static Builder|Menu whereParentMenuId($value)
- * @method static Builder|Menu whereActive($value)
- * @method static Builder|Menu whereCreatedAt($value)
- * @method static Builder|Menu whereUpdatedAt($value)
- * @method static Builder|Menu whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Menu whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Menu whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|Menu whereSlug($value)
+ * @method static \Illuminate\Database\Query\Builder|Menu whereLocation($value)
+ * @method static \Illuminate\Database\Query\Builder|Menu whereOrder($value)
+ * @method static \Illuminate\Database\Query\Builder|Menu whereParentMenuId($value)
+ * @method static \Illuminate\Database\Query\Builder|Menu whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Menu whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Menu whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Menu whereDeletedAt($value)
  */
 class Menu extends Model
 {

@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Role.
@@ -18,14 +17,14 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  *
- * @method static Builder|Role whereId($value)
- * @method static Builder|Role whereName($value)
- * @method static Builder|Role whereDisplayName($value)
- * @method static Builder|Role whereDescription($value)
- * @method static Builder|Role whereActive($value)
- * @method static Builder|Role whereCreatedAt($value)
- * @method static Builder|Role whereUpdatedAt($value)
- * @method static Builder|Role whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Role whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Role whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|Role whereDisplayName($value)
+ * @method static \Illuminate\Database\Query\Builder|Role whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|Role whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Role whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Role whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Role whereDeletedAt($value)
  */
 class Role extends Model
 {

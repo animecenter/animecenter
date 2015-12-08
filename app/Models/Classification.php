@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Classification.
@@ -17,12 +16,12 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  *
- * @method static Builder|Classification whereId($value)
- * @method static Builder|Classification whereName($value)
- * @method static Builder|Classification whereActive($value)
- * @method static Builder|Classification whereCreatedAt($value)
- * @method static Builder|Classification whereUpdatedAt($value)
- * @method static Builder|Classification whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Classification whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Classification whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|Classification whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Classification whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Classification whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Classification whereDeletedAt($value)
  */
 class Classification extends Model
 {

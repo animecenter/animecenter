@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Title.
@@ -20,15 +19,15 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $deleted_at
  * @property-read \ $titles
  *
- * @method static Builder|Title whereId($value)
- * @method static Builder|Title whereTitle($value)
- * @method static Builder|Title whereLanguage($value)
- * @method static Builder|Title whereTitleableId($value)
- * @method static Builder|Title whereTitleableType($value)
- * @method static Builder|Title whereActive($value)
- * @method static Builder|Title whereCreatedAt($value)
- * @method static Builder|Title whereUpdatedAt($value)
- * @method static Builder|Title whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Title whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Title whereTitle($value)
+ * @method static \Illuminate\Database\Query\Builder|Title whereLanguage($value)
+ * @method static \Illuminate\Database\Query\Builder|Title whereTitleableId($value)
+ * @method static \Illuminate\Database\Query\Builder|Title whereTitleableType($value)
+ * @method static \Illuminate\Database\Query\Builder|Title whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Title whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Title whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Title whereDeletedAt($value)
  */
 class Title extends Model
 {

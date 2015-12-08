@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Producer.
@@ -17,12 +16,12 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  *
- * @method static Builder|Producer whereId($value)
- * @method static Builder|Producer whereName($value)
- * @method static Builder|Producer whereActive($value)
- * @method static Builder|Producer whereCreatedAt($value)
- * @method static Builder|Producer whereUpdatedAt($value)
- * @method static Builder|Producer whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Producer whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Producer whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|Producer whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Producer whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Producer whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Producer whereDeletedAt($value)
  */
 class Producer extends Model
 {

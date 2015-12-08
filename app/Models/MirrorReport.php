@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\MirrorReport.
@@ -21,15 +20,15 @@ use Illuminate\Database\Query\Builder;
  * @property-read Mirror $mirror
  * @property-read User $user
  *
- * @method static Builder|MirrorReport whereId($value)
- * @method static Builder|MirrorReport whereUserId($value)
- * @method static Builder|MirrorReport whereMirrorId($value)
- * @method static Builder|MirrorReport whereVerified($value)
- * @method static Builder|MirrorReport whereBroken($value)
- * @method static Builder|MirrorReport whereActive($value)
- * @method static Builder|MirrorReport whereCreatedAt($value)
- * @method static Builder|MirrorReport whereUpdatedAt($value)
- * @method static Builder|MirrorReport whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorReport whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorReport whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorReport whereMirrorId($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorReport whereVerified($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorReport whereBroken($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorReport whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorReport whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorReport whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorReport whereDeletedAt($value)
  */
 class MirrorReport extends Model
 {

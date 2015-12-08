@@ -9,7 +9,6 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
 /**
@@ -30,15 +29,15 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @property-read \Illuminate\Database\Eloquent\Collection|Role[] $roles
  * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
  *
- * @method static Builder|User whereId($value)
- * @method static Builder|User whereUsername($value)
- * @method static Builder|User whereEmail($value)
- * @method static Builder|User wherePassword($value)
- * @method static Builder|User whereRememberToken($value)
- * @method static Builder|User whereActive($value)
- * @method static Builder|User whereCreatedAt($value)
- * @method static Builder|User whereUpdatedAt($value)
- * @method static Builder|User whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|User whereUsername($value)
+ * @method static \Illuminate\Database\Query\Builder|User whereEmail($value)
+ * @method static \Illuminate\Database\Query\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Query\Builder|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Query\Builder|User whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|User whereDeletedAt($value)
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {

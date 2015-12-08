@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Image.
@@ -19,15 +18,15 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  *
- * @method static Builder|Image whereId($value)
- * @method static Builder|Image whereUserId($value)
- * @method static Builder|Image whereImageableId($value)
- * @method static Builder|Image whereImageableType($value)
- * @method static Builder|Image wherePath($value)
- * @method static Builder|Image whereActive($value)
- * @method static Builder|Image whereCreatedAt($value)
- * @method static Builder|Image whereUpdatedAt($value)
- * @method static Builder|Image whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Image whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Image whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|Image whereImageableId($value)
+ * @method static \Illuminate\Database\Query\Builder|Image whereImageableType($value)
+ * @method static \Illuminate\Database\Query\Builder|Image wherePath($value)
+ * @method static \Illuminate\Database\Query\Builder|Image whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Image whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Image whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Image whereDeletedAt($value)
  */
 class Image extends Model
 {
