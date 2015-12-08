@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * AC\Models\Anime
+ * AC\Models\Anime.
  *
  * @property int $id
  * @property int $mal_id
