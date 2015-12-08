@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 use Route;
 
 /**
@@ -20,15 +19,15 @@ use Route;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  *
- * @method static Builder|Meta whereId($value)
- * @method static Builder|Meta whereRoute($value)
- * @method static Builder|Meta whereTitle($value)
- * @method static Builder|Meta whereKeywords($value)
- * @method static Builder|Meta whereDescription($value)
- * @method static Builder|Meta whereActive($value)
- * @method static Builder|Meta whereCreatedAt($value)
- * @method static Builder|Meta whereUpdatedAt($value)
- * @method static Builder|Meta whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Meta whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Meta whereRoute($value)
+ * @method static \Illuminate\Database\Query\Builder|Meta whereTitle($value)
+ * @method static \Illuminate\Database\Query\Builder|Meta whereKeywords($value)
+ * @method static \Illuminate\Database\Query\Builder|Meta whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|Meta whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Meta whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Meta whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Meta whereDeletedAt($value)
  */
 class Meta extends Model
 {

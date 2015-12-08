@@ -4,10 +4,9 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
- * AC\Models\Anime.
+ * AC\Models\Anime
  *
  * @property int $id
  * @property int $mal_id
@@ -42,28 +41,28 @@ use Illuminate\Database\Query\Builder;
  * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
  * @property-read mixed $photo
  * @property-read mixed $short_title
- *
- * @method static Builder|Anime whereId($value)
- * @method static Builder|Anime whereMalId($value)
- * @method static Builder|Anime whereTitle($value)
- * @method static Builder|Anime whereSlug($value)
- * @method static Builder|Anime whereImage($value)
- * @method static Builder|Anime whereSynopsis($value)
- * @method static Builder|Anime whereTypeId($value)
- * @method static Builder|Anime whereYear($value)
- * @method static Builder|Anime whereNumberOfEpisodes($value)
- * @method static Builder|Anime whereStatusId($value)
- * @method static Builder|Anime whereReleaseDate($value)
- * @method static Builder|Anime whereEndDate($value)
- * @method static Builder|Anime whereDuration($value)
- * @method static Builder|Anime whereCalendarSeasonId($value)
- * @method static Builder|Anime whereClassificationId($value)
- * @method static Builder|Anime whereRating($value)
- * @method static Builder|Anime whereViews($value)
- * @method static Builder|Anime whereActive($value)
- * @method static Builder|Anime whereCreatedAt($value)
- * @method static Builder|Anime whereUpdatedAt($value)
- * @method static Builder|Anime whereDeletedAt($value)
+ * 
+ * @method static \Illuminate\Database\Query\Builder|Anime whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereMalId($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereTitle($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereSlug($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereImage($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereSynopsis($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereTypeId($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereYear($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereNumberOfEpisodes($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereStatusId($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereReleaseDate($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereEndDate($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereDuration($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereCalendarSeasonId($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereClassificationId($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereRating($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereViews($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereDeletedAt($value)
  */
 class Anime extends Model
 {
@@ -134,7 +133,7 @@ class Anime extends Model
      * @var string[]
      */
     public $rules = [
-        'id' => 'required|integer|min:1',
+        'id' => 'required|int|min:1',
     ];
 
     /**
@@ -272,7 +271,6 @@ class Anime extends Model
         $value = explode(':', $value);
         $hours = str_replace([0], '', $value[0]);
         $minutes = str_replace([0], '', $value[1]);
-        $secs = str_replace([0], '', $value[2]);
 
         return ($hours ? $hours.' hr. ' : '').($minutes ? $minutes.' min. per episode' : '');
     }

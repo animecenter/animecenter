@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Mirror.
@@ -27,19 +26,19 @@ use Illuminate\Database\Query\Builder;
  * @property-read \Illuminate\Database\Eloquent\Collection|MirrorReport[] $mirrorReports
  * @property-read mixed $slug
  *
- * @method static Builder|Mirror whereId($value)
- * @method static Builder|Mirror whereUserId($value)
- * @method static Builder|Mirror whereEpisodeId($value)
- * @method static Builder|Mirror whereMirrorSourceId($value)
- * @method static Builder|Mirror whereLanguageId($value)
- * @method static Builder|Mirror whereUrl($value)
- * @method static Builder|Mirror whereTranslation($value)
- * @method static Builder|Mirror whereQuality($value)
- * @method static Builder|Mirror whereMobileFriendly($value)
- * @method static Builder|Mirror whereActive($value)
- * @method static Builder|Mirror whereCreatedAt($value)
- * @method static Builder|Mirror whereUpdatedAt($value)
- * @method static Builder|Mirror whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereEpisodeId($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereMirrorSourceId($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereLanguageId($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereUrl($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereTranslation($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereQuality($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereMobileFriendly($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Mirror whereDeletedAt($value)
  */
 class Mirror extends Model
 {

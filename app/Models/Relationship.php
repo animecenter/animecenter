@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Relationship.
@@ -17,12 +16,12 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Relation[] $relations
  *
- * @method static Builder|Relationship whereId($value)
- * @method static Builder|Relationship whereName($value)
- * @method static Builder|Relationship whereActive($value)
- * @method static Builder|Relationship whereCreatedAt($value)
- * @method static Builder|Relationship whereUpdatedAt($value)
- * @method static Builder|Relationship whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Relationship whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Relationship whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|Relationship whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Relationship whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Relationship whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Relationship whereDeletedAt($value)
  */
 class Relationship extends Model
 {

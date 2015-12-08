@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Option.
@@ -17,13 +16,13 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  *
- * @method static Builder|Option whereId($value)
- * @method static Builder|Option whereName($value)
- * @method static Builder|Option whereValue($value)
- * @method static Builder|Option whereActive($value)
- * @method static Builder|Option whereCreatedAt($value)
- * @method static Builder|Option whereUpdatedAt($value)
- * @method static Builder|Option whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Option whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Option whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|Option whereValue($value)
+ * @method static \Illuminate\Database\Query\Builder|Option whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Option whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Option whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Option whereDeletedAt($value)
  */
 class Option extends Model
 {

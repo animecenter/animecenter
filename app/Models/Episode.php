@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Episode.
@@ -30,16 +29,16 @@ use Illuminate\Database\Query\Builder;
  * @property-read mixed $upcoming_photo
  * @property-read mixed $upcoming_title
  *
- * @method static Builder|Episode whereId($value)
- * @method static Builder|Episode whereAnimeId($value)
- * @method static Builder|Episode whereNumber($value)
- * @method static Builder|Episode whereTitle($value)
- * @method static Builder|Episode whereSynopsis($value)
- * @method static Builder|Episode whereActive($value)
- * @method static Builder|Episode whereAiredAt($value)
- * @method static Builder|Episode whereCreatedAt($value)
- * @method static Builder|Episode whereUpdatedAt($value)
- * @method static Builder|Episode whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Episode whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Episode whereAnimeId($value)
+ * @method static \Illuminate\Database\Query\Builder|Episode whereNumber($value)
+ * @method static \Illuminate\Database\Query\Builder|Episode whereTitle($value)
+ * @method static \Illuminate\Database\Query\Builder|Episode whereSynopsis($value)
+ * @method static \Illuminate\Database\Query\Builder|Episode whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Episode whereAiredAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Episode whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Episode whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Episode whereDeletedAt($value)
  */
 class Episode extends Model
 {

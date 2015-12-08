@@ -3,7 +3,6 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\AnimeProducer.
@@ -15,12 +14,12 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  *
- * @method static Builder|AnimeProducer whereId($value)
- * @method static Builder|AnimeProducer whereAnimeId($value)
- * @method static Builder|AnimeProducer whereProducerId($value)
- * @method static Builder|AnimeProducer whereCreatedAt($value)
- * @method static Builder|AnimeProducer whereUpdatedAt($value)
- * @method static Builder|AnimeProducer whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|AnimeProducer whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|AnimeProducer whereAnimeId($value)
+ * @method static \Illuminate\Database\Query\Builder|AnimeProducer whereProducerId($value)
+ * @method static \Illuminate\Database\Query\Builder|AnimeProducer whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|AnimeProducer whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|AnimeProducer whereDeletedAt($value)
  */
 class AnimeProducer extends Model
 {

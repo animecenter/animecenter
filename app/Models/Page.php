@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Page.
@@ -19,14 +18,14 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
  *
- * @method static Builder|Page whereId($value)
- * @method static Builder|Page whereTitle($value)
- * @method static Builder|Page whereSlug($value)
- * @method static Builder|Page whereContent($value)
- * @method static Builder|Page whereActive($value)
- * @method static Builder|Page whereCreatedAt($value)
- * @method static Builder|Page whereUpdatedAt($value)
- * @method static Builder|Page whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Page whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Page whereTitle($value)
+ * @method static \Illuminate\Database\Query\Builder|Page whereSlug($value)
+ * @method static \Illuminate\Database\Query\Builder|Page whereContent($value)
+ * @method static \Illuminate\Database\Query\Builder|Page whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Page whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Page whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Page whereDeletedAt($value)
  */
 class Page extends Model
 {
