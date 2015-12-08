@@ -1,4 +1,5 @@
 @extends('dashboard.layouts.main')
+
 @section('content')
     <div class="bigTitle">Add New - Do NOT include domain in the Link URL</div>
     <form action="{{ url('admin/images/create') }}" method="post" enctype="multipart/form-data">

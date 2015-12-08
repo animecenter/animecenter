@@ -14,7 +14,7 @@ class MySQLStorePipeline(object):
 
     def __init__(self):
         self.db = MySQLdb.connect(
-            user='root', passwd='root', host='localhost', db='myanilist', charset='utf8', use_unicode=True
+            user='root', passwd='root', host='localhost', db='ac', charset='utf8', use_unicode=True
         )
         self.cursor = self.db.cursor()
 

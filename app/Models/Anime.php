@@ -12,7 +12,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $mal_id
  * @property string $title
  * @property string $slug
- * @property string $image
+ * @property int $image_id
+ * @property int $episode_image_id
  * @property string $synopsis
  * @property int $type_id
  * @property int $year
@@ -46,7 +47,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|Anime whereMalId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereSlug($value)
- * @method static \Illuminate\Database\Query\Builder|Anime whereImage($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereImageId($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereEpisodeImageId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereSynopsis($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereTypeId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereYear($value)
@@ -113,7 +115,8 @@ class Anime extends Model
         'mal_id'             => 'int',
         'title'              => 'string',
         'slug'               => 'string',
-        'image'              => 'string',
+        'image_id'           => 'int',
+        'episode_image_id'   => 'int',
         'synopsis'           => 'string',
         'type_id'            => 'int',
         'year'               => 'int',
