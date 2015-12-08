@@ -25,12 +25,12 @@
                             <div class="img">
                                 <img src="{{ $image ? asset($image) : asset('images/default-thumbnail.JPG') }}">
                                 <div class="type <?php echo $episode['anime']['type2'];
-                                if ($episode['raw'] !== null && $episode['subdub'] == null) {
+                                if ($episode['raw'] !== null && $episode['subdub'] === null) {
                                     echo " raw";
                                 }
                                 ?>">
                                 <?php
-                                if ($episode['raw'] !== null && $episode['subdub'] == null) {
+                                if ($episode['raw'] !== null && $episode['subdub'] === null) {
                                     echo "RAW";
                                 } else {
                                     echo $episode['anime']['type2'];
