@@ -115,7 +115,7 @@ class Meta extends Model
         $this->setRoutesToRemove();
 
         return collect(Route::getRoutes()->getRoutes())->filter(function ($item) {
-            return (\ArrayHelper::check_if_string_contains_a_value_from_array(
+            return (\ArrayHelper::checkIfStringContainsAValueFromArray(
                     $item->uri(), $this->routesToRemove) === false
             ) && $item->methods()[0] === 'GET';
         });

@@ -11,7 +11,7 @@ class ArrayHelper
      *
      * @return string
      */
-    public function get_first_value_in_array(array $values)
+    public function getFirstValueInArray(array $values)
     {
         return current(array_filter($values));
     }
@@ -24,7 +24,7 @@ class ArrayHelper
      *
      * @return string
      */
-    public function check_if_string_contains_a_value_from_array($string = '', array $values)
+    public function checkIfStringContainsAValueFromArray($string = '', array $values)
     {
         foreach ($values as $value) {
             if (strpos($string, $value) !== false) {
