@@ -12,7 +12,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $mal_id
  * @property string $title
  * @property string $slug
- * @property string $image
+ * @property int $image_id
+ * @property int $episode_image_id
  * @property string $synopsis
  * @property int $type_id
  * @property int $year
@@ -46,7 +47,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|Anime whereMalId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereSlug($value)
- * @method static \Illuminate\Database\Query\Builder|Anime whereImage($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereImageId($value)
+ * @method static \Illuminate\Database\Query\Builder|Anime whereEpisodeImageId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereSynopsis($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereTypeId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereYear($value)
@@ -113,7 +115,8 @@ class Anime extends Model
         'mal_id'             => 'int',
         'title'              => 'string',
         'slug'               => 'string',
-        'image'              => 'string',
+        'image_id'           => 'int',
+        'episode_image_id'   => 'int',
         'synopsis'           => 'string',
         'type_id'            => 'int',
         'year'               => 'int',
@@ -135,6 +138,16 @@ class Anime extends Model
     public $rules = [
         'id' => 'required|int|min:1',
     ];
+
+    /**
+     * Get calendar season.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function calendarSeason()
+    {
+        return $this->belongsTo(CalendarSeason::class, 'calendar_season_id', 'id');
+    }
 
     /**
      * Get classification.
@@ -183,7 +196,7 @@ class Anime extends Model
      */
     public function image()
     {
-        return $this->morphOne(Image::class, 'images');
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     /**
@@ -207,13 +220,13 @@ class Anime extends Model
     }
 
     /**
-     * Get calendar season.
+     * Get status.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function calendarSeason()
+    public function status()
     {
-        return $this->belongsTo(CalendarSeason::class, 'calendar_season_id', 'id');
+        return $this->hasOne(Status::class, 'id', 'status_id');
     }
 
     /**

@@ -30,5 +30,23 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(IdeHelperServiceProvider::class);
             $this->app->register(DebugBarServiceProvider::class);
         }
+
+        $this->registerHelpers();
+    }
+
+    protected function registerHelpers()
+    {
+        $helpers = [
+            'formhelper'  => '\AC\Helpers\FormHelper',
+            'arrayhelper' => '\AC\Helpers\ArrayHelper',
+        ];
+
+        foreach ($helpers as $alias => $class) {
+            $this->app->singleton($alias, function () use ($class) {
+                return new $class();
+            });
+
+            $this->app->alias($alias, $class);
+        }
     }
 }

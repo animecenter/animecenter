@@ -26,7 +26,10 @@
                         {{ $anime->number_of_episodes }}
                     </p>
                     <p class="text-white">
-                        <span class="text-success">Status: </span>{{ $anime->status }}
+                        <span class="text-success">Status: </span>
+                        <a href="{{ url('anime?status=' . $anime->status->id) }}">
+                            {{ $anime->status->name }}
+                        </a>
                     </p>
                     <p class="text-white">
                         <span class="text-success">Aired: </span>
@@ -43,8 +46,10 @@
                     </p>
                     <p class="text-white">
                         <span class="text-success">Genres: </span>
-                        @foreach ($anime->genres as $genre)
-                            {{ $genre->name }}
+                        @foreach ($anime->genres as $key => $genre)
+                            <a href="{{ url('anime?genres=' . $genre->id) }}">
+                                {{ $genre->name . ($key < $genresCount ? ',' : '') }}
+                            </a>
                         @endforeach
                     </p>
                     <p class="text-white">
@@ -87,7 +92,7 @@
                     </div>
                     <div class="col-xs-12 col-md-3 col-md-offset-3">
                         <i class="fa fa-eye-open fa-fw text-success"></i>
-                        <span class="text-white"> Views 13,345 </span>
+                        <span class="text-white"> Views {{ $anime->views }} </span>
                     </div>
                 </div>
             </div>

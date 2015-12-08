@@ -41,19 +41,22 @@
                             <label for="type_id">Select Type</label>
                             <select name="type_id" class="form-control">
                                 @foreach ($types as $type)
-                                    <option value="{{ $type->id }}" {{ option_is_selected([$type, 'type_id']) }}>{{ $type->name }}</option>
+                                    <option value="{{ $type->id }}" {{
+                                    FormHelper::optionIsSelected([$type, 'type_id']) }}>{{ $type->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="number_of_episodes">Number of Episodes</label>
-                            <input type="number" class="form-control" name="number_of_episodes" value="{{ old('number_of_episodes') }}" placeholder="Number of Episodes">
+                            <input type="number" class="form-control" name="number_of_episodes" value="{{
+                            old('number_of_episodes') }}" placeholder="Number of Episodes">
                         </div>
                         <div class="form-group">
                             <label for="status_id">Select Status</label>
                             <select name="status_id" class="form-control">
                                 @foreach ($statuses as $status)
-                                    <option value="{{ $status->id }}" {{ option_is_selected([$status, 'status_id']) }}>{{ $status->name }}</option>
+                                    <option value="{{ $status->id }}" {{
+                                    FormHelper::optionIsSelected([$status, 'status_id']) }}>{{ $status->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -74,7 +77,7 @@
                             <select name="calendar_season_id" class="form-control">
                                 @foreach ($calendarSeasons as $calendarSeason)
                                     <option value="{{ $calendarSeason->id }}" {{
-                                        option_is_selected([$calendarSeason, 'calendar_season_id']) }}>{{ $calendarSeason->name }}</option>
+                                        FormHelper::optionIsSelected([$calendarSeason, 'calendar_season_id']) }}>{{ $calendarSeason->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -83,7 +86,7 @@
                             <select name="classification_id" class="form-control">
                                 @foreach ($classifications as $classification)
                                     <option value="{{ $classification->id }}" {{
-                                        option_is_selected([$classification, 'classification_id']) }}>{{ $classification->name }}</option>
+                                        FormHelper::optionIsSelected([$classification, 'classification_id']) }}>{{ $classification->name }}</option>
                                 @endforeach
                             </select>
                         </div>

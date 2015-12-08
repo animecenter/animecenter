@@ -3,6 +3,8 @@
 namespace AC\Repositories;
 
 use AC\Models\Anime;
+use AC\Repositories\EloquentUserRepository as User;
+use Cache;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -12,13 +14,19 @@ class EloquentAnimeRepository
      * @var Anime
      */
     private $anime;
+    /**
+     * @var EloquentUserRepository
+     */
+    private $user;
 
     /**
      * @param Anime $anime
+     * @param User  $user
      */
-    public function __construct(Anime $anime)
+    public function __construct(Anime $anime, User $user)
     {
         $this->anime = $anime;
+        $this->user = $user;
     }
 
     public function all()
@@ -35,6 +43,9 @@ class EloquentAnimeRepository
      */
     public function getBySlug($slug = '')
     {
+        // TODO: Update number of views
+        $this->updateViews($slug);
+
         return $this->anime->with([
             'classification' => function ($query) {
                 $query->select(['id', 'name']);
@@ -360,24 +371,26 @@ class EloquentAnimeRepository
     /**
      * Get random anime.
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function getRandom()
     {
-        return $this->anime->with([
-            'classification' => function ($query) {
-                $query->select(['id', 'name']);
-            }, 'episodes' => function ($query) {
-                $query->orderBy('number', 'asc');
-            }, 'genres' => function ($query) {
-                $query->select(['id', 'name']);
-            }, 'producers' => function ($query) {
-                $query->select(['id', 'name']);
-            }, 'calendarSeason' => function ($query) {
-                $query->select(['id', 'name']);
-            }, 'type' => function ($query) {
-                $query->select(['id', 'name']);
-            },
-        ])->whereRaw('RAND()')->firstOrFail();
+        return redirect()->to($this->anime->orderByRaw('RAND()')->firstOrFail(['slug'])->slug);
+    }
+
+    /**
+     * Update number of anime views by slug.
+     *
+     * @param string $slug
+     */
+    public function updateViews($slug = '')
+    {
+        $userID = $this->user->getCurrentUserID();
+        $minutes = 1440;
+        if ($userID) {
+            Cache::remember($userID.'/'.$slug, $minutes, function () use ($slug) {
+                $this->anime->where('slug', '=', $slug)->increment('views');
+            });
+        }
     }
 }
