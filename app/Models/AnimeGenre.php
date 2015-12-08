@@ -3,7 +3,6 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\AnimeGenre.
@@ -14,11 +13,11 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  *
- * @method static Builder|AnimeGenre whereAnimeId($value)
- * @method static Builder|AnimeGenre whereGenreId($value)
- * @method static Builder|AnimeGenre whereCreatedAt($value)
- * @method static Builder|AnimeGenre whereUpdatedAt($value)
- * @method static Builder|AnimeGenre whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|AnimeGenre whereAnimeId($value)
+ * @method static \Illuminate\Database\Query\Builder|AnimeGenre whereGenreId($value)
+ * @method static \Illuminate\Database\Query\Builder|AnimeGenre whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|AnimeGenre whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|AnimeGenre whereDeletedAt($value)
  */
 class AnimeGenre extends Model
 {

@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Permission.
@@ -18,14 +17,14 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  *
- * @method static Builder|Permission whereId($value)
- * @method static Builder|Permission whereName($value)
- * @method static Builder|Permission whereDisplayName($value)
- * @method static Builder|Permission whereDescription($value)
- * @method static Builder|Permission whereActive($value)
- * @method static Builder|Permission whereCreatedAt($value)
- * @method static Builder|Permission whereUpdatedAt($value)
- * @method static Builder|Permission whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Permission whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Permission whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|Permission whereDisplayName($value)
+ * @method static \Illuminate\Database\Query\Builder|Permission whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|Permission whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Permission whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Permission whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Permission whereDeletedAt($value)
  */
 class Permission extends Model
 {

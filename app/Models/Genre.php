@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Genre.
@@ -19,14 +18,14 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  *
- * @method static Builder|Genre whereId($value)
- * @method static Builder|Genre whereName($value)
- * @method static Builder|Genre whereModel($value)
- * @method static Builder|Genre whereDescription($value)
- * @method static Builder|Genre whereActive($value)
- * @method static Builder|Genre whereCreatedAt($value)
- * @method static Builder|Genre whereUpdatedAt($value)
- * @method static Builder|Genre whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Genre whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Genre whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|Genre whereModel($value)
+ * @method static \Illuminate\Database\Query\Builder|Genre whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|Genre whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Genre whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Genre whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Genre whereDeletedAt($value)
  */
 class Genre extends Model
 {

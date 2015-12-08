@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Type.
@@ -18,13 +17,13 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  *
- * @method static Builder|Type whereId($value)
- * @method static Builder|Type whereName($value)
- * @method static Builder|Type whereModel($value)
- * @method static Builder|Type whereActive($value)
- * @method static Builder|Type whereCreatedAt($value)
- * @method static Builder|Type whereUpdatedAt($value)
- * @method static Builder|Type whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Type whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Type whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|Type whereModel($value)
+ * @method static \Illuminate\Database\Query\Builder|Type whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Type whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Type whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Type whereDeletedAt($value)
  */
 class Type extends Model
 {

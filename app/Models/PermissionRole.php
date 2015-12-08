@@ -3,7 +3,6 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\PermissionRole.
@@ -14,11 +13,11 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  *
- * @method static Builder|PermissionRole wherePermissionId($value)
- * @method static Builder|PermissionRole whereRoleId($value)
- * @method static Builder|PermissionRole whereCreatedAt($value)
- * @method static Builder|PermissionRole whereUpdatedAt($value)
- * @method static Builder|PermissionRole whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|PermissionRole wherePermissionId($value)
+ * @method static \Illuminate\Database\Query\Builder|PermissionRole whereRoleId($value)
+ * @method static \Illuminate\Database\Query\Builder|PermissionRole whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|PermissionRole whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|PermissionRole whereDeletedAt($value)
  */
 class PermissionRole extends Model
 {

@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Relation.
@@ -21,15 +20,15 @@ use Illuminate\Database\Query\Builder;
  * @property-read \ $relationable
  * @property-read Relationship $relationship
  *
- * @method static Builder|Relation whereId($value)
- * @method static Builder|Relation whereRelationshipId($value)
- * @method static Builder|Relation whereRelationableId($value)
- * @method static Builder|Relation whereRelationableType($value)
- * @method static Builder|Relation whereRelatedId($value)
- * @method static Builder|Relation whereActive($value)
- * @method static Builder|Relation whereCreatedAt($value)
- * @method static Builder|Relation whereUpdatedAt($value)
- * @method static Builder|Relation whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Relation whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Relation whereRelationshipId($value)
+ * @method static \Illuminate\Database\Query\Builder|Relation whereRelationableId($value)
+ * @method static \Illuminate\Database\Query\Builder|Relation whereRelationableType($value)
+ * @method static \Illuminate\Database\Query\Builder|Relation whereRelatedId($value)
+ * @method static \Illuminate\Database\Query\Builder|Relation whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Relation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Relation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Relation whereDeletedAt($value)
  */
 class Relation extends Model
 {

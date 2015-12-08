@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Banner.
@@ -20,16 +19,16 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  *
- * @method static Builder|Banner whereId($value)
- * @method static Builder|Banner whereTitle($value)
- * @method static Builder|Banner whereLinkTo($value)
- * @method static Builder|Banner whereBigTitle($value)
- * @method static Builder|Banner whereContent($value)
- * @method static Builder|Banner whereOrder($value)
- * @method static Builder|Banner whereActive($value)
- * @method static Builder|Banner whereCreatedAt($value)
- * @method static Builder|Banner whereUpdatedAt($value)
- * @method static Builder|Banner whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Banner whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Banner whereTitle($value)
+ * @method static \Illuminate\Database\Query\Builder|Banner whereLinkTo($value)
+ * @method static \Illuminate\Database\Query\Builder|Banner whereBigTitle($value)
+ * @method static \Illuminate\Database\Query\Builder|Banner whereContent($value)
+ * @method static \Illuminate\Database\Query\Builder|Banner whereOrder($value)
+ * @method static \Illuminate\Database\Query\Builder|Banner whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|Banner whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Banner whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Banner whereDeletedAt($value)
  */
 class Banner extends Model
 {

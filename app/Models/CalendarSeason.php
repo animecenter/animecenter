@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\CalendarSeason.
@@ -17,12 +16,12 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
  *
- * @method static Builder|CalendarSeason whereId($value)
- * @method static Builder|CalendarSeason whereName($value)
- * @method static Builder|CalendarSeason whereActive($value)
- * @method static Builder|CalendarSeason whereCreatedAt($value)
- * @method static Builder|CalendarSeason whereUpdatedAt($value)
- * @method static Builder|CalendarSeason whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|CalendarSeason whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|CalendarSeason whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|CalendarSeason whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|CalendarSeason whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|CalendarSeason whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|CalendarSeason whereDeletedAt($value)
  */
 class CalendarSeason extends Model
 {

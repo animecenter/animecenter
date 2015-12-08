@@ -4,7 +4,6 @@ namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\MirrorSource.
@@ -17,12 +16,12 @@ use Illuminate\Database\Query\Builder;
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Mirror[] $mirrors
  *
- * @method static Builder|MirrorSource whereId($value)
- * @method static Builder|MirrorSource whereName($value)
- * @method static Builder|MirrorSource whereActive($value)
- * @method static Builder|MirrorSource whereCreatedAt($value)
- * @method static Builder|MirrorSource whereUpdatedAt($value)
- * @method static Builder|MirrorSource whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorSource whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorSource whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorSource whereActive($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorSource whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorSource whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|MirrorSource whereDeletedAt($value)
  */
 class MirrorSource extends Model
 {

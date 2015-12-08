@@ -3,7 +3,6 @@
 namespace AC\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AC\Models\Vote.
@@ -19,14 +18,14 @@ use Illuminate\Database\Query\Builder;
  * @property-read \ $votes
  * @property-read User $user
  *
- * @method static Builder|Vote whereId($value)
- * @method static Builder|Vote whereUserId($value)
- * @method static Builder|Vote whereVoteableId($value)
- * @method static Builder|Vote whereVoteableType($value)
- * @method static Builder|Vote whereRating($value)
- * @method static Builder|Vote whereCreatedAt($value)
- * @method static Builder|Vote whereUpdatedAt($value)
- * @method static Builder|Vote whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Vote whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|Vote whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|Vote whereVoteableId($value)
+ * @method static \Illuminate\Database\Query\Builder|Vote whereVoteableType($value)
+ * @method static \Illuminate\Database\Query\Builder|Vote whereRating($value)
+ * @method static \Illuminate\Database\Query\Builder|Vote whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Vote whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Vote whereDeletedAt($value)
  */
 class Vote extends Model
 {
