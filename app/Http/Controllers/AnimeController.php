@@ -9,6 +9,8 @@ use AC\Repositories\EloquentEpisodeRepository as Episode;
 use AC\Repositories\EloquentGenreRepository as Genre;
 use AC\Repositories\EloquentProducerRepository as Producer;
 use AC\Repositories\EloquentTypeRepository as Type;
+use Auth;
+use Cache;
 use Illuminate\Http\Request;
 
 class AnimeController extends Controller
@@ -100,10 +102,7 @@ class AnimeController extends Controller
     {
         $this->data['anime'] = $anime = $this->anime->getBySlug($animeSlug);
         $this->data['producersCount'] = $anime['producers']->count() - 1;
-
-        // TODO: Update number of views
-        // $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
-
+        $this->data['genresCount'] = $anime['genres']->count() - 1;
         $this->data['latestEpisode'] = $this->episode->getLatestEpisode($anime['id']);
 
         return view('app.anime.show', $this->data);
@@ -175,15 +174,7 @@ class AnimeController extends Controller
      */
     public function getRandom()
     {
-        $this->data['anime'] = $anime = $this->anime->getRandom();
-        $this->data['producersCount'] = $anime['producers']->count() - 1;
-
-        // TODO: Update number of views
-        // $this->anime->where('id', '=', $anime['id'])->update(['visits' => $anime['visits'] + 1]);
-
-        $this->data['lastEpisode'] = $this->episode->getLatestEpisode($anime['id']);
-
-        return view('app.anime.show', $this->data);
+        return $this->anime->getRandom();
     }
 
     public function getCurrentURL($letter = '')

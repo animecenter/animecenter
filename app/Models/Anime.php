@@ -140,6 +140,16 @@ class Anime extends Model
     ];
 
     /**
+     * Get calendar season.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function calendarSeason()
+    {
+        return $this->belongsTo(CalendarSeason::class, 'calendar_season_id', 'id');
+    }
+
+    /**
      * Get classification.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -186,7 +196,7 @@ class Anime extends Model
      */
     public function image()
     {
-        return $this->morphOne(Image::class, 'images');
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     /**
@@ -210,13 +220,13 @@ class Anime extends Model
     }
 
     /**
-     * Get calendar season.
+     * Get status.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function calendarSeason()
+    public function status()
     {
-        return $this->belongsTo(CalendarSeason::class, 'calendar_season_id', 'id');
+        return $this->hasOne(Status::class, 'id', 'status_id');
     }
 
     /**
