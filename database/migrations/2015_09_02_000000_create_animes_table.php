@@ -12,7 +12,8 @@ class CreateAnimesTable extends Migration
             $table->integer('mal_id')->unsigned();
             $table->string('title', 191);
             $table->string('slug', 191)->unique();
-            $table->string('image')->nullable();
+            $table->integer('image_id')->nullable();
+            $table->integer('episode_image_id')->nullable();
             $table->text('synopsis')->nullable();
             $table->integer('type_id')->unsigned()->nullable();
             $table->smallInteger('year')->unsigned()->nullable();

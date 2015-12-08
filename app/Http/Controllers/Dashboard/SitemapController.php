@@ -9,12 +9,8 @@ use Exception;
 
 class SitemapController extends Controller
 {
-    private $basePath;
-
     public function getGenerate()
     {
-        $this->basePath = public_path();
-
         // create object
         $sitemap = App::make('sitemap');
 
