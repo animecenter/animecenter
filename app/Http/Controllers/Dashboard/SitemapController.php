@@ -9,7 +9,6 @@ use Exception;
 
 class SitemapController extends Controller
 {
-
     public function getGenerate()
     {
         // create object
