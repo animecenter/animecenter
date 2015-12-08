@@ -92,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 episode-list">
+        <div class="col-xs-12 col-md-8 episode-list">
             <table class="table">
                 <thead>
                     <tr>
