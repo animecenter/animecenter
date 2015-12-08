@@ -16,7 +16,6 @@ $factory->define(AC\Models\Anime::class, function (Faker\Generator $faker) {
         'mal_id'             => rand(1, 20000),
         'title'              => $faker->unique()->name,
         'slug'               => $faker->unique()->slug,
-        'image'              => rand(0, 1) === 1 ? $faker->imageUrl(225, 320) : null,
         'synopsis'           => rand(0, 1) === 1 ? $faker->text : null,
         'type_id'            => rand(0, 1) === 1 ? rand(1, 7) : null,
         'number_of_episodes' => rand(0, 1) === 1 ? rand(1, 24) : null,

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-xs-12 col-lg-8">
             <div class="row">
-                @if (Auth::user())
+                @if ($user)
                     <div class="col-xs-12">
                         <a href="{{ url('admin/episodes/edit/' . $anime['episode']->id) }}">
                             Edit
