@@ -26,7 +26,7 @@ class EloquentUserRepository
      */
     public function getCurrentUserID()
     {
-        $whitelist = ['127.0.0.1', '::1',];
+        $whitelist = ['127.0.0.1', '::1'];
         $user = $this->auth->user();
         $userID = '';
         if ($user) {
