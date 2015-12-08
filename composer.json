@@ -13,7 +13,7 @@
     "rap2hpoutre/laravel-log-viewer": "~0.4",
     "backup-manager/laravel": "^1.0",
     "league/flysystem-dropbox": "^1.0",
-    "chumper/datatable": "dev-develop",
+    "chumper/datatable": "dev-develop#546e8768d7987b0d9a8501e67432309349ef5504",
     "khill/fontawesomephp": "^1.0",
     "laravelcollective/html": "^5.1"
   },
@@ -34,7 +34,7 @@
       "database"
     ],
     "files": [
-      "App/Http/helpers.php"
+      "app/Http/helpers.php"
     ],
     "psr-4": {
       "AC\\": "app/"
