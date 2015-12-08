@@ -9,8 +9,6 @@ use AC\Repositories\EloquentEpisodeRepository as Episode;
 use AC\Repositories\EloquentGenreRepository as Genre;
 use AC\Repositories\EloquentProducerRepository as Producer;
 use AC\Repositories\EloquentTypeRepository as Type;
-use Auth;
-use Cache;
 use Illuminate\Http\Request;
 
 class AnimeController extends Controller
