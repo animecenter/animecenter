@@ -7,6 +7,9 @@
 
 import datetime
 import MySQLdb
+import os.path
+import shutil
+import urllib
 from slugify import Slugify
 
 
@@ -45,7 +48,59 @@ class MySQLStorePipeline(object):
         self.get_producers(item, anime_id)
         self.get_titles(item, anime_id)
         self.get_relations(item)
+        self.get_image(item, anime_id)
+
         return item
+
+    def get_image(self, item, anime_id):
+        # Get path to current working directory
+        path_to_current_folder = os.getcwd()
+        # Get anime slug
+        anime_slug = self.slugger(item['title'])
+        # Get path to new folder regardless of OS folder separator
+        if os.sep == '\\':
+            path_to_new_folder = path_to_current_folder + '\\..\\public\\uploads\\anime\\' + anime_slug + os.sep
+        else:
+            path_to_new_folder = path_to_current_folder + '/../public/uploads/anime/' + anime_slug + os.sep
+
+        # Get filename for new anime img
+        file_name = anime_slug + '-1.jpg'
+        # Check if file doesn't exist
+        if os.path.isfile(path_to_new_folder + file_name) is False:
+
+            # Download image with new file name
+            urllib.urlretrieve(item['image_url'].encode('utf-8'), file_name)
+
+            # Check if image was downloaded successfully
+            if os.path.isfile(path_to_current_folder + os.sep + file_name):
+
+                # Move downloaded image to new folder
+                shutil.move(path_to_current_folder + os.sep + file_name, path_to_new_folder + file_name)
+
+                # Check if image was moved successfully
+                if os.path.isfile(path_to_new_folder + file_name):
+
+                    # Save image data
+                    self.cursor.execute(
+                        'INSERT IGNORE INTO `images` '
+                        '(`user_id`, `imageable_id`, `imageable_type`, `path`, `active`, `created_at`, `updated_at`) '
+                        'VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)',
+                        (1, anime_id, 'Anime', file_name, 1)
+                    )
+                    self.db.commit()
+
+                    self.cursor.execute(
+                        'SELECT `id` FROM `images` '
+                        'WHERE `imageable_id` = %s AND `imageable_type` = %s AND `path` = %s LIMIT 1',
+                        (anime_id, 'Anime', file_name)
+                    )
+                    self.db.commit()
+                    image_id = self.cursor.fetchone()[0]
+
+                    self.cursor.execute(
+                        'UPDATE `animes` SET `image_id` = %s WHERE `id` = %s LIMIT 1', (image_id, anime_id)
+                    )
+                    self.db.commit()
 
     def get_relations(self, item):
         if item['related']:
