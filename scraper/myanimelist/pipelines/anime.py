@@ -65,6 +65,11 @@ class MySQLStorePipeline(object):
 
         # Get filename for new anime img
         file_name = anime_slug + '-1.jpg'
+
+        # Check if path to new folder doesn't exists
+        if os.path.isdir(path_to_new_folder) is False:
+            os.makedirs(path_to_new_folder)
+
         # Check if file doesn't exist
         if os.path.isfile(path_to_new_folder + file_name) is False:
 
@@ -80,27 +85,34 @@ class MySQLStorePipeline(object):
                 # Check if image was moved successfully
                 if os.path.isfile(path_to_new_folder + file_name):
 
-                    # Save image data
-                    self.cursor.execute(
-                        'INSERT IGNORE INTO `images` '
-                        '(`user_id`, `imageable_id`, `imageable_type`, `path`, `active`, `created_at`, `updated_at`) '
-                        'VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)',
-                        (1, anime_id, 'Anime', file_name, 1)
-                    )
-                    self.db.commit()
+                    try:
+                        # Save image data
+                        self.cursor.execute(
+                            'INSERT IGNORE INTO `images` '
+                            '(`user_id`, `imageable_id`, `imageable_type`, `path`, `active`, `created_at`, '
+                            '`updated_at`) '
+                            'VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)',
+                            (1, anime_id, 'Anime', file_name, 1)
+                        )
+                        self.db.commit()
 
-                    self.cursor.execute(
-                        'SELECT `id` FROM `images` '
-                        'WHERE `imageable_id` = %s AND `imageable_type` = %s AND `path` = %s LIMIT 1',
-                        (anime_id, 'Anime', file_name)
-                    )
-                    self.db.commit()
-                    image_id = self.cursor.fetchone()[0]
+                        # Get image id
+                        self.cursor.execute(
+                            'SELECT `id` FROM `images` '
+                            'WHERE `imageable_id` = %s AND `imageable_type` = %s AND `path` = %s LIMIT 1',
+                            (anime_id, 'Anime', file_name)
+                        )
+                        self.db.commit()
+                        image_id = self.cursor.fetchone()[0]
 
-                    self.cursor.execute(
-                        'UPDATE `animes` SET `image_id` = %s WHERE `id` = %s LIMIT 1', (image_id, anime_id)
-                    )
-                    self.db.commit()
+                        # Update anime with image_id from downloaded image
+                        self.cursor.execute(
+                            'UPDATE `animes` SET `image_id` = %s WHERE `id` = %s LIMIT 1', (image_id, anime_id)
+                        )
+                        self.db.commit()
+
+                    except MySQLdb.Error, e:
+                        print 'Error %d: %s' % (e.args[0], e.args[1])
 
     def get_relations(self, item):
         if item['related']:
