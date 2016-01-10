@@ -77,8 +77,8 @@ class EloquentAnimeRepository
             return $this->anime->has('episodes')->where('release_date', '<', $timestamp)
                 ->orderBy('id', 'DESC')->paginate(20);
         }
-        if ($request->has('letter')) {
-            $anime = $this->getByLetter($anime, $parameters['letter']);
+        if ($request->has('alphabetical')) {
+            $anime = $this->getByLetter($anime, $parameters['alphabetical']);
         }
         if ($request->has('language')) {
             $anime = $this->getByLanguage($anime, $parameters['language']);
@@ -124,6 +124,8 @@ class EloquentAnimeRepository
             return $anime->whereRaw("title NOT REGEXP '^[[:alpha:]]'");
         } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
             return $anime->where('title', 'like', $letter.'%');
+        } elseif ($letter === 'all') {
+            return $anime;
         } else {
             abort(404, $letter.' was not found');
         }

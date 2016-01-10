@@ -5,6 +5,8 @@ namespace AC\Http\Controllers;
 use AC\Models\Page;
 use AC\Repositories\EloquentAnimeRepository as Anime;
 use AC\Repositories\EloquentEpisodeRepository as Episode;
+use Carbon\Carbon;
+use DB;
 
 class PageController extends Controller
 {
@@ -47,6 +49,48 @@ class PageController extends Controller
         $this->data['episodes'] = $this->episode->latest();
         $this->data['upcomingEpisodes'] = $this->episode->upcoming();
         $this->data['animes'] = $this->anime->currentCalendarSeason();
+
+        /*$animesDirectories = array_diff(scandir('uploads/anime'), ['.', '..']);
+        foreach ($animesDirectories as $animeID) {
+            DB::connection('mysql')->table('images')->where('imageable_id', '=', $animeID)->update([
+                'path' => array_diff(scandir('uploads/anime/'.$animeID), ['.', '..'])[2],
+            ]);
+        }*/
+
+        /*$timestamp = Carbon::now()->toDateTimeString();
+        $animes = DB::connection('mysql')->table('animes')->where('image_id', '=', NULL)->get(['id', 'slug']);
+
+        foreach ($animes as $anime) {
+            $oldAnime = DB::connection('mysql1')->table('animes')->where('id', '=', $anime->id)
+                ->where('image', '<>', 'http://cdn.myanimelist.net/images/qm_50.gif')
+                ->first(['image']);
+
+            if ($oldAnime) {
+                $animeImageFolder = 'uploads/anime/' . $anime->id;
+                if (!is_dir($animeImageFolder)) {
+                    mkdir($animeImageFolder, 0755, true);
+                }
+
+                $animeImage = $animeImageFolder.'/'.$anime->slug.'-'.str_slug(str_replace(':', '-', $timestamp)).'.jpg';
+                if (!file_exists($animeImage)) {
+                    copy($oldAnime->image, $animeImage);
+                }
+
+                $imageID = DB::connection('mysql')->table('images')->insertGetId([
+                    'user_id' => 1,
+                    'imageable_id' => $anime->id,
+                    'imageable_type' => 'Anime',
+                    'path' => $anime->slug . '-1.jpg',
+                    'active' => 1,
+                    'created_at' => $timestamp,
+                    'updated_at' => $timestamp,
+                ]);
+
+                DB::connection('mysql')->table('animes')->where('id', '=', $anime->id)->update([
+                    'image_id' => $imageID,
+                ]);
+            }
+        }*/
 
         // TODO: Get meta data...
         $this->data['pageTitle'] = 'AnimeCenter: Watch Anime English Subbed/Dubbed Online in HD';

@@ -36,8 +36,8 @@ class EloquentEpisodeRepository
 
         return $this->episode->whereHas('anime', function ($query) use ($timestamp) {
             $query->where('release_date', '<', $timestamp);
-        })->has('mirror')->with(['anime', 'mirror'])->where('aired_at', '<', $timestamp)
-            ->orderBy('aired_at', 'DESC')->take(12)->get();
+        })->has('mirror')->with(['anime', 'mirror'])->where('updated_at', '<', $timestamp)
+            ->orderBy('updated_at', 'DESC')->take(12)->get();
     }
 
     /**
@@ -49,7 +49,7 @@ class EloquentEpisodeRepository
 
         return $this->episode->whereHas('anime', function ($query) use ($timestamp) {
             $query->where('release_date', '<', $timestamp);
-        })->with('anime')->where('aired_at', '<', $timestamp)->orderBy('aired_at', 'DESC')->paginate(20);
+        })->with('anime')->where('updated_at', '<', $timestamp)->orderBy('updated_at', 'DESC')->paginate(20);
     }
 
     public function upcoming()

@@ -142,7 +142,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('episodes') }}">
+                        <a href="{{ url('episodes/latest') }}">
                             <i class="fa fa-check fa-fw text-success"></i>
                             New Episodes
                         </a>

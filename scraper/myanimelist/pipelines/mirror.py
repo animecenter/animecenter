@@ -65,8 +65,8 @@ class MySQLStorePipeline(object):
         mirror_source_id = None
         try:
             self.cursor.execute(
-                'INSERT IGNORE INTO `mirror_sources` (`name`, `created_at`, `updated_at`) '
-                'VALUES (%s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)', (item['website'].encode('utf-8'),)
+                'INSERT IGNORE INTO `mirror_sources` (`name`, `active`, `created_at`, `updated_at`) '
+                'VALUES (%s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)', (item['website'].encode('utf-8'), 1)
             )
             self.db.commit()
 
@@ -95,9 +95,9 @@ class MySQLStorePipeline(object):
             else:
                 self.cursor.execute(
                     'INSERT IGNORE INTO `episodes` '
-                    '(`anime_id`, `number`, `status`, `aired_at`, `created_at`, `updated_at`) '
-                    'VALUES (%s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)',
-                    (anime_id, item['episode'], 1, item['date'])
+                    '(`anime_id`, `number`, `active`, `created_at`, `updated_at`) '
+                    'VALUES (%s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)',
+                    (anime_id, item['episode'], 1)
                 )
                 self.db.commit()
 
@@ -125,7 +125,7 @@ class MySQLStorePipeline(object):
                 anime_id = anime_id[0]
             else:
                 self.cursor.execute(
-                    'SELECT `titlable_id` FROM `titles` WHERE `title` LIKE %s LIMIT 1',
+                    'SELECT `titleable_id` FROM `titles` WHERE `title` LIKE %s LIMIT 1',
                     ('%' + item['anime'].encode('utf-8') + '%',)
                 )
                 self.db.commit()
