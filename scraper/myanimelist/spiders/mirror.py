@@ -26,7 +26,8 @@ class MirrorSpider(scrapy.Spider):
     def parse_mirror(response):
         item = Mirror()
         website = response.xpath('//div[@class="episode_on"]/div/h3/a/text()').extract()
-        if (website and any(word in website[0] for word in ['Dailymotion', 'Goplayer', 'COM'])) or not website:
+        if (website and any(word in website[0] for word in ['Dailymotion', 'Goplayer', 'COM', 'Videobb'])) \
+            or not website or response.xpath('//a[@class="active"]/text()').extract():
             yield item
         else:
             item['url'] = response.xpath(
@@ -35,10 +36,15 @@ class MirrorSpider(scrapy.Spider):
             ).extract()[0]
             if 'animerush' not in item['url']:
                 item['website'] = website[0].replace('s Video', '').replace('HD Video', '').replace(' Video', '')
-                item['anime'] = response.xpath('//*[@id="left-column"]/div[2]/div/div[1]/a/text()').extract()[0]
-                item['episode'] = response.xpath('//h1/text()').extract()[0].split(' Episode ')[1]
-                item['translation'] = response.xpath('//div[@class="episode_on"]/div/span[2]/text()').extract()[0].lower()
-                item['date'] = response.xpath('//div[@class="episode_on"]/div/span[3]/text()').extract()[0]
+                item['anime'] = response.xpath('(//*[@id="left-column"]/div)[last()]/b/text()').extract()[0]
+                item['episode'] = response.xpath('//h1/text()').extract()[0].split(item['anime'] + ' Episode ')[1]
+                item['translation'] = response.xpath(
+                    '//div[@class="episode_on"]/div/span[2]/text()').extract()[0].lower()
+                date = response.xpath('//div[@class="episode_on"]/div/span[3]/text()').extract()
+                if date:
+                    item['date'] = date[0]
+                else:
+                    item['date'] = None
                 if response.xpath('//div[@class="episode_on"]/div/div/img/@alt').extract():
                     item['quality'] = 'HD'
                 else:
