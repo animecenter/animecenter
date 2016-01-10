@@ -118,30 +118,31 @@ class MySQLStorePipeline(object):
         if item['related']:
             for relation in item['related']:
                 try:
-                    relationship = relation.split(': ')[0]
-                    relationable_type = 'Anime' if ': anime -' in relation else 'Manga'
                     related_id = relation.split(' - ')[1]
+                    if related_id:
+                        relationship = relation.split(': ')[0]
+                        relationable_type = 'Anime' if ': anime -' in relation else 'Manga'
 
-                    self.cursor.execute(
-                        'INSERT IGNORE INTO `relationships` (`name`, `active`, `created_at`, `updated_at`) '
-                        'VALUES (%s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)', (relationship, 1)
-                    )
-                    self.db.commit()
+                        self.cursor.execute(
+                            'INSERT IGNORE INTO `relationships` (`name`, `active`, `created_at`, `updated_at`) '
+                            'VALUES (%s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)', (relationship, 1)
+                        )
+                        self.db.commit()
 
-                    self.cursor.execute(
-                        'SELECT `id` FROM `relationships` WHERE `name` = %s LIMIT 1', (relationship,)
-                    )
-                    self.db.commit()
-                    relationship_id = self.cursor.fetchone()[0]
+                        self.cursor.execute(
+                            'SELECT `id` FROM `relationships` WHERE `name` = %s LIMIT 1', (relationship,)
+                        )
+                        self.db.commit()
+                        relationship_id = self.cursor.fetchone()[0]
 
-                    self.cursor.execute(
-                        'INSERT IGNORE INTO `relations` '
-                        '(`relationship_id`, `relationable_id`, `relationable_type`, `related_id`, `active`, '
-                        '`created_at`, `updated_at`) '
-                        'VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)',
-                        (relationship_id, item['mal_id'], relationable_type, related_id, 1)
-                    )
-                    self.db.commit()
+                        self.cursor.execute(
+                            'INSERT IGNORE INTO `relations` '
+                            '(`relationship_id`, `relationable_id`, `relationable_type`, `related_id`, `active`, '
+                            '`created_at`, `updated_at`) '
+                            'VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)',
+                            (relationship_id, item['mal_id'], relationable_type, related_id, 1)
+                        )
+                        self.db.commit()
 
                 except MySQLdb.Error, e:
                     print 'Error %d: %s' % (e.args[0], e.args[1])
@@ -151,12 +152,12 @@ class MySQLStorePipeline(object):
             titles = item['alternative_titles'].split('---div---')
             for title in titles:
                 try:
-                    title = title.split(':---union---')
+                    data = title.split(':---union---')
                     self.cursor.execute(
                         'INSERT IGNORE INTO `titles` '
                         '(`title`, `language`, `titleable_id`, `titleable_type`, `active`, `created_at`, `updated_at`) '
                         'VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)',
-                        (title[1], title[0], anime_id, 'Anime', 1)
+                        (data[1], data[0], anime_id, 'Anime', 1)
                     )
                     self.db.commit()
 

@@ -34,10 +34,9 @@ $(document).ready(function() {
     },
   };
   search.init();
-  $('.dropdown-menu a').on('click', function() {
+  $('.tab-content a').on('click', function() {
     var currentElement = $(this);
-    currentElement.closest('.dropdown-menu').prev().html(currentElement.text() + '<span class="caret"></span>');
-    search.setProperties(currentElement.closest('.dropdown-menu').data('id'), currentElement.data('value'));
+    search.setProperties(currentElement.closest('ul').data('id'), currentElement.data('value'));
     search.fetchData();
   });
 });

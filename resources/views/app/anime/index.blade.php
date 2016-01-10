@@ -82,7 +82,7 @@
                             <li><a href="#" class="" data-value="y">y</a></li>
                             <li><a href="#" class="" data-value="z">z</a></li>
                             <li><a href="#" class="" data-value="#">#</a></li>
-                            <li><a href="#" class="" data-value="view-all">View All</a></li>
+                            <li><a href="#" class="" data-value="all">View All</a></li>
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="genre" aria-labelledby="genre-tab">
@@ -116,12 +116,12 @@
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="type" aria-labelledby="type-tab">
                         <ul class="filter-submenu type" data-id="type">
-                            <li><a href="#" data-value="1"><i class="fa fa-television text-success"></i> TV</a></li>
-                            <li><a href="#" data-value="2"><i class="fa fa-diamond text-success"></i> OVA</a></li>
-                            <li><a href="#" data-value="3"><i class="fa fa-film text-success"></i> Movie</a></li>
-                            <li><a href="#" data-value="4"><i class="fa fa-bookmark text-success"></i> Special</a></li>
-                            <li><a href="#" data-value="5"><i class="fa fa-gg-circle text-success"></i> ONA</a></li>
-                            <li><a href="#" data-value="6"><i class="fa fa-music text-success"></i> Music</a></li>
+                            <li><a href="#" data-value="8"><i class="fa fa-television text-success"></i> TV</a></li>
+                            <li><a href="#" data-value="5"><i class="fa fa-diamond text-success"></i> OVA</a></li>
+                            <li><a href="#" data-value="2"><i class="fa fa-film text-success"></i> Movie</a></li>
+                            <li><a href="#" data-value="1"><i class="fa fa-bookmark text-success"></i> Special</a></li>
+                            <li><a href="#" data-value="26"><i class="fa fa-gg-circle text-success"></i> ONA</a></li>
+                            <li><a href="#" data-value="125"><i class="fa fa-music text-success"></i> Music</a></li>
                         </ul>
                     </div>
                     <!-- <div class="btn-toolbar" role="toolbar">
