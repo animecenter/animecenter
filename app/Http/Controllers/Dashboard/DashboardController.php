@@ -21,7 +21,7 @@ class DashboardController extends Controller
         return view('dashboard.index');
     }
 
-    public function getDataTableList($url = '', Collection $list, $showColumns = [], $searchColumns = [], $orderColumns = [])
+    public function getDataTableList($url, Collection $list, $showColumns = [], $searchColumns = [], $orderColumns = [])
     {
         return Datatable::collection($list)
             ->showColumns($showColumns)
@@ -45,7 +45,7 @@ class DashboardController extends Controller
             })->make();
     }
 
-    public function getDataTableListTrash($url = '', Collection $list, $showColumns = [], $searchColumns = [], $orderColumns = [])
+    public function getDataTableListTrash($url, Collection $list, $showColumns = [], $searchColumns = [], $orderColumns = [])
     {
         return Datatable::collection($list)
             ->showColumns($showColumns)
