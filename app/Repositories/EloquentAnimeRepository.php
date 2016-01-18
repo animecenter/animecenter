@@ -93,7 +93,7 @@ class EloquentAnimeRepository
             $anime = $this->getByYear($anime, $parameters['year']);
         }
         if ($request->has('genres')) {
-            $anime = $this->getByGenres($anime, $parameters['genres']);
+            $anime = $this->getByGenres($anime, explode(',', $parameters['genres']));
         }
         if ($request->has('producer')) {
             $anime = $this->getByProducer($anime, $parameters['producer']);
@@ -209,9 +209,11 @@ class EloquentAnimeRepository
      */
     public function getByGenres($anime, $genres = [])
     {
-        return $anime->whereHas('genres', function ($query) use ($genres) {
-            $query->whereIn('genres.id', $genres);
-        });
+        return dd($anime->whereHas('genres', function ($query) use ($genres) {
+            foreach ($genres as $genre) {
+                $query->where('genres.id', $genre);
+            }
+        })->toSql());
     }
 
     /**

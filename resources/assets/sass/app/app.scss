@@ -1,11 +1,14 @@
 @charset "UTF-8";
-////////////////////////////////////  Core variables and mixins ///////////////
+
+// Core variables and mixins
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
-////////////////////////////////////  Reset and dependencies /////////////////
+
+// Reset and dependencies
 @import "bootstrap/normalize";
 @import "bootstrap/print";
-//////////////////////////////////// Core CSS //////////////////////////////
+
+// Core CSS
 @import "bootstrap/scaffolding";
 @import "bootstrap/type";
 @import "bootstrap/code";
@@ -13,7 +16,8 @@
 @import "bootstrap/tables";
 @import "bootstrap/forms";
 @import "bootstrap/buttons";
-/////////////////////////////////// Components /////////////////////////////
+
+// Components
 @import "bootstrap/component-animations";
 @import "bootstrap/dropdowns";
 @import "bootstrap/button-groups";
@@ -26,30 +30,37 @@
 @import "bootstrap/media";
 @import "bootstrap/panels";
 @import "bootstrap/close";
-/////////////////////////////////// Components w/ JavaScript /////////////////////
+
+// Components w/ JavaScript
 @import "bootstrap/modals";
 @import "bootstrap/carousel";
-/////////////////////////////////// Utility classes /////////////////////////////
+
+// Utility classes
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
-/////////////////////////////////// External CSS ////////////////////////////////
+
+// External CSS
 @import "font-awesome";
-/////////////////////////////////// Colors //////////////////////////////////////
+
+// Colors
 $primary-color: #3b70aa;
 $secondary-color: #3b70aa;
 $third-color: #a0a0a0;
 $four-color: #d3d3d3;
 $fifth-color: #f5f5f5;
-//////////////////////////////// Font family ///////////////////////////////////
+
+// Fonts
 $font-stack: 'PT Sans', Helvetica, sans-serif;
 $primary-font: "Roboto";
 $secondary-font: "Oswald";
-////////////////////////////////// Modules /////////////////////////////////////
+
+// Modules
 @import "modules/sidebar";
 @import "modules/footer";
 @import "modules/timeline";
 @import "modules/carousel";
-///////////////////////////////// Main CSS ////////////////////////////////////
+
+// Main CSS
 body {
     background-color: #f1f1f1;
 }
@@ -88,13 +99,13 @@ a {
     color: #000;
 }
 
+// Finish main css
 .page-header {
     margin: 20px 0 0;
     float: left;
     width: 100%;
 }
 
-/////////////////////////////// END MAIN CSS /////////////////////////////////////////////
 .thumbnail {
     margin-bottom: 10px;
     color: #000;
@@ -212,7 +223,7 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
     padding-bottom: 10px;
 }
 
-///////////////////////////// ANIME LIST TABS CSS //////////////////////////////////////////
+// ANIME LIST TABS
 .nav-tabs {
     background-color: #fff;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
@@ -220,42 +231,42 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
     -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     color: #fff;
     background-color: #3F3F3F;
     border-left: 1px solid #3F3F3F;
 }
 
-.nav-tabs>li>a {
+.nav-tabs > li > a {
     border-radius: 0;
 }
 
-////////////////////////////////////// EPISODE TABS CSS ////////////////////////////////////////
+// EPISODE TABS
 .nav-tabs-episode {
     padding: 10px 0;
 }
 
-.nav-tabs-episode>li {
+.nav-tabs-episode > li {
     float: left;
     margin-bottom: -1px;
     margin-right: 5px;
 }
 
-.nav-tabs-episode>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+.nav-tabs-episode > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     color: #fff;
     background-color: #3F3F3F;
     border-left: 1px solid #3F3F3F;
     width: 100%;
 }
 
-.nav-tabs-episode>li>a {
+.nav-tabs-episode > li > a {
     border-radius: 6px;
     background-color: #23b95d;
     color: white;
     font-weight: bold;
 }
 
-.nav>li>a:focus, .nav>li>a:hover {
+.nav > li > a:focus, .nav > li > a:hover {
     background-color: #3F3F3F;
     color: #fff;
 }
@@ -394,224 +405,233 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
     margin: 0;
 }
 
-.grid-anime .grid-item {
-    width: 160px;
+.grid-anime {
+  .thumbnail > img, .thumbnail a > img {
+    height: 185px;
+  }
+  .thumbnail {
+    min-height: 235px;
+  }
+
+  .grid-item {
+    width: 150px;
     float: left;
+  }
 }
 
 .sort-by .btn-default {
-    background-color: #02AF46;
-    border: 0;
+  background-color: #02AF46;
+  border: 0;
 }
 
 .tab-content {
-    float: left;
-    width: 100%;
-    padding: 16px;
-    margin-bottom: 16px;
-    background-color: #fff;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  float: left;
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #fff;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .filter-submenu {
-    list-style-type: none;
-    float: left;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  float: left;
+  padding: 0;
+  margin: 0;
 }
 
 .filter-submenu li {
-    float: left;
+  float: left;
 }
 
 .filter-submenu > li > a {
-    color: #000;
-    padding: 5px 7px;
-    text-transform: uppercase;
+  color: #000;
+  padding: 5px 7px;
+  text-transform: uppercase;
 }
 
 .alphabetical li:last-child a {
-    background-color: #01AE45;
-    color: #fff;
-    border-radius: 22px;
+  background-color: #01AE45;
+  color: #fff;
+  border-radius: 22px;
 }
 
-///////////////////////////////////// Episode Area CSS ///////////////////////////////////
+// Episode Area CSS
 
 .comments {
-    background-color: white;
-    padding: 10px;
-    margin: 20px 0;
-    box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
-    -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.2)
+  background-color: white;
+  padding: 10px;
+  margin: 20px 0;
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.2)
 }
 
 .social {
-    font-size: 22px;
-    background-color: white;
-    padding: 24px 0;
+  font-size: 22px;
+  background-color: white;
+  padding: 24px 0;
 }
 
 .star-views {
-    padding:10px;
-    background-color: #D2D2D2;
-    margin-bottom: 15px;
-    box-shadow: 0px 1px 1px rgb(0, 0, 0);
-    -moz-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
-    -webkit-box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
+  padding:10px;
+  background-color: #D2D2D2;
+  margin-bottom: 15px;
+  box-shadow: 0px 1px 1px rgb(0, 0, 0);
+  -moz-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-///////////////////////////////////// End Episode Area CSS ///////////////////////////////////
+// End Episode Area CSS
 
-///////////////////////////////////// Search Area CSS ///////////////////////////////////
+// Search Area CSS
 .anime-search {
-    background-color: white;
-    padding: 10px;
-    margin: 4px 0;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
-    display:block;
-    min-height: 96px;
+  background-color: white;
+  padding: 10px;
+  margin: 4px 0;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  display:block;
+  min-height: 96px;
 }
 
 .anime-search:hover {
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.55);
-    -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.55);
-    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.55);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.55);
+  -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.55);
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.55);
 }
 
 .media-search img {
-    width: 52px;
-    height: 77px;
-    float: left;
-    margin-right: 10px;
+  width: 52px;
+  height: 77px;
+  float: left;
+  margin-right: 10px;
 }
 
 .title-search a {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    text-decoration: none;
-    color: #3f3f3f;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  color: #3f3f3f;
 }
 
 .title-search a:hover {
-    text-decoration: none;
-    color:#23b95d;
+  text-decoration: none;
+  color:#23b95d;
 }
 
 .description-search {
-    color: #808080;
-    font-size: 11px;
+  color: #808080;
+  font-size: 11px;
 }
 
 .description-search:hover {
   color: #3f3f3f;
 }
 
-///////////////////////////////////// End Search Area CSS ///////////////////////////////////
+// End Search Area CSS
 
-///////////////////////////////////// Footer CSS ////////////////////////////////////////////
+// Footer
 
 #footer {
-    background-color: #fff;
-    padding-top: 20px;
+  background-color: #fff;
+  padding-top: 20px;
 }
 
 .footer h4{
-    font-weight: bold;
-    font-size:18px;
-    color:#23b95d;
-    text-transform: uppercase;
+  font-weight: bold;
+  font-size:18px;
+  color:#3F3F3F;
+  text-transform: uppercase;
 }
 
 .footer ul {
-    margin:0;
-    padding:0;
-    list-style-type: none;
+  margin:0;
+  padding:0;
+  list-style-type: none;
 }
 
 .footer ul li a{
-    color:#3F3F3F;
+  color:#3F3F3F;
 }
 
 .footer ul li a:hover{
-    color:#23b95d;
+  color:#23b95d;
 }
 
-///////////////////////////////////// End Footer CSS ////////////////////////////////////////////
+// End Footer
 
 @media (max-width: $screen-xs-min) {
-    .grid-episode {
-        height: auto !important;
-        .grid-item {
-            width: 100%;
-            max-width: 300px;
-            position: relative !important;
-            left: initial !important;
-            top: initial !important;
-            margin: 0 auto;
-        }
-        .grid-sizer {
-            width: 100%;
-        }
+  .grid-episode {
+    height: auto !important;
+    .grid-item {
+      width: 100%;
+      max-width: 300px;
+      position: relative !important;
+      left: initial !important;
+      top: initial !important;
+      margin: 0 auto;
     }
+    .grid-sizer {
+      width: 100%;
+    }
+  }
 }
 
 @media (max-width: $screen-xs-max) {
-    .main {
-        padding-top: 51px;
-    }
-    .grid-episode .grid-item {
-        width: 49%;
-        max-width: 300px;
-    }
-    .grid-episode .grid-sizer {
-        width: 50%;
-    }
+  .main {
+    padding-top: 51px;
+  }
+  .grid-episode .grid-item {
+    width: 49%;
+    max-width: 300px;
+  }
+  .grid-episode .grid-sizer {
+    width: 50%;
+  }
 }
 
 @media (max-width: 1420px) {
-    .container {
-        width: 100%;
-    }
+  .container {
+    width: 100%;
+  }
 }
 
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-    .grid-episode .grid-item {
-        width: 49%;
-        max-width: 300px;
-    }
-    .grid-episode .grid-sizer {
-        width: 50%;
-    }
+  .grid-episode .grid-item {
+    width: 49%;
+    max-width: 300px;
+  }
+  .grid-episode .grid-sizer {
+    width: 50%;
+  }
 }
 
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-    .grid-episode .grid-item {
-        width: 32%;
-        max-width: 300px;
-    }
-    .grid-episode .grid-sizer {
-        width: 33.33%;
-    }
+  .grid-episode .grid-item {
+    width: 32%;
+    max-width: 300px;
+  }
+  .grid-episode .grid-sizer {
+    width: 33.33%;
+  }
 }
 
 @media (min-width: $screen-sm-min) {
-    .main {
-        margin-left: 250px;
-    }
+  .main {
+    margin-left: 250px;
+  }
 }
 
 @media (min-width: $screen-lg-min) {
-    .grid-episode .grid-item {
-        width: 24%;
-        max-width: 300px;
-    }
-    .grid-episode .grid-sizer {
-        width: 25%;
-    }
+  .grid-episode .grid-item {
+    width: 24%;
+    max-width: 300px;
+  }
+  .grid-episode .grid-sizer {
+    width: 25%;
+  }
 }
