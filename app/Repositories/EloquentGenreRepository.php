@@ -24,6 +24,6 @@ class EloquentGenreRepository
     {
         return $this->genre->whereHas('animes', function ($query) {
             $query->has('episodes')->where('release_date', '<', Carbon::now()->toDateTimeString());
-        })->where('model', '=', 'Anime')->get(['id', 'name']);
+        })->where('model', '=', 'Anime')->orderBy('name')->get(['id', 'name']);
     }
 }

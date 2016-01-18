@@ -45,7 +45,7 @@ $(window).load(function() {
   var animeElement = document.querySelector('.grid-anime');
   if (animeElement) {
     var animeGrid = new Masonry(animeElement, {
-      columnWidth: 170,
+      columnWidth: 160,
       itemSelector: '.grid-item',
     });
   }
