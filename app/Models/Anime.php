@@ -307,7 +307,7 @@ class Anime extends Model
 
     public function getPhotoAttribute()
     {
-        return $this->image ? 'uploads/anime/' . $this->id . '/' . $this->image->path : 'https://placehold.it/225x320';
+        return $this->image ? 'uploads/anime/'.$this->id.'/'.$this->image->path : 'https://placehold.it/225x320';
     }
 
     public function getShortTitleAttribute()

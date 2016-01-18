@@ -53,7 +53,7 @@ class MirrorReportController extends DashboardController
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postEdit($id = 0, Request $request)
+    public function postEdit($id, Request $request)
     {
         $mirrorReport = $this->mirrorReport->findOrFail($id);
         $mirrorReport->verified = $request['verified'] === '1' ? 1 : 0;

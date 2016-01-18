@@ -62,7 +62,7 @@ class AppComposer
 
         // TODO: Get meta data
         $url = Route::current()->uri();
-        $meta = $this->meta;//$this->meta->whereRoute($url)->firstOrFail();
+        $meta = $this->meta; //$this->meta->whereRoute($url)->firstOrFail();
         $this->data['pageTitle'] = $meta->title;
         $this->data['metaTitle'] = $meta->title;
         $this->data['metaDesc'] = $meta->description;
