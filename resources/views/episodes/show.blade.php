@@ -143,9 +143,9 @@
                 <div class="rating_div">
                     <div class="views_value view_episode" id="<?php echo $episode['id']; ?>">{{ $episode['visits'] }}<span> Views</span></div>
                     <div id='rateContainor' style="float: left; width: 200px; margin-left: 20px;">
-                        <div style='float:left;' class='rating' id='rateDiv'></div>
-                        <div style='float: left; font-size: 8pt; clear: both; width: 100%; display:none' id='hint'></div>
-                        <div id="hint2" style='float:left;font-size:8pt'>
+                        <div style="float: left;" class="rateDiv" value="{{ $episode['rating'] }}" id="{{ $episode['id'] }}"></div>
+                        <div style='float: left; font-size: 8pt; clear: both; width: 100%; display:none' id="hint{{ $episode['id'] }}"></div>
+                        <div id="hint2{{ $episode['id'] }}" style="float: left; font-size: 8pt;">
                             <?php echo "Average: " . sprintf("%.2f", $episode['rating']) .
                                     " ( " . $episode['votes'] . " votes)" ?>
                         </div>
