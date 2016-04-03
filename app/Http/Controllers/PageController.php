@@ -2,11 +2,10 @@
 
 namespace AC\Http\Controllers;
 
+use AC\Models\Meta;
 use AC\Models\Page;
 use AC\Repositories\EloquentAnimeRepository as Anime;
 use AC\Repositories\EloquentEpisodeRepository as Episode;
-use Carbon\Carbon;
-use DB;
 
 class PageController extends Controller
 {
@@ -28,15 +27,22 @@ class PageController extends Controller
     private $episode;
 
     /**
-     * @param Page    $page
-     * @param Anime   $anime
-     * @param Episode $episode
+     * @var Meta
      */
-    public function __construct(Page $page, Anime $anime, Episode $episode)
+    private $meta;
+
+    /**
+     * @param Page $page
+     * @param Anime $anime
+     * @param Episode $episode
+     * @param Meta $meta
+     */
+    public function __construct(Page $page, Anime $anime, Episode $episode, Meta $meta)
     {
         $this->page = $page;
         $this->anime = $anime;
         $this->episode = $episode;
+        $this->meta = $meta;
     }
 
     /**
@@ -48,57 +54,9 @@ class PageController extends Controller
     {
         $this->data['episodes'] = $this->episode->latest();
         $this->data['upcomingEpisodes'] = $this->episode->upcoming();
-        $this->data['animes'] = $this->anime->currentCalendarSeason();
-
-        /*$animesDirectories = array_diff(scandir('uploads/anime'), ['.', '..']);
-        foreach ($animesDirectories as $animeID) {
-            DB::connection('mysql')->table('images')->where('imageable_id', '=', $animeID)->update([
-                'path' => array_diff(scandir('uploads/anime/'.$animeID), ['.', '..'])[2],
-            ]);
-        }*/
-
-        /*$timestamp = Carbon::now()->toDateTimeString();
-        $animes = DB::connection('mysql')->table('animes')->where('image_id', '=', NULL)->get(['id', 'slug']);
-
-        foreach ($animes as $anime) {
-            $oldAnime = DB::connection('mysql1')->table('animes')->where('id', '=', $anime->id)
-                ->where('image', '<>', 'http://cdn.myanimelist.net/images/qm_50.gif')
-                ->first(['image']);
-
-            if ($oldAnime) {
-                $animeImageFolder = 'uploads/anime/' . $anime->id;
-                if (!is_dir($animeImageFolder)) {
-                    mkdir($animeImageFolder, 0755, true);
-                }
-
-                $animeImage = $animeImageFolder.'/'.$anime->slug.'-'.str_slug(str_replace(':', '-', $timestamp)).'.jpg';
-                if (!file_exists($animeImage)) {
-                    copy($oldAnime->image, $animeImage);
-                }
-
-                $imageID = DB::connection('mysql')->table('images')->insertGetId([
-                    'user_id' => 1,
-                    'imageable_id' => $anime->id,
-                    'imageable_type' => 'Anime',
-                    'path' => $anime->slug . '-1.jpg',
-                    'active' => 1,
-                    'created_at' => $timestamp,
-                    'updated_at' => $timestamp,
-                ]);
-
-                DB::connection('mysql')->table('animes')->where('id', '=', $anime->id)->update([
-                    'image_id' => $imageID,
-                ]);
-            }
-        }*/
-
-        // TODO: Get meta data...
-        $this->data['pageTitle'] = 'AnimeCenter: Watch Anime English Subbed/Dubbed Online in HD';
-        $this->data['metaTitle'] = 'Watch Anime Online English Subbed/Dubbed | Watch Anime Online Free';
-        $this->data['metaDesc'] = 'Watch Anime English Subbed/Dubbed Online in HD at AnimeCenter! Over 41000 Episodes'.
-            ', and 2,146 Anime Series!';
-        $this->data['metaKey'] = 'Watch Anime Online, Anime Subbed/Dubbed, Anime Episodes, Anime Stream, '.
-            'Subbed Anime, Dubbed Anime';
+        $this->data['animes'] = $this->anime->latest();
+        $this->data['meta'] = $this->meta->whereRoute('/')->orderBy('route')
+            ->firstOrFail(['title', 'keywords', 'description']);
 
         return view('app.pages.home', $this->data);
     }
@@ -112,6 +70,8 @@ class PageController extends Controller
      */
     public function getBySlug($slug = '')
     {
-        return view('app.pages.show', ['page' => $this->page->where('slug', '=', $slug)->take(1)->findOrFail()]);
+        return view('app.pages.show', [
+            'page' => $this->page->where('slug', '=', $slug)->take(1)->findOrFail()
+        ]);
     }
 }

@@ -1,0 +1,9 @@
+.nav-sidebar {
+  .nav-item {
+    width: 100%;
+
+    +.nav-item {
+      margin-left: 0;
+    }
+  }
+}

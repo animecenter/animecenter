@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $deleted_at
  * @property-read Mirror $mirror
  * @property-read User $user
- *
  * @method static \Illuminate\Database\Query\Builder|MirrorReport whereId($value)
  * @method static \Illuminate\Database\Query\Builder|MirrorReport whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|MirrorReport whereMirrorId($value)

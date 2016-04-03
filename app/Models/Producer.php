@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|Anime[] $animes
- *
  * @method static \Illuminate\Database\Query\Builder|Producer whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Producer whereName($value)
  * @method static \Illuminate\Database\Query\Builder|Producer whereActive($value)

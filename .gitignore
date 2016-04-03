@@ -1,6 +1,7 @@
-/components
-/node_modules
 /vendor
-Homestead.yaml
-Homestead.json
+/node_modules
+/public/storage
+/public/uploads
+/bower_components
 .env
+.vagrant

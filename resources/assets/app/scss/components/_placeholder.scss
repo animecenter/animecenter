@@ -1,0 +1,21 @@
+// WebKit, Blink, Edge
+::-webkit-input-placeholder {
+  color: $color-black;
+}
+
+// Mozilla Firefox 4 to 18
+:-moz-placeholder {
+  color: $color-black;
+  opacity: 1;
+}
+
+// Mozilla Firefox 19+
+::-moz-placeholder {
+  color: $color-black;
+  opacity: 1;
+}
+
+// Internet Explorer 10-11
+:-ms-input-placeholder {
+  color: $color-black;
+}

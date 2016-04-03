@@ -4,15 +4,13 @@
     @include('app.layouts.head')
 </head>
 <body>
-    <div id="wrapper">
-        @include('app.layouts.sidebar')
-        <div class="main">
-            <div class="container">
-                @yield('content')
-                @include('app.layouts.footer')
-            </div>
+    @include('app.layouts.sidebar')
+    <main class="main">
+        <div class="container">
+            @yield('content')
         </div>
-    </div>
+    </main>
+    @include('app.layouts.footer')
     @include('app.layouts.scripts')
 </body>
 </html>

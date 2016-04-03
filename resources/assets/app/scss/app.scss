@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+@import "vendor";
+@import "abstracts";
+@import "base";
+@import "layout";
+@import "components";
+@import "utilities";
+
+// Main CSS
+body {
+  background-color: $color-gray;
+}
+
+.menu-filter {
+  float: right;
+  margin-left: 5px;
+}
+
+.anime-list-header {
+  background-color: #3f3f3f;
+  padding: 10px;
+  border-bottom: 1px solid $color-white;
+  width: 100%;
+  float: left;
+
+  h2 {
+    color: $color-white;
+    margin-bottom: 0;
+  }
+}
+
+.anime-title {
+  background: $color-white;
+  color: $color-white;
+  text-shadow: 0 1px 1px $color-black;
+  border-bottom: 1px solid $color-black;
+}
+
+.anime-content {
+  background: $color-white;
+  color: $color-white;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  text-shadow: 0 1px 1px $color-black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.anime-tabs {
+  float: left;
+  width: 100%;
+}
+
+.anime-footer {
+  background-color: $color-black;
+  padding: 12px;
+  font-size: 20px;
+  a {
+    color: $color-white;
+  }
+}
+
+.anime-background {
+  height: 100%;
+  width: 100%;
+  filter: blur(8px);
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.anime-media {
+  background-color: rgba(0, 0, 0, 0.6);
+
+  h1 {
+    color: $color-white;
+  }
+
+  a {
+    color: #FFFF00;
+  }
+
+  span {
+    font-weight: bold;
+  }
+
+  > p:last-child {
+    padding: 10px;
+  }
+}
+
+.episode-list {
+  font-size: 12px;
+}
+
+.episode-title {
+  margin: 9px 0 0;
+  font-size: 13px;
+  color: #3f3f3f;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.sort-by .btn-secondary {
+  background-color: #02AF46;
+  border: 0;
+}
+
+.alphabetical li:last-child a {
+  background-color: #01AE45;
+  color: $color-white;
+  border-radius: 22px;
+}
+
+@include media-breakpoint-up(sm) {
+
+  .main, .footer {
+    margin-left: 250px;
+  }
+}

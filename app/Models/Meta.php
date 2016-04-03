@@ -18,7 +18,7 @@ use Route;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
- *
+ * @property array routesToRemove
  * @method static \Illuminate\Database\Query\Builder|Meta whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Meta whereRoute($value)
  * @method static \Illuminate\Database\Query\Builder|Meta whereTitle($value)
@@ -101,8 +101,6 @@ class Meta extends Model
         if (isset($routes)) {
             $this->routesToRemove = array_merge(['dashboard', '_debugbar', 'fontawesome'], $routes);
         }
-
-        return;
     }
 
     /**
@@ -115,9 +113,16 @@ class Meta extends Model
         $this->setRoutesToRemove();
 
         return collect(Route::getRoutes()->getRoutes())->filter(function ($item) {
-            return (\ArrayHelper::checkIfStringContainsAValueFromArray(
-                    $item->uri(), $this->routesToRemove) === false
-            ) && $item->methods()[0] === 'GET';
+            return \ArrayHelper::checkIfStringContainsAValueFromArray($item->uri(), $this->routesToRemove) === false &&
+            $item->methods()[0] === 'GET';
         });
+    }
+
+    public function replaceAll($wildcard = '', $with = '')
+    {
+        $this->title = str_replace($wildcard, $with, $this->title);
+        $this->keywords = str_replace($wildcard, $with, $this->keywords);
+        $this->description = str_replace($wildcard, $with, $this->description);
+        return $this;
     }
 }

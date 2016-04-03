@@ -4,7 +4,7 @@
   "authors": [
     "Christian Pena <dr_khriz@hotmail.com>"
   ],
-  "description": "Bootstrap-Sass, Jquery, Modernizr, Font Awesome, Gulp, Bower",
+  "description": "Bootstrap 4, jQuery, Modernizr, Font Awesome, Gulp, Bower",
   "private": true,
   "ignore": [
     "**/.*",
@@ -13,11 +13,11 @@
     "vendor"
   ],
   "dependencies": {
-    "bootstrap-sass-official": "~3",
-    "jquery": "~2",
-    "modernizr": "~2",
+    "modernizr": "~3",
+    "jquery": "3.0.*",
     "font-awesome": "~4",
-    "masonry": "~3.3"
+    "bootstrap": "v4-dev",
+    "bootstrap-sass": "^3.3.6"
   },
   "overrides": {
     "modernizr": {
@@ -25,9 +25,9 @@
     },
     "font-awesome": {
       "main": "fonts/*"
-    },
-    "masonry": {
-      "main": "dist/masonry.pkgd.js"
     }
+  },
+  "resolutions": {
+    "jquery": "3.0.*"
   }
 }

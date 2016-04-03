@@ -25,8 +25,11 @@ class AuthController extends Controller
 
     protected $username = 'username';
 
-    protected $loginPath = '/login';
-
+    /**
+     * Where to redirect users after login / registration.
+     *
+     * @var string
+     */
     protected $redirectTo = '/dashboard';
 
     protected $redirectPath = '/dashboard';
@@ -38,7 +41,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware($this->guestMiddleware(), ['except' => 'getLogout']);
     }
 
     /**

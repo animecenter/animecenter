@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|View[] $views
- *
  * @method static \Illuminate\Database\Query\Builder|Page whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Page whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|Page whereSlug($value)
