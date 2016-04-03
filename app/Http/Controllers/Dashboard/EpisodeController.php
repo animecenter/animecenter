@@ -167,7 +167,8 @@ class EpisodeController extends DashboardController
         $url = 'episodes';
         $list = collect(
             DB::table('episodes')->join('animes', 'episodes.anime_id', '=', 'animes.id')
-                ->where('episodes.deleted_at', '=', null)->orderBy('episodes.id', 'DESC')
+                ->where('episodes.deleted_at', '=', null)
+                ->orderBy('episodes.updated_at', 'DESC')
                 ->get(['episodes.id', 'episodes.number', 'episodes.active', 'episodes.aired_at', 'animes.title as animeTitle'])
         );
         $showColumns = ['animeTitle', 'number', 'aired_at', 'active', 'actions'];

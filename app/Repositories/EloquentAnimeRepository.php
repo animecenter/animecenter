@@ -14,6 +14,7 @@ class EloquentAnimeRepository
      * @var Anime
      */
     private $anime;
+
     /**
      * @var EloquentUserRepository
      */
@@ -29,9 +30,20 @@ class EloquentAnimeRepository
         $this->user = $user;
     }
 
+    /**
+     * Get all animes that have episodes.
+     *
+     * @return mixed
+     */
     public function all()
     {
         return $this->anime->has('episodes');
+    }
+
+    public function latest()
+    {
+        return $this->all()->where('release_date', '<', Carbon::now()->toDateTimeString())
+            ->orderBy('animes.release_date', 'DESC')->take(10)->get();
     }
 
     /**
@@ -64,12 +76,12 @@ class EloquentAnimeRepository
     }
 
     /**
-     * @param $parameters
+     * @param array $parameters
      * @param Request $request
      *
      * @return mixed
      */
-    public function searchBy($parameters, Request $request)
+    public function searchBy($parameters = [], Request $request)
     {
         $timestamp = Carbon::now()->toDateTimeString();
         $anime = $this->all();
@@ -122,13 +134,14 @@ class EloquentAnimeRepository
     {
         if (!$letter === '0-9') {
             return $anime->whereRaw("title NOT REGEXP '^[[:alpha:]]'");
-        } elseif (preg_match('/^([a-z])$/', $letter) === 1) {
-            return $anime->where('title', 'like', $letter.'%');
-        } elseif ($letter === 'all') {
-            return $anime;
-        } else {
-            abort(404, $letter.' was not found');
         }
+        if (preg_match('/^([a-z])$/', $letter) === 1) {
+            return $anime->where('title', 'like', $letter.'%');
+        }
+        if ($letter === 'all') {
+            return $anime;
+        }
+        abort(404, $letter.' was not found');
     }
 
     /**
@@ -145,13 +158,13 @@ class EloquentAnimeRepository
             return $anime->whereHas('episodes.mirrors', function ($query) {
                 $query->where('mirrors.translation', '=', 'subbed');
             });
-        } elseif ($language === 'dubbed') {
+        }
+        if ($language === 'dubbed') {
             return $anime->whereHas('episodes.mirrors', function ($query) {
                 $query->where('mirrors.translation', '=', 'dubbed');
             });
-        } else {
-            abort(404, $language.' was not found');
         }
+        abort(404, $language.' was not found');
     }
 
     /**
@@ -209,11 +222,11 @@ class EloquentAnimeRepository
      */
     public function getByGenres($anime, $genres = [])
     {
-        return dd($anime->whereHas('genres', function ($query) use ($genres) {
+        return $anime->whereHas('genres', function ($query) use ($genres) {
             foreach ($genres as $genre) {
                 $query->where('genres.id', $genre);
             }
-        })->toSql());
+        })->get();
     }
 
     /**
@@ -258,11 +271,11 @@ class EloquentAnimeRepository
     {
         if ($sortBy === 'upcoming') {
             return $anime->where('release_date', '>', Carbon::now()->toDateTimeString());
-        } elseif ($sortBy === 'latest') {
-            return $anime->where('release_date', '<', Carbon::now()->toDateTimeString());
-        } else {
-            abort(404, $sortBy.' is not a valid value');
         }
+        if ($sortBy === 'latest') {
+            return $anime->where('release_date', '<', Carbon::now()->toDateTimeString());
+        }
+        abort(404, $sortBy.' is not a valid value');
     }
 
     /**
@@ -286,25 +299,29 @@ class EloquentAnimeRepository
                 },
                 'episode.mirrors.mirrorSource',
             ])->where('slug', '=', $animeSlug)->firstOrFail();
-        } elseif ($translation === 'subbed') {
-            return $this->anime->with([
+        }
+        if ($translation === 'subbed') {
+            return $this->anime->has('episode.mirrors.mirrorSource')->with([
                 'episode' => function ($query) use ($episodeNumber) {
-                    $query->where('number', '=', $episodeNumber)->firstOrFail();
+                    $query->where('episodes.number', '=', $episodeNumber)->firstOrFail();
                 },
                 'episode.mirrors' => function ($query) {
-                    $query->with('mirrorSource')->where('mirrors.translation', '=', 'subbed');
-                },
-            ])->where('slug', '=', $animeSlug)->firstOrFail();
-        } else {
-            return $this->anime->with([
-                'episode' => function ($query) use ($episodeNumber) {
-                    $query->where('number', '=', $episodeNumber)->firstOrFail();
-                },
-                'episode.mirrors' => function ($query) {
-                    $query->with('mirrorSource')->where('mirrors.translation', '=', 'dubbed');
+                    $query->with(['mirrorSource' => function($query) {
+                        $query->orderBy('mirror_sources.id', 'ASC');
+                    }])->where('mirrors.translation', '=', 'subbed');
                 },
             ])->where('slug', '=', $animeSlug)->firstOrFail();
         }
+        return $this->anime->with([
+            'episode' => function ($query) use ($episodeNumber) {
+                $query->where('number', '=', $episodeNumber)->firstOrFail();
+            },
+            'episode.mirrors' => function ($query) {
+                $query->with(['mirrorSource' => function($query) {
+                    $query->orderBy('mirror_sources.id', 'ASC');
+                }])->where('mirrors.translation', '=', 'dubbed');
+            },
+        ])->where('slug', '=', $animeSlug)->firstOrFail();
     }
 
     /**
@@ -344,9 +361,7 @@ class EloquentAnimeRepository
             $calendarSeason = 'Winter';
         }
 
-        $seasonName = $calendarSeason.' '.$year;
-
-        return $this->getByCalendarSeasonName($seasonName);
+        return $this->getByCalendarSeasonName($calendarSeason);
     }
 
     /**
@@ -356,10 +371,8 @@ class EloquentAnimeRepository
      */
     public function getByCalendarSeasonName($seasonName = '')
     {
-        return $this->anime->has('episodes')->whereHas('calendarSeason', function ($query) use ($seasonName) {
-            $query->where('calendar_seasons.name', '=', $seasonName);
-        })->where('release_date', '<', Carbon::now()->toDateTimeString())
-            ->orderBy('release_date', 'DESC')->take(4)->get();
+        return $this->anime->has('episodes')->where('calendar_season_id', '=', $seasonName)
+            ->orderBy('animes.release_date', 'DESC')->take(8)->get();
     }
 
     /**

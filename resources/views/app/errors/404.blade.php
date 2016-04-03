@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-xs-12">
-            <h2 class="page-header">Sorry, the page you have requested cannot be found.</h2>
+            <h2>Sorry, the page you have requested cannot be found.</h2>
         </div>
         <div class="col-xs-12">
             <img src="{{ asset('img/404img.jpg') }}">

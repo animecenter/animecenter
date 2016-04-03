@@ -2,6 +2,8 @@
 
 namespace AC\Http\Controllers;
 
+use AC\Models\Meta;
+use AC\Models\Mirror;
 use AC\Repositories\EloquentAnimeRepository as Anime;
 use AC\Repositories\EloquentCalendarSeasonRepository as CalendarSeason;
 use AC\Repositories\EloquentClassificationRepository as Classification;
@@ -51,15 +53,26 @@ class AnimeController extends Controller
     private $type;
 
     /**
-     * @param Anime          $anime
-     * @param Classification $classification
-     * @param Episode        $episode
-     * @param Genre          $genre
-     * @param Producer       $producer
-     * @param CalendarSeason $calendarSeason
-     * @param Type           $type
+     * @var Mirror
      */
-    public function __construct(Anime $anime, Classification $classification, Episode $episode, Genre $genre, Producer $producer, CalendarSeason $calendarSeason, Type $type)
+    private $mirror;
+    /**
+     * @var Meta
+     */
+    private $meta;
+
+    /**
+     * @param Anime $anime
+     * @param Classification $classification
+     * @param Episode $episode
+     * @param Genre $genre
+     * @param Producer $producer
+     * @param CalendarSeason $calendarSeason
+     * @param Type $type
+     * @param Mirror $mirror
+     * @param meta $meta
+     */
+    public function __construct(Anime $anime, Classification $classification, Episode $episode, Genre $genre, Producer $producer, CalendarSeason $calendarSeason, Type $type, Mirror $mirror, Meta $meta)
     {
         $this->anime = $anime;
         $this->classification = $classification;
@@ -68,9 +81,13 @@ class AnimeController extends Controller
         $this->producer = $producer;
         $this->calendarSeason = $calendarSeason;
         $this->type = $type;
+        $this->mirror = $mirror;
+        $this->meta = $meta;
     }
 
     /**
+     * Route anime.
+     *
      * @param Request $request
      *
      * @return \Illuminate\View\View
@@ -85,12 +102,15 @@ class AnimeController extends Controller
         $this->data['calendarSeasons'] = $this->calendarSeason->all();
         $this->data['types'] = $this->type->all();
         $this->data['currentURL'] = $this->getCurrentURL();
+        $this->data['meta'] = $this->meta->whereRoute('anime')->orderBy('route')
+            ->firstOrFail(['title', 'keywords', 'description']);
 
         return view('app.anime.index', $this->data);
     }
 
     /**
      * Get anime by slug.
+     * Route anime/watch/{animeSlug}.
      *
      * @param string $animeSlug
      *
@@ -102,12 +122,15 @@ class AnimeController extends Controller
         $this->data['producersCount'] = $anime['producers']->count() - 1;
         $this->data['genresCount'] = $anime['genres']->count() - 1;
         $this->data['latestEpisode'] = $this->episode->getLatestEpisode($anime['id']);
+        $this->data['meta'] = $this->meta->whereRoute('anime/watch/{animeSlug}')->orderBy('route')
+            ->firstOrFail(['title', 'keywords', 'description'])->replaceAll('$1', $anime->title);
 
         return view('app.anime.show', $this->data);
     }
 
     /**
      * Get episode by anime slug and by episode number.
+     * Route anime/watch/{animeSlug}/episode/{episodeNumber}/{translation}.
      *
      * @param string $animeSlug
      * @param int    $episodeNumber
@@ -120,23 +143,19 @@ class AnimeController extends Controller
         $this->data['anime'] = $anime = $this->anime->getMirrors($animeSlug, $episodeNumber, $translation);
         $this->data['prevEpisode'] = $this->episode->getPreviousEpisode($anime['id'], $anime['episode']->number);
         $this->data['nextEpisode'] = $this->episode->getNextEpisode($anime['id'], $anime['episode']->number);
+        $this->data['meta'] = $this->meta->whereRoute('anime/watch/{animeSlug}/episode/{episodeNumber}/{translation}')
+            ->orderBy('route')->firstOrFail(['title', 'keywords', 'description'])
+            ->replaceAll('$1', $anime['title']);
 
         // TODO: Update episode views + 1...
         // $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
-
-        // TODO: Get episode meta data.
-        $this->data['pageTitle'] = $title = $anime['title'].' English Subbed/Dubbed in HD';
-        $this->data['metaTitle'] = "Watch {$anime['title']} Online for Free | Watch Anime Online Free";
-        $this->data['metaDesc'] = 'Watch '.$title.' Online. Download '.$title.' Online. Watch '.
-            $anime['title'].' English Sub/Dub HD';
-        $this->data['metaKey'] = "Watch {$anime['title']}, {$anime['title']} English Subbed/Dubbed, Download ".
-            "{$anime['title']} English Subbed/Dubbed, Watch {$anime['title']} Online";
 
         return view('app.episodes.show', $this->data);
     }
 
     /**
      * Get mirror for current anime episode.
+     * Route anime/watch/{animeSlug}/episode/{episodeNumber}/{translation}/{mirrorID}.
      *
      * @param string $animeSlug
      * @param int    $episodeNumber
@@ -147,20 +166,17 @@ class AnimeController extends Controller
      */
     public function getMirror($animeSlug = '', $episodeNumber = 0, $translation = '', $mirrorID = '')
     {
-        $this->data['anime'] = $anime = $this->anime->getMirror($animeSlug, $episodeNumber, $translation, $mirrorID);
+        $this->data['currentMirror'] = $this->mirror->with(['mirrorSource'])->whereId($mirrorID)->first();
+        $this->data['anime'] = $anime = $this->anime->getMirrors($animeSlug, $episodeNumber, $translation);
+        $this->data['nextEpisode'] = $this->episode->getNextEpisode($anime['id'], $anime->episode->number);
+        $this->data['prevEpisode'] = $this->episode->getPreviousEpisode($anime['id'], $anime->episode->number);
+        $this->data['meta'] = $this->meta->whereRoute(
+            'anime/watch/{animeSlug}/episode/{episodeNumber}/{translation}/{mirrorID}'
+        )->orderBy('route')->firstOrFail(['title', 'keywords', 'description'])
+            ->replaceAll('$1', $anime['title'] . ' ' . $anime->episode->number);
 
         // TODO: Update episode views + 1...
         // $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
-
-        $this->data['nextEpisode'] = $this->episode->getNextEpisode($anime->id, $anime->episode->number);
-        $this->data['prevEpisode'] = $this->episode->getPreviousEpisode($anime->id, $anime->episode->number);
-
-        $this->data['pageTitle'] = $title = $anime->episode['title'].' English Subbed/Dubbed in HD';
-        $this->data['metaTitle'] = "Watch {$anime->episode['title']} Online for Free | Watch Anime Online Free";
-        $this->data['metaDesc'] = 'Watch '.$title.' Online. Download '.$title.' Online. Watch '.
-            $anime->episode['title'].' English Sub/Dub HD';
-        $this->data['metaKey'] = "Watch {$anime->episode['title']}, {$anime->episode['title']} English Subbed/Dubbed,".
-            " Download {$anime->episode['title']} English Subbed/Dubbed, Watch {$anime->episode['title']} Online";
 
         return view('app.episodes.show', $this->data);
     }

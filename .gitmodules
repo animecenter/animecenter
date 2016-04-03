@@ -1,0 +1,3 @@
+[submodule "homestead"]
+	path = homestead
+	url = git@github.com:animecenter/homestead.git

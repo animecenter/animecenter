@@ -46,8 +46,7 @@ $router->get('anime/watch/{animeSlug}', 'AnimeController@getAnime');
 $router->get('episodes/latest', 'EpisodeController@getLatest');
 
 // Search routes...
-$router->get('explore', 'SearchController@index');
-$router->get('search', 'SearchController@show');
+$router->get('search', 'SearchController@index');
 
 // Rating routes...
 $router->post('rate/anime', 'RateController@postAnime');

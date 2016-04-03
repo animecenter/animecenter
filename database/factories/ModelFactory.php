@@ -33,7 +33,7 @@ $factory->define(AC\Models\Anime::class, function (Faker\Generator $faker) {
 $factory->define(AC\Models\User::class, function (Faker\Generator $faker) {
     return [
         'username'       => $faker->unique()->userName,
-        'email'          => $faker->unique()->email,
+        'email'          => $faker->unique()->safeEmail,
         'password'       => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
         'active'         => rand(0, 1),

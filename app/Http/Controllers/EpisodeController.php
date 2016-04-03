@@ -2,6 +2,7 @@
 
 namespace AC\Http\Controllers;
 
+use AC\Models\Meta;
 use AC\Repositories\EloquentEpisodeRepository as Episode;
 
 class EpisodeController extends Controller
@@ -12,24 +13,30 @@ class EpisodeController extends Controller
     private $episode;
 
     /**
-     * @param Episode $episode
+     * @var Meta
      */
-    public function __construct(Episode $episode)
+    private $meta;
+
+    /**
+     * @param Episode $episode
+     * @param Meta $meta
+     */
+    public function __construct(Episode $episode, Meta $meta)
     {
         $this->episode = $episode;
+        $this->meta = $meta;
     }
 
+    /**
+     * Method for the episodes/latest route.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getLatest()
     {
+        $this->data['meta'] = $this->meta->whereRoute('episodes/latest')->orderBy('route')
+            ->firstOrFail(['title', 'keywords', 'description']);
         $this->data['episodes'] = $this->episode->latestPaginate();
-
-        // TODO: Get metadata...
-        $this->data['pageTitle'] = 'Latest Episodes | Watch Anime Online Free';
-        $this->data['metaTitle'] = 'Watch the Latest Episode for Free Online | Watch Anime Online Free just in '.
-            'Animecenter.tv';
-        $this->data['metaDesc'] = 'Watch Latest Anime Episodes added to the site! Latest English Subbed/Dubbed Anime';
-        $this->data['metaKey'] = 'Latest Anime Episodes, Watch Latest Anime Episodes, Watch on Iphone, Watch Anime'.
-            ' Online, English Subbed/Dubbed';
 
         return view('app.episodes.latest', $this->data);
     }

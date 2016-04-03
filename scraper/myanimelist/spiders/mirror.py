@@ -26,8 +26,9 @@ class MirrorSpider(scrapy.Spider):
     def parse_mirror(response):
         item = Mirror()
         website = response.xpath('//div[@class="episode_on"]/div/h3/a/text()').extract()
-        if (website and any(word in website[0] for word in ['Dailymotion', 'Goplayer', 'COM', 'Videobb'])) \
-            or not website or response.xpath('//a[@class="active"]/text()').extract():
+        if website and any(word in website[0] for word in ['Dailymotion', 'Goplayer', 'COM', 'Videobb', 'Googlevideo',
+                                                           'Vidbox', 'Clip', 'Uploadc', 'Ember', 'Twitvid', '4vid']) \
+                or not website or response.xpath('//a[@class="active"]/text()').extract():
             yield item
         else:
             item['url'] = response.xpath(

@@ -1,0 +1,25 @@
+.grid-anime {
+
+  .grid-item {
+    width: 152.5px;
+    float: left;
+    margin-right: 12px;
+
+    &:nth-child(7n) {
+      margin: 0;
+    }
+  }
+
+  &.grid-home {
+
+    .grid-item {
+      width: 18.7%;
+      float: left;
+      margin-right: 1.6%;
+
+      &:nth-child(5n) {
+        margin: 0;
+      }
+    }
+  }
+}

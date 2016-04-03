@@ -3,9 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-xs-12">
-            <div class="page-header">
-                <h2>New Anime Episodes</h2>
-            </div>
+            <h2>New Anime Episodes</h2>
         </div>
         <div class="col-xs-12">
             <div class="grid-episode">

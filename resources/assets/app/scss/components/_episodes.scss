@@ -1,0 +1,47 @@
+.episode-item {
+  float: left;
+}
+
+@include media-breakpoint-down(sm) {
+  .episodes .episode-item {
+    width: 48%;
+    margin: 0 4% 4% 0;
+
+    &:nth-child(2n) {
+      margin: 0;
+    }
+  }
+}
+
+@include media-breakpoint-only(md) {
+  .episodes .episode-item {
+    width: 32.66%;
+    margin: 0 1% 1% 0;
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+}
+
+@include media-breakpoint-only(lg) {
+  .episodes .episode-item {
+    width: 24%;
+    margin: 0 1.5% 1.5%;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .episodes .episode-item {
+    width: 15.834%;
+    margin: 0 1% 1% 0;
+
+    &:nth-child(6n) {
+      margin: 0 0 1%;
+    }
+  }
+}
