@@ -92,6 +92,7 @@ class AuthController extends Controller
     {
         $this->data['meta'] = $this->meta->whereRoute('/')->orderBy('route')
             ->firstOrFail(['title', 'keywords', 'description']);
+
         return view('app.auth.register', $this->data);
     }
 
@@ -104,6 +105,7 @@ class AuthController extends Controller
     {
         $this->data['meta'] = $this->meta->whereRoute('/')->orderBy('route')
             ->firstOrFail(['title', 'keywords', 'description']);
+
         return view('app.auth.login', $this->data);
     }
 }
