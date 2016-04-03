@@ -77,7 +77,7 @@ class StatusController extends DashboardController
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postEdit($id = 0, Request $request)
+    public function postEdit($id, Request $request)
     {
         $status = $this->status->findOrFail($id);
         $status->name = $request['name'];

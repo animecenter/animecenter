@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read mixed $short_title
  * @property-read mixed $upcoming_photo
  * @property-read mixed $upcoming_title
+ *
  * @method static \Illuminate\Database\Query\Builder|Episode whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Episode whereAnimeId($value)
  * @method static \Illuminate\Database\Query\Builder|Episode whereNumber($value)

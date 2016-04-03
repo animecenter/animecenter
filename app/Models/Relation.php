@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $deleted_at
  * @property-read \ $relationable
  * @property-read Relationship $relationship
+ *
  * @method static \Illuminate\Database\Query\Builder|Relation whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Relation whereRelationshipId($value)
  * @method static \Illuminate\Database\Query\Builder|Relation whereRelationableId($value)

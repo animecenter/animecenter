@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $viewable_type
  * @property int $count
  * @property-read \ $viewable
+ *
  * @method static \Illuminate\Database\Query\Builder|View whereId($value)
  * @method static \Illuminate\Database\Query\Builder|View whereDate($value)
  * @method static \Illuminate\Database\Query\Builder|View whereViewableId($value)

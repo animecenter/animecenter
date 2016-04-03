@@ -76,12 +76,12 @@ class EloquentAnimeRepository
     }
 
     /**
-     * @param array $parameters
+     * @param array   $parameters
      * @param Request $request
      *
      * @return mixed
      */
-    public function searchBy($parameters = [], Request $request)
+    public function searchBy($parameters, Request $request)
     {
         $timestamp = Carbon::now()->toDateTimeString();
         $anime = $this->all();
@@ -306,18 +306,19 @@ class EloquentAnimeRepository
                     $query->where('episodes.number', '=', $episodeNumber)->firstOrFail();
                 },
                 'episode.mirrors' => function ($query) {
-                    $query->with(['mirrorSource' => function($query) {
+                    $query->with(['mirrorSource' => function ($query) {
                         $query->orderBy('mirror_sources.id', 'ASC');
                     }])->where('mirrors.translation', '=', 'subbed');
                 },
             ])->where('slug', '=', $animeSlug)->firstOrFail();
         }
+
         return $this->anime->with([
             'episode' => function ($query) use ($episodeNumber) {
                 $query->where('number', '=', $episodeNumber)->firstOrFail();
             },
             'episode.mirrors' => function ($query) {
-                $query->with(['mirrorSource' => function($query) {
+                $query->with(['mirrorSource' => function ($query) {
                     $query->orderBy('mirror_sources.id', 'ASC');
                 }])->where('mirrors.translation', '=', 'dubbed');
             },
@@ -347,8 +348,8 @@ class EloquentAnimeRepository
      */
     public function currentCalendarSeason()
     {
-        $month = DATE('m');
-        $year = DATE('Y');
+        $month = date('m');
+        $year = date('Y');
 
         // Retrieve calendar season
         if ($month >= '03' && $month <= '06') {
