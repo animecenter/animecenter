@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @property-read \ $titles
+ *
  * @method static \Illuminate\Database\Query\Builder|Title whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Title whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|Title whereLanguage($value)

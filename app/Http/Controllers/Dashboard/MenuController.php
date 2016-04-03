@@ -77,7 +77,7 @@ class MenuController extends DashboardController
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postEdit($id = 0, Request $request)
+    public function postEdit($id, Request $request)
     {
         $menu = $this->menu->findOrFail($id);
         $menu->name = $request['name'];

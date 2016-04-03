@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static \Illuminate\Database\Query\Builder|Menu whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Menu whereName($value)
  * @method static \Illuminate\Database\Query\Builder|Menu whereSlug($value)

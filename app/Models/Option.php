@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static \Illuminate\Database\Query\Builder|Option whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Option whereName($value)
  * @method static \Illuminate\Database\Query\Builder|Option whereValue($value)

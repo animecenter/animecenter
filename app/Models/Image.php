@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static \Illuminate\Database\Query\Builder|Image whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Image whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|Image whereImageableId($value)

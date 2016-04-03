@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static \Illuminate\Database\Query\Builder|AnimeProducer whereId($value)
  * @method static \Illuminate\Database\Query\Builder|AnimeProducer whereAnimeId($value)
  * @method static \Illuminate\Database\Query\Builder|AnimeProducer whereProducerId($value)
