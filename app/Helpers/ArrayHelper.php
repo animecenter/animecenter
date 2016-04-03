@@ -24,7 +24,7 @@ class ArrayHelper
      *
      * @return string
      */
-    public function checkIfStringContainsAValueFromArray($string = '', array $values)
+    public function checkIfStringContainsAValueFromArray($string, array $values)
     {
         foreach ($values as $value) {
             if (strpos($string, $value) !== false) {

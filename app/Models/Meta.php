@@ -19,6 +19,7 @@ use Route;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  * @property array routesToRemove
+ *
  * @method static \Illuminate\Database\Query\Builder|Meta whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Meta whereRoute($value)
  * @method static \Illuminate\Database\Query\Builder|Meta whereTitle($value)
@@ -123,6 +124,7 @@ class Meta extends Model
         $this->title = str_replace($wildcard, $with, $this->title);
         $this->keywords = str_replace($wildcard, $with, $this->keywords);
         $this->description = str_replace($wildcard, $with, $this->description);
+
         return $this;
     }
 }

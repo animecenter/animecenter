@@ -79,7 +79,7 @@ class UserController extends DashboardController
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postEdit($id = 0, Request $request)
+    public function postEdit($id, Request $request)
     {
         $user = $this->user->findOrFail($id);
         $user->username = $request['username'];

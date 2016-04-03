@@ -22,7 +22,7 @@ class SearchController extends Controller
 
     /**
      * @param Anime $anime
-     * @param Meta $meta
+     * @param Meta  $meta
      */
     public function __construct(Anime $anime, Meta $meta)
     {
