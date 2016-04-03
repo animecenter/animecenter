@@ -19,7 +19,7 @@ class EpisodeController extends Controller
 
     /**
      * @param Episode $episode
-     * @param Meta $meta
+     * @param Meta    $meta
      */
     public function __construct(Episode $episode, Meta $meta)
     {

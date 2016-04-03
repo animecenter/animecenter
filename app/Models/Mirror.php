@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read MirrorSource $mirrorSource
  * @property-read \Illuminate\Database\Eloquent\Collection|MirrorReport[] $mirrorReports
  * @property-read mixed $slug
+ *
  * @method static \Illuminate\Database\Query\Builder|Mirror whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Mirror whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|Mirror whereEpisodeId($value)

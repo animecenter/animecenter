@@ -87,7 +87,7 @@ class EpisodeController extends DashboardController
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postEdit($id = 0, Request $request)
+    public function postEdit($id, Request $request)
     {
         $episode = $this->episode->findOrFail($id);
         $episode->anime_id = $request['anime_id'];

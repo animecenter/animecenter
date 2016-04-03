@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $deleted_at
  * @property-read \ $votes
  * @property-read User $user
+ *
  * @method static \Illuminate\Database\Query\Builder|Vote whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Vote whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|Vote whereVoteableId($value)

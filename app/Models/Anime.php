@@ -42,6 +42,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
  * @property-read mixed $photo
  * @property-read mixed $short_title
+ *
  * @method static \Illuminate\Database\Query\Builder|Anime whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereMalId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereTitle($value)
@@ -64,6 +65,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|Anime whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereDeletedAt($value)
+ *
  * @property-read \AC\Models\Image $image
  * @property-read \AC\Models\Status $status
  */
@@ -308,7 +310,7 @@ class Anime extends Model
 
     public function getPhotoAttribute()
     {
-        return $this->image ? 'uploads/anime/' . $this->id . '/' . $this->image->path : 'https://placehold.it/225x320';
+        return $this->image ? 'uploads/anime/'.$this->id.'/'.$this->image->path : 'https://placehold.it/225x320';
     }
 
     public function getShortTitleAttribute()
