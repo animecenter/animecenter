@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
+ *
  * @method static \Illuminate\Database\Query\Builder|AnimeGenre whereAnimeId($value)
  * @method static \Illuminate\Database\Query\Builder|AnimeGenre whereGenreId($value)
  * @method static \Illuminate\Database\Query\Builder|AnimeGenre whereCreatedAt($value)

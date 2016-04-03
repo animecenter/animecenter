@@ -62,15 +62,15 @@ class AnimeController extends Controller
     private $meta;
 
     /**
-     * @param Anime $anime
+     * @param Anime          $anime
      * @param Classification $classification
-     * @param Episode $episode
-     * @param Genre $genre
-     * @param Producer $producer
+     * @param Episode        $episode
+     * @param Genre          $genre
+     * @param Producer       $producer
      * @param CalendarSeason $calendarSeason
-     * @param Type $type
-     * @param Mirror $mirror
-     * @param meta $meta
+     * @param Type           $type
+     * @param Mirror         $mirror
+     * @param meta           $meta
      */
     public function __construct(Anime $anime, Classification $classification, Episode $episode, Genre $genre, Producer $producer, CalendarSeason $calendarSeason, Type $type, Mirror $mirror, Meta $meta)
     {
@@ -173,7 +173,7 @@ class AnimeController extends Controller
         $this->data['meta'] = $this->meta->whereRoute(
             'anime/watch/{animeSlug}/episode/{episodeNumber}/{translation}/{mirrorID}'
         )->orderBy('route')->firstOrFail(['title', 'keywords', 'description'])
-            ->replaceAll('$1', $anime['title'] . ' ' . $anime->episode->number);
+            ->replaceAll('$1', $anime['title'].' '.$anime->episode->number);
 
         // TODO: Update episode views + 1...
         // $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);

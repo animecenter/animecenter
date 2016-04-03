@@ -12,7 +12,7 @@ class FormHelper
      *
      * @return string
      */
-    public function checkboxIsActive($haystack = '', $resource)
+    public function checkboxIsActive($haystack, $resource)
     {
         return (old($haystack) === '1') || ($resource && $resource->$haystack === 1) ? 'checked' : '';
     }

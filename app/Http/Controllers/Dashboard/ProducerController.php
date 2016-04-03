@@ -77,7 +77,7 @@ class ProducerController extends DashboardController
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postEdit($id = 0, Request $request)
+    public function postEdit($id, Request $request)
     {
         $producer = $this->producer->findOrFail($id);
         $producer->name = $request['name'];

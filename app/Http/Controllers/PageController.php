@@ -32,10 +32,10 @@ class PageController extends Controller
     private $meta;
 
     /**
-     * @param Page $page
-     * @param Anime $anime
+     * @param Page    $page
+     * @param Anime   $anime
      * @param Episode $episode
-     * @param Meta $meta
+     * @param Meta    $meta
      */
     public function __construct(Page $page, Anime $anime, Episode $episode, Meta $meta)
     {
@@ -71,7 +71,7 @@ class PageController extends Controller
     public function getBySlug($slug = '')
     {
         return view('app.pages.show', [
-            'page' => $this->page->where('slug', '=', $slug)->take(1)->findOrFail()
+            'page' => $this->page->where('slug', '=', $slug)->take(1)->findOrFail(),
         ]);
     }
 }
