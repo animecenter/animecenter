@@ -3,7 +3,7 @@
 namespace AC\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\Factory;
 
 class Authenticate
 {
@@ -17,11 +17,11 @@ class Authenticate
     /**
      * Create a new middleware instance.
      *
-     * @param Guard $auth
+     * @param Factory $auth
      *
      * @return void
      */
-    public function __construct(Guard $auth)
+    public function __construct(Factory $auth)
     {
         $this->auth = $auth;
     }

@@ -3,6 +3,7 @@
 namespace AC\Http\Controllers\Auth;
 
 use AC\Http\Controllers\Controller;
+use AC\Models\Meta;
 use AC\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -35,13 +36,19 @@ class AuthController extends Controller
     protected $redirectPath = '/dashboard';
 
     /**
+     * @var Meta
+     */
+    private $meta;
+
+    /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Meta $meta)
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'getLogout']);
+        $this->meta = $meta;
     }
 
     /**
@@ -83,7 +90,9 @@ class AuthController extends Controller
      */
     public function getRegister()
     {
-        return view('app.auth.register');
+        $this->data['meta'] = $this->meta->whereRoute('/')->orderBy('route')
+            ->firstOrFail(['title', 'keywords', 'description']);
+        return view('app.auth.register', $this->data);
     }
 
     /**
@@ -93,6 +102,8 @@ class AuthController extends Controller
      */
     public function getLogin()
     {
-        return view('app.auth.login');
+        $this->data['meta'] = $this->meta->whereRoute('/')->orderBy('route')
+            ->firstOrFail(['title', 'keywords', 'description']);
+        return view('app.auth.login', $this->data);
     }
 }
