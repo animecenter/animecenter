@@ -1,0 +1,39 @@
+.btn-group.open .dropdown-toggle {
+  box-shadow: none;
+  border: 0;
+}
+
+.btn-secondary {
+  color: $color-white;
+  background-color: $color-black-russian;
+}
+
+.btn-secondary:hover {
+  color: $color-white;
+  background-color: $color-night-rider;
+}
+
+.btn-success {
+  background-color: #23b95d;
+}
+
+.btn-group-vertical {
+  width: 100%;
+
+  .btn-group {
+    margin: 10px 0;
+  }
+
+  .dropdown-menu {
+    background-color: $color-black-russian;
+    border-radius: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+
+    a {
+      color: $color-white;
+    }
+  }
+}

@@ -2,6 +2,7 @@
 
 namespace AC\Http\Controllers;
 
+use AC\Models\Meta;
 use AC\Repositories\EloquentAnimeRepository as Anime;
 use Illuminate\Http\Request;
 
@@ -15,55 +16,37 @@ class SearchController extends Controller
     private $anime;
 
     /**
-     * @param Anime $anime
+     * @var Meta
      */
-    public function __construct(Anime $anime)
+    private $meta;
+
+    /**
+     * @param Anime $anime
+     * @param Meta $meta
+     */
+    public function __construct(Anime $anime, Meta $meta)
     {
         $this->anime = $anime;
+        $this->meta = $meta;
     }
 
     /**
      * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        // TODO: Get meta data...
-        $this->data['pageTitle'] = $pageTitle = 'Category Browser';
-        $this->data['metaTitle'] = $pageTitle.' | Watch Anime Online Free';
-        $this->data['metaDesc'] = 'Watch '.$pageTitle.'!,Watch '.$pageTitle.'! English Subbed/Dubbed,Watch '.
-            $pageTitle.' English Sub/Dub, Download '.$pageTitle.' for free,Watch '.$pageTitle.
-            '! Online English Subbed and Dubbed  for Free Online only at Anime Center';
-        $this->data['metaKey'] = 'Download '.$pageTitle.',Watch '.$pageTitle.' on iphone,watch anime '.
-            'online, English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime';
-
-        return view('app.search.index', $this->data);
-    }
-
-    /**
-     * Display a listing of the resource.
+     * Route search.
      *
      * @param Request $request
      *
      * @return view
      */
-    public function show(Request $request)
+    public function index(Request $request)
     {
-        if ($request['q']) {
-            $this->data['animes'] = $this->anime->search($request['q']);
-            $this->data['query'] = $request['q'];
+        $this->data['query'] = $query = $request['q'];
+        if ($query) {
+            $this->data['animes'] = $this->anime->search($query);
+            $this->data['meta'] = $this->meta->whereRoute('search')->orderBy('route')
+                ->firstOrFail(['title', 'keywords', 'description'])->replaceAll('$1', $query);
 
-            // TODO: Get meta data...
-            $this->data['pageTitle'] = $pageTitle = 'Animecenter.tv';
-            $this->data['metaTitle'] = $pageTitle.' | Watch Anime Online Free';
-            $this->data['metaDesc'] = 'Watch '.$pageTitle.'!,Watch '.$pageTitle.'! English Subbed/Dubbed,Watch '.
-                $pageTitle.' English Sub/Dub, Download '.$pageTitle.' for free,Watch '.$pageTitle.
-                '! Online English Subbed and Dubbed  for Free Online only at Anime Center';
-            $this->data['metaKey'] = 'Download '.$pageTitle.',Watch '.$pageTitle.' on iphone,watch anime online,'.
-                ' English Subbed/Dubbed, English Sub/Dub,Watch Anime for free,Download Anime,High Quality Anime';
-
-            return view('app.search.show', $this->data);
+            return view('app.search.index', $this->data);
         } else {
             abort(404, 'You are not searching for anything');
         }

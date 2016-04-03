@@ -6,10 +6,10 @@
             <script src="http://www.evolvenation.com/delivery.js?id=15&size=728x90"></script>
         </div>--}}
         <div class="col-xs-12">
-            <div class="page-header anime-list-header">
-                <h2 class="pull-left"><i class="fa fa-video-camera fa-fw text-success"></i> Anime</h2>
-                <div class="btn-group sort-by pull-right" role="group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <div class="anime-list-header">
+                <h2 class="pull-xs-left"><i class="fa fa-video-camera fa-fw text-success"></i> Anime</h2>
+                <div class="btn-group sort-by pull-xs-right" role="group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-sort-amount-asc text-white"></i> Sort By <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu" data-id="sortBy">
@@ -26,28 +26,33 @@
             </div>
             <div class="anime-tabs" data-example-id="togglable-tabs">
                 <ul id="myTabs" class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="alphabetical active">
-                        <a href="#alphabetical" id="alphabetical-tab" role="tab" data-toggle="tab" aria-controls="alphabetical" aria-expanded="true">
+                    <li role="presentation" class="nav-item alphabetical">
+                        <a href="#alphabetical" class="nav-link active" id="alphabetical-tab" role="tab" data-toggle="tab"
+                           aria-controls="alphabetical" aria-expanded="true">
                             <i class="fa fa-sort-alpha-asc text-success"></i> Alphabetical <span class="caret"></span>
                         </a>
                     </li>
-                    <li role="presentation" class="genre">
-                        <a href="#genre" role="tab" id="genre-tab" data-toggle="tab" aria-controls="genre" aria-expanded="false">
+                    <li role="presentation" class="nav-item genre">
+                        <a href="#genre" class="nav-link" role="tab" id="genre-tab" data-toggle="tab"
+                           aria-controls="genre" aria-expanded="false">
                             <i class="fa fa-tags fa-fw text-light-blue"></i> Genre <span class="caret"></span>
                         </a>
                     </li>
-                    <li role="presentation" class="language">
-                        <a href="#language" role="tab" id="language-tab" data-toggle="tab" aria-controls="language" aria-expanded="false">
+                    <li role="presentation" class="nav-item language">
+                        <a href="#language" class="nav-link" role="tab" id="language-tab" data-toggle="tab"
+                           aria-controls="language" aria-expanded="false">
                             <i class="fa fa-language text-orange"></i> Language <span class="caret"></span>
                         </a>
                     </li>
-                    <li role="presentation" class="season">
-                        <a href="#season" role="tab" id="season-tab" data-toggle="tab" aria-controls="language" aria-expanded="false">
+                    <li role="presentation" class="nav-item season">
+                        <a href="#season" class="nav-link" role="tab" id="season-tab" data-toggle="tab"
+                           aria-controls="language" aria-expanded="false">
                             <i class="fa fa-google-wallet text-primary"></i> Season <span class="caret"></span>
                         </a>
                     </li>
-                    <li role="presentation" class="type">
-                        <a href="#type" role="tab" id="type-tab" data-toggle="tab" aria-controls="type" aria-expanded="false">
+                    <li role="presentation" class="nav-item type">
+                        <a href="#type" class="nav-link" role="tab" id="type-tab" data-toggle="tab"
+                           aria-controls="type" aria-expanded="false">
                             <i class="fa fa-exclamation text-danger"></i> Type <span class="caret"></span>
                         </a>
                     </li>
@@ -55,34 +60,34 @@
                 <div id="myTabContent" class="tab-content">
                     <div role="tabpanel" class="tab-pane fade active in" id="alphabetical" aria-labelledby="alphabetical-tab">
                         <ul class="filter-submenu alphabetical" data-id="alphabetical">
-                            <li><a href="#" class="" data-value="a">a</a></li>
-                            <li><a href="#" class="" data-value="b">b</a></li>
-                            <li><a href="#" class="" data-value="c">c</a></li>
-                            <li><a href="#" class="" data-value="d">d</a></li>
-                            <li><a href="#" class="" data-value="e">e</a></li>
-                            <li><a href="#" class="" data-value="f">f</a></li>
-                            <li><a href="#" class="" data-value="g">g</a></li>
-                            <li><a href="#" class="" data-value="h">h</a></li>
-                            <li><a href="#" class="" data-value="i">i</a></li>
-                            <li><a href="#" class="" data-value="j">j</a></li>
-                            <li><a href="#" class="" data-value="k">k</a></li>
-                            <li><a href="#" class="" data-value="l">l</a></li>
-                            <li><a href="#" class="" data-value="m">m</a></li>
-                            <li><a href="#" class="" data-value="n">n</a></li>
-                            <li><a href="#" class="" data-value="o">o</a></li>
-                            <li><a href="#" class="" data-value="p">p</a></li>
-                            <li><a href="#" class="" data-value="q">q</a></li>
-                            <li><a href="#" class="" data-value="r">r</a></li>
-                            <li><a href="#" class="" data-value="s">s</a></li>
-                            <li><a href="#" class="" data-value="t">t</a></li>
-                            <li><a href="#" class="" data-value="u">u</a></li>
-                            <li><a href="#" class="" data-value="v">v</a></li>
-                            <li><a href="#" class="" data-value="w">w</a></li>
-                            <li><a href="#" class="" data-value="x">x</a></li>
-                            <li><a href="#" class="" data-value="y">y</a></li>
-                            <li><a href="#" class="" data-value="z">z</a></li>
-                            <li><a href="#" class="" data-value="#">#</a></li>
-                            <li><a href="#" class="" data-value="all">View All</a></li>
+                            <li><a href="#" data-value="a">a</a></li>
+                            <li><a href="#" data-value="b">b</a></li>
+                            <li><a href="#" data-value="c">c</a></li>
+                            <li><a href="#" data-value="d">d</a></li>
+                            <li><a href="#" data-value="e">e</a></li>
+                            <li><a href="#" data-value="f">f</a></li>
+                            <li><a href="#" data-value="g">g</a></li>
+                            <li><a href="#" data-value="h">h</a></li>
+                            <li><a href="#" data-value="i">i</a></li>
+                            <li><a href="#" data-value="j">j</a></li>
+                            <li><a href="#" data-value="k">k</a></li>
+                            <li><a href="#" data-value="l">l</a></li>
+                            <li><a href="#" data-value="m">m</a></li>
+                            <li><a href="#" data-value="n">n</a></li>
+                            <li><a href="#" data-value="o">o</a></li>
+                            <li><a href="#" data-value="p">p</a></li>
+                            <li><a href="#" data-value="q">q</a></li>
+                            <li><a href="#" data-value="r">r</a></li>
+                            <li><a href="#" data-value="s">s</a></li>
+                            <li><a href="#" data-value="t">t</a></li>
+                            <li><a href="#" data-value="u">u</a></li>
+                            <li><a href="#" data-value="v">v</a></li>
+                            <li><a href="#" data-value="w">w</a></li>
+                            <li><a href="#" data-value="x">x</a></li>
+                            <li><a href="#" data-value="y">y</a></li>
+                            <li><a href="#" data-value="z">z</a></li>
+                            <li><a href="#" data-value="#">#</a></li>
+                            <li><a href="#" data-value="all">View All</a></li>
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="genre" aria-labelledby="genre-tab">
@@ -127,7 +132,7 @@
                     <!-- <div class="btn-toolbar" role="toolbar">
                         <div class="btn-group" role="group">
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
                                     <span class="fa fa-list-ul fa-fw text-purple"></span> Year <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" data-id="year">
@@ -141,7 +146,7 @@
                                 </ul>
                             </div>
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-user-secret text-warning"></i> Producer <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" data-id="producer">
@@ -151,7 +156,7 @@
                                 </ul>
                             </div>
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-ellipsis-h text-white"></i> Classification <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" data-id="classification">

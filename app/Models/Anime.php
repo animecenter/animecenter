@@ -42,7 +42,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
  * @property-read mixed $photo
  * @property-read mixed $short_title
- * 
  * @method static \Illuminate\Database\Query\Builder|Anime whereId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereMalId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereTitle($value)
@@ -65,6 +64,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|Anime whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereDeletedAt($value)
+ * @property-read \AC\Models\Image $image
+ * @property-read \AC\Models\Status $status
  */
 class Anime extends Model
 {
@@ -166,7 +167,7 @@ class Anime extends Model
      */
     public function episode()
     {
-        return $this->hasOne(Episode::class, 'anime_id');
+        return $this->hasOne(Episode::class, 'anime_id', 'id');
     }
 
     /**
@@ -176,7 +177,7 @@ class Anime extends Model
      */
     public function episodes()
     {
-        return $this->hasMany(Episode::class, 'anime_id');
+        return $this->hasMany(Episode::class, 'anime_id', 'id');
     }
 
     /**
@@ -312,6 +313,6 @@ class Anime extends Model
 
     public function getShortTitleAttribute()
     {
-        return (strlen($this->title) > 18) ? mb_substr($this->title, 0, 15).'...' : $this->title;
+        return (strlen($this->title) > 17) ? mb_substr($this->title, 0, 14).'...' : $this->title;
     }
 }

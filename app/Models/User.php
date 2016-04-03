@@ -28,7 +28,6 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @property-read \Illuminate\Database\Eloquent\Collection|MirrorReport[] $mirrorReports
  * @property-read \Illuminate\Database\Eloquent\Collection|Role[] $roles
  * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
- *
  * @method static \Illuminate\Database\Query\Builder|User whereId($value)
  * @method static \Illuminate\Database\Query\Builder|User whereUsername($value)
  * @method static \Illuminate\Database\Query\Builder|User whereEmail($value)

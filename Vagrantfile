@@ -2,7 +2,7 @@ require 'json'
 require 'yaml'
 
 VAGRANTFILE_API_VERSION ||= "2"
-confDir = $confDir ||= File.expand_path("vendor/laravel/homestead", File.dirname(__FILE__))
+confDir = $confDir ||= File.expand_path("homestead", File.dirname(__FILE__))
 
 homesteadYamlPath = "Homestead.yaml"
 homesteadJsonPath = "Homestead.json"
@@ -17,12 +17,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     if File.exists? homesteadYamlPath then
-        Homestead.configure(config, YAML::load(File.read(homesteadYamlPath)))
+        settings = YAML::load(File.read(homesteadYamlPath))
     elsif File.exists? homesteadJsonPath then
-        Homestead.configure(config, JSON.parse(File.read(homesteadJsonPath)))
+        settings = JSON.parse(File.read(homesteadJsonPath))
     end
 
+    Homestead.configure(config, settings)
+
     if File.exists? afterScriptPath then
-        config.vm.provision "shell", path: afterScriptPath
+        config.vm.provision "shell", path: afterScriptPath, privileged: false
+    end
+
+    if defined? VagrantPlugins::HostsUpdater
+        config.hostsupdater.aliases = settings['sites'].map { |site| site['map'] }
     end
 end

@@ -98,7 +98,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-md-8 episode-list">
-            <table class="table">
+            <table class="table table-responsive">
                 <thead>
                     <tr>
                         <th>
