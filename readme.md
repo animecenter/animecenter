@@ -28,7 +28,7 @@ We don't host any illegal content on our server.
 
 ### Setup
 
-1. Clone this repository: `git clone -b develop https://github.com/animecenter/animecenter.git`.
+1. Clone this repository: `git clone -b develop --recursive https://github.com/animecenter/animecenter.git`.
 2. Go to your terminal, and change directory to the animecenter repository with `cd path/to/animecenter/folder/location`.
 3. If you don't have a SSH key, run `ssh-keygen -t rsa -C "you@homestead"`.
 4. Run `vagrant box add laravel/homestead`.
