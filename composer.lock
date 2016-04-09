@@ -851,16 +851,16 @@
         },
         {
             "name": "khill/fontawesomephp",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kevinkhill/FontAwesomePHP.git",
-                "reference": "26e5fbfc5551e5ecb9ad4287b0ea35168b131b34"
+                "reference": "ccaefe45daed694399ea14d922ef94187351aed5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kevinkhill/FontAwesomePHP/zipball/26e5fbfc5551e5ecb9ad4287b0ea35168b131b34",
-                "reference": "26e5fbfc5551e5ecb9ad4287b0ea35168b131b34",
+                "url": "https://api.github.com/repos/kevinkhill/FontAwesomePHP/zipball/ccaefe45daed694399ea14d922ef94187351aed5",
+                "reference": "ccaefe45daed694399ea14d922ef94187351aed5",
                 "shasum": ""
             },
             "require": {
@@ -894,7 +894,7 @@
                 }
             ],
             "description": "PHP wrapper library for the fantastic FontAwesome icon set.",
-            "time": "2016-04-07 17:29:08"
+            "time": "2016-04-08 03:46:35"
         },
         {
             "name": "laravel/framework",
@@ -3771,16 +3771,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "3.3.0",
+            "version": "3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "fe33716763b604ade4cb442c0794f5bd5ad73004"
+                "reference": "2431befdd451fac43fbcde94d1a92fb3b8b68f86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/fe33716763b604ade4cb442c0794f5bd5ad73004",
-                "reference": "fe33716763b604ade4cb442c0794f5bd5ad73004",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/2431befdd451fac43fbcde94d1a92fb3b8b68f86",
+                "reference": "2431befdd451fac43fbcde94d1a92fb3b8b68f86",
                 "shasum": ""
             },
             "require": {
@@ -3798,7 +3798,7 @@
             },
             "suggest": {
                 "ext-dom": "*",
-                "ext-xdebug": ">=2.2.1",
+                "ext-xdebug": ">=2.4.0",
                 "ext-xmlwriter": "*"
             },
             "type": "library",
@@ -3830,7 +3830,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-03-03 08:49:08"
+            "time": "2016-04-08 08:14:53"
         },
         {
             "name": "phpunit/php-file-iterator",
