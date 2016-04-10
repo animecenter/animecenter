@@ -72,22 +72,39 @@ gulp.task('vendor', () =>
 
 // Concatenate together all js from vendor into one minify file for the application.
 gulp.task('concat', ['vendor'], () => {
-  ['resources/assets/app', 'resources/assets/dashboard'].map((folder) =>
-    gulp.src([
-      `${folder}/js/vendor/tether.js`,
-      `${folder}/js/vendor/jquery.js`,
-      `${folder}/js/vendor/bootstrap.js`,
-      `${folder}/js/vendor/jquery{.,-}*.js`,
-      `${folder}/js/vendor/**/*.js`,
-      `${folder}/js/**/*.js`,
-    ])
+  const apps = [
+    {
+      name: 'app',
+      assets: [
+        'resources/assets/app/js/vendor/tether.js',
+        'resources/assets/app/js/vendor/jquery.js',
+        'resources/assets/app/js/vendor/bootstrap.js',
+        'resources/assets/app/js/app.js',
+      ],
+    },
+    {
+      name: 'dashboard',
+      assets: [
+        'resources/assets/dashboard/js/vendor/jquery.js',
+        'resources/assets/dashboard/js/vendor/bootstrap.js',
+        'resources/assets/dashboard/js/vendor/jquery.dataTables.js',
+        'resources/assets/dashboard/js/vendor/dataTables.bootstrap.js',
+        'resources/assets/dashboard/js/vendor/jquery.slimscroll.js',
+        'resources/assets/dashboard/js/vendor/fastclick.js',
+        'resources/assets/dashboard/js/vendor/admin-lte.js',
+        'resources/assets/dashboard/js/dashboard.js',
+      ],
+    },
+  ];
+  apps.map((app) =>
+    gulp.src(app.assets)
       .pipe(plugins.plumber())
       .pipe(plugins.sourcemaps.init())
       // .pipe(plugins.babel())
       // .pipe(plugins.uglify()).on('error', (err) => {
-      //  console.log(err);
+      // console.log(err);
       // })
-      .pipe(plugins.concat(`${folder.split('/')[2]}.js`))
+      .pipe(plugins.concat(`${app.name}.js`))
       .pipe(plugins.sourcemaps.write('.'))
       .pipe(gulp.dest('public/js'))
       .pipe(plugins.size())

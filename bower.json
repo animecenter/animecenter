@@ -13,21 +13,14 @@
     "vendor"
   ],
   "dependencies": {
-    "modernizr": "~3",
-    "jquery": "3.0.*",
+    "jquery": "2.2.*",
     "font-awesome": "~4",
     "bootstrap": "v4-dev",
     "bootstrap-sass": "^3.3.6"
   },
   "overrides": {
-    "modernizr": {
-      "main": "modernizr.js"
-    },
     "font-awesome": {
       "main": "fonts/*"
     }
-  },
-  "resolutions": {
-    "jquery": "3.0.*"
   }
 }
