@@ -49,8 +49,8 @@ $router->get('episodes/latest', 'EpisodeController@getLatest');
 $router->get('search', 'SearchController@index');
 
 // Rating routes...
-$router->post('rate/anime', 'RateController@postAnime');
-$router->post('rate/episode', 'RateController@postEpisode');
+$router->post('rate/anime', 'RateController@postRateAnime');
+$router->post('rate/episode', 'RateController@postRateEpisode');
 
 // Admin routes...
 $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware' => 'auth'], function ($router) {
