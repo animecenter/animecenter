@@ -2,6 +2,7 @@
 
 [![StyleCI](https://styleci.io/repos/44687688/shield)](https://styleci.io/repos/44687688)
 [![Build Status](https://travis-ci.org/animecenter/animecenter.svg?branch=develop)](https://travis-ci.org/animecenter/animecenter)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/b22e1b93-dfe2-4dea-815f-900bec2d68e2/mini.png)](https://insight.sensiolabs.com/projects/b22e1b93-dfe2-4dea-815f-900bec2d68e2)
 
 ## What is animecenter?
 
