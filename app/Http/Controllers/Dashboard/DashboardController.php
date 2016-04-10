@@ -77,7 +77,7 @@ class DashboardController extends Controller
             ->addColumn('active', function (stdClass $model) {
                 return $model->active === 1 ? 'Active' : 'Inactive';
             })
-            ->addColumn('actions', function ($model) use ($url) {
+            ->addColumn('actions', function (stdClass $model) use ($url) {
                 $recoverIcon = FA::icon('exchange')->__toString().' ';
                 $deleteIcon = FA::icon('trash-o')->__toString().' ';
                 $recoverURL = url('dashboard/'.$url.'/recover', $model->id);
