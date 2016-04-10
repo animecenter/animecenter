@@ -135,7 +135,7 @@ class EloquentAnimeRepository
      *
      * @return mixed
      */
-    public function getByLetter($anime, $letter = '')
+    public function getByLetter(Builder $anime, $letter = '')
     {
         if (!$letter === '0-9') {
             return $anime->whereRaw("title NOT REGEXP '^[[:alpha:]]'");
@@ -158,7 +158,7 @@ class EloquentAnimeRepository
      *
      * @return mixed
      */
-    public function getByLanguage($anime, $translation = '')
+    public function getByLanguage(Builder $anime, $translation = '')
     {
         $translations = ['subbed', 'dubbed'];
         if (!in_array($translation, $translations)) {
@@ -179,7 +179,7 @@ class EloquentAnimeRepository
      *
      * @return mixed
      */
-    public function getByType($anime, $id = 0)
+    public function getByType(Builder $anime, $id = 0)
     {
         return $anime->whereHas('type', function (Builder $query) use ($id) {
             $query->where('types.id', '=', $id);
@@ -194,7 +194,7 @@ class EloquentAnimeRepository
      *
      * @return mixed
      */
-    public function getByCalendarSeason($anime, $id = 0)
+    public function getByCalendarSeason(Builder $anime, $id = 0)
     {
         return $anime->whereHas('calendarSeason', function (Builder $query) use ($id) {
             $query->where('calendar_seasons.id', '=', $id);
@@ -209,7 +209,7 @@ class EloquentAnimeRepository
      *
      * @return mixed
      */
-    public function getByYear($anime, $year = 0)
+    public function getByYear(Builder $anime, $year = 0)
     {
         return $anime->where('animes.year', '=', $year);
     }
@@ -222,7 +222,7 @@ class EloquentAnimeRepository
      *
      * @return mixed
      */
-    public function getByGenres($anime, $genres = [])
+    public function getByGenres(Builder $anime, $genres = [])
     {
         return $anime->whereHas('genres', function (Builder $query) use ($genres) {
             foreach ($genres as $genre) {
@@ -239,7 +239,7 @@ class EloquentAnimeRepository
      *
      * @return mixed
      */
-    public function getByProducers($anime, $id = 0)
+    public function getByProducers(Builder $anime, $id = 0)
     {
         return $anime->whereHas('producers', function (Builder $query) use ($id) {
             $query->where('producers.id', '=', $id);
@@ -254,7 +254,7 @@ class EloquentAnimeRepository
      *
      * @return mixed
      */
-    public function getByClassification($anime, $id = 0)
+    public function getByClassification(Builder $anime, $id = 0)
     {
         return $anime->whereHas('classification', function (Builder $query) use ($id) {
             $query->where('classifications.id', '=', $id);
@@ -269,7 +269,7 @@ class EloquentAnimeRepository
      *
      * @return mixed
      */
-    public function sortBy($anime, $sortBy = '')
+    public function sortBy(Builder $anime, $sortBy = '')
     {
         if ($sortBy === 'upcoming') {
             return $anime->where('release_date', '>', Carbon::now()->toDateTimeString());

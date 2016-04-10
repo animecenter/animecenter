@@ -4,6 +4,7 @@ namespace AC\Http\Controllers\Dashboard;
 
 use AC\Models\Title;
 use DB;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
 
 class TitleController extends DashboardController
@@ -163,16 +164,12 @@ class TitleController extends DashboardController
     {
         $url = 'titles';
         $list = collect(
-            DB::table('titles')->leftJoin('animes', function ($join) {
+            DB::table('titles')->leftJoin('animes', function (JoinClause $join) {
                 $join->on('titles.titleable_id', '=', 'animes.id')->where('titles.titleable_type', '=', 'Anime');
             })
-                //->leftJoin('mangas', function($join) {
-                    //$join->on('titles.titleable_id', '=', 'mangas.id')->where('titles.titleable_type', '=', 'Manga');
-                //})
                 ->where('titles.deleted_at', '=', null)
                 ->get([
                     'titles.id', 'titles.title', 'titles.language', 'animes.title as altTitle', 'titles.active',
-                    //'mangas.title as altTitle',
                 ])
         );
         $showColumns = ['title', 'language', 'altTitle', 'active', 'actions'];
@@ -191,16 +188,12 @@ class TitleController extends DashboardController
     {
         $url = 'titles';
         $list = collect(
-            DB::table('titles')->leftJoin('animes', function ($join) {
+            DB::table('titles')->leftJoin('animes', function (JoinClause $join) {
                 $join->on('titles.titleable_id', '=', 'animes.id')->where('titles.titleable_type', '=', 'Anime');
             })
-                //->leftJoin('mangas', function($join) {
-                    //$join->on('titles.titleable_id', '=', 'mangas.id')->where('titles.titleable_type', '=', 'Manga');
-                //})
                 ->where('titles.deleted_at', '<>', '')
                 ->get([
                     'titles.id', 'titles.title', 'titles.language', 'animes.title as altTitle', 'titles.active',
-                    //'mangas.title as altTitle',
                 ])
         );
         $showColumns = ['title', 'language', 'altTitle', 'active', 'actions'];

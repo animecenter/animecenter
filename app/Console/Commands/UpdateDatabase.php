@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use DOMDocument;
 use Illuminate\Console\Command;
 use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\Query\JoinClause;
 use Log;
 
 class UpdateDatabase extends Command
@@ -232,12 +233,12 @@ class UpdateDatabase extends Command
         // TODO: Filter hentai anime
         $animes = Cache::remember('animes', 180, function () {
             return $this->db->connection('mysql1')->table('animes')
-                ->leftJoin('titles as titles1', function ($join) {
+                ->leftJoin('titles as titles1', function (JoinClause $join) {
                     $join->on('titles1.titlable_id', '=', 'animes.id')
                         ->where('titles1.titlable_type', '=', 'Anime')
                         ->where('titles1.language', '=', 'English');
                 })
-                ->leftJoin('titles as titles2', function ($join) {
+                ->leftJoin('titles as titles2', function (JoinClause $join) {
                     $join->on('titles2.titlable_id', '=', 'animes.id')
                         ->where('titles2.titlable_type', '=', 'Anime')
                         ->where('titles2.language', '=', 'Synonyms');

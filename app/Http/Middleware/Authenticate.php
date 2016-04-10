@@ -4,13 +4,12 @@ namespace AC\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Factory;
+use Illuminate\Http\Request;
 
 class Authenticate
 {
     /**
-     * The Guard implementation.
-     *
-     * @var Guard
+     * @var Factory
      */
     protected $auth;
 
@@ -29,13 +28,13 @@ class Authenticate
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
-     * @param string|null              $guard
+     * @param Request     $request
+     * @param \Closure    $next
+     * @param string|null $guard
      *
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle(Request $request, Closure $next, $guard = null)
     {
         if ($this->auth->guard($guard)->guest()) {
             if ($request->ajax() || $request->wantsJson()) {
