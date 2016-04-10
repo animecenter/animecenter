@@ -34,7 +34,7 @@ class Authenticate
      *
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, $guard = null)
+    public function handle(Request $request, Closure $next, string $guard = null)
     {
         if ($this->auth->guard($guard)->guest()) {
             if ($request->ajax() || $request->wantsJson()) {
