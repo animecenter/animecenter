@@ -6,33 +6,14 @@ const plugins = gulpLoadPlugins();
 const reload = browserSync.reload;
 const mainBowerFiles = require('main-bower-files');
 
-// Add vendor prefixes to CSS and minify it. Move minify file to the css directory.
-gulp.task('css', () => {
-  ['resources/assets/app', 'resources/assets/dashboard'].map((folder) =>
-    gulp.src(`${folder}/scss/**/*.scss`)
-      .pipe(plugins.plumber())
-      .pipe(plugins.sourcemaps.init())
-      .pipe(plugins.sass.sync({
-        outputStyle: 'compressed',
-        precision: 10,
-        includePaths: [
-          'bower_components/',
-        ],
-      }).on('error', plugins.sass.logError))
-      .pipe(plugins.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
-      .pipe(plugins.sourcemaps.write('.'))
-      .pipe(gulp.dest('public/css'))
-  );
-});
-
 // Copy components fonts files to the fonts directory.
 gulp.task('fonts', () =>
   gulp.src(mainBowerFiles('**/*.{eot,svg,ttf,woff,woff2}')).pipe(gulp.dest('public/fonts'))
 );
 
 // Minify images and move the resulting files to the images directory.
-gulp.task('img', () =>
-  gulp.src('resources/assets/{app,dashboard}/img/**/*')
+gulp.task('app:img', () =>
+  gulp.src('resources/assets/app/img/**/*')
     .pipe(plugins.if(plugins.if.isFile, plugins.cache(plugins.imagemin({
       progressive: true,
       interlaced: true,
@@ -47,6 +28,43 @@ gulp.task('img', () =>
     .pipe(gulp.dest('public/img'))
     .pipe(plugins.size())
 );
+
+gulp.task('img', ['app:img']);
+
+// Add vendor prefixes to CSS and minify it. Move minify file to the css directory.
+gulp.task('app:css', () => {
+  gulp.src('resources/assets/app/scss/**/*.scss')
+    .pipe(plugins.plumber())
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.sass.sync({
+      outputStyle: 'compressed',
+      precision: 10,
+      includePaths: [
+        'bower_components/',
+      ],
+    }).on('error', plugins.sass.logError))
+    .pipe(plugins.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
+    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(gulp.dest('public/css'));
+});
+
+gulp.task('dashboard:css', () => {
+  gulp.src('resources/assets/dashboard/scss/**/*.scss')
+    .pipe(plugins.plumber())
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.sass.sync({
+      outputStyle: 'compressed',
+      precision: 10,
+      includePaths: [
+        'bower_components/',
+      ],
+    }).on('error', plugins.sass.logError))
+    .pipe(plugins.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
+    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(gulp.dest('public/css'));
+});
+
+gulp.task('css', ['app:css', 'dashboard:css']);
 
 function lint(files, options) {
   return () => {
@@ -71,58 +89,61 @@ gulp.task('vendor', () =>
 );
 
 // Concatenate together all js from vendor into one minify file for the application.
-gulp.task('concat', ['vendor'], () => {
-  const apps = [
-    {
-      name: 'app',
-      assets: [
-        'resources/assets/app/js/vendor/tether.js',
-        'resources/assets/app/js/vendor/jquery.js',
-        'resources/assets/app/js/vendor/bootstrap.js',
-        'resources/assets/app/js/app.js',
-      ],
-    },
-    {
-      name: 'dashboard',
-      assets: [
-        'resources/assets/dashboard/js/vendor/jquery.js',
-        'resources/assets/dashboard/js/vendor/bootstrap.js',
-        'resources/assets/dashboard/js/vendor/jquery.dataTables.js',
-        'resources/assets/dashboard/js/vendor/dataTables.bootstrap.js',
-        'resources/assets/dashboard/js/vendor/jquery.slimscroll.js',
-        'resources/assets/dashboard/js/vendor/fastclick.js',
-        'resources/assets/dashboard/js/vendor/admin-lte.js',
-        'resources/assets/dashboard/js/dashboard.js',
-      ],
-    },
-  ];
-  apps.map((app) =>
-    gulp.src(app.assets)
-      .pipe(plugins.plumber())
-      .pipe(plugins.sourcemaps.init())
-      // .pipe(plugins.babel())
-      // .pipe(plugins.uglify()).on('error', (err) => {
-      // console.log(err);
-      // })
-      .pipe(plugins.concat(`${app.name}.js`))
-      .pipe(plugins.sourcemaps.write('.'))
-      .pipe(gulp.dest('public/js'))
-      .pipe(plugins.size())
-  );
+gulp.task('app:js', ['vendor'], () => {
+  gulp.src([
+    'resources/assets/app/js/vendor/tether.js',
+    'resources/assets/app/js/vendor/jquery.js',
+    'resources/assets/app/js/vendor/bootstrap.js',
+    'resources/assets/app/js/app.js',
+  ])
+    .pipe(plugins.plumber())
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.babel({ ignore: ['tether.js'] }))
+    .pipe(plugins.uglify()).on('error', (err) => {
+      console.log(err);
+    })
+    .pipe(plugins.concat('app.js'))
+    .pipe(plugins.size())
+    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(gulp.dest('public/js'));
 });
 
-gulp.task('js', ['concat']);
+gulp.task('dashboard:js', () => {
+  gulp.src([
+    'resources/assets/dashboard/js/vendor/jquery.js',
+    'resources/assets/dashboard/js/vendor/bootstrap.js',
+    'resources/assets/dashboard/js/vendor/jquery.dataTables.js',
+    'resources/assets/dashboard/js/vendor/dataTables.bootstrap.js',
+    'resources/assets/dashboard/js/vendor/jquery.slimscroll.js',
+    'resources/assets/dashboard/js/vendor/fastclick.js',
+    'resources/assets/dashboard/js/vendor/admin-lte.js',
+    'resources/assets/dashboard/js/dashboard.js',
+  ])
+    .pipe(plugins.plumber())
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.uglify()).on('error', (err) => {
+      console.log(err);
+    })
+    .pipe(plugins.concat('dashboard.js'))
+    .pipe(plugins.size())
+    .pipe(plugins.sourcemaps.write('.'))
+    .pipe(gulp.dest('public/js'));
+});
 
-gulp.task('serve', ['build'], () => {
+gulp.task('js', ['app:js', 'dashboard:js']);
+
+gulp.task('watch', ['build'], () => {
   browserSync({
     options: {
       proxy: 'localhost:80',
     },
   });
 
-  gulp.watch('resources/assets/{app,dashboard}/scss/**/*.scss', ['css']);
-  gulp.watch('resources/assets/{app,dashboard}/js/**/*.js', ['js']);
-  gulp.watch('bower.json', ['bower:install']);
+  gulp.watch('resources/assets/app/scss/**/*.scss', ['app:css']);
+  gulp.watch('resources/assets/dashboard/scss/**/*.scss', ['dashboard:css']);
+  gulp.watch('resources/assets/app/js/**/*.js', ['app:js']);
+  gulp.watch('resources/assets/dashboard/js/**/*.js', ['dashboard:js']);
+  gulp.watch('resources/assets/app/img/**/*', ['app:img']);
 
   gulp.watch([
     'public/css/*.css',
@@ -132,9 +153,6 @@ gulp.task('serve', ['build'], () => {
     'resources/views/{app,dashboard}/**/*.php',
   ]).on('change', reload);
 });
-
-// Watch for any changes and reload the browser
-gulp.task('watch', ['serve']);
 
 // Runs all commands to build the application.
 // Returns the size of all assets except for the upload folder.
