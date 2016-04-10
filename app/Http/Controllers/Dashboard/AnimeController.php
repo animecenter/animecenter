@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class AnimeController extends DashboardController
 {
-
     public function index()
     {
         return view('dashboard.animes.index');
@@ -38,7 +37,7 @@ class AnimeController extends DashboardController
      */
     public function postCreate(Request $request)
     {
-        $anime = new Anime;
+        $anime = new Anime();
         $anime->mal_id = $request['mal_id'];
         $anime->title = $request['title'];
         $anime->slug = $request['slug'];
@@ -87,7 +86,7 @@ class AnimeController extends DashboardController
      */
     public function postEdit($id, Request $request)
     {
-        $anime = (new Anime)->findOrFail($id);
+        $anime = (new Anime())->findOrFail($id);
         $anime->mal_id = $request['mal_id'];
         $anime->title = $request['title'];
         $anime->slug = $request['slug'];
