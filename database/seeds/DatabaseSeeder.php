@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AnimesTableSeeder::class);
         $this->call(EpisodesTableSeeder::class);
         $this->call(MirrorsTableSeeder::class);
+        $this->call(MetasTableSeeder::class);
     }
 }

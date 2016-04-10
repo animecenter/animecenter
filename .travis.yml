@@ -8,7 +8,7 @@ sudo: false
 
 install:
   - travis_retry composer self-update
-  - travis_retry composer install --no-interaction --prefer-source
+  - travis_retry composer install --no-interaction --prefer-source --no-ansi --no-progress --optimize-autoloader
 
 before_script:
   - mysql -e "CREATE DATABASE IF NOT EXISTS homestead;" -uroot
@@ -17,5 +17,7 @@ before_script:
   - mysql -e "FLUSH PRIVILEGES;" -uroot
 
 script:
+  - cp .env.example .env
+  - php artisan key:generate
   - php artisan migrate --seed --env=local
   - vendor/bin/phpunit
