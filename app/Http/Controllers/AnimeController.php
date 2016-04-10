@@ -147,9 +147,6 @@ class AnimeController extends Controller
             ->orderBy('route')->firstOrFail(['title', 'keywords', 'description'])
             ->replaceAll('$1', $anime['title']);
 
-        // TODO: Update episode views + 1...
-        // $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
-
         return view('app.episodes.show', $this->data);
     }
 
@@ -174,9 +171,6 @@ class AnimeController extends Controller
             'anime/watch/{animeSlug}/episode/{episodeNumber}/{translation}/{mirrorID}'
         )->orderBy('route')->firstOrFail(['title', 'keywords', 'description'])
             ->replaceAll('$1', $anime['title'].' '.$anime->episode->number);
-
-        // TODO: Update episode views + 1...
-        // $this->episode->where('id', '=', $episode['id'])->update(['visits' => $episode['visits'] + 1]);
 
         return view('app.episodes.show', $this->data);
     }

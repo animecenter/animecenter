@@ -6,3 +6,4 @@
 .env
 .vagrant
 _ide_helper.php
+*.map
