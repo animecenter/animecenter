@@ -4,6 +4,7 @@ namespace AC\Repositories;
 
 use AC\Models\Episode;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 
 class EloquentEpisodeRepository
 {
@@ -22,7 +23,7 @@ class EloquentEpisodeRepository
 
     public function all()
     {
-        return $this->episode->whereHas('anime', function ($query) {
+        return $this->episode->whereHas('anime', function (Builder $query) {
             $query->where('release_date', '<', Carbon::now()->toDateTimeString());
         })->get(['id', 'name']);
     }
@@ -34,7 +35,7 @@ class EloquentEpisodeRepository
     {
         $timestamp = Carbon::now()->toDateTimeString();
 
-        return $this->episode->whereHas('anime', function ($query) use ($timestamp) {
+        return $this->episode->whereHas('anime', function (Builder $query) use ($timestamp) {
             $query->where('release_date', '<', $timestamp);
         })->has('mirror')->with(['anime', 'mirror'])->where('updated_at', '<', $timestamp)
             ->orderBy('updated_at', 'DESC')->take(12)->get();
@@ -47,7 +48,7 @@ class EloquentEpisodeRepository
     {
         $timestamp = Carbon::now()->toDateTimeString();
 
-        return $this->episode->whereHas('anime', function ($query) use ($timestamp) {
+        return $this->episode->whereHas('anime', function (Builder $query) use ($timestamp) {
             $query->where('release_date', '<', $timestamp);
         })->with('anime')->where('updated_at', '<', $timestamp)->orderBy('updated_at', 'DESC')->paginate(20);
     }
