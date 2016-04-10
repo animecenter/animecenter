@@ -25,11 +25,13 @@ class DashboardController extends Controller
     /**
      * @param $url
      * @param Collection $list
-     * @param array $showColumns
-     * @param array $searchColumns
-     * @param array $orderColumns
-     * @return \Illuminate\Http\JsonResponse
+     * @param array      $showColumns
+     * @param array      $searchColumns
+     * @param array      $orderColumns
+     *
      * @throws \Exception
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function getDataTableList($url, Collection $list, $showColumns = [], $searchColumns = [], $orderColumns = [])
     {
@@ -58,11 +60,13 @@ class DashboardController extends Controller
     /**
      * @param $url
      * @param Collection $list
-     * @param array $showColumns
-     * @param array $searchColumns
-     * @param array $orderColumns
-     * @return \Illuminate\Http\JsonResponse
+     * @param array      $showColumns
+     * @param array      $searchColumns
+     * @param array      $orderColumns
+     *
      * @throws \Exception
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function getDataTableListTrash($url, Collection $list, $showColumns = [], $searchColumns = [], $orderColumns = [])
     {
