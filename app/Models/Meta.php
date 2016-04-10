@@ -2,6 +2,8 @@
 
 namespace AC\Models;
 
+use ArrayHelper;
+use Closure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Route;
@@ -113,8 +115,8 @@ class Meta extends Model
     {
         $this->setRoutesToRemove();
 
-        return collect(Route::getRoutes()->getRoutes())->filter(function ($item) {
-            return \ArrayHelper::checkIfStringContainsAValueFromArray($item->uri(), $this->routesToRemove) === false &&
+        return collect(Route::getRoutes())->filter(function (Closure $item) {
+            return ArrayHelper::checkIfStringContainsAValueFromArray($item->uri(), $this->routesToRemove) === false &&
             $item->methods()[0] === 'GET';
         });
     }

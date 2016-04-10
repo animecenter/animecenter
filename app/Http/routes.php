@@ -53,7 +53,7 @@ $router->post('rate/anime', 'RateController@postRateAnime');
 $router->post('rate/episode', 'RateController@postRateEpisode');
 
 // Admin routes...
-$router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware' => 'auth'], function ($router) {
+$router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware' => 'auth'], function (Illuminate\Routing\Router $router) {
     $router->get('/', 'DashboardController@index');
 
     // Animes routes...
