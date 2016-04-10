@@ -4,6 +4,7 @@ namespace AC\Repositories;
 
 use AC\Models\Type;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 
 class EloquentTypeRepository
 {
@@ -22,7 +23,7 @@ class EloquentTypeRepository
 
     public function all()
     {
-        return $this->type->whereHas('animes', function ($query) {
+        return $this->type->whereHas('animes', function (Builder $query) {
             $query->has('episodes')->where('release_date', '<', Carbon::now()->toDateTimeString());
         })->where('model', '=', 'Anime')->get(['id', 'name']);
     }
