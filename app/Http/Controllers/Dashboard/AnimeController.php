@@ -8,18 +8,6 @@ use Illuminate\Http\Request;
 
 class AnimeController extends DashboardController
 {
-    /**
-     * @var Anime
-     */
-    private $anime;
-
-    /**
-     * @param Anime $anime
-     */
-    public function __construct(Anime $anime)
-    {
-        $this->anime = $anime;
-    }
 
     public function index()
     {
@@ -50,11 +38,11 @@ class AnimeController extends DashboardController
      */
     public function postCreate(Request $request)
     {
-        $anime = new $this->anime();
+        $anime = new Anime;
         $anime->mal_id = $request['mal_id'];
         $anime->title = $request['title'];
         $anime->slug = $request['slug'];
-        $anime->image = $request['image'];
+        $anime->image_id = $request['image_id'];
         $anime->synopsis = $request['synopsis'];
         $anime->type_id = $request['type_id'];
         $anime->number_of_episodes = $request['number_of_episodes'];
@@ -99,11 +87,11 @@ class AnimeController extends DashboardController
      */
     public function postEdit($id, Request $request)
     {
-        $anime = $this->anime->findOrFail($id);
+        $anime = (new Anime)->findOrFail($id);
         $anime->mal_id = $request['mal_id'];
         $anime->title = $request['title'];
         $anime->slug = $request['slug'];
-        $anime->image = $request['image'];
+        $anime->image_id = $request['image_id'];
         $anime->synopsis = $request['synopsis'];
         $anime->type_id = $request['type_id'];
         $anime->number_of_episodes = $request['number_of_episodes'];

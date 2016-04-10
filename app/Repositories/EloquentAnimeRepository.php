@@ -60,7 +60,6 @@ class EloquentAnimeRepository
      */
     public function getBySlug($slug = '')
     {
-        // TODO: Update number of views
         $this->updateViews($slug);
 
         return $this->anime->with([
@@ -162,7 +161,6 @@ class EloquentAnimeRepository
     {
         $translations = ['subbed', 'dubbed'];
         if (!in_array($translation, $translations)) {
-            // TODO: log current user trying to access unavailable translation...
             abort(404, 'Unavailable translation');
         }
 
@@ -291,7 +289,6 @@ class EloquentAnimeRepository
     {
         $translations = ['all', 'subbed', 'dubbed'];
         if (!in_array($translation, $translations)) {
-            // TODO: log current user trying to access unavailable translation...
             abort(404, 'Unavailable translation');
         }
         if ($translation === 'all') {
@@ -308,7 +305,7 @@ class EloquentAnimeRepository
                 $query->where('episodes.number', '=', $episodeNumber)->firstOrFail();
             },
             'episode.mirrors' => function (HasMany $query) use ($translation) {
-                $query->with(['mirrorSource' => function (BelongsTo $query) use ($translation) {
+                $query->with(['mirrorSource' => function (BelongsTo $query) {
                     $query->orderBy('mirror_sources.id', 'ASC');
                 }])->where('mirrors.translation', '=', $translation);
             },
