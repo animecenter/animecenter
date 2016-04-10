@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class RateController extends Controller
 {
-    
     public function postRateAnime(Request $request)
     {
         if ($request->ajax()) {
@@ -31,6 +30,7 @@ class RateController extends Controller
 
             return 'Average: '.$newRating.' ( '.$newVotes.' votes)';
         }
+
         return redirect();
     }
 
@@ -57,6 +57,7 @@ class RateController extends Controller
 
             return 'Average: '.$newRating.' ( '.$newVotes.' votes)';
         }
+
         return redirect();
     }
 }
