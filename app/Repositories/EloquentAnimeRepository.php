@@ -146,6 +146,7 @@ class EloquentAnimeRepository
         if ($letter !== 'all') {
             abort(404, $letter.' was not found');
         }
+
         return $anime;
     }
 
@@ -301,6 +302,7 @@ class EloquentAnimeRepository
                 'episode.mirrors.mirrorSource',
             ])->where('slug', '=', $animeSlug)->firstOrFail();
         }
+
         return $this->anime->has('episode.mirrors.mirrorSource')->with([
             'episode' => function (HasOne $query) use ($episodeNumber) {
                 $query->where('episodes.number', '=', $episodeNumber)->firstOrFail();
