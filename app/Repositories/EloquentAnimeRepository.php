@@ -349,7 +349,6 @@ class EloquentAnimeRepository
     public function currentCalendarSeason()
     {
         $month = date('m');
-        $year = date('Y');
 
         // Retrieve calendar season
         if ($month >= '03' && $month <= '06') {
