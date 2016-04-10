@@ -5,3 +5,4 @@
 /bower_components
 .env
 .vagrant
+_ide_helper.php
