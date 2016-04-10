@@ -1,6 +1,7 @@
 # animecenter
 
 [![StyleCI](https://styleci.io/repos/44687688/shield)](https://styleci.io/repos/44687688)
+[![Build Status](https://travis-ci.org/animecenter/animecenter.svg?branch=develop)](https://travis-ci.org/animecenter/animecenter)
 
 ## What is animecenter?
 
