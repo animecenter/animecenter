@@ -12,7 +12,7 @@ return [
     | syntax for each one. Here you may set the default queue driver.
     |
     | Supported: "null", "sync", "database", "beanstalkd",
-    |            "sqs", "iron", "redis"
+    |            "sqs", "redis"
     |
     */
 

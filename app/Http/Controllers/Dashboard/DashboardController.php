@@ -8,6 +8,7 @@ use FA;
 use Form;
 use Html;
 use Illuminate\Support\Collection;
+use stdClass;
 
 class DashboardController extends Controller
 {
@@ -36,10 +37,10 @@ class DashboardController extends Controller
             ->showColumns($showColumns)
             ->searchColumns($searchColumns)
             ->orderColumns($orderColumns)
-            ->addColumn('active', function ($model) {
+            ->addColumn('active', function (stdClass $model) {
                 return $model->active === 1 ? 'Active' : 'Inactive';
             })
-            ->addColumn('actions', function ($model) use ($url) {
+            ->addColumn('actions', function (stdClass $model) use ($url) {
                 $editIcon = FA::icon('pencil-square-o')->__toString().' ';
                 $trashIcon = FA::icon('trash-o')->__toString().' ';
                 $editUrl = url('dashboard/'.$url.'/edit', $model->id);
@@ -69,7 +70,7 @@ class DashboardController extends Controller
             ->showColumns($showColumns)
             ->searchColumns($searchColumns)
             ->orderColumns($orderColumns)
-            ->addColumn('active', function ($model) {
+            ->addColumn('active', function (stdClass $model) {
                 return $model->active === 1 ? 'Active' : 'Inactive';
             })
             ->addColumn('actions', function ($model) use ($url) {
