@@ -128,7 +128,7 @@ class EloquentAnimeRepository
      * Get anime by letter.
      *
      * @param Builder $anime
-     * @param string $letter
+     * @param string  $letter
      *
      * @return mixed
      */
@@ -151,7 +151,7 @@ class EloquentAnimeRepository
      * Get anime by language.
      *
      * @param Builder $anime
-     * @param string $translation
+     * @param string  $translation
      *
      * @return mixed
      */
@@ -171,7 +171,7 @@ class EloquentAnimeRepository
      * Get anime by type.
      *
      * @param Builder $anime
-     * @param int $id
+     * @param int     $id
      *
      * @return mixed
      */
@@ -186,7 +186,7 @@ class EloquentAnimeRepository
      * Get anime by calendar season.
      *
      * @param Builder $anime
-     * @param string $calendarSeason
+     * @param string  $calendarSeason
      *
      * @return mixed
      */
@@ -199,7 +199,7 @@ class EloquentAnimeRepository
      * Get anime by year.
      *
      * @param Builder $anime
-     * @param int $year
+     * @param int     $year
      *
      * @return mixed
      */
@@ -212,7 +212,7 @@ class EloquentAnimeRepository
      * Get anime by genres.
      *
      * @param Builder $anime
-     * @param array $genres
+     * @param array   $genres
      *
      * @return mixed
      */
@@ -229,7 +229,7 @@ class EloquentAnimeRepository
      * Get anime by producers.
      *
      * @param Builder $anime
-     * @param int $id
+     * @param int     $id
      *
      * @return mixed
      */
@@ -244,7 +244,7 @@ class EloquentAnimeRepository
      * Get anime by classification.
      *
      * @param Builder $anime
-     * @param int $id
+     * @param int     $id
      *
      * @return mixed
      */
@@ -259,7 +259,7 @@ class EloquentAnimeRepository
      * Get anime by genres.
      *
      * @param Builder $anime
-     * @param string $sortBy
+     * @param string  $sortBy
      *
      * @return mixed
      */
