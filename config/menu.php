@@ -4,9 +4,6 @@ return [
     'admin' => [
         'Anime' => [
             'name'               => 'Animes', 'slug' => 'animes', 'submenu' => [
-                'CalendarSeason' => [
-                    'name' => 'Calendar Seasons', 'slug' => 'calendar-seasons',
-                ],
                 'Classification' => [
                     'name' => 'Classifications', 'slug' => 'classifications',
                 ],

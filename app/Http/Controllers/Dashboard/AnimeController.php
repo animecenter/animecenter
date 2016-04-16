@@ -3,6 +3,7 @@
 namespace AC\Http\Controllers\Dashboard;
 
 use AC\Models\Anime;
+use AC\Models\CalendarSeason;
 use DB;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class AnimeController extends DashboardController
         return view('dashboard.animes.create', [
             'types'           => DB::table('types')->where('model', '=', 'Anime')->orderBy('name')->get(['id', 'name']),
             'statuses'        => DB::table('statuses')->orderBy('name')->get(['id', 'name']),
-            'calendarSeasons' => DB::table('calendar_seasons')->orderBy('name')->get(['id', 'name']),
+            'calendarSeasons' => CalendarSeason::all(),
             'classifications' => DB::table('classifications')->orderBy('name')->get(['id', 'name']),
         ]);
     }
@@ -49,7 +50,7 @@ class AnimeController extends DashboardController
         $anime->release_date = $request['release_date'];
         $anime->end_date = $request['end_date'];
         $anime->duration = $request['duration'];
-        $anime->calendar_season_id = $request['calendar_season_id'];
+        $anime->calendar_season = $request['calendar_season'];
         $anime->classification_id = $request['classification_id'];
         $anime->active = $request['active'] === '1' ? 1 : 0;
         $anime->save();
@@ -71,7 +72,7 @@ class AnimeController extends DashboardController
             'anime'           => DB::table('animes')->where('id', '=', $id)->first(),
             'types'           => DB::table('types')->where('model', '=', 'Anime')->orderBy('name')->get(['id', 'name']),
             'statuses'        => DB::table('statuses')->orderBy('name')->get(['id', 'name']),
-            'calendarSeasons' => DB::table('calendar_seasons')->orderBy('name')->get(['id', 'name']),
+            'calendarSeasons' => CalendarSeason::all(),
             'classifications' => DB::table('classifications')->orderBy('name')->get(['id', 'name']),
         ]);
     }
@@ -98,7 +99,7 @@ class AnimeController extends DashboardController
         $anime->release_date = $request['release_date'];
         $anime->end_date = $request['end_date'];
         $anime->duration = $request['duration'];
-        $anime->calendar_season_id = $request['calendar_season_id'];
+        $anime->calendar_season = $request['calendar_season'];
         $anime->classification_id = $request['classification_id'];
         $anime->active = $request['active'] === '1' ? 1 : 0;
         $anime->save();

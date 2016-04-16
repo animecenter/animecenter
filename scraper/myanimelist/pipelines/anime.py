@@ -39,11 +39,11 @@ class MySQLStorePipeline(object):
         status_id = self.get_status_id(item)
         end_date, release_date = self.get_dates(item)
         year = self.get_year(release_date)
-        calendar_season_id = self.get_calendar_season_id(release_date)
+        calendar_season = self.get_calendar_season(release_date)
         classification_id = self.get_classification_id(item)
         duration = self.get_duration(item)
         anime_id = self.get_anime_id(item, type_id, year, status_id, classification_id, duration, release_date,
-                                     end_date, calendar_season_id)
+                                     end_date, calendar_season)
         self.get_genres(item, anime_id)
         self.get_producers(item, anime_id)
         self.get_titles(item, anime_id)
@@ -218,13 +218,13 @@ class MySQLStorePipeline(object):
                 print 'Error %d: %s' % (e.args[0], e.args[1])
 
     def get_anime_id(self, item, type_id, year, status_id, classification_id, duration, release_date, end_date,
-                     calendar_season_id):
+                     calendar_season):
         anime_id = None
         try:
             self.cursor.execute(
                 'INSERT IGNORE INTO `animes` '
                 '(`mal_id`, `title`, `slug`, `image`, `synopsis`, `type_id`, `year`, `number_of_episodes`, '
-                '`status_id`, `release_date`, `end_date`, `duration`, `calendar_season_id`, `classification_id`, '
+                '`status_id`, `release_date`, `end_date`, `duration`, `calendar_season`, `classification_id`, '
                 '`active`, `created_at`, `updated_at`) '
                 'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '
                 'CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)',
@@ -232,7 +232,7 @@ class MySQLStorePipeline(object):
                     item['mal_id'].encode('utf-8'), item['title'].encode('utf-8'),
                     self.slugger(item['title'].encode('utf-8')), item['image_url'], item['synopsis'].encode('utf-8'),
                     type_id, year, self.get_episodes(item['number_of_episodes']), status_id, release_date, end_date,
-                    duration, calendar_season_id, classification_id, 1
+                    duration, calendar_season, classification_id, 1
                 )
             )
             self.db.commit()
@@ -386,41 +386,22 @@ class MySQLStorePipeline(object):
 
     @staticmethod
     def get_year(release_date):
-        try:
-            if release_date:
-                return release_date.split('-')[0]
-            else:
-                return None
+        if release_date:
+            return release_date.split('-')[0]
+        else:
+            return None
 
-        except MySQLdb.Error, e:
-            print 'Error %d: %s' % (e.args[0], e.args[1])
-
-    def get_calendar_season_id(self, release_date):
+    @staticmethod
+    def get_calendar_season(release_date):
         if release_date:
             month = int(release_date.split('-')[1])
             if month >= 10:
-                season = ' Fall'
-            elif month >= 7:
-                season = ' Summer'
-            elif month >= 4:
-                season = ' Spring'
-            else:
-                season = ' Winter'
-
-            # Create a new calendar season if it doesn't exist
-            self.cursor.execute(
-                'INSERT IGNORE INTO `calendar_seasons` (`name`, `active`, `created_at`, `updated_at`) '
-                'VALUES (%s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)', (season, 1)
-            )
-            self.db.commit()
-
-            # Select season id
-            self.cursor.execute(
-                'SELECT `id` FROM `calendar_seasons` WHERE `name` = %s LIMIT 1', [season]
-            )
-            self.db.commit()
-
-            return self.cursor.fetchone()[0]
+                return ' Fall'
+            if month >= 7:
+                return ' Summer'
+            if month >= 4:
+                return ' Spring'
+            return ' Winter'
         else:
             return None
 

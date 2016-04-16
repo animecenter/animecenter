@@ -5,7 +5,6 @@ namespace AC\Http\Controllers;
 use AC\Models\Meta;
 use AC\Models\Mirror;
 use AC\Repositories\EloquentAnimeRepository as Anime;
-use AC\Repositories\EloquentCalendarSeasonRepository as CalendarSeason;
 use AC\Repositories\EloquentClassificationRepository as Classification;
 use AC\Repositories\EloquentEpisodeRepository as Episode;
 use AC\Repositories\EloquentGenreRepository as Genre;
@@ -43,11 +42,6 @@ class AnimeController extends Controller
     private $producer;
 
     /**
-     * @var CalendarSeason
-     */
-    private $calendarSeason;
-
-    /**
      * @var Type
      */
     private $type;
@@ -56,6 +50,7 @@ class AnimeController extends Controller
      * @var Mirror
      */
     private $mirror;
+
     /**
      * @var Meta
      */
@@ -67,19 +62,17 @@ class AnimeController extends Controller
      * @param Episode        $episode
      * @param Genre          $genre
      * @param Producer       $producer
-     * @param CalendarSeason $calendarSeason
      * @param Type           $type
      * @param Mirror         $mirror
      * @param meta           $meta
      */
-    public function __construct(Anime $anime, Classification $classification, Episode $episode, Genre $genre, Producer $producer, CalendarSeason $calendarSeason, Type $type, Mirror $mirror, Meta $meta)
+    public function __construct(Anime $anime, Classification $classification, Episode $episode, Genre $genre, Producer $producer, Type $type, Mirror $mirror, Meta $meta)
     {
         $this->anime = $anime;
         $this->classification = $classification;
         $this->episode = $episode;
         $this->genre = $genre;
         $this->producer = $producer;
-        $this->calendarSeason = $calendarSeason;
         $this->type = $type;
         $this->mirror = $mirror;
         $this->meta = $meta;
@@ -99,9 +92,9 @@ class AnimeController extends Controller
         $this->data['classifications'] = $this->classification->all();
         $this->data['genres'] = $this->genre->all();
         $this->data['producers'] = $this->producer->all();
-        $this->data['calendarSeasons'] = $this->calendarSeason->all();
         $this->data['types'] = $this->type->all();
         $this->data['currentURL'] = $this->getCurrentURL();
+        $this->data['years'] = $this->anime->getYears();
         $this->data['meta'] = $this->meta->whereRoute('anime')->orderBy('route')
             ->firstOrFail(['title', 'keywords', 'description']);
 
@@ -185,6 +178,12 @@ class AnimeController extends Controller
         return $this->anime->getRandom();
     }
 
+    /**
+     * Get current url.
+     *
+     * @param string $letter
+     * @return string
+     */
     public function getCurrentURL($letter = '')
     {
         return $letter ? str_replace('/'.$letter, '', request()->path()) : request()->path();

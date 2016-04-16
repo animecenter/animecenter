@@ -2,10 +2,11 @@ $(document).ready(() => {
   const search = {
     init() {
       const values = document.location.search.substr(1).split('&');
-      if (values && values[0] !== '') {
+      if (values && values[0]) {
         for (const index in values) {
-          this.setProperties(encodeURI(values[index]).split('=')[0],
-              encodeURI(values[index]).split('=')[1]);
+          if (values.hasOwnProperty(index)) {
+            this.setProperties(values[index].split('=')[0], values[index].split('=')[1]);
+          }
         }
       }
     },
@@ -29,13 +30,15 @@ $(document).ready(() => {
     getParams(values) {
       let params = '';
       for (const index in values) {
-        params += `${(params ? '&' : '')} ${encodeURI(index)} = ${encodeURI(values[index])}`;
+        if (values.hasOwnProperty(index)) {
+          params += `${(params ? '&' : '')}${index}=${values[index]}`;
+        }
       }
       return params;
     },
   };
   search.init();
-  $('.tab-content a').on('click', function () {
+  $('.tab-content a').on('click', function clickOnSearchTab() {
     const currentElement = $(this);
     search.setProperties(currentElement.closest('ul').data('id'), currentElement.data('value'));
     search.fetchData();
