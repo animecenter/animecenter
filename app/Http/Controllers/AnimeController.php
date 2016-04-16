@@ -182,6 +182,7 @@ class AnimeController extends Controller
      * Get current url.
      *
      * @param string $letter
+     *
      * @return string
      */
     public function getCurrentURL($letter = '')
