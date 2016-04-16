@@ -16,13 +16,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $episode_image_id
  * @property string $synopsis
  * @property int $type_id
- * @property int $year
  * @property int $number_of_episodes
  * @property int $status_id
  * @property string $release_date
  * @property string $end_date
  * @property string $duration
- * @property int $calendar_season_id
+ * @property string $calendar_season
  * @property int $classification_id
  * @property float $rating
  * @property \Illuminate\Database\Eloquent\Collection|View[] $views
@@ -36,7 +35,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \Illuminate\Database\Eloquent\Collection|Genre[] $genres
  * @property-read \Illuminate\Database\Eloquent\Collection|Producer[] $producers
  * @property-read \Illuminate\Database\Eloquent\Collection|Relation[] $relations
- * @property-read CalendarSeason $calendarSeason
  * @property-read \Illuminate\Database\Eloquent\Collection|Title[] $titles
  * @property-read Type $type
  * @property-read \Illuminate\Database\Eloquent\Collection|Vote[] $votes
@@ -51,13 +49,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|Anime whereEpisodeImageId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereSynopsis($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereTypeId($value)
- * @method static \Illuminate\Database\Query\Builder|Anime whereYear($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereNumberOfEpisodes($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereStatusId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereReleaseDate($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereEndDate($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereDuration($value)
- * @method static \Illuminate\Database\Query\Builder|Anime whereCalendarSeasonId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereClassificationId($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereRating($value)
  * @method static \Illuminate\Database\Query\Builder|Anime whereViews($value)
@@ -128,7 +124,7 @@ class Anime extends Model
         'release_date'       => 'string',
         'end_date'           => 'string',
         'duration'           => 'string',
-        'calendar_season_id' => 'int',
+        'calendar_season'    => 'string',
         'classification_id'  => 'int',
         'active'             => 'boolean',
     ];
@@ -141,16 +137,6 @@ class Anime extends Model
     public $rules = [
         'id' => 'required|int|min:1',
     ];
-
-    /**
-     * Get calendar season.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function calendarSeason()
-    {
-        return $this->belongsTo(CalendarSeason::class, 'calendar_season_id', 'id');
-    }
 
     /**
      * Get classification.
