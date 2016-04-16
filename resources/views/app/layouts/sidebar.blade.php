@@ -37,19 +37,11 @@
                         <i class="fa fa-random fa-fw text-success"></i> Random
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item hidden">
                     <a href="https://mangacenter.co" class="nav-link">
                         <i class="fa fa-book fa-fw text-success"></i>
                         Manga
                     </a>
-                </li>
-                <li class="nav-item text-center">
-                    <i class="fa fa-money fa-fw text-success sidebar-money"></i><br>
-                    <h3 class="text-dark center">Sponsorships</h3>
-                    <div class="center">
-                        <p class="text-success">Do you want to contribute?</p>
-                        <button class="btn btn-success center" type="button">Learn more</button>
-                    </div>
                 </li>
             </ul>
         </div>
