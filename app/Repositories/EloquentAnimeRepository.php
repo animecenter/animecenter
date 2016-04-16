@@ -71,8 +71,6 @@ class EloquentAnimeRepository
                 $query->select(['id', 'name']);
             }, 'producers' => function (BelongsToMany $query) {
                 $query->select(['id', 'name']);
-            }, 'calendarSeason' => function (BelongsTo $query) {
-                $query->select(['id', 'name']);
             }, 'type' => function (BelongsTo $query) {
                 $query->select(['id', 'name']);
             },
@@ -129,8 +127,8 @@ class EloquentAnimeRepository
     /**
      * Get anime by letter.
      *
-     * @param $anime
-     * @param string $letter
+     * @param Builder $anime
+     * @param string  $letter
      *
      * @return mixed
      */
@@ -152,8 +150,8 @@ class EloquentAnimeRepository
     /**
      * Get anime by language.
      *
-     * @param $anime
-     * @param string $translation
+     * @param Builder $anime
+     * @param string  $translation
      *
      * @return mixed
      */
@@ -172,8 +170,8 @@ class EloquentAnimeRepository
     /**
      * Get anime by type.
      *
-     * @param $anime
-     * @param int $id
+     * @param Builder $anime
+     * @param int     $id
      *
      * @return mixed
      */
@@ -187,36 +185,34 @@ class EloquentAnimeRepository
     /**
      * Get anime by calendar season.
      *
-     * @param $anime
-     * @param int $id
+     * @param Builder $anime
+     * @param string  $calendarSeason
      *
      * @return mixed
      */
-    public function getByCalendarSeason(Builder $anime, $id = 0)
+    public function getByCalendarSeason(Builder $anime, $calendarSeason = '')
     {
-        return $anime->whereHas('calendarSeason', function (Builder $query) use ($id) {
-            $query->where('calendar_seasons.id', '=', $id);
-        });
+        return $anime->where('animes.calendar_season', '=', $calendarSeason);
     }
 
     /**
-     * Get anime by Year.
+     * Get anime by year.
      *
-     * @param $anime
-     * @param int $year
+     * @param Builder $anime
+     * @param int     $year
      *
      * @return mixed
      */
     public function getByYear(Builder $anime, $year = 0)
     {
-        return $anime->where('animes.year', '=', $year);
+        return $anime->whereYear('animes.release_date', '=', $year);
     }
 
     /**
      * Get anime by genres.
      *
-     * @param $anime
-     * @param array $genres
+     * @param Builder $anime
+     * @param array   $genres
      *
      * @return mixed
      */
@@ -232,8 +228,8 @@ class EloquentAnimeRepository
     /**
      * Get anime by producers.
      *
-     * @param $anime
-     * @param int $id
+     * @param Builder $anime
+     * @param int     $id
      *
      * @return mixed
      */
@@ -247,8 +243,8 @@ class EloquentAnimeRepository
     /**
      * Get anime by classification.
      *
-     * @param $anime
-     * @param int $id
+     * @param Builder $anime
+     * @param int     $id
      *
      * @return mixed
      */
@@ -262,8 +258,8 @@ class EloquentAnimeRepository
     /**
      * Get anime by genres.
      *
-     * @param $anime
-     * @param string $sortBy
+     * @param Builder $anime
+     * @param string  $sortBy
      *
      * @return mixed
      */
@@ -331,38 +327,6 @@ class EloquentAnimeRepository
     }
 
     /**
-     * @return mixed
-     */
-    public function currentCalendarSeason()
-    {
-        $month = date('m');
-
-        // Retrieve calendar season
-        if ($month >= '03' && $month <= '06') {
-            $calendarSeason = 'Spring';
-        } elseif ($month >= '07' && $month <= '09') {
-            $calendarSeason = 'Summer';
-        } elseif ($month >= '10' && $month <= '12') {
-            $calendarSeason = 'Fall';
-        } else {
-            $calendarSeason = 'Winter';
-        }
-
-        return $this->getByCalendarSeasonName($calendarSeason);
-    }
-
-    /**
-     * @param string $seasonName
-     *
-     * @return mixed
-     */
-    public function getByCalendarSeasonName($seasonName = '')
-    {
-        return $this->anime->has('episodes')->where('calendar_season_id', '=', $seasonName)
-            ->orderBy('animes.release_date', 'DESC')->take(8)->get();
-    }
-
-    /**
      * @param $query
      *
      * @return mixed
@@ -380,6 +344,12 @@ class EloquentAnimeRepository
     public function getRandom()
     {
         return redirect()->to($this->anime->orderByRaw('RAND()')->firstOrFail(['slug'])->slug);
+    }
+
+    public function getYears()
+    {
+        return $this->all()->selectRaw('YEAR(animes.release_date) as year')->distinct()
+            ->orderBy('year')->get(['year'])->toArray();
     }
 
     /**
