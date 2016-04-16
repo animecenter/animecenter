@@ -21,7 +21,7 @@ class CreateAnimesTable extends Migration
             $table->date('release_date')->nullable();
             $table->date('end_date')->nullable();
             $table->time('duration')->nullable();
-            $table->enum('calendar_season', ['Spring', 'Summer', 'Fall', 'Winter']);
+            $table->enum('calendar_season', ['Spring', 'Summer', 'Fall', 'Winter'])->nullable();
             $table->integer('classification_id')->unsigned()->nullable();
             $table->float('rating')->default(0);
             $table->integer('views')->default(0);
