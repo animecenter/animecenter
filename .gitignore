@@ -1,8 +1,9 @@
-/vendor
+/components
 /node_modules
 /public/storage
 /public/uploads
 /bower_components
+/vendor
 .env
 .vagrant
 _ide_helper.php
