@@ -8,14 +8,15 @@
         <div class="col-xs-12">
             <div class="episodes">
                 @foreach ($episodes as $episode)
-                    <article class="card episode-item">
-                        <a href="{{ url($episode->anime->slug.'/'.$episode->slug.'/'.$episode->mirror->translation) }}">
-                            <img src="{{ asset($episode->photo) }}" class="card-img-top img-fluid"
+                    <article class="episode-item container-shadow">
+                        <a class="episodes__holder" href="{{ url($episode->anime->slug.'/'.$episode->slug.'/'.$episode->mirror->translation) }}">
+                            <img src="{{ asset($episode->photo) }}" class="img-fluid"
                                  alt="{{ $episode->title }}" height="150" width="auto">
-                            <div class="card-block">
-                                <h3 class="card-title h6">{{ $episode->shortTitle . ' ' . $episode->number }}</h3>
-                                <p class="card-text">20 minutes ago</p>
-                            </div>
+                                <h1 class="episodes__title h5">{{ $episode->shortTitle }}</h1>
+                                <span class="episode__number h6">Episode {{ $episode->number }}</span>
+                                <span class="episode__details bg-green h6">subbed</span><span class="episode__details bg-orange h6">HD</span>
+
+                                <span class="episode__time h6">20 minutes ago</span>
                         </a>
                     </article>
                 @endforeach

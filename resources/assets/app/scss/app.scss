@@ -10,6 +10,26 @@
 // Main CSS
 body {
   background-color: $color-gray;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1, .h1 {
+  font-size: 1.75rem;
+}
+h2, .h2 {
+  font-size: 1.5rem;
+}
+h3, .h3 {
+  font-size: 1.25rem;
+}
+h4, .h4 {
+  font-size: 1rem;
+}
+h5, .h5 {
+  font-size: 0.75rem;
+}
+h6, .h6 {
+  font-size: 0.60rem;
 }
 
 .menu-filter {
