@@ -1,19 +1,19 @@
 <header class="sidebar">
-    <nav class="navbar navbar-light" role="navigation">
-        <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar">
+    <nav class="navbar" role="navigation">
+        <button type="button" class="navbar-toggler hidden-lg-up" data-toggle="collapse" data-target="#navbar">
             &#9776;
         </button>
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="nav-brand" href="{{ url('/') }}">
             <img src="{{ asset('img/logo.png') }}" alt="animecenter.co" height="auto" width="220">
         </a>
-        <div id="navbar" class="collapse navbar-toggleable-xs pull-sm-left">
+        <div id="navbar" class="collapse navbar-toggleable-md pull-lg-left">
             <ul class="nav navbar-nav nav-sidebar">
                 <li class="nav-item">
                     <form action="{{ url('search') }}">
-                        <div class="input-group">
+                        <div class="search input-group">
                             <input class="form-control" id="q" name="q" placeholder="search" type="text">
                             <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn bg-orange text-white" type="button">
                                     <span class="fa fa-search"></span>
                                 </button>
                             </span>

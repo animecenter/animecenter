@@ -134,9 +134,10 @@ h6, .h6 {
   border-radius: 22px;
 }
 
-@include media-breakpoint-up(sm) {
+@include media-breakpoint-up(lg) {
 
-  .main, .footer {
+  .main,
+  .footer {
     margin-left: 250px;
   }
 }
