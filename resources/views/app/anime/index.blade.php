@@ -161,14 +161,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12">
-            <div class="grid grid-anime">
+        <div class="col-xs-12 col-md-9">
+            <div class="anime">
                 @foreach ($animes as $anime)
-                    <div class="grid-item">
-                        <a class="thumbnail" href="{{ url($anime->slug) }}">
-                            <img src="{{ $anime->photo }}" alt="{{ $anime->title }}" width="160" height="225">
+                    <div class="anime-item">
+                        <a class="anime__holder thumbnail" href="{{ url($anime->slug) }}">
+                            <img src="{{ $anime->photo }}" class="img-fluid" alt="{{ $anime->title }}" width="160" height="225">
                             <div class="caption">
-                                <h3 class="episode-title">
+                                <h3 class="anime__title">
                                     {{ (strlen($anime->title) > 17) ? mb_substr($anime->title, 0, 14) . '...' :
                                     $anime->title }}
                                 </h3>
