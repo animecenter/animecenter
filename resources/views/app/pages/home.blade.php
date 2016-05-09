@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="row home">
-        <div class="col-xs-12">
-            <h2>New Anime Episodes</h2>
+        <div class="col-xs-12 col-md-9">
+            <h2 class="title-holder">New Anime Episodes</h2>
         </div>
         <div class="col-xs-12 col-md-9">
             <div class="episodes">
@@ -13,7 +13,7 @@
                             <img src="{{ asset($episode->photo) }}" class="img-fluid" alt="{{ $episode->title }}"
                                  height="150" width="auto">
                             <h1 class="episodes__title h5">{{ $episode->shortTitle }}</h1>
-                            <span class="episode__number h6">Episode {{ $episode->number }}</span>
+                            <span class="episode__number h5">Episode {{ $episode->number }}</span>
                             <span class="episode__details bg-green h6">subbed</span>
                             <span class="episode__details bg-orange h6">HD</span>
                             <span class="episode__time h6">20 minutes ago</span>
@@ -22,8 +22,8 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-xs-12">
-            <h2>Anime This Season</h2>
+        <div class="col-xs-12 col-md-9">
+            <h2 class="title-holder">Recently Released Anime</h2>
         </div>
         <div class="col-xs-12 col-md-9">
             <div class="anime">
