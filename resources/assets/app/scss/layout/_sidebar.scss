@@ -1,3 +1,15 @@
+.sidebar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: $color-darker-purple;
+  border-bottom: 1px solid #dcdcdc;
+  border-right: 1px solid #dcdcdc;
+}
+
 .sidebar::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -14,25 +26,11 @@
   background-color: #a7b1c2;
 }
 
-.sidebar-money {
-  font-size: 35px;
-  width: 100%;
-  padding-top: 10px;
-}
-
-.sidebar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background-color: $color-white;
-  border-bottom: 1px solid #dcdcdc;
-  border-right: 1px solid #dcdcdc;
-}
-
-@include media-breakpoint-down(xs) {
+@include media-breakpoint-down(md) {
+  .navbar {
+    position: relative;
+    padding: 0.8rem 1rem;
+  }
 }
 
 @include media-breakpoint-up(lg) {

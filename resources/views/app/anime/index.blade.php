@@ -7,20 +7,14 @@
         </div>--}}
         <div class="col-xs-12">
             <div class="anime-list-header">
-                <h2 class="pull-xs-left"><i class="fa fa-video-camera fa-fw text-success"></i> Anime</h2>
+                <h2 class="pull-xs-left"><i class="fa fa-video-camera fa-fw"></i> Anime</h2>
                 <div class="btn-group sort-by pull-xs-right" role="group">
-                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                    <button type="button" class="btn bg-dark-purple text-white bg-dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-sort-amount-asc text-white"></i> Sort By <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu" role="menu" data-id="sortBy">
-                        <li>
-                            <a href="#" data-value="upcoming">
-                                <span class="fa fa-clock-o fa-fw text-light-blue"></span> Upcoming
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-value="latest">Latest</a>
-                        </li>
+                    <ul class="dropdown-menu dropdown" role="menu" data-id="sortBy">
+                        <li><a href="#" data-value="upcoming">Upcoming</a></li>
+                        <li><a href="#" data-value="latest">Latest</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,13 +47,13 @@
                     <li role="presentation" class="nav-item type">
                         <a href="#type" class="nav-link" role="tab" id="type-tab" data-toggle="tab"
                            aria-controls="type" aria-expanded="false">
-                            <i class="fa fa-exclamation text-danger"></i> Type <span class="caret"></span>
+                            <i class="fa fa-exclamation text-purple"></i> Type <span class="caret"></span>
                         </a>
                     </li>
                     <li role="presentation" class="nav-item year">
                         <a href="#year" class="nav-link" role="tab" id="year-tab" data-toggle="tab"
                            aria-controls="year" aria-expanded="false">
-                            <i class="fa fa-calendar text-danger"></i> Year <span class="caret"></span>
+                            <i class="fa fa-calendar text-yellow"></i> Year <span class="caret"></span>
                         </a>
                     </li>
                 </ul>
@@ -127,19 +121,19 @@
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="type" aria-labelledby="type-tab">
                         <ul class="filter-submenu type" data-id="type">
-                            <li><a href="#" data-value="8"><i class="fa fa-television text-success"></i> TV</a></li>
-                            <li><a href="#" data-value="5"><i class="fa fa-diamond text-success"></i> OVA</a></li>
-                            <li><a href="#" data-value="2"><i class="fa fa-film text-success"></i> Movie</a></li>
-                            <li><a href="#" data-value="1"><i class="fa fa-bookmark text-success"></i> Special</a></li>
-                            <li><a href="#" data-value="26"><i class="fa fa-gg-circle text-success"></i> ONA</a></li>
-                            <li><a href="#" data-value="125"><i class="fa fa-music text-success"></i> Music</a></li>
+                            <li><a href="#" data-value="8"><i class="fa fa-television text-purple"></i> TV</a></li>
+                            <li><a href="#" data-value="5"><i class="fa fa-diamond text-purple"></i> OVA</a></li>
+                            <li><a href="#" data-value="2"><i class="fa fa-film text-purple"></i> Movie</a></li>
+                            <li><a href="#" data-value="1"><i class="fa fa-bookmark text-purple"></i> Special</a></li>
+                            <li><a href="#" data-value="26"><i class="fa fa-gg-circle text-purple"></i> ONA</a></li>
+                            <li><a href="#" data-value="125"><i class="fa fa-music text-purple"></i> Music</a></li>
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="year" aria-labelledby="year-tab">
-                        <ul data-id="year">
+                        <ul class="ul" data-id="year">
                             @foreach ($years as $year)
-                                <li>
-                                    <a href="#" data-value="{{ $year['year'] }}">{{ $year['year'] }}</a>
+                                <li class="li">
+                                    <a class="text-dark-purple" href="#" data-value="{{ $year['year'] }}">{{ $year['year'] }}</a>
                                 </li>
                             @endforeach
                         </ul>

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h4>Animecenter</h4>
+                <h4 class="text-dark-purple h4">Animecenter</h4>
                 <ul>
                     <li>
                         <a href="{{ url('/') }}">Watch Anime Online</a>

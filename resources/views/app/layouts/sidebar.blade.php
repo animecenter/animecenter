@@ -11,9 +11,9 @@
                 <li class="nav-item">
                     <form action="{{ url('search') }}">
                         <div class="search input-group">
-                            <input class="form-control" id="q" name="q" placeholder="search" type="text">
+                            <input class="form-control leaf" id="q" name="q" placeholder="search" type="text">
                             <span class="input-group-btn">
-                                <button class="btn bg-orange text-white" type="button">
+                                <button class="btn bg-dark-purple text-light-purple search-btn" type="button">
                                     <span class="fa fa-search"></span>
                                 </button>
                             </span>
@@ -22,24 +22,24 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('anime') }}" class="nav-link">
-                        <i class="fa fa-video-camera fa-fw text-success"></i>
+                        <i class="fa fa-video-camera fa-fw"></i>
                         Anime
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('episodes/latest') }}" class="nav-link">
-                        <i class="fa fa-check fa-fw text-success"></i>
+                        <i class="fa fa-check fa-fw"></i>
                         New Episodes
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('anime/random') }}" class="nav-link">
-                        <i class="fa fa-random fa-fw text-success"></i> Random
+                        <i class="fa fa-random fa-fw"></i> Random
                     </a>
                 </li>
                 <li class="nav-item hidden">
                     <a href="https://mangacenter.co" class="nav-link">
-                        <i class="fa fa-book fa-fw text-success"></i>
+                        <i class="fa fa-book fa-fw"></i>
                         Manga
                     </a>
                 </li>

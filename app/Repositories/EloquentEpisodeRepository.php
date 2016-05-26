@@ -50,7 +50,7 @@ class EloquentEpisodeRepository
 
         return $this->episode->whereHas('anime', function (Builder $query) use ($timestamp) {
             $query->where('release_date', '<', $timestamp);
-        })->with('anime')->where('updated_at', '<', $timestamp)->orderBy('updated_at', 'DESC')->paginate(20);
+        })->has('mirrors')->with('anime')->where('updated_at', '<', $timestamp)->orderBy('updated_at', 'DESC')->paginate(20);
     }
 
     public function upcoming()

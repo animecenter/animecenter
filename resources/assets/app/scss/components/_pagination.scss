@@ -1,0 +1,22 @@
+.pagination {
+  list-style-type: none;
+  padding: 2rem 0;
+
+  li {
+    color: $color-white;
+    background: $color-dark-purple;
+    border-radius: 50%;
+    display: inline;
+    padding: 0.75rem 1rem;
+    margin: 0.50rem;
+  }
+
+  a {
+    color: $color-white;
+  }
+  
+  .active {
+    background: $color-purple;
+  }
+
+}
