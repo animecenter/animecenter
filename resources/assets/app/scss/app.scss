@@ -52,8 +52,6 @@ a {
   margin-left: 5px;
 }
 
-
-
 .anime-title {
   background: $color-white;
   color: $color-white;
@@ -108,12 +106,6 @@ a {
   color: #3f3f3f;
   font-weight: bold;
   line-height: 1.5;
-}
-
-.alphabetical li:last-child a {
-  background-color: $color-dark-purple;
-  color: $color-white;
-  padding: 0.5rem;
 }
 
 @include media-breakpoint-up(lg) {

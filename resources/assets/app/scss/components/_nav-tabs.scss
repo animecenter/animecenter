@@ -4,17 +4,21 @@
 
   .nav-link {
     border-radius: 0;
+    &:focus,
+    &:hover {
+      border-color: transparent;
+    }
 
     &.active,
     &.active:focus,
     &.active:hover {
       color: $color-white;
       background-color: $color-dark-purple;
+      border-color: transparent;
     }
   }
 
   .nav-item {
-
     &.open .nav-link,
     &.open .nav-link:focus,
     &.open .nav-link:hover {
@@ -23,6 +27,11 @@
     }
   }
 }
+
+.nav-tabs .nav-item+.nav-item {
+  margin-left: 0;
+}
+
 
 .tab-content {
   float: left;
@@ -55,5 +64,18 @@
 
   }
 }
+
+@include media-breakpoint-down(sm) {
+  .nav-tabs {
+    .nav-item {
+      float: left;
+      margin-bottom: -1px;
+      width: 33.33%;
+    }
+  }
+}
+
+
+
 
 
