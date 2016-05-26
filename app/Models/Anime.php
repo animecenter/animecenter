@@ -301,6 +301,6 @@ class Anime extends Model
 
     public function getShortTitleAttribute()
     {
-        return (strlen($this->title) > 9) ? mb_substr($this->title, 0, 9).'...' : $this->title;
+        return (strlen($this->title) > 14) ? mb_substr($this->title, 0, 12).'...' : $this->title;
     }
 }

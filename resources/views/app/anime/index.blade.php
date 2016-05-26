@@ -160,7 +160,7 @@
                 @foreach ($animes as $anime)
                     <div class="anime-item">
                         <a class="anime__holder thumbnail" href="{{ url($anime->slug) }}">
-                            <img src="{{ $anime->photo }}" class="img-fluid" alt="{{ $anime->title }}" width="160" height="225">
+                            <img src="{{ $anime->photo }}" class="img-fluid" alt="{{ $anime->title }}" width="100%" height="225">
                             <div class="caption">
                                 <h3 class="anime__title">
                                     {{ (strlen($anime->title) > 17) ? mb_substr($anime->title, 0, 14) . '...' :

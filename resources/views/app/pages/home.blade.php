@@ -11,7 +11,7 @@
                             <img src="{{ asset($episode->photo) }}" class="img-fluid" alt="{{ $episode->title }}"
                                  height="150" width="auto">
                             <h1 class="episodes__title h5">{{ $episode->shortTitle }}</h1>
-                            <span class="episode__number h6">Episode {{ $episode->number }}</span>
+                            <span class="episode__number h5">Episode {{ $episode->number }}</span>
                             <span class="episode__details bg-purple h6">subbed</span>
                             <span class="episode__details bg-orange h6">HD</span>
                             <span class="episode__time h6">20 minutes ago</span>
@@ -26,7 +26,7 @@
                 @foreach ($animes as $anime)
                     <article class="anime-item container-shadow">
                         <a class="anime__holder thumbnail" href="{{ url($anime->slug) }}">
-                            <img src="{{ asset($anime->photo) }}" class="img-fluid" alt="{{ $anime->title }}" width="125" height="185">
+                            <img src="{{ asset($anime->photo) }}" class="img-fluid" alt="{{ $anime->title }}" width="100%" height="185">
                             <div class="caption">
                                 <h3 class="anime__title">
                                     {{ $anime->shortTitle }}
