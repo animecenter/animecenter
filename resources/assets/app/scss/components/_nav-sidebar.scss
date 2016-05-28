@@ -5,5 +5,35 @@
     +.nav-item {
       margin-left: 0;
     }
+
+    .nav-link {
+      color: $color-black;
+    }
   }
+
+}
+.search {
+  padding: 6% 0;
+}
+
+.navbar-toggler {
+  font-size: 2.25rem;
+  color: $color-green;
+}
+
+@include media-breakpoint-down(md) {
+  .nav-brand {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    position: absolute;
+    top: 20px;
+    left: 25%;
+    right: 25%;
+  }
+
+  .search {
+    padding: 2% 0;
+  }
+
 }

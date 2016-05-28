@@ -1,0 +1,93 @@
+
+// Home
+.anime {
+  .anime-item {
+    float: left;
+  }
+}
+
+.anime__title {
+  display: block;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin: 0.4rem 0;
+}
+
+.anime__holder {
+  color: $color-night-rider;
+  background: #fff;
+  border-collapse: separate;
+  display: block;
+  padding: 8%;
+
+  &:hover {
+    color: $color-blue;
+    text-decoration: none;
+  }
+}
+
+@include media-breakpoint-only(xs) {
+  .anime {
+    .anime-item {
+      width: 30%;
+      margin: 0 5% 5% 0;
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+@include media-breakpoint-only(sm) {
+  .anime {
+    .anime-item {
+      width: 20.5%;
+      margin: 0 6% 6% 0;
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-only(md) {
+  .anime {
+    .anime-item {
+      width: 21.5%;
+      margin: 0 2% 2% 0;
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+    }
+  }
+
+}
+
+@include media-breakpoint-only(lg) {
+  .anime {
+    .anime-item {
+      width: 23%;
+      margin: 0 2.5% 2.5% 0;
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .anime {
+    .anime-item {
+      float: left;
+      margin: 0 2% 2% 0;
+      width: 18.18%;
+
+      &:nth-child(5n) {
+        margin: 0 0 1%;
+      }
+    }
+  }
+}

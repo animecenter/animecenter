@@ -81,20 +81,7 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->post('banners/recover/{id}', 'BannerController@postRecover');
     $router->get('banners/list', 'BannerController@getList');
     $router->get('banners/list/trash', 'BannerController@getListTrash');
-
-    // Calendar Seasons routes...
-    $router->get('calendar-seasons', 'CalendarSeasonController@index');
-    $router->get('calendar-seasons/create', 'CalendarSeasonController@getCreate');
-    $router->post('calendar-seasons/create', 'CalendarSeasonController@postCreate');
-    $router->get('calendar-seasons/edit/{id}', 'CalendarSeasonController@getEdit');
-    $router->post('calendar-seasons/edit/{id}', 'CalendarSeasonController@postEdit');
-    $router->get('calendar-seasons/trash', 'CalendarSeasonController@getTrash');
-    $router->post('calendar-seasons/trash/{id}', 'CalendarSeasonController@postTrash');
-    $router->post('calendar-seasons/delete/{id}', 'CalendarSeasonController@postDelete');
-    $router->post('calendar-seasons/recover/{id}', 'CalendarSeasonController@postRecover');
-    $router->get('calendar-seasons/list', 'CalendarSeasonController@getList');
-    $router->get('calendar-seasons/list/trash', 'CalendarSeasonController@getListTrash');
-
+    
     // Classifications routes...
     $router->get('classifications', 'ClassificationController@index');
     $router->get('classifications/create', 'ClassificationController@getCreate');

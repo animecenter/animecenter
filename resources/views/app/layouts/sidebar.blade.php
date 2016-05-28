@@ -1,19 +1,19 @@
 <header class="sidebar">
-    <nav class="navbar navbar-light" role="navigation">
-        <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar">
+    <nav class="navbar" role="navigation">
+        <button type="button" class="navbar-toggler hidden-lg-up" data-toggle="collapse" data-target="#navbar">
             &#9776;
         </button>
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="nav-brand" href="{{ url('/') }}">
             <img src="{{ asset('img/logo.png') }}" alt="animecenter.co" height="auto" width="220">
         </a>
-        <div id="navbar" class="collapse navbar-toggleable-xs pull-sm-left">
+        <div id="navbar" class="collapse navbar-toggleable-md pull-lg-left">
             <ul class="nav navbar-nav nav-sidebar">
                 <li class="nav-item">
                     <form action="{{ url('search') }}">
-                        <div class="input-group">
+                        <div class="search input-group">
                             <input class="form-control" id="q" name="q" placeholder="search" type="text">
                             <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn bg-orange text-white" type="button">
                                     <span class="fa fa-search"></span>
                                 </button>
                             </span>
@@ -37,19 +37,11 @@
                         <i class="fa fa-random fa-fw text-success"></i> Random
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item hidden">
                     <a href="https://mangacenter.co" class="nav-link">
                         <i class="fa fa-book fa-fw text-success"></i>
                         Manga
                     </a>
-                </li>
-                <li class="nav-item text-center">
-                    <i class="fa fa-money fa-fw text-success sidebar-money"></i><br>
-                    <h3 class="text-dark center">Sponsorships</h3>
-                    <div class="center">
-                        <p class="text-success">Do you want to contribute?</p>
-                        <button class="btn btn-success center" type="button">Learn more</button>
-                    </div>
                 </li>
             </ul>
         </div>

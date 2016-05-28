@@ -24,7 +24,7 @@ $factory->define(AC\Models\Anime::class, function (Faker\Generator $faker) {
         'release_date'       => $faker->date(),
         'end_date'           => rand(0, 1) === 1 ? $faker->date() : null,
         'duration'           => rand(0, 1) === 1 ? $faker->time() : null,
-        'calendar_season_id' => rand(0, 1) === 1 ? rand(1, 4) : null,
+        'calendar_season'    => rand(0, 1) === 1 ? ['Spring', 'Summer', 'Fall', 'Winter'][rand(0, 3)] : null,
         'classification_id'  => rand(0, 1) === 1 ? rand(1, 6) : null,
         'active'             => rand(0, 1),
     ];

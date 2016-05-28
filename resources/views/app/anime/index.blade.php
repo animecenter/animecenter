@@ -56,6 +56,12 @@
                             <i class="fa fa-exclamation text-danger"></i> Type <span class="caret"></span>
                         </a>
                     </li>
+                    <li role="presentation" class="nav-item year">
+                        <a href="#year" class="nav-link" role="tab" id="year-tab" data-toggle="tab"
+                           aria-controls="year" aria-expanded="false">
+                            <i class="fa fa-calendar text-danger"></i> Year <span class="caret"></span>
+                        </a>
+                    </li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
                     <div role="tabpanel" class="tab-pane fade active in" id="alphabetical" aria-labelledby="alphabetical-tab">
@@ -106,16 +112,16 @@
                     <div role="tabpanel" class="tab-pane fade" id="season" aria-labelledby="season-tab">
                         <ul class="filter-submenu season" data-id="season">
                             <li>
-                                <a href="#" data-value="1"><i class="fa fa-asterisk text-light-blue"></i> Winter</a>
+                                <a href="#" data-value="Winter"><i class="fa fa-asterisk text-light-blue"></i> Winter</a>
                             </li>
                             <li>
-                                <a href="#" data-value="2"><i class="fa fa-tree text-success"></i> Spring</a>
+                                <a href="#" data-value="Spring"><i class="fa fa-tree text-success"></i> Spring</a>
                             </li>
                             <li>
-                                <a href="#" data-value="3"><i class="fa fa-sun-o text-orange"></i> Summer</a>
+                                <a href="#" data-value="Summer"><i class="fa fa-sun-o text-orange"></i> Summer</a>
                             </li>
                             <li>
-                                <a href="#" data-value="4"><i class="fa fa-leaf text-danger"></i> Fall</a>
+                                <a href="#" data-value="Fall"><i class="fa fa-leaf text-danger"></i> Fall</a>
                             </li>
                         </ul>
                     </div>
@@ -129,56 +135,40 @@
                             <li><a href="#" data-value="125"><i class="fa fa-music text-success"></i> Music</a></li>
                         </ul>
                     </div>
-                    <!-- <div class="btn-toolbar" role="toolbar">
-                        <div class="btn-group" role="group">
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-                                    <span class="fa fa-list-ul fa-fw text-purple"></span> Year <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu" data-id="year">
-                                    @foreach ($calendarSeasons as $calendarSeason)
-                                        <li>
-                                            <a href="#" data-value="{{ $calendarSeason->id }}">
-                                                {{ $calendarSeason->name }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-user-secret text-warning"></i> Producer <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu" data-id="producer">
-                                    @foreach ($producers as $producer)
-                                        <li><a href="#" data-value="{{ $producer->id }}">{{ $producer->name }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-ellipsis-h text-white"></i> Classification <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu" data-id="classification">
-                                    @foreach ($classifications as $classification)
-                                        <li><a href="#" data-value="{{ $classification->id }}">{{ $classification->name }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
+                    <div role="tabpanel" class="tab-pane fade" id="year" aria-labelledby="year-tab">
+                        <ul data-id="year">
+                            @foreach ($years as $year)
+                                <li>
+                                    <a href="#" data-value="{{ $year['year'] }}">{{ $year['year'] }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
-                    -->
+                    <div role="tabpanel" class="tab-pane fade" id="producer" aria-labelledby="producer-tab">
+                        <ul data-id="producer">
+                            @foreach ($producers as $producer)
+                                <li><a href="#" data-value="{{ $producer->id }}">{{ $producer->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="classification" aria-labelledby="classification-tab">
+                        <ul data-id="classification">
+                            @foreach ($classifications as $classification)
+                                <li><a href="#" data-value="{{ $classification->id }}">{{ $classification->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-xs-12">
-            <div class="grid grid-anime">
+        <div class="col-xs-12 col-md-9">
+            <div class="anime">
                 @foreach ($animes as $anime)
-                    <div class="grid-item">
-                        <a class="thumbnail" href="{{ url($anime->slug) }}">
-                            <img src="{{ $anime->photo }}" alt="{{ $anime->title }}" width="160" height="225">
+                    <div class="anime-item">
+                        <a class="anime__holder thumbnail" href="{{ url($anime->slug) }}">
+                            <img src="{{ $anime->photo }}" class="img-fluid" alt="{{ $anime->title }}" width="160" height="225">
                             <div class="caption">
-                                <h3 class="episode-title">
+                                <h3 class="anime__title">
                                     {{ (strlen($anime->title) > 17) ? mb_substr($anime->title, 0, 14) . '...' :
                                     $anime->title }}
                                 </h3>

@@ -2,41 +2,42 @@
 
 @section('content')
     <div class="row home">
-        <div class="col-xs-12">
-            <h2>New Anime Episodes</h2>
+        <div class="col-xs-12 col-md-9">
+            <h2 class="title-holder">New Anime Episodes</h2>
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-md-9">
             <div class="episodes">
                 @foreach ($episodes as $episode)
-                    <article class="card episode-item">
-                        <a href="{{ url($episode->anime->slug.'/'.$episode->slug.'/'.$episode->mirror->translation) }}">
-                            <img src="{{ asset($episode->photo) }}" class="card-img-top img-fluid"
-                                 alt="{{ $episode->title }}" height="150" width="auto">
-                            <div class="card-block">
-                                <h3 class="card-title h6">{{ $episode->shortTitle . ' ' . $episode->number }}</h3>
-                                <p class="card-text">20 minutes ago</p>
-                            </div>
+                    <article class="episode-item container-shadow">
+                        <a class="episodes__holder" href="{{ url($episode->anime->slug.'/'.$episode->slug.'/'.$episode->mirror->translation) }}">
+                            <img src="{{ asset($episode->photo) }}" class="img-fluid" alt="{{ $episode->title }}"
+                                 height="150" width="auto">
+                            <h1 class="episodes__title h5">{{ $episode->shortTitle }}</h1>
+                            <span class="episode__number h5">Episode {{ $episode->number }}</span>
+                            <span class="episode__details bg-green h6">subbed</span>
+                            <span class="episode__details bg-orange h6">HD</span>
+                            <span class="episode__time h6">20 minutes ago</span>
                         </a>
                     </article>
                 @endforeach
             </div>
         </div>
-        <div class="col-xs-12">
-            <h2>Anime This Season</h2>
+        <div class="col-xs-12 col-md-9">
+            <h2 class="title-holder">Recently Released Anime</h2>
         </div>
-        <div class="col-xs-12">
-            <div class="grid grid-anime grid-home">
+        <div class="col-xs-12 col-md-9">
+            <div class="anime">
                 @foreach ($animes as $anime)
-                    <div class="grid-item">
-                        <a href="{{ url($anime->slug) }}" class="thumbnail">
-                            <img src="{{ asset($anime->photo) }}" alt="{{ $anime->title }}" width="125" height="185">
+                    <article class="anime-item container-shadow">
+                        <a class="anime__holder thumbnail" href="{{ url($anime->slug) }}">
+                            <img src="{{ asset($anime->photo) }}" class="img-fluid" alt="{{ $anime->title }}" width="125" height="185">
                             <div class="caption">
-                                <h3 class="episode-title">
+                                <h3 class="anime__title">
                                     {{ $anime->shortTitle }}
                                 </h3>
                             </div>
                         </a>
-                    </div>
+                    </article>
                 @endforeach
             </div>
         </div>

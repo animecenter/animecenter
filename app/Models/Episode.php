@@ -164,7 +164,7 @@ class Episode extends Model
 
     public function getShortTitleAttribute()
     {
-        return strlen($this->anime->title) > 15 ? mb_substr($this->anime->title, 0, 12).'...' : $this->anime->title;
+        return strlen($this->anime->title) > 19 ? mb_substr($this->anime->title, 0, 20).'...' : $this->anime->title;
     }
 
     public function getUpcomingPhotoAttribute()

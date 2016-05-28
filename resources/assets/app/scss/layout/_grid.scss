@@ -1,6 +1,6 @@
-@media (max-width: 1437px) {
-
+@include media-breakpoint-down(lg) {
   .container {
     width: 100%;
+    max-width: 100%;
   }
 }

@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "php": ">=7",
+    "php": ">=5.6",
     "laravel/framework": "5.2.*",
     "roumen/sitemap": "2.6.*",
     "laravel/socialite": "~2",

@@ -7,37 +7,37 @@
 }
 
 .text-yellow {
-  color: #ff0;
-}
-
-.text-pink {
-  color: #FF9FB0;
+  color: $color-yellow;
 }
 
 .text-light-blue {
-  color: #09bfff;
-}
-
-.text-orange {
-  color: #ffa500;
-}
-
-.text-purple {
-  color: #8970b3;
-}
-
-.text-dark-pink {
-  color: #ff27d7;
+  color: $color-light-blue;
 }
 
 .text-dark-blue {
-  color: #0084ff;
+  color: $color-blue;
+}
+
+.text-orange {
+  color: $color-orange;
+}
+
+.text-purple {
+  color: $color-purple;
+}
+
+.text-pink {
+  color: $color-pink;
+}
+
+.text-dark-pink {
+  color: $color-dark-pink;
 }
 
 .text-danger {
-  color: #d9534f;
+  color: $color-red;
 }
 
 .text-success {
-  color: #23b95d;
+  color: $color-green !important;
 }

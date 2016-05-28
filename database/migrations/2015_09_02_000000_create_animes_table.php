@@ -16,13 +16,12 @@ class CreateAnimesTable extends Migration
             $table->integer('episode_image_id')->nullable();
             $table->text('synopsis')->nullable();
             $table->integer('type_id')->unsigned()->nullable();
-            $table->smallInteger('year')->unsigned()->nullable();
             $table->integer('number_of_episodes')->unsigned()->nullable();
             $table->integer('status_id')->unsigned()->nullable();
             $table->date('release_date')->nullable();
             $table->date('end_date')->nullable();
             $table->time('duration')->nullable();
-            $table->integer('calendar_season_id')->unsigned()->nullable();
+            $table->enum('calendar_season', ['Spring', 'Summer', 'Fall', 'Winter'])->nullable();
             $table->integer('classification_id')->unsigned()->nullable();
             $table->float('rating')->default(0);
             $table->integer('views')->default(0);
