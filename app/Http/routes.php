@@ -81,7 +81,7 @@ $router->group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware
     $router->post('banners/recover/{id}', 'BannerController@postRecover');
     $router->get('banners/list', 'BannerController@getList');
     $router->get('banners/list/trash', 'BannerController@getListTrash');
-    
+
     // Classifications routes...
     $router->get('classifications', 'ClassificationController@index');
     $router->get('classifications/create', 'ClassificationController@getCreate');
