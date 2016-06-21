@@ -7,18 +7,39 @@
     }
 
     .nav-link {
-      color: $color-black;
+      color: $color-gray;
+      margin: 0 -1rem;
+      padding: 0.5rem 1rem;
+      &:hover {
+        background-color: $color-dark-purple;
+      }
     }
   }
 
 }
-.search {
-  padding: 6% 0;
-}
 
 .navbar-toggler {
   font-size: 2.25rem;
-  color: $color-green;
+  color: $color-gray;
+}
+
+.search-btn {
+  border-right: 1px solid #2c2541;
+  border-top: 1px solid #2c2541;
+  border-bottom: 1px solid #2c2541;
+}
+
+.search {
+  padding: 10% 0;
+}
+
+.leaf {
+  color: $color-light-purple;
+  background-color: $color-dark-purple;
+  box-shadow: #2c2541 0 0 0 1px inset;
+  border: 0;
+  outline: 0;
+  transition: .3s ease;
 }
 
 @include media-breakpoint-down(md) {
@@ -27,7 +48,7 @@
     margin: 0 auto;
     text-align: center;
     position: absolute;
-    top: 20px;
+    top: 0;
     left: 25%;
     right: 25%;
   }

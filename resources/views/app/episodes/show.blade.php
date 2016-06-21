@@ -1,9 +1,7 @@
 @extends('app.layouts.main')
-
 @section('content')
     <div class="row">
         <div class="col-xs-12 col-lg-8">
-            <div class="row">
                 @if (!empty($user))
                     <div class="col-xs-12">
                         <a href="{{ url('admin/episodes/edit/' . $anime['episode']->id) }}">
@@ -11,10 +9,7 @@
                         </a>
                     </div>
                 @endif
-                <div class="col-xs-12">
-                    <h2>{{ $anime->title . ' Episode ' . $anime->episode->number }}</h2>
-                </div>
-                <div class="col-xs-12">
+                <h1 class="heading">{{ $anime->title . ' Episode ' . $anime->episode->number }}</h1>
                     @if ($anime->episode->mirrors)
                         <ul class="nav nav-tabs-episode">
                             @foreach ($anime->episode->mirrors as $key => $mirror)
@@ -33,21 +28,22 @@
                         </ul>
                         <!-- 16:9 aspect ratio -->
                         <div class="embed-responsive embed-responsive-4by3">
-                            <iframe class="embed-responsive-item" src="{{ !empty($currentMirror) ? $currentMirror->url : $anime->episode->mirrors[0]->url }}"
-                                    width="100%" height="370"></iframe>
+                            <!--  <iframe class="embed-responsive-item" src="{{ !empty($currentMirror) ? $currentMirror->url : $anime->episode->mirrors[0]->url }}" width="100%" height="370"></iframe>-->
+                            <iframe class="embed-responsive-item" SRC="http://www.mp4upload.com/embed-ll2lnx3co409.html" width="100%" height="370" allowfullscreen></iframe>
                         </div>
-                    @else
+                        @else
                         <?php
-                        if ($anime['episode']['not_yet_aired'] && $anime['episode']['coming_date']) {
-                        $coming = $anime['episode']['coming_date'];
-                        $first = new DateTime("now");
-                        $second = new DateTime($coming);
-                        $diff = $first->diff($second);
-                        $day = $diff->format('%d') + ($diff->format('%y') * 365);
-                        $hr = $diff->format('%H');
-                        $min = $diff->format('%i');
-                        $second = $diff->format('%s');
-                        $total_s = ($day * 86400) + ($hr * 3600) + ($min * 60) + $second; ?>
+                            if ($anime['episode']['not_yet_aired'] && $anime['episode']['coming_date']) {
+                            $coming = $anime['episode']['coming_date'];
+                            $first = new DateTime("now");
+                            $second = new DateTime($coming);
+                            $diff = $first->diff($second);
+                            $day = $diff->format('%d') + ($diff->format('%y') * 365);
+                            $hr = $diff->format('%H');
+                            $min = $diff->format('%i');
+                            $second = $diff->format('%s');
+                            $total_s = ($day * 86400) + ($hr * 3600) + ($min * 60) + $second;
+                            ?>
                         <script src="{{ asset('js/countdown.js') }}"></script>
                         <div class="date_con">
                             <script>
@@ -65,96 +61,56 @@
                         </div>
                         <?php } ?>
                         <p>ETA: {{ $anime->episode->aired_at }}</p>
-                    @endif
-                </div>
-                <div class="col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="row social">
-                                <div class="col-xs-12 col-sm-10">
-                                    <i class="fa fa-facebook fa-fw text-success"></i>
-                                    <i class="fa fa-twitter fa-fw text-success"></i>
-                                    <i class="fa fa-google-plus fa-fw text-success"></i>
-                                    <i class="fa fa-reddit fa-fw text-success"></i>
-                                    <i class="fa fa-pinterest fa-fw text-success"></i>
-                                </div>
-                                <div class="col-xs-12 col-sm-2">
-                                    <button type="button" class="btn btn-md btn-danger pull-xs-right">
-                                        Report Broken Video
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        @endif
+                       <div class="social">
+                           <i class="fa fa-facebook fa-fw text-purple"></i>
+                           <i class="fa fa-twitter fa-fw text-purple"></i>
+                           <i class="fa fa-google-plus fa-fw text-purple"></i>
+                           <i class="fa fa-reddit fa-fw text-purple"></i>
+                           <i class="fa fa-pinterest fa-fw text-purple"></i>
+                           <button type="button" class="btn btn-md bg-purple text-white pull-xs-right">Report Broken Video</button>
+                       </div>
+                       <div class="star-views bg-dark-purple text-white">
+                           <p class="pull-xs-left">{{ $anime->episode->votes }} Votes</p>
+                           <p class="pull-xs-right">{{ $anime->episode->views }} Views</p>
+                       </div>
 
-                        <div class="col-xs-12">
-                            <div class="star-views">
-                                <div class="pull-xs-left">
-                                    <p>{{ $anime->episode->votes }}<span> Votes</span></p>
-                                </div>
-                                <div class="pull-xs-right">
-                                    <p>{{ $anime->episode->views }}<span> Views</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 text-center">
-                    <div class="row">
-                        @if ($prevEpisode)
-                            <div class="col-xs-12 col-md-4">
-                                <a href="{{ url($anime->slug . '/' . $prevEpisode->slug) }}" class="btn btn-md btn-success">
-                                    <i class="fa fa-hand-o-left"></i> Prev Episode
-                                </a>
-                            </div>
-                        @endif
-                        <div class="col-xs-12 col-md-4{{ $prevEpisode ? '' : ' col-md-offset-4' }}">
-                            <a href="{{ url($anime->slug) }}" class="btn btn-md btn-success">
-                                <i class="fa fa-list"></i> Episode List
-                            </a>
-                        </div>
-                        @if ($nextEpisode)
-                            <div class="col-xs-12 col-md-4">
-                                <a href="{{ url($anime->slug . '/' . $nextEpisode->slug) }}" class="btn btn-md btn-success">
-                                    <i class="fa fa-hand-o-right"></i> Next Episode
-                                </a>
-                            </div>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <div id="disqus_thread" class="comments"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-lg-4">
+                    @if ($prevEpisode)
+                       <a href="{{ url($anime->slug . '/' . $prevEpisode->slug) }}" class="btn bg-purple text-white"><i class="fa fa-hand-o-left"></i> Prev Episode</a>
+                   @endif
+                       <a href="{{ url($anime->slug) }}" class="btn bg-purple text-white"><i class="fa fa-list"></i> Episode List</a>
+                   @if ($nextEpisode)
+                      <a href="{{ url($anime->slug . '/' . $nextEpisode->slug) }}" class="btn bg-purple text-white"><i class="fa fa-hand-o-right"></i> Next Episode</a>
+                   @endif
+                  <div id="disqus_thread" class="comments"></div>
+             </div>
+            <div class="col-xs-12 col-lg-4">
             <div class="chat">
-                <script id="cid0020000097531107619" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js"
-                        style="width: 100%; height: 750px;">
-                    {
-                        "handle": "animecenterco",
+                <script id="cid0020000097531107619" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style=" width:100%; height:600px ">
+                    {"handle": "animecenterco",
                         "arch": "js",
                         "styles": {
-                            "a": "00AE45",
+                            "a": "7d71ce",
                             "b": 100,
                             "c": "FFFFFF",
                             "d": "FFFFFF",
-                            "k":"00AE45",
-                            "l": "00AE45",
-                            "m": "00AE45",
+                            "k":"7d71ce",
+                            "l": "7d71ce",
+                            "m": "7d71ce",
                             "n": "FFFFFF",
                             "p": "10.35",
-                            "q": "00AE45",
+                            "q": "7d71ce",
                             "r": 100,
                             "t": 0,
                             "surl": 0,
                             "allowpm": 0,
-                            "fwtickm": 1
-                        }
+                            "fwtickm": 1}
                     }
                 </script>
             </div>
         </div>
     </div>
+</div>
 @endsection
 @section('scripts')
     <script data-cfasync="true">

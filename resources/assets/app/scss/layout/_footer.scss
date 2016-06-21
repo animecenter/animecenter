@@ -5,20 +5,19 @@
   h4 {
     font-weight: bold;
     font-size: 18px;
-    color: #23b95d;
     text-transform: uppercase;
   }
   ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    li {
-      a {
-        color: #3f3f3f;
-      }
-      a:hover {
-         color: #23b95d;
-      }
+  }
+  li {
+    a {
+      color: $color-night-rider;
+    }
+    a:hover {
+      color: $color-purple;
     }
   }
 }
