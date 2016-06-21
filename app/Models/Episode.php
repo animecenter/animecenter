@@ -154,7 +154,7 @@ class Episode extends Model
 
     public function getSlugAttribute()
     {
-        return 'episode/'.$this->number.'/'.$this->mirror->translation;
+        return 'episode/'.$this->number;
     }
 
     public function getPhotoAttribute()

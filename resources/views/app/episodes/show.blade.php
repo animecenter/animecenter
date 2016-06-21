@@ -28,8 +28,7 @@
                         </ul>
                         <!-- 16:9 aspect ratio -->
                         <div class="embed-responsive embed-responsive-4by3">
-                            <!--  <iframe class="embed-responsive-item" src="{{ !empty($currentMirror) ? $currentMirror->url : $anime->episode->mirrors[0]->url }}" width="100%" height="370"></iframe>-->
-                            <iframe class="embed-responsive-item" SRC="http://www.mp4upload.com/embed-ll2lnx3co409.html" width="100%" height="370" allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item" src="{{ !empty($currentMirror) ? $currentMirror->url : $anime->episode->mirrors[0]->url }}" width="100%" height="370"></iframe>
                         </div>
                         @else
                         <?php
@@ -86,7 +85,8 @@
              </div>
             <div class="col-xs-12 col-lg-4">
             <div class="chat">
-                <script id="cid0020000097531107619" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style=" width:100%; height:600px ">
+                <script id="cid0020000097531107619" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js"
+                        style=" width:100%; height:600px ">
                     {"handle": "animecenterco",
                         "arch": "js",
                         "styles": {
