@@ -185,22 +185,6 @@ class EloquentAnimeRepository
     /**
      * Get anime by calendar season.
      *
-     * @param Builder $anime
-     * @param string  $calendarSeason
-     *
-     * @return mixed
-     */
-    public function getByCalendarSeason(Builder $anime, $calendarSeason = '')
-    {
-        return $anime->where('animes.calendar_season', '=', $calendarSeason);
-    }
-
-    /**
-     * Get anime by year.
-     *
-     * @param Builder $anime
-     * @param int     $year
-     *
      * @return mixed
      */
     public function getByYear(Builder $anime, $year = 0)

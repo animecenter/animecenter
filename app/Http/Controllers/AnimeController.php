@@ -178,13 +178,6 @@ class AnimeController extends Controller
         return $this->anime->getRandom();
     }
 
-    /**
-     * Get current url.
-     *
-     * @param string $letter
-     *
-     * @return string
-     */
     public function getCurrentURL($letter = '')
     {
         return $letter ? str_replace('/'.$letter, '', request()->path()) : request()->path();
