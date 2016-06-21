@@ -1,0 +1,54 @@
+.anime-list-header {
+  background-color: $color-darker-purple;
+  border-bottom: 1px solid $color-white;
+  color: $color-white;
+  float: left;
+  padding: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+
+}
+
+.dropdown {
+  color: $color-white;
+  border-radius: 0;
+  padding: 1rem;
+}
+
+.nav-tabs {
+  background-color: $color-darker-purple;
+
+  a {
+    color: $color-white;
+    &:active, &:hover {
+      background-color: $color-dark-purple;
+    }
+  }
+
+  .active {
+    border-color: $color-dark-purple;
+  }
+}
+
+// Nav Alphabetical
+
+.filter-submenu {
+  list-style-type: none;
+  float: left;
+  padding: 0;
+  margin: 0;
+
+  li {
+    float: left;
+  }
+
+  a {
+    color: $color-black;
+    padding: 5px 7px;
+    text-transform: uppercase;
+  }
+}
+.alphabetical li:last-child a {
+  color: $color-orange;
+  padding: 0.5rem;
+}

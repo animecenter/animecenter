@@ -33,28 +33,23 @@ h6, .h6 {
   font-size: 0.60rem;
 }
 
-.title-holder {
-  border-bottom: 2px solid $color-green;
-  margin: 0 .5rem 1rem 0;
-  padding: 0.75rem 0.5rem .25rem;
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.heading {
+  border-bottom: 4px solid $color-purple;
+  font-weight: bold;
+  margin: 1rem 0.5rem 1rem 0;
+  padding: 1rem 0;
+  text-transform: uppercase;
 }
 
 .menu-filter {
   float: right;
   margin-left: 5px;
-}
-
-.anime-list-header {
-  background-color: #3f3f3f;
-  padding: 10px;
-  border-bottom: 1px solid $color-white;
-  width: 100%;
-  float: left;
-
-  h2 {
-    color: $color-white;
-    margin-bottom: 0;
-  }
 }
 
 .anime-title {
@@ -80,15 +75,6 @@ h6, .h6 {
   width: 100%;
 }
 
-.anime-footer {
-  background-color: $color-black;
-  padding: 12px;
-  font-size: 20px;
-  a {
-    color: $color-white;
-  }
-}
-
 .anime-background {
   height: 100%;
   width: 100%;
@@ -103,14 +89,6 @@ h6, .h6 {
 
   h1 {
     color: $color-white;
-  }
-
-  a {
-    color: #FFFF00;
-  }
-
-  span {
-    font-weight: bold;
   }
 
   > p:last-child {
@@ -128,17 +106,6 @@ h6, .h6 {
   color: #3f3f3f;
   font-weight: bold;
   line-height: 1.5;
-}
-
-.sort-by .btn-secondary {
-  background-color: #02AF46;
-  border: 0;
-}
-
-.alphabetical li:last-child a {
-  background-color: #01AE45;
-  color: $color-white;
-  border-radius: 22px;
 }
 
 @include media-breakpoint-up(lg) {

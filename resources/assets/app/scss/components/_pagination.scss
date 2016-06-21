@@ -1,0 +1,22 @@
+.pagination {
+  list-style-type: none;
+  padding: 1rem 0;
+
+  li {
+    color: $color-white;
+    background: $color-dark-purple;
+    border-radius: 50%;
+    float: left;
+    padding: 0.25rem 0.75rem;
+    margin: 0.30rem;
+  }
+
+  a {
+    color: $color-white;
+  }
+
+  .active {
+    background: $color-purple;
+  }
+
+}

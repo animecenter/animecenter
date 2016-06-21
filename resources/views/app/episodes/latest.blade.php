@@ -1,28 +1,23 @@
 @extends('app.layouts.main')
 
 @section('content')
-    <div class="row">
-        <div class="col-xs-12">
-            <h2>New Anime Episodes</h2>
-        </div>
-        <div class="col-xs-12">
-            <div class="grid-episode">
-                <div class="grid-sizer"></div>
-                @foreach ($episodes as $episode)
-                    <div class="grid-item">
-                        <a href="{{ url($episode->anime->slug . '/' . $episode->slug . '/' . $episode->mirror->translation) }}" class="thumbnail">
-                            <img src="{{ asset($episode->photo) }}" alt="{{ $episode->title }}" width="300" height="150">
-                            <div class="caption">
-                                <h3 class="episode-title">
-                                    {{ $episode->shortTitle . ' ' . $episode->number }}
-                                </h3>
-                                <p class="time-release">20 minutes ago</p>
-                            </div>
+<div class="row">
+    <div class="col-xs-12 col-md-9">
+        <h2 class="heading h4 text-dark-purple">New Anime Episodes</h2>
+        <div class="episodes">
+              @foreach ($episodes as $episode)
+              <article class="episode-item container-shadow">
+                        <a class="episodes__holder" href="{{ url($episode->anime->slug . '/' . $episode->slug) }}" class="thumbnail">
+                            <img class="img-fluid" src="{{ asset($episode->photo) }}" alt="{{ $episode->title }}" width="300" height="150">
+                            <h1 class="episodes__title h5">{{ $episode->shortTitle }}</h1>
+                            <span class="episode__number h6">Episode {{ $episode->number }}</span>
+                            <span class="episode__details bg-purple h6">subbed</span>
+                            <span class="episode__details bg-orange h6">HD</span>
+                            <span class="episode__time h6">20 minutes ago</span>
                         </a>
-                    </div>
+                    </article>
                 @endforeach
+                {!! $episodes->render() !!}
             </div>
-            {!! $episodes->render() !!}
         </div>
-    </div>
 @endsection
