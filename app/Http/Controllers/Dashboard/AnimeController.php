@@ -70,7 +70,6 @@ class AnimeController extends DashboardController
             'anime'           => DB::table('animes')->where('id', '=', $id)->first(),
             'types'           => DB::table('types')->where('model', '=', 'Anime')->orderBy('name')->get(['id', 'name']),
             'statuses'        => DB::table('statuses')->orderBy('name')->get(['id', 'name']),
-            'calendarSeasons' => CalendarSeason::all(),
             'classifications' => DB::table('classifications')->orderBy('name')->get(['id', 'name']),
         ]);
     }
