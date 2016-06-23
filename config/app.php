@@ -110,6 +110,8 @@ return [
 
     'log' => env('APP_LOG', 'single'),
 
+    'log_level' => env('APP_LOG_LEVEL', 'debug'),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -165,7 +167,7 @@ return [
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         BackupManager\Laravel\Laravel5ServiceProvider::class,
         Chumper\Datatable\DatatableServiceProvider::class,
-        Khill\Fontawesome\FontAwesomeServiceProvider::class,
+        Khill\FontAwesome\Laravel\FontAwesomeServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
     ],
