@@ -4,12 +4,6 @@ import browserSync from 'browser-sync';
 
 const plugins = gulpLoadPlugins();
 const reload = browserSync.reload;
-const mainBowerFiles = require('main-bower-files');
-
-// Copy components fonts files to the fonts directory.
-gulp.task('fonts', () =>
-  gulp.src(mainBowerFiles('**/*.{eot,svg,ttf,woff,woff2}')).pipe(gulp.dest('public/fonts'))
-);
 
 // Minify images and move the resulting files to the images directory.
 gulp.task('app:img', () =>
@@ -40,7 +34,7 @@ gulp.task('app:css', () => {
       outputStyle: 'compressed',
       precision: 10,
       includePaths: [
-        'bower_components/',
+        'node_modules/',
       ],
     }).on('error', plugins.sass.logError))
     .pipe(plugins.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
@@ -56,7 +50,7 @@ gulp.task('dashboard:css', () => {
       outputStyle: 'compressed',
       precision: 10,
       includePaths: [
-        'bower_components/',
+        'node_modules/',
       ],
     }).on('error', plugins.sass.logError))
     .pipe(plugins.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
@@ -81,15 +75,8 @@ gulp.task('lint', lint([
   '!resources/assets/{app,dashboard}/js/vendor/**/*.js',
 ]));
 
-// Copy components javascript files to vendor folder.
-gulp.task('vendor', () =>
-  gulp.src(mainBowerFiles({ checkExistence: true, filter: ['**/*.js'] }))
-    .pipe(gulp.dest('resources/assets/app/js/vendor'))
-    .pipe(plugins.size())
-);
-
 // Concatenate together all js from vendor into one minify file for the application.
-gulp.task('app:js', ['vendor'], () => {
+gulp.task('app:js', () => {
   gulp.src([
     'resources/assets/app/js/vendor/tether.js',
     'resources/assets/app/js/vendor/jquery.js',
@@ -99,7 +86,8 @@ gulp.task('app:js', ['vendor'], () => {
     .pipe(plugins.plumber())
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.babel({ ignore: ['tether.js'] }))
-    .pipe(plugins.uglify()).on('error', (err) => {
+    .pipe(plugins.uglify())
+    .on('error', (err) => {
       console.log(err);
     })
     .pipe(plugins.concat('app.js'))
@@ -121,7 +109,8 @@ gulp.task('dashboard:js', () => {
   ])
     .pipe(plugins.plumber())
     .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.uglify()).on('error', (err) => {
+    .pipe(plugins.uglify())
+    .on('error', (err) => {
       console.log(err);
     })
     .pipe(plugins.concat('dashboard.js'))

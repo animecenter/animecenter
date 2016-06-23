@@ -15,7 +15,6 @@ We don't host any illegal content on our server.
 - [Laravel](http://laravel.com) - backend.
 - [Bootstrap](https://getbootstrap.com) - styling.
 - [jQuery](https://jquery.con) - dynamic content.
-- [Bower](http://bower.io) - web dependencies.
 - [Gulp](http://gulpjs.com) - automating common tasks.
 - [SASS](http://sass-lang.com) - preprocessing CSS.
 - [Scrapy](https://scrapy.org) - data and links aggregation.
