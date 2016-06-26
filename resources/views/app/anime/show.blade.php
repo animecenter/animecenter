@@ -2,9 +2,9 @@
 @section('content')
     <div class="row">
         <div class="col-xs-12">
-            <section class="anime" style="background: url(https://static.hummingbird.me/anime/poster_images/000/010/941/large/20151125.jpg?1448505014) no-repeat no-repeat 30% 20%; background-size: cover;">
+            <section class="anime" style="background: url( {{ asset($anime->photo ? $anime->photo : 'https://placehold.it/225x350') }} ) no-repeat no-repeat 30% 20%; background-size: cover;">
                 <article class="anime__item">
-                    <img src="https://static.hummingbird.me/anime/poster_images/000/010/941/large/20151125.jpg?1448505014" alt="" class="img-responsive anime__img">
+                    <img src="{{ asset($anime->photo ? $anime->photo : 'https://placehold.it/225x350') }}" alt="" class="img-responsive anime__img">
                     <ul class="ul anime__hold">
                         <li class="anime__info"><h1 class="anime__title h1">{{ $anime->title }}</h1></li>
                         <li class="anime__info">Type: @if ($anime->type)<a href="{{ url('anime?type=' . $anime->type->id) }}">{{ $anime->type->name }}</a>@else Unknown @endif</li>

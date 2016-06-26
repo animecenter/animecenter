@@ -1,7 +1,7 @@
 <footer id="footer" class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-xs-12 col-md-4">
                 <h4 class="text-dark-purple h4">Animecenter</h4>
                 <ul>
                     <li>
@@ -21,7 +21,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-xs-12 col-md-4">
                 <h4>Popular Anime Series</h4>
                 <ul>
                     <li>
@@ -47,7 +47,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-xs-12 col-md-4">
                 <h4>Affiliates</h4>
                 <ul>
                     <li>

@@ -76,6 +76,17 @@
 }
 
 
+@include media-breakpoint-down(xs) {
+  .nav-tabs {
+    .nav-link {
+      padding: 0.5em;
+      font-size: 12px;
+    }
+  }
+}
+
+
+
 
 
 
