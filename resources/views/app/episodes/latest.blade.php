@@ -7,7 +7,7 @@
         <div class="episodes">
               @foreach ($episodes as $episode)
               <article class="episode-item container-shadow">
-                        <a class="episodes__holder" href="{{ url($episode->anime->slug . '/' . $episode->slug) }}" class="thumbnail">
+                        <a class="episodes__holder" href="{{ url($episode->anime->slug . '/' . $episode->slug . '/' . $episode->mirror->slug) }}" class="thumbnail">
                             <img class="img-fluid" src="{{ asset($episode->photo) }}" alt="{{ $episode->title }}" width="300" height="150">
                             <h1 class="episodes__title h5">{{ $episode->shortTitle }}</h1>
                             <span class="episode__number h6">Episode {{ $episode->number }}</span>

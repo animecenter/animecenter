@@ -118,7 +118,6 @@ class Anime extends Model
         'episode_image_id'   => 'int',
         'synopsis'           => 'string',
         'type_id'            => 'int',
-        'year'               => 'int',
         'number_of_episodes' => 'int',
         'status_id'          => 'int',
         'release_date'       => 'string',

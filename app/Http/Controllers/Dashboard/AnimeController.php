@@ -3,7 +3,6 @@
 namespace AC\Http\Controllers\Dashboard;
 
 use AC\Models\Anime;
-use AC\Models\CalendarSeason;
 use DB;
 use Illuminate\Http\Request;
 
@@ -24,7 +23,6 @@ class AnimeController extends DashboardController
         return view('dashboard.animes.create', [
             'types'           => DB::table('types')->where('model', '=', 'Anime')->orderBy('name')->get(['id', 'name']),
             'statuses'        => DB::table('statuses')->orderBy('name')->get(['id', 'name']),
-            'calendarSeasons' => CalendarSeason::all(),
             'classifications' => DB::table('classifications')->orderBy('name')->get(['id', 'name']),
         ]);
     }
@@ -72,7 +70,6 @@ class AnimeController extends DashboardController
             'anime'           => DB::table('animes')->where('id', '=', $id)->first(),
             'types'           => DB::table('types')->where('model', '=', 'Anime')->orderBy('name')->get(['id', 'name']),
             'statuses'        => DB::table('statuses')->orderBy('name')->get(['id', 'name']),
-            'calendarSeasons' => CalendarSeason::all(),
             'classifications' => DB::table('classifications')->orderBy('name')->get(['id', 'name']),
         ]);
     }

@@ -1,11 +1,7 @@
-/components
-/node_modules
-/public/storage
-/public/uploads
-/bower_components
 /vendor
+/node_modules
+/public/uploads
 .env
 .vagrant
 _ide_helper.php
 *.map
-.idea
