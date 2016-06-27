@@ -1,7 +1,10 @@
 @extends('app.layouts.main')
 @section('content')
     <div class="row">
-        <div class="col-xs-12 col-lg-8">
+        <div class="col-xs-12">
+            <h1 class="heading h3">{{ $anime->title . ' Episode ' . $anime->episode->number }}</h1>
+        </div>
+        <div class="col-xs-12 col-xl-8">
                 @if (!empty($user))
                     <div class="col-xs-12">
                         <a href="{{ url('admin/episodes/edit/' . $anime['episode']->id) }}">
@@ -9,7 +12,6 @@
                         </a>
                     </div>
                 @endif
-                <h1 class="heading">{{ $anime->title . ' Episode ' . $anime->episode->number }}</h1>
                     @if ($anime->episode->mirrors)
                         <ul class="nav nav-tabs-episode">
                             @foreach ($anime->episode->mirrors as $key => $mirror)
@@ -27,39 +29,9 @@
                             @endforeach
                         </ul>
                         <!-- 16:9 aspect ratio -->
-                        <div class="embed-responsive embed-responsive-4by3">
-                            <iframe class="embed-responsive-item" src="{{ !empty($currentMirror) ? $currentMirror->url : $anime->episode->mirrors[0]->url }}" width="100%" height="370"></iframe>
+                        <div class="embed-responsive embed-responsive-holder">
+                            <iframe class="embed-responsive-item" src="{{ !empty($currentMirror) ? $currentMirror->url : $anime->episode->mirrors[0]->url }}" width="100%" height="100%" allowfullscreen></iframe>
                         </div>
-                        @else
-                        <?php
-                            if ($anime['episode']['not_yet_aired'] && $anime['episode']['coming_date']) {
-                            $coming = $anime['episode']['coming_date'];
-                            $first = new DateTime("now");
-                            $second = new DateTime($coming);
-                            $diff = $first->diff($second);
-                            $day = $diff->format('%d') + ($diff->format('%y') * 365);
-                            $hr = $diff->format('%H');
-                            $min = $diff->format('%i');
-                            $second = $diff->format('%s');
-                            $total_s = ($day * 86400) + ($hr * 3600) + ($min * 60) + $second;
-                            ?>
-                        <script src="{{ asset('js/countdown.js') }}"></script>
-                        <div class="date_con">
-                            <script>
-                                var myCountdown1 = new Countdown({
-                                    time: "{{ $total_s }}", // 86400 seconds = 1 day
-                                    width: 250,
-                                    height: 60,
-                                    rangeHi: "day",
-                                    style: "flip"
-                                });
-                            </script>
-                        </div>
-                        <div class="date_img">
-                            <img src="{{ asset("images/" . $anime['episode']['image']) }}">
-                        </div>
-                        <?php } ?>
-                        <p>ETA: {{ $anime->episode->aired_at }}</p>
                         @endif
                        <div class="social">
                            <i class="fa fa-facebook fa-fw text-purple"></i>
@@ -83,7 +55,7 @@
                    @endif
                   <div id="disqus_thread" class="comments"></div>
              </div>
-            <div class="col-xs-12 col-lg-4">
+            <div class="col-xs-12 col-xl-4">
             <div class="chat">
                 <script id="cid0020000097531107619" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js"
                         style=" width:100%; height:600px ">
