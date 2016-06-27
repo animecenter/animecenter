@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a925f8ff-1620-4b86-bfe8-b7d1538f2bea" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/app/scss/app.scss" afterPath="$PROJECT_DIR$/resources/assets/app/scss/app.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/app/scss/components/_anime.scss" afterPath="$PROJECT_DIR$/resources/assets/app/scss/components/_anime.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/app/scss/components/_episodes.scss" afterPath="$PROJECT_DIR$/resources/assets/app/scss/components/_episodes.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/app/scss/components/_nav-tabs.scss" afterPath="$PROJECT_DIR$/resources/assets/app/scss/components/_nav-tabs.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/app/scss/layout/_main.scss" afterPath="$PROJECT_DIR$/resources/assets/app/scss/layout/_main.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/app/anime/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/app/anime/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/app/episodes/show.blade.php" afterPath="$PROJECT_DIR$/resources/views/app/episodes/show.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/app/pages/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/app/pages/home.blade.php" />
     </list>
     <ignored path="animecenter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -138,7 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/resources/assets/app/scss/components/_grid-anime.scss" />
         <option value="$PROJECT_DIR$/resources/assets/app/scss/utilities/_icons.scss" />
         <option value="$PROJECT_DIR$/resources/assets/app/scss/utilities/_btn.scss" />
@@ -182,6 +174,7 @@
         <option value="$PROJECT_DIR$/resources/views/app/pages/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/app/anime/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/app/scss/components/_anime.scss" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -1111,12 +1104,12 @@
       <workItem from="1461334921664" duration="10000" />
       <workItem from="1463431018199" duration="945000" />
       <workItem from="1464049615476" duration="69321000" />
-      <workItem from="1466969833009" duration="25407000" />
+      <workItem from="1466969833009" duration="25801000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145223000" />
+    <option name="totallyTimeSpent" value="145617000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1168,7 +1161,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/assets/app/scss/components/_list-reset.scss" />
     <entry file="file://$PROJECT_DIR$/resources/views/app/layouts/sidebar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="621">
@@ -1549,6 +1541,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="164" column="57" selection-start-line="164" selection-start-column="57" selection-end-line="164" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
