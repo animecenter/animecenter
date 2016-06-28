@@ -145,7 +145,7 @@ gulp.task('watch', ['build'], () => {
 
 // Runs all commands to build the application.
 // Returns the size of all assets except for the upload folder.
-gulp.task('build', ['css', 'fonts', 'img', 'js'], () =>
+gulp.task('build', ['css', 'img', 'js'], () =>
   gulp.src(['public/**/*', '!public/uploads']).pipe(plugins.size({ title: 'build', gzip: true }))
 );
 

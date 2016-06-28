@@ -26,7 +26,7 @@
                 @foreach ($animes as $anime)
                     <article class="anime-item container-shadow">
                         <a class="anime__holder thumbnail" href="{{ url($anime->slug) }}">
-                            <img src="{{ asset($anime->photo) }}" class="img-fluid" alt="{{ $anime->title }}" width="100%" height="185">
+                            <img src="{{ asset($anime->photo) }}" class="img-anime img-fluid" alt="{{ $anime->title }}" width="100%">
                             <div class="caption">
                                 <h3 class="anime__title">
                                     {{ $anime->shortTitle }}

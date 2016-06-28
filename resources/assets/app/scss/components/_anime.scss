@@ -28,6 +28,9 @@
 }
 
 @include media-breakpoint-only(xs) {
+  .img-anime {
+    min-height: 280px;
+  }
   .anime {
     .anime-item {
       width: 45%;
@@ -40,6 +43,9 @@
   }
 }
 @include media-breakpoint-only(sm) {
+  .img-anime {
+    min-height: 245px;
+  }
   .anime {
     .anime-item {
       width: 26.5%;
@@ -53,6 +59,9 @@
 }
 
 @include media-breakpoint-only(md) {
+  .img-anime {
+    min-height: 204px;
+  }
   .anime {
     .anime-item {
       width: 23.2%;
@@ -67,6 +76,9 @@
 }
 
 @include media-breakpoint-only(lg) {
+  .img-anime {
+    min-height: 200px;
+  }
   .anime {
     .anime-item {
       width: 23%;
@@ -80,6 +92,9 @@
 }
 
 @include media-breakpoint-up(xl) {
+  .img-anime {
+    min-height: 200px;
+  }
   .anime {
     .anime-item {
       float: left;
